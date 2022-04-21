@@ -1,6 +1,11 @@
 plugins {
+    // Плагин необходим для идентификации данного приложения
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    // Подключение плагина для работы с аннотациями (нужно для Room)
+    id 'kotlin-kapt'
+    // Подключение плагина для удобной парселизации
+    id 'kotlin-android-extensions'
 }
 
 android {
@@ -29,15 +34,293 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    // Подключение binding
+    buildFeatures {
+        viewBinding true
+    }
 }
 
+//region Задание версий подключаемых библиотек (не обращать внимание на эту ошибку; студия дурит)
+def androidXVersion = "1.4.1"
+def kotlinKTXVersion = "1.7.0"
+def kotlinJDK7Version = "1.5.20"
+def kotlinCoroutinescoreVersion = "1.5.1"
+def kotlinCoroutineandroidVersion = "1.5.0"
+def designMaterialVersion = "1.5.0"
+def designConstrlayoutVersion = "2.1.3"
+def testJunitVersion = "4.13.2"
+def testExtVersion = "1.1.2"
+def testEspressocoreVersion = "3.3.0"
+def testMockitoCoreVersion = "3.3.3"
+def testMockitoInlineVersion = "2.8.9"
+def testMockitoKotlinVersion = "1.5.0"
+def testRobolectricVersion = "4.5.1"
+def testRobolectricCoreVersion = "1.4.0"
+def testRobolectricEspressoVersion = "3.3.0"
+def testUIAutomatorVersion = "2.2.0"
+def testUIAutomatorrulesVersion = "1.4.0-alpha05"
+def testFragmentVersion = "1.4.1"
+def testRecyclerViewVersion = "3.4.0"
+def roomVersion = "2.4.0"
+def roomJDBCVersion = "3.34.0"
+def daggerVersion = "2.39.1"
+def daggerAddSupportVersion = "2.12"
+def koinVersion = "3.1.2"
+def koinRetrofitcoroutinesVersion = "0.9.2"
+def koinTestsandroidxVersion = "1.0.0"
+def coroutinesVersion = "1.3.9"
+def retrofitVersion = "2.9.0"
+def retrofitGsonVersion = "2.7.1"
+def retrofitRxjava2Version = "2.4.0"
+def retrofitRxjava3Version = "2.9.0"
+def retrofitInterceptorVersion = "3.12.1"
+def okHTTPVersion = "4.6.0"
+def glideVersion = "4.11.0"
+def picassoVersion = "2.71828"
+//def rxJavaVersion = "3.0.0"
+def rxJavaAndroidVersion = "2.1.1"
+def rxJavaRxJavaVersion = "3.0.0-RC3"
+def ciceronyVersion = "6.6"
+def moxyVersion = "2.2.2"
+def lifecycleVersion = "2.2.0"
+ext {
+    libs = [:]
+
+    //AndroidX
+    androidX = [:]
+    libs.androidX = androidX
+    androidX.appcompat = "androidx.appcompat:appcompat:$androidXVersion"
+    //Kotlin
+    kotlin = [:]
+    libs.kotlin = kotlin
+    kotlin.ktx = "androidx.core:core-ktx:$kotlinKTXVersion"
+    kotlin.jdk7 = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinJDK7Version"
+    kotlin.coroutinescore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinCoroutinescoreVersion"
+    kotlin.coroutinesandroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinCoroutineandroidVersion"
+    //Design
+    //You should not use the com.android.support and com.google.android.material dependencies in your app at the same time
+    design = [:]
+    libs.design = design
+    design.material = "com.google.android.material:material:$designMaterialVersion"
+    design.constrlayout = "androidx.constraintlayout:constraintlayout:$designConstrlayoutVersion"
+    // Test
+    tests = [:]
+    libs.tests = tests
+    // Core
+    tests.junit = "junit:junit:$testJunitVersion"
+    tests.ext = "androidx.test.ext:junit:$testExtVersion"
+    tests.espressocore = "androidx.test.espresso:espresso-core:$testEspressocoreVersion"
+    tests.filetreedir = "'libs'"
+    tests.filetreeinclude = "'*.jar'"
+    // Mockito
+    tests.mockitocore = "org.mockito:mockito-core:$testMockitoCoreVersion"
+    tests.mockitoinline = "org.mockito:mockito-inline:$testMockitoInlineVersion"
+    tests.mockitokotlin = "com.nhaarman:mockito-kotlin:$testMockitoKotlinVersion"
+    // Robolectric
+    tests.robolectric = "org.robolectric:robolectric:$testRobolectricVersion"
+    tests.robolectriccore = "androidx.test:core:$testRobolectricCoreVersion"
+    tests.robolectricrunner = "androidx.test:runner:$testRobolectricCoreVersion"
+    tests.robolectrictruth = "androidx.test.ext:truth:$testRobolectricCoreVersion"
+    tests.robolectricespressocore =
+            "androidx.test.espresso:espresso-core:$testRobolectricEspressoVersion"
+    tests.robolectricespressointents =
+            "androidx.test.espresso:espresso-intents:$testRobolectricEspressoVersion"
+    //UI Automator
+    tests.uiautomator = "androidx.test.uiautomator:uiautomator:$testUIAutomatorVersion"
+    tests.uiautomatorrules = "androidx.test:rules:$testUIAutomatorrulesVersion"
+    // Fragment
+    tests.fragmentWork = "androidx.fragment:fragment-testing:$testFragmentVersion"
+    // RecyclerView
+    tests.recyclerView = "androidx.test.espresso:espresso-contrib:$testRecyclerViewVersion"
+    // Room
+    room = [:]
+    libs.room = room
+    room.runtime = "androidx.room:room-runtime:$roomVersion"
+    room.compiler = "androidx.room:room-compiler:$roomVersion"
+    room.m1Support = "org.xerial:sqlite-jdbc:$roomJDBCVersion"
+    room.rxJava3 = "androidx.room:room-rxjava3:$roomVersion"
+    room.ktx = "androidx.room:room-ktx:$roomVersion"
+    // Dagger
+    dagger = [:]
+    libs.dagger = dagger
+    dagger.daggger = "com.google.dagger:dagger:$daggerVersion"
+    dagger.runtime = "com.google.dagger:dagger-android:$daggerVersion"
+    dagger.support = "com.google.dagger:dagger-android-support:$daggerVersion"
+    dagger.processor = "com.google.dagger:dagger-android-processor:$daggerVersion"
+    dagger.compiler = "com.google.dagger:dagger-compiler:$daggerVersion"
+    dagger.addsupport = "com.google.dagger:dagger-android-support:$daggerAddSupportVersion"
+    // Koin
+    koin = [:]
+    libs.koin = koin
+    //Koin core features
+    koin.core = "io.insert-koin:koin-core:$koinVersion"
+    //Koin main features for Android (Scope,ViewModel ...)
+    koin.android = "io.insert-koin:koin-android:$koinVersion"
+    //Koin Java Compatibility
+    koin.compat = "io.insert-koin:koin-android-compat:$koinVersion"
+    // Koin for Retrofit 2 coroutines (needs for CoroutineCallAdapterFactory())
+    koin.retrofitcoroutines = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$koinRetrofitcoroutinesVersion"
+    // Koin for Tests
+    koin.testsandroidx = "androidx.test:core:$koinTestsandroidxVersion"
+    koin.testsio = "io.insert-koin:koin-test:$koinVersion"
+    // Coroutines
+    coroutines = [:]
+    libs.coroutines = coroutines
+    coroutines.android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
+    // Retrofit
+    retrofit = [:]
+    libs.retrofit = retrofit
+    retrofit.runtime = "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    retrofit.gson = "com.squareup.retrofit2:converter-gson:$retrofitGsonVersion"
+    retrofit.rxJava2 = "com.squareup.retrofit2:adapter-rxjava2:$retrofitRxjava2Version"
+    retrofit.rxJava3 = "com.squareup.retrofit2:adapter-rxjava3:$retrofitRxjava3Version"
+    retrofit.interceptor = "com.squareup.okhttp3:logging-interceptor:$retrofitInterceptorVersion"
+    // OkHTTP
+    okHTTP = [:]
+    libs.okHTTP = okHTTP
+    okHTTP.runtime = "com.squareup.okhttp3:okhttp:$okHTTPVersion"
+    // Glide
+    glide = [:]
+    libs.glide = glide
+    glide.runtime = "com.github.bumptech.glide:glide:$glideVersion"
+    glide.compiler = "com.github.bumptech.glide:compiler:$glideVersion"
+    // Picasso
+    picasso = [:]
+    libs.picasso = picasso
+    picasso.runtime = "com.squareup.picasso:picasso:$picassoVersion"
+    // RxJava
+    rxJava = [:]
+    libs.rxJava = rxJava
+//    rxJava.android = "io.reactivex.rxjava3:rxandroid:$rxJavaVersion"
+//    rxJava.reactive = "io.reactivex.rxjava3:rxjava:$rxJavaVersion"
+    rxJava.android = "io.reactivex.rxjava2:rxandroid:$rxJavaAndroidVersion"
+    rxJava.reactive = "io.reactivex.rxjava3:rxjava:$rxJavaRxJavaVersion"
+    // Cicerony
+    cicerony = [:]
+    libs.cicerony = cicerony
+    cicerony.runtime = "com.github.terrakok:cicerone:$ciceronyVersion"
+    // Moxy
+    moxy = [:]
+    libs.moxy = moxy
+    moxy.community = "com.github.moxy-community:moxy:$moxyVersion"
+    moxy.compiler = "com.github.moxy-community:moxy-compiler:$moxyVersion"
+    moxy.ktx = "com.github.moxy-community:moxy-ktx:$moxyVersion"
+    moxy.androidx = "com.github.moxy-community:moxy-androidx:$moxyVersion"
+    // Lifecycle:
+    lifecycle = [:]
+    libs.lifecycle = lifecycle
+    lifecycle.extensions = "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
+    // LiveData
+    lifecycle.ktx = "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
+    // Lifecycles only (without ViewModel or LiveData)
+    lifecycle.runtimektx = "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"
+    lifecycle.process = "androidx.lifecycle:lifecycle-process:$lifecycleVersion"
+    lifecycle.java8 = "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion"
+}
+//endregion
+
+//region Подключение модулей и библиотек
 dependencies {
+    // Подключение модулей
+    implementation project(':screens')
 
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation 'com.google.android.material:material:1.5.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    // Подключение библиотек
+    //AndroidX
+    implementation libs.androidX.appcompat
+    //Kotlin
+    implementation libs.kotlin.ktx
+    implementation libs.kotlin.jdk7
+    implementation libs.kotlin.coroutinescore
+    implementation libs.kotlin.coroutinesandroid
+    //Design
+    implementation libs.design.material
+    implementation libs.design.constrlayout
+    // Tests
+    // Core
+    testImplementation libs.tests.junit
+    androidTestImplementation libs.tests.ext // Нужно для работы AndroidJUnit4 в инструментальных-тестах
+    androidTestImplementation libs.tests.espressocore
+    implementation fileTree(dir: libs.tests.filetreedir, include: libs.tests.filetreeinclude)
+    // Mockito
+    testImplementation libs.tests.mockitocore
+    testImplementation libs.tests.mockitoinline
+    testImplementation (libs.tests.mockitokotlin) {
+        exclude group: 'org.jetbrains.kotlin'
+        exclude group: 'org.mockito'
+    }
+    // Robolectric
+    testImplementation libs.tests.robolectric
+    testImplementation libs.tests.robolectriccore
+    testImplementation libs.tests.robolectricrunner
+    testImplementation libs.tests.ext // Нужно для работы AndroidJUnit4 в Unit-тестах
+    testImplementation libs.tests.robolectrictruth
+    testImplementation libs.tests.robolectricespressocore
+    testImplementation libs.tests.robolectricespressointents
+    // UI Automator
+    androidTestImplementation libs.tests.uiautomator
+    androidTestImplementation libs.tests.uiautomatorrules
+    // Fragment
+    debugImplementation libs.tests.fragmentWork
+    // RecyclerView
+    debugImplementation libs.tests.recyclerView
+    // Lifecycle
+/*    implementation libs.lifecycle.extensions */
+    // LiveData
+/*    implementation libs.lifecycle.ktx */
+    // Lifecycles only (without ViewModel or LiveData)
+/*    implementation libs.lifecycle.runtimektx
+    implementation libs.lifecycle.process
+    implementation libs.lifecycle.java8 */
+/*    // Moxy
+    implementation libs.moxy.community
+    implementation libs.moxy.compiler
+    implementation libs.moxy.ktx
+    implementation libs.moxy.androidx */
+    // Cicerony
+    implementation libs.cicerony.runtime
+    // RxJava
+/*    implementation libs.rxJava.android
+    implementation libs.rxJava.reactive */
+    // Glide
+/*    implementation libs.glide.runtime
+    implementation libs.glide.compiler */
+    // Picasso
+/*    implementation libs.picasso.runtime */
+/*    // OkHTTP
+    implementation libs.okHTTP.runtime */
+    // Retrofit
+/*    implementation libs.retrofit.runtime
+    implementation libs.retrofit.gson
+    implementation libs.retrofit.rxJava2
+//    implementation libs.retrofit.rxJava3 // одновременно с rxJava2 не включать
+    implementation libs.retrofit.interceptor */
+    // Room
+/*    implementation libs.room.runtime
+    implementation libs.room.compiler
+    implementation libs.room.m1Support
+    implementation libs.room.rxJava3
+    implementation libs.room.ktx */
+    // Coroutines
+//    implementation libs.coroutines.android
+/*    // Dagger
+    implementation libs.dagger.daggger
+    implementation libs.dagger.runtime
+    implementation libs.dagger.support
+    implementation libs.dagger.processor
+    implementation libs.dagger.compiler
+    implementation libs.dagger.addsupport */
+    // Koin
+    //Koin core features
+/*    implementation libs.koin.core
+    //Koin main features for Android (Scope,ViewModel ...)
+    implementation libs.koin.android
+    //Koin Java Compatibility
+    implementation libs.koin.compat
+    // For Retrofit 2 coroutines
+    implementation libs.koin.retrofitcoroutines
+    // Koin for Tests
+    testImplementation libs.koin.testsandroidx
+    testImplementation libs.koin.testsio */
 }
+//endregion

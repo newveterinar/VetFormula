@@ -14,8 +14,8 @@ dependencyResolutionManagement {
 }
 rootProject.name = "VetFormula"
 include ':app'
-include ':utils'
-include ':core'
-include ':model'
 include ':screens'
 include ':repository'
+include ':core'
+include ':model'
+include ':utils'
