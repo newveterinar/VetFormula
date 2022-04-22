@@ -9,18 +9,18 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/about_header"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="@dimen/about_header_height"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" >
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/about_about_button"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/about_about_button_width"
+            android:layout_height="@dimen/about_about_button_height"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
+            android:layout_marginTop="@dimen/about_about_button_margin_top"
+            android:layout_marginEnd="@dimen/about_about_button_margin_end"
             android:background="?attr/colorOnBackground"
             app:srcCompat="@drawable/ic_baseline_info"
             app:layout_constraintEnd_toEndOf="parent"
@@ -31,10 +31,10 @@
             android:id="@+id/about_logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingStart="40dp"
+            android:paddingStart="@dimen/about_logo_padding_start"
             android:text="Information"
             android:textStyle="bold"
-            android:textSize="30sp"
+            android:textSize="@dimen/about_logo_text_size"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
@@ -44,7 +44,7 @@
     <View
         android:id="@+id/about_horizontal_border"
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="@dimen/about_horizontal_border_height"
         android:background="@color/black"
         app:layout_constraintTop_toBottomOf="@id/about_header"
         app:layout_constraintStart_toStartOf="parent" />
@@ -54,9 +54,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="ABOUT\nVetFormula"
+        android:text="@string/about_surface_button_text_text"
         android:textStyle="bold"
-        android:textSize="25sp"
+        android:textSize="@dimen/about_surface_button_text_text_size"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/about_horizontal_border"
