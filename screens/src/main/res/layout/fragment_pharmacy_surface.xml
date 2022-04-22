@@ -21,7 +21,6 @@
             android:layout_alignParentEnd="true"
             android:layout_marginTop="@dimen/pharmacy_about_button_margint_top"
             android:layout_marginEnd="@dimen/pharmacy_about_button_margin_end"
-            android:background="?attr/colorOnBackground"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -31,9 +30,9 @@
             android:id="@+id/pharmacy_previous_button_container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" >
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/pharmacy_previous_button"
@@ -42,7 +41,6 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="@dimen/pharmacy_previous_button_margin_start"
                 android:layout_marginTop="@dimen/pharmacy_previous_button_margin_top"
-                android:background="?attr/colorOnBackground"
                 android:rotation="180"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -71,28 +69,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/pharmacy_header" />
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/pharmacy_surface_button"
-        android:layout_width="@dimen/pharmacy_surface_button_width"
-        android:layout_height="@dimen/pharmacy_surface_button_height"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="@dimen/pharmacy_surface_button_margin_start"
-        android:layout_marginTop="@dimen/pharmacy_surface_button_margin_top"
-        android:background="?attr/colorOnBackground"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/pharmacy_horizontal_border"
-        app:srcCompat="@drawable/ic_pharmacy" />
-
-    <TextView
-        android:id="@+id/pharmacy_surface_button_text"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/pharmacy_surface_button_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/pharmacy_surface_button_text_text"
-        android:textSize="@dimen/pharmacy_surface_button_text_text_size"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@id/pharmacy_surface_button"
-        app:layout_constraintStart_toStartOf="@id/pharmacy_surface_button"
-        app:layout_constraintTop_toBottomOf="@id/pharmacy_surface_button" />
+        android:layout_marginStart="@dimen/pharmacy_surface_button_container_margin_start"
+        android:layout_marginTop="@dimen/pharmacy_surface_button_container_margin_top"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pharmacy_horizontal_border">
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/pharmacy_surface_button"
+            android:layout_width="@dimen/pharmacy_surface_button_width"
+            android:layout_height="@dimen/pharmacy_surface_button_height"
+            android:layout_alignParentEnd="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_pharmacy" />
+
+        <TextView
+            android:id="@+id/pharmacy_surface_button_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/pharmacy_surface_button_text_text"
+            android:textSize="@dimen/pharmacy_surface_button_text_text_size"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/pharmacy_surface_button" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
