@@ -41,7 +41,7 @@ android {
 //region Подключение модулей и библиотек
 dependencies {
     // Подключение модулей
-    implementation project(':repository')
+    api project(":repository")
 
     // Подключение библиотек
     //AndroidX
@@ -90,11 +90,6 @@ dependencies {
 /*    implementation libs.lifecycle.runtimektx
     implementation libs.lifecycle.process
     implementation libs.lifecycle.java8 */
-/*    // Moxy
-    implementation libs.moxy.community
-    implementation libs.moxy.compiler
-    implementation libs.moxy.ktx
-    implementation libs.moxy.androidx */
     // Cicerony
     implementation libs.cicerony.runtime
     // RxJava
@@ -121,13 +116,6 @@ dependencies {
     implementation libs.room.ktx */
     // Coroutines
 //    implementation libs.coroutines.android
-/*    // Dagger
-    implementation libs.dagger.daggger
-    implementation libs.dagger.runtime
-    implementation libs.dagger.support
-    implementation libs.dagger.processor
-    implementation libs.dagger.compiler
-    implementation libs.dagger.addsupport */
     // Koin
     //Koin core features
 /*    implementation libs.koin.core
