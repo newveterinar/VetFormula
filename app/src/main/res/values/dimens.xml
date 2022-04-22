@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="bottom_sheet_line_width">25dp</dimen>
+    <dimen name="bottom_sheet_line_height">1dp</dimen>
+    <dimen name="bottom_sheet_line_margin_top">5dp</dimen>
+    <dimen name="bottom_sheet_container_peek_height">100dp</dimen>
+    <dimen name="bottom_sheet_container_margin_top">80dp</dimen>
+</resources>
