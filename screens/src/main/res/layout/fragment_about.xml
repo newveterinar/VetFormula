@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cardview_shadow_start_color">
+    android:background="@color/white">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/about_header"
@@ -21,7 +21,6 @@
             android:layout_alignParentEnd="true"
             android:layout_marginTop="@dimen/about_about_button_margin_top"
             android:layout_marginEnd="@dimen/about_about_button_margin_end"
-            android:background="?attr/colorOnBackground"
             app:srcCompat="@drawable/ic_baseline_info"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"

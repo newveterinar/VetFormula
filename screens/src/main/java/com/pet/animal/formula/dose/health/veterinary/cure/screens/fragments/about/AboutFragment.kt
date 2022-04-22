@@ -1,4 +1,4 @@
-package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy
+package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.about
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,30 +10,29 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.github.terrakok.cicerone.Router
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentPharmacySurfaceBinding
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentAboutBinding
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentPharmacyBinding
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator.AppScreensImpl
 import org.koin.java.KoinJavaComponent
 
-class PharmacySurfaceFragment: Fragment() {
+class AboutFragment: Fragment() {
     /** Задание переменных */ //region
-    // Binding
-    private var _binding: FragmentPharmacySurfaceBinding? = null
-    private val binding: FragmentPharmacySurfaceBinding
+        // Binding
+    private var _binding: FragmentAboutBinding? = null
+    private val binding: FragmentAboutBinding
         get() {
             return _binding!!
         }
-    // Навигация
+        // Навигация
     private val screens: AppScreensImpl = KoinJavaComponent.getKoin().get()
     private val router: Router = KoinJavaComponent.getKoin().get()
-    lateinit var buttonToPharmacyScreen: ConstraintLayout
-    lateinit var buttonToPharmacySurfaceCalculateScreen: ConstraintLayout
-    lateinit var buttonToAboutScreen: ImageView
-    // ViewModel
+    lateinit var buttonToBackScreen: ImageView
+        // ViewModel
     lateinit var model: ViewModel
     //endregion
 
     companion object {
-        fun newInstance(): PharmacySurfaceFragment = PharmacySurfaceFragment()
+        fun newInstance(): AboutFragment = AboutFragment()
     }
 
     override fun onCreateView(
@@ -41,7 +40,7 @@ class PharmacySurfaceFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentPharmacySurfaceBinding.inflate(inflater, container, false)
+        _binding = FragmentAboutBinding.inflate(inflater, container, false)
 
         // Инициализация кнопок
         initButtons()
@@ -59,22 +58,14 @@ class PharmacySurfaceFragment: Fragment() {
 
     // Инициализация кнопок
     fun initButtons() {
-        buttonToPharmacyScreen = binding.pharmacyPreviousButtonContainer
-        buttonToPharmacyScreen.setOnClickListener {
+        buttonToBackScreen = binding.aboutAboutButton
+        buttonToBackScreen.setOnClickListener {
             requireActivity().onBackPressed()
-        }
-        buttonToPharmacySurfaceCalculateScreen = binding.pharmacySurfaceButtonContainer
-        buttonToPharmacySurfaceCalculateScreen.setOnClickListener {
-            router.navigateTo(screens.pharmacySurfaceCalculateScreen())
-        }
-        buttonToAboutScreen = binding.pharmacyAboutButton
-        buttonToAboutScreen.setOnClickListener {
-            router.navigateTo(screens.aboutScreen())
         }
     }
 
     // Инициализация ViewModel
     fun initViewModel() {
-        model = ViewModelProvider(this).get(PharmacySurfaceFragmentViewModel::class.java)
+        model = ViewModelProvider(this).get(AboutFragmentViewModel::class.java)
     }
 }

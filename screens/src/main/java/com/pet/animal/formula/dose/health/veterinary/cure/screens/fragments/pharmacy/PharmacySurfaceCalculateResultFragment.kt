@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
@@ -25,7 +26,10 @@ class PharmacySurfaceCalculateResultFragment: Fragment() {
             return _binding!!
         }
     // Навигация
+    private val screens: AppScreensImpl = KoinJavaComponent.getKoin().get()
+    private val router: Router = KoinJavaComponent.getKoin().get()
     lateinit var buttonToPharmacySurfaceCalculateScreen: ConstraintLayout
+    lateinit var buttonToAboutScreen: ImageView
     // ViewModel
     lateinit var model: ViewModel
     //endregion
@@ -62,6 +66,10 @@ class PharmacySurfaceCalculateResultFragment: Fragment() {
         buttonToPharmacySurfaceCalculateScreen = binding.pharmacyPreviousButtonContainer
         buttonToPharmacySurfaceCalculateScreen.setOnClickListener {
             requireActivity().onBackPressed()
+        }
+        buttonToAboutScreen = binding.pharmacyAboutButton
+        buttonToAboutScreen.setOnClickListener {
+            router.navigateTo(screens.aboutScreen())
         }
     }
 

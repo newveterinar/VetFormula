@@ -7,4 +7,5 @@ interface AppScreens {
     fun pharmacySurfaceScreen(): FragmentScreen
     fun pharmacySurfaceCalculateScreen(): FragmentScreen
     fun pharmacySurfaceCalculateResultScreen(): FragmentScreen
+    fun aboutScreen(): FragmentScreen
 }
