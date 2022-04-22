@@ -2,6 +2,8 @@ package com.pet.animal.formula.dose.health.veterinary.cure.vetformula.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.Router
@@ -10,6 +12,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator.AppS
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator.BackButtonListener
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.Constants
 import com.pet.animal.formula.dose.health.veterinary.cure.vetformula.R
+import com.pet.animal.formula.dose.health.veterinary.cure.vetformula.databinding.ActivityMainBinding
 import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
 import org.koin.java.KoinJavaComponent
@@ -27,11 +30,16 @@ class MainActivity: AppCompatActivity() {
         Constants.MAIN_ACTIVITY_NAME, named(Constants.MAIN_ACTIVITY_NAME)
     )
     lateinit var model: ViewModel
+        // Binding
+    lateinit var binding: ActivityMainBinding
     //endregion
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        // Подключение Binding
+        binding = ActivityMainBinding.inflate(layoutInflater)
 
         // Создание Scope для MainActivity
         val viewModel: MainViewModel by mainActivityScope.inject()
