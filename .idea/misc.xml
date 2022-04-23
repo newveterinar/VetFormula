@@ -3,23 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Android/Projects/ComandWork/VetFormula/app/src/main/res/layout/activity_main.xml" value="0.18177083333333333" />
-        <entry key="..\:/Android/Projects/ComandWork/VetFormula/app/src/main/res/layout/bottom_sheet_layout.xml" value="0.303125" />
-        <entry key="..\:/Android/Projects/ComandWork/VetFormula/screens/src/main/res/drawable/ic_arrow_left.xml" value="0.241" />
-        <entry key="..\:/Android/Projects/ComandWork/VetFormula/screens/src/main/res/drawable/ic_baseline_info.xml" value="0.2835" />
-        <entry key="..\:/Android/Projects/ComandWork/VetFormula/screens/src/main/res/drawable/ic_pharmacy.xml" value="0.2585" />
-        <entry key="..\:/Android/Projects/ComandWork/VetFormula/screens/src/main/res/layout/fragment_about.xml" value="0.303125" />
-        <entry key="..\:/Android/Projects/ComandWork/VetFormula/screens/src/main/res/layout/fragment_bottom_sheet.xml" value="0.303125" />
-        <entry key="..\:/Android/Projects/ComandWork/VetFormula/screens/src/main/res/layout/fragment_pharmacy.xml" value="0.23294118300441247" />
-        <entry key="..\:/Android/Projects/ComandWork/VetFormula/screens/src/main/res/layout/fragment_pharmacy_surface.xml" value="0.303125" />
-        <entry key="..\:/Android/Projects/ComandWork/VetFormula/screens/src/main/res/layout/fragment_pharmacy_surface_calculate.xml" value="0.303125" />
-        <entry key="..\:/Android/Projects/ComandWork/VetFormula/screens/src/main/res/layout/fragment_pharmacy_surface_calculate_result.xml" value="0.23294118300441247" />
-        <entry key="..\:/Android/Projects/ComandWork/VetFormula/screens/src/main/res/layout/pharmacy.xml" value="0.3529411863703219" />
-        <entry key="..\:/Android/Projects/ComandWork/VetFormula/screens/src/main/res/layout/pharmacy_surface.xml" value="0.303125" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/screens/src/main/res/drawable/gradient.xml" value="0.159" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/screens/src/main/res/layout/fragment_pharmacy.xml" value="0.18802083333333333" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
