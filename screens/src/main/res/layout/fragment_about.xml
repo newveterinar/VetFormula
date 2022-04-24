@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/light_violet">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/about_header"
         android:layout_width="match_parent"
+        android:background="@drawable/gradient"
         android:layout_height="@dimen/about_header_height"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

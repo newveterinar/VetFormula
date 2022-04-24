@@ -3,11 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/app/src/main/res/layout/activity_main.xml" value="0.24592391304347827" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/screens/src/main/res/layout/fragment_about.xml" value="0.2630208333333333" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/screens/src/main/res/layout/fragment_pharmacy.xml" value="0.18802083333333333" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/screens/src/main/res/layout/fragment_pharmacy_surface.xml" value="0.2630208333333333" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/screens/src/main/res/layout/fragment_pharmacy_surface_calculate.xml" value="0.2630208333333333" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/diplom/screens/src/main/res/drawable/gradient.xml" value="0.2155" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/diplom/screens/src/main/res/layout/fragment_about.xml" value="0.15625" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/diplom/screens/src/main/res/layout/fragment_pharmacy.xml" value="0.20833333333333334" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/diplom/screens/src/main/res/layout/fragment_pharmacy_surface.xml" value="0.20833333333333334" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/diplom/screens/src/main/res/layout/fragment_pharmacy_surface_calculate.xml" value="0.20833333333333334" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/diplom/screens/src/main/res/layout/fragment_pharmacy_surface_calculate_result.xml" value="0.20833333333333334" />
       </map>
     </option>
   </component>
