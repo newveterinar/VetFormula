@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingStart="@dimen/about_logo_padding_start"
-            android:text="Information"
+            android:text="@string/about_logo_text"
             android:textStyle="bold"
             android:textSize="@dimen/about_logo_text_size"
             app:layout_constraintStart_toStartOf="parent"
