@@ -1,4 +1,4 @@
-package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy
+package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.mainscreen
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,15 +10,15 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.github.terrakok.cicerone.Router
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentPharmacyBinding
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentMainscreenBinding
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator.AppScreensImpl
 import org.koin.java.KoinJavaComponent
 
-class PharmacyFragment: Fragment() {
+class MainScreenFragment: Fragment() {
     /** Задание переменных */ //region
         // Binding
-    private var _binding: FragmentPharmacyBinding? = null
-    private val binding: FragmentPharmacyBinding
+    private var _binding: FragmentMainscreenBinding? = null
+    private val binding: FragmentMainscreenBinding
         get() {
             return _binding!!
         }
@@ -32,7 +32,7 @@ class PharmacyFragment: Fragment() {
     //endregion
 
     companion object {
-        fun newInstance(): PharmacyFragment = PharmacyFragment()
+        fun newInstance(): MainScreenFragment = MainScreenFragment()
     }
 
     override fun onCreateView(
@@ -40,7 +40,7 @@ class PharmacyFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentPharmacyBinding.inflate(inflater, container, false)
+        _binding = FragmentMainscreenBinding.inflate(inflater, container, false)
 
         // Инициализация кнопок
         initButtons()
@@ -70,6 +70,6 @@ class PharmacyFragment: Fragment() {
 
     // Инициализация ViewModel
     fun initViewModel() {
-        model = ViewModelProvider(this).get(PharmacyFragmentViewModel::class.java)
+        model = ViewModelProvider(this).get(MainScreenFragmentViewModel::class.java)
     }
 }
