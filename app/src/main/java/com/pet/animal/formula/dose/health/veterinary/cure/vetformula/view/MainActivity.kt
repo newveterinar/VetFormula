@@ -1,16 +1,14 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.vetformula.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ImageView
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.Router
 import com.github.terrakok.cicerone.androidx.AppNavigator
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator.AppScreensImpl
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator.BackButtonListener
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.Constants
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.MAIN_ACTIVITY_NAME
 import com.pet.animal.formula.dose.health.veterinary.cure.vetformula.R
 import com.pet.animal.formula.dose.health.veterinary.cure.vetformula.databinding.ActivityMainBinding
 import org.koin.core.qualifier.named
@@ -27,7 +25,7 @@ class MainActivity: AppCompatActivity() {
     private val navigatorHolder: NavigatorHolder = KoinJavaComponent.getKoin().get()
         // ViewModel
     private val mainActivityScope: Scope = KoinJavaComponent.getKoin().getOrCreateScope(
-        Constants.MAIN_ACTIVITY_NAME, named(Constants.MAIN_ACTIVITY_NAME)
+        MAIN_ACTIVITY_NAME, named(MAIN_ACTIVITY_NAME)
     )
     lateinit var model: ViewModel
         // Binding
@@ -46,7 +44,7 @@ class MainActivity: AppCompatActivity() {
         model = viewModel
 
         if (savedInstanceState == null) {
-            router.navigateTo(screens.pharmacyScreen())
+            router.navigateTo(screens.mainScreen())
         }
     }
 

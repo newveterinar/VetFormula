@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
@@ -25,8 +26,8 @@ class PharmacySurfaceFragment: Fragment() {
     // Навигация
     private val screens: AppScreensImpl = KoinJavaComponent.getKoin().get()
     private val router: Router = KoinJavaComponent.getKoin().get()
-    lateinit var buttonToPharmacyScreen: ConstraintLayout
-    lateinit var buttonToPharmacySurfaceCalculateScreen: ConstraintLayout
+    lateinit var buttonToPharmacySurfaceScreen: ConstraintLayout
+    lateinit var buttonToPharmacySurfaceResultScreen: Button
     lateinit var buttonToAboutScreen: ImageView
     // ViewModel
     lateinit var model: ViewModel
@@ -59,13 +60,13 @@ class PharmacySurfaceFragment: Fragment() {
 
     // Инициализация кнопок
     fun initButtons() {
-        buttonToPharmacyScreen = binding.pharmacyPreviousButtonContainer
-        buttonToPharmacyScreen.setOnClickListener {
+        buttonToPharmacySurfaceScreen = binding.pharmacyPreviousButtonContainer
+        buttonToPharmacySurfaceScreen.setOnClickListener {
             requireActivity().onBackPressed()
         }
-        buttonToPharmacySurfaceCalculateScreen = binding.pharmacySurfaceButtonContainer
-        buttonToPharmacySurfaceCalculateScreen.setOnClickListener {
-            router.navigateTo(screens.pharmacySurfaceCalculateScreen())
+        buttonToPharmacySurfaceResultScreen = binding.pharmacyCalculateButton
+        buttonToPharmacySurfaceResultScreen.setOnClickListener {
+            router.navigateTo(screens.pharmacySurfaceResultScreen())
         }
         buttonToAboutScreen = binding.pharmacyAboutButton
         buttonToAboutScreen.setOnClickListener {
@@ -75,6 +76,7 @@ class PharmacySurfaceFragment: Fragment() {
 
     // Инициализация ViewModel
     fun initViewModel() {
-        model = ViewModelProvider(this).get(PharmacySurfaceFragmentViewModel::class.java)
+        model = ViewModelProvider(this)
+            .get(PharmacySurfaceFragmentViewModel::class.java)
     }
 }

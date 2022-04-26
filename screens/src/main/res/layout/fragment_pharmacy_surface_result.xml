@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_violet">
@@ -9,8 +8,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/pharmacy_header"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/pharmacy_header_height"
         android:background="@drawable/gradient"
+        android:layout_height="@dimen/pharmacy_header_height"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -49,18 +48,16 @@
                 app:srcCompat="@drawable/ic_arrow_right" />
 
             <TextView
-                android:id="@+id/pharmacy_surface_previous_text"
+                android:id="@+id/pharmacy_result_previous_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/pharmacy_surface_previous_text_margin_start"
-                android:paddingStart="@dimen/pharmacy_surface_previous_text_padding_start"
-                android:text="@string/pharmacy_surface_previous_text_text"
-                android:textSize="@dimen/pharmacy_surface_previous_text_text_size"
+                android:paddingStart="@dimen/pharmacy_result_previous_text_padding_start"
+                android:text="@string/pharmacy_result_previous_text_text"
+                android:textSize="@dimen/pharmacy_result_previous_text_text_size"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.466" />
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -72,12 +69,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/pharmacy_header" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/pharmacy_calculate_button"
+    <TextView
+        android:id="@+id/pharmacy_result_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/pharmacy_calculate_button_text"
-        android:textSize="@dimen/pharmacy_calculate_button_text_size"
+        android:text="@string/pharmacy_result_text_text"
+        android:textSize="@dimen/pharmacy_result_text_text_size"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
