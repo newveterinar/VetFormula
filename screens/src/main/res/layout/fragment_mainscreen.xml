@@ -8,8 +8,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/pharmacy_header"
         android:layout_width="match_parent"
-        android:background="@color/light_purple"
         android:layout_height="@dimen/pharmacy_header_height"
+        android:background="@color/light_purple"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -24,7 +24,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_baseline_info" />
+            app:srcCompat="@drawable/ic_information_about" />
 
         <TextView
             android:id="@+id/pharmacy_logo"
@@ -55,17 +55,17 @@
         android:layout_marginStart="@dimen/pharmacy_surface_button_container_margin_start"
         android:layout_marginTop="@dimen/pharmacy_surface_button_container_margin_top"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/pharmacy_horizontal_border" >
+        app:layout_constraintTop_toBottomOf="@id/pharmacy_horizontal_border">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/pharmacy_surface_button"
             android:layout_width="@dimen/pharmacy_surface_button_width"
             android:layout_height="@dimen/pharmacy_surface_button_height"
             android:layout_alignParentEnd="true"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_pharmacy" />
+            app:srcCompat="@drawable/ic_health" />
 
         <TextView
             android:id="@+id/pharmacy_button_text"
@@ -78,6 +78,38 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/pharmacy_surface_button" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fluids_surface_button_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/pharmacy_surface_button_container_margin_top"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/pharmacy_surface_button_container"
+        app:layout_constraintTop_toBottomOf="@id/pharmacy_horizontal_border">
+
+        <TextView
+            android:id="@+id/fluids_button_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/fluids_button_text_text"
+            android:textSize="@dimen/pharmacy_button_text_text_size"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fluids_button" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/fluids_button"
+            android:layout_width="@dimen/pharmacy_surface_button_width"
+            android:layout_height="@dimen/pharmacy_surface_button_height"
+            android:layout_alignParentEnd="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_fluids" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
