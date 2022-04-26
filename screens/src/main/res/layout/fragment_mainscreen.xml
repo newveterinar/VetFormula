@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingStart="@dimen/pharmacy_logo_padding_start"
-            android:text="VetFormula"
+            android:text="@string/pharmacy_logo_text"
             android:textSize="@dimen/pharmacy_logo_text_size"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"

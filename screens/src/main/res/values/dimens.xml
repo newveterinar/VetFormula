@@ -37,4 +37,6 @@
     <dimen name="pharmacy_result_previous_text_text_size">30sp</dimen>
     <dimen name="pharmacy_surface_button_container_margin_start">50dp</dimen>
     <dimen name="pharmacy_surface_button_container_margin_top">50dp</dimen>
+    <dimen name="pharmacy_surface_previous_text_margin_start">16dp</dimen>
+    <dimen name="pharmacy_result_text_text_size">30sp</dimen>
 </resources>

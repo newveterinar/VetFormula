@@ -8,4 +8,7 @@
     <string name="pharmacy_surface_previous_text_text">Body surface area</string>
     <string name="pharmacy_calculate_button_text">CALCULATE</string>
     <string name="pharmacy_result_previous_text_text">Result</string>
+    <string name="about_logo_text">Information</string>
+    <string name="pharmacy_logo_text">VetFormula</string>
+    <string name="pharmacy_result_text_text">100</string>
 </resources>
