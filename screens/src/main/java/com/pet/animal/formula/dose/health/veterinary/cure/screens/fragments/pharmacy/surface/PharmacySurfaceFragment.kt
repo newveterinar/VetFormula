@@ -1,4 +1,4 @@
-package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.pharmacysurface
+package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.surface
 
 import android.os.Bundle
 import android.view.View
