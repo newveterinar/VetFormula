@@ -18,14 +18,14 @@ class RepositoryImpl(val dbDao:VetFormulaDao): Repository {
     }
 
     override suspend fun insertFormula(formulaEntity: FormulaEntity) {
-        TODO("Not yet implemented")
+        dbDao.insertFormula(formulaEntity)
     }
 
     override suspend fun deleteFormula(formulaEntity: FormulaEntity) {
-        TODO("Not yet implemented")
+        dbDao.deleteFormula(formulaEntity)
     }
 
     override suspend fun deleteFormulaByID(formulaId: Int) {
-        TODO("Not yet implemented")
+        dbDao.deleteFormulaByID(formulaId)
     }
 }
