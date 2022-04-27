@@ -5,51 +5,34 @@ import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.abou
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.fluids.FluidsFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.mainscreen.MainScreenFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.PharmacyFragment
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.pharmacysurface.PharmacySurfaceFragment
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.pharmacysurface.PharmacySurfaceResultFragment
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.surface.PharmacySurfaceFragment
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.surface.PharmacySurfaceResultFragment
 
 class AppScreensImpl : AppScreens {
+    //region Системные окна
     override fun mainScreen() = FragmentScreen {
         MainScreenFragment.newInstance()
     }
-
-    override fun pharmacyScreen() = FragmentScreen {
-        PharmacyFragment.newInstance()
-    }
-
-    override fun pharmacySurfaceScreen() = FragmentScreen {
-        PharmacySurfaceFragment.newInstance()
-    }
-
-    override fun pharmacySurfaceResultScreen() = FragmentScreen {
-        PharmacySurfaceResultFragment.newInstance()
-    }
-
     override fun aboutScreen() = FragmentScreen {
         AboutFragment.newInstance()
     }
+    //endregion
 
-    override fun upgradeScreen(): FragmentScreen {
-        TODO("Not yet implemented")
+    //region Pharmacy
+    override fun pharmacyScreen() = FragmentScreen {
+        PharmacyFragment.newInstance()
     }
-
-    override fun hematologyScreen(): FragmentScreen {
-        TODO("Not yet implemented")
+    override fun pharmacySurfaceScreen() = FragmentScreen {
+        PharmacySurfaceFragment.newInstance()
     }
-
-    override fun energyScreen(): FragmentScreen {
-        TODO("Not yet implemented")
+    override fun pharmacySurfaceResultScreen() = FragmentScreen {
+        PharmacySurfaceResultFragment.newInstance()
     }
+    //endregion
 
+    //region Fluids
     override fun fluidsScreen() = FragmentScreen {
         FluidsFragment.newInstance()
     }
-
-    override fun fluidsSurfaceScreen(): FragmentScreen {
-        TODO("Not yet implemented")
-    }
-
-    override fun conversionsScreen(): FragmentScreen {
-        TODO("Not yet implemented")
-    }
+    //endregion
 }

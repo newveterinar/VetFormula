@@ -12,6 +12,6 @@
     <string name="pharmacy_logo_text">VetFormula</string>
     <string name="pharmacy_result_text_text">100</string>
     <string name="fluids_button_text_text">Fluids</string>
-    <string name="fluids_button_surface_text_text">Surface area</string>
+    <string name="fluids_button_surface_text_text">Basic</string>
     <string name="fluids_previous_text_text">Fluids</string>
 </resources>
