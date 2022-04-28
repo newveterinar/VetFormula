@@ -1,5 +1,3 @@
-
-//region Задание версий подключаемых библиотек (не обращать внимание на эту ошибку; студия дурит)
 def androidXVersion = "1.4.1"
 def kotlinKTXVersion = "1.7.0"
 def kotlinJDK7Version = "1.5.20"
@@ -20,7 +18,8 @@ def testUIAutomatorVersion = "2.2.0"
 def testUIAutomatorrulesVersion = "1.4.0-alpha05"
 def testFragmentVersion = "1.4.1"
 def testRecyclerViewVersion = "3.4.0"
-def roomVersion = "2.4.0"
+def roomVersion = "2.4.2"
+def roomJsonVersion = "2.8.7"
 def roomJDBCVersion = "3.34.0"
 def daggerVersion = "2.39.1"
 def daggerAddSupportVersion = "2.12"
@@ -96,9 +95,10 @@ ext {
     libs.room = room
     room.runtime = "androidx.room:room-runtime:$roomVersion"
     room.compiler = "androidx.room:room-compiler:$roomVersion"
+    room.ktx = "androidx.room:room-ktx:$roomVersion"
+    room.gson = "com.google.code.gson:gson:$roomJsonVersion"
     room.m1Support = "org.xerial:sqlite-jdbc:$roomJDBCVersion"
     room.rxJava3 = "androidx.room:room-rxjava3:$roomVersion"
-    room.ktx = "androidx.room:room-ktx:$roomVersion"
     // Dagger
     dagger = [:]
     libs.dagger = dagger
@@ -176,4 +176,3 @@ ext {
     lifecycle.process = "androidx.lifecycle:lifecycle-process:$lifecycleVersion"
     lifecycle.java8 = "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion"
 }
-//endregion

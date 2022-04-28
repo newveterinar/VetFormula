@@ -19,7 +19,8 @@ abstract class FormulasDatabase: RoomDatabase() {
         fun getInstance(context: Context): FormulasDatabase {
             if (instance == null) {
                 synchronized(this) {
-                    instance = Room.databaseBuilder(context.applicationContext, FormulasDatabase::class.java, "formulas.db").build()
+                    instance = Room.databaseBuilder(context.applicationContext,
+                        FormulasDatabase::class.java, "formulas.db").build()
                 }
             }
             return instance!!
