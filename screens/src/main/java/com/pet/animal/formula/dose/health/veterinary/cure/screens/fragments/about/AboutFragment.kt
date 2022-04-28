@@ -42,7 +42,7 @@ class AboutFragment : BaseFragment<FragmentAboutBinding>(FragmentAboutBinding::i
     fun initViewModel() {
         model = ViewModelProvider(this).get(AboutFragmentViewModel::class.java)
     }
-
+    
     companion object {
         fun newInstance(): AboutFragment = AboutFragment()
     }
