@@ -58,6 +58,13 @@ class MainActivity: AppCompatActivity() {
         calcInteractor.setCommand(4)
         Toast.makeText(this, "${calcInteractor.getCommandResultValue()}",
             Toast.LENGTH_LONG).show() */
+
+        // Пример вычислений с помощью команд при передаче числа в виде строчной переменной
+/*        calcInteractor.setCommand("111.111")
+        calcInteractor.setCommand(12)
+        calcInteractor.setCommand("-111.111")
+        Toast.makeText(this, "${calcInteractor.getCommandResultValue()}",
+            Toast.LENGTH_LONG).show() */
     }
 
     /** Методы для настройки навигатора */ //region

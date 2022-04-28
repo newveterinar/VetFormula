@@ -69,7 +69,7 @@ class CalcInteractorImpl: CalcInteractor {
 
     // Отправить в калькулятор число в виде строки из текстового поля
     override fun setCommand(number: String) {
-//        TODO("Доделать обработчик")
+        calcLogic.setCurrentNumber(number)
     }
 
     // Получить в виде строки все введённые команды

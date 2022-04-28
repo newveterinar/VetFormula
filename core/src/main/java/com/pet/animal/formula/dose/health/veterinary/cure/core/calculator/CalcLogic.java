@@ -977,7 +977,16 @@ public class CalcLogic implements CalcConstants {
         errorCode = ERRORS.NO;
     }
 
+    // Получение результата вычислений калькулятора в виде числа
     public Double getFinalResultValue() {
         return finalResult;
+    }
+
+    // Задание текущего значения числа
+    public void setCurrentNumber(String numberString) {
+        double numberValue = Double.parseDouble(numberString);
+        inputNumbers.getLast().setIsValue(true);
+        inputNumbers.getLast().setValue(numberValue);
+        inputNumbers.getLast().setSign(numberValue < 0 ? -1 : 1);
     }
 }
