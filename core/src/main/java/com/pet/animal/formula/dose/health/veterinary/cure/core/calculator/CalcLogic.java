@@ -976,4 +976,8 @@ public class CalcLogic implements CalcConstants {
     public void clearErrorCode() {
         errorCode = ERRORS.NO;
     }
+
+    public Double getFinalResultValue() {
+        return finalResult;
+    }
 }
