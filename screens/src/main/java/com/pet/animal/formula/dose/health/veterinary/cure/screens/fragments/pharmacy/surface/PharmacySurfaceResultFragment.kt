@@ -1,22 +1,25 @@
-package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.about
+package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.surface
 
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.github.terrakok.cicerone.Router
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentAboutBinding
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentPharmacySurfaceResultBinding
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator.AppScreensImpl
 import org.koin.java.KoinJavaComponent
 
-class AboutFragment : BaseFragment<FragmentAboutBinding>(FragmentAboutBinding::inflate) {
+class PharmacySurfaceResultFragment :
+    BaseFragment<FragmentPharmacySurfaceResultBinding>(FragmentPharmacySurfaceResultBinding::inflate) {
     /** Задание переменных */ //region
     // Навигация
     private val screens: AppScreensImpl = KoinJavaComponent.getKoin().get()
     private val router: Router = KoinJavaComponent.getKoin().get()
-    lateinit var buttonToBackScreen: ImageView
+    lateinit var buttonToPharmacySurfaceScreen: ConstraintLayout
+    lateinit var buttonToAboutScreen: ImageView
 
     // ViewModel
     lateinit var model: ViewModel
@@ -32,18 +35,24 @@ class AboutFragment : BaseFragment<FragmentAboutBinding>(FragmentAboutBinding::i
 
     // Инициализация кнопок
     fun initButtons() {
-        buttonToBackScreen = binding.aboutAboutButton
-        buttonToBackScreen.setOnClickListener {
+        buttonToPharmacySurfaceScreen = binding.pharmacyPreviousButtonContainer
+        buttonToPharmacySurfaceScreen.setOnClickListener {
             requireActivity().onBackPressed()
+        }
+        buttonToAboutScreen = binding.pharmacyAboutButton
+        buttonToAboutScreen.setOnClickListener {
+            router.navigateTo(screens.aboutScreen())
         }
     }
 
     // Инициализация ViewModel
     fun initViewModel() {
-        model = ViewModelProvider(this).get(AboutFragmentViewModel::class.java)
+        model = ViewModelProvider(this)
+            .get(PharmacySurfaceResultFragmentViewModel::class.java)
     }
-    
+
     companion object {
-        fun newInstance(): AboutFragment = AboutFragment()
+        fun newInstance(): PharmacySurfaceResultFragment =
+            PharmacySurfaceResultFragment()
     }
 }
