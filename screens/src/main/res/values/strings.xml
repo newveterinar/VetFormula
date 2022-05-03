@@ -20,4 +20,7 @@
     <string name="conversions_previous_text_text">Conversions</string>
     <string name="conversions_button_text_text">Conversions</string>
     <string name="conversions_button_surface_text_text">Temperature</string>
+    <string name="settings_previous_text_text">Settings</string>
+    <string name="settings_button_text_text">Settings</string>
+    <string name="settings_button_surface_text_text">SomeSettings</string>
 </resources>

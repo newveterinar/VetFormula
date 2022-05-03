@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_violet">
@@ -116,7 +117,7 @@
         android:id="@+id/hematology_surface_button_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="@dimen/hematology_surface_button_marginTop"
         app:layout_constraintEnd_toEndOf="@+id/pharmacy_surface_button_container"
         app:layout_constraintStart_toStartOf="@+id/pharmacy_surface_button_container"
         app:layout_constraintTop_toBottomOf="@+id/pharmacy_surface_button_container">
@@ -173,6 +174,39 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_conversions_icon" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/settings_surface_button_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/settings_surface_button_marginTop"
+        app:layout_constraintEnd_toEndOf="@+id/conversions_surface_button_container"
+        app:layout_constraintHorizontal_bias="0.382"
+        app:layout_constraintStart_toStartOf="@+id/conversions_surface_button_container"
+        app:layout_constraintTop_toBottomOf="@+id/conversions_surface_button_container">
+
+        <TextView
+            android:id="@+id/settings_button_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/settings_button_text_text"
+            android:textSize="@dimen/settings_button_text_text_size"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/settings_button" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/settings_button"
+            android:layout_width="@dimen/settings_surface_button_width"
+            android:layout_height="@dimen/settings_surface_button_height"
+            android:layout_alignParentEnd="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_settings_icon" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
