@@ -43,9 +43,9 @@ class ConversionsFragment :
             requireActivity().onBackPressed()
         }
         buttonToConversionsSurfaceScreen = binding.conversionsSurfaceButtonContainer
-//        buttonToFluidsSurfaceScreen.setOnClickListener {
+        buttonToConversionsSurfaceScreen.setOnClickListener {
 //            router.navigateTo(screens.fluidsSurfaceScreen())
-//        }
+        }
         buttonToAboutScreen = binding.conversionsAboutButton
         buttonToAboutScreen.setOnClickListener {
             router.navigateTo(screens.aboutScreen())

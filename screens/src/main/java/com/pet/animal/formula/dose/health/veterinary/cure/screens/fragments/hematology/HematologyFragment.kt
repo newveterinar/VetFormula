@@ -43,9 +43,9 @@ class HematologyFragment :
             requireActivity().onBackPressed()
         }
         buttonToHematologySurfaceScreen = binding.hematologySurfaceButtonContainer
-//        buttonToFluidsSurfaceScreen.setOnClickListener {
+        buttonToHematologySurfaceScreen.setOnClickListener {
 //            router.navigateTo(screens.fluidsSurfaceScreen())
-//        }
+        }
         buttonToAboutScreen = binding.hematologyAboutButton
         buttonToAboutScreen.setOnClickListener {
             router.navigateTo(screens.aboutScreen())

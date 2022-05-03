@@ -42,9 +42,9 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsB
             requireActivity().onBackPressed()
         }
         buttonToSettingsSurfaceScreen = binding.settingsSurfaceButtonContainer
-//        buttonToFluidsSurfaceScreen.setOnClickListener {
+        buttonToSettingsSurfaceScreen.setOnClickListener {
 //            router.navigateTo(screens.fluidsSurfaceScreen())
-//        }
+      }
         buttonToAboutScreen = binding.settingsAboutButton
         buttonToAboutScreen.setOnClickListener {
             router.navigateTo(screens.aboutScreen())

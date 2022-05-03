@@ -43,9 +43,9 @@ class CalculatorFragment :
             requireActivity().onBackPressed()
         }
         buttonToCalculatorSurfaceScreen = binding.calculatorSurfaceButtonContainer
-//        buttonToFluidsSurfaceScreen.setOnClickListener {
+        buttonToCalculatorSurfaceScreen.setOnClickListener {
 //            router.navigateTo(screens.fluidsSurfaceScreen())
-//        }
+       }
         buttonToAboutScreen = binding.calculatorAboutButton
         buttonToAboutScreen.setOnClickListener {
             router.navigateTo(screens.aboutScreen())
