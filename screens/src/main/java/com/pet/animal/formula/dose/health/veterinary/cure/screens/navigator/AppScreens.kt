@@ -12,5 +12,6 @@ interface AppScreens {
     fun hematologyScreen(): FragmentScreen
     fun conversionsScreen(): FragmentScreen
     fun settingsScreen(): FragmentScreen
+    fun calculatorScreen(): FragmentScreen
 
 }

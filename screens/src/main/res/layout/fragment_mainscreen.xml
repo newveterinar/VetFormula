@@ -150,8 +150,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/conversions_surface_button_marginTop"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/hematology_surface_button_container"
+        app:layout_constraintEnd_toEndOf="@+id/fluids_surface_button_container"
+        app:layout_constraintStart_toStartOf="@+id/fluids_surface_button_container"
         app:layout_constraintTop_toBottomOf="@+id/fluids_surface_button_container">
 
         <TextView
@@ -207,6 +207,38 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_settings_icon" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/calculator_surface_button_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/calculator_surface_button_marginTop"
+        app:layout_constraintEnd_toEndOf="@+id/hematology_surface_button_container"
+        app:layout_constraintStart_toStartOf="@+id/hematology_surface_button_container"
+        app:layout_constraintTop_toBottomOf="@+id/hematology_surface_button_container">
+
+        <TextView
+            android:id="@+id/calculator_button_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/calculator_button_text_text"
+            android:textSize="@dimen/calculator_button_text_text_size"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/calculator_button" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/calculator_button"
+            android:layout_width="@dimen/calculator_surface_button_width"
+            android:layout_height="@dimen/calculator_surface_button_height"
+            android:layout_alignParentEnd="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_calculator_icon" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -6,28 +6,28 @@
     android:background="@color/light_violet">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/fluids_header"
+        android:id="@+id/calculator_header"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/fluids_header_height"
+        android:layout_height="@dimen/calculator_header_height"
         android:background="@drawable/gradient"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/fluids_about_button"
-            android:layout_width="@dimen/fluids_about_button_width"
-            android:layout_height="@dimen/fluids_about_button_height"
+            android:id="@+id/calculator_about_button"
+            android:layout_width="@dimen/calculator_about_button_width"
+            android:layout_height="@dimen/calculator_about_button_height"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="@dimen/fluids_about_button_margin_top"
-            android:layout_marginEnd="@dimen/fluids_about_button_margin_end"
+            android:layout_marginTop="@dimen/calculator_about_button_margin_top"
+            android:layout_marginEnd="@dimen/calculator_about_button_margin_end"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_information_about" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/fluids_previous_button_container"
+            android:id="@+id/calculator_previous_button_container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -35,12 +35,12 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/fluids_previous_button"
-                android:layout_width="@dimen/fluids_previous_button_width"
-                android:layout_height="@dimen/fluids_previous_button_height"
+                android:id="@+id/calculator_previous_button"
+                android:layout_width="@dimen/calculator_previous_button_width"
+                android:layout_height="@dimen/calculator_previous_button_height"
                 android:layout_alignParentEnd="true"
-                android:layout_marginStart="@dimen/fluids_previous_button_margin_start"
-                android:layout_marginTop="@dimen/fluids_previous_button_margin_top"
+                android:layout_marginStart="@dimen/calculator_previous_button_margin_start"
+                android:layout_marginTop="@dimen/calculator_previous_button_margin_top"
                 android:rotation="180"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -48,12 +48,12 @@
                 app:srcCompat="@drawable/ic_arrow_right" />
 
             <TextView
-                android:id="@+id/fluids_previous_text"
+                android:id="@+id/calculator_previous_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingStart="@dimen/fluids_previous_text_padding_start"
-                android:text="@string/fluids_previous_text_text"
-                android:textSize="@dimen/fluids_previous_text_text_size"
+                android:paddingStart="@dimen/calculator_previous_text_padding_start"
+                android:text="@string/calculator_previous_text_text"
+                android:textSize="@dimen/calculator_previous_text_text_size"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -62,41 +62,41 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
-        android:id="@+id/fluids_horizontal_border"
+        android:id="@+id/calculator_horizontal_border"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/fluids_horizontal_border_height"
+        android:layout_height="@dimen/calculator_horizontal_border_height"
         android:background="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fluids_header" />
+        app:layout_constraintTop_toBottomOf="@id/calculator_header" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/fluids_surface_button_container"
+        android:id="@+id/calculator_surface_button_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/fluids_surface_button_container_margin_start"
-        android:layout_marginTop="@dimen/fluids_surface_button_container_margin_top"
+        android:layout_marginStart="@dimen/calculator_surface_button_container_margin_start"
+        android:layout_marginTop="@dimen/calculator_surface_button_container_margin_top"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fluids_horizontal_border">
+        app:layout_constraintTop_toBottomOf="@id/calculator_horizontal_border">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/fluids_surface_button"
-            android:layout_width="@dimen/fluids_surface_button_width"
-            android:layout_height="@dimen/fluids_surface_button_height"
+            android:id="@+id/calculator_surface_button"
+            android:layout_width="@dimen/calculator_surface_button_width"
+            android:layout_height="@dimen/calculator_surface_button_height"
             android:layout_alignParentEnd="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/fluids_surface_button_text"
+            android:id="@+id/calculator_surface_button_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/fluids_button_surface_text_text"
-            android:textSize="@dimen/fluids_surface_button_text_text_size"
+            android:text="@string/calculator_button_surface_text_text"
+            android:textSize="@dimen/calculator_surface_button_text_text_size"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fluids_surface_button" />
+            app:layout_constraintTop_toBottomOf="@id/calculator_surface_button" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -25,6 +25,7 @@ class MainScreenFragment :
     lateinit var buttonToHematologySurfaceScreen: ConstraintLayout
     lateinit var buttonToConversionsSurfaceScreen: ConstraintLayout
     lateinit var buttonToSettingsSurfaceScreen: ConstraintLayout
+    lateinit var buttonToCalculatorSurfaceScreen: ConstraintLayout
     lateinit var buttonToAboutScreen: ImageView
 
     // ViewModel
@@ -61,6 +62,10 @@ class MainScreenFragment :
         buttonToSettingsSurfaceScreen = binding.settingsSurfaceButtonContainer
         buttonToSettingsSurfaceScreen.setOnClickListener {
             router.navigateTo(screens.settingsScreen())
+        }
+        buttonToCalculatorSurfaceScreen = binding.calculatorSurfaceButtonContainer
+        buttonToCalculatorSurfaceScreen.setOnClickListener {
+            router.navigateTo(screens.calculatorScreen())
         }
         buttonToAboutScreen = binding.pharmacyAboutButton
         buttonToAboutScreen.setOnClickListener {

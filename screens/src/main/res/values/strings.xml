@@ -23,4 +23,7 @@
     <string name="settings_previous_text_text">Settings</string>
     <string name="settings_button_text_text">Settings</string>
     <string name="settings_button_surface_text_text">SomeSettings</string>
+    <string name="calculator_previous_text_text">Calculator</string>
+    <string name="calculator_button_text_text">Calculator</string>
+    <string name="calculator_button_surface_text_text">Calculate</string>
 </resources>

@@ -112,4 +112,23 @@
     <dimen name="settings_surface_button_text_text_size">25sp</dimen>
     <dimen name="settings_button_text_text_size">25sp</dimen>
     <dimen name="settings_surface_button_marginTop">64dp</dimen>
+    <dimen name="calculator_surface_button_width">80dp</dimen>
+    <dimen name="calculator_surface_button_height">80dp</dimen>
+    <dimen name="calculator_horizontal_border_height">2dp</dimen>
+    <dimen name="calculator_surface_button_container_margin_start">50dp</dimen>
+    <dimen name="calculator_surface_button_container_margin_top">50dp</dimen>
+    <dimen name="calculator_previous_text_text_size">30sp</dimen>
+    <dimen name="calculator_previous_button_margin_start">15dp</dimen>
+    <dimen name="calculator_previous_button_margin_top">5dp</dimen>
+    <dimen name="calculator_previous_button_width">50dp</dimen>
+    <dimen name="calculator_previous_button_height">50dp</dimen>
+    <dimen name="calculator_about_button_width">50dp</dimen>
+    <dimen name="calculator_about_button_height">50dp</dimen>
+    <dimen name="calculator_header_height">80dp</dimen>
+    <dimen name="calculator_about_button_margin_top">5dp</dimen>
+    <dimen name="calculator_about_button_margin_end">5dp</dimen>
+    <dimen name="calculator_previous_text_padding_start">60dp</dimen>
+    <dimen name="calculator_surface_button_text_text_size">25sp</dimen>
+    <dimen name="calculator_button_text_text_size">25sp</dimen>
+    <dimen name="calculator_surface_button_marginTop">64dp</dimen>
 </resources>

@@ -2,6 +2,7 @@ package com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator
 
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.about.AboutFragment
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.calculator.CalculatorFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.conversions.ConversionsFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.fluids.FluidsFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.hematology.HematologyFragment
@@ -57,6 +58,12 @@ class AppScreensImpl : AppScreens {
     //region Settings
     override fun settingsScreen() = FragmentScreen {
         SettingsFragment.newInstance()
+    }
+    //endregion
+
+    //region Calculator
+    override fun calculatorScreen() = FragmentScreen {
+        CalculatorFragment.newInstance()
     }
     //endregion
 }
