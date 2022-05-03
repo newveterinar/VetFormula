@@ -22,6 +22,10 @@ class MainScreenFragment :
     private val router: Router = KoinJavaComponent.getKoin().get()
     lateinit var buttonToPharmacySurfaceScreen: ConstraintLayout
     lateinit var buttonToFluidsSurfaceScreen: ConstraintLayout
+    lateinit var buttonToHematologySurfaceScreen: ConstraintLayout
+    lateinit var buttonToConversionsSurfaceScreen: ConstraintLayout
+    lateinit var buttonToSettingsSurfaceScreen: ConstraintLayout
+    lateinit var buttonToCalculatorSurfaceScreen: ConstraintLayout
     lateinit var buttonToAboutScreen: ImageView
 
     // ViewModel
@@ -46,6 +50,22 @@ class MainScreenFragment :
         buttonToFluidsSurfaceScreen = binding.fluidsSurfaceButtonContainer
         buttonToFluidsSurfaceScreen.setOnClickListener {
             router.navigateTo(screens.fluidsScreen())
+        }
+        buttonToHematologySurfaceScreen = binding.hematologySurfaceButtonContainer
+        buttonToHematologySurfaceScreen.setOnClickListener {
+            router.navigateTo(screens.hematologyScreen())
+        }
+        buttonToConversionsSurfaceScreen = binding.conversionsSurfaceButtonContainer
+        buttonToConversionsSurfaceScreen.setOnClickListener {
+            router.navigateTo(screens.conversionsScreen())
+        }
+        buttonToSettingsSurfaceScreen = binding.settingsSurfaceButtonContainer
+        buttonToSettingsSurfaceScreen.setOnClickListener {
+            router.navigateTo(screens.settingsScreen())
+        }
+        buttonToCalculatorSurfaceScreen = binding.calculatorSurfaceButtonContainer
+        buttonToCalculatorSurfaceScreen.setOnClickListener {
+            router.navigateTo(screens.calculatorScreen())
         }
         buttonToAboutScreen = binding.pharmacyAboutButton
         buttonToAboutScreen.setOnClickListener {

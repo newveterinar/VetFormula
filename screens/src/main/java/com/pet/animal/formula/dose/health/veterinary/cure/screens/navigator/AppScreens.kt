@@ -9,4 +9,9 @@ interface AppScreens {
     fun pharmacySurfaceResultScreen(): FragmentScreen
     fun aboutScreen(): FragmentScreen
     fun fluidsScreen(): FragmentScreen
+    fun hematologyScreen(): FragmentScreen
+    fun conversionsScreen(): FragmentScreen
+    fun settingsScreen(): FragmentScreen
+    fun calculatorScreen(): FragmentScreen
+
 }
