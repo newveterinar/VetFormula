@@ -112,4 +112,36 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/hematology_surface_button_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        app:layout_constraintEnd_toEndOf="@+id/pharmacy_surface_button_container"
+        app:layout_constraintStart_toStartOf="@+id/pharmacy_surface_button_container"
+        app:layout_constraintTop_toBottomOf="@+id/pharmacy_surface_button_container">
+
+        <TextView
+            android:id="@+id/hematology_button_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/hematology_button_text_text"
+            android:textSize="@dimen/hematology_button_text_text_size"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hematology_button" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/hematology_button"
+            android:layout_width="@dimen/hematology_surface_button_width"
+            android:layout_height="@dimen/hematology_surface_button_height"
+            android:layout_alignParentEnd="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_hematology_icon" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

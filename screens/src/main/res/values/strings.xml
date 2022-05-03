@@ -14,4 +14,7 @@
     <string name="fluids_button_text_text">Fluids</string>
     <string name="fluids_button_surface_text_text">Basic</string>
     <string name="fluids_previous_text_text">Fluids</string>
+    <string name="hematology_button_text_text">Hematology</string>
+    <string name="hematology_previous_text_text">Hematology</string>
+    <string name="hematology_button_surface_text_text">Basic</string>
 </resources>
