@@ -2,5 +2,5 @@ package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pha
 
 import androidx.lifecycle.ViewModel
 
-class PharmacySurfaceFragmentViewModel: ViewModel() {
+class PharmacyFragmentViewModel: ViewModel() {
 }

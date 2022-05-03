@@ -1,66 +1,71 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.mainscreen
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.github.terrakok.cicerone.Router
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentMainscreenBinding
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator.AppScreensImpl
 import org.koin.java.KoinJavaComponent
 
-class MainScreenFragment: Fragment() {
+class MainScreenFragment :
+    BaseFragment<FragmentMainscreenBinding>(FragmentMainscreenBinding::inflate) {
     /** Задание переменных */ //region
-        // Binding
-    private var _binding: FragmentMainscreenBinding? = null
-    private val binding: FragmentMainscreenBinding
-        get() {
-            return _binding!!
-        }
-        // Навигация
+
+
+    // Навигация
     private val screens: AppScreensImpl = KoinJavaComponent.getKoin().get()
     private val router: Router = KoinJavaComponent.getKoin().get()
     lateinit var buttonToPharmacySurfaceScreen: ConstraintLayout
+    lateinit var buttonToFluidsSurfaceScreen: ConstraintLayout
+    lateinit var buttonToHematologySurfaceScreen: ConstraintLayout
+    lateinit var buttonToConversionsSurfaceScreen: ConstraintLayout
+    lateinit var buttonToSettingsSurfaceScreen: ConstraintLayout
+    lateinit var buttonToCalculatorSurfaceScreen: ConstraintLayout
     lateinit var buttonToAboutScreen: ImageView
-        // ViewModel
+
+    // ViewModel
     lateinit var model: ViewModel
     //endregion
 
-    companion object {
-        fun newInstance(): MainScreenFragment = MainScreenFragment()
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        _binding = FragmentMainscreenBinding.inflate(inflater, container, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         // Инициализация кнопок
         initButtons()
         // Инициализация ViewModel
         initViewModel()
-
-        return binding.root
-    }
-
-    // Очистка Binding при уничтожении фрагмента
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
     }
 
     // Инициализация кнопок
     fun initButtons() {
         buttonToPharmacySurfaceScreen = binding.pharmacySurfaceButtonContainer
         buttonToPharmacySurfaceScreen.setOnClickListener {
-            router.navigateTo(screens.pharmacySurfaceScreen())
+            router.navigateTo(screens.pharmacyScreen())
+        }
+        buttonToFluidsSurfaceScreen = binding.fluidsSurfaceButtonContainer
+        buttonToFluidsSurfaceScreen.setOnClickListener {
+            router.navigateTo(screens.fluidsScreen())
+        }
+        buttonToHematologySurfaceScreen = binding.hematologySurfaceButtonContainer
+        buttonToHematologySurfaceScreen.setOnClickListener {
+            router.navigateTo(screens.hematologyScreen())
+        }
+        buttonToConversionsSurfaceScreen = binding.conversionsSurfaceButtonContainer
+        buttonToConversionsSurfaceScreen.setOnClickListener {
+            router.navigateTo(screens.conversionsScreen())
+        }
+        buttonToSettingsSurfaceScreen = binding.settingsSurfaceButtonContainer
+        buttonToSettingsSurfaceScreen.setOnClickListener {
+            router.navigateTo(screens.settingsScreen())
+        }
+        buttonToCalculatorSurfaceScreen = binding.calculatorSurfaceButtonContainer
+        buttonToCalculatorSurfaceScreen.setOnClickListener {
+            router.navigateTo(screens.calculatorScreen())
         }
         buttonToAboutScreen = binding.pharmacyAboutButton
         buttonToAboutScreen.setOnClickListener {
@@ -71,5 +76,9 @@ class MainScreenFragment: Fragment() {
     // Инициализация ViewModel
     fun initViewModel() {
         model = ViewModelProvider(this).get(MainScreenFragmentViewModel::class.java)
+    }
+
+    companion object {
+        fun newInstance(): MainScreenFragment = MainScreenFragment()
     }
 }
