@@ -1,4 +1,4 @@
-package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.mainscreen
+package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.conversions
 
 import android.os.Bundle
 import android.view.View
@@ -7,22 +7,19 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.github.terrakok.cicerone.Router
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentMainscreenBinding
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentConversionsBinding
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator.AppScreensImpl
 import org.koin.java.KoinJavaComponent
 
-class MainScreenFragment :
-    BaseFragment<FragmentMainscreenBinding>(FragmentMainscreenBinding::inflate) {
+class ConversionsFragment :
+    BaseFragment<FragmentConversionsBinding>(FragmentConversionsBinding::inflate) {
+
     /** Задание переменных */ //region
-
-
     // Навигация
     private val screens: AppScreensImpl = KoinJavaComponent.getKoin().get()
     private val router: Router = KoinJavaComponent.getKoin().get()
-    lateinit var buttonToPharmacySurfaceScreen: ConstraintLayout
-    lateinit var buttonToFluidsSurfaceScreen: ConstraintLayout
-    lateinit var buttonToHematologySurfaceScreen: ConstraintLayout
+    lateinit var buttonToConversionsScreen: ConstraintLayout
     lateinit var buttonToConversionsSurfaceScreen: ConstraintLayout
     lateinit var buttonToAboutScreen: ImageView
 
@@ -41,23 +38,15 @@ class MainScreenFragment :
 
     // Инициализация кнопок
     fun initButtons() {
-        buttonToPharmacySurfaceScreen = binding.pharmacySurfaceButtonContainer
-        buttonToPharmacySurfaceScreen.setOnClickListener {
-            router.navigateTo(screens.pharmacyScreen())
-        }
-        buttonToFluidsSurfaceScreen = binding.fluidsSurfaceButtonContainer
-        buttonToFluidsSurfaceScreen.setOnClickListener {
-            router.navigateTo(screens.fluidsScreen())
-        }
-        buttonToHematologySurfaceScreen = binding.hematologySurfaceButtonContainer
-        buttonToHematologySurfaceScreen.setOnClickListener {
-            router.navigateTo(screens.hematologyScreen())
+        buttonToConversionsScreen = binding.conversionsPreviousButtonContainer
+        buttonToConversionsScreen.setOnClickListener {
+            requireActivity().onBackPressed()
         }
         buttonToConversionsSurfaceScreen = binding.conversionsSurfaceButtonContainer
-        buttonToConversionsSurfaceScreen.setOnClickListener {
-            router.navigateTo(screens.conversionsScreen())
-        }
-        buttonToAboutScreen = binding.pharmacyAboutButton
+//        buttonToFluidsSurfaceScreen.setOnClickListener {
+//            router.navigateTo(screens.fluidsSurfaceScreen())
+//        }
+        buttonToAboutScreen = binding.conversionsAboutButton
         buttonToAboutScreen.setOnClickListener {
             router.navigateTo(screens.aboutScreen())
         }
@@ -65,10 +54,10 @@ class MainScreenFragment :
 
     // Инициализация ViewModel
     fun initViewModel() {
-        model = ViewModelProvider(this).get(MainScreenFragmentViewModel::class.java)
+        model = ViewModelProvider(this).get(ConversionsFragmentViewModel::class.java)
     }
 
     companion object {
-        fun newInstance(): MainScreenFragment = MainScreenFragment()
+        fun newInstance(): ConversionsFragment = ConversionsFragment()
     }
 }
