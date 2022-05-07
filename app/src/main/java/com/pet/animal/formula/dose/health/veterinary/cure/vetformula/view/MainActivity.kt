@@ -1,7 +1,6 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.vetformula.view
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import com.github.terrakok.cicerone.NavigatorHolder
@@ -50,21 +49,6 @@ class MainActivity: AppCompatActivity() {
         if (savedInstanceState == null) {
             router.navigateTo(screens.mainScreen())
         }
-
-        // Пример вычислений с помощью команд
-/*        calcInteractor.setCommand(1)
-        calcInteractor.setCommand(1)
-        calcInteractor.setCommand(15)
-        calcInteractor.setCommand(4)
-        Toast.makeText(this, "${calcInteractor.getCommandResultValue()}",
-            Toast.LENGTH_LONG).show() */
-
-        // Пример вычислений с помощью команд при передаче числа в виде строчной переменной
-/*        calcInteractor.setCommand("111.111")
-        calcInteractor.setCommand(12)
-        calcInteractor.setCommand("-111.111")
-        Toast.makeText(this, "${calcInteractor.getCommandResultValue()}",
-            Toast.LENGTH_LONG).show() */
     }
 
     /** Методы для настройки навигатора */ //region
