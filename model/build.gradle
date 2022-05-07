@@ -36,7 +36,6 @@ android {
 //region Подключение модулей и библиотек
 dependencies {
     // Подключение модулей
-    api project(":utils")
 
     // Подключение библиотек
     //AndroidX
