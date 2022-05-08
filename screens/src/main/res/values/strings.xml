@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Сообщения об ошибках -->
+    <string name="error_appstate_not_loaded_for_fragment">Ошибка: Данные для фрагмента не загружены</string>
+
+    <!-- Ресурсы макета -->
     <string name="about_surface_button_text_text">ABOUT\nVetFormula</string>
     <string name="about_text_text">INFORMATION</string>
     <string name="pharmacy_button_text_text">Pharmacy</string>
@@ -26,4 +30,5 @@
     <string name="calculator_previous_text_text">Calculator</string>
     <string name="calculator_button_text_text">Calculator</string>
     <string name="calculator_button_surface_text_text">Calculate</string>
+    <string name="pharmacy_clear_button_text_text">C</string>
 </resources>

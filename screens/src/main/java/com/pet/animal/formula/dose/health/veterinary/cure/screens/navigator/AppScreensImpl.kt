@@ -9,7 +9,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.hema
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.mainscreen.MainScreenFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.PharmacyFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.surface.PharmacySurfaceFragment
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.surface.PharmacySurfaceResultFragment
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.result.PharmacySurfaceResultFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.settings.SettingsFragment
 
 class AppScreensImpl : AppScreens {

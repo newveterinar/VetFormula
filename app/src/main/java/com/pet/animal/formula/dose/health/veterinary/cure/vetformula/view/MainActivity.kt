@@ -28,9 +28,9 @@ class MainActivity: AppCompatActivity() {
     private val mainActivityScope: Scope = KoinJavaComponent.getKoin().getOrCreateScope(
         MAIN_ACTIVITY_NAME, named(MAIN_ACTIVITY_NAME)
     )
-    lateinit var model: ViewModel
+    private lateinit var model: ViewModel
         // Binding
-    lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
         // Калькулятор (интерактор для работы с калькулятором)
     private val calcInteractor: CalcInteractorImpl = CalcInteractorImpl()
     //endregion

@@ -113,7 +113,7 @@ dependencies {
 //    implementation libs.coroutines.android
     // Koin
     //Koin core features
-/*    implementation libs.koin.core
+    implementation libs.koin.core
     //Koin main features for Android (Scope,ViewModel ...)
     implementation libs.koin.android
     //Koin Java Compatibility
@@ -122,6 +122,6 @@ dependencies {
     implementation libs.koin.retrofitcoroutines
     // Koin for Tests
     testImplementation libs.koin.testsandroidx
-    testImplementation libs.koin.testsio */
+    testImplementation libs.koin.testsio
 }
 //endregion

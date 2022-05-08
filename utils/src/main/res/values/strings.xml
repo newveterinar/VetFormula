@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Сообщения об ошибках -->
     <string name="error_variable_not_initialized">Ошибка: Обращение к не инициализированной формуле</string>
 </resources>
