@@ -88,6 +88,7 @@ class PharmacySurfaceFragment:
         model.subscribe().observe(viewLifecycleOwner, Observer<AppState> {
             renderData(it)
         })
+        model.getData()
     }
 
     private fun renderData(appState: AppState) {
