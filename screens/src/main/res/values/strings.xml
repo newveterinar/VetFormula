@@ -30,4 +30,5 @@
     <string name="calculator_previous_text_text">Calculator</string>
     <string name="calculator_button_text_text">Calculator</string>
     <string name="calculator_button_surface_text_text">Calculate</string>
+    <string name="pharmacy_clear_button_text_text">C</string>
 </resources>

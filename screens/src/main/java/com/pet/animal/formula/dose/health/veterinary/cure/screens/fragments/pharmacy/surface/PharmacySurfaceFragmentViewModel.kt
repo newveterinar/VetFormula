@@ -9,8 +9,7 @@ import kotlinx.coroutines.launch
 import org.koin.java.KoinJavaComponent.getKoin
 
 class PharmacySurfaceFragmentViewModel(
-    private val interactor: PharmacySurfaceInteractorImpl,
-    private val resourcesProviderImpl: ResourcesProviderImpl = getKoin().get()
+    private val interactor: PharmacySurfaceInteractorImpl
 ): BaseViewModel<AppState>() {
 
     /** Задание переменных */ //region
@@ -19,7 +18,6 @@ class PharmacySurfaceFragmentViewModel(
 
     /** Базовые методы от BaseViewModel */ //region
     override fun getData() {
-        Toast.makeText(resourcesProviderImpl.context, "!!!", Toast.LENGTH_LONG).show()
         _mutableLiveData.value = AppState.Loading(null)
         cancelJob()
         viewModelCoroutineScope.launch {

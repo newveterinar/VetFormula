@@ -10,4 +10,5 @@
     <color name="light_purple">#c165ff</color>
     <color name="dark_purple">#951bda</color>
     <color name="light_violet">#f9f0fc</color>
+    <color name="red">#FF0000</color>
 </resources>

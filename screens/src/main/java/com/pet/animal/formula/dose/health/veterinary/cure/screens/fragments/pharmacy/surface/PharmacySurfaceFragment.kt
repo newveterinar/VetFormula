@@ -15,7 +15,6 @@ import com.pet.animal.formula.dose.health.veterinary.cure.utils.SHOW_PHARMACY_SU
 import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppState
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.resources.ResourcesProviderImpl
@@ -92,7 +91,6 @@ class PharmacySurfaceFragment:
     }
 
     private fun renderData(appState: AppState) {
-        Toast.makeText(requireContext(), "!!!", Toast.LENGTH_LONG).show()
         when (appState) {
             is AppState.Success -> {
                 appState.data?.let {
