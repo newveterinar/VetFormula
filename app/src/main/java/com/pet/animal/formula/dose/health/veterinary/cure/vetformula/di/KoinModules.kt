@@ -3,9 +3,12 @@ package com.pet.animal.formula.dose.health.veterinary.cure.vetformula.di
 import com.github.terrakok.cicerone.Cicerone
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.Router
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.surface.PharmacySurfaceFragmentViewModel
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.surface.PharmacySurfaceInteractorImpl
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator.AppScreensImpl
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.CICERONE_NAME
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.MAIN_ACTIVITY_NAME
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.SHOW_PHARMACY_SURFACE_FRAGMENT_SCOPE
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.resources.ResourcesProviderImpl
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.settings.SettingsImpl
 import com.pet.animal.formula.dose.health.veterinary.cure.vetformula.view.MainViewModel
@@ -27,6 +30,16 @@ val screens = module {
         get<Cicerone<Router>>(named(CICERONE_NAME)).getNavigatorHolder() }
     single<Router> { get<Cicerone<Router>>(named(CICERONE_NAME)).router }
     single<AppScreensImpl> { AppScreensImpl() }
+    //endregion
+    /** Классы для Scope фрагментов */ //region
+    scope(named(SHOW_PHARMACY_SURFACE_FRAGMENT_SCOPE)) {
+        scoped {
+            PharmacySurfaceInteractorImpl()
+        }
+        viewModel {
+            PharmacySurfaceFragmentViewModel(getScope(SHOW_PHARMACY_SURFACE_FRAGMENT_SCOPE).get())
+        }
+    }
     //endregion
 }
 
