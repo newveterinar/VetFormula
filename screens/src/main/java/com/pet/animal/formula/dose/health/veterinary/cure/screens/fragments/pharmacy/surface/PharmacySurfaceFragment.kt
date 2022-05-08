@@ -2,10 +2,9 @@ package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pha
 
 import android.content.Context
 import android.os.Bundle
+import android.text.InputType
 import android.view.View
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.Toast
+import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.github.terrakok.cicerone.Router
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentPharmacySurfaceBinding
@@ -34,6 +33,12 @@ class PharmacySurfaceFragment:
     // ShowPharmacySurfaceFragmentScope
     private lateinit var showPharmacySurfaceFragmentScope: Scope
     private val resourcesProviderImpl: ResourcesProviderImpl = KoinJavaComponent.getKoin().get()
+    // Spinner
+    private val data: Array<String> = arrayOf("one", "two", "three", "four", "five")
+    // Задание интерфеса для ввода координат (только числа, десятичная точка)
+    private val inputTypeCoordinatesInterface = InputType.TYPE_CLASS_NUMBER or // разрешить ввод числа
+            InputType.TYPE_NUMBER_FLAG_DECIMAL // разрешить ввод десятичной точки
+    private lateinit var firstNumeralField: EditText
     // newInstance для данного класса
     companion object {
         fun newInstance(): PharmacySurfaceFragment = PharmacySurfaceFragment()
@@ -60,6 +65,10 @@ class PharmacySurfaceFragment:
         super.onViewCreated(view, savedInstanceState)
         // Инициализация кнопок
         initButtons()
+        // Настройка клавиатуры ввода для числовхы полей
+        initKeyboard()
+        // Инициализация списков
+        initLists()
         // Инициализация ViewModel
         initViewModel()
     }
@@ -78,6 +87,16 @@ class PharmacySurfaceFragment:
         buttonToAboutScreen.setOnClickListener {
             router.navigateTo(screens.aboutScreen())
         }
+    }
+    // Настройка клавиатуры ввода для числовых полей
+    fun initKeyboard() {
+        firstNumeralField = binding.pharmacyWeightTextinputlayoutTextfield
+        firstNumeralField?.let { it.inputType = inputTypeCoordinatesInterface }
+    }
+
+    // Инициализация списков
+    fun initLists() {
+//        val adapter: ArrayAdapter<String> = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, data)
     }
 
     // Инициализация ViewModel
