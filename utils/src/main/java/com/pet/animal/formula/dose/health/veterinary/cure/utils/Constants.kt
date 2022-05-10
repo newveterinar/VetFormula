@@ -13,7 +13,7 @@ enum class ThemesNames {
 }
 
 // Класс с типами формул
-enum class FormulaType {
+enum class ScreenType {
     // Типы формул для раздела FLUIDS
     FLUIDS_BASIC,                           // При переводе в Int соответствует номеру 1
     FLUIDS_KOMPREHENSIVE,                   // При переводе в Int соответствует номеру 2

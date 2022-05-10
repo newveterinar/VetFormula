@@ -143,7 +143,8 @@
                 android:layout_marginEnd="@dimen/pharmacy_type_animal_list_margin_end"
                 android:entries="@array/pharmacy_surface_animal_type_list"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/pharmacy_type_animal_title" />
+                app:layout_constraintTop_toBottomOf="@id/pharmacy_type_animal_title"
+                android:theme="@style/SpinnerTypes" />
 
             <TextView
                 android:id="@+id/pharmacy_weight_animal_title"
@@ -180,6 +181,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:inputType="number"
+                            android:textSize="@dimen/pharmacy_weight_textinputlayout_textfield_text_size"
                             android:hint="@string/pharmacy_weight_textinputlayout_textfield_hint"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -203,6 +205,7 @@
                         android:gravity="center"
                         android:singleLine="false"
                         android:textAlignment="center"
+                        android:theme="@style/SpinnerDimensions"
                         android:visibility="visible"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
