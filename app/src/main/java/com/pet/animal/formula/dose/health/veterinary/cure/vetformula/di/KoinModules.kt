@@ -3,6 +3,7 @@ package com.pet.animal.formula.dose.health.veterinary.cure.vetformula.di
 import com.github.terrakok.cicerone.Cicerone
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.Router
+import com.pet.animal.formula.dose.health.veterinary.cure.fakerepo.FakeRepositoryImpl
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.surface.PharmacySurfaceFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.surface.PharmacySurfaceInteractorImpl
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator.AppScreensImpl
@@ -16,6 +17,18 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
+
+val database = module {
+    // Фейковый репозиторий
+    single<FakeRepositoryImpl> { FakeRepositoryImpl() }
+}
+
+val utils = module {
+    // Получение доступа к ресурсам
+    single<ResourcesProviderImpl> { ResourcesProviderImpl(androidContext()) }
+    // Класс для сохранения настроек приложения
+    single<SettingsImpl> { SettingsImpl() }
+}
 
 val screens = module {
     // Scope для MainActivity
@@ -37,15 +50,9 @@ val screens = module {
             PharmacySurfaceInteractorImpl()
         }
         viewModel {
-            PharmacySurfaceFragmentViewModel(getScope(SHOW_PHARMACY_SURFACE_FRAGMENT_SCOPE).get())
+            PharmacySurfaceFragmentViewModel(
+                getScope(SHOW_PHARMACY_SURFACE_FRAGMENT_SCOPE).get())
         }
     }
     //endregion
-}
-
-val utils = module {
-    // Получение доступа к ресурсам
-    single<ResourcesProviderImpl> { ResourcesProviderImpl(androidContext()) }
-    // Класс для сохранения настроек приложения
-    single<SettingsImpl> { SettingsImpl() }
 }

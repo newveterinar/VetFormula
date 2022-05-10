@@ -150,4 +150,5 @@
     <dimen name="pharmacy_weight_relative_layout_margin_end">40dp</dimen>
     <dimen name="pharmacy_calculate_button_margin_start">40dp</dimen>
     <dimen name="pharmacy_calculate_button_margin_end">40dp</dimen>
+    <dimen name="pharmacy_weight_textinputlayout_textfield_text_size">20sp</dimen>
 </resources>
