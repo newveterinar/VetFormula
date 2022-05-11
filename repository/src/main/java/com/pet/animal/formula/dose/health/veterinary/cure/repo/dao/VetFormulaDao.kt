@@ -26,7 +26,7 @@ interface VetFormulaDao {
     suspend fun deleteFormula(formulaEntity: FormulaEntity)
 
     @Query("delete from defFormulas where id=:id")
-    suspend fun deleteFormulaByID(id:Int)
+    suspend fun deleteFormulaByID(id:Long)
 
     //URLS
 

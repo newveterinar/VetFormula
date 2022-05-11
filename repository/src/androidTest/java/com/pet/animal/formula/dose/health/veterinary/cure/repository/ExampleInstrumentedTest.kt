@@ -5,7 +5,6 @@ import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.pet.animal.formula.dose.health.veterinary.cure.model.formula.Element
 import com.pet.animal.formula.dose.health.veterinary.cure.model.formula.Formula
-import com.pet.animal.formula.dose.health.veterinary.cure.repo.FormulaEntity
 import com.pet.animal.formula.dose.health.veterinary.cure.repo.Repository
 import com.pet.animal.formula.dose.health.veterinary.cure.repo.UrlEntity
 import com.pet.animal.formula.dose.health.veterinary.cure.repo.dao.FormulasDatabase
@@ -19,8 +18,6 @@ import org.junit.runner.RunWith
 
 import org.junit.Assert.*
 import org.junit.Before
-import org.junit.Rule
-import java.security.AccessController.getContext
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -116,8 +113,48 @@ class RepositoryTest {
     fun testOverloadedFun(){
         runBlocking {
             repo.getFormulaByScreen(0)
-            repo.getFormulaByScreen(0,0)
-            repo.getFormulaByScreen(0,0,0)
+            repo.getFormulaByScreen(0,1)
+            repo.getFormulaByScreen(0,1,2)
+        }
+    }
+
+    @Test
+    fun createFormula(){
+        val formula = createTestFormula()
+        assertNotNull(formula)
+    }
+
+    private fun createTestFormula(): Formula {
+        val ml = mutableListOf<Element>()
+        return Formula(ml)
+    }
+
+    private fun createTestFormula2(): Formula {
+        val ml = mutableListOf<Element>()
+        return Formula(ml)
+    }
+
+    @Test
+    fun addFormulaToDB(){
+        val formula = createTestFormula()
+        runBlocking {
+            repo.insertFormula(formula,1,1,2,3)
+        }
+    }
+
+    @Test
+    fun readFormulaFromDB(){
+        val formula = createTestFormula()
+        val formula2 = createTestFormula2()
+        runBlocking {
+            repo.insertFormula(formula,1,1,2,3)
+            repo.insertFormula(formula2,1,1,3,3)
+
+            var list = repo.getFormulaByScreen(1)
+            assertEquals(list.size,2)
+
+            list = repo.getFormulaByScreen(1,2)
+            assertEquals(list.size,1)
         }
     }
 

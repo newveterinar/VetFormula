@@ -1,5 +1,6 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.repo.dao
 
+import com.pet.animal.formula.dose.health.veterinary.cure.model.formula.Formula
 import com.pet.animal.formula.dose.health.veterinary.cure.repo.FormulaEntity
 import com.pet.animal.formula.dose.health.veterinary.cure.repo.Repository
 import com.pet.animal.formula.dose.health.veterinary.cure.repo.UrlEntity
@@ -18,7 +19,7 @@ class RepositoryImpl(private val dbDao:VetFormulaDao): Repository {
         if (addFirst==0&&addSecond!=0){
             throw Exception("not correct arguments")
         }
-        if (addFirst==0&&addSecond!=0){
+        if (addFirst==0&&addSecond==0){
             return dbDao.getFormulaByScreen(screenType)
         }
         if (addSecond==0){
@@ -28,15 +29,20 @@ class RepositoryImpl(private val dbDao:VetFormulaDao): Repository {
     }
 
 
-    override suspend fun insertFormula(formulaEntity: FormulaEntity) {
-        dbDao.insertFormula(formulaEntity)
+    override suspend fun insertFormula(formula: Formula,screenType:Int,elementCount:Int,addFirst:Int,addSecond:Int):Long {
+        val formulaEntity = FormulaEntity(screenType,elementCount,addFirst,addSecond,formula)
+        return insertFormulaEntity(formulaEntity)
+    }
+
+    override suspend fun insertFormulaEntity(formulaEntity: FormulaEntity): Long {
+        return dbDao.insertFormula(formulaEntity)
     }
 
     override suspend fun deleteFormula(formulaEntity: FormulaEntity) {
         dbDao.deleteFormula(formulaEntity)
     }
 
-    override suspend fun deleteFormulaByID(formulaId: Int) {
+    override suspend fun deleteFormulaByID(formulaId: Long) {
         dbDao.deleteFormulaByID(formulaId)
     }
 
