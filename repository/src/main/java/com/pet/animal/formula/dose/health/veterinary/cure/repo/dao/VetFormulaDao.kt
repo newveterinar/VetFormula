@@ -2,7 +2,6 @@ package com.pet.animal.formula.dose.health.veterinary.cure.repo.dao
 
 import androidx.room.*
 import com.pet.animal.formula.dose.health.veterinary.cure.repo.FormulaEntity
-import com.pet.animal.formula.dose.health.veterinary.cure.repo.FormulaVariantEntity
 import com.pet.animal.formula.dose.health.veterinary.cure.repo.UrlEntity
 
 @Dao
@@ -12,10 +11,13 @@ interface VetFormulaDao {
     suspend fun getAllVetFormulas():List<FormulaEntity>
 
     @Query("select * from defFormulas where screenType=:screenType")
-    suspend fun getAllVetFormulas(screenType:Int):List<FormulaEntity>
+    suspend fun getFormulaByScreen(screenType:Int):List<FormulaEntity>
 
-    @Query("select * from defFormulaVariants where formulaId=:formulaId")
-    suspend fun getFormulaVariants(formulaId:Int):List<FormulaVariantEntity>
+    @Query("select * from defFormulas where screenType=:screenType and addFirst =:addFirst ")
+    suspend fun getFormulaByScreen(screenType:Int,addFirst:Int):List<FormulaEntity>
+
+    @Query("select * from defFormulas where screenType=:screenType and addFirst =:addFirst and addSecond=:addSecond")
+    suspend fun getFormulaByScreen(screenType:Int,addFirst:Int,addSecond:Int):List<FormulaEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertFormula(formulaEntity:FormulaEntity):Long

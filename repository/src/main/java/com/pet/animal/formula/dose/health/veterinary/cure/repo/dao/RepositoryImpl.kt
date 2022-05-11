@@ -1,37 +1,32 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.repo.dao
 
 import com.pet.animal.formula.dose.health.veterinary.cure.repo.FormulaEntity
-import com.pet.animal.formula.dose.health.veterinary.cure.repo.FormulaVariantEntity
 import com.pet.animal.formula.dose.health.veterinary.cure.repo.Repository
 import com.pet.animal.formula.dose.health.veterinary.cure.repo.UrlEntity
 
-class RepositoryImpl(val dbDao:VetFormulaDao): Repository {
+class RepositoryImpl(private val dbDao:VetFormulaDao): Repository {
 
     override suspend fun getAllVetFormulas(): List<FormulaEntity> {
         return dbDao.getAllVetFormulas()
     }
 
-    override suspend fun getAllVetFormulas(screenType: Int): List<FormulaEntity> {
-        return dbDao.getAllVetFormulas(screenType)
-    }
-
-    override suspend fun getFormulaVariants(formulaId:Int): List<FormulaVariantEntity> {
-        return dbDao.getFormulaVariants(formulaId)
-    }
-
     override suspend fun getFormulaByScreen(
         screenType: Int,
-        addFirst: Int=0,
-        addSecond: Int=0
+        addFirst: Int,
+        addSecond: Int
     ): List<FormulaEntity> {
-        if (addFirst==0&&addSecond==0){
-            return dbDao.getAllVetFormulas(screenType)
+        if (addFirst==0&&addSecond!=0){
+            throw Exception("not correct arguments")
+        }
+        if (addFirst==0&&addSecond!=0){
+            return dbDao.getFormulaByScreen(screenType)
         }
         if (addSecond==0){
-
+            return dbDao.getFormulaByScreen(screenType,addFirst)
         }
-        return dbDao.getAllVetFormulas(screenType)
+        return dbDao.getFormulaByScreen(screenType,addFirst,addSecond)
     }
+
 
     override suspend fun insertFormula(formulaEntity: FormulaEntity) {
         dbDao.insertFormula(formulaEntity)

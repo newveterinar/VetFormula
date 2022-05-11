@@ -112,12 +112,13 @@ class RepositoryTest {
         }
     }
 
-    class tempFormula(){
-        var variantList:MutableList<tempFormulaVariant>? = null
-    }
-
-    class tempFormulaVariant(){
-        var commandList:MutableList<Element>?=null
+    @Test
+    fun testOverloadedFun(){
+        runBlocking {
+            repo.getFormulaByScreen(0)
+            repo.getFormulaByScreen(0,0)
+            repo.getFormulaByScreen(0,0,0)
+        }
     }
 
 }

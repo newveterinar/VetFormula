@@ -2,10 +2,8 @@ package com.pet.animal.formula.dose.health.veterinary.cure.repo
 
 interface Repository {
     suspend fun getAllVetFormulas(): List<FormulaEntity>
-    suspend fun getAllVetFormulas(screenType: Int): List<FormulaEntity>
-    suspend fun getFormulaVariants(formulaId:Int):List<FormulaVariantEntity>
 
-    suspend fun getFormulaByScreen(screenType: Int,addFirst:Int,addSecond:Int): List<FormulaEntity>
+    suspend fun getFormulaByScreen(screenType: Int,addFirst:Int=0,addSecond:Int=0): List<FormulaEntity>
 
     suspend fun insertFormula(formulaEntity: FormulaEntity)
     suspend fun deleteFormula(formulaEntity: FormulaEntity)
