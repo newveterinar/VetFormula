@@ -7,12 +7,12 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.github.terrakok.cicerone.Router
+import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentPharmacyBinding
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator.AppScreensImpl
 import org.koin.java.KoinJavaComponent
 
-class PharmacyFragment : BaseFragment<FragmentPharmacyBinding>(FragmentPharmacyBinding::inflate) {
+class PharmacyFragment: BaseFragment<FragmentPharmacyBinding>(FragmentPharmacyBinding::inflate) {
     /** Задание переменных */ //region
     // Навигация
     private val screens: AppScreensImpl = KoinJavaComponent.getKoin().get()

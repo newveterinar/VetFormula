@@ -1,7 +1,6 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.core.base
 
 import android.widget.EditText
-import android.widget.Spinner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppState
