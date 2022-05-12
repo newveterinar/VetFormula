@@ -1,7 +1,5 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.surface
 
-import android.widget.EditText
-import android.widget.Spinner
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.Interactor
 import com.pet.animal.formula.dose.health.veterinary.cure.fakerepo.FakeRepositoryImpl
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppState
@@ -22,15 +20,15 @@ class PharmacySurfaceInteractorImpl: Interactor<AppState> {
 
     // Получение данных полей окна, если они были сохранены ранее
     override suspend fun getData(): AppState {
-        return AppState.SuccessPharmacySurface(settings.getPharmacySurfaceScreenData())
+        return AppState.Success(settings.getPharmacySurfaceScreenData())
     }
 
     /** Методы для сохранения данных с полей и списков */ //region
-    override suspend fun saveData(formulaType: ScreenType,
+    override suspend fun saveData(screenType: ScreenType,
                                   listsAddFirstSecond: List<Int>,
                                   values: List<Double>,
                                   dimensions: List<Int>) {
-        settings.setScreenData(formulaType, listsAddFirstSecond, values, dimensions)
+        settings.setScreenData(screenType, listsAddFirstSecond, values, dimensions)
     }
     //endregion
 }
