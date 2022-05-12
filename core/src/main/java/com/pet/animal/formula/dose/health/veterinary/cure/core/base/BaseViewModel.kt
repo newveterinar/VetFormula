@@ -30,14 +30,11 @@ abstract class BaseViewModel<T: AppState>(
 
     // Метод получения данных
     abstract fun getData()
-    /** Методы сохранения данных */ //region
+    /** Методы сохранения данных */
     abstract fun saveData(screenType: ScreenType,
                           listsAddFirstSecond: List<Int>,
                           values: List<Double>,
                           dimensions: List<Int>)
-    // Текстовые поля для ввода чисел
-    private var valuesFields: MutableList<EditText> = mutableListOf()
-    //endregion
 
     abstract fun handleError(error: Throwable)
 }
