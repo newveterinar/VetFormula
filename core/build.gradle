@@ -54,6 +54,7 @@ dependencies {
     //Design
     implementation libs.design.material
     implementation libs.design.constrlayout
+    implementation 'androidx.databinding:viewbinding:4.2.2'
     // Tests
     // Core
     testImplementation libs.tests.junit

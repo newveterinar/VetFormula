@@ -151,4 +151,15 @@
     <dimen name="pharmacy_calculate_button_margin_start">40dp</dimen>
     <dimen name="pharmacy_calculate_button_margin_end">40dp</dimen>
     <dimen name="pharmacy_weight_textinputlayout_textfield_text_size">20sp</dimen>
+    <dimen name="pharmacy_dose_animal_title_text_size">20sp</dimen>
+    <dimen name="pharmacy_dose_relative_layout_margin_end">40dp</dimen>
+    <dimen name="pharmacy_dose_textinputlayout_margin_start">40dp</dimen>
+    <dimen name="pharmacy_dose_textinputlayout_textfield_text_size">20sp</dimen>
+    <dimen name="pharmacy_dose_dimension_layout_width">130dp</dimen>
+    <dimen name="pharmacy_concentration_animal_title_text_size">20sp</dimen>
+    <dimen name="pharmacy_concentration_relative_layout_margin_end">40dp</dimen>
+    <dimen name="pharmacy_concentration_textinputlayout_margin_start">40dp</dimen>
+    <dimen name="pharmacy_concentration_textinputlayout_textfield_text_size">20sp</dimen>
+    <dimen name="pharmacy_concentration_dimension_layout_width">130dp</dimen>
+
 </resources>
