@@ -1,4 +1,4 @@
-package com.pet.animal.formula.dose.health.veterinary.cure.utils
+package com.pet.animal.formula.dose.health.veterinary.cure.utils.functions
 
 import android.widget.EditText
 import android.widget.Spinner
@@ -11,9 +11,12 @@ fun stringToDouble(text: String): Double {
 
 // Получение списка List<ValueField> из списков List<Double> и List<Int>
 fun valueFieldListCreator(values: List<Double>, dimensions: List<Int>): List<ValueField> {
+    if (dimensions.size > values.size){
+        //TODO: Обработка ошибки
+    }
     val resultList: MutableList<ValueField> = mutableListOf()
     values.forEachIndexed { index, value ->
-        resultList.add(ValueField(value, dimensions[index]))
+            resultList.add(ValueField(value, dimensions[index]))
     }
     return resultList
 }

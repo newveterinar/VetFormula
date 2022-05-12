@@ -2,7 +2,6 @@ package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pha
 
 import android.content.Context
 import android.os.Bundle
-import android.text.InputType
 import android.view.View
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -16,8 +15,8 @@ import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppState
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.convertListEditTextToListDouble
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.convertListSpinnerToListInt
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertListEditTextToListDouble
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertListSpinnerToListInt
 import org.koin.java.KoinJavaComponent
 
 class PharmacySurfaceFragment:
