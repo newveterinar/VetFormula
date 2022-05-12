@@ -19,18 +19,18 @@ fun valueFieldListCreator(values: List<Double>, dimensions: List<Int>): List<Val
 }
 
 // Получение списка MutableList<Int> из списка MutableList<Spinner>
-fun convertListSpinnerToListInt(listSpinner: MutableList<Spinner>): List<Int> {
+fun MutableList<Spinner>.convertListSpinnerToListInt(): List<Int> {
     val resultList: MutableList<Int> = mutableListOf()
-    listSpinner.forEach {
+    this.forEach {
         resultList.add(it.selectedItemPosition)
     }
     return resultList
 }
 
 // Получение списка MutableList<Double> из списка MutableList<EditText>
-fun convertListEditTextToListDouble(valuesFields: MutableList<EditText>): List<Double> {
+fun MutableList<EditText>.convertListEditTextToListDouble(): List<Double> {
     val resultList: MutableList<Double> = mutableListOf()
-    valuesFields.forEach {
+    this.forEach {
         resultList.add(stringToDouble(it.text.toString()))
     }
     return resultList

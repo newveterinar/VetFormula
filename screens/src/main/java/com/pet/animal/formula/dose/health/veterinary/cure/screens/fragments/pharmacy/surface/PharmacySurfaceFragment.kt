@@ -12,14 +12,12 @@ import com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator.AppS
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.SHOW_PHARMACY_SURFACE_FRAGMENT_SCOPE
 import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
-import androidx.lifecycle.Observer
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppState
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.convertListEditTextToListDouble
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.convertListSpinnerToListInt
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.resources.ResourcesProviderImpl
 import org.koin.java.KoinJavaComponent
 
 class PharmacySurfaceFragment:
@@ -39,17 +37,16 @@ class PharmacySurfaceFragment:
     private lateinit var model: PharmacySurfaceFragmentViewModel
     // ShowPharmacySurfaceFragmentScope
     private lateinit var showPharmacySurfaceFragmentScope: Scope
-    private val resourcesProviderImpl: ResourcesProviderImpl = KoinJavaComponent.getKoin().get()
-    // Задание интерфеса для ввода координат (только числа, десятичная точка)
+    // Задание интерфеса для ввода числовых значений (только числа, десятичная точка)
     private val inputTypeCoordinatesInterface =
             InputType.TYPE_CLASS_NUMBER or // разрешить ввод числа
             InputType.TYPE_NUMBER_FLAG_DECIMAL // разрешить ввод десятичной точки
     private lateinit var firstNumeralField: EditText
     // Списки (Spinner)
-    private var listsAddFirstSecond: MutableList<Spinner> = mutableListOf()
-    private var listsDimensions: MutableList<Spinner> = mutableListOf()
+    private val listsAddFirstSecond: MutableList<Spinner> = mutableListOf()
+    private val listsDimensions: MutableList<Spinner> = mutableListOf()
     // Текстовые поля для ввода чисел
-    private var valuesFields: MutableList<EditText> = mutableListOf()
+    private val valuesFields: MutableList<EditText> = mutableListOf()
     // newInstance для данного класса
     companion object {
         fun newInstance(): PharmacySurfaceFragment = PharmacySurfaceFragment()
@@ -119,17 +116,17 @@ class PharmacySurfaceFragment:
             }
             // Сохранение текущего состояния всех числовых полей и списков
             model.saveData(screenType,
-                convertListSpinnerToListInt(listsAddFirstSecond),
-                convertListEditTextToListDouble(valuesFields),
-                convertListSpinnerToListInt(listsDimensions))
+                listsAddFirstSecond.convertListSpinnerToListInt(),
+                valuesFields.convertListEditTextToListDouble(),
+                listsDimensions.convertListSpinnerToListInt())
         }
         buttonToPharmacySurfaceScreen = binding.pharmacyPreviousButtonContainer
         buttonToPharmacySurfaceScreen.setOnClickListener {
             // Сохранение текущего состояния всех числовых полей и списков
             model.saveData(screenType,
-                convertListSpinnerToListInt(listsAddFirstSecond),
-                convertListEditTextToListDouble(valuesFields),
-                convertListSpinnerToListInt(listsDimensions))
+                listsAddFirstSecond.convertListSpinnerToListInt(),
+                valuesFields.convertListEditTextToListDouble(),
+                listsDimensions.convertListSpinnerToListInt())
             // Переход на предыдущее окно
             requireActivity().onBackPressed()
         }
@@ -152,16 +149,16 @@ class PharmacySurfaceFragment:
     fun initViewModel() {
         val viewModel: PharmacySurfaceFragmentViewModel by showPharmacySurfaceFragmentScope.inject()
         model = viewModel
-        model.subscribe().observe(viewLifecycleOwner, Observer<AppState> {
+        model.subscribe().observe(viewLifecycleOwner){
             renderData(it)
-        })
+        }
         model.getData()
     }
 
     private fun renderData(appState: AppState) {
         when (appState) {
-            is AppState.SuccessPharmacySurface -> {
-                appState.pharmacySurfaceScreenData.let {
+            is AppState.Success -> {
+                appState.screenData.let {
                     // Установка значений типа addFirst или addSecond
                     listsAddFirstSecond.forEachIndexed { index, addFirstSecond ->
                         if (it.listsAddFirstSecond.count() > index)
@@ -187,7 +184,7 @@ class PharmacySurfaceFragment:
             }
             is AppState.Error -> {
                 Toast.makeText(requireContext(),
-                    resourcesProviderImpl.getString(
+                    requireContext().getString(
                         R.string.error_appstate_not_loaded_for_fragment),
                     Toast.LENGTH_SHORT).show()
             }
@@ -202,9 +199,10 @@ class PharmacySurfaceFragment:
                                             position: Int, id: Long) {
                     // Сохранение текущего состояния всех числовых полей и списков
                     model.saveData(screenType,
-                        convertListSpinnerToListInt(listsAddFirstSecond),
-                        convertListEditTextToListDouble(valuesFields),
-                        convertListSpinnerToListInt(listsDimensions))
+                        listsAddFirstSecond.convertListSpinnerToListInt(),
+                        valuesFields.convertListEditTextToListDouble(),
+                        listsDimensions.convertListSpinnerToListInt())
+                    Toast.makeText(this@PharmacySurfaceFragment.requireContext(), "seleted", Toast.LENGTH_SHORT).show()
                 }
                 override fun onNothingSelected(parent: AdapterView<*>?) {
                 }
