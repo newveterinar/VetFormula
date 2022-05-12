@@ -6,8 +6,9 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.pet.animal.formula.dose.health.veterinary.cure.repo.FormulaEntity
+import com.pet.animal.formula.dose.health.veterinary.cure.repo.UrlEntity
 
-@Database (entities = [FormulaEntity::class], version = 1)
+@Database (entities = [FormulaEntity::class, UrlEntity::class], version = 1)
 @TypeConverters(ClassTypeConverter::class)
 abstract class FormulasDatabase: RoomDatabase() {
 
