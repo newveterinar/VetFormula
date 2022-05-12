@@ -176,13 +176,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginStart="@dimen/pharmacy_weight_textinputlayout_margin_start">
+
                         <EditText
                             android:id="@+id/pharmacy_weight_textinputlayout_textfield"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:inputType="number"
-                            android:textSize="@dimen/pharmacy_weight_textinputlayout_textfield_text_size"
-                            android:hint="@string/pharmacy_weight_textinputlayout_textfield_hint"/>
+                            android:hint="@string/pharmacy_weight_textinputlayout_textfield_hint"
+                            android:inputType="number|numberDecimal"
+                            android:textSize="@dimen/pharmacy_weight_textinputlayout_textfield_text_size" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

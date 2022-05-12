@@ -4,7 +4,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.model.formula.Formula
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.ScreenData
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ThemesNames
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.valueFieldListCreator
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.valueFieldListCreator
 
 class SettingsImpl: Settings {
     /** Задание переменных */ //region

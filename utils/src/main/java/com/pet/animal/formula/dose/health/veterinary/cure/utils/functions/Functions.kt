@@ -1,4 +1,4 @@
-package com.pet.animal.formula.dose.health.veterinary.cure.utils
+package com.pet.animal.formula.dose.health.veterinary.cure.utils.functions
 
 import android.widget.EditText
 import android.widget.Spinner
@@ -11,26 +11,29 @@ fun stringToDouble(text: String): Double {
 
 // Получение списка List<ValueField> из списков List<Double> и List<Int>
 fun valueFieldListCreator(values: List<Double>, dimensions: List<Int>): List<ValueField> {
+    if (dimensions.size > values.size){
+        //TODO: Обработка ошибки
+    }
     val resultList: MutableList<ValueField> = mutableListOf()
     values.forEachIndexed { index, value ->
-        resultList.add(ValueField(value, dimensions[index]))
+            resultList.add(ValueField(value, dimensions[index]))
     }
     return resultList
 }
 
 // Получение списка MutableList<Int> из списка MutableList<Spinner>
-fun convertListSpinnerToListInt(listSpinner: MutableList<Spinner>): List<Int> {
+fun MutableList<Spinner>.convertListSpinnerToListInt(): List<Int> {
     val resultList: MutableList<Int> = mutableListOf()
-    listSpinner.forEach {
+    this.forEach {
         resultList.add(it.selectedItemPosition)
     }
     return resultList
 }
 
 // Получение списка MutableList<Double> из списка MutableList<EditText>
-fun convertListEditTextToListDouble(valuesFields: MutableList<EditText>): List<Double> {
+fun MutableList<EditText>.convertListEditTextToListDouble(): List<Double> {
     val resultList: MutableList<Double> = mutableListOf()
-    valuesFields.forEach {
+    this.forEach {
         resultList.add(stringToDouble(it.text.toString()))
     }
     return resultList
