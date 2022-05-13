@@ -1,4 +1,4 @@
-package com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator
+package com.pet.animal.formula.dose.health.veterinary.cure.core
 
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 

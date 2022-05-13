@@ -16,14 +16,12 @@ class SettingsFragment: BaseFragment<FragmentSettingsBinding>(FragmentSettingsBi
 
     /** Задание переменных */ //region
     // Навигация
-    private val screens: AppScreensImpl = KoinJavaComponent.getKoin().get()
-    private val router: Router = KoinJavaComponent.getKoin().get()
     lateinit var buttonToSettingsScreen: ConstraintLayout
     lateinit var buttonToSettingsSurfaceScreen: ConstraintLayout
     lateinit var buttonToAboutScreen: ImageView
 
     // ViewModel
-    lateinit var model: ViewModel
+    lateinit var model: SettingsFragmentViewModel
     //endregion
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -43,11 +41,11 @@ class SettingsFragment: BaseFragment<FragmentSettingsBinding>(FragmentSettingsBi
         }
         buttonToSettingsSurfaceScreen = binding.settingsSurfaceButtonContainer
         buttonToSettingsSurfaceScreen.setOnClickListener {
-//            router.navigateTo(screens.fluidsSurfaceScreen())
+//            model.router.navigateTo(model.screens.fluidsSurfaceScreen())
       }
         buttonToAboutScreen = binding.settingsAboutButton
         buttonToAboutScreen.setOnClickListener {
-            router.navigateTo(screens.aboutScreen())
+            model.router.navigateTo(model.screens.aboutScreen())
         }
     }
 

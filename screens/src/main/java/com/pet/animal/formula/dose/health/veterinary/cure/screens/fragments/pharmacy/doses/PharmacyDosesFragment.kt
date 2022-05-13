@@ -17,13 +17,11 @@ class PharmacyDosesFragment :
 
     /** Задание переменных */ //region
     // Навигация
-    private val screens: AppScreensImpl = KoinJavaComponent.getKoin().get()
-    private val router: Router = KoinJavaComponent.getKoin().get()
     lateinit var buttonToPharmacyScreen: ConstraintLayout
     lateinit var buttonToAboutScreen: ImageView
 
     // ViewModel
-    lateinit var model: ViewModel
+    lateinit var model: PharmacyDosesFragmentViewModel
     //endregion
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -43,7 +41,7 @@ class PharmacyDosesFragment :
         }
         buttonToAboutScreen = binding.pharmacyAboutButton
         buttonToAboutScreen.setOnClickListener {
-            router.navigateTo(screens.aboutScreen())
+            model.router.navigateTo(model.screens.aboutScreen())
         }
     }
 

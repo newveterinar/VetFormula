@@ -17,14 +17,12 @@ class CalculatorFragment :
 
     /** Задание переменных */ //region
     // Навигация
-    private val screens: AppScreensImpl = KoinJavaComponent.getKoin().get()
-    private val router: Router = KoinJavaComponent.getKoin().get()
     lateinit var buttonToCalculatorScreen: ConstraintLayout
     lateinit var buttonToCalculatorSurfaceScreen: ConstraintLayout
     lateinit var buttonToAboutScreen: ImageView
 
     // ViewModel
-    lateinit var model: ViewModel
+    lateinit var model: CalculatorFragmentViewModel
     //endregion
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -44,11 +42,11 @@ class CalculatorFragment :
         }
         buttonToCalculatorSurfaceScreen = binding.calculatorSurfaceButtonContainer
         buttonToCalculatorSurfaceScreen.setOnClickListener {
-//            router.navigateTo(screens.fluidsSurfaceScreen())
+//            model.router.navigateTo(model.screens.fluidsSurfaceScreen())
        }
         buttonToAboutScreen = binding.calculatorAboutButton
         buttonToAboutScreen.setOnClickListener {
-            router.navigateTo(screens.aboutScreen())
+            model.router.navigateTo(model.screens.aboutScreen())
         }
     }
 

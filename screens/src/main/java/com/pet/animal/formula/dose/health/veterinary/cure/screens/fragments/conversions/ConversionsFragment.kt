@@ -17,14 +17,12 @@ class ConversionsFragment :
 
     /** Задание переменных */ //region
     // Навигация
-    private val screens: AppScreensImpl = KoinJavaComponent.getKoin().get()
-    private val router: Router = KoinJavaComponent.getKoin().get()
     lateinit var buttonToConversionsScreen: ConstraintLayout
     lateinit var buttonToConversionsSurfaceScreen: ConstraintLayout
     lateinit var buttonToAboutScreen: ImageView
 
     // ViewModel
-    lateinit var model: ViewModel
+    lateinit var model: ConversionsFragmentViewModel
     //endregion
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -44,11 +42,11 @@ class ConversionsFragment :
         }
         buttonToConversionsSurfaceScreen = binding.conversionsSurfaceButtonContainer
         buttonToConversionsSurfaceScreen.setOnClickListener {
-//            router.navigateTo(screens.fluidsSurfaceScreen())
+//            model.router.navigateTo(model.screens.fluidsSurfaceScreen())
         }
         buttonToAboutScreen = binding.conversionsAboutButton
         buttonToAboutScreen.setOnClickListener {
-            router.navigateTo(screens.aboutScreen())
+            model.router.navigateTo(model.screens.aboutScreen())
         }
     }
 

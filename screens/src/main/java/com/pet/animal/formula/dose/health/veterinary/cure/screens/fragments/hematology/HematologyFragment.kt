@@ -17,14 +17,12 @@ class HematologyFragment :
 
     /** Задание переменных */ //region
     // Навигация
-    private val screens: AppScreensImpl = KoinJavaComponent.getKoin().get()
-    private val router: Router = KoinJavaComponent.getKoin().get()
     lateinit var buttonToHematologyScreen: ConstraintLayout
     lateinit var buttonToHematologySurfaceScreen: ConstraintLayout
     lateinit var buttonToAboutScreen: ImageView
 
     // ViewModel
-    lateinit var model: ViewModel
+    lateinit var model: HematologyFragmentViewModel
     //endregion
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -44,11 +42,11 @@ class HematologyFragment :
         }
         buttonToHematologySurfaceScreen = binding.hematologySurfaceButtonContainer
         buttonToHematologySurfaceScreen.setOnClickListener {
-//            router.navigateTo(screens.fluidsSurfaceScreen())
+//            model.router.navigateTo(model.screens.fluidsSurfaceScreen())
         }
         buttonToAboutScreen = binding.hematologyAboutButton
         buttonToAboutScreen.setOnClickListener {
-            router.navigateTo(screens.aboutScreen())
+            model.router.navigateTo(model.screens.aboutScreen())
         }
     }
 

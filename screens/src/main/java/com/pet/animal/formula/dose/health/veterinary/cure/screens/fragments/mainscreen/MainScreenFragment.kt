@@ -16,10 +16,7 @@ class MainScreenFragment :
     BaseFragment<FragmentMainscreenBinding>(FragmentMainscreenBinding::inflate) {
     /** Задание переменных */ //region
 
-
     // Навигация
-    private val screens: AppScreensImpl = KoinJavaComponent.getKoin().get()
-    private val router: Router = KoinJavaComponent.getKoin().get()
     lateinit var buttonToPharmacySurfaceScreen: ConstraintLayout
     lateinit var buttonToFluidsSurfaceScreen: ConstraintLayout
     lateinit var buttonToHematologySurfaceScreen: ConstraintLayout
@@ -29,7 +26,7 @@ class MainScreenFragment :
     lateinit var buttonToAboutScreen: ImageView
 
     // ViewModel
-    lateinit var model: ViewModel
+    lateinit var model: MainScreenFragmentViewModel
     //endregion
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -45,31 +42,31 @@ class MainScreenFragment :
     fun initButtons() {
         buttonToPharmacySurfaceScreen = binding.pharmacySurfaceButtonContainer
         buttonToPharmacySurfaceScreen.setOnClickListener {
-            router.navigateTo(screens.pharmacyScreen())
+            model.router.navigateTo(model.screens.pharmacyScreen())
         }
         buttonToFluidsSurfaceScreen = binding.fluidsSurfaceButtonContainer
         buttonToFluidsSurfaceScreen.setOnClickListener {
-            router.navigateTo(screens.fluidsScreen())
+            model.router.navigateTo(model.screens.fluidsScreen())
         }
         buttonToHematologySurfaceScreen = binding.hematologySurfaceButtonContainer
         buttonToHematologySurfaceScreen.setOnClickListener {
-            router.navigateTo(screens.hematologyScreen())
+            model.router.navigateTo(model.screens.hematologyScreen())
         }
         buttonToConversionsSurfaceScreen = binding.conversionsSurfaceButtonContainer
         buttonToConversionsSurfaceScreen.setOnClickListener {
-            router.navigateTo(screens.conversionsScreen())
+            model.router.navigateTo(model.screens.conversionsScreen())
         }
         buttonToSettingsSurfaceScreen = binding.settingsSurfaceButtonContainer
         buttonToSettingsSurfaceScreen.setOnClickListener {
-            router.navigateTo(screens.settingsScreen())
+            model.router.navigateTo(model.screens.settingsScreen())
         }
         buttonToCalculatorSurfaceScreen = binding.calculatorSurfaceButtonContainer
         buttonToCalculatorSurfaceScreen.setOnClickListener {
-            router.navigateTo(screens.calculatorScreen())
+            model.router.navigateTo(model.screens.calculatorScreen())
         }
         buttonToAboutScreen = binding.pharmacyAboutButton
         buttonToAboutScreen.setOnClickListener {
-            router.navigateTo(screens.aboutScreen())
+            model.router.navigateTo(model.screens.aboutScreen())
         }
     }
 

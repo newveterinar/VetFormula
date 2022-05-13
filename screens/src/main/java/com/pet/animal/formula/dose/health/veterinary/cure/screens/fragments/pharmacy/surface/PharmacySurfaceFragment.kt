@@ -5,18 +5,16 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.github.terrakok.cicerone.Router
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentPharmacySurfaceBinding
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator.AppScreensImpl
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.SHOW_PHARMACY_SURFACE_FRAGMENT_SCOPE
-import org.koin.core.qualifier.named
-import org.koin.core.scope.Scope
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppState
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentPharmacySurfaceBinding
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.SHOW_PHARMACY_SURFACE_FRAGMENT_SCOPE
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertListEditTextToListDouble
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertListSpinnerToListInt
+import org.koin.core.qualifier.named
+import org.koin.core.scope.Scope
 import org.koin.java.KoinJavaComponent
 
 class PharmacySurfaceFragment:
@@ -24,9 +22,7 @@ class PharmacySurfaceFragment:
     /** Задание переменных */ //region
     // Установка типа формулы для текущего окна
     private val screenType: ScreenType = ScreenType.PHARMACY_SURFACE
-    // Навигация
-    private val screens: AppScreensImpl = KoinJavaComponent.getKoin().get()
-    private val router: Router = KoinJavaComponent.getKoin().get()
+
     private lateinit var buttonToPharmacySurfaceScreen: ConstraintLayout
     private lateinit var buttonToPharmacySurfaceResultScreen: Button
     private lateinit var buttonToAboutScreen: ImageView
@@ -128,11 +124,11 @@ class PharmacySurfaceFragment:
         }
         buttonToPharmacySurfaceResultScreen = binding.pharmacyCalculateButton
         buttonToPharmacySurfaceResultScreen.setOnClickListener {
-            router.navigateTo(screens.pharmacySurfaceResultScreen())
+            model.router.navigateTo(model.screens.pharmacySurfaceResultScreen())
         }
         buttonToAboutScreen = binding.pharmacyAboutButton
         buttonToAboutScreen.setOnClickListener {
-            router.navigateTo(screens.aboutScreen())
+            model.router.navigateTo(model.screens.aboutScreen())
         }
     }
     // Настройка клавиатуры ввода для числовых полей

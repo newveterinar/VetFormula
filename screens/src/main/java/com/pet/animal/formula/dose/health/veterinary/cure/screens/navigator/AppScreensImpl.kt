@@ -1,6 +1,7 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator
 
 import com.github.terrakok.cicerone.androidx.FragmentScreen
+import com.pet.animal.formula.dose.health.veterinary.cure.core.AppScreens
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.about.AboutFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.calculator.CalculatorFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.conversions.ConversionsFragment

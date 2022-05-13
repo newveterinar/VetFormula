@@ -15,8 +15,6 @@ import org.koin.java.KoinJavaComponent
 class PharmacyFragment : BaseFragment<FragmentPharmacyBinding>(FragmentPharmacyBinding::inflate) {
     /** Задание переменных */ //region
     // Навигация
-    private val screens: AppScreensImpl = KoinJavaComponent.getKoin().get()
-    private val router: Router = KoinJavaComponent.getKoin().get()
     lateinit var buttonToPharmacyScreen: ConstraintLayout
     lateinit var buttonToPharmacySurfaceScreen: ConstraintLayout
     lateinit var buttonPharmacyDoseScreen: ConstraintLayout
@@ -24,7 +22,7 @@ class PharmacyFragment : BaseFragment<FragmentPharmacyBinding>(FragmentPharmacyB
     lateinit var buttonToAboutScreen: ImageView
 
     // ViewModel
-    lateinit var model: ViewModel
+    lateinit var model: PharmacyFragmentViewModel
     //endregion
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -44,19 +42,19 @@ class PharmacyFragment : BaseFragment<FragmentPharmacyBinding>(FragmentPharmacyB
         }
         buttonToPharmacySurfaceScreen = binding.pharmacySurfaceButtonContainer
         buttonToPharmacySurfaceScreen.setOnClickListener {
-            router.navigateTo(screens.pharmacySurfaceScreen())
+            model.router.navigateTo(model.screens.pharmacySurfaceScreen())
         }
         buttonPharmacyDoseScreen = binding.pharmacyDoseButtonContainer
         buttonPharmacyDoseScreen.setOnClickListener {
-            router.navigateTo(screens.doseScreen())
+            model.router.navigateTo(model.screens.doseScreen())
         }
         buttonPharmacyCRIScreen = binding.pharmacyCriButtonContainer
         buttonPharmacyCRIScreen.setOnClickListener {
-            router.navigateTo(screens.criScreen())
+            model.router.navigateTo(model.screens.criScreen())
         }
         buttonToAboutScreen = binding.pharmacyAboutButton
         buttonToAboutScreen.setOnClickListener {
-            router.navigateTo(screens.aboutScreen())
+            model.router.navigateTo(model.screens.aboutScreen())
         }
     }
 

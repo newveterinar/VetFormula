@@ -14,12 +14,10 @@ import org.koin.java.KoinJavaComponent
 class AboutFragment : BaseFragment<FragmentAboutBinding>(FragmentAboutBinding::inflate) {
     /** Задание переменных */ //region
     // Навигация
-    private val screens: AppScreensImpl = KoinJavaComponent.getKoin().get()
-    private val router: Router = KoinJavaComponent.getKoin().get()
     lateinit var buttonToBackScreen: ImageView
 
     // ViewModel
-    lateinit var model: ViewModel
+    lateinit var model: AboutFragmentViewModel
     //endregion
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

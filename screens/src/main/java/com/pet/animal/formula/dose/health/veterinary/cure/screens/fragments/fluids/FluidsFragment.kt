@@ -15,14 +15,12 @@ import org.koin.java.KoinJavaComponent
 class FluidsFragment: BaseFragment<FragmentFluidsBinding>(FragmentFluidsBinding::inflate) {
     /** Задание переменных */ //region
     // Навигация
-    private val screens: AppScreensImpl = KoinJavaComponent.getKoin().get()
-    private val router: Router = KoinJavaComponent.getKoin().get()
     lateinit var buttonToFluidsScreen: ConstraintLayout
     lateinit var buttonToFluidsSurfaceScreen: ConstraintLayout
     lateinit var buttonToAboutScreen: ImageView
 
     // ViewModel
-    lateinit var model: ViewModel
+    lateinit var model: FluidsFragmentViewModel
     //endregion
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -42,11 +40,11 @@ class FluidsFragment: BaseFragment<FragmentFluidsBinding>(FragmentFluidsBinding:
         }
         buttonToFluidsSurfaceScreen = binding.fluidsSurfaceButtonContainer
 //        buttonToFluidsSurfaceScreen.setOnClickListener {
-//            router.navigateTo(screens.fluidsSurfaceScreen())
+//            model.router.navigateTo(model.screens.fluidsSurfaceScreen())
 //        }
         buttonToAboutScreen = binding.fluidsAboutButton
         buttonToAboutScreen.setOnClickListener {
-            router.navigateTo(screens.aboutScreen())
+            model.router.navigateTo(model.screens.aboutScreen())
         }
     }
 

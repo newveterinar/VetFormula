@@ -6,10 +6,17 @@ import androidx.lifecycle.ViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppState
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
 import kotlinx.coroutines.*
+import org.koin.java.KoinJavaComponent
+import com.github.terrakok.cicerone.Router
+import com.pet.animal.formula.dose.health.veterinary.cure.core.AppScreens
 
 abstract class BaseViewModel<T: AppState>(
     protected open val _mutableLiveData: MutableLiveData<T> = MutableLiveData()
 ): ViewModel() {
+
+    // Навигация
+    val screens: AppScreens = KoinJavaComponent.getKoin().get()
+    val router: Router = KoinJavaComponent.getKoin().get()
     /** Задание переменных */ //region
     protected val viewModelCoroutineScope = CoroutineScope(
         Dispatchers.Main
