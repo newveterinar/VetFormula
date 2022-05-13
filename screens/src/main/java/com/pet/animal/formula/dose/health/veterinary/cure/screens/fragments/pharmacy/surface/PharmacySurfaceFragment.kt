@@ -189,7 +189,7 @@ class PharmacySurfaceFragment:
                         listsAddFirstSecond.convertListSpinnerToListInt(),
                         valuesFields.convertListEditTextToListDouble(),
                         listsDimensions.convertListSpinnerToListInt())
-                    Toast.makeText(this@PharmacySurfaceFragment.requireContext(), "seleted", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@PharmacySurfaceFragment.requireContext(), "selected", Toast.LENGTH_SHORT).show()
                 }
                 override fun onNothingSelected(parent: AdapterView<*>?) {
                 }

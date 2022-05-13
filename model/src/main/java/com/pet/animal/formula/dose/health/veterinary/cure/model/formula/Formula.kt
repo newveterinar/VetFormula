@@ -1,20 +1,19 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.model.formula
 
 // Класс для хранения формул
-// Удалять формулу с помощью обнуления класса
-// Если класс != null, значит, как минимум один элемент в формуле есть
-class Formula(
+class Formula {
+    /** Задание переменных */ //region
     // Добавление первого элемента при создании формулы сразу в конструкторе
-    var formula: MutableList<Element>
-) {
-    // Добавление нового элемента в формулу
-    fun addElement(newElement: Element) {
-        formula.add(newElement)
+    private val formula: MutableList<TypedFormula> = mutableListOf()
+    //endregion
+
+    // Добавление новой типизированной формулы
+    fun addTypedFormula(newTypedFormula: TypedFormula) {
+        formula.add(newTypedFormula)
     }
 
     // Получение всей формулы
-    @JvmName("getFormula1")
-    fun getFormula(): MutableList<Element> {
+    fun getFormula(): MutableList<TypedFormula> {
         return formula
     }
 }
