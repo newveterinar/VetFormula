@@ -79,6 +79,7 @@
     </string-array>
 
     <string-array name="pharmacy_drop_animal_dimension_list">
-        <item></item>
+        <item>Нет капельной системы</item>
+        <item>Капельная система</item>
     </string-array>
 </resources>
