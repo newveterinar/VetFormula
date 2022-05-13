@@ -8,8 +8,10 @@ import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.flui
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.hematology.HematologyFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.mainscreen.MainScreenFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.PharmacyFragment
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.surface.PharmacySurfaceFragment
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.cri.PharmacyCRIFragment
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.doses.PharmacyDosesFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.result.PharmacySurfaceResultFragment
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.surface.PharmacySurfaceFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.settings.SettingsFragment
 
 class AppScreensImpl : AppScreens {
@@ -64,6 +66,17 @@ class AppScreensImpl : AppScreens {
     //region Calculator
     override fun calculatorScreen() = FragmentScreen {
         CalculatorFragment.newInstance()
+    }
+
+    //region Dose
+    override fun doseScreen() = FragmentScreen {
+        PharmacyDosesFragment.newInstance()
+    }
+    //endregion
+
+    //region CRI
+    override fun criScreen() = FragmentScreen {
+        PharmacyCRIFragment.newInstance()
     }
     //endregion
 }

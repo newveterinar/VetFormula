@@ -289,8 +289,8 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/pharmacy_concentration_textinputlayout"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_marginStart="@dimen/pharmacy_concentration_textinputlayout_margin_start"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"

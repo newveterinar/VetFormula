@@ -12,13 +12,15 @@ import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.Fr
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator.AppScreensImpl
 import org.koin.java.KoinJavaComponent
 
-class PharmacyFragment: BaseFragment<FragmentPharmacyBinding>(FragmentPharmacyBinding::inflate) {
+class PharmacyFragment : BaseFragment<FragmentPharmacyBinding>(FragmentPharmacyBinding::inflate) {
     /** Задание переменных */ //region
     // Навигация
     private val screens: AppScreensImpl = KoinJavaComponent.getKoin().get()
     private val router: Router = KoinJavaComponent.getKoin().get()
     lateinit var buttonToPharmacyScreen: ConstraintLayout
     lateinit var buttonToPharmacySurfaceScreen: ConstraintLayout
+    lateinit var buttonPharmacyDoseScreen: ConstraintLayout
+    lateinit var buttonPharmacyCRIScreen: ConstraintLayout
     lateinit var buttonToAboutScreen: ImageView
 
     // ViewModel
@@ -43,6 +45,14 @@ class PharmacyFragment: BaseFragment<FragmentPharmacyBinding>(FragmentPharmacyBi
         buttonToPharmacySurfaceScreen = binding.pharmacySurfaceButtonContainer
         buttonToPharmacySurfaceScreen.setOnClickListener {
             router.navigateTo(screens.pharmacySurfaceScreen())
+        }
+        buttonPharmacyDoseScreen = binding.pharmacyDoseButtonContainer
+        buttonPharmacyDoseScreen.setOnClickListener {
+            router.navigateTo(screens.doseScreen())
+        }
+        buttonPharmacyCRIScreen = binding.pharmacyCriButtonContainer
+        buttonPharmacyCRIScreen.setOnClickListener {
+            router.navigateTo(screens.criScreen())
         }
         buttonToAboutScreen = binding.pharmacyAboutButton
         buttonToAboutScreen.setOnClickListener {

@@ -289,8 +289,8 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/pharmacy_concentration_textinputlayout"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_marginStart="@dimen/pharmacy_concentration_textinputlayout_margin_start"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -361,8 +361,8 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/pharmacy_fluids_textinputlayout"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_marginStart="@dimen/pharmacy_fluids_textinputlayout_margin_start"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -433,8 +433,8 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/pharmacy_drop_textinputlayout"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_marginStart="@dimen/pharmacy_drop_textinputlayout_margin_start"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -444,7 +444,6 @@
                             android:id="@+id/pharmacy_drop_textinputlayout_textfield"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-
                             android:hint="@string/pharmacy_drop_textinputlayout_textfield_hint"
                             android:inputType="number"
                             android:textSize="@dimen/pharmacy_drop_textinputlayout_textfield_text_size" />
