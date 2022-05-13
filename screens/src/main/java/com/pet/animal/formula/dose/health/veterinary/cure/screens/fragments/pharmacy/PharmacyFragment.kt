@@ -4,22 +4,19 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.github.terrakok.cicerone.Router
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentPharmacyBinding
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator.AppScreensImpl
-import org.koin.java.KoinJavaComponent
 
 class PharmacyFragment : BaseFragment<FragmentPharmacyBinding>(FragmentPharmacyBinding::inflate) {
     /** Задание переменных */ //region
     // Навигация
-    lateinit var buttonToPharmacyScreen: ConstraintLayout
-    lateinit var buttonToPharmacySurfaceScreen: ConstraintLayout
-    lateinit var buttonPharmacyDoseScreen: ConstraintLayout
-    lateinit var buttonPharmacyCRIScreen: ConstraintLayout
-    lateinit var buttonToAboutScreen: ImageView
+//    lateinit var buttonToPharmacyScreen: ConstraintLayout
+//    lateinit var buttonToPharmacySurfaceScreen: ConstraintLayout
+//    lateinit var buttonPharmacyDoseScreen: ConstraintLayout
+//    lateinit var buttonPharmacyCRIScreen: ConstraintLayout
+//    lateinit var buttonToAboutScreen: ImageView
+    private val buttons = mutableListOf<View>()
 
     // ViewModel
     lateinit var model: PharmacyFragmentViewModel
@@ -36,26 +33,45 @@ class PharmacyFragment : BaseFragment<FragmentPharmacyBinding>(FragmentPharmacyB
 
     // Инициализация кнопок
     fun initButtons() {
-        buttonToPharmacyScreen = binding.pharmacyPreviousButtonContainer
-        buttonToPharmacyScreen.setOnClickListener {
-            requireActivity().onBackPressed()
+        binding.apply {
+            buttons.add(this.pharmacyPreviousButtonContainer)
+            buttons.add(this.pharmacySurfaceButtonContainer)
+            buttons.add(this.pharmacyDoseButtonContainer)
+            buttons.add(this.pharmacyCriButtonContainer)
+            buttons.add(this.pharmacyAboutButton)
         }
-        buttonToPharmacySurfaceScreen = binding.pharmacySurfaceButtonContainer
-        buttonToPharmacySurfaceScreen.setOnClickListener {
-            model.router.navigateTo(model.screens.pharmacySurfaceScreen())
+        buttons.forEachIndexed { index, button ->
+            button.setOnClickListener {
+                when (index){
+                    0 -> requireActivity().onBackPressed()
+                    1 -> model.router.navigateTo(model.screens.pharmacySurfaceScreen())
+                    2 -> model.router.navigateTo(model.screens.doseScreen())
+                    3 -> model.router.navigateTo(model.screens.criScreen())
+                    4 -> model.router.navigateTo(model.screens.aboutScreen())
+                    else -> {}
+                }
+            }
         }
-        buttonPharmacyDoseScreen = binding.pharmacyDoseButtonContainer
-        buttonPharmacyDoseScreen.setOnClickListener {
-            model.router.navigateTo(model.screens.doseScreen())
-        }
-        buttonPharmacyCRIScreen = binding.pharmacyCriButtonContainer
-        buttonPharmacyCRIScreen.setOnClickListener {
-            model.router.navigateTo(model.screens.criScreen())
-        }
-        buttonToAboutScreen = binding.pharmacyAboutButton
-        buttonToAboutScreen.setOnClickListener {
-            model.router.navigateTo(model.screens.aboutScreen())
-        }
+//        buttonToPharmacyScreen = binding.pharmacyPreviousButtonContainer
+//        buttonToPharmacyScreen.setOnClickListener {
+//            requireActivity().onBackPressed()
+//        }
+//        buttonToPharmacySurfaceScreen = binding.pharmacySurfaceButtonContainer
+//        buttonToPharmacySurfaceScreen.setOnClickListener {
+//            model.router.navigateTo(model.screens.pharmacySurfaceScreen())
+//        }
+//        buttonPharmacyDoseScreen = binding.pharmacyDoseButtonContainer
+//        buttonPharmacyDoseScreen.setOnClickListener {
+//            model.router.navigateTo(model.screens.doseScreen())
+//        }
+//        buttonPharmacyCRIScreen = binding.pharmacyCriButtonContainer
+//        buttonPharmacyCRIScreen.setOnClickListener {
+//            model.router.navigateTo(model.screens.criScreen())
+//        }
+//        buttonToAboutScreen = binding.pharmacyAboutButton
+//        buttonToAboutScreen.setOnClickListener {
+//            model.router.navigateTo(model.screens.aboutScreen())
+//        }
     }
 
     // Инициализация ViewModel
