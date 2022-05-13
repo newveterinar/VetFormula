@@ -1,5 +1,7 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.fakerepo
 
+import com.pet.animal.formula.dose.health.veterinary.cure.core.calculator.Command
+import com.pet.animal.formula.dose.health.veterinary.cure.core.calculator.index
 import com.pet.animal.formula.dose.health.veterinary.cure.model.formula.Element
 import com.pet.animal.formula.dose.health.veterinary.cure.model.formula.Formula
 import com.pet.animal.formula.dose.health.veterinary.cure.model.formula.TypedFormula
@@ -36,198 +38,198 @@ class FakeRepositoryImpl: FakeRepository {
                 pharmacySurfaceFormula.addTypedFormula(TypedFormula(
                     PHARMACY_SURFACE_DOG_BODYSURFACEAREA_NAME,
                     mutableListOf(
-                        Element(10,0),
-                        Element(11,0),
-                        Element(1,0),
-                        Element(10,0),
-                        Element(1,0),
-                        Element(11,0),
-                        Element(15,0),
-                        Element(0,1),
-                        Element(20,0),
-                        Element(16,0),
-                        Element(2,0),
-                        Element(14,0),
-                        Element(3,0),
-                        Element(22,0)
+                        Element(Command.ZERO.index(),0),
+                        Element(Command.ZPT_ON_OFF.index(),0),
+                        Element(Command.ONE.index(),0),
+                        Element(Command.ZERO.index(),0),
+                        Element(Command.ONE.index(),0),
+                        Element(Command.ZPT_ON_OFF.index(),0),
+                        Element(Command.MULTIPLY.index(),0),
+                        Element(Command.NO_COMMAND.index(),1),
+                        Element(Command.STEPEN.index(),0),
+                        Element(Command.BRACKET_OPEN.index(),0),
+                        Element(Command.TWO.index(),0),
+                        Element(Command.DIVIDE.index(),0),
+                        Element(Command.THREE.index(),0),
+                        Element(Command.EQUAL.index(),0)
                     )
                 ))
             askedTypedName.contains(PHARMACY_SURFACE_CAT_BODYSURFACEAREA_NAME) ->
                 pharmacySurfaceFormula.addTypedFormula(TypedFormula(
                     PHARMACY_SURFACE_CAT_BODYSURFACEAREA_NAME,
                     mutableListOf(
-                        Element(10,0),
-                        Element(11,0),
-                        Element(1,0),
-                        Element(11,0),
-                        Element(15,0),
-                        Element(0,1),
-                        Element(20,0),
-                        Element(16,0),
-                        Element(2,0),
-                        Element(14,0),
-                        Element(3,0),
-                        Element(22,0)
+                        Element(Command.ZERO.index(),0),
+                        Element(Command.ZPT_ON_OFF.index(),0),
+                        Element(Command.ONE.index(),0),
+                        Element(Command.ZPT_ON_OFF.index(),0),
+                        Element(Command.MULTIPLY.index(),0),
+                        Element(Command.NO_COMMAND.index(),1),
+                        Element(Command.STEPEN.index(),0),
+                        Element(Command.BRACKET_OPEN.index(),0),
+                        Element(Command.TWO.index(),0),
+                        Element(Command.DIVIDE.index(),0),
+                        Element(Command.THREE.index(),0),
+                        Element(Command.EQUAL.index(),0)
                     )
                 ))
             askedTypedName.contains(PHARMACY_SURFACE_RABBIT_BODYSURFACEAREA_NAME) ->
                 pharmacySurfaceFormula.addTypedFormula(TypedFormula(
                     PHARMACY_SURFACE_RABBIT_BODYSURFACEAREA_NAME,
                     mutableListOf(
-                        Element(10,0),
-                        Element(11,0),
-                        Element(10,0),
-                        Element(9,0),
-                        Element(7,0),
-                        Element(5,0),
-                        Element(11,0),
-                        Element(15,0),
-                        Element(0,1),
-                        Element(20,0),
-                        Element(16,0),
-                        Element(2,0),
-                        Element(14,0),
-                        Element(3,0),
-                        Element(22,0)
+                        Element(Command.ZERO.index(),0),
+                        Element(Command.ZPT_ON_OFF.index(),0),
+                        Element(Command.ZERO.index(),0),
+                        Element(Command.NINE.index(),0),
+                        Element(Command.SEVEN.index(),0),
+                        Element(Command.FIVE.index(),0),
+                        Element(Command.ZPT_ON_OFF.index(),0),
+                        Element(Command.MULTIPLY.index(),0),
+                        Element(Command.NO_COMMAND.index(),1),
+                        Element(Command.STEPEN.index(),0),
+                        Element(Command.BRACKET_OPEN.index(),0),
+                        Element(Command.TWO.index(),0),
+                        Element(Command.DIVIDE.index(),0),
+                        Element(Command.THREE.index(),0),
+                        Element(Command.EQUAL.index(),0)
                     )
                 ))
             askedTypedName.contains(PHARMACY_SURFACE_POLECAT_BODYSURFACEAREA_NAME) ->
                 pharmacySurfaceFormula.addTypedFormula(TypedFormula(
                     PHARMACY_SURFACE_POLECAT_BODYSURFACEAREA_NAME,
                     mutableListOf(
-                        Element(10,0),
-                        Element(11,0),
-                        Element(10,0),
-                        Element(9,0),
-                        Element(6,0),
-                        Element(9,0),
-                        Element(11,0),
-                        Element(15,0),
-                        Element(0,1),
-                        Element(20,0),
-                        Element(16,0),
-                        Element(2,0),
-                        Element(14,0),
-                        Element(3,0),
-                        Element(22,0)
+                        Element(Command.ZERO.index(),0),
+                        Element(Command.ZPT_ON_OFF.index(),0),
+                        Element(Command.ZERO.index(),0),
+                        Element(Command.NINE.index(),0),
+                        Element(Command.SIX.index(),0),
+                        Element(Command.NINE.index(),0),
+                        Element(Command.ZPT_ON_OFF.index(),0),
+                        Element(Command.MULTIPLY.index(),0),
+                        Element(Command.NO_COMMAND.index(),1),
+                        Element(Command.STEPEN.index(),0),
+                        Element(Command.BRACKET_OPEN.index(),0),
+                        Element(Command.TWO.index(),0),
+                        Element(Command.DIVIDE.index(),0),
+                        Element(Command.THREE.index(),0),
+                        Element(Command.EQUAL.index(),0)
                     )
                 ))
             askedTypedName.contains(PHARMACY_SURFACE_GUINEAPIG_BODYSURFACEAREA_NAME) ->
                 pharmacySurfaceFormula.addTypedFormula(TypedFormula(
                     PHARMACY_SURFACE_GUINEAPIG_BODYSURFACEAREA_NAME,
                     mutableListOf(
-                        Element(10,0),
-                        Element(11,0),
-                        Element(10,0),
-                        Element(9,0),
-                        Element(11,0),
-                        Element(15,0),
-                        Element(0,1),
-                        Element(20,0),
-                        Element(16,0),
-                        Element(2,0),
-                        Element(14,0),
-                        Element(3,0),
-                        Element(22,0)
+                        Element(Command.ZERO.index(),0),
+                        Element(Command.ZPT_ON_OFF.index(),0),
+                        Element(Command.ZERO.index(),0),
+                        Element(Command.NINE.index(),0),
+                        Element(Command.ZPT_ON_OFF.index(),0),
+                        Element(Command.MULTIPLY.index(),0),
+                        Element(Command.NO_COMMAND.index(),1),
+                        Element(Command.STEPEN.index(),0),
+                        Element(Command.BRACKET_OPEN.index(),0),
+                        Element(Command.TWO.index(),0),
+                        Element(Command.DIVIDE.index(),0),
+                        Element(Command.THREE.index(),0),
+                        Element(Command.EQUAL.index(),0)
                     )
                 ))
             askedTypedName.contains(PHARMACY_SURFACE_HAMSTER_BODYSURFACEAREA_NAME) ->
                 pharmacySurfaceFormula.addTypedFormula(TypedFormula(
                     PHARMACY_SURFACE_HAMSTER_BODYSURFACEAREA_NAME,
                     mutableListOf(
-                        Element(10,0),
-                        Element(11,0),
-                        Element(1,0),
-                        Element(1,0),
-                        Element(9,0),
-                        Element(11,0),
-                        Element(15,0),
-                        Element(0,1),
-                        Element(20,0),
-                        Element(16,0),
-                        Element(2,0),
-                        Element(14,0),
-                        Element(3,0),
-                        Element(22,0)
+                        Element(Command.ZERO.index(),0),
+                        Element(Command.ZPT_ON_OFF.index(),0),
+                        Element(Command.ONE.index(),0),
+                        Element(Command.ONE.index(),0),
+                        Element(Command.NINE.index(),0),
+                        Element(Command.ZPT_ON_OFF.index(),0),
+                        Element(Command.MULTIPLY.index(),0),
+                        Element(Command.NO_COMMAND.index(),1),
+                        Element(Command.STEPEN.index(),0),
+                        Element(Command.BRACKET_OPEN.index(),0),
+                        Element(Command.TWO.index(),0),
+                        Element(Command.DIVIDE.index(),0),
+                        Element(Command.THREE.index(),0),
+                        Element(Command.EQUAL.index(),0)
                     )
                 ))
             askedTypedName.contains(PHARMACY_SURFACE_HORSEEXCEPTLOMUSTIN_BODYSURFACEAREA_NAME) ->
                 pharmacySurfaceFormula.addTypedFormula(TypedFormula(
                     PHARMACY_SURFACE_HORSEEXCEPTLOMUSTIN_BODYSURFACEAREA_NAME,
                     mutableListOf(
-                        Element(10,0),
-                        Element(11,0),
-                        Element(1,0),
-                        Element(10,0),
-                        Element(5,0),
-                        Element(11,0),
-                        Element(15,0),
-                        Element(0,1),
-                        Element(20,0),
-                        Element(16,0),
-                        Element(2,0),
-                        Element(14,0),
-                        Element(3,0),
-                        Element(22,0)
+                        Element(Command.ZERO.index(),0),
+                        Element(Command.ZPT_ON_OFF.index(),0),
+                        Element(Command.ONE.index(),0),
+                        Element(Command.ZERO.index(),0),
+                        Element(Command.FIVE.index(),0),
+                        Element(Command.ZPT_ON_OFF.index(),0),
+                        Element(Command.MULTIPLY.index(),0),
+                        Element(Command.NO_COMMAND.index(),1),
+                        Element(Command.STEPEN.index(),0),
+                        Element(Command.BRACKET_OPEN.index(),0),
+                        Element(Command.TWO.index(),0),
+                        Element(Command.DIVIDE.index(),0),
+                        Element(Command.THREE.index(),0),
+                        Element(Command.EQUAL.index(),0)
                     )
                 ))
             askedTypedName.contains(PHARMACY_SURFACE_HORSEONLYLOMUSTIN_BODYSURFACEAREA_NAME) ->
                 pharmacySurfaceFormula.addTypedFormula(TypedFormula(
                     PHARMACY_SURFACE_HORSEONLYLOMUSTIN_BODYSURFACEAREA_NAME,
                     mutableListOf(
-                        Element(10,0),
-                        Element(11,0),
-                        Element(10,0),
-                        Element(8,0),
-                        Element(5,0),
-                        Element(11,0),
-                        Element(15,0),
-                        Element(0,1),
-                        Element(20,0),
-                        Element(16,0),
-                        Element(2,0),
-                        Element(14,0),
-                        Element(3,0),
-                        Element(22,0)
+                        Element(Command.ZERO.index(),0),
+                        Element(Command.ZPT_ON_OFF.index(),0),
+                        Element(Command.ZERO.index(),0),
+                        Element(Command.EIGHT.index(),0),
+                        Element(Command.FIVE.index(),0),
+                        Element(Command.ZPT_ON_OFF.index(),0),
+                        Element(Command.MULTIPLY.index(),0),
+                        Element(Command.NO_COMMAND.index(),1),
+                        Element(Command.STEPEN.index(),0),
+                        Element(Command.BRACKET_OPEN.index(),0),
+                        Element(Command.TWO.index(),0),
+                        Element(Command.DIVIDE.index(),0),
+                        Element(Command.THREE.index(),0),
+                        Element(Command.EQUAL.index(),0)
                     )
                 ))
             askedTypedName.contains(PHARMACY_SURFACE_RAT_BODYSURFACEAREA_NAME) ->
                 pharmacySurfaceFormula.addTypedFormula(TypedFormula(
                     PHARMACY_SURFACE_RAT_BODYSURFACEAREA_NAME,
                     mutableListOf(
-                        Element(10,0),
-                        Element(11,0),
-                        Element(10,0),
-                        Element(9,0),
-                        Element(1,0),
-                        Element(11,0),
-                        Element(15,0),
-                        Element(0,1),
-                        Element(20,0),
-                        Element(16,0),
-                        Element(2,0),
-                        Element(14,0),
-                        Element(3,0),
-                        Element(22,0)
+                        Element(Command.ZERO.index(),0),
+                        Element(Command.ZPT_ON_OFF.index(),0),
+                        Element(Command.ZERO.index(),0),
+                        Element(Command.NINE.index(),0),
+                        Element(Command.ONE.index(),0),
+                        Element(Command.ZPT_ON_OFF.index(),0),
+                        Element(Command.MULTIPLY.index(),0),
+                        Element(Command.NO_COMMAND.index(),1),
+                        Element(Command.STEPEN.index(),0),
+                        Element(Command.BRACKET_OPEN.index(),0),
+                        Element(Command.TWO.index(),0),
+                        Element(Command.DIVIDE.index(),0),
+                        Element(Command.THREE.index(),0),
+                        Element(Command.EQUAL.index(),0)
                     )
                 ))
             askedTypedName.contains(PHARMACY_SURFACE_MOUSE_BODYSURFACEAREA_NAME) ->
                 pharmacySurfaceFormula.addTypedFormula(TypedFormula(
                     PHARMACY_SURFACE_MOUSE_BODYSURFACEAREA_NAME,
                     mutableListOf(
-                        Element(10,0),
-                        Element(11,0),
-                        Element(10,0),
-                        Element(9,0),
-                        Element(11,0),
-                        Element(15,0),
-                        Element(0,1),
-                        Element(20,0),
-                        Element(16,0),
-                        Element(2,0),
-                        Element(14,0),
-                        Element(3,0),
-                        Element(22,0)
+                        Element(Command.ZERO.index(),0),
+                        Element(Command.ZPT_ON_OFF.index(),0),
+                        Element(Command.ZERO.index(),0),
+                        Element(Command.NINE.index(),0),
+                        Element(Command.ZPT_ON_OFF.index(),0),
+                        Element(Command.MULTIPLY.index(),0),
+                        Element(Command.NO_COMMAND.index(),1),
+                        Element(Command.STEPEN.index(),0),
+                        Element(Command.BRACKET_OPEN.index(),0),
+                        Element(Command.TWO.index(),0),
+                        Element(Command.DIVIDE.index(),0),
+                        Element(Command.THREE.index(),0),
+                        Element(Command.EQUAL.index(),0)
                     )
                 ))
             //endregion
