@@ -2,7 +2,7 @@ package com.pet.animal.formula.dose.health.veterinary.cure.core.calculator
 
 import com.pet.animal.formula.dose.health.veterinary.cure.model.calculator.CalcConstants
 
-class CalcInteractorImpl: CalcInteractor {
+class CalcInteractorImpl : CalcInteractor {
     /** Задание переменных */ //region
     private val calcLogic: CalcLogic = CalcLogic()
     //endregion
@@ -37,7 +37,7 @@ class CalcInteractorImpl: CalcInteractor {
            <--     -  24
            C       -  25
          */
-        when(button) {
+        when (button) {
             1 -> calcLogic.addNumeral(1)
             2 -> calcLogic.addNumeral(2)
             3 -> calcLogic.addNumeral(3)

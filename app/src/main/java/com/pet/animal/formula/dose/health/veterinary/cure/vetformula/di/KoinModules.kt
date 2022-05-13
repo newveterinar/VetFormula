@@ -41,7 +41,8 @@ val screens = module {
     /** Классы для навигации */ //region
     single<Cicerone<Router>>(named(CICERONE_NAME)) { Cicerone.create() }
     single<NavigatorHolder> {
-        get<Cicerone<Router>>(named(CICERONE_NAME)).getNavigatorHolder() }
+        get<Cicerone<Router>>(named(CICERONE_NAME)).getNavigatorHolder()
+    }
     single<Router> { get<Cicerone<Router>>(named(CICERONE_NAME)).router }
     single<AppScreens> { AppScreensImpl() }
     //endregion

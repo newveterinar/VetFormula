@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "urls")
-class UrlEntity(val name:String, val screenType:Int, val url:String) {
+class UrlEntity(val name: String, val screenType: Int, val url: String) {
     @PrimaryKey(autoGenerate = true)
-    var id:Long?=null
+    var id: Long? = null
 }

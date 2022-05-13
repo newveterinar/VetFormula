@@ -13,6 +13,7 @@ class ConversionsFragment :
     /** Задание переменных */ //region
     // Навигация
     private val navigationButtons = arrayOfNulls<View>(size = 3)
+
     // ViewModel
     private lateinit var model: ConversionsFragmentViewModel
     //endregion
@@ -29,7 +30,7 @@ class ConversionsFragment :
     // Инициализация кнопок
     private fun initNavigationButtons() {
         binding.apply {
-            navigationButtons.also{
+            navigationButtons.also {
                 it[0] = this.conversionsPreviousButtonContainer
                 it[1] = this.conversionsSurfaceButtonContainer
                 it[2] = this.conversionsAboutButton
@@ -40,10 +41,12 @@ class ConversionsFragment :
             button?.setOnClickListener {
                 when (index) {
                     0 -> model.router.exit()
-                    1 -> Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT).show()
+                    1 -> Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT)
+                        .show()
                     2 -> model.router.navigateTo(model.screens.aboutScreen())
-                    else ->{
-                        Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT).show()
+                    else -> {
+                        Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT)
+                            .show()
                     }
                 }
             }

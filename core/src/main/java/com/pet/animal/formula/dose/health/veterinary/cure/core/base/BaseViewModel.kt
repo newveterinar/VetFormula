@@ -5,9 +5,9 @@ import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppS
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
 import kotlinx.coroutines.*
 
-abstract class BaseViewModel<T: AppState>(
-    protected open val _mutableLiveData: MutableLiveData<T> = MutableLiveData()
-): BaseViewModelForNavigation() {
+abstract class BaseViewModel<T : AppState>(
+    protected open val _mutableLiveData: MutableLiveData<T> = MutableLiveData(),
+) : BaseViewModelForNavigation() {
 
     /** Задание переменных */ //region
     protected val viewModelCoroutineScope = CoroutineScope(
@@ -29,11 +29,14 @@ abstract class BaseViewModel<T: AppState>(
 
     // Метод получения данных
     abstract fun getData()
+
     /** Методы сохранения данных */
-    abstract fun saveData(screenType: ScreenType,
-                          listsAddFirstSecond: List<Int>,
-                          values: List<Double>,
-                          dimensions: List<Int>)
+    abstract fun saveData(
+        screenType: ScreenType,
+        listsAddFirstSecond: List<Int>,
+        values: List<Double>,
+        dimensions: List<Int>,
+    )
 
     abstract fun handleError(error: Throwable)
 }

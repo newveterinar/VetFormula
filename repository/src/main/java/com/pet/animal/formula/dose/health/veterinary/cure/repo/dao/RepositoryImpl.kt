@@ -5,7 +5,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.repo.FormulaEntity
 import com.pet.animal.formula.dose.health.veterinary.cure.repo.Repository
 import com.pet.animal.formula.dose.health.veterinary.cure.repo.UrlEntity
 
-class RepositoryImpl(private val dbDao:VetFormulaDao): Repository {
+class RepositoryImpl(private val dbDao: VetFormulaDao) : Repository {
 
     override suspend fun getAllVetFormulas(): List<FormulaEntity> {
         return dbDao.getAllVetFormulas()
@@ -14,23 +14,29 @@ class RepositoryImpl(private val dbDao:VetFormulaDao): Repository {
     override suspend fun getFormulaByScreen(
         screenType: Int,
         addFirst: Int,
-        addSecond: Int
+        addSecond: Int,
     ): List<FormulaEntity> {
-        if (addFirst==0&&addSecond!=0){
+        if (addFirst == 0 && addSecond != 0) {
             throw Exception("not correct arguments")
         }
-        if (addFirst==0&&addSecond==0){
+        if (addFirst == 0 && addSecond == 0) {
             return dbDao.getFormulaByScreen(screenType)
         }
-        if (addSecond==0){
-            return dbDao.getFormulaByScreen(screenType,addFirst)
+        if (addSecond == 0) {
+            return dbDao.getFormulaByScreen(screenType, addFirst)
         }
-        return dbDao.getFormulaByScreen(screenType,addFirst,addSecond)
+        return dbDao.getFormulaByScreen(screenType, addFirst, addSecond)
     }
 
 
-    override suspend fun insertFormula(formula: Formula,screenType:Int,elementCount:Int,addFirst:Int,addSecond:Int):Long {
-        val formulaEntity = FormulaEntity(screenType,elementCount,addFirst,addSecond,formula)
+    override suspend fun insertFormula(
+        formula: Formula,
+        screenType: Int,
+        elementCount: Int,
+        addFirst: Int,
+        addSecond: Int,
+    ): Long {
+        val formulaEntity = FormulaEntity(screenType, elementCount, addFirst, addSecond, formula)
         return insertFormulaEntity(formulaEntity)
     }
 

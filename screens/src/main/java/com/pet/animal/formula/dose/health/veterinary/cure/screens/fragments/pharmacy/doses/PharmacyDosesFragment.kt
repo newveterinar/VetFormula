@@ -40,8 +40,9 @@ class PharmacyDosesFragment :
                 when (index) {
                     0 -> model.router.exit()
                     1 -> model.router.navigateTo(model.screens.aboutScreen())
-                    else ->{
-                        Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT).show()
+                    else -> {
+                        Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT)
+                            .show()
                     }
                 }
             }

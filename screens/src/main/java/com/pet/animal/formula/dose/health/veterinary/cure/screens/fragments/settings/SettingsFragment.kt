@@ -2,14 +2,12 @@ package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.set
 
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
 import android.widget.Toast
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.ViewModelProvider
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentSettingsBinding
 
-class SettingsFragment: BaseFragment<FragmentSettingsBinding>(FragmentSettingsBinding::inflate) {
+class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsBinding::inflate) {
 
     /** Задание переменных */ //region
     // Навигация
@@ -41,10 +39,12 @@ class SettingsFragment: BaseFragment<FragmentSettingsBinding>(FragmentSettingsBi
             button?.setOnClickListener {
                 when (index) {
                     0 -> model.router.exit()
-                    1 -> Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT).show()
+                    1 -> Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT)
+                        .show()
                     2 -> model.router.navigateTo(model.screens.aboutScreen())
-                    else ->{
-                        Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT).show()
+                    else -> {
+                        Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT)
+                            .show()
                     }
                 }
             }

@@ -101,130 +101,121 @@ public class Dates implements CalcConstants {
         return isBracket;
     }
 
+    public void setIsBracket(boolean bracket) {
+        isBracket = bracket;
+    }
+
     public boolean getIsClose() {
         return isClose;
+    }
+
+    public void setIsClose(boolean close) {
+        isClose = close;
     }
 
     public FUNCTIONS getTypeFuncInBracket() {
         return typeFuncInBracket;
     }
 
-    public int getBracketLevel() {
-        return bracketLevel;
-    }
-
-    public int getSign() {
-        return sign;
-    }
-
-    public double getValue() {
-        return value;
-    }
-
-    public String getIntegerPartValue() {
-        String resultString = "";
-        ListIterator<Integer> iterOutputValue = integerPartValue.listIterator();
-        while (iterOutputValue.hasNext())
-        {
-            resultString = String.format("%s%d", resultString, iterOutputValue.next());
-        }
-        return resultString;
-    }
-
-    public String getRealPartValue() {
-        String resultString = "";
-        ListIterator<Integer> iterOutputValue = realPartValue.listIterator();
-        while (iterOutputValue.hasNext())
-        {
-            resultString = String.format("%s%d", resultString, iterOutputValue.next());
-        }
-        return resultString;
-    }
-
-    public boolean getIsValue() {
-        return isValue;
-    }
-
-    public ACTIONS getAction() {
-        return action;
-    }
-
-    public boolean getIsPercent() {
-        return isPercent;
-    }
-
-    public int getNumberZapitay()
-    {
-        return numberZapitay;
-    }
-
-    public boolean getTurnOffZapitay() {
-        return turnOffZapitay;
-    }
-
-    public void setIsBracket(boolean bracket) {
-        isBracket = bracket;
-    }
-
-    public void setIsClose(boolean close)
-    {
-        isClose = close;
-    }
-
     public void setTypeFuncInBracket(FUNCTIONS _typeFuncInBracket) {
         typeFuncInBracket = _typeFuncInBracket;
+    }
+
+    public int getBracketLevel() {
+        return bracketLevel;
     }
 
     public void setBracketLevel(int _bracketLevel) {
         bracketLevel = _bracketLevel;
     }
 
+    public int getSign() {
+        return sign;
+    }
+
     public void setSign(int _sign) {
         sign = _sign;
+    }
+
+    public double getValue() {
+        return value;
     }
 
     public void setValue(double _value) {
         value = _value;
     }
 
-    public void setIntegerPartValue(Integer numeral)
-    {
+    public String getIntegerPartValue() {
+        String resultString = "";
+        ListIterator<Integer> iterOutputValue = integerPartValue.listIterator();
+        while (iterOutputValue.hasNext()) {
+            resultString = String.format("%s%d", resultString, iterOutputValue.next());
+        }
+        return resultString;
+    }
+
+    public void setIntegerPartValue(Integer numeral) {
         integerPartValue.add(numeral);
     }
 
-    public void setRealPartValue(Integer numeral)
-    {
+    public String getRealPartValue() {
+        String resultString = "";
+        ListIterator<Integer> iterOutputValue = realPartValue.listIterator();
+        while (iterOutputValue.hasNext()) {
+            resultString = String.format("%s%d", resultString, iterOutputValue.next());
+        }
+        return resultString;
+    }
+
+    public void setRealPartValue(Integer numeral) {
         realPartValue.add(numeral);
     }
 
-    public void setIntegerPartValueDecreaseOne()
-    {
-        integerPartValue.removeLast();
-    }
-
-    public void setRealPartValueDecreaseOne()
-    {
-        realPartValue.removeLast();
+    public boolean getIsValue() {
+        return isValue;
     }
 
     public void setIsValue(boolean _isValue) {
         isValue = _isValue;
     }
 
+    public ACTIONS getAction() {
+        return action;
+    }
+
     public void setAction(ACTIONS _action) {
         action = _action;
+    }
+
+    public boolean getIsPercent() {
+        return isPercent;
     }
 
     public void setIsPercent(boolean percent) {
         isPercent = percent;
     }
 
-    public void setNumberZapitay(int _numberZapitay)
-    {
+    public int getNumberZapitay() {
+        return numberZapitay;
+    }
+
+    public void setNumberZapitay(int _numberZapitay) {
         numberZapitay = _numberZapitay;
+    }
+
+    public boolean getTurnOffZapitay() {
+        return turnOffZapitay;
     }
 
     public void setTurnOffZapitay(boolean _turnOffZapitay) {
         turnOffZapitay = _turnOffZapitay;
+    }
+
+    public void setIntegerPartValueDecreaseOne() {
+        integerPartValue.removeLast();
+    }
+
+    public void setRealPartValueDecreaseOne() {
+        realPartValue.removeLast();
     }
 }

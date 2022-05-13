@@ -17,7 +17,7 @@ import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
 import org.koin.java.KoinJavaComponent
 
-class PharmacySurfaceFragment:
+class PharmacySurfaceFragment :
     BaseFragment<FragmentPharmacySurfaceBinding>(FragmentPharmacySurfaceBinding::inflate) {
     /** Задание переменных */ //region
     // Установка типа формулы для текущего окна
@@ -26,19 +26,26 @@ class PharmacySurfaceFragment:
     private lateinit var buttonToPharmacySurfaceScreen: ConstraintLayout
     private lateinit var buttonToPharmacySurfaceResultScreen: Button
     private lateinit var buttonToAboutScreen: ImageView
+
     // Обнуление значений во всех полях
     private lateinit var pharmacy_clear_button_container: ConstraintLayout
+
     // ViewModel
     private lateinit var model: PharmacySurfaceFragmentViewModel
+
     // ShowPharmacySurfaceFragmentScope
     private lateinit var showPharmacySurfaceFragmentScope: Scope
+
     // Задание интерфеса для ввода числовых значений (только числа, десятичная точка)
     private lateinit var firstNumeralField: EditText
+
     // Списки (Spinner)
     private val listsAddFirstSecond: MutableList<Spinner> = mutableListOf()
     private val listsDimensions: MutableList<Spinner> = mutableListOf()
+
     // Текстовые поля для ввода чисел
     private val valuesFields: MutableList<EditText> = mutableListOf()
+
     // newInstance для данного класса
     companion object {
         fun newInstance(): PharmacySurfaceFragment = PharmacySurfaceFragment()
@@ -131,6 +138,7 @@ class PharmacySurfaceFragment:
             model.router.navigateTo(model.screens.aboutScreen())
         }
     }
+
     // Настройка клавиатуры ввода для числовых полей
     fun initKeyboard() {
         firstNumeralField = binding.pharmacyWeightTextinputlayoutTextfield
@@ -140,7 +148,7 @@ class PharmacySurfaceFragment:
     fun initViewModel() {
         val viewModel: PharmacySurfaceFragmentViewModel by showPharmacySurfaceFragmentScope.inject()
         model = viewModel
-        model.subscribe().observe(viewLifecycleOwner){
+        model.subscribe().observe(viewLifecycleOwner) {
             renderData(it)
         }
         model.getData()
@@ -159,7 +167,7 @@ class PharmacySurfaceFragment:
                     valuesFields.forEachIndexed { index, valueField ->
                         if (it.valueFields.count() > index)
                             valueField.setText(if (it.valueFields[index].value > 0.0)
-                            "${it.valueFields[index].value}" else "")
+                                "${it.valueFields[index].value}" else "")
                     }
                     // Установка размерности поля
                     listsDimensions.forEachIndexed { index, dimension ->
@@ -185,16 +193,21 @@ class PharmacySurfaceFragment:
     // Установка события при выборе элемента списка
     private fun setActionsFieldsAndLists() {
         listsAddFirstSecond.forEachIndexed { index, spinnerList ->
-            spinnerList.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
-                override fun onItemSelected(parent: AdapterView<*>?, view: View?,
-                                            position: Int, id: Long) {
+            spinnerList.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>?, view: View?,
+                    position: Int, id: Long,
+                ) {
                     // Сохранение текущего состояния всех числовых полей и списков
                     model.saveData(screenType,
                         listsAddFirstSecond.convertListSpinnerToListInt(),
                         valuesFields.convertListEditTextToListDouble(),
                         listsDimensions.convertListSpinnerToListInt())
-                    Toast.makeText(this@PharmacySurfaceFragment.requireContext(), "seleted", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@PharmacySurfaceFragment.requireContext(),
+                        "seleted",
+                        Toast.LENGTH_SHORT).show()
                 }
+
                 override fun onNothingSelected(parent: AdapterView<*>?) {
                 }
             }

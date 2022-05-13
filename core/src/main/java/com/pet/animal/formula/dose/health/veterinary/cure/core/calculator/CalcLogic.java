@@ -1,12 +1,12 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.core.calculator;
 
-import java.text.DecimalFormat;
 import com.pet.animal.formula.dose.health.veterinary.cure.model.calculator.CalcConstants;
 import com.pet.animal.formula.dose.health.veterinary.cure.model.calculator.Dates;
-import java.util.Locale;
 
+import java.text.DecimalFormat;
 import java.util.LinkedList;
 import java.util.ListIterator;
+import java.util.Locale;
 
 public class CalcLogic implements CalcConstants {
     // Создание класса со значениями
@@ -49,6 +49,53 @@ public class CalcLogic implements CalcConstants {
                 ACTIONS.ACT_PLUS, false);
     }
 
+    public static String numberFormatOutput(double number, int numberSymbols) {
+        DecimalFormat df;
+        double comparedNumber = 1d;
+        if (number > 0) {
+            for (int i = 0; i < numberSymbols; i++) {
+                comparedNumber *= 10d;
+                if (number < comparedNumber) {
+                    df = new DecimalFormat(createFormat(numberSymbols, i));
+                    return (df.format(number).length() > numberSymbols ?
+                            String.format(Locale.getDefault(), "%e", number) :
+                            df.format(number));
+                }
+            }
+        } else {
+            for (int i = 0; i < numberSymbols - 1; i++) {
+                comparedNumber *= 10d;
+                if (Math.abs(number) < comparedNumber) {
+                    df = new DecimalFormat(createFormat(numberSymbols, i));
+                    return (df.format(number).length() > numberSymbols ?
+                            String.format(Locale.getDefault(), "%e", number) :
+                            df.format(number));
+                }
+            }
+        }
+        if (number > 0) {
+            return String.format(Locale.getDefault(),
+                    (number < 10E99d ? "%.6e" : "%.5e"), number);
+        } else {
+            return String.format(Locale.getDefault(),
+                    (Math.abs(number) < 10E99d ? "%.6e" : "%.5e"), number);
+        }
+    }
+
+    private static String createFormat(int numberSymbols, int i) {
+        String format = "";
+        for (int j = 0; j <= i; j++) {
+            format += "#";
+        }
+        if (i < numberSymbols - 2) {
+            format += ".";
+            for (int j = 0; j < numberSymbols - 2 - i; j++) {
+                format += "#";
+            }
+        }
+        return format;
+    }
+
     public void setMaxNumberSymbolsInOutputTextField(int maxNumberSymbolsInOutputTextField) {
         this.maxNumberSymbolsInOutputTextField = maxNumberSymbolsInOutputTextField;
     }
@@ -79,8 +126,7 @@ public class CalcLogic implements CalcConstants {
                         getRealPartValue().length());
             } else {
                 // Подчищение введенной ранее нулевой цифры
-                if (inputNumbers.get(curNumber).getIntegerPartValue().length() > 0)
-                {
+                if (inputNumbers.get(curNumber).getIntegerPartValue().length() > 0) {
                     intPartValue = Double.parseDouble(inputNumbers.get(curNumber).
                             getIntegerPartValue());
                     if (intPartValue == 0d) {
@@ -460,15 +506,13 @@ public class CalcLogic implements CalcConstants {
         }
         for (ACTIONS action : ACTIONS.values()) {
             // Учёт равнозначности операций деления и умножения
-            if (action != ACTIONS.ACT_DIV)
-            {
+            if (action != ACTIONS.ACT_DIV) {
                 iterInputNumbersForCalc = curNumbersForCals.listIterator();
                 while (iterInputNumbersForCalc.hasNext()) {
                     curDates = iterInputNumbersForCalc.next();
 
                     // Учёт равнозначности операций деления и умножения
-                    if (action == ACTIONS.ACT_MULTY)
-                    {
+                    if (action == ACTIONS.ACT_MULTY) {
                         if ((curDates.getAction() == ACTIONS.ACT_MULTY) &&
                                 (curNumbersForCals.size() > 1)) {
                             prevDates.setValue(doBaseActions(prevDates.getValue() *
@@ -487,8 +531,7 @@ public class CalcLogic implements CalcConstants {
                             prevDates = curDates;
                         }
                         // Выполнение всех остальных операций (не деления и не умножения)
-                    } else if ((curDates.getAction() == action) && (curNumbersForCals.size() > 1))
-                    {
+                    } else if ((curDates.getAction() == action) && (curNumbersForCals.size() > 1)) {
                         prevDates.setValue(doBaseActions(prevDates.getValue() *
                                 prevDates.getSign(), curDates.getValue() *
                                 curDates.getSign(), curDates.getAction()));
@@ -571,8 +614,7 @@ public class CalcLogic implements CalcConstants {
 
     // Установка для функции, а также новой скобки, поскольку функции без скобок не бывает
     // Данный метод не только устанавливает новую функцию, но и открывает скобку
-    public String setNewFunction(FUNCTIONS typeFuncInBracket)
-    {
+    public String setNewFunction(FUNCTIONS typeFuncInBracket) {
         if (inputNumbers.get(curNumber).getIsBracket()) {
             curBracketLevel++;
             add(true, false, typeFuncInBracket, 1, 0d, false,
@@ -919,54 +961,6 @@ public class CalcLogic implements CalcConstants {
             finalResult_String = numberFormatOutput(finalResult, maxNumberSymbolsInOutputTextField);
         }
         return finalResult_String;
-    }
-
-    public static String numberFormatOutput(double number, int numberSymbols) {
-        DecimalFormat df;
-        double comparedNumber = 1d;
-        if (number > 0) {
-            for (int i = 0; i < numberSymbols; i++) {
-                comparedNumber *= 10d;
-                if (number < comparedNumber) {
-                    df = new DecimalFormat(createFormat(numberSymbols, i));
-                    return (df.format(number).length() > numberSymbols ?
-                            String.format(Locale.getDefault(), "%e", number) :
-                            df.format(number));
-                }
-            }
-        } else {
-            for (int i = 0; i < numberSymbols - 1; i++) {
-                comparedNumber *= 10d;
-                if (Math.abs(number) < comparedNumber) {
-                    df = new DecimalFormat(createFormat(numberSymbols, i));
-                    return (df.format(number).length() > numberSymbols ?
-                            String.format(Locale.getDefault(), "%e", number) :
-                            df.format(number));
-                }
-            }
-        }
-        if (number > 0) {
-            return String.format(Locale.getDefault(),
-                    (number < 10E99d ? "%.6e" : "%.5e"), number);
-        }
-        else {
-            return String.format(Locale.getDefault(),
-                    (Math.abs(number) < 10E99d ? "%.6e" : "%.5e"), number);
-        }
-    }
-
-    private static String createFormat(int numberSymbols, int i) {
-        String format = "";
-        for (int j = 0; j <= i; j++) {
-            format += "#";
-        }
-        if (i < numberSymbols - 2) {
-            format += ".";
-            for (int j = 0; j < numberSymbols - 2 - i; j++) {
-                format += "#";
-            }
-        }
-        return format;
     }
 
     public ERRORS getErrorCode() {

@@ -1,6 +1,22 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.model.calculator;
 
 public interface CalcConstants {
+    String KEY_SETTINGS = "Settings";
+
+    ;
+    String KEY_CURRENT_THEME = "CurrentTheme";
+
+    ;
+    String KEY_CURRENT_RADIUS = "Radius";
+
+    ;
+    String KEY_DOCHANGE_RADIUS = "DoRedraw";
+
+    ;
+    int DEFAULT_BUTTON_RADIUS = 177;
+    float KOEFF_RESIZE_HEIGHT = 2.2f;
+    int MIN_RADIUS_BUTTONS = 70;
+    int MAX_RADIUS_BUTTONS = 300;
     // Действия
     enum ACTIONS {
         ACT_STEP,         // возведение в степень (ACT_STEP)
@@ -12,8 +28,7 @@ public interface CalcConstants {
         ACT_DIV,          // деление (ACT_DIV)
         ACT_MINUS,        // вычитание (ACT_MINUS)
         ACT_PLUS          // сложение (ACT_PLUS)
-    };
-
+    }
     // Функции
     enum FUNCTIONS {
         FUNC_NO,     // нет функции
@@ -21,30 +36,19 @@ public interface CalcConstants {
         FUNC_SQRT    // извлечение квадратного корня (FUNC_SQRT)
         // TODO: сюда можно, в дальнейшем,
         // дописать другие функции sin, cos, tang, exp, log и т.д.
-    };
-
+    }
     // Ошибки
     enum ERRORS {
         NO,                  // ошибок нет
         SQRT_MINUS,          // подкоренное значение меньше нуля
         BRACKET_DISBALANCE,  // количество открытых скобок
-                             // и закрытых скобок не равно друг другу
+        // и закрытых скобок не равно друг другу
         ZERO_DIVIDE,         // деление на ноль
         BRACKETS_EMPTY       // внутри скобок отсутствует число
-    };
-
+    }
     // Названия тем
     enum THEMES {
         DAY_THEME,         // Дневная тема
         NIGHT_THEME        // Ночная тема
-    };
-
-    String KEY_SETTINGS = "Settings";
-    String KEY_CURRENT_THEME = "CurrentTheme";
-    String KEY_CURRENT_RADIUS = "Radius";
-    String KEY_DOCHANGE_RADIUS = "DoRedraw";
-    int DEFAULT_BUTTON_RADIUS = 177;
-    float KOEFF_RESIZE_HEIGHT = 2.2f;
-    int MIN_RADIUS_BUTTONS = 70;
-    int MAX_RADIUS_BUTTONS = 300;
+    }
 }

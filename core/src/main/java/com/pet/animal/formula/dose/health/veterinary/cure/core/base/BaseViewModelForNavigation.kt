@@ -5,7 +5,7 @@ import com.github.terrakok.cicerone.Router
 import com.pet.animal.formula.dose.health.veterinary.cure.core.AppScreens
 import org.koin.java.KoinJavaComponent
 
-abstract class BaseViewModelForNavigation: ViewModel() {
+abstract class BaseViewModelForNavigation : ViewModel() {
     // Навигация
     val screens: AppScreens = KoinJavaComponent.getKoin().get()
     val router: Router = KoinJavaComponent.getKoin().get()

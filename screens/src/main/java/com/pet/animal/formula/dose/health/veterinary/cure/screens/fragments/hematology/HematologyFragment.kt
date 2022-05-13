@@ -13,6 +13,7 @@ class HematologyFragment :
     /** Задание переменных */ //region
     // Навигация
     private val navigationButtons = arrayOfNulls<View>(size = 3)
+
     // ViewModel
     private lateinit var model: HematologyFragmentViewModel
     //endregion

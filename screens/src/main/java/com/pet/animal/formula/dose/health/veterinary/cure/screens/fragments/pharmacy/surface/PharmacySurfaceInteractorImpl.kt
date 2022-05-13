@@ -8,12 +8,14 @@ import com.pet.animal.formula.dose.health.veterinary.cure.utils.resources.Resour
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.settings.SettingsImpl
 import org.koin.java.KoinJavaComponent
 
-class PharmacySurfaceInteractorImpl: Interactor<AppState> {
+class PharmacySurfaceInteractorImpl : Interactor<AppState> {
     /** Задание переменных */ //region
     // Доступ к ресурсам
     private val resourcesProviderImpl: ResourcesProviderImpl = KoinJavaComponent.getKoin().get()
+
     // Фейковый (временный) репозиторий
     private val fakeRepositoryImpl: FakeRepositoryImpl = KoinJavaComponent.getKoin().get()
+
     // SettingsImpl
     private val settings: SettingsImpl = KoinJavaComponent.getKoin().get()
     //endregion
@@ -24,10 +26,12 @@ class PharmacySurfaceInteractorImpl: Interactor<AppState> {
     }
 
     /** Методы для сохранения данных с полей и списков */ //region
-    override suspend fun saveData(screenType: ScreenType,
-                                  listsAddFirstSecond: List<Int>,
-                                  values: List<Double>,
-                                  dimensions: List<Int>) {
+    override suspend fun saveData(
+        screenType: ScreenType,
+        listsAddFirstSecond: List<Int>,
+        values: List<Double>,
+        dimensions: List<Int>,
+    ) {
         settings.setScreenData(screenType, listsAddFirstSecond, values, dimensions)
     }
     //endregion

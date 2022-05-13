@@ -120,7 +120,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/pharmacy_horizontal_border" >
+            app:layout_constraintTop_toTopOf="@id/pharmacy_horizontal_border">
 
             <TextView
                 android:id="@+id/pharmacy_type_animal_title"
@@ -138,13 +138,13 @@
                 android:id="@+id/pharmacy_type_animal_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:singleLine="false"
                 android:layout_marginStart="@dimen/pharmacy_type_animal_list_margin_start"
                 android:layout_marginEnd="@dimen/pharmacy_type_animal_list_margin_end"
                 android:entries="@array/pharmacy_surface_animal_type_list"
+                android:singleLine="false"
+                android:theme="@style/SpinnerTypes"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/pharmacy_type_animal_title"
-                android:theme="@style/SpinnerTypes" />
+                app:layout_constraintTop_toBottomOf="@id/pharmacy_type_animal_title" />
 
             <TextView
                 android:id="@+id/pharmacy_weight_animal_title"
@@ -164,7 +164,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/pharmacy_weight_relative_layout_margin_end"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/pharmacy_weight_animal_title" >
+                app:layout_constraintTop_toBottomOf="@id/pharmacy_weight_animal_title">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -219,11 +219,11 @@
                 android:id="@+id/pharmacy_calculate_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@string/pharmacy_calculate_button_text"
-                android:layout_marginTop="@dimen/pharmacy_calculate_button_margin_top"
                 android:layout_marginStart="@dimen/pharmacy_calculate_button_margin_start"
+                android:layout_marginTop="@dimen/pharmacy_calculate_button_margin_top"
                 android:layout_marginEnd="@dimen/pharmacy_calculate_button_margin_end"
                 android:gravity="center"
+                android:text="@string/pharmacy_calculate_button_text"
                 android:textSize="@dimen/pharmacy_calculate_button_text_size"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"

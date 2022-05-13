@@ -11,12 +11,12 @@ fun stringToDouble(text: String): Double {
 
 // Получение списка List<ValueField> из списков List<Double> и List<Int>
 fun valueFieldListCreator(values: List<Double>, dimensions: List<Int>): List<ValueField> {
-    if (dimensions.size > values.size){
+    if (dimensions.size > values.size) {
         //TODO: Обработка ошибки
     }
     val resultList: MutableList<ValueField> = mutableListOf()
     values.forEachIndexed { index, value ->
-            resultList.add(ValueField(value, dimensions[index]))
+        resultList.add(ValueField(value, dimensions[index]))
     }
     return resultList
 }

@@ -30,7 +30,7 @@ class MainScreenFragment :
     // Инициализация кнопок
     private fun initNavigationButtons() {
         binding.apply {
-            navigationButtons.also{
+            navigationButtons.also {
                 it[0] = this.pharmacySurfaceButtonContainer
                 it[1] = this.fluidsSurfaceButtonContainer
                 it[2] = this.hematologySurfaceButtonContainer

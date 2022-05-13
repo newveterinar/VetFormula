@@ -7,7 +7,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.vetformula.di.utils
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
-class appVetCalc: Application() {
+class appVetCalc : Application() {
     /** Задание переменных */ //region
     //endregion
 

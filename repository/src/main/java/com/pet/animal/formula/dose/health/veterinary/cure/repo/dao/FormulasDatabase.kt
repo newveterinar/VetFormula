@@ -8,11 +8,11 @@ import androidx.room.TypeConverters
 import com.pet.animal.formula.dose.health.veterinary.cure.repo.FormulaEntity
 import com.pet.animal.formula.dose.health.veterinary.cure.repo.UrlEntity
 
-@Database (entities = [FormulaEntity::class, UrlEntity::class], version = 1)
+@Database(entities = [FormulaEntity::class, UrlEntity::class], version = 1)
 @TypeConverters(ClassTypeConverter::class)
-abstract class FormulasDatabase: RoomDatabase() {
+abstract class FormulasDatabase : RoomDatabase() {
 
-    abstract fun vetFormulaDao():VetFormulaDao
+    abstract fun vetFormulaDao(): VetFormulaDao
 
     companion object {
         private var instance: FormulasDatabase? = null

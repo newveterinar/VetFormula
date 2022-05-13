@@ -2,9 +2,7 @@ package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.cal
 
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
 import android.widget.Toast
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.ViewModelProvider
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentCalculatorBinding
@@ -14,6 +12,7 @@ class CalculatorFragment :
     /** Задание переменных */ //region
     // Навигация
     private val navigationButtons = arrayOfNulls<View>(size = 3)
+
     // ViewModel
     private lateinit var model: CalculatorFragmentViewModel
     //endregion
@@ -40,10 +39,12 @@ class CalculatorFragment :
             button?.setOnClickListener {
                 when (index) {
                     0 -> model.router.exit()
-                    1 -> Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT).show()
+                    1 -> Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT)
+                        .show()
                     2 -> model.router.navigateTo(model.screens.aboutScreen())
-                    else ->{
-                        Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT).show()
+                    else -> {
+                        Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT)
+                            .show()
                     }
                 }
             }
