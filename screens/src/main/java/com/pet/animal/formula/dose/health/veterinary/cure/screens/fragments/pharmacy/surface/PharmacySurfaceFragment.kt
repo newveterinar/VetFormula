@@ -23,12 +23,10 @@ class PharmacySurfaceFragment :
     // Установка типа формулы для текущего окна
     private val screenType: ScreenType = ScreenType.PHARMACY_SURFACE
 
-    private lateinit var buttonToPharmacySurfaceScreen: ConstraintLayout
-    private lateinit var buttonToPharmacySurfaceResultScreen: Button
-    private lateinit var buttonToAboutScreen: ImageView
+    private val navigationButtons = arrayOfNulls<View>(size = 3)
 
     // Обнуление значений во всех полях
-    private lateinit var pharmacy_clear_button_container: ConstraintLayout
+    private lateinit var pharmacyClearButtonContainer: ConstraintLayout
 
     // ViewModel
     private lateinit var model: PharmacySurfaceFragmentViewModel
@@ -75,23 +73,25 @@ class PharmacySurfaceFragment :
         // Инициализация списков
         initLists()
         // Инициализация кнопок
-        initButtons()
+        initNavigationButtons()
         // Настройка клавиатуры ввода для числовых полей
         initKeyboard()
         // Инициализация ViewModel
         initViewModel()
         // Настройка события обработки списков (должно быть в конце всех инициализаций)
         setActionsFieldsAndLists()
+
+        initButtons()
     }
 
     // Инициализация текстовых полей
-    fun initTextFields() {
+    private fun initTextFields() {
         // Сюда по порядку задаются числовые поля
         valuesFields.add(binding.pharmacyWeightTextinputlayoutTextfield)
     }
 
     // Инициализация списков
-    fun initLists() {
+    private fun initLists() {
         // Сюда нужно по порядку добавлять все существующие списки,
         // которые относятся к свойствам addFirst и addSecond,
         // т.е. в них нет дополняющей информации о размерности для поля ввода числа
@@ -101,9 +101,32 @@ class PharmacySurfaceFragment :
     }
 
     // Инициализация кнопок
-    fun initButtons() {
-        pharmacy_clear_button_container = binding.pharmacyClearButtonContainer
-        pharmacy_clear_button_container.setOnClickListener {
+    private fun initNavigationButtons() {
+        binding.apply {
+            navigationButtons.also {
+                it[0] = this.pharmacyPreviousButtonContainer
+                it[1] = this.pharmacyCalculateButton
+                it[2] = this.pharmacyAboutButton
+            }
+        }
+        navigationButtons.forEachIndexed { index, button ->
+            button?.setOnClickListener {
+                when (index) {
+                    0 -> model.router.exit()
+                    1 -> model.router.navigateTo(model.screens.pharmacySurfaceResultScreen())
+                    2 -> model.router.navigateTo(model.screens.aboutScreen())
+                    else -> {
+                        Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                }
+            }
+        }
+    }
+
+    private fun initButtons(){
+        pharmacyClearButtonContainer = binding.pharmacyClearButtonContainer
+        pharmacyClearButtonContainer.setOnClickListener {
             listsAddFirstSecond.forEach {
                 it.setSelection(0)
             }
@@ -114,38 +137,17 @@ class PharmacySurfaceFragment :
                 it.setSelection(0)
             }
             // Сохранение текущего состояния всех числовых полей и списков
-            model.saveData(screenType,
-                listsAddFirstSecond.convertListSpinnerToListInt(),
-                valuesFields.convertListEditTextToListDouble(),
-                listsDimensions.convertListSpinnerToListInt())
-        }
-        buttonToPharmacySurfaceScreen = binding.pharmacyPreviousButtonContainer
-        buttonToPharmacySurfaceScreen.setOnClickListener {
-            // Сохранение текущего состояния всех числовых полей и списков
-            model.saveData(screenType,
-                listsAddFirstSecond.convertListSpinnerToListInt(),
-                valuesFields.convertListEditTextToListDouble(),
-                listsDimensions.convertListSpinnerToListInt())
-            // Переход на предыдущее окно
-            model.router.exit()
-        }
-        buttonToPharmacySurfaceResultScreen = binding.pharmacyCalculateButton
-        buttonToPharmacySurfaceResultScreen.setOnClickListener {
-            model.router.navigateTo(model.screens.pharmacySurfaceResultScreen())
-        }
-        buttonToAboutScreen = binding.pharmacyAboutButton
-        buttonToAboutScreen.setOnClickListener {
-            model.router.navigateTo(model.screens.aboutScreen())
+            saveData()
         }
     }
 
     // Настройка клавиатуры ввода для числовых полей
-    fun initKeyboard() {
+    private fun initKeyboard() {
         firstNumeralField = binding.pharmacyWeightTextinputlayoutTextfield
     }
 
     // Инициализация ViewModel
-    fun initViewModel() {
+    private fun initViewModel() {
         val viewModel: PharmacySurfaceFragmentViewModel by showPharmacySurfaceFragmentScope.inject()
         model = viewModel
         model.subscribe().observe(viewLifecycleOwner) {
@@ -198,11 +200,7 @@ class PharmacySurfaceFragment :
                     parent: AdapterView<*>?, view: View?,
                     position: Int, id: Long,
                 ) {
-                    // Сохранение текущего состояния всех числовых полей и списков
-                    model.saveData(screenType,
-                        listsAddFirstSecond.convertListSpinnerToListInt(),
-                        valuesFields.convertListEditTextToListDouble(),
-                        listsDimensions.convertListSpinnerToListInt())
+                    saveData()
                     Toast.makeText(this@PharmacySurfaceFragment.requireContext(),
                         "seleted",
                         Toast.LENGTH_SHORT).show()
@@ -212,5 +210,12 @@ class PharmacySurfaceFragment :
                 }
             }
         }
+    }
+    // Сохранение текущего состояния всех числовых полей и списков
+    fun saveData(){
+        model.saveData(screenType,
+            listsAddFirstSecond.convertListSpinnerToListInt(),
+            valuesFields.convertListEditTextToListDouble(),
+            listsDimensions.convertListSpinnerToListInt())
     }
 }
