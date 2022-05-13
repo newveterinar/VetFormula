@@ -2,56 +2,58 @@ package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.hem
 
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.lifecycle.ViewModel
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import com.github.terrakok.cicerone.Router
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentHematologyBinding
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator.AppScreensImpl
-import org.koin.java.KoinJavaComponent
 
 class HematologyFragment :
     BaseFragment<FragmentHematologyBinding>(FragmentHematologyBinding::inflate) {
 
     /** Задание переменных */ //region
     // Навигация
-    lateinit var buttonToHematologyScreen: ConstraintLayout
-    lateinit var buttonToHematologySurfaceScreen: ConstraintLayout
-    lateinit var buttonToAboutScreen: ImageView
-
+    private val navigationButtons = arrayOfNulls<View>(size = 3)
     // ViewModel
-    lateinit var model: HematologyFragmentViewModel
+    private lateinit var model: HematologyFragmentViewModel
     //endregion
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         // Инициализация кнопок
-        initButtons()
+        initNavigationButtons()
         // Инициализация ViewModel
         initViewModel()
     }
 
     // Инициализация кнопок
-    fun initButtons() {
-        buttonToHematologyScreen = binding.hematologyPreviousButtonContainer
-        buttonToHematologyScreen.setOnClickListener {
-            model.router.exit()
+    private fun initNavigationButtons() {
+        binding.apply {
+            navigationButtons.also {
+                it[0] = this.hematologyPreviousButtonContainer
+                it[1] = this.hematologySurfaceButtonContainer
+                it[2] = this.hematologyAboutButton
+            }
         }
-        buttonToHematologySurfaceScreen = binding.hematologySurfaceButtonContainer
-        buttonToHematologySurfaceScreen.setOnClickListener {
-//            model.router.navigateTo(model.screens.fluidsSurfaceScreen())
-        }
-        buttonToAboutScreen = binding.hematologyAboutButton
-        buttonToAboutScreen.setOnClickListener {
-            model.router.navigateTo(model.screens.aboutScreen())
+
+        navigationButtons.forEachIndexed { index, button ->
+            button?.setOnClickListener {
+                when (index) {
+                    0 -> model.router.exit()
+                    1 -> Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT)
+                        .show()
+                    2 -> model.router.navigateTo(model.screens.aboutScreen())
+                    else -> {
+                        Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                }
+            }
         }
     }
 
     // Инициализация ViewModel
-    fun initViewModel() {
+    private fun initViewModel() {
         model = ViewModelProvider(this).get(HematologyFragmentViewModel::class.java)
     }
 

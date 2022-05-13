@@ -2,48 +2,42 @@ package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.con
 
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
 import android.widget.Toast
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.github.terrakok.cicerone.Router
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentConversionsBinding
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator.AppScreensImpl
-import org.koin.java.KoinJavaComponent
 
 class ConversionsFragment :
     BaseFragment<FragmentConversionsBinding>(FragmentConversionsBinding::inflate) {
 
     /** Задание переменных */ //region
     // Навигация
-    private val navigationButtons = mutableListOf<View>()
+    private val navigationButtons = arrayOfNulls<View>(size = 3)
     // ViewModel
-    lateinit var model: ConversionsFragmentViewModel
+    private lateinit var model: ConversionsFragmentViewModel
     //endregion
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         // Инициализация кнопок
-        initButtons()
+        initNavigationButtons()
         // Инициализация ViewModel
         initViewModel()
     }
 
     // Инициализация кнопок
-    fun initButtons() {
+    private fun initNavigationButtons() {
         binding.apply {
-            navigationButtons.addAll(listOf(
-                this.conversionsPreviousButtonContainer,
-                this.conversionsSurfaceButtonContainer,
-                this.conversionsAboutButton,
-            ))
+            navigationButtons.also{
+                it[0] = this.conversionsPreviousButtonContainer
+                it[1] = this.conversionsSurfaceButtonContainer
+                it[2] = this.conversionsAboutButton
+            }
         }
 
         navigationButtons.forEachIndexed { index, button ->
-            button.setOnClickListener {
+            button?.setOnClickListener {
                 when (index) {
                     0 -> model.router.exit()
                     1 -> Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT).show()
@@ -57,7 +51,7 @@ class ConversionsFragment :
     }
 
     // Инициализация ViewModel
-    fun initViewModel() {
+    private fun initViewModel() {
         model = ViewModelProvider(this).get(ConversionsFragmentViewModel::class.java)
     }
 

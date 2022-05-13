@@ -14,10 +14,10 @@ import org.koin.java.KoinJavaComponent
 class AboutFragment : BaseFragment<FragmentAboutBinding>(FragmentAboutBinding::inflate) {
     /** Задание переменных */ //region
     // Навигация
-    lateinit var buttonToBackScreen: ImageView
+    private lateinit var buttonToBackScreen: ImageView
 
     // ViewModel
-    lateinit var model: AboutFragmentViewModel
+    private lateinit var model: AboutFragmentViewModel
     //endregion
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -29,7 +29,7 @@ class AboutFragment : BaseFragment<FragmentAboutBinding>(FragmentAboutBinding::i
     }
 
     // Инициализация кнопок
-    fun initButtons() {
+    private fun initButtons() {
         buttonToBackScreen = binding.aboutAboutButton
         buttonToBackScreen.setOnClickListener {
             model.router.exit()
@@ -37,7 +37,7 @@ class AboutFragment : BaseFragment<FragmentAboutBinding>(FragmentAboutBinding::i
     }
 
     // Инициализация ViewModel
-    fun initViewModel() {
+    private fun initViewModel() {
         model = ViewModelProvider(this).get(AboutFragmentViewModel::class.java)
     }
     
