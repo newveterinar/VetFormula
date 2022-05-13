@@ -33,10 +33,6 @@ class PharmacySurfaceFragment :
 
     // ShowPharmacySurfaceFragmentScope
     private lateinit var showPharmacySurfaceFragmentScope: Scope
-
-    // Задание интерфеса для ввода числовых значений (только числа, десятичная точка)
-    private lateinit var firstNumeralField: EditText
-
     // Списки (Spinner)
     private val listsAddFirstSecond: MutableList<Spinner> = mutableListOf()
     private val listsDimensions: MutableList<Spinner> = mutableListOf()
@@ -74,8 +70,6 @@ class PharmacySurfaceFragment :
         initLists()
         // Инициализация кнопок
         initNavigationButtons()
-        // Настройка клавиатуры ввода для числовых полей
-        initKeyboard()
         // Инициализация ViewModel
         initViewModel()
         // Настройка события обработки списков (должно быть в конце всех инициализаций)
@@ -137,13 +131,8 @@ class PharmacySurfaceFragment :
                 it.setSelection(0)
             }
             // Сохранение текущего состояния всех числовых полей и списков
-            saveData()
+            saveDataToViewModel()
         }
-    }
-
-    // Настройка клавиатуры ввода для числовых полей
-    private fun initKeyboard() {
-        firstNumeralField = binding.pharmacyWeightTextinputlayoutTextfield
     }
 
     // Инициализация ViewModel
@@ -200,7 +189,7 @@ class PharmacySurfaceFragment :
                     parent: AdapterView<*>?, view: View?,
                     position: Int, id: Long,
                 ) {
-                    saveData()
+                    saveDataToViewModel()
                     Toast.makeText(this@PharmacySurfaceFragment.requireContext(),
                         "seleted",
                         Toast.LENGTH_SHORT).show()
@@ -212,7 +201,7 @@ class PharmacySurfaceFragment :
         }
     }
     // Сохранение текущего состояния всех числовых полей и списков
-    fun saveData(){
+    private fun saveDataToViewModel(){
         model.saveData(screenType,
             listsAddFirstSecond.convertListSpinnerToListInt(),
             valuesFields.convertListEditTextToListDouble(),
