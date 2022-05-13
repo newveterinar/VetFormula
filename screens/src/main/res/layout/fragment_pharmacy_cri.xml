@@ -91,7 +91,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/pharmacy_surface_previous_text_margin_start"
                 android:paddingStart="@dimen/pharmacy_surface_previous_text_padding_start"
-                android:text="@string/pharmacy_surface_previous_text_text"
+                android:text="@string/pharmacy_cri_previous_text_text"
                 android:textSize="@dimen/pharmacy_surface_previous_text_text_size"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
