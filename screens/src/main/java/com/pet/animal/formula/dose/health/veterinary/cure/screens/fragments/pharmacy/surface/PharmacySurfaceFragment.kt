@@ -120,7 +120,7 @@ class PharmacySurfaceFragment:
                 valuesFields.convertListEditTextToListDouble(),
                 listsDimensions.convertListSpinnerToListInt())
             // Переход на предыдущее окно
-            requireActivity().onBackPressed()
+            model.router.exit()
         }
         buttonToPharmacySurfaceResultScreen = binding.pharmacyCalculateButton
         buttonToPharmacySurfaceResultScreen.setOnClickListener {

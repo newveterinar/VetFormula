@@ -35,7 +35,7 @@ class PharmacySurfaceResultFragment :
     fun initButtons() {
         buttonToPharmacySurfaceScreen = binding.pharmacyPreviousButtonContainer
         buttonToPharmacySurfaceScreen.setOnClickListener {
-            requireActivity().onBackPressed()
+            model.router.exit()
         }
         buttonToAboutScreen = binding.pharmacyAboutButton
         buttonToAboutScreen.setOnClickListener {

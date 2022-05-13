@@ -37,7 +37,7 @@ class PharmacyDosesFragment :
     fun initButtons() {
         buttonToPharmacyScreen = binding.pharmacyPreviousButtonContainer
         buttonToPharmacyScreen.setOnClickListener {
-            requireActivity().onBackPressed()
+            model.router.exit()
         }
         buttonToAboutScreen = binding.pharmacyAboutButton
         buttonToAboutScreen.setOnClickListener {

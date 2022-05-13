@@ -37,7 +37,7 @@ class SettingsFragment: BaseFragment<FragmentSettingsBinding>(FragmentSettingsBi
     fun initButtons() {
         buttonToSettingsScreen = binding.settingsPreviousButtonContainer
         buttonToSettingsScreen.setOnClickListener {
-            requireActivity().onBackPressed()
+            model.router.exit()
         }
         buttonToSettingsSurfaceScreen = binding.settingsSurfaceButtonContainer
         buttonToSettingsSurfaceScreen.setOnClickListener {

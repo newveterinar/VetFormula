@@ -3,6 +3,7 @@ package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.mai
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -17,13 +18,7 @@ class MainScreenFragment :
     /** Задание переменных */ //region
 
     // Навигация
-    lateinit var buttonToPharmacySurfaceScreen: ConstraintLayout
-    lateinit var buttonToFluidsSurfaceScreen: ConstraintLayout
-    lateinit var buttonToHematologySurfaceScreen: ConstraintLayout
-    lateinit var buttonToConversionsSurfaceScreen: ConstraintLayout
-    lateinit var buttonToSettingsSurfaceScreen: ConstraintLayout
-    lateinit var buttonToCalculatorSurfaceScreen: ConstraintLayout
-    lateinit var buttonToAboutScreen: ImageView
+    private val navigationButtons = mutableListOf<View>()
 
     // ViewModel
     lateinit var model: MainScreenFragmentViewModel
@@ -40,33 +35,33 @@ class MainScreenFragment :
 
     // Инициализация кнопок
     fun initButtons() {
-        buttonToPharmacySurfaceScreen = binding.pharmacySurfaceButtonContainer
-        buttonToPharmacySurfaceScreen.setOnClickListener {
-            model.router.navigateTo(model.screens.pharmacyScreen())
+        binding.apply {
+            navigationButtons.addAll(listOf(
+                this.pharmacySurfaceButtonContainer,
+                this.fluidsSurfaceButtonContainer,
+                this.hematologySurfaceButtonContainer,
+                this.conversionsSurfaceButtonContainer,
+                this.settingsSurfaceButtonContainer,
+                this.calculatorSurfaceButtonContainer,
+                this.pharmacyAboutButton,
+            ))
         }
-        buttonToFluidsSurfaceScreen = binding.fluidsSurfaceButtonContainer
-        buttonToFluidsSurfaceScreen.setOnClickListener {
-            model.router.navigateTo(model.screens.fluidsScreen())
-        }
-        buttonToHematologySurfaceScreen = binding.hematologySurfaceButtonContainer
-        buttonToHematologySurfaceScreen.setOnClickListener {
-            model.router.navigateTo(model.screens.hematologyScreen())
-        }
-        buttonToConversionsSurfaceScreen = binding.conversionsSurfaceButtonContainer
-        buttonToConversionsSurfaceScreen.setOnClickListener {
-            model.router.navigateTo(model.screens.conversionsScreen())
-        }
-        buttonToSettingsSurfaceScreen = binding.settingsSurfaceButtonContainer
-        buttonToSettingsSurfaceScreen.setOnClickListener {
-            model.router.navigateTo(model.screens.settingsScreen())
-        }
-        buttonToCalculatorSurfaceScreen = binding.calculatorSurfaceButtonContainer
-        buttonToCalculatorSurfaceScreen.setOnClickListener {
-            model.router.navigateTo(model.screens.calculatorScreen())
-        }
-        buttonToAboutScreen = binding.pharmacyAboutButton
-        buttonToAboutScreen.setOnClickListener {
-            model.router.navigateTo(model.screens.aboutScreen())
+
+        navigationButtons.forEachIndexed { index, button ->
+            button.setOnClickListener {
+                when (index) {
+                    0 -> model.router.navigateTo(model.screens.pharmacyScreen())
+                    1 -> model.router.navigateTo(model.screens.fluidsScreen())
+                    2 -> model.router.navigateTo(model.screens.hematologyScreen())
+                    3 -> model.router.navigateTo(model.screens.conversionsScreen())
+                    4 -> model.router.navigateTo(model.screens.settingsScreen())
+                    5 -> model.router.navigateTo(model.screens.calculatorScreen())
+                    6 -> model.router.navigateTo(model.screens.aboutScreen())
+                    else ->{
+                        Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
         }
     }
 

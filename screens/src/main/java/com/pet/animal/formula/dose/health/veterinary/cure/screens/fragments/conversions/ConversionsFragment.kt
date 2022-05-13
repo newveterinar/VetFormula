@@ -3,6 +3,7 @@ package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.con
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -17,10 +18,7 @@ class ConversionsFragment :
 
     /** Задание переменных */ //region
     // Навигация
-    lateinit var buttonToConversionsScreen: ConstraintLayout
-    lateinit var buttonToConversionsSurfaceScreen: ConstraintLayout
-    lateinit var buttonToAboutScreen: ImageView
-
+    private val navigationButtons = mutableListOf<View>()
     // ViewModel
     lateinit var model: ConversionsFragmentViewModel
     //endregion
@@ -36,17 +34,25 @@ class ConversionsFragment :
 
     // Инициализация кнопок
     fun initButtons() {
-        buttonToConversionsScreen = binding.conversionsPreviousButtonContainer
-        buttonToConversionsScreen.setOnClickListener {
-            requireActivity().onBackPressed()
+        binding.apply {
+            navigationButtons.addAll(listOf(
+                this.conversionsPreviousButtonContainer,
+                this.conversionsSurfaceButtonContainer,
+                this.conversionsAboutButton,
+            ))
         }
-        buttonToConversionsSurfaceScreen = binding.conversionsSurfaceButtonContainer
-        buttonToConversionsSurfaceScreen.setOnClickListener {
-//            model.router.navigateTo(model.screens.fluidsSurfaceScreen())
-        }
-        buttonToAboutScreen = binding.conversionsAboutButton
-        buttonToAboutScreen.setOnClickListener {
-            model.router.navigateTo(model.screens.aboutScreen())
+
+        navigationButtons.forEachIndexed { index, button ->
+            button.setOnClickListener {
+                when (index) {
+                    0 -> model.router.exit()
+                    1 -> Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT).show()
+                    2 -> model.router.navigateTo(model.screens.aboutScreen())
+                    else ->{
+                        Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
         }
     }
 

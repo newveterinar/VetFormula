@@ -38,7 +38,7 @@ class HematologyFragment :
     fun initButtons() {
         buttonToHematologyScreen = binding.hematologyPreviousButtonContainer
         buttonToHematologyScreen.setOnClickListener {
-            requireActivity().onBackPressed()
+            model.router.exit()
         }
         buttonToHematologySurfaceScreen = binding.hematologySurfaceButtonContainer
         buttonToHematologySurfaceScreen.setOnClickListener {

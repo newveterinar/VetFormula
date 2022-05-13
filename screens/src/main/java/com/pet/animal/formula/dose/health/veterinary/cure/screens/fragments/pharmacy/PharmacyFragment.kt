@@ -2,8 +2,7 @@ package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pha
 
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
-import androidx.constraintlayout.widget.ConstraintLayout
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentPharmacyBinding
@@ -11,67 +10,46 @@ import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.Fr
 class PharmacyFragment : BaseFragment<FragmentPharmacyBinding>(FragmentPharmacyBinding::inflate) {
     /** Задание переменных */ //region
     // Навигация
-//    lateinit var buttonToPharmacyScreen: ConstraintLayout
-//    lateinit var buttonToPharmacySurfaceScreen: ConstraintLayout
-//    lateinit var buttonPharmacyDoseScreen: ConstraintLayout
-//    lateinit var buttonPharmacyCRIScreen: ConstraintLayout
-//    lateinit var buttonToAboutScreen: ImageView
-    private val buttons = mutableListOf<View>()
-
+    private val navigationButtons = mutableListOf<View>()
     // ViewModel
     lateinit var model: PharmacyFragmentViewModel
     //endregion
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+// Инициализация ViewModel
+        initViewModel()
         // Инициализация кнопок
         initButtons()
-        // Инициализация ViewModel
-        initViewModel()
+
     }
 
     // Инициализация кнопок
     fun initButtons() {
         binding.apply {
-            buttons.add(this.pharmacyPreviousButtonContainer)
-            buttons.add(this.pharmacySurfaceButtonContainer)
-            buttons.add(this.pharmacyDoseButtonContainer)
-            buttons.add(this.pharmacyCriButtonContainer)
-            buttons.add(this.pharmacyAboutButton)
+            navigationButtons.addAll(listOf(
+                this.pharmacyPreviousButtonContainer,
+                this.pharmacySurfaceButtonContainer,
+                this.pharmacyDoseButtonContainer,
+                this.pharmacyCriButtonContainer,
+                this.pharmacyAboutButton
+            ))
         }
-        buttons.forEachIndexed { index, button ->
+
+        navigationButtons.forEachIndexed { index, button ->
             button.setOnClickListener {
-                when (index){
-                    0 -> requireActivity().onBackPressed()
+                when (index) {
+                    0 -> model.router.exit()
                     1 -> model.router.navigateTo(model.screens.pharmacySurfaceScreen())
                     2 -> model.router.navigateTo(model.screens.doseScreen())
                     3 -> model.router.navigateTo(model.screens.criScreen())
                     4 -> model.router.navigateTo(model.screens.aboutScreen())
-                    else -> {}
+                    else ->{
+                        Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
         }
-//        buttonToPharmacyScreen = binding.pharmacyPreviousButtonContainer
-//        buttonToPharmacyScreen.setOnClickListener {
-//            requireActivity().onBackPressed()
-//        }
-//        buttonToPharmacySurfaceScreen = binding.pharmacySurfaceButtonContainer
-//        buttonToPharmacySurfaceScreen.setOnClickListener {
-//            model.router.navigateTo(model.screens.pharmacySurfaceScreen())
-//        }
-//        buttonPharmacyDoseScreen = binding.pharmacyDoseButtonContainer
-//        buttonPharmacyDoseScreen.setOnClickListener {
-//            model.router.navigateTo(model.screens.doseScreen())
-//        }
-//        buttonPharmacyCRIScreen = binding.pharmacyCriButtonContainer
-//        buttonPharmacyCRIScreen.setOnClickListener {
-//            model.router.navigateTo(model.screens.criScreen())
-//        }
-//        buttonToAboutScreen = binding.pharmacyAboutButton
-//        buttonToAboutScreen.setOnClickListener {
-//            model.router.navigateTo(model.screens.aboutScreen())
-//        }
     }
 
     // Инициализация ViewModel

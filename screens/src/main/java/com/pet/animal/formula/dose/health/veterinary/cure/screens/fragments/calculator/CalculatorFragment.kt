@@ -38,7 +38,7 @@ class CalculatorFragment :
     fun initButtons() {
         buttonToCalculatorScreen = binding.calculatorPreviousButtonContainer
         buttonToCalculatorScreen.setOnClickListener {
-            requireActivity().onBackPressed()
+            model.router.exit()
         }
         buttonToCalculatorSurfaceScreen = binding.calculatorSurfaceButtonContainer
         buttonToCalculatorSurfaceScreen.setOnClickListener {

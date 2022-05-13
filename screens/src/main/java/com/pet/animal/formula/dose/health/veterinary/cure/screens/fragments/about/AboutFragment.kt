@@ -32,7 +32,7 @@ class AboutFragment : BaseFragment<FragmentAboutBinding>(FragmentAboutBinding::i
     fun initButtons() {
         buttonToBackScreen = binding.aboutAboutButton
         buttonToBackScreen.setOnClickListener {
-            requireActivity().onBackPressed()
+            model.router.exit()
         }
     }
 

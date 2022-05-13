@@ -2,23 +2,15 @@ package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.flu
 
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.lifecycle.ViewModel
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import com.github.terrakok.cicerone.Router
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentFluidsBinding
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator.AppScreensImpl
-import org.koin.java.KoinJavaComponent
 
-class FluidsFragment: BaseFragment<FragmentFluidsBinding>(FragmentFluidsBinding::inflate) {
+class FluidsFragment : BaseFragment<FragmentFluidsBinding>(FragmentFluidsBinding::inflate) {
     /** Задание переменных */ //region
     // Навигация
-    lateinit var buttonToFluidsScreen: ConstraintLayout
-    lateinit var buttonToFluidsSurfaceScreen: ConstraintLayout
-    lateinit var buttonToAboutScreen: ImageView
-
+    private val navigationButtons = mutableListOf<View>()
     // ViewModel
     lateinit var model: FluidsFragmentViewModel
     //endregion
@@ -34,17 +26,27 @@ class FluidsFragment: BaseFragment<FragmentFluidsBinding>(FragmentFluidsBinding:
 
     // Инициализация кнопок
     fun initButtons() {
-        buttonToFluidsScreen = binding.fluidsPreviousButtonContainer
-        buttonToFluidsScreen.setOnClickListener {
-            requireActivity().onBackPressed()
+        binding.apply {
+            navigationButtons.addAll(listOf(
+                this.fluidsPreviousButtonContainer,
+                this.fluidsSurfaceButtonContainer,
+                this.fluidsAboutButton,
+            ))
         }
-        buttonToFluidsSurfaceScreen = binding.fluidsSurfaceButtonContainer
-//        buttonToFluidsSurfaceScreen.setOnClickListener {
-//            model.router.navigateTo(model.screens.fluidsSurfaceScreen())
-//        }
-        buttonToAboutScreen = binding.fluidsAboutButton
-        buttonToAboutScreen.setOnClickListener {
-            model.router.navigateTo(model.screens.aboutScreen())
+
+        navigationButtons.forEachIndexed { index, button ->
+            button.setOnClickListener {
+                when (index) {
+                    0 -> model.router.exit()
+                    1 -> Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT)
+                        .show()
+                    2 -> model.router.navigateTo(model.screens.aboutScreen())
+                    else -> {
+                        Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                }
+            }
         }
     }
 
