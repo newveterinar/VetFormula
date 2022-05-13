@@ -1,4 +1,4 @@
-package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy
+package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.cri
 
 import android.os.Bundle
 import android.view.View
@@ -8,19 +8,18 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.github.terrakok.cicerone.Router
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentPharmacyBinding
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentPharmacyCriBinding
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator.AppScreensImpl
 import org.koin.java.KoinJavaComponent
 
-class PharmacyFragment : BaseFragment<FragmentPharmacyBinding>(FragmentPharmacyBinding::inflate) {
+class PharmacyCRIFragment :
+    BaseFragment<FragmentPharmacyCriBinding>(FragmentPharmacyCriBinding::inflate) {
+
     /** Задание переменных */ //region
     // Навигация
     private val screens: AppScreensImpl = KoinJavaComponent.getKoin().get()
     private val router: Router = KoinJavaComponent.getKoin().get()
     lateinit var buttonToPharmacyScreen: ConstraintLayout
-    lateinit var buttonToPharmacySurfaceScreen: ConstraintLayout
-    lateinit var buttonPharmacyDoseScreen: ConstraintLayout
-    lateinit var buttonPharmacyCRIScreen: ConstraintLayout
     lateinit var buttonToAboutScreen: ImageView
 
     // ViewModel
@@ -42,18 +41,6 @@ class PharmacyFragment : BaseFragment<FragmentPharmacyBinding>(FragmentPharmacyB
         buttonToPharmacyScreen.setOnClickListener {
             requireActivity().onBackPressed()
         }
-        buttonToPharmacySurfaceScreen = binding.pharmacySurfaceButtonContainer
-        buttonToPharmacySurfaceScreen.setOnClickListener {
-            router.navigateTo(screens.pharmacySurfaceScreen())
-        }
-        buttonPharmacyDoseScreen = binding.pharmacyDoseButtonContainer
-        buttonPharmacyDoseScreen.setOnClickListener {
-            router.navigateTo(screens.doseScreen())
-        }
-        buttonPharmacyCRIScreen = binding.pharmacyCriButtonContainer
-        buttonPharmacyCRIScreen.setOnClickListener {
-            router.navigateTo(screens.criScreen())
-        }
         buttonToAboutScreen = binding.pharmacyAboutButton
         buttonToAboutScreen.setOnClickListener {
             router.navigateTo(screens.aboutScreen())
@@ -62,10 +49,10 @@ class PharmacyFragment : BaseFragment<FragmentPharmacyBinding>(FragmentPharmacyB
 
     // Инициализация ViewModel
     fun initViewModel() {
-        model = ViewModelProvider(this).get(PharmacyFragmentViewModel::class.java)
+        model = ViewModelProvider(this).get(PharmacyCRIFragmentViewModel::class.java)
     }
 
     companion object {
-        fun newInstance(): PharmacyFragment = PharmacyFragment()
+        fun newInstance(): PharmacyCRIFragment = PharmacyCRIFragment()
     }
 }

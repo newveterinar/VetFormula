@@ -13,5 +13,7 @@ interface AppScreens {
     fun conversionsScreen(): FragmentScreen
     fun settingsScreen(): FragmentScreen
     fun calculatorScreen(): FragmentScreen
+    fun doseScreen(): FragmentScreen
+    fun criScreen(): FragmentScreen
 
 }
