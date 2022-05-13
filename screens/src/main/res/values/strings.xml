@@ -39,6 +39,10 @@
     <string name="pharmacy_dose_textinputlayout_textfield_hint">Объём препарата</string>
     <string name="pharmacy_concentration_animal_title_text">Концентрация препарата</string>
     <string name="pharmacy_concentration_textinputlayout_textfield_hint">Значение концентрации</string>
+    <string name="pharmacy_fluids_textinputlayout_textfield_hint">Объём</string>
+    <string name="pharmacy_fluids_animal_title_text">Объём жидкости</string>
+    <string name="pharmacy_drop_textinputlayout_textfield_hint">Нет капельной системы</string>
+    <string name="pharmacy_drop_animal_title_text">Капельная система</string>
 
     <string-array name="pharmacy_surface_animal_type_list">
         <item>Собака</item>
@@ -64,5 +68,13 @@
 
     <string-array name="pharmacy_concentration_animal_dimension_list">
         <item>мкгр/мл</item>
+    </string-array>
+
+    <string-array name="pharmacy_fluids_animal_dimension_list">
+        <item>мл</item>
+    </string-array>
+
+    <string-array name="pharmacy_drop_animal_dimension_list">
+        <item></item>
     </string-array>
 </resources>

@@ -159,7 +159,17 @@
     <dimen name="pharmacy_concentration_animal_title_text_size">20sp</dimen>
     <dimen name="pharmacy_concentration_relative_layout_margin_end">40dp</dimen>
     <dimen name="pharmacy_concentration_textinputlayout_margin_start">40dp</dimen>
-    <dimen name="pharmacy_concentration_textinputlayout_textfield_text_size">20sp</dimen>
+    <dimen name="pharmacy_concentration_textinputlayout_textfield_text_size">18sp</dimen>
     <dimen name="pharmacy_concentration_dimension_layout_width">130dp</dimen>
+    <dimen name="pharmacy_fluids_animal_title_text_size">20sp</dimen>
+    <dimen name="pharmacy_fluids_relative_layout_margin_end">40dp</dimen>
+    <dimen name="pharmacy_fluids_textinputlayout_margin_start">40dp</dimen>
+    <dimen name="pharmacy_fluids_textinputlayout_textfield_text_size">20sp</dimen>
+    <dimen name="pharmacy_fluids_dimension_layout_width">130dp</dimen>
+    <dimen name="pharmacy_drop_animal_title_text_size">20sp</dimen>
+    <dimen name="pharmacy_drop_relative_layout_margin_end">40dp</dimen>
+    <dimen name="pharmacy_drop_textinputlayout_margin_start">40dp</dimen>
+    <dimen name="pharmacy_drop_textinputlayout_textfield_text_size">18sp</dimen>
+    <dimen name="pharmacy_drop_dimension_layout_width">130dp</dimen>
 
 </resources>
