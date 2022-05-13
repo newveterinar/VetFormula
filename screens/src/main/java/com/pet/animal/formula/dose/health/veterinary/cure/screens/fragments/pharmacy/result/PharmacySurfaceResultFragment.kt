@@ -30,8 +30,7 @@ class PharmacySurfaceResultFragment :
         binding.apply {
             navigationButtons.also {
                 it[0] = this.pharmacyPreviousButtonContainer
-                it[1] = this.pharmacyPreviousButtonContainer
-                it[2] = this.pharmacyAboutButton
+                it[1] = this.pharmacyAboutButton
             }
         }
 
