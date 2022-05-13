@@ -36,8 +36,6 @@ class PharmacySurfaceFragment:
     private lateinit var model: PharmacySurfaceFragmentViewModel
     // ShowPharmacySurfaceFragmentScope
     private lateinit var showPharmacySurfaceFragmentScope: Scope
-    // Задание интерфеса для ввода числовых значений (только числа, десятичная точка)
-    private lateinit var firstNumeralField: EditText
     // Списки (Spinner)
     private val listsAddFirstSecond: MutableList<Spinner> = mutableListOf()
     private val listsDimensions: MutableList<Spinner> = mutableListOf()
@@ -73,8 +71,6 @@ class PharmacySurfaceFragment:
         initLists()
         // Инициализация кнопок
         initButtons()
-        // Настройка клавиатуры ввода для числовых полей
-        initKeyboard()
         // Инициализация ViewModel
         initViewModel()
         // Настройка события обработки списков (должно быть в конце всех инициализаций)
@@ -134,10 +130,6 @@ class PharmacySurfaceFragment:
         buttonToAboutScreen.setOnClickListener {
             router.navigateTo(screens.aboutScreen())
         }
-    }
-    // Настройка клавиатуры ввода для числовых полей
-    fun initKeyboard() {
-        firstNumeralField = binding.pharmacyWeightTextinputlayoutTextfield
     }
 
     // Инициализация ViewModel
