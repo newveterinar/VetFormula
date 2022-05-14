@@ -10,8 +10,6 @@ import org.koin.java.KoinJavaComponent
 
 class PharmacySurfaceInteractorImpl: Interactor<AppState> {
     /** Задание переменных */ //region
-    // Доступ к ресурсам
-    private val resourcesProviderImpl: ResourcesProviderImpl = KoinJavaComponent.getKoin().get()
     // Фейковый (временный) репозиторий
     private val fakeRepositoryImpl: FakeRepositoryImpl = KoinJavaComponent.getKoin().get()
     // SettingsImpl

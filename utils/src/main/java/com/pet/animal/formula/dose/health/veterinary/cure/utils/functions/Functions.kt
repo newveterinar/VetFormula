@@ -3,6 +3,7 @@ package com.pet.animal.formula.dose.health.veterinary.cure.utils.functions
 import android.widget.EditText
 import android.widget.Spinner
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.ValueField
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.*
 
 // Перевод строки типа String в число типа Double
 fun stringToDouble(text: String): Double {
@@ -38,3 +39,48 @@ fun MutableList<EditText>.convertListEditTextToListDouble(): List<Double> {
     }
     return resultList
 }
+
+// Перевод списка параметров addFirstSecond в название типизированной формулы TypedFormula
+fun List<Int>.convertAddFirstSecondToTypedFormulaName(screenType: ScreenType): String {
+    var resultTypedFormulaName: String = ""
+    when (screenType) {
+            // Типы формул для раздела FLUIDS
+        ScreenType.FLUIDS_BASIC -> {}
+        ScreenType.FLUIDS_KOMPREHENSIVE -> {}
+        ScreenType.FLUIDS_K_INFUSION -> {}
+            // Типы формул для раздела CONVERSTION
+        ScreenType.CONVERSION_UNITS -> {}
+            // Типы формул для раздела HEMATOLOGY
+        ScreenType.HEMATOLOGY_BLOOD -> {}
+        ScreenType.HEMATOLOGY_FLEBOTOMY -> {}
+            // Типы формул для раздела PHARMACY
+        ScreenType.PHARMACY_DOSES -> {}
+        ScreenType.PHARMACY_CRI -> {}
+        ScreenType.PHARMACY_SURFACE -> {
+            if (this[ADDFIRST_INDEX] == PHARMACY_SURFACE_DOG_INDEX)
+                resultTypedFormulaName = PHARMACY_SURFACE_DOG_BODYSURFACEAREA_NAME
+            if (this[ADDFIRST_INDEX] == PHARMACY_SURFACE_CAT_INDEX)
+                resultTypedFormulaName = PHARMACY_SURFACE_CAT_BODYSURFACEAREA_NAME
+            if (this[ADDFIRST_INDEX] == PHARMACY_SURFACE_RABBIT_INDEX)
+                resultTypedFormulaName = PHARMACY_SURFACE_RABBIT_BODYSURFACEAREA_NAME
+            if (this[ADDFIRST_INDEX] == PHARMACY_SURFACE_POLECAT_INDEX)
+                resultTypedFormulaName = PHARMACY_SURFACE_POLECAT_BODYSURFACEAREA_NAME
+            if (this[ADDFIRST_INDEX] == PHARMACY_SURFACE_GUINEAPIG_INDEX)
+                resultTypedFormulaName = PHARMACY_SURFACE_GUINEAPIG_BODYSURFACEAREA_NAME
+            if (this[ADDFIRST_INDEX] == PHARMACY_SURFACE_HAMSTER_INDEX)
+                resultTypedFormulaName = PHARMACY_SURFACE_HAMSTER_BODYSURFACEAREA_NAME
+            if (this[ADDFIRST_INDEX] == PHARMACY_SURFACE_HORSEEXCEPTLOMUSTIN_INDEX)
+                resultTypedFormulaName = PHARMACY_SURFACE_HORSEEXCEPTLOMUSTIN_BODYSURFACEAREA_NAME
+            if (this[ADDFIRST_INDEX] == PHARMACY_SURFACE_HORSEONLYLOMUSTIN_INDEX)
+                resultTypedFormulaName = PHARMACY_SURFACE_HORSEONLYLOMUSTIN_BODYSURFACEAREA_NAME
+            if (this[ADDFIRST_INDEX] == PHARMACY_SURFACE_RAT_INDEX)
+                resultTypedFormulaName = PHARMACY_SURFACE_RAT_BODYSURFACEAREA_NAME
+            if (this[ADDFIRST_INDEX] == PHARMACY_SURFACE_MOUSE_INDEX)
+                resultTypedFormulaName = PHARMACY_SURFACE_MOUSE_BODYSURFACEAREA_NAME
+        }
+            // Типы формул для раздела CALCULATOR
+        ScreenType.CALCULATOR -> {}
+    }
+    return resultTypedFormulaName
+}
+
