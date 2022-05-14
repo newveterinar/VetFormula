@@ -1,6 +1,6 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy
 
-import androidx.lifecycle.ViewModel
+import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseViewModelForNavigation
 
-class PharmacyFragmentViewModel: ViewModel() {
+class PharmacyFragmentViewModel: BaseViewModelForNavigation() {
 }

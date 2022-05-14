@@ -3,57 +3,55 @@ package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.cal
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.github.terrakok.cicerone.Router
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentCalculatorBinding
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator.AppScreensImpl
-import org.koin.java.KoinJavaComponent
 
 class CalculatorFragment :
     BaseFragment<FragmentCalculatorBinding>(FragmentCalculatorBinding::inflate) {
-
     /** Задание переменных */ //region
     // Навигация
-    private val screens: AppScreensImpl = KoinJavaComponent.getKoin().get()
-    private val router: Router = KoinJavaComponent.getKoin().get()
-    lateinit var buttonToCalculatorScreen: ConstraintLayout
-    lateinit var buttonToCalculatorSurfaceScreen: ConstraintLayout
-    lateinit var buttonToAboutScreen: ImageView
-
+    private val navigationButtons = arrayOfNulls<View>(size = 3)
     // ViewModel
-    lateinit var model: ViewModel
+    private lateinit var model: CalculatorFragmentViewModel
     //endregion
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         // Инициализация кнопок
-        initButtons()
+        initNavigationButton()
         // Инициализация ViewModel
         initViewModel()
     }
 
     // Инициализация кнопок
-    fun initButtons() {
-        buttonToCalculatorScreen = binding.calculatorPreviousButtonContainer
-        buttonToCalculatorScreen.setOnClickListener {
-            requireActivity().onBackPressed()
+    private fun initNavigationButton() {
+        binding.apply {
+            navigationButtons.also {
+                it[0] = this.calculatorPreviousButtonContainer
+                it[1] = this.calculatorSurfaceButtonContainer
+                it[2] = this.calculatorAboutButton
+            }
         }
-        buttonToCalculatorSurfaceScreen = binding.calculatorSurfaceButtonContainer
-        buttonToCalculatorSurfaceScreen.setOnClickListener {
-//            router.navigateTo(screens.fluidsSurfaceScreen())
-       }
-        buttonToAboutScreen = binding.calculatorAboutButton
-        buttonToAboutScreen.setOnClickListener {
-            router.navigateTo(screens.aboutScreen())
+        navigationButtons.forEachIndexed { index, button ->
+            button?.setOnClickListener {
+                when (index) {
+                    0 -> model.router.exit()
+                    1 -> Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT).show()
+                    2 -> model.router.navigateTo(model.screens.aboutScreen())
+                    else ->{
+                        Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
         }
     }
 
     // Инициализация ViewModel
-    fun initViewModel() {
+    private fun initViewModel() {
         model = ViewModelProvider(this).get(CalculatorFragmentViewModel::class.java)
     }
 

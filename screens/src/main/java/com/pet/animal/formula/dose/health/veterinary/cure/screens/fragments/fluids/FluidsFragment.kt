@@ -2,56 +2,57 @@ package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.flu
 
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.lifecycle.ViewModel
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import com.github.terrakok.cicerone.Router
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentFluidsBinding
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator.AppScreensImpl
-import org.koin.java.KoinJavaComponent
 
-class FluidsFragment: BaseFragment<FragmentFluidsBinding>(FragmentFluidsBinding::inflate) {
+class FluidsFragment : BaseFragment<FragmentFluidsBinding>(FragmentFluidsBinding::inflate) {
     /** Задание переменных */ //region
     // Навигация
-    private val screens: AppScreensImpl = KoinJavaComponent.getKoin().get()
-    private val router: Router = KoinJavaComponent.getKoin().get()
-    lateinit var buttonToFluidsScreen: ConstraintLayout
-    lateinit var buttonToFluidsSurfaceScreen: ConstraintLayout
-    lateinit var buttonToAboutScreen: ImageView
+    private val navigationButtons = arrayOfNulls<View>(size = 3)
 
     // ViewModel
-    lateinit var model: ViewModel
+    private lateinit var model: FluidsFragmentViewModel
     //endregion
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         // Инициализация кнопок
-        initButtons()
+        initNavigationButtons()
         // Инициализация ViewModel
         initViewModel()
     }
 
     // Инициализация кнопок
-    fun initButtons() {
-        buttonToFluidsScreen = binding.fluidsPreviousButtonContainer
-        buttonToFluidsScreen.setOnClickListener {
-            requireActivity().onBackPressed()
+    private fun initNavigationButtons() {
+        binding.apply {
+            navigationButtons.also {
+                it[0] = this.fluidsPreviousButtonContainer
+                it[1] = this.fluidsSurfaceButtonContainer
+                it[2] = this.fluidsAboutButton
+            }
         }
-        buttonToFluidsSurfaceScreen = binding.fluidsSurfaceButtonContainer
-//        buttonToFluidsSurfaceScreen.setOnClickListener {
-//            router.navigateTo(screens.fluidsSurfaceScreen())
-//        }
-        buttonToAboutScreen = binding.fluidsAboutButton
-        buttonToAboutScreen.setOnClickListener {
-            router.navigateTo(screens.aboutScreen())
+
+        navigationButtons.forEachIndexed { index, button ->
+            button?.setOnClickListener {
+                when (index) {
+                    0 -> model.router.exit()
+                    1 -> Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT)
+                        .show()
+                    2 -> model.router.navigateTo(model.screens.aboutScreen())
+                    else -> {
+                        Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                }
+            }
         }
     }
 
     // Инициализация ViewModel
-    fun initViewModel() {
+    private fun initViewModel() {
         model = ViewModelProvider(this).get(FluidsFragmentViewModel::class.java)
     }
 
