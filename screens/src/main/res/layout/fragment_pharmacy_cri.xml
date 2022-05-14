@@ -37,6 +37,7 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/pharmacy_clear_button"
+                style="@style/clear_button"
                 android:layout_width="@dimen/pharmacy_about_button_width"
                 android:layout_height="@dimen/pharmacy_about_button_height"
                 android:layout_alignParentEnd="true"
@@ -53,10 +54,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/pharmacy_clear_button_text_margin_bottom"
-                android:text="@string/pharmacy_clear_button_text_text"
-                android:textColor="@color/black"
-                android:textSize="@dimen/pharmacy_clear_button_text_text_size"
-                android:textStyle="bold"
+                style="@style/clear_button"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -87,13 +85,12 @@
 
             <TextView
                 android:id="@+id/pharmacy_surface_previous_text"
+                style="@style/text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/pharmacy_surface_previous_text_margin_start"
                 android:paddingStart="@dimen/pharmacy_surface_previous_text_padding_start"
                 android:text="@string/pharmacy_cri_previous_text_text"
-                android:textSize="@dimen/pharmacy_surface_previous_text_text_size"
-                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -130,8 +127,7 @@
                 android:layout_marginStart="@dimen/pharmacy_type_animal_title_margin_start"
                 android:layout_marginTop="@dimen/pharmacy_type_animal_title_margin_top"
                 android:text="@string/pharmacy_weight_animal_title_text"
-                android:textSize="@dimen/pharmacy_weight_animal_title_text_size"
-                android:textStyle="bold"
+                style="@style/button_style"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -200,8 +196,7 @@
                 android:layout_marginStart="@dimen/pharmacy_type_animal_title_margin_start"
                 android:layout_marginTop="@dimen/pharmacy_type_animal_title_margin_top"
                 android:text="@string/pharmacy_dose_animal_title_text"
-                android:textSize="@dimen/pharmacy_dose_animal_title_text_size"
-                android:textStyle="bold"
+                style="@style/button_style"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/pharmacy_weight_relative_layout" />
 
@@ -269,8 +264,7 @@
                 android:layout_marginStart="@dimen/pharmacy_type_animal_title_margin_start"
                 android:layout_marginTop="@dimen/pharmacy_type_animal_title_margin_top"
                 android:text="@string/pharmacy_concentration_animal_title_text"
-                android:textSize="@dimen/pharmacy_concentration_animal_title_text_size"
-                android:textStyle="bold"
+               style="@style/button_style"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/pharmacy_dose_relative_layout" />
 
@@ -341,8 +335,7 @@
                 android:layout_marginStart="@dimen/pharmacy_type_animal_title_margin_start"
                 android:layout_marginTop="@dimen/pharmacy_type_animal_title_margin_top"
                 android:text="@string/pharmacy_fluids_animal_title_text"
-                android:textSize="@dimen/pharmacy_concentration_animal_title_text_size"
-                android:textStyle="bold"
+                style="@style/button_style"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/pharmacy_concentration_relative_layout" />
 
@@ -413,8 +406,7 @@
                 android:layout_marginStart="@dimen/pharmacy_type_animal_title_margin_start"
                 android:layout_marginTop="@dimen/pharmacy_type_animal_title_margin_top"
                 android:text="@string/pharmacy_speed_animal_title_text"
-                android:textSize="@dimen/pharmacy_speed_animal_title_text_size"
-                android:textStyle="bold"
+                style="@style/button_style"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/pharmacy_fluids_relative_layout" />
 
@@ -485,8 +477,7 @@
                 android:layout_marginStart="@dimen/pharmacy_type_animal_title_margin_start"
                 android:layout_marginTop="@dimen/pharmacy_type_animal_title_margin_top"
                 android:text="@string/pharmacy_drop_animal_title_text"
-                android:textSize="@dimen/pharmacy_concentration_animal_title_text_size"
-                android:textStyle="bold"
+                style="@style/button_style"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/pharmacy_speed_relative_layout" />
 
@@ -533,8 +524,7 @@
                 android:layout_marginEnd="@dimen/pharmacy_calculate_button_margin_end"
                 android:gravity="center"
                 android:text="@string/pharmacy_calculate_button_text"
-                android:textSize="@dimen/pharmacy_calculate_button_text_size"
-                android:textStyle="bold"
+                style="@style/calculate_button"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
