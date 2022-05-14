@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="text_style">
+        <item name="android:textSize">@dimen/fluids_previous_text_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/asul_bold</item>
+    </style>
+
+    <style name="button_style">
+        <item name="android:textSize">@dimen/calculator_surface_button_text_text_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+        <style name="calculate_button">
+        <item name="android:textSize">@dimen/pharmacy_calculate_button_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@color/light_appbar</item>
+    </style>
+
+    <style name="clear_button">
+        <item name="android:textSize">@dimen/pharmacy_clear_button_text_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="color">@color/red</item>
+        <item name="android:text">@string/pharmacy_clear_button_text_text</item>
+    </style>
+
+</resources>

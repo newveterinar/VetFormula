@@ -2,10 +2,10 @@
 <layer-list
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:drawable="@color/light_green" />
+        android:drawable="@color/light_green"/>
     <item>
         <bitmap
             android:gravity="center"
-            android:src="@drawable/vet_formula" />
+            android:src="@drawable/vet_formula"/>
     </item>
 </layer-list>

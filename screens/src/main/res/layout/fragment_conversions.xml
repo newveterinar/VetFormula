@@ -53,11 +53,11 @@
                 android:layout_height="wrap_content"
                 android:paddingStart="@dimen/conversions_previous_text_padding_start"
                 android:text="@string/conversions_previous_text_text"
-                android:textSize="@dimen/conversions_previous_text_text_size"
-                android:textStyle="bold"
+                style="@style/text_style"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.466" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -85,6 +85,7 @@
             android:layout_alignParentEnd="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/ic_temperature"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -93,8 +94,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/conversions_button_surface_text_text"
-            android:textSize="@dimen/conversions_surface_button_text_text_size"
-            android:textStyle="bold"
+            style="@style/button_style"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/conversions_surface_button" />

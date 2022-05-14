@@ -33,8 +33,7 @@
             android:layout_height="wrap_content"
             android:paddingStart="@dimen/pharmacy_logo_padding_start"
             android:text="@string/pharmacy_logo_text"
-            android:textSize="@dimen/pharmacy_logo_text_size"
-            android:textStyle="bold"
+            style="@style/text_style"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
