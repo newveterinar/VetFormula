@@ -154,7 +154,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:hint="@string/pharmacy_weight_textinputlayout_textfield_hint"
-                            android:inputType="number"
+                            android:inputType="number|numberDecimal"
                             android:background="@color/light_green"
                             android:textSize="@dimen/pharmacy_weight_textinputlayout_textfield_text_size" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -224,7 +224,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:hint="@string/pharmacy_dose_textinputlayout_textfield_hint"
-                            android:inputType="number"
+                            android:inputType="number|numberDecimal"
                             android:background="@color/light_green"
                             android:textSize="@dimen/pharmacy_dose_textinputlayout_textfield_text_size" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -244,7 +244,6 @@
                         android:id="@+id/pharmacy_dose_dimension_list"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_centerInParent="true"
                         android:entries="@array/pharmacy_dose_animal_dimension_list"
                         android:gravity="center"
                         android:singleLine="false"
@@ -296,7 +295,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:hint="@string/pharmacy_concentration_textinputlayout_textfield_hint"
-                            android:inputType="number"
+                            android:inputType="number|numberDecimal"
                             android:background="@color/light_green"
                             android:textSize="@dimen/pharmacy_concentration_textinputlayout_textfield_text_size" />
                     </com.google.android.material.textfield.TextInputLayout>
