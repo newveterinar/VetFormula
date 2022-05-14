@@ -507,7 +507,7 @@
 
                 <androidx.appcompat.widget.AppCompatSpinner
                     android:id="@+id/pharmacy_drop_dimension_list"
-                    android:layout_width="match_parent"
+                    android:layout_width="313dp"
                     android:layout_height="match_parent"
                     android:entries="@array/pharmacy_drop_animal_dimension_list"
                     android:gravity="center"
