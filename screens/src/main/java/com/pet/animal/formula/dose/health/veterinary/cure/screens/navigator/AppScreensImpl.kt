@@ -79,5 +79,9 @@ class AppScreensImpl : AppScreens {
     override fun criScreen() = FragmentScreen {
         PharmacyCRIFragment.newInstance()
     }
+
+    override fun pharmacyDosesResultScreen() = FragmentScreen {
+        PharmacyDosesFragment.newInstance()
+    }
     //endregion
 }
