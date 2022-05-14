@@ -65,8 +65,10 @@ class PharmacySurfaceFragment:
         initTextFields()
         // Инициализация списков
         initLists()
-        // Инициализация кнопок
+        // Инициализация кнопок навигации
         initNavigationButtons()
+        //Инициализация кнопко
+        initButtons()
         // Инициализация ViewModel
         initViewModel()
         // Настройка события обработки списков (должно быть в конце всех инициализаций)

@@ -45,7 +45,7 @@ class MainActivity: AppCompatActivity() {
         model = viewModel
 
         if (savedInstanceState == null) {
-            model.router.newRootChain(model.screens.mainScreen())
+            model.router.navigateTo(model.screens.mainScreen())
         }
     }
 
