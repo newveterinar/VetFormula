@@ -29,9 +29,12 @@
         <entry key="..\:/Users/Shaparapatah/StudioProjects/VetFormula/screens/src/main/res/layout/fragment_pharmacy_surface_result.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Shaparapatah/StudioProjects/VetFormula/screens/src/main/res/layout/fragment_settings.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.325" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/app/src/main/res/drawable/ic_launcher_background-vet.xml" value="0.1" />
         <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/app/src/main/res/drawable/ic_launcher_background.xml" value="0.325" />
         <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/app/src/main/res/drawable/splash_background.xml" value="0.325" />
         <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/app/src/main/res/layout/activity_main.xml" value="0.31023550724637683" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1915" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1915" />
         <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/diplom/screens/src/main/res/drawable/gradient.xml" value="0.2155" />
         <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/diplom/screens/src/main/res/layout/fragment_about.xml" value="0.15625" />
         <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/diplom/screens/src/main/res/layout/fragment_pharmacy.xml" value="0.20833333333333334" />
@@ -40,6 +43,7 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/diplom/screens/src/main/res/layout/fragment_pharmacy_surface_calculate_result.xml" value="0.20833333333333334" />
         <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/screens/src/main/res/drawable/gradient.xml" value="0.264" />
         <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/screens/src/main/res/drawable/ic_triangle.xml" value="0.268" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/screens/src/main/res/drawable/shape_button.xml" value="0.264" />
         <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/screens/src/main/res/layout/fragment_about.xml" value="0.22192028985507245" />
         <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/screens/src/main/res/layout/fragment_calculator.xml" value="0.22192028985507245" />
         <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/screens/src/main/res/layout/fragment_conversions.xml" value="0.22192028985507245" />
@@ -48,7 +52,7 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/screens/src/main/res/layout/fragment_mainscreen.xml" value="0.22192028985507245" />
         <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/screens/src/main/res/layout/fragment_pharmacy.xml" value="0.22192028985507245" />
         <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/screens/src/main/res/layout/fragment_pharmacy_cri.xml" value="0.25" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/screens/src/main/res/layout/fragment_pharmacy_doses.xml" value="0.34322916666666664" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/screens/src/main/res/layout/fragment_pharmacy_doses.xml" value="0.25" />
         <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/screens/src/main/res/layout/fragment_pharmacy_surface.xml" value="0.22192028985507245" />
         <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/screens/src/main/res/layout/fragment_pharmacy_surface_result.xml" value="0.22192028985507245" />
         <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/screens/src/main/res/layout/fragment_settings.xml" value="0.22192028985507245" />

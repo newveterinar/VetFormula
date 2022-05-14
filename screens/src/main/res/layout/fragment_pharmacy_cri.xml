@@ -156,6 +156,7 @@
                             android:layout_height="match_parent"
                             android:hint="@string/pharmacy_weight_textinputlayout_textfield_hint"
                             android:inputType="number"
+                            android:background="@color/light_green"
                             android:textSize="@dimen/pharmacy_weight_textinputlayout_textfield_text_size" />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -225,6 +226,7 @@
                             android:layout_height="match_parent"
                             android:hint="@string/pharmacy_dose_textinputlayout_textfield_hint"
                             android:inputType="number"
+                            android:background="@color/light_green"
                             android:textSize="@dimen/pharmacy_dose_textinputlayout_textfield_text_size" />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -296,6 +298,7 @@
                             android:layout_height="match_parent"
                             android:hint="@string/pharmacy_concentration_textinputlayout_textfield_hint"
                             android:inputType="number"
+                            android:background="@color/light_green"
                             android:textSize="@dimen/pharmacy_concentration_textinputlayout_textfield_text_size" />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -367,6 +370,7 @@
                             android:layout_height="match_parent"
                             android:hint="@string/pharmacy_fluids_textinputlayout_textfield_hint"
                             android:inputType="number"
+                            android:background="@color/light_green"
                             android:textSize="@dimen/pharmacy_fluids_textinputlayout_textfield_text_size" />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -438,6 +442,7 @@
                             android:layout_height="match_parent"
                             android:hint="@string/pharmacy_speed_textinputlayout_textfield_hint"
                             android:inputType="number"
+                            android:background="@color/light_green"
                             android:textSize="@dimen/pharmacy_speed_textinputlayout_textfield_text_size" />
                     </com.google.android.material.textfield.TextInputLayout>
 

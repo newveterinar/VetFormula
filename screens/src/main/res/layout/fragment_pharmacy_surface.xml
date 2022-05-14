@@ -178,6 +178,7 @@
                             android:layout_height="match_parent"
                             android:hint="@string/pharmacy_weight_textinputlayout_textfield_hint"
                             android:inputType="number|numberDecimal"
+                            android:background="@color/light_green"
                             android:textSize="@dimen/pharmacy_weight_textinputlayout_textfield_text_size" />
                     </com.google.android.material.textfield.TextInputLayout>
 
