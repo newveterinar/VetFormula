@@ -22,12 +22,10 @@ class PharmacySurfaceFragment:
     /** Задание переменных */ //region
     // Установка типа формулы для текущего окна
     private val screenType: ScreenType = ScreenType.PHARMACY_SURFACE
-
+    // Задание навигационных кнопок
     private val navigationButtons = arrayOfNulls<View>(size = 3)
-
     // Обнуление значений во всех полях
     private lateinit var pharmacyClearButtonContainer: ConstraintLayout
-
     // ViewModel
     private lateinit var model: PharmacySurfaceFragmentViewModel
     // ShowPharmacySurfaceFragmentScope
@@ -67,6 +65,7 @@ class PharmacySurfaceFragment:
         initLists()
         // Инициализация кнопок
         initNavigationButtons()
+        initButtons()
         // Инициализация ViewModel
         initViewModel()
         // Настройка события обработки списков (должно быть в конце всех инициализаций)
@@ -113,7 +112,7 @@ class PharmacySurfaceFragment:
         }
     }
 
-    private fun initButtons(){
+    private fun initButtons() {
         pharmacyClearButtonContainer = binding.pharmacyClearButtonContainer
         pharmacyClearButtonContainer.setOnClickListener {
             listsAddFirstSecond.forEach {
