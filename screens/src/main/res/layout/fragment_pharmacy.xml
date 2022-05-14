@@ -87,9 +87,10 @@
             android:layout_height="@dimen/pharmacy_surface_button_height"
             android:layout_alignParentEnd="true"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_dose_icon" />
+            app:srcCompat="@drawable/ic_surface_area" />
 
         <TextView
             android:id="@+id/pharmacy_surface_button_text"
@@ -123,7 +124,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_dose_icon" />
+            app:srcCompat="@drawable/ic_pharmacy_doses" />
 
         <TextView
             android:id="@+id/pharmacy_dose_button_text"
@@ -157,7 +158,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_dose_icon" />
+            app:srcCompat="@drawable/ic_pharmacy_cri" />
 
         <TextView
             android:id="@+id/pharmacy_cri_button_text"
