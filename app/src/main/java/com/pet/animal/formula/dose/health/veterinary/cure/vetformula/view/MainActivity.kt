@@ -21,14 +21,12 @@ class MainActivity: AppCompatActivity() {
         // Навигация
     private val navigator =
         AppNavigator(this@MainActivity, R.id.activity_fragments_container)
-    private val screens: AppScreensImpl = KoinJavaComponent.getKoin().get()
-    private val router: Router = KoinJavaComponent.getKoin().get()
     private val navigatorHolder: NavigatorHolder = KoinJavaComponent.getKoin().get()
         // ViewModel
     private val mainActivityScope: Scope = KoinJavaComponent.getKoin().getOrCreateScope(
         MAIN_ACTIVITY_NAME, named(MAIN_ACTIVITY_NAME)
     )
-    private lateinit var model: ViewModel
+    private lateinit var model: MainViewModel
         // Binding
     private lateinit var binding: ActivityMainBinding
         // Калькулятор (интерактор для работы с калькулятором)
@@ -47,7 +45,7 @@ class MainActivity: AppCompatActivity() {
         model = viewModel
 
         if (savedInstanceState == null) {
-            router.navigateTo(screens.mainScreen())
+            model.router.newRootChain(model.screens.mainScreen())
         }
     }
 
@@ -68,7 +66,7 @@ class MainActivity: AppCompatActivity() {
                 return
             }
         }
-        router.exit()
+        model.router.exit()
     }
     //endregion
 

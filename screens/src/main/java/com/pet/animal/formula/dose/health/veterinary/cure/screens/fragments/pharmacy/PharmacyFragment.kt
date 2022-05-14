@@ -2,56 +2,62 @@ package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pha
 
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.lifecycle.ViewModel
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import com.github.terrakok.cicerone.Router
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentPharmacyBinding
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator.AppScreensImpl
-import org.koin.java.KoinJavaComponent
 
-class PharmacyFragment: BaseFragment<FragmentPharmacyBinding>(FragmentPharmacyBinding::inflate) {
+class PharmacyFragment : BaseFragment<FragmentPharmacyBinding>(FragmentPharmacyBinding::inflate) {
     /** Задание переменных */ //region
     // Навигация
-    private val screens: AppScreensImpl = KoinJavaComponent.getKoin().get()
-    private val router: Router = KoinJavaComponent.getKoin().get()
-    lateinit var buttonToPharmacyScreen: ConstraintLayout
-    lateinit var buttonToPharmacySurfaceScreen: ConstraintLayout
-    lateinit var buttonToAboutScreen: ImageView
+    private val navigationButtons = arrayOfNulls<View>(5)
 
     // ViewModel
-    lateinit var model: ViewModel
+    private lateinit var model: PharmacyFragmentViewModel
     //endregion
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        // Инициализация кнопок
-        initButtons()
-        // Инициализация ViewModel
+// Инициализация ViewModel
         initViewModel()
+        // Инициализация кнопок
+        initNavigationButtons()
+
     }
 
     // Инициализация кнопок
-    fun initButtons() {
-        buttonToPharmacyScreen = binding.pharmacyPreviousButtonContainer
-        buttonToPharmacyScreen.setOnClickListener {
-            requireActivity().onBackPressed()
+    private fun initNavigationButtons() {
+        binding.apply {
+            navigationButtons.also {
+                it[0] = this.pharmacyPreviousButtonContainer
+                it[1] = this.pharmacySurfaceButtonContainer
+                it[2] = this.pharmacyDoseButtonContainer
+                it[3] = this.pharmacyCriButtonContainer
+                it[4] = this.pharmacyAboutButton
+            }
+
+
         }
-        buttonToPharmacySurfaceScreen = binding.pharmacySurfaceButtonContainer
-        buttonToPharmacySurfaceScreen.setOnClickListener {
-            router.navigateTo(screens.pharmacySurfaceScreen())
-        }
-        buttonToAboutScreen = binding.pharmacyAboutButton
-        buttonToAboutScreen.setOnClickListener {
-            router.navigateTo(screens.aboutScreen())
+
+        navigationButtons.forEachIndexed { index, button ->
+            button?.setOnClickListener {
+                when (index) {
+                    0 -> model.router.exit()
+                    1 -> model.router.navigateTo(model.screens.pharmacySurfaceScreen())
+                    2 -> model.router.navigateTo(model.screens.doseScreen())
+                    3 -> model.router.navigateTo(model.screens.criScreen())
+                    4 -> model.router.navigateTo(model.screens.aboutScreen())
+                    else -> {
+                        Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                }
+            }
         }
     }
 
     // Инициализация ViewModel
-    fun initViewModel() {
+    private fun initViewModel() {
         model = ViewModelProvider(this).get(PharmacyFragmentViewModel::class.java)
     }
 
