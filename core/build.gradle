@@ -90,8 +90,8 @@ dependencies {
 /*    implementation libs.lifecycle.runtimektx
     implementation libs.lifecycle.process
     implementation libs.lifecycle.java8 */
-/*    // Cicerony
-    implementation libs.cicerony.runtime */
+    // Cicerony
+    implementation libs.cicerony.runtime
     // RxJava
 /*    implementation libs.rxJava.android
     implementation libs.rxJava.reactive */

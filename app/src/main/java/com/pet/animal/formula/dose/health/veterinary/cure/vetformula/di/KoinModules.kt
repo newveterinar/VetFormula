@@ -3,6 +3,7 @@ package com.pet.animal.formula.dose.health.veterinary.cure.vetformula.di
 import com.github.terrakok.cicerone.Cicerone
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.Router
+import com.pet.animal.formula.dose.health.veterinary.cure.core.AppScreens
 import com.pet.animal.formula.dose.health.veterinary.cure.fakerepo.FakeRepositoryImpl
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.surface.PharmacySurfaceFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.surface.PharmacySurfaceInteractorImpl
@@ -42,7 +43,7 @@ val screens = module {
     single<NavigatorHolder> {
         get<Cicerone<Router>>(named(CICERONE_NAME)).getNavigatorHolder() }
     single<Router> { get<Cicerone<Router>>(named(CICERONE_NAME)).router }
-    single<AppScreensImpl> { AppScreensImpl() }
+    single<AppScreens> { AppScreensImpl() }
     //endregion
     /** Классы для Scope фрагментов */ //region
     scope(named(SHOW_PHARMACY_SURFACE_FRAGMENT_SCOPE)) {
