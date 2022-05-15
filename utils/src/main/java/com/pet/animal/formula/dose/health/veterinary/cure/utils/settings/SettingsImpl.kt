@@ -61,5 +61,9 @@ class SettingsImpl: Settings {
     override fun getPharmacySurfaceScreenData(): ScreenData {
         return pharmacySurfaceScreenData
     }
+
+    override fun getPharmacyDosesScreenData(): ScreenData {
+        return pharmacyDoseScreenData
+    }
     //endregion
 }

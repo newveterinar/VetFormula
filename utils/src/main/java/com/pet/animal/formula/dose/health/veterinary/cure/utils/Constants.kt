@@ -2,7 +2,12 @@ package com.pet.animal.formula.dose.health.veterinary.cure.utils
 
 const val CICERONE_NAME: String = "cicerone"
 const val MAIN_ACTIVITY_NAME: String = "MainActivity"
-const val SHOW_PHARMACY_SURFACE_FRAGMENT_SCOPE = "SHOW_PHARMACY_SURFACE_FRAGMENT_SCOPE"
+class FragmentScope() {
+    companion object{
+        const val  SHOW_PHARMACY_SURFACE_FRAGMENT_SCOPE = "SHOW_PHARMACY_SURFACE_FRAGMENT_SCOPE"
+        const val  SHOW_PHARMACY_DOSE_FRAGMENT_SCOPE = "SHOW_PHARMACY_DOSE_FRAGMENT_SCOPE"
+    }
+}
 
 // Названия типизированных формул для класса TypedFormula()
 const val PHARMACY_SURFACE_DOG_BODYSURFACEAREA_NAME = "DOG surface area"
