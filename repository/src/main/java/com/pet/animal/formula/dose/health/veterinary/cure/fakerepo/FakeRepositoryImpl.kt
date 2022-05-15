@@ -16,10 +16,10 @@ class FakeRepositoryImpl: FakeRepository {
     //endregion
 
     override suspend fun getFormula(screenType: ScreenType, listsAddFirstSecond: List<Int>): Formula {
-        when (screenType) {
+        return when (screenType) {
             ScreenType.PHARMACY_SURFACE ->
-                return pharmacySurfaceFormula(screenType,listsAddFirstSecond)
-            else -> return Formula()
+                pharmacySurfaceFormula(screenType,listsAddFirstSecond)
+            else -> Formula()
         }
     }
     private fun pharmacySurfaceFormula(

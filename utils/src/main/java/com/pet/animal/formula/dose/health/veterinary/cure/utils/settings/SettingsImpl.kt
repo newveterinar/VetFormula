@@ -11,7 +11,7 @@ class SettingsImpl: Settings {
     // Переменная для хранения темы приложения (ThemesNames.DAY или ThemesNames.NIGHT)
     private var currentTheme: ThemesNames = ThemesNames.DAY
     // Переменная для хранения текущей формулы
-    private var formula: List<Formula> = listOf()
+    private var formula: Formula = Formula()
     // Переменные для окна Fluids
     // TODO: Добавить классы для сохранения данных в окнах раздела Fluids
     // Переменные для окна Hematology
@@ -25,25 +25,25 @@ class SettingsImpl: Settings {
     //endregion
 
     // Задание темы приложения
-    override fun setTheme(theme: ThemesNames) {
+    override suspend fun setTheme(theme: ThemesNames) {
         currentTheme = theme
     }
     // Получение текущей темы приложения
-    override fun getTheme(): ThemesNames {
+    override suspend fun getTheme(): ThemesNames {
         return currentTheme
     }
     // Задание формулы
-    override fun setFormula(formula: List<Formula>) {
+    override suspend fun setFormula(formula: Formula) {
         this.formula = formula
     }
     // Получение формулы
-    override fun getFormula(): List<Formula> {
+    override suspend fun getFormula(): Formula {
         return formula
     }
 
     /** Функции для работы с данными окон */ // region
     // Задание данных для окон
-    override fun setScreenData(screenType: ScreenType,
+    override suspend fun setScreenData(screenType: ScreenType,
                                listsAddFirstSecond: List<Int>,
                                values: List<Double>,
                                dimensions: List<Int>) {
@@ -58,7 +58,7 @@ class SettingsImpl: Settings {
         }
     }
     // Получение данных окна PharmacySurface
-    override fun getPharmacySurfaceScreenData(): ScreenData {
+    override suspend fun getPharmacySurfaceScreenData(): ScreenData {
         return pharmacySurfaceScreenData
     }
     //endregion

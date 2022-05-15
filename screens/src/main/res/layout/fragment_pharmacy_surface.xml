@@ -170,7 +170,11 @@
                         android:id="@+id/pharmacy_weight_textinputlayout"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="@dimen/pharmacy_weight_textinputlayout_margin_start">
+                        android:layout_marginStart="@dimen/pharmacy_weight_textinputlayout_margin_start"
+                        app:errorTextColor="@color/red"
+                        app:errorIconTintMode="src_atop"
+                        app:errorIconTint="@color/red"
+                        app:boxStrokeErrorColor="@color/red" >
 
                         <EditText
                             android:id="@+id/pharmacy_weight_textinputlayout_textfield"
