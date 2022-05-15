@@ -11,7 +11,7 @@ class PharmacySurfaceResultFragment :
     BaseFragment<FragmentPharmacySurfaceResultBinding>(FragmentPharmacySurfaceResultBinding::inflate) {
     /** Задание переменных */ //region
     // Навигация
-    private val navigationButtons = arrayOfNulls<View>(size = 3)
+    private val navigationButtons = arrayOfNulls<View>(size = 2)
 
     // ViewModel
     private lateinit var model: PharmacySurfaceResultFragmentViewModel
