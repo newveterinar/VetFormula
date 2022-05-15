@@ -11,6 +11,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.main
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.PharmacyFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.cri.PharmacyCRIFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.doses.PharmacyDosesFragment
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.doses.result.PharmacyDosesResultFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.result.PharmacySurfaceResultFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.surface.PharmacySurfaceFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.settings.SettingsFragment
@@ -81,7 +82,7 @@ class AppScreensImpl : AppScreens {
     }
 
     override fun pharmacyDosesResultScreen() = FragmentScreen {
-        PharmacyDosesFragment.newInstance()
+        PharmacyDosesResultFragment.newInstance()
     }
     //endregion
 }

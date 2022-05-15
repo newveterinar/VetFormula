@@ -9,7 +9,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppState
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentPharmacySurfaceBinding
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.SHOW_PHARMACY_SURFACE_FRAGMENT_SCOPE
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.FragmentScope
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertListEditTextToListDouble
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertListSpinnerToListInt
@@ -48,8 +48,8 @@ class PharmacySurfaceFragment:
         super.onAttach(context)
         // Задание Scope для данного фрагмента
         showPharmacySurfaceFragmentScope = KoinJavaComponent.getKoin().getOrCreateScope(
-            SHOW_PHARMACY_SURFACE_FRAGMENT_SCOPE,
-            named(SHOW_PHARMACY_SURFACE_FRAGMENT_SCOPE))
+            FragmentScope.SHOW_PHARMACY_SURFACE_FRAGMENT_SCOPE,
+            named(FragmentScope.SHOW_PHARMACY_SURFACE_FRAGMENT_SCOPE))
     }
 
     override fun onDetach() {
@@ -188,7 +188,7 @@ class PharmacySurfaceFragment:
                 ) {
                     saveData()
                     Toast.makeText(this@PharmacySurfaceFragment.requireContext(),
-                        "selected", Toast.LENGTH_SHORT).show()
+                        "${spinnerList.selectedItem} selected", Toast.LENGTH_SHORT).show()
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {
