@@ -154,7 +154,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:hint="@string/pharmacy_weight_textinputlayout_textfield_hint"
-                            android:inputType="number"
+                            android:inputType="number|numberDecimal"
                             android:background="@color/light_green"
                             android:textSize="@dimen/pharmacy_weight_textinputlayout_textfield_text_size" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -224,7 +224,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:hint="@string/pharmacy_dose_textinputlayout_textfield_hint"
-                            android:inputType="number"
+                            android:inputType="number|numberDecimal"
                             android:background="@color/light_green"
                             android:textSize="@dimen/pharmacy_dose_textinputlayout_textfield_text_size" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -244,7 +244,6 @@
                         android:id="@+id/pharmacy_dose_dimension_list"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_centerInParent="true"
                         android:entries="@array/pharmacy_dose_animal_dimension_list"
                         android:gravity="center"
                         android:singleLine="false"
@@ -286,6 +285,7 @@
                         android:id="@+id/pharmacy_concentration_textinputlayout"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        app:errorEnabled="true"
                         android:layout_marginStart="@dimen/pharmacy_concentration_textinputlayout_margin_start"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -296,7 +296,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:hint="@string/pharmacy_concentration_textinputlayout_textfield_hint"
-                            android:inputType="number"
+                            android:inputType="number|numberDecimal"
                             android:background="@color/light_green"
                             android:textSize="@dimen/pharmacy_concentration_textinputlayout_textfield_text_size" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -338,6 +338,7 @@
                 android:layout_marginTop="@dimen/pharmacy_calculate_button_margin_top"
                 android:layout_marginEnd="@dimen/pharmacy_calculate_button_margin_end"
                 android:gravity="center"
+                android:enabled="false"
                 android:text="@string/pharmacy_calculate_button_text"
                 style="@style/calculate_button"
                 app:layout_constraintBottom_toBottomOf="parent"
