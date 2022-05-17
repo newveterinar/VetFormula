@@ -78,6 +78,9 @@ class PharmacySurfaceFragment:
 
     // Инициализация текстовых полей
     private fun initTextFields() {
+        // Очистка списков
+        valuesFields.clear()
+        valuesFieldsLayouts.clear()
         // Сюда по порядку задаются числовые поля
         valuesFields.add(binding.pharmacyWeightTextinputlayoutTextfield)
         valuesFieldsLayouts.add(binding.pharmacyWeightTextinputlayout)
@@ -196,6 +199,9 @@ class PharmacySurfaceFragment:
 
     // Инициализация списков
     private fun initLists() {
+        // Очистка списков
+        listsAddFirstSecond.clear()
+        listsDimensions.clear()
         // Сюда нужно по порядку добавлять все существующие списки,
         // которые относятся к свойствам addFirst и addSecond,
         // т.е. в них нет дополняющей информации о размерности для поля ввода числа

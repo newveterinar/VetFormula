@@ -2,6 +2,7 @@ package com.pet.animal.formula.dose.health.veterinary.cure.utils.settings
 
 import com.pet.animal.formula.dose.health.veterinary.cure.model.formula.Formula
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.ScreenData
+import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.ValueField
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ThemesNames
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.valueFieldListCreator
@@ -50,8 +51,14 @@ class SettingsImpl: Settings {
         when(screenType) {
             // Окно PharmacySurface
             ScreenType.PHARMACY_SURFACE -> {
-                pharmacySurfaceScreenData.listsAddFirstSecond = listsAddFirstSecond
-                pharmacySurfaceScreenData.valueFields = valueFieldListCreator(values, dimensions)
+                pharmacySurfaceScreenData.listsAddFirstSecond.clear()
+                pharmacySurfaceScreenData.valueFields.clear()
+                listsAddFirstSecond.forEach {
+                    pharmacySurfaceScreenData.listsAddFirstSecond.add(it)
+                }
+                values.forEachIndexed { index, it ->
+                    pharmacySurfaceScreenData.valueFields.add(ValueField(it, dimensions[index]))
+                }
             }
             // Окно по умолчанию
             else -> { /* TODO: Сделать действие по умолчанию */ }
