@@ -5,9 +5,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.core.base.Interactor
 import com.pet.animal.formula.dose.health.veterinary.cure.core.calculator.CalcInteractorImpl
 import com.pet.animal.formula.dose.health.veterinary.cure.fakerepo.FakeRepositoryImpl
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppState
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.stringToDouble
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.resources.ResourcesProviderImpl
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.settings.SettingsImpl
 import org.koin.java.KoinJavaComponent
@@ -46,18 +44,17 @@ class PharmacySurfaceInteractorImpl: Interactor<AppState> {
     }
     private suspend fun loadAndSaveFormula(screenType: ScreenType, listsAddFirstSecond: List<Int>,
                                            values: List<Double>) {
-        Toast.makeText(resourcesProviderImpl.context,
-            "Размер: ${listsAddFirstSecond.count()}; Первый член: ${listsAddFirstSecond[0]}", Toast.LENGTH_SHORT).show()
         settings.setFormula(fakeRepositoryImpl.getFormula(screenType, listsAddFirstSecond))
-        Toast.makeText(resourcesProviderImpl.context,
-            "Сама формула: ${settings.getFormula().getFormula()[0].name}; \nколичество элементов в формуле: ${settings.getFormula().getFormula()[0].elements.count()}", Toast.LENGTH_SHORT).show()
         settings.getFormula().getFormula().forEach { typedFormula ->
             calcInteractorImpl.clearCalc()
             typedFormula.elements.forEach { element ->
                 if (element.positionValueOnWindow == 0) {
                     calcInteractorImpl.setCommand(element.numberCommand)
                 } else {
-                    calcInteractorImpl.setCommand(values[element.positionValueOnWindow].toString())
+                    // Важно вычесть единицу из позиции element.positionValueOnWindow,
+                    // так как нужно перейти от порядкового номера формы с числом
+                    // к индексу элемента в списке
+                    calcInteractorImpl.setCommand(values[element.positionValueOnWindow - 1])
                 }
             }
             Toast.makeText(resourcesProviderImpl.context, "Результат вычислений по формуле: ${calcInteractorImpl.getCommandResultValue()}", Toast.LENGTH_SHORT).show()

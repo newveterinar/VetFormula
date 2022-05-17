@@ -98,7 +98,6 @@ class PharmacySurfaceFragment:
                     if ((event.action == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_0)) {
                         // Добавление нового символа в текущее положение курсора
                         val start: Int = it.selectionStart
-                        Toast.makeText(requireContext(), "$start", Toast.LENGTH_SHORT).show()
                         if (((stringToDouble(it.text.toString()) > 0.0) && (start > 0)) ||
                             ((it.text.toString().indexOf(".") > -1) && (start > 0)) ||
                             (it.text.isEmpty()))
@@ -343,7 +342,7 @@ class PharmacySurfaceFragment:
     }
     // Сохранение текущего состояния всех числовых полей и списков
     private fun saveData() {
-        Toast.makeText(requireContext(), "SAVE VALUE: ${valuesFields.convertListEditTextToListDouble().count()}", Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), "${listsAddFirstSecond[0].selectedItemPosition}", Toast.LENGTH_SHORT).show()
         model.saveData(screenType,
             listsAddFirstSecond.convertListSpinnerToListInt(),
             valuesFields.convertListEditTextToListDouble(),
