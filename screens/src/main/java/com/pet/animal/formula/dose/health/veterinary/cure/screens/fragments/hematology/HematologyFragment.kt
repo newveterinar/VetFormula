@@ -13,8 +13,9 @@ class HematologyFragment :
     /** Задание переменных */ //region
     // Навигация
     private val navigationButtons = arrayOfNulls<View>(size = 3)
+
     // ViewModel
-    private lateinit var model: HematologyFragmentViewModel
+    private lateinit var viewModel: HematologyFragmentViewModel
     //endregion
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -32,17 +33,15 @@ class HematologyFragment :
             navigationButtons.also {
                 it[0] = this.hematologyPreviousButtonContainer
                 it[1] = this.hematologySurfaceButtonContainer
-                it[2] = this.hematologyAboutButton
             }
         }
 
         navigationButtons.forEachIndexed { index, button ->
             button?.setOnClickListener {
                 when (index) {
-                    0 -> model.router.exit()
+                    0 -> viewModel.router.exit()
                     1 -> Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT)
                         .show()
-                    2 -> model.router.navigateTo(model.screens.aboutScreen())
                     else -> {
                         Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT)
                             .show()
@@ -54,7 +53,7 @@ class HematologyFragment :
 
     // Инициализация ViewModel
     private fun initViewModel() {
-        model = ViewModelProvider(this).get(HematologyFragmentViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(HematologyFragmentViewModel::class.java)
     }
 
     companion object {

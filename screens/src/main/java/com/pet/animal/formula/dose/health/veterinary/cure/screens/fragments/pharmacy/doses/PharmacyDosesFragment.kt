@@ -15,7 +15,6 @@ import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.Fr
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.FragmentScope
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
 import org.koin.android.ext.android.getKoin
-import org.koin.androidx.scope.fragmentScope
 import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
 
@@ -48,8 +47,10 @@ class PharmacyDosesFragment :
     override fun onAttach(context: Context) {
         super.onAttach(context)
         showPharmacyDoseFragmentScope =
-            getKoin().getOrCreateScope(FragmentScope.SHOW_PHARMACY_DOSE_FRAGMENT_SCOPE,
-                named(FragmentScope.SHOW_PHARMACY_DOSE_FRAGMENT_SCOPE))
+            getKoin().getOrCreateScope(
+                FragmentScope.SHOW_PHARMACY_DOSE_FRAGMENT_SCOPE,
+                named(FragmentScope.SHOW_PHARMACY_DOSE_FRAGMENT_SCOPE)
+            )
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -69,7 +70,6 @@ class PharmacyDosesFragment :
         binding.apply {
             navigationButtons.also {
                 it[0] = this.pharmacyPreviousButtonContainer ?: null
-                it[1] = this.pharmacyAboutButton
                 it[2] = this.pharmacyCalculateButton
             }
         }
@@ -77,7 +77,6 @@ class PharmacyDosesFragment :
             button?.setOnClickListener {
                 when (index) {
                     0 -> viewModel.router.exit()
-                    1 -> viewModel.router.navigateTo(viewModel.screens.aboutScreen())
                     2 -> viewModel.router.navigateTo(viewModel.screens.pharmacyDosesResultScreen())
                     else -> {
                         Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT)
@@ -126,8 +125,10 @@ class PharmacyDosesFragment :
                     id: Long,
                 ) {
                     saveData()
-                    Toast.makeText(this@PharmacyDosesFragment.requireContext(),
-                        "${spinner?.selectedItem} selected", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this@PharmacyDosesFragment.requireContext(),
+                        "${spinner?.selectedItem} selected", Toast.LENGTH_SHORT
+                    ).show()
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -172,8 +173,10 @@ class PharmacyDosesFragment :
                     // Установка численного значения поля
                     listOfEditTexts.forEachIndexed { index, valueField ->
                         if (it.valueFields.count() > index)
-                            valueField?.setText(if (it.valueFields[index].value > 0.0)
-                                "${it.valueFields[index].value}" else "")
+                            valueField?.setText(
+                                if (it.valueFields[index].value > 0.0)
+                                    "${it.valueFields[index].value}" else ""
+                            )
                     }
                     // Установка размерности поля
                     listOfDimensionSpinners.forEachIndexed { index, dimension ->
@@ -184,10 +187,13 @@ class PharmacyDosesFragment :
             }
             is AppState.Loading -> Unit
             is AppState.Error -> {
-                Toast.makeText(requireContext(),
+                Toast.makeText(
+                    requireContext(),
                     requireContext().getString(
-                        R.string.error_appstate_not_loaded_for_fragment),
-                    Toast.LENGTH_SHORT).show()
+                        R.string.error_appstate_not_loaded_for_fragment
+                    ),
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }

@@ -13,7 +13,7 @@ class PharmacyFragment : BaseFragment<FragmentPharmacyBinding>(FragmentPharmacyB
     private val navigationButtons = arrayOfNulls<View>(5)
 
     // ViewModel
-    private lateinit var model: PharmacyFragmentViewModel
+    private lateinit var viewModel: PharmacyFragmentViewModel
     //endregion
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -33,7 +33,6 @@ class PharmacyFragment : BaseFragment<FragmentPharmacyBinding>(FragmentPharmacyB
                 it[1] = this.pharmacySurfaceButtonContainer
                 it[2] = this.pharmacyDoseButtonContainer
                 it[3] = this.pharmacyCriButtonContainer
-                it[4] = this.pharmacyAboutButton
             }
 
 
@@ -42,11 +41,10 @@ class PharmacyFragment : BaseFragment<FragmentPharmacyBinding>(FragmentPharmacyB
         navigationButtons.forEachIndexed { index, button ->
             button?.setOnClickListener {
                 when (index) {
-                    0 -> model.router.exit()
-                    1 -> model.router.navigateTo(model.screens.pharmacySurfaceScreen())
-                    2 -> model.router.navigateTo(model.screens.doseScreen())
-                    3 -> model.router.navigateTo(model.screens.criScreen())
-                    4 -> model.router.navigateTo(model.screens.aboutScreen())
+                    0 -> viewModel.router.exit()
+                    1 -> viewModel.router.navigateTo(viewModel.screens.pharmacySurfaceScreen())
+                    2 -> viewModel.router.navigateTo(viewModel.screens.doseScreen())
+                    3 -> viewModel.router.navigateTo(viewModel.screens.criScreen())
                     else -> {
                         Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT)
                             .show()
@@ -58,7 +56,7 @@ class PharmacyFragment : BaseFragment<FragmentPharmacyBinding>(FragmentPharmacyB
 
     // Инициализация ViewModel
     private fun initViewModel() {
-        model = ViewModelProvider(this).get(PharmacyFragmentViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(PharmacyFragmentViewModel::class.java)
     }
 
     companion object {
