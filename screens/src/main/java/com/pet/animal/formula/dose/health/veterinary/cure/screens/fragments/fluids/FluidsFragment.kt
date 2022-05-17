@@ -13,7 +13,7 @@ class FluidsFragment : BaseFragment<FragmentFluidsBinding>(FragmentFluidsBinding
     private val navigationButtons = arrayOfNulls<View>(size = 3)
 
     // ViewModel
-    private lateinit var model: FluidsFragmentViewModel
+    private lateinit var viewModel: FluidsFragmentViewModel
     //endregion
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -31,17 +31,15 @@ class FluidsFragment : BaseFragment<FragmentFluidsBinding>(FragmentFluidsBinding
             navigationButtons.also {
                 it[0] = this.fluidsPreviousButtonContainer
                 it[1] = this.fluidsSurfaceButtonContainer
-                it[2] = this.fluidsAboutButton
             }
         }
 
         navigationButtons.forEachIndexed { index, button ->
             button?.setOnClickListener {
                 when (index) {
-                    0 -> model.router.exit()
+                    0 -> viewModel.router.exit()
                     1 -> Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT)
                         .show()
-                    2 -> model.router.navigateTo(model.screens.aboutScreen())
                     else -> {
                         Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT)
                             .show()
@@ -53,7 +51,7 @@ class FluidsFragment : BaseFragment<FragmentFluidsBinding>(FragmentFluidsBinding
 
     // Инициализация ViewModel
     private fun initViewModel() {
-        model = ViewModelProvider(this).get(FluidsFragmentViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(FluidsFragmentViewModel::class.java)
     }
 
     companion object {

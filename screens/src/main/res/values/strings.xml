@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Сообщения об ошибках -->
-    <string name="error_appstate_not_loaded_for_fragment">Ошибка: Данные для фрагмента не загружены</string>
+    <string name="error_appstate_not_loaded_for_fragment">Error: Fragment data not loaded</string>
 
     <!-- Ресурсы макета -->
     <string name="about_surface_button_text_text">ABOUT\nVetFormula</string>
@@ -10,9 +10,9 @@
     <string name="pharmacy_previous_text_text">Pharmacy</string>
     <string name="pharmacy_surface_button_text_text">Surface\nArea</string>
     <string name="pharmacy_surface_previous_text_text">Body surface area</string>
-    <string name="pharmacy_calculate_button_text">Рассчитать</string>
+    <string name="pharmacy_calculate_button_text">Calculate</string>
     <string name="pharmacy_result_previous_text_text">Result</string>
-    <string name="pharmacy_about_button_hints">О приложении</string>
+    <string name="pharmacy_about_button_hints">ABOUT\nVetFormula</string>
     <string name="about_logo_text">Information</string>
     <string name="pharmacy_logo_text">VetFormula</string>
     <string name="pharmacy_result_text_text">100</string>
@@ -32,92 +32,92 @@
     <string name="calculator_button_text_text">Calculator</string>
     <string name="calculator_button_surface_text_text">Calculate</string>
     <string name="pharmacy_clear_button_text_text">C</string>
-    <string name="pharmacy_type_animal_title_text">Тип животного</string>
+    <string name="pharmacy_type_animal_title_text">Animal type</string>
     <string name="pharmacy_weight_animal_title_text">Вес</string>
-    <string name="pharmacy_weight_textinputlayout_textfield_hint">Вес животного</string>
-    <string name="pharmacy_dose_animal_title_text">Доза</string>
-    <string name="pharmacy_dose_textinputlayout_textfield_hint">Объём препарата</string>
-    <string name="pharmacy_concentration_animal_title_text">Концентрация препарата</string>
-    <string name="pharmacy_concentration_textinputlayout_textfield_hint">Значение концентрации</string>
-    <string name="pharmacy_fluids_textinputlayout_textfield_hint">Объём</string>
-    <string name="pharmacy_fluids_animal_title_text">Объём жидкости</string>
-    <string name="pharmacy_drop_textinputlayout_textfield_hint">Нет капельной системы</string>
-    <string name="pharmacy_drop_animal_title_text">Капельная система</string>
+    <string name="pharmacy_weight_textinputlayout_textfield_hint">Animal weight</string>
+    <string name="pharmacy_dose_animal_title_text">Dose</string>
+    <string name="pharmacy_dose_textinputlayout_textfield_hint">Amount</string>
+    <string name="pharmacy_concentration_animal_title_text">Specify concentration</string>
+    <string name="pharmacy_concentration_textinputlayout_textfield_hint">Concentration value</string>
+    <string name="pharmacy_fluids_textinputlayout_textfield_hint">Amount</string>
+    <string name="pharmacy_fluids_animal_title_text">Amount</string>
+    <string name="pharmacy_drop_textinputlayout_textfield_hint">No Giving Set</string>
+    <string name="pharmacy_drop_animal_title_text">Giving Set</string>
     <string name="pharmacy_dose_button_text_text">Pharmacy Doses</string>
     <string name="pharmacy_cri_button_text_text">Pharmacy CRI</string>
     <string name="pharmacy_cri_previous_text_text">PharmacyCRI</string>
     <string name="pharmacy_dose_previous_text_text">PharmacyDose</string>
-    <string name="pharmacy_speed_animal_title_text">Скорость введения</string>
-    <string name="pharmacy_speed_textinputlayout_textfield_hint">Скорость введения</string>
+    <string name="pharmacy_speed_animal_title_text">Rate</string>
+    <string name="pharmacy_speed_textinputlayout_textfield_hint">Rate</string>
 
     <string-array name="pharmacy_surface_animal_type_list">
-        <item>Собака</item>
-        <item>Кошка</item>
-        <item>Кролик</item>
-        <item>Хорёк</item>
-        <item>Морская свинка</item>
-        <item>Хомяк</item>
-        <item>Лошадь (кроме "Ломустин")</item>
-        <item>Лошадь (только "Ломустин")</item>
-        <item>Крыса</item>
-        <item>Мышь</item>
+        <item>Dog</item>
+        <item>Cat</item>
+        <item>Rabbit</item>
+        <item>Polecat</item>
+        <item>Guinea Pig</item>
+        <item>Hamster</item>
+        <item>Horse (except CCNU)</item>
+        <item>Horse (only CCNU)</item>
+        <item>Rat</item>
+        <item>Mouse</item>
     </string-array>
 
     <string-array name="pharmacy_weight_animal_dimension_list">
-        <item>кг</item>
-        <item>г</item>
+        <item>kg</item>
+        <item>g</item>
     </string-array>
 
     <string-array name="pharmacy_dose_animal_dimension_list">
-        <item>мгк</item>
-        <item>мг</item>
-        <item>г</item>
-        <item>мЕк</item>
-        <item>а.е.м</item>
+        <item>µg</item>
+        <item>mg</item>
+        <item>g</item>
+        <item>mEq</item>
+        <item>U</item>
     </string-array>
 
     <string-array name="pharmacy_dose_cri_animal_dimension_list">
-        <item>мгк/кг/мин</item>
-        <item>мг/кг/мин</item>
-        <item>г/кг/мин</item>
-        <item>мгк/кг/ч</item>
-        <item>мг/кг/ч</item>
-        <item>г/кг/ч</item>
+        <item>µg/kg/min</item>
+        <item>mg/kg/min</item>
+        <item>g/kg/min</item>
+        <item>µg/kg/h</item>
+        <item>mg/kg/h</item>
+        <item>g/kg/h</item>
     </string-array>
 
     <string-array name="pharmacy_concentration_animal_dimension_list">
-        <item>мгк/мл</item>
-        <item>мг/мл</item>
-        <item>г/мл</item>
-        <item>мЕк/мл</item>
-        <item>а.е.м/мл</item>
-        <item>мкг/г</item>
-        <item>мг/г</item>
-        <item>г/г</item>
-        <item>вес/объём</item>
+        <item>µg/ml</item>
+        <item>mg/ml</item>
+        <item>g/ml</item>
+        <item>mEq/ml</item>
+        <item>U/ml</item>
+        <item>µg/g</item>
+        <item>mg/g</item>
+        <item>g/g</item>
+        <item>weight/volume</item>
     </string-array>
 
     <string-array name="pharmacy_concentration_cri_animal_dimension_list">
-        <item>мгк/мл</item>
-        <item>мг/мл</item>
-        <item>г/мл</item>
+        <item>µg/ml</item>
+        <item>mg/ml</item>
+        <item>g/ml</item>
     </string-array>
 
     <string-array name="pharmacy_fluids_animal_dimension_list">
-        <item>мл</item>
-        <item>мкл</item>
+        <item>ml</item>
+        <item>μl</item>
     </string-array>
 
     <string-array name="pharmacy_speed_animal_dimension_list">
-        <item>мл/кг/ч</item>
-        <item>мкл/кг/ч</item>
-        <item>мл/кг/мин</item>
-        <item>мкл/кг/мин</item>
+        <item>ml/kg/h</item>
+        <item>μl/kg/h</item>
+        <item>ml/kg/min</item>
+        <item>μl/kg/min</item>
     </string-array>
 
     <string-array name="pharmacy_drop_animal_dimension_list">
-        <item>Нет капельной системы</item>
-        <item>20 капель/мл</item>
-        <item>60 капель/мл</item>
+        <item>No Giving Set</item>
+        <item>20 drops/ml</item>
+        <item>60 drops/ml</item>
     </string-array>
 </resources>

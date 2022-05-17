@@ -6,7 +6,6 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentPharmacyDosesResultBinding
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.result.PharmacySurfaceResultFragmentViewModel
 
 class PharmacyDosesResultFragment :
     BaseFragment<FragmentPharmacyDosesResultBinding>(FragmentPharmacyDosesResultBinding::inflate) {
@@ -16,7 +15,7 @@ class PharmacyDosesResultFragment :
     private val navigationButtons = arrayOfNulls<View>(size = 2)
 
     // ViewModel
-    private lateinit var model: PharmacyDosesResultFragmentViewModel
+    private lateinit var viewModel: PharmacyDosesResultFragmentViewModel
     //endregion
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -32,15 +31,13 @@ class PharmacyDosesResultFragment :
         binding.apply {
             navigationButtons.also {
                 it[0] = this.pharmacyPreviousButtonContainer
-                it[1] = this.pharmacyAboutButton
             }
         }
 
         navigationButtons.forEachIndexed { index, button ->
             button?.setOnClickListener {
                 when (index) {
-                    0 -> model.router.exit()
-                    1 -> model.router.navigateTo(model.screens.aboutScreen())
+                    0 -> viewModel.router.exit()
                     else -> {
                         Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT)
                             .show()
@@ -52,7 +49,7 @@ class PharmacyDosesResultFragment :
 
     // Инициализация ViewModel
     fun initViewModel() {
-        model = ViewModelProvider(this)
+        viewModel = ViewModelProvider(this)
             .get(PharmacyDosesResultFragmentViewModel::class.java)
     }
 
