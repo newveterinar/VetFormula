@@ -15,7 +15,6 @@ import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.Fr
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.FragmentScope
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
 import org.koin.android.ext.android.getKoin
-import org.koin.androidx.scope.fragmentScope
 import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
 

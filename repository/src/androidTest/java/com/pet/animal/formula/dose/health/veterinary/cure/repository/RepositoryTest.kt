@@ -126,12 +126,12 @@ class RepositoryTest {
 
     private fun createTestFormula(): Formula {
         val ml = mutableListOf<Element>()
-        return Formula(ml)
+        return Formula()
     }
 
     private fun createTestFormula2(): Formula {
         val ml = mutableListOf<Element>()
-        return Formula(ml)
+        return Formula()
     }
 
     @Test
