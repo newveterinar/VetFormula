@@ -20,35 +20,42 @@ class TimerFragment : BaseFragment<FragmentTimerBinding>(FragmentTimerBinding::i
 
     private lateinit var viewModel: TimerViewModel
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_timer, container, false)
-    }
-
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this)[TimerViewModel::class.java]
-        //initBuuton()
+
+        initButton()
         viewModel.second.observe(viewLifecycleOwner) {
             val minutes: Int = it / 60
             val second: Int = it % 60
+            var sSecond:String
+
+            if (second<10){
+                sSecond = "0$second"
+            } else {
+                sSecond = "$second"
+            }
+
+            binding.timerText.text = "$minutes:$sSecond"
         }
 
         viewModel.onTimer.observe(viewLifecycleOwner) {
             if (it) {
                 (startTimerButton as Button).text = "Stop timer"
             } else {
-                (startTimerButton as Button).text = "Stop timer"
+                (startTimerButton as Button).text = "Start timer"
             }
+        }
+
+        viewModel.tickInMinutes.observe(viewLifecycleOwner) {
+            binding.tickInMinutes.text = it.toString()
         }
     }
 
 
-    private fun initBuuton() {
+
+
+    private fun initButton() {
         startTimerButton = binding.startTimerButton.also{ button ->
             button.setOnClickListener{
                 if (viewModel.onTimer.value==true){
@@ -57,6 +64,10 @@ class TimerFragment : BaseFragment<FragmentTimerBinding>(FragmentTimerBinding::i
                     viewModel.startTimer()
                 }
             }
+        }
+
+        binding.touchPlace.setOnClickListener{
+            viewModel.addTick()
         }
     }
 }

@@ -26,10 +26,8 @@ class TimerViewModel() : ViewModel(), CoroutineScope {
 
     fun startTimer(){
         if (mOnTimer.value == true) return
-
-
         ticks.clear()
-
+        mSeconds.postValue(0)
         mOnTimer.postValue(true)
         countTimer()
     }
@@ -44,15 +42,13 @@ class TimerViewModel() : ViewModel(), CoroutineScope {
         if (ticks.size>1){
             val totalTimeOverTicks = ticks[ticks.size-1]-ticks[0]
             val totalTimeMinutes:Double = totalTimeOverTicks.toDouble()/100/60
-            mTickInMinutes.postValue(totalTimeMinutes)
+            mTickInMinutes.postValue(ticks.size.toDouble()/totalTimeMinutes)
         }
     }
 
     fun stopTimer(){
 
         if (mOnTimer.value != true) return
-
-
         job.cancel()
         mOnTimer.postValue(false)
         updateTicks()
