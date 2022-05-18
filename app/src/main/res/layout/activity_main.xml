@@ -22,8 +22,10 @@
         android:id="@+id/activity_fragments_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/transparent"
-        android:visibility="visible"/>
+        android:animateLayoutChanges="true"
+        android:clickable="false"
+        android:visibility="visible"
+        tools:background="@android:color/transparent" />
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -97,7 +99,6 @@
             android:elevation="10dp"
             app:srcCompat="@drawable/ic_add_24" />
     </FrameLayout>
-
 
     <include layout="@layout/bottom_sheet_layout" />
 

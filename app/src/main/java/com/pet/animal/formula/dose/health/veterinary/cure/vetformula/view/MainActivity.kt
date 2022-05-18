@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
     private val mainActivityScope: Scope = KoinJavaComponent.getKoin().getOrCreateScope(
         MAIN_ACTIVITY_NAME, named(MAIN_ACTIVITY_NAME)
     )
-    private lateinit var model: MainViewModel
+    private lateinit var viewModel: MainViewModel
 
     // Binding
     private lateinit var binding: ActivityMainBinding
@@ -42,19 +42,19 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
         // Подключение Binding
         binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+
 
         // Создание Scope для MainActivity
         val viewModel: MainViewModel by mainActivityScope.inject()
-        model = viewModel
+        this.viewModel = viewModel
 
         if (savedInstanceState == null) {
-            model.router.navigateTo(model.screens.mainScreen())
+            this.viewModel.router.navigateTo(this.viewModel.screens.mainScreen())
         }
-
         setFAB()
     }
 
@@ -77,7 +77,7 @@ class MainActivity : AppCompatActivity() {
                 return
             }
         }
-        model.router.exit()
+        viewModel.router.exit()
     }
 
     /** FAB **/
@@ -87,7 +87,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.fab.setOnClickListener {
             if (isExpanded) {
-                collapseFAB()
+                collapseFab()
             } else {
                 expandFAB()
             }
@@ -98,11 +98,11 @@ class MainActivity : AppCompatActivity() {
         binding.activityFragmentsContainer.apply {
             alpha = 0f
         }
-        binding.optionOneContainer.apply {
+        binding.optionTwoContainer.apply {
             alpha = 0f
             isClickable = false
         }
-        binding.optionTwoContainer.apply {
+        binding.optionOneContainer.apply {
             alpha = 0f
             isClickable = false
         }
@@ -110,9 +110,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun expandFAB() {
         isExpanded = true
-        ObjectAnimator.ofFloat(binding.fabImageview, "rotation", 0f, 255f).start()
-        ObjectAnimator.ofFloat(binding.optionOneContainer, "translationY", -130f).start()
-        ObjectAnimator.ofFloat(binding.optionTwoContainer, "translationY", -250f).start()
+        ObjectAnimator.ofFloat(binding.fabImageview, "rotation", 0f, 225f).start()
+        ObjectAnimator.ofFloat(binding.optionTwoContainer, "translationY", -130f).start()
+        ObjectAnimator.ofFloat(binding.optionOneContainer, "translationY", -250f).start()
 
         binding.optionTwoContainer.animate()
             .alpha(1f)
@@ -129,20 +129,28 @@ class MainActivity : AppCompatActivity() {
             .alpha(1f)
             .setDuration(300)
             .setListener(object : AnimatorListenerAdapter() {
-                override fun onAnimationEnd(animation: Animator?) {
+                override fun onAnimationEnd(animation: Animator) {
                     binding.optionOneContainer.isClickable = true
                     binding.optionOneContainer.setOnClickListener {
                         Toast.makeText(this@MainActivity, "Option 1", Toast.LENGTH_SHORT).show()
                     }
                 }
             })
+        binding.activityFragmentsContainer.animate()
+            .alpha(0.9f)
+            .setDuration(300)
+            .setListener(object : AnimatorListenerAdapter() {
+                override fun onAnimationEnd(animation: Animator) {
+                    binding.activityFragmentsContainer.isClickable = true
+                }
+            })
     }
 
-    private fun collapseFAB() {
+    private fun collapseFab() {
         isExpanded = false
         ObjectAnimator.ofFloat(binding.fabImageview, "rotation", 0f, -180f).start()
-        ObjectAnimator.ofFloat(binding.optionOneContainer, "translationY", 0f).start()
         ObjectAnimator.ofFloat(binding.optionTwoContainer, "translationY", 0f).start()
+        ObjectAnimator.ofFloat(binding.optionOneContainer, "translationY", 0f).start()
 
         binding.optionTwoContainer.animate()
             .alpha(0f)
@@ -150,7 +158,7 @@ class MainActivity : AppCompatActivity() {
             .setListener(object : AnimatorListenerAdapter() {
                 override fun onAnimationEnd(animation: Animator) {
                     binding.optionTwoContainer.isClickable = false
-                    binding.optionTwoContainer.setOnClickListener(null)
+                    binding.optionOneContainer.setOnClickListener(null)
                 }
             })
         binding.optionOneContainer.animate()
@@ -169,7 +177,6 @@ class MainActivity : AppCompatActivity() {
                     binding.activityFragmentsContainer.isClickable = false
                 }
             })
-
     }
 
     //endregion
