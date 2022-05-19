@@ -3,15 +3,14 @@ package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.tim
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseViewModelForNavigation
 import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.flow
 import kotlin.coroutines.CoroutineContext
-import kotlin.time.Duration
 
-class TimerViewModel() : ViewModel(), CoroutineScope {
+class TimerViewModel() : BaseViewModelForNavigation(), CoroutineScope {
 
     private var ticks: MutableList<Long> = mutableListOf()
-    private var mTickInMinutes:MutableLiveData<Double> =MutableLiveData()
+    private var mTickInMinutes: MutableLiveData<Double> = MutableLiveData()
 
     private val mOnTimer = MutableLiveData<Boolean>()
     private val mSeconds = MutableLiveData<Int>()
@@ -21,10 +20,10 @@ class TimerViewModel() : ViewModel(), CoroutineScope {
 
 
     var tickInMinutes: LiveData<Double> = mTickInMinutes
-    var onTimer:LiveData<Boolean> = mOnTimer
-    var second : LiveData<Int> = mSeconds
+    var onTimer: LiveData<Boolean> = mOnTimer
+    var second: LiveData<Int> = mSeconds
 
-    fun startTimer(){
+    fun startTimer() {
         if (mOnTimer.value == true) return
         ticks.clear()
         mSeconds.postValue(0)
@@ -32,25 +31,25 @@ class TimerViewModel() : ViewModel(), CoroutineScope {
         countTimer()
     }
 
-    fun addTick(){
+    fun addTick() {
         ticks.add(System.currentTimeMillis())
         updateTicks()
     }
 
-    private fun updateTicks(){
-        if (ticks.size>1){
-            val totalTimeOverTicks = ticks[ticks.size-1]-ticks[0]
-            val totalTimeMinutes:Double = totalTimeOverTicks.toDouble()/1000/60
-            mTickInMinutes.postValue(ticks.size.toDouble()/totalTimeMinutes)
+    private fun updateTicks() {
+        if (ticks.size > 1) {
+            val totalTimeOverTicks = ticks[ticks.size - 1] - ticks[0]
+            val totalTimeMinutes: Double = totalTimeOverTicks.toDouble() / 1000 / 60
+            mTickInMinutes.postValue(ticks.size.toDouble() / totalTimeMinutes)
         }
     }
 
-    fun resetTickCounter(){
+    fun resetTickCounter() {
         ticks.clear()
         mTickInMinutes.postValue(0.00)
     }
 
-    fun stopTimer(){
+    fun stopTimer() {
 
         if (mOnTimer.value != true) return
         job.cancel()
@@ -69,6 +68,9 @@ class TimerViewModel() : ViewModel(), CoroutineScope {
                 delay(1000)
                 val time = mSeconds.value ?: 0
                 mSeconds.postValue(time + 1)
+                if (time+1==60){
+                    stopTimer()
+                }
             }
         }
     }
@@ -79,6 +81,18 @@ class TimerViewModel() : ViewModel(), CoroutineScope {
     }
 
     fun setManualTickValue(stringValue: String) {
+        try {
+            mTickInMinutes.postValue(0.00)
+            val tickInt = stringValue.toInt()
+            mSeconds.value?.let {
+                val timerMinutes = it.toDouble()/60
+                if (it != 0) {
+                    mTickInMinutes.postValue(tickInt.toDouble() / timerMinutes)
+                }
+            }
 
+        } catch (e: NumberFormatException) {
+            mTickInMinutes.postValue(0.00)
+        }
     }
 }

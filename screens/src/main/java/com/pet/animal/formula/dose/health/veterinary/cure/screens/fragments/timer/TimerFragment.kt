@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentTimerBinding
@@ -15,6 +16,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.Fr
 class TimerFragment : BaseFragment<FragmentTimerBinding>(FragmentTimerBinding::inflate) {
 
     private lateinit var startTimerButton:View
+    private val navigationButtons = arrayOfNulls<View>(size = 2)
 
     companion object {
         fun newInstance():TimerFragment = TimerFragment()
@@ -26,6 +28,7 @@ class TimerFragment : BaseFragment<FragmentTimerBinding>(FragmentTimerBinding::i
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this)[TimerViewModel::class.java]
 
+        initNavigationButtons()
         initButton()
         viewModel.second.observe(viewLifecycleOwner) {
             val minutes: Int = it / 60
@@ -58,7 +61,27 @@ class TimerFragment : BaseFragment<FragmentTimerBinding>(FragmentTimerBinding::i
         }
     }
 
+    private fun initNavigationButtons() {
+        binding.apply {
+            navigationButtons.also {
+                it[0] = this.timerPreviousButton
+                it[1] = this.timerAboutButton
+            }
+        }
 
+        navigationButtons.forEachIndexed { index, button ->
+            button?.setOnClickListener {
+                when (index) {
+                    0 -> viewModel.router.exit()
+                    1 -> viewModel.router.navigateTo(viewModel.screens.aboutScreen())
+                    else -> {
+                        Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                }
+            }
+        }
+    }
 
 
     private fun initButton() {
@@ -81,7 +104,11 @@ class TimerFragment : BaseFragment<FragmentTimerBinding>(FragmentTimerBinding::i
         }
 
         binding.inputManualCount.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int){}
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int){
+                if (viewModel.onTimer.value==true){
+                    viewModel.stopTimer()
+                }
+            }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
