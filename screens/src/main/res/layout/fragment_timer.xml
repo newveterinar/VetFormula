@@ -8,7 +8,7 @@
     tools:context=".fragments.timer.TimerFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/pharmacy_header"
+        android:id="@+id/timer_header"
         android:layout_width="match_parent"
         android:layout_height="@dimen/pharmacy_header_height"
         android:background="@color/light_appbar"
@@ -29,7 +29,7 @@
             app:srcCompat="@drawable/ic_information_about" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/pharmacy_previous_button_container"
+            android:id="@+id/timer_previous_button_container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -73,7 +73,7 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pharmacy_header" />
+        app:layout_constraintTop_toBottomOf="@+id/timer_header" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
