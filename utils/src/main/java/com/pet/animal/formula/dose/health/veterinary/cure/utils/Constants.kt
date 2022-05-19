@@ -64,3 +64,8 @@ enum class ScreenType {
     // Типы формул для раздела CALCULATOR
     CALCULATOR                              // При переводе в Int соответствует номеру 10
 }
+
+// Слайдер
+const val SLIDER_START_ANGLE: Float = 270f
+const val SLIDER_MAX_VALUE: Float = 100f
+const val SLIDER_MAX_DIFFERENT_VALUE: Float = 1f
