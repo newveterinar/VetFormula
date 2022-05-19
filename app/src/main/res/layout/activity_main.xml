@@ -1,30 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.MainActivity">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/logo"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentEnd="true"
-        android:scaleX="1.5"
-        android:scaleY="1.5"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo" />
-
+    <!-- Верхнее окно (верхний фрагмент) -->
     <FrameLayout
         android:id="@+id/activity_fragments_container"
         android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_fragments_container_height"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal_guideline"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="@dimen/windows_slider_max_value"/>
+
+    <!-- Нижнее окно (нижний фрагмент, заменить TextView на FrameLayout) -->
+    <TextView
+        android:id="@+id/bottom_activity_fragments_container"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bottom_activity_fragments_container_height"
+        android:background="@color/red"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/horizontal_guideline"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <!-- Слайдер -->
+    <FrameLayout
+        android:id="@+id/windows_slider_container"
+        android:layout_width="@dimen/windows_slider_container_width"
         android:layout_height="match_parent"
-        android:visibility="visible" />
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-
-    <include layout="@layout/bottom_sheet_layout" />
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <com.pet.animal.formula.dose.health.veterinary.cure.vetformula.view.behavior.VerticalSlider
+            android:id="@+id/windows_slider"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:rotation="@dimen/windows_slider_start_angle"
+            android:value="@dimen/windows_slider_value"
+            android:valueFrom="@dimen/windows_slider_value_from"
+            android:valueTo="@dimen/windows_slider_value_to" />
+    </FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

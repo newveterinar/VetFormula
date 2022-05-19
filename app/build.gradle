@@ -6,9 +6,7 @@ plugins {
     id 'kotlin-kapt'
     // Подключение плагина для удобной парселизации
     id 'kotlin-parcelize'
-
 }
-
 
 android {
     compileSdk 32

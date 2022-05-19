@@ -14,6 +14,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.utils.CICERONE_NAME
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.FragmentScope
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.MAIN_ACTIVITY_NAME
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.resources.ResourcesProviderImpl
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.screens.UpAndBottomFramesSizesChanger
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.settings.SettingsImpl
 import com.pet.animal.formula.dose.health.veterinary.cure.vetformula.view.MainViewModel
 import org.koin.android.ext.koin.androidContext
@@ -66,4 +67,6 @@ val screens = module {
         }
     }
     //endregion
+    // Класс для хранения размеров верхнего и нижнего окон
+    single<UpAndBottomFramesSizesChanger> { UpAndBottomFramesSizesChanger() }
 }
