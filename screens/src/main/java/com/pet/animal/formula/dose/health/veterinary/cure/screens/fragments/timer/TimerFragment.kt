@@ -2,6 +2,8 @@ package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.tim
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,14 +43,18 @@ class TimerFragment : BaseFragment<FragmentTimerBinding>(FragmentTimerBinding::i
 
         viewModel.onTimer.observe(viewLifecycleOwner) {
             if (it) {
-                (startTimerButton as Button).text = "Stop timer"
+                (startTimerButton as Button).text = getString(R.string.captionStopTimer)
             } else {
-                (startTimerButton as Button).text = "Start timer"
+                (startTimerButton as Button).text = getString(R.string.captionStartTimer)
             }
         }
 
+        fun Double.format(digits: Int) = "%.${digits}f".format(this)
+
         viewModel.tickInMinutes.observe(viewLifecycleOwner) {
-            binding.tickInMinutes.text = it.toString()
+            val s:String = getString(R.string.tickCaption)
+            val tickString = "$s.${it.format(2)}"
+            binding.tickInMinutes.text = tickString
         }
     }
 
@@ -69,5 +75,21 @@ class TimerFragment : BaseFragment<FragmentTimerBinding>(FragmentTimerBinding::i
         binding.touchPlace.setOnClickListener{
             viewModel.addTick()
         }
+
+        binding.buttonResetTickCounter.setOnClickListener{
+            viewModel.resetTickCounter()
+        }
+
+        binding.inputManualCount.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int){}
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun afterTextChanged(et: Editable?) {
+                et?.let{
+                    viewModel.setManualTickValue(it.toString())
+                }
+            }
+        })
     }
 }

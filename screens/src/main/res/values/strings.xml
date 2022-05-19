@@ -49,6 +49,9 @@
     <string name="pharmacy_dose_previous_text_text">PharmacyDose</string>
     <string name="pharmacy_speed_animal_title_text">Скорость введения</string>
     <string name="pharmacy_speed_textinputlayout_textfield_hint">Скорость введения</string>
+    <string name="tickCaption">tick/min</string>
+    <string name="captionStopTimer">Stop timer</string>
+    <string name="captionStartTimer">Start timer</string>
 
     <string-array name="pharmacy_surface_animal_type_list">
         <item>Собака</item>

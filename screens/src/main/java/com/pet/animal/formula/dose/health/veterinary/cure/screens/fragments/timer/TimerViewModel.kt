@@ -37,13 +37,17 @@ class TimerViewModel() : ViewModel(), CoroutineScope {
         updateTicks()
     }
 
-
     private fun updateTicks(){
         if (ticks.size>1){
             val totalTimeOverTicks = ticks[ticks.size-1]-ticks[0]
-            val totalTimeMinutes:Double = totalTimeOverTicks.toDouble()/100/60
+            val totalTimeMinutes:Double = totalTimeOverTicks.toDouble()/1000/60
             mTickInMinutes.postValue(ticks.size.toDouble()/totalTimeMinutes)
         }
+    }
+
+    fun resetTickCounter(){
+        ticks.clear()
+        mTickInMinutes.postValue(0.00)
     }
 
     fun stopTimer(){
@@ -72,5 +76,9 @@ class TimerViewModel() : ViewModel(), CoroutineScope {
     override fun onCleared() {
         super.onCleared()
         coroutineContext.cancelChildren()
+    }
+
+    fun setManualTickValue(stringValue: String) {
+
     }
 }
