@@ -1,10 +1,6 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.vetformula.view
 
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
-import android.animation.ObjectAnimator
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.androidx.AppNavigator
@@ -19,8 +15,6 @@ import org.koin.java.KoinJavaComponent
 
 class MainActivity : AppCompatActivity() {
     /** Задание переменных */ //region
-    // Переменная для FAB
-    private var isExpanded = false
 
     // Навигация
     private val navigator =
@@ -47,7 +41,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-
         // Создание Scope для MainActivity
         val viewModel: MainViewModel by mainActivityScope.inject()
         this.viewModel = viewModel
@@ -55,7 +48,6 @@ class MainActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             this.viewModel.router.navigateTo(this.viewModel.screens.mainScreen())
         }
-        setFAB()
     }
 
     /** Методы для настройки навигатора */ //region
@@ -78,105 +70,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
         viewModel.router.exit()
-    }
-
-    /** FAB **/
-    //region
-    private fun setFAB() {
-        setInitialState()
-
-        binding.fab.setOnClickListener {
-            if (isExpanded) {
-                collapseFab()
-            } else {
-                expandFAB()
-            }
-        }
-    }
-
-    private fun setInitialState() {
-        binding.activityFragmentsContainer.apply {
-            alpha = 0f
-        }
-        binding.optionTwoContainer.apply {
-            alpha = 0f
-            isClickable = false
-        }
-        binding.optionOneContainer.apply {
-            alpha = 0f
-            isClickable = false
-        }
-    }
-
-    private fun expandFAB() {
-        isExpanded = true
-        ObjectAnimator.ofFloat(binding.fabImageview, "rotation", 0f, 225f).start()
-        ObjectAnimator.ofFloat(binding.optionTwoContainer, "translationY", -130f).start()
-        ObjectAnimator.ofFloat(binding.optionOneContainer, "translationY", -250f).start()
-
-        binding.optionTwoContainer.animate()
-            .alpha(1f)
-            .setDuration(300)
-            .setListener(object : AnimatorListenerAdapter() {
-                override fun onAnimationEnd(animation: Animator) {
-                    binding.optionTwoContainer.isClickable = true
-                    binding.optionTwoContainer.setOnClickListener {
-                        Toast.makeText(this@MainActivity, "Option 2", Toast.LENGTH_SHORT).show()
-                    }
-                }
-            })
-        binding.optionOneContainer.animate()
-            .alpha(1f)
-            .setDuration(300)
-            .setListener(object : AnimatorListenerAdapter() {
-                override fun onAnimationEnd(animation: Animator) {
-                    binding.optionOneContainer.isClickable = true
-                    binding.optionOneContainer.setOnClickListener {
-                        Toast.makeText(this@MainActivity, "Option 1", Toast.LENGTH_SHORT).show()
-                    }
-                }
-            })
-        binding.activityFragmentsContainer.animate()
-            .alpha(0.9f)
-            .setDuration(300)
-            .setListener(object : AnimatorListenerAdapter() {
-                override fun onAnimationEnd(animation: Animator) {
-                    binding.activityFragmentsContainer.isClickable = true
-                }
-            })
-    }
-
-    private fun collapseFab() {
-        isExpanded = false
-        ObjectAnimator.ofFloat(binding.fabImageview, "rotation", 0f, -180f).start()
-        ObjectAnimator.ofFloat(binding.optionTwoContainer, "translationY", 0f).start()
-        ObjectAnimator.ofFloat(binding.optionOneContainer, "translationY", 0f).start()
-
-        binding.optionTwoContainer.animate()
-            .alpha(0f)
-            .setDuration(300)
-            .setListener(object : AnimatorListenerAdapter() {
-                override fun onAnimationEnd(animation: Animator) {
-                    binding.optionTwoContainer.isClickable = false
-                    binding.optionOneContainer.setOnClickListener(null)
-                }
-            })
-        binding.optionOneContainer.animate()
-            .alpha(0f)
-            .setDuration(300)
-            .setListener(object : AnimatorListenerAdapter() {
-                override fun onAnimationEnd(animation: Animator) {
-                    binding.optionOneContainer.isClickable = false
-                }
-            })
-        binding.activityFragmentsContainer.animate()
-            .alpha(0f)
-            .setDuration(300)
-            .setListener(object : AnimatorListenerAdapter() {
-                override fun onAnimationEnd(animation: Animator) {
-                    binding.activityFragmentsContainer.isClickable = false
-                }
-            })
     }
 
     //endregion
