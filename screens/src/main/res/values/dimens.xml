@@ -195,4 +195,9 @@
     <dimen name="pharmacy_speed_textinputlayout_margin_start">40dp</dimen>
     <dimen name="pharmacy_speed_textinputlayout_textfield_text_size">20sp</dimen>
     <dimen name="pharmacy_speed_dimension_layout_width">130dp</dimen>
+    <dimen name="pharmacy_cri_drop_dimension_list">313dp</dimen>
+    <dimen name="spinner_dimension_no_giving_set">37dp</dimen>
+    <dimen name="body_surface_layout_width">298dp</dimen>
+    <dimen name="body_surface_layout_height">34dp</dimen>
+    <dimen name="body_surface_layout_marginStart">8dp</dimen>
 </resources>

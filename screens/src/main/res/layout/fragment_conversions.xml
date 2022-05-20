@@ -37,11 +37,11 @@
 
             <TextView
                 android:id="@+id/conversions_previous_text"
+                style="@style/text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingStart="@dimen/conversions_previous_text_padding_start"
                 android:text="@string/conversions_previous_text_text"
-                style="@style/text_style"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -66,36 +66,36 @@
         app:layout_constraintTop_toBottomOf="@id/conversions_header">
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/conversions_surface_button_container"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/conversions_surface_button_container_margin_start"
-        android:layout_marginTop="@dimen/conversions_surface_button_container_margin_top"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/conversions_horizontal_border">
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/conversions_surface_button"
-            android:layout_width="@dimen/conversions_surface_button_width"
-            android:layout_height="@dimen/conversions_surface_button_height"
-            android:layout_alignParentEnd="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/ic_temperature"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/conversions_surface_button_text"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/conversions_surface_button_container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/conversions_button_surface_text_text"
-            style="@style/button_style"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="@dimen/conversions_surface_button_container_margin_start"
+            android:layout_marginTop="@dimen/conversions_surface_button_container_margin_top"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/conversions_surface_button" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintTop_toBottomOf="@id/conversions_horizontal_border">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/conversions_surface_button"
+                android:layout_width="@dimen/conversions_surface_button_width"
+                android:layout_height="@dimen/conversions_surface_button_height"
+                android:layout_alignParentEnd="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_temperature" />
+
+            <TextView
+                android:id="@+id/conversions_surface_button_text"
+                style="@style/button_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/conversions_button_surface_text_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/conversions_surface_button" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

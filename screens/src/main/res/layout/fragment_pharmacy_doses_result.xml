@@ -8,8 +8,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/pharmacy_header"
         android:layout_width="match_parent"
-        android:background="@color/light_appbar"
         android:layout_height="@dimen/pharmacy_header_height"
+        android:background="@color/light_appbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -37,11 +37,11 @@
 
             <TextView
                 android:id="@+id/pharmacy_result_previous_text"
+                style="@style/text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingStart="@dimen/pharmacy_result_previous_text_padding_start"
                 android:text="@string/pharmacy_result_previous_text_text"
-                style="@style/text_style"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -63,9 +63,9 @@
         android:text="@string/pharmacy_result_text_text"
         android:textSize="@dimen/pharmacy_result_text_text_size"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/pharmacy_horizontal_border"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pharmacy_horizontal_border" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
