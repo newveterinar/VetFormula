@@ -10,7 +10,6 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.Guideline
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.androidx.AppNavigator
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator.BackButtonListener
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.MAIN_ACTIVITY_NAME
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.SLIDER_MAX_DIFFERENT_VALUE
@@ -49,7 +48,7 @@ class MainActivity : AppCompatActivity() {
     // FAB
     private var clicked = false
 
-
+    // Ленивая инициализация анимаций для FAB
     private val rotateOpen: Animation by lazy {
         AnimationUtils.loadAnimation(
             this,
@@ -74,7 +73,6 @@ class MainActivity : AppCompatActivity() {
             R.anim.to_bottom_anim
         )
     }
-
     //endregion
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -94,75 +92,64 @@ class MainActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             this.viewModel.router.navigateTo(this.viewModel.screens.mainScreen())
         }
+        onClickFab()
+    }
 
-        val fabMain: FloatingActionButton = findViewById(R.id.fab_main)
-        val fabWebView: FloatingActionButton = findViewById(R.id.fab_web_view)
-        val fabTextView: FloatingActionButton = findViewById(R.id.fab_text_view)
-
-        fabMain.setOnClickListener {
-            onAddButtonClicked()
+    // Функция - слушатель нажатий по FAB
+    private fun onClickFab() {
+        binding.fabMain.setOnClickListener {
+            onFabMainButtonClicked()
         }
 
-        fabWebView.setOnClickListener {
+        binding.fabWebView.setOnClickListener {
             Toast.makeText(this, "WebView Button Clicked", Toast.LENGTH_SHORT).show()
         }
 
-        fabTextView.setOnClickListener {
+        binding.fabTextView.setOnClickListener {
             Toast.makeText(this, "TextView Button Clicked", Toast.LENGTH_SHORT).show()
-
         }
     }
 
-    private fun onAddButtonClicked() {
-//        Toast.makeText(this, "Button Clicked", Toast.LENGTH_SHORT).show()
+    // Функция основной FAB
+    private fun onFabMainButtonClicked() {
         setVisibility(clicked)
         setAnimation(clicked)
         setClickable(clicked)
         clicked = !clicked
     }
 
+    // Настройка показ/не показ выскакивающих FAB
     private fun setVisibility(clicked: Boolean) {
-
-        val fabWebView: FloatingActionButton = findViewById(R.id.fab_web_view)
-        val fabTextView: FloatingActionButton = findViewById(R.id.fab_text_view)
-
         if (!clicked) {
-            fabWebView.visibility = View.VISIBLE
-            fabTextView.visibility = View.VISIBLE
+            binding.fabWebView.visibility = View.VISIBLE
+            binding.fabTextView.visibility = View.VISIBLE
         } else {
-            fabWebView.visibility = View.INVISIBLE
-            fabTextView.visibility = View.INVISIBLE
+            binding.fabWebView.visibility = View.INVISIBLE
+            binding.fabTextView.visibility = View.INVISIBLE
         }
     }
 
+    //Настройка анимации всех FAB
     private fun setAnimation(clicked: Boolean) {
-
-        val fabMain: FloatingActionButton = findViewById(R.id.fab_main)
-        val fabWebView: FloatingActionButton = findViewById(R.id.fab_web_view)
-        val fabTextView: FloatingActionButton = findViewById(R.id.fab_text_view)
-
         if (!clicked) {
-            fabWebView.startAnimation(fromBottom)
-            fabTextView.startAnimation(fromBottom)
-            fabMain.startAnimation(rotateOpen)
+            binding.fabWebView.startAnimation(fromBottom)
+            binding.fabTextView.startAnimation(fromBottom)
+            binding.fabMain.startAnimation(rotateOpen)
         } else {
-            fabWebView.startAnimation(toBottom)
-            fabTextView.startAnimation(toBottom)
-            fabMain.startAnimation(rotateClose)
+            binding.fabWebView.startAnimation(toBottom)
+            binding.fabTextView.startAnimation(toBottom)
+            binding.fabMain.startAnimation(rotateClose)
         }
     }
 
+    // Функция, которая убирает "скрытые" клики по выскакивающим FAB
     private fun setClickable(clicked: Boolean) {
-
-        val fabWebView: FloatingActionButton = findViewById(R.id.fab_web_view)
-        val fabTextView: FloatingActionButton = findViewById(R.id.fab_text_view)
-
         if (!clicked) {
-            fabWebView.isClickable = true
-            fabTextView.isClickable = true
+            binding.fabWebView.isClickable = true
+            binding.fabTextView.isClickable = true
         } else {
-            fabWebView.isClickable = false
-            fabTextView.isClickable = false
+            binding.fabWebView.isClickable = false
+            binding.fabTextView.isClickable = false
         }
     }
 
