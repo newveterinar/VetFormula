@@ -28,9 +28,9 @@
                 android:layout_width="@dimen/pharmacy_about_button_width"
                 android:layout_height="@dimen/pharmacy_about_button_height"
                 android:layout_alignParentEnd="true"
-                android:rotation="180"
-                android:scaleX="1.25"
-                android:scaleY="1.25"
+                android:rotation="@dimen/clear_button_rotation_angle"
+                android:scaleX="@dimen/clear_button_scale_x"
+                android:scaleY="@dimen/clear_button_scale_y"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -64,7 +64,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="@dimen/pharmacy_previous_button_margin_start"
                 android:layout_marginTop="@dimen/pharmacy_previous_button_margin_top"
-                android:rotation="180"
+                android:rotation="@dimen/arrow_back_rotation_angle"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -83,22 +83,23 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.47" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <View
-        android:id="@+id/pharmacy_horizontal_border"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/pharmacy_horizontal_border_height"
-        android:background="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/pharmacy_header" />
+        <View
+            android:id="@+id/pharmacy_horizontal_border"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/pharmacy_horizontal_border_height"
+            android:background="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/pharmacy_header" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/pharmacy_header_height"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/pharmacy_horizontal_border">
+        app:layout_constraintTop_toBottomOf="@id/pharmacy_header">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -211,7 +212,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/pharmacy_weight_relative_layout" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

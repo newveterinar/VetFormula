@@ -79,8 +79,8 @@ class PharmacyDosesFragment :
                     0 -> viewModel.router.exit()
                     2 -> viewModel.router.navigateTo(viewModel.screens.pharmacyDosesResultScreen())
                     else -> {
-                        Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT)
-                            .show()
+                         Toast.makeText(requireContext(), requireActivity().resources.getString(
+                            R.string.error_button_is_not_assigned), Toast.LENGTH_SHORT).show()
                     }
                 }
             }
