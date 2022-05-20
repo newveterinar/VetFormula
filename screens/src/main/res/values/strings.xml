@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Сообщения об ошибках -->
-    <string name="error_appstate_not_loaded_for_fragment">Error: Fragment data not loaded</string>
+    <string name="error_appstate_not_loaded_for_fragment">Ошибка: Данные для фрагмента не загружены</string>
 
     <!-- Ресурсы макета -->
     <string name="about_surface_button_text_text">ABOUT\nVetFormula</string>
@@ -33,7 +33,7 @@
     <string name="calculator_button_surface_text_text">Calculate</string>
     <string name="pharmacy_clear_button_text_text">C</string>
     <string name="pharmacy_type_animal_title_text">Animal type</string>
-    <string name="pharmacy_weight_animal_title_text">Вес</string>
+    <string name="pharmacy_weight_animal_title_text">Weight</string>
     <string name="pharmacy_weight_textinputlayout_textfield_hint">Animal weight</string>
     <string name="pharmacy_dose_animal_title_text">Dose</string>
     <string name="pharmacy_dose_textinputlayout_textfield_hint">Amount</string>
@@ -49,6 +49,9 @@
     <string name="pharmacy_dose_previous_text_text">PharmacyDose</string>
     <string name="pharmacy_speed_animal_title_text">Rate</string>
     <string name="pharmacy_speed_textinputlayout_textfield_hint">Rate</string>
+    <string name="tickCaption">tick/min</string>
+    <string name="captionStopTimer">Stop timer</string>
+    <string name="captionStartTimer">Start timer</string>
 
     <string-array name="pharmacy_surface_animal_type_list">
         <item>Dog</item>

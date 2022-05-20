@@ -12,7 +12,7 @@ class MainScreenFragment :
     /** Задание переменных */ //region
 
     // Навигация
-    private val navigationButtons = arrayOfNulls<View>(size = 7)
+    private val navigationButtons = arrayOfNulls<View>(size = 8)
 
     // ViewModel
     private lateinit var viewModel: MainScreenFragmentViewModel
@@ -38,6 +38,7 @@ class MainScreenFragment :
                 it[4] = this.settingsButton
                 it[5] = this.calculatorSurfaceButtonContainer
                 it[6] = this.pharmacyAboutButton
+                it[7] = this.timerButton
             }
 
         }
@@ -52,6 +53,7 @@ class MainScreenFragment :
                     4 -> viewModel.router.navigateTo(viewModel.screens.settingsScreen())
                     5 -> viewModel.router.navigateTo(viewModel.screens.calculatorScreen())
                     6 -> viewModel.router.navigateTo(viewModel.screens.aboutScreen())
+                    7 -> viewModel.router.navigateTo(viewModel.screens.timerScreen())
                     else -> {
                         Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT)
                             .show()
