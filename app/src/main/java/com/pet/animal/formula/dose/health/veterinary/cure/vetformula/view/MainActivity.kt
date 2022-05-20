@@ -1,6 +1,10 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.vetformula.view
 
 import android.os.Bundle
+import android.view.View
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.Guideline
@@ -17,25 +21,58 @@ import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
 import org.koin.java.KoinJavaComponent
 
-class MainActivity: AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
     /** Задание переменных */ //region
     // Навигация
     private val navigator =
         AppNavigator(this@MainActivity, R.id.activity_fragments_container)
     private val navigatorHolder: NavigatorHolder = KoinJavaComponent.getKoin().get()
+
     // ViewModel
     private val mainActivityScope: Scope = KoinJavaComponent.getKoin().getOrCreateScope(
         MAIN_ACTIVITY_NAME, named(MAIN_ACTIVITY_NAME)
     )
     private lateinit var viewModel: MainViewModel
+
     // Binding
     private lateinit var binding: ActivityMainBinding
+
     // Класс для хранения размеров верхнего и нижнего окон
     private val upAndBottomFramesSizesChanger: UpAndBottomFramesSizesChanger =
         KoinJavaComponent.getKoin().get()
+
     // Слайдер
     lateinit var guideLine: Guideline
     lateinit var params: ConstraintLayout.LayoutParams
+
+    // FAB
+    private var clicked = false
+
+    // Ленивая инициализация анимаций для FAB
+    private val rotateOpen: Animation by lazy {
+        AnimationUtils.loadAnimation(
+            this,
+            R.anim.rotate_open_anim
+        )
+    }
+    private val rotateClose: Animation by lazy {
+        AnimationUtils.loadAnimation(
+            this,
+            R.anim.rotate_close_anim
+        )
+    }
+    private val fromBottom: Animation by lazy {
+        AnimationUtils.loadAnimation(
+            this,
+            R.anim.from_bottom_anim
+        )
+    }
+    private val toBottom: Animation by lazy {
+        AnimationUtils.loadAnimation(
+            this,
+            R.anim.to_bottom_anim
+        )
+    }
     //endregion
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,6 +91,65 @@ class MainActivity: AppCompatActivity() {
 
         if (savedInstanceState == null) {
             this.viewModel.router.navigateTo(this.viewModel.screens.mainScreen())
+        }
+        onClickFab()
+    }
+
+    // Функция - слушатель нажатий по FAB
+    private fun onClickFab() {
+        binding.fabMain.setOnClickListener {
+            onFabMainButtonClicked()
+        }
+
+        binding.fabWebView.setOnClickListener {
+            Toast.makeText(this, "WebView Button Clicked", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.fabTextView.setOnClickListener {
+            Toast.makeText(this, "TextView Button Clicked", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    // Функция основной FAB
+    private fun onFabMainButtonClicked() {
+        setVisibility(clicked)
+        setAnimation(clicked)
+        setClickable(clicked)
+        clicked = !clicked
+    }
+
+    // Настройка показ/не показ выскакивающих FAB
+    private fun setVisibility(clicked: Boolean) {
+        if (!clicked) {
+            binding.fabWebView.visibility = View.VISIBLE
+            binding.fabTextView.visibility = View.VISIBLE
+        } else {
+            binding.fabWebView.visibility = View.INVISIBLE
+            binding.fabTextView.visibility = View.INVISIBLE
+        }
+    }
+
+    //Настройка анимации всех FAB
+    private fun setAnimation(clicked: Boolean) {
+        if (!clicked) {
+            binding.fabWebView.startAnimation(fromBottom)
+            binding.fabTextView.startAnimation(fromBottom)
+            binding.fabMain.startAnimation(rotateOpen)
+        } else {
+            binding.fabWebView.startAnimation(toBottom)
+            binding.fabTextView.startAnimation(toBottom)
+            binding.fabMain.startAnimation(rotateClose)
+        }
+    }
+
+    // Функция, которая убирает "скрытые" клики по выскакивающим FAB
+    private fun setClickable(clicked: Boolean) {
+        if (!clicked) {
+            binding.fabWebView.isClickable = true
+            binding.fabTextView.isClickable = true
+        } else {
+            binding.fabWebView.isClickable = false
+            binding.fabTextView.isClickable = false
         }
     }
 
