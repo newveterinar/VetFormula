@@ -14,7 +14,7 @@ class PharmacySurfaceResultFragment :
     private val navigationButtons = arrayOfNulls<View>(size = 2)
 
     // ViewModel
-    private lateinit var model: PharmacySurfaceResultFragmentViewModel
+    private lateinit var viewModel: PharmacySurfaceResultFragmentViewModel
     //endregion
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -30,15 +30,13 @@ class PharmacySurfaceResultFragment :
         binding.apply {
             navigationButtons.also {
                 it[0] = this.pharmacyPreviousButtonContainer
-                it[1] = this.pharmacyAboutButton
             }
         }
 
         navigationButtons.forEachIndexed { index, button ->
             button?.setOnClickListener {
                 when (index) {
-                    0 -> model.router.exit()
-                    1 -> model.router.navigateTo(model.screens.aboutScreen())
+                    0 -> viewModel.router.exit()
                     else -> {
                         Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT)
                             .show()
@@ -50,7 +48,7 @@ class PharmacySurfaceResultFragment :
 
     // Инициализация ViewModel
     fun initViewModel() {
-        model = ViewModelProvider(this)
+        viewModel = ViewModelProvider(this)
             .get(PharmacySurfaceResultFragmentViewModel::class.java)
     }
 

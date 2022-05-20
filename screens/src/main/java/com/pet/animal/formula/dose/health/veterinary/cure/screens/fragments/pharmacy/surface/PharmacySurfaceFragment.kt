@@ -17,7 +17,7 @@ import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
 import org.koin.java.KoinJavaComponent
 
-class PharmacySurfaceFragment:
+class PharmacySurfaceFragment :
     BaseFragment<FragmentPharmacySurfaceBinding>(FragmentPharmacySurfaceBinding::inflate) {
     /** Задание переменных */ //region
     // Установка типа формулы для текущего окна
@@ -29,14 +29,18 @@ class PharmacySurfaceFragment:
     private lateinit var pharmacyClearButtonContainer: ConstraintLayout
 
     // ViewModel
-    private lateinit var model: PharmacySurfaceFragmentViewModel
+    private lateinit var viewModel: PharmacySurfaceFragmentViewModel
+
     // ShowPharmacySurfaceFragmentScope
     private lateinit var showPharmacySurfaceFragmentScope: Scope
+
     // Списки (Spinner)
     private val listsAddFirstSecond: MutableList<Spinner> = mutableListOf()
     private val listsDimensions: MutableList<Spinner> = mutableListOf()
+
     // Текстовые поля для ввода чисел
     private val valuesFields: MutableList<EditText> = mutableListOf()
+
     // newInstance для данного класса
     companion object {
         fun newInstance(): PharmacySurfaceFragment = PharmacySurfaceFragment()
@@ -49,7 +53,8 @@ class PharmacySurfaceFragment:
         // Задание Scope для данного фрагмента
         showPharmacySurfaceFragmentScope = KoinJavaComponent.getKoin().getOrCreateScope(
             FragmentScope.SHOW_PHARMACY_SURFACE_FRAGMENT_SCOPE,
-            named(FragmentScope.SHOW_PHARMACY_SURFACE_FRAGMENT_SCOPE))
+            named(FragmentScope.SHOW_PHARMACY_SURFACE_FRAGMENT_SCOPE)
+        )
     }
 
     override fun onDetach() {
@@ -97,15 +102,13 @@ class PharmacySurfaceFragment:
             navigationButtons.also {
                 it[0] = this.pharmacyPreviousButtonContainer
                 it[1] = this.pharmacyCalculateButton
-                it[2] = this.pharmacyAboutButton
             }
         }
         navigationButtons.forEachIndexed { index, button ->
             button?.setOnClickListener {
                 when (index) {
-                    0 -> model.router.exit()
-                    1 -> model.router.navigateTo(model.screens.pharmacySurfaceResultScreen())
-                    2 -> model.router.navigateTo(model.screens.aboutScreen())
+                    0 -> viewModel.router.exit()
+                    1 -> viewModel.router.navigateTo(viewModel.screens.pharmacySurfaceResultScreen())
                     else -> {
                         Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT)
                             .show()
@@ -115,7 +118,7 @@ class PharmacySurfaceFragment:
         }
     }
 
-    private fun initButtons(){
+    private fun initButtons() {
         pharmacyClearButtonContainer = binding.pharmacyClearButtonContainer
         pharmacyClearButtonContainer.setOnClickListener {
             listsAddFirstSecond.forEach {
@@ -135,11 +138,11 @@ class PharmacySurfaceFragment:
     // Инициализация ViewModel
     private fun initViewModel() {
         val viewModel: PharmacySurfaceFragmentViewModel by showPharmacySurfaceFragmentScope.inject()
-        model = viewModel
-        model.subscribe().observe(viewLifecycleOwner){
+        this.viewModel = viewModel
+        this.viewModel.subscribe().observe(viewLifecycleOwner) {
             renderData(it)
         }
-        model.getData()
+        this.viewModel.getData()
     }
 
     private fun renderData(appState: AppState) {
@@ -154,8 +157,10 @@ class PharmacySurfaceFragment:
                     // Установка численного значения поля
                     valuesFields.forEachIndexed { index, valueField ->
                         if (it.valueFields.count() > index)
-                            valueField.setText(if (it.valueFields[index].value > 0.0)
-                            "${it.valueFields[index].value}" else "")
+                            valueField.setText(
+                                if (it.valueFields[index].value > 0.0)
+                                    "${it.valueFields[index].value}" else ""
+                            )
                     }
                     // Установка размерности поля
                     listsDimensions.forEachIndexed { index, dimension ->
@@ -170,10 +175,13 @@ class PharmacySurfaceFragment:
                 }
             }
             is AppState.Error -> {
-                Toast.makeText(requireContext(),
+                Toast.makeText(
+                    requireContext(),
                     requireContext().getString(
-                        R.string.error_appstate_not_loaded_for_fragment),
-                    Toast.LENGTH_SHORT).show()
+                        R.string.error_appstate_not_loaded_for_fragment
+                    ),
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }
@@ -187,8 +195,10 @@ class PharmacySurfaceFragment:
                     position: Int, id: Long,
                 ) {
                     saveData()
-                    Toast.makeText(this@PharmacySurfaceFragment.requireContext(),
-                        "${spinnerList.selectedItem} selected", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this@PharmacySurfaceFragment.requireContext(),
+                        "${spinnerList.selectedItem} selected", Toast.LENGTH_SHORT
+                    ).show()
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -196,11 +206,14 @@ class PharmacySurfaceFragment:
             }
         }
     }
+
     // Сохранение текущего состояния всех числовых полей и списков
-    private fun saveData(){
-        model.saveData(screenType,
+    private fun saveData() {
+        viewModel.saveData(
+            screenType,
             listsAddFirstSecond.convertListSpinnerToListInt(),
             valuesFields.convertListEditTextToListDouble(),
-            listsDimensions.convertListSpinnerToListInt())
+            listsDimensions.convertListSpinnerToListInt()
+        )
     }
 }

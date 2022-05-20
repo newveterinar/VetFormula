@@ -15,7 +15,7 @@ class MainScreenFragment :
     private val navigationButtons = arrayOfNulls<View>(size = 8)
 
     // ViewModel
-    private lateinit var model: MainScreenFragmentViewModel
+    private lateinit var viewModel: MainScreenFragmentViewModel
     //endregion
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -30,12 +30,12 @@ class MainScreenFragment :
     // Инициализация кнопок
     private fun initNavigationButtons() {
         binding.apply {
-            navigationButtons.also{
+            navigationButtons.also {
                 it[0] = this.pharmacySurfaceButtonContainer
                 it[1] = this.fluidsSurfaceButtonContainer
                 it[2] = this.hematologySurfaceButtonContainer
                 it[3] = this.conversionsSurfaceButtonContainer
-                it[4] = this.settingsSurfaceButtonContainer
+                it[4] = this.settingsButton
                 it[5] = this.calculatorSurfaceButtonContainer
                 it[6] = this.pharmacyAboutButton
                 it[7] = this.timerButton
@@ -46,14 +46,14 @@ class MainScreenFragment :
         navigationButtons.forEachIndexed { index, button ->
             button?.setOnClickListener {
                 when (index) {
-                    0 -> model.router.navigateTo(model.screens.pharmacyScreen())
-                    1 -> model.router.navigateTo(model.screens.fluidsScreen())
-                    2 -> model.router.navigateTo(model.screens.hematologyScreen())
-                    3 -> model.router.navigateTo(model.screens.conversionsScreen())
-                    4 -> model.router.navigateTo(model.screens.settingsScreen())
-                    5 -> model.router.navigateTo(model.screens.calculatorScreen())
-                    6 -> model.router.navigateTo(model.screens.aboutScreen())
-                    7 -> model.router.navigateTo(model.screens.timerScreen())
+                    0 -> viewModel.router.navigateTo(viewModel.screens.pharmacyScreen())
+                    1 -> viewModel.router.navigateTo(viewModel.screens.fluidsScreen())
+                    2 -> viewModel.router.navigateTo(viewModel.screens.hematologyScreen())
+                    3 -> viewModel.router.navigateTo(viewModel.screens.conversionsScreen())
+                    4 -> viewModel.router.navigateTo(viewModel.screens.settingsScreen())
+                    5 -> viewModel.router.navigateTo(viewModel.screens.calculatorScreen())
+                    6 -> viewModel.router.navigateTo(viewModel.screens.aboutScreen())
+                    7 -> viewModel.router.navigateTo(viewModel.screens.timerScreen())
                     else -> {
                         Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT)
                             .show()
@@ -65,7 +65,7 @@ class MainScreenFragment :
 
     // Инициализация ViewModel
     private fun initViewModel() {
-        model = ViewModelProvider(this).get(MainScreenFragmentViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(MainScreenFragmentViewModel::class.java)
     }
 
     companion object {

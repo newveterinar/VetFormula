@@ -14,18 +14,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/calculator_about_button"
-            android:layout_width="@dimen/calculator_about_button_width"
-            android:layout_height="@dimen/calculator_about_button_height"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="@dimen/calculator_about_button_margin_top"
-            android:layout_marginEnd="@dimen/calculator_about_button_margin_end"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_information_about" />
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/calculator_previous_button_container"
             android:layout_width="wrap_content"

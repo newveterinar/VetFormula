@@ -16,18 +16,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/pharmacy_about_button"
-            android:layout_width="@dimen/pharmacy_about_button_width"
-            android:layout_height="@dimen/pharmacy_about_button_height"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="@dimen/pharmacy_about_button_margin_top"
-            android:layout_marginEnd="@dimen/pharmacy_about_button_margin_end"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_information_about" />
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/pharmacy_previous_button_container"
             android:layout_width="wrap_content"
@@ -87,19 +75,20 @@
             android:layout_width="@dimen/pharmacy_surface_button_width"
             android:layout_height="@dimen/pharmacy_surface_button_height"
             android:layout_alignParentEnd="true"
+            app:layout_constraintBottom_toTopOf="@+id/pharmacy_surface_button_text"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_surface_area" />
 
         <TextView
             android:id="@+id/pharmacy_surface_button_text"
+            style="@style/button_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/pharmacy_surface_button_text_text"
-            style="@style/button_style"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/pharmacy_surface_button" />
