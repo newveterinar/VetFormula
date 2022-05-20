@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentPharmacyBinding
 
 class PharmacyFragment : BaseFragment<FragmentPharmacyBinding>(FragmentPharmacyBinding::inflate) {
@@ -46,8 +47,8 @@ class PharmacyFragment : BaseFragment<FragmentPharmacyBinding>(FragmentPharmacyB
                     2 -> viewModel.router.navigateTo(viewModel.screens.doseScreen())
                     3 -> viewModel.router.navigateTo(viewModel.screens.criScreen())
                     else -> {
-                        Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT)
-                            .show()
+                         Toast.makeText(requireContext(), requireActivity().resources.getString(
+                            R.string.error_button_is_not_assigned), Toast.LENGTH_SHORT).show()
                     }
                 }
             }

@@ -8,8 +8,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/pharmacy_header"
         android:layout_width="match_parent"
-        android:background="@color/light_appbar"
         android:layout_height="@dimen/pharmacy_header_height"
+        android:background="@color/light_appbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -29,7 +29,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="@dimen/pharmacy_previous_button_margin_start"
                 android:layout_marginTop="@dimen/pharmacy_previous_button_margin_top"
-                android:rotation="180"
+                android:rotation="@dimen/arrow_back_rotation_angle"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -37,35 +37,51 @@
 
             <TextView
                 android:id="@+id/pharmacy_result_previous_text"
+                style="@style/text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingStart="@dimen/pharmacy_result_previous_text_padding_start"
                 android:text="@string/pharmacy_result_previous_text_text"
-                style="@style/text_style"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/pharmacy_horizontal_border"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/pharmacy_horizontal_border_height"
+            android:background="@color/black"
+            app:layout_constraintBottom_toBottomOf="@id/pharmacy_header"
+            app:layout_constraintStart_toStartOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <View
-        android:id="@+id/pharmacy_horizontal_border"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/pharmacy_horizontal_border_height"
-        android:background="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/pharmacy_header" />
-
-    <TextView
-        android:id="@+id/pharmacy_result_text"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/pharmacy_result_text_text"
-        android:textSize="@dimen/pharmacy_result_text_text_size"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/pharmacy_horizontal_border"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pharmacy_header">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/pharmacy_result_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pharmacy_result_text_text"
+                android:textSize="@dimen/pharmacy_result_text_text_size"
+                android:textStyle="bold"
+                android:paddingBottom="@dimen/pharmacy_result_text_padding_bottom"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

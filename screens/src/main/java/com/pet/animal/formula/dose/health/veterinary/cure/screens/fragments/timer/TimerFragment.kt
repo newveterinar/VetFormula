@@ -75,8 +75,8 @@ class TimerFragment : BaseFragment<FragmentTimerBinding>(FragmentTimerBinding::i
                     0 -> viewModel.router.exit()
                     1 -> viewModel.router.navigateTo(viewModel.screens.aboutScreen())
                     else -> {
-                        Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT)
-                            .show()
+                         Toast.makeText(requireContext(), requireActivity().resources.getString(
+                            R.string.error_button_is_not_assigned), Toast.LENGTH_SHORT).show()
                     }
                 }
             }

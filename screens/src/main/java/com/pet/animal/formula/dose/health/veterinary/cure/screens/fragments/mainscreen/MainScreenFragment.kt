@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentMainscreenBinding
 
 class MainScreenFragment :
@@ -38,7 +39,7 @@ class MainScreenFragment :
                 it[4] = this.settingsButton
                 it[5] = this.calculatorSurfaceButtonContainer
                 it[6] = this.pharmacyAboutButton
-                it[7] = this.timerButton
+                it[7] = this.timerSurfaceButtonContainer
             }
 
         }
@@ -55,8 +56,8 @@ class MainScreenFragment :
                     6 -> viewModel.router.navigateTo(viewModel.screens.aboutScreen())
                     7 -> viewModel.router.navigateTo(viewModel.screens.timerScreen())
                     else -> {
-                        Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT)
-                            .show()
+                        Toast.makeText(requireContext(), requireActivity().resources.getString(
+                            R.string.error_button_is_not_assigned), Toast.LENGTH_SHORT).show()
                     }
                 }
             }

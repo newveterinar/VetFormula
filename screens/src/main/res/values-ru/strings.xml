@@ -2,6 +2,7 @@
 <resources>
     <!-- Сообщения об ошибках -->
     <string name="error_appstate_not_loaded_for_fragment">Ошибка: Данные для фрагмента не загружены</string>
+    <string name="error_button_is_not_assigned">Ошибка: Кнопка не назначена</string>
 
     <!-- Ресурсы макета -->
     <string name="about_surface_button_text_text">О Приложении</string>
@@ -13,8 +14,8 @@
     <string name="pharmacy_calculate_button_text">Рассчитать</string>
     <string name="pharmacy_result_previous_text_text">Результат</string>
     <string name="pharmacy_about_button_hints">О приложении</string>
-    <string name="about_logo_text">Information</string>
-    <string name="pharmacy_logo_text">VetFormula</string>
+    <string name="about_logo_text">Информация</string>
+    <string name="pharmacy_logo_text">ВетФормула</string>
     <string name="pharmacy_result_text_text">100</string>
     <string name="fluids_button_text_text">Жидкости</string>
     <string name="fluids_button_surface_text_text">Главная</string>
@@ -52,6 +53,15 @@
     <string name="tickCaption">Ед./мин</string>
     <string name="captionStopTimer">Остановить таймер</string>
     <string name="captionStartTimer">Остановить таймер</string>
+    <string name="timer_button_text_text">Таймер</string>
+    <string name="doses_result_text_text">100</string>
+    <string name="timerText_text">00:00</string>
+    <string name="startTimerButton_text">Запустить таймер</string>
+    <string name="inputManualCount_text">0</string>
+    <string name="textView3_text">Введите количество измерений</string>
+    <string name="tickInMinutes_text">0.00</string>
+    <string name="buttonResetTickCounter_text">Сбросить значений</string>
+    <string name="timer_previous_text_text">Таймер</string>
 
     <string-array name="pharmacy_surface_animal_type_list">
         <item>Собака</item>
