@@ -3,6 +3,7 @@
     <!-- Сообщения об ошибках -->
     <string name="error_appstate_not_loaded_for_fragment">Error: The data for the fragment is not loaded</string>
     <string name="error_button_is_not_assigned">Error: The button is not assigned</string>
+    <string name="error_not_inserted_weight_animal">Please enter a number > 0</string>
 
     <!-- Ресурсы макета -->
     <string name="about_surface_button_text_text">ABOUT\nVetFormula</string>

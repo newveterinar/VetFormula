@@ -5,6 +5,8 @@ interface CalcInteractor {
     fun setCommand(button: Int)
     // Отправить в калькулятор число в виде строки из текстового поля
     fun setCommand(number: String)
+    // Отправить в калькулятор сразу число типа Double
+    fun setCommand(number: Double)
     // Получить в виде строки все введённые команды
     fun getInputtedCommands(): String
     // Получить результат вычислений в виде числа, если результат возможен

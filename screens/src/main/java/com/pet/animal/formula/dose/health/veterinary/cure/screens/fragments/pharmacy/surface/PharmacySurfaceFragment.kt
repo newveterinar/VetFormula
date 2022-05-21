@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.widget.doOnTextChanged
+import com.google.android.material.textfield.TextInputLayout
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppState
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
@@ -23,6 +25,7 @@ class PharmacySurfaceFragment :
     // Установка типа формулы для текущего окна
     private val screenType: ScreenType = ScreenType.PHARMACY_SURFACE
 
+    // Навигационные кнопки (для перехода на другие экраны)
     private val navigationButtons = arrayOfNulls<View>(size = 3)
 
     // Обнуление значений во всех полях
@@ -40,6 +43,7 @@ class PharmacySurfaceFragment :
 
     // Текстовые поля для ввода чисел
     private val valuesFields: MutableList<EditText> = mutableListOf()
+    private val valuesFieldsLayouts: MutableList<TextInputLayout> = mutableListOf()
 
     // newInstance для данного класса
     companion object {
@@ -72,7 +76,7 @@ class PharmacySurfaceFragment :
         initLists()
         // Инициализация кнопок навигации
         initNavigationButtons()
-        //Инициализация кнопко
+        //Инициализация кнопок
         initButtons()
         // Инициализация ViewModel
         initViewModel()
@@ -82,12 +86,25 @@ class PharmacySurfaceFragment :
 
     // Инициализация текстовых полей
     private fun initTextFields() {
+        // Очистка списков
+        valuesFieldsLayouts.clear()
+        valuesFields.clear()
         // Сюда по порядку задаются числовые поля
+        valuesFieldsLayouts.add(binding.pharmacyWeightTextinputlayout)
         valuesFields.add(binding.pharmacyWeightTextinputlayoutTextfield)
+        // Настройка события изменения значений в полях ввода чисел
+        valuesFields.forEach { field ->
+            field.doOnTextChanged { _, _, _, _ ->
+                viewModel.checkAreTheFieldsFilledIn(valuesFields.map { it.text.toString() })
+            }
+        }
     }
 
     // Инициализация списков
     private fun initLists() {
+        // Очистка списков
+        listsAddFirstSecond.clear()
+        listsDimensions.clear()
         // Сюда нужно по порядку добавлять все существующие списки,
         // которые относятся к свойствам addFirst и addSecond,
         // т.е. в них нет дополняющей информации о размерности для поля ввода числа
@@ -142,6 +159,9 @@ class PharmacySurfaceFragment :
         this.viewModel.subscribe().observe(viewLifecycleOwner) {
             renderData(it)
         }
+        viewModel.checkEditTextFieldsLiveData.observe(viewLifecycleOwner) {
+            binding.pharmacyCalculateButton.isEnabled = it
+        }
         this.viewModel.getData()
     }
 
@@ -194,6 +214,7 @@ class PharmacySurfaceFragment :
                     parent: AdapterView<*>?, view: View?,
                     position: Int, id: Long,
                 ) {
+                    // Сохранение текущего состояния всех числовых полей и списков
                     saveData()
                     Toast.makeText(
                         this@PharmacySurfaceFragment.requireContext(),
@@ -209,6 +230,7 @@ class PharmacySurfaceFragment :
 
     // Сохранение текущего состояния всех числовых полей и списков
     private fun saveData() {
+        Toast.makeText(requireContext(), "${listsAddFirstSecond[0].selectedItemPosition}", Toast.LENGTH_SHORT).show()
         viewModel.saveData(
             screenType,
             listsAddFirstSecond.convertListSpinnerToListInt(),

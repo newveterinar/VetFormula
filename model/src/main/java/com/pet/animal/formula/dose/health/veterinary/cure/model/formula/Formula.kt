@@ -13,7 +13,7 @@ class Formula {
     }
 
     // Получение всей формулы
-    fun getFormula(): MutableList<TypedFormula> {
+    fun getTypedFormulas(): MutableList<TypedFormula> {
         return formula
     }
 }

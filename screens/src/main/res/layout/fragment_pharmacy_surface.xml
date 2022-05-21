@@ -158,7 +158,11 @@
                         android:id="@+id/pharmacy_weight_textinputlayout"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="@dimen/pharmacy_weight_textinputlayout_margin_start">
+                        android:layout_marginStart="@dimen/pharmacy_weight_textinputlayout_margin_start"
+                        app:errorTextColor="@color/red"
+                        app:errorIconTintMode="src_atop"
+                        app:errorIconTint="@color/red"
+                        app:boxStrokeErrorColor="@color/red" >
 
                         <EditText
                             android:id="@+id/pharmacy_weight_textinputlayout_textfield"
@@ -206,6 +210,7 @@
                 android:layout_marginStart="@dimen/pharmacy_calculate_button_margin_start"
                 android:layout_marginTop="@dimen/pharmacy_calculate_button_margin_top"
                 android:layout_marginEnd="@dimen/pharmacy_calculate_button_margin_end"
+                android:enabled="false"
                 android:gravity="center"
                 android:text="@string/pharmacy_calculate_button_text"
                 app:layout_constraintBottom_toBottomOf="parent"

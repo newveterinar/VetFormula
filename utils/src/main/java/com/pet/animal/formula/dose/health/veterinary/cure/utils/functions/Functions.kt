@@ -7,7 +7,8 @@ import com.pet.animal.formula.dose.health.veterinary.cure.utils.*
 
 // Перевод строки типа String в число типа Double
 fun stringToDouble(text: String): Double {
-    return if (text.isEmpty()) 0.0 else text.toDouble()
+    return if (text.isEmpty() || (text.indexOf(".") > -1 && (text.length == 1))) 0.0
+           else text.toDouble()
 }
 
 // Получение списка List<ValueField> из списков List<Double> и List<Int>
