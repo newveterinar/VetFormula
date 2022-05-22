@@ -5,7 +5,6 @@ import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.Scre
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.ValueField
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ThemesNames
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.valueFieldListCreator
 
 class SettingsImpl: Settings {
     /** Задание переменных */ //region
@@ -46,6 +45,7 @@ class SettingsImpl: Settings {
     // Задание данных для окон
     override fun setScreenData(screenType: ScreenType,
                                listsAddFirstSecond: List<Int>,
+                               stringValues: List<String>,
                                values: List<Double>,
                                dimensions: List<Int>) {
         when(screenType) {
@@ -56,8 +56,9 @@ class SettingsImpl: Settings {
                 listsAddFirstSecond.forEach {
                     pharmacySurfaceScreenData.listsAddFirstSecond.add(it)
                 }
-                values.forEachIndexed { index, it ->
-                    pharmacySurfaceScreenData.valueFields.add(ValueField(it, dimensions[index]))
+                stringValues.forEachIndexed { index, it ->
+                    pharmacySurfaceScreenData.valueFields.add(
+                        ValueField(it, values[index], dimensions[index]))
                 }
             }
             // Окно по умолчанию

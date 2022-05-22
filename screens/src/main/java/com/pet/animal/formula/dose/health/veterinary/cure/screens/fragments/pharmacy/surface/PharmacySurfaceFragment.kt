@@ -15,6 +15,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.Fr
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.FragmentScope
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertListEditTextToListDouble
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertListEditTextToListString
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertListSpinnerToListInt
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.stringToDouble
 import org.koin.core.qualifier.named
@@ -107,6 +108,7 @@ class PharmacySurfaceFragment :
         valuesFields.forEachIndexed { index, field ->
             field.setOnKeyListener(object: View.OnKeyListener {
                 override fun onKey(v: View?, keyCode: Int, event: KeyEvent): Boolean {
+                    // Переопределение события от нажатия на кнопку "Enter"
                     if ((event.action == KeyEvent.ACTION_DOWN) &&
                         (keyCode == KeyEvent.KEYCODE_ENTER)) {
                         // Удаление фокуса с текстового поля
@@ -130,6 +132,16 @@ class PharmacySurfaceFragment :
                             // что делать в данном окне
                             helpInfoText.visibility = View.VISIBLE
                         }
+                        return true
+                    }
+                    // Переопределение события от нажатия кнопки "0"
+                    if ((event.action == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_0)) {
+                        // Добавление нового символа в текущее положение курсора
+                        val start: Int = field.selectionStart
+                        if (((stringToDouble(field.text.toString()) > 0.0) && (start > 0)) ||
+                            ((field.text.toString().indexOf(".") > -1) && (start > 0)) ||
+                            (field.text.isEmpty()))
+                            field.text.insert(start, "0")
                         return true
                     }
                     // Передать ход другим слушателям
@@ -236,12 +248,12 @@ class PharmacySurfaceFragment :
                         if (it.listsAddFirstSecond.count() > index)
                             addFirstSecond.setSelection(it.listsAddFirstSecond[index])
                     }
-                    // Установка численного значения поля
+                    // Установка строчного значения в поле
                     valuesFields.forEachIndexed { index, valueField ->
                         if (it.valueFields.count() > index)
                             valueField.setText(
                                 if (it.valueFields[index].value > 0.0)
-                                    "${it.valueFields[index].value}" else ""
+                                    it.valueFields[index].stringValue else ""
                             )
                     }
                     // Установка размерности поля
@@ -300,6 +312,7 @@ class PharmacySurfaceFragment :
         viewModel.saveData(
             screenType,
             listsAddFirstSecond.convertListSpinnerToListInt(),
+            valuesFields.convertListEditTextToListString(),
             valuesFields.convertListEditTextToListDouble(),
             listsDimensions.convertListSpinnerToListInt()
         )

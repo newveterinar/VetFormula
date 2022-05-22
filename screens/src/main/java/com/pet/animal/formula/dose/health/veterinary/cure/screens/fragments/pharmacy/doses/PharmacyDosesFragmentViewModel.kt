@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 
 class PharmacyDosesFragmentViewModel(
     private val interactor: PharmacyDosesInteractorImpl
-) : BaseViewModel<AppState>() {
+): BaseViewModel<AppState>() {
 
     // LiveData
     private val liveDataForViewToObserve: LiveData<AppState> = _mutableLiveData
@@ -35,11 +35,12 @@ class PharmacyDosesFragmentViewModel(
     override fun saveData(
         screenType: ScreenType,
         listsAddFirstSecond: List<Int>,
+        stringValues: List<String>,
         values: List<Double>,
         dimensions: List<Int>,
     ) {
         viewModelCoroutineScope.launch {
-            startInteractorSetData(screenType, listsAddFirstSecond, values, dimensions)
+            startInteractorSetData(screenType, listsAddFirstSecond, stringValues, values, dimensions)
         }
     }
 
@@ -53,9 +54,10 @@ class PharmacyDosesFragmentViewModel(
 
     private suspend fun startInteractorSetData(screenType: ScreenType,
                                                listsAddFirstSecond: List<Int>,
+                                               stringValues: List<String>,
                                                values: List<Double>,
                                                dimensions: List<Int>) {
-        interactor.saveData(screenType, listsAddFirstSecond, values, dimensions)
+        interactor.saveData(screenType, listsAddFirstSecond, stringValues, values, dimensions)
     }
 
     fun subscribe(): LiveData<AppState> {

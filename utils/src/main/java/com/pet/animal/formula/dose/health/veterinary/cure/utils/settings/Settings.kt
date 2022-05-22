@@ -17,6 +17,7 @@ interface Settings {
     // Задание данных для окна PharmacySurface
     fun setScreenData(formulaType: ScreenType,
                       listsAddFirstSecond: List<Int>,
+                      stringValues: List<String>,
                       values: List<Double>,
                       dimensions: List<Int>)
     // Получение данных окна PharmacySurface

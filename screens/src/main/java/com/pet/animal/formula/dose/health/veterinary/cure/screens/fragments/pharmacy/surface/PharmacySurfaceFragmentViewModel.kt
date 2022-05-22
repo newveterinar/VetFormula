@@ -29,10 +29,12 @@ class PharmacySurfaceFragmentViewModel(
     }
     override fun saveData(screenType: ScreenType,
                           listsAddFirstSecond: List<Int>,
+                          stringValues: List<String>,
                           values: List<Double>,
                           dimensions: List<Int>) {
         viewModelCoroutineScope.launch {
-            startInteractorSetData(screenType, listsAddFirstSecond, values, dimensions)
+            startInteractorSetData(
+                screenType, listsAddFirstSecond, stringValues, values, dimensions)
         }
     }
     override fun handleError(error: Throwable) {
@@ -43,9 +45,10 @@ class PharmacySurfaceFragmentViewModel(
     }
     private suspend fun startInteractorSetData(screenType: ScreenType,
                                                listsAddFirstSecond: List<Int>,
+                                               stringValues: List<String>,
                                                values: List<Double>,
                                                dimensions: List<Int>) {
-        interactor.saveData(screenType, listsAddFirstSecond, values, dimensions)
+        interactor.saveData(screenType, listsAddFirstSecond, stringValues, values, dimensions)
     }
     //endregion
 

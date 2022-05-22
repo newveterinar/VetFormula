@@ -23,6 +23,7 @@ class PharmacySurfaceInteractorImpl: Interactor<AppState> {
     /** Методы для сохранения данных с полей и списков */ //region
     override suspend fun saveData(screenType: ScreenType,
                                   listsAddFirstSecond: List<Int>,
+                                  stringValues: List<String>,
                                   values: List<Double>,
                                   dimensions: List<Int>) {
         // Проверка на заполненность всех числовых полей
@@ -34,7 +35,7 @@ class PharmacySurfaceInteractorImpl: Interactor<AppState> {
         }
         if (!isExistZeroData) loadAndSaveFormula(screenType, listsAddFirstSecond, values)
         // Сохранение значений всех списков и числовых полей
-        settings.setScreenData(screenType, listsAddFirstSecond, values, dimensions)
+        settings.setScreenData(screenType, listsAddFirstSecond, stringValues, values, dimensions)
     }
     private suspend fun loadAndSaveFormula(screenType: ScreenType, listsAddFirstSecond: List<Int>,
                                            values: List<Double>) {
