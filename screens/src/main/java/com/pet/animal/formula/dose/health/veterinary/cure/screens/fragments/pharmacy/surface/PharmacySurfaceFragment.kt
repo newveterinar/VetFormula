@@ -2,6 +2,7 @@ package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pha
 
 import android.content.Context
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.View
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -15,6 +16,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.utils.FragmentScope
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertListEditTextToListDouble
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertListSpinnerToListInt
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.stringToDouble
 import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
 import org.koin.java.KoinJavaComponent
@@ -98,6 +100,34 @@ class PharmacySurfaceFragment :
                 viewModel.checkAreTheFieldsFilledIn(valuesFields.map { it.text.toString() })
             }
         }
+        // Настройка события завершения ввода числового значения
+        valuesFields.forEachIndexed { index, field ->
+            field.setOnKeyListener(object: View.OnKeyListener {
+                override fun onKey(v: View?, keyCode: Int, event: KeyEvent): Boolean {
+                    if ((event.action == KeyEvent.ACTION_DOWN) &&
+                        (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                        // Удаление фокуса с текстового поля
+                        field.clearFocus()
+                        // Скрытие курсора
+                        field.isCursorVisible = false
+                        // Снятие ошибки
+                        if (stringToDouble(field.text.toString()) > 0.0) {
+                            // Сохранение текущего состояния всех числовых полей и списков
+                            saveData()
+                            // Снятие признака ошибки с текущего числового поля
+                            valuesFieldsLayouts[index].isErrorEnabled = false
+                        } else {
+                            // Установка признака ошибки на текущем числовом поле
+                            valuesFieldsLayouts[index].isErrorEnabled = true
+                            valuesFieldsLayouts[index].error = requireActivity().
+                            resources.getString(R.string.error_not_inserted_weight_animal)
+                        }
+                        return true
+                    }
+                    return false
+                }
+            })
+        }
     }
 
     // Инициализация списков
@@ -113,21 +143,25 @@ class PharmacySurfaceFragment :
         listsDimensions.add(binding.pharmacyWeightDimensionList)
     }
 
-    // Инициализация кнопок
+    // Инициализация навигационных кнопок
     private fun initNavigationButtons() {
+        // Непосредственная инициализация навигационных кнопок на окне
         binding.apply {
             navigationButtons.also {
                 it[0] = this.pharmacyPreviousButtonContainer
                 it[1] = this.pharmacyCalculateButton
             }
         }
+        // Настройка события на клик по каждой кнопке
         navigationButtons.forEachIndexed { index, button ->
             button?.setOnClickListener {
                 when (index) {
                     0 -> viewModel.router.exit()
-                    1 -> viewModel.router.navigateTo(viewModel.screens.pharmacySurfaceResultScreen())
+                    1 -> viewModel.router.
+                            navigateTo(viewModel.screens.pharmacySurfaceResultScreen())
                     else -> {
-                         Toast.makeText(requireContext(), requireActivity().resources.getString(
+                         Toast.makeText(requireContext(),
+                             requireActivity().resources.getString(
                             R.string.error_button_is_not_assigned), Toast.LENGTH_SHORT).show()
                     }
                 }
@@ -136,33 +170,45 @@ class PharmacySurfaceFragment :
     }
 
     private fun initButtons() {
-        pharmacyClearButtonContainer = binding.pharmacyClearButtonContainer
-        pharmacyClearButtonContainer.setOnClickListener {
-            listsAddFirstSecond.forEach {
-                it.setSelection(0)
+        pharmacyClearButtonContainer = binding.pharmacyClearButtonContainer.also { button ->
+            button.setOnClickListener {
+                listsAddFirstSecond.forEach {
+                    it.setSelection(0)
+                }
+                valuesFields.forEach {
+                    it.setText("")
+                }
+                listsDimensions.forEach {
+                    it.setSelection(0)
+                }
+                // Сохранение текущего состояния всех числовых полей и списков
+                saveData()
             }
-            valuesFields.forEach {
-                it.setText("")
-            }
-            listsDimensions.forEach {
-                it.setSelection(0)
-            }
-            // Сохранение текущего состояния всех числовых полей и списков
-            saveData()
         }
     }
 
     // Инициализация ViewModel
     private fun initViewModel() {
-        val viewModel: PharmacySurfaceFragmentViewModel by showPharmacySurfaceFragmentScope.inject()
-        this.viewModel = viewModel
-        this.viewModel.subscribe().observe(viewLifecycleOwner) {
+        val _viewModel: PharmacySurfaceFragmentViewModel by showPharmacySurfaceFragmentScope.inject()
+        viewModel = _viewModel
+        // Отображение текущих значений числовых поле и списков
+        viewModel.subscribe().observe(viewLifecycleOwner) {
             renderData(it)
         }
+        // Разблокировка кнопки при заполнении всех числовых полей
         viewModel.checkEditTextFieldsLiveData.observe(viewLifecycleOwner) {
+            // Снятие ошибок со всех полей
+            if (it == true) {
+                valuesFieldsLayouts.forEach { field ->
+                    // Снятие признака ошибки с текущего числового поля
+                    field.isErrorEnabled = false
+                }
+            }
+            // Разблокировка или блоикировка кнопки "Рассчитать"
             binding.pharmacyCalculateButton.isEnabled = it
         }
-        this.viewModel.getData()
+        // Необходимо запустить для отображения ранее сохранённых значений в полях и списках окна
+        viewModel.getData()
     }
 
     private fun renderData(appState: AppState) {
@@ -196,8 +242,7 @@ class PharmacySurfaceFragment :
             }
             is AppState.Error -> {
                 Toast.makeText(
-                    requireContext(),
-                    requireContext().getString(
+                    requireContext(), requireContext().getString(
                         R.string.error_appstate_not_loaded_for_fragment
                     ),
                     Toast.LENGTH_SHORT
@@ -206,31 +251,36 @@ class PharmacySurfaceFragment :
         }
     }
 
-    // Установка события при выборе элемента списка
+    // Установка события при выборе элементов списков
     private fun setActionsFieldsAndLists() {
         listsAddFirstSecond.forEachIndexed { index, spinnerList ->
-            spinnerList.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            spinnerList.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(
                     parent: AdapterView<*>?, view: View?,
                     position: Int, id: Long,
                 ) {
                     // Сохранение текущего состояния всех числовых полей и списков
                     saveData()
-                    Toast.makeText(
-                        this@PharmacySurfaceFragment.requireContext(),
-                        "${spinnerList.selectedItem} selected", Toast.LENGTH_SHORT
-                    ).show()
                 }
-
-                override fun onNothingSelected(parent: AdapterView<*>?) {
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
+            }
+        }
+        listsDimensions.forEachIndexed { index, spinnerList ->
+            spinnerList.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>?, view: View?,
+                    position: Int, id: Long,
+                ) {
+                    // Сохранение текущего состояния всех числовых полей и списков
+                    saveData()
                 }
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
             }
         }
     }
 
     // Сохранение текущего состояния всех числовых полей и списков
     private fun saveData() {
-        Toast.makeText(requireContext(), "${listsAddFirstSecond[0].selectedItemPosition}", Toast.LENGTH_SHORT).show()
         viewModel.saveData(
             screenType,
             listsAddFirstSecond.convertListSpinnerToListInt(),

@@ -11,6 +11,11 @@ fun stringToDouble(text: String): Double {
            else text.toDouble()
 }
 
+// Проверка на то, что число типа Double > 0.0
+fun String.checkToExistCorrectDouble(): Boolean {
+    return stringToDouble(this) > 0.0
+}
+
 // Получение списка List<ValueField> из списков List<Double> и List<Int>
 fun valueFieldListCreator(values: List<Double>, dimensions: List<Int>): List<ValueField> {
     if (dimensions.size > values.size){

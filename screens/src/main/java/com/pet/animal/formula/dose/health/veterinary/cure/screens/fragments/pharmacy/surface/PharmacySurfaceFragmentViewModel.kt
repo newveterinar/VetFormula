@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppState
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.checkToExistCorrectDouble
 import kotlinx.coroutines.launch
 
 class PharmacySurfaceFragmentViewModel(
@@ -55,6 +56,7 @@ class PharmacySurfaceFragmentViewModel(
 
     // Проверка наличие в текстовых полях данных
     fun checkAreTheFieldsFilledIn(listOfFieldsValue: List<String>){
-        _checkAreTheFieldsFilledInLiveData.value = listOfFieldsValue.none { it.isBlank() }
+//        _checkAreTheFieldsFilledInLiveData.value = listOfFieldsValue.none { it.isBlank() }
+        _checkAreTheFieldsFilledInLiveData.value = listOfFieldsValue.none { !it.checkToExistCorrectDouble() }
     }
 }
