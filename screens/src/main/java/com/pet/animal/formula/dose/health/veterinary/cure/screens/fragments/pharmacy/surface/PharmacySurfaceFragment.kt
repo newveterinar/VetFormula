@@ -47,6 +47,9 @@ class PharmacySurfaceFragment :
     private val valuesFields: MutableList<EditText> = mutableListOf()
     private val valuesFieldsLayouts: MutableList<TextInputLayout> = mutableListOf()
 
+    // Текстовое поле для отображения общей информации о том, что нужно делать в данном окне
+    private lateinit var helpInfoText: TextView
+
     // newInstance для данного класса
     companion object {
         fun newInstance(): PharmacySurfaceFragment = PharmacySurfaceFragment()
@@ -116,18 +119,26 @@ class PharmacySurfaceFragment :
                             saveData()
                             // Снятие признака ошибки с текущего числового поля
                             valuesFieldsLayouts[index].isErrorEnabled = false
+                            // Скрытие сообщения с общей информацией о том, что делать в данном окне
+                            helpInfoText.visibility = View.INVISIBLE
                         } else {
                             // Установка признака ошибки на текущем числовом поле
                             valuesFieldsLayouts[index].isErrorEnabled = true
                             valuesFieldsLayouts[index].error = requireActivity().
                             resources.getString(R.string.error_not_inserted_weight_animal)
+                            // Отображение сообщения с общей информацией о том,
+                            // что делать в данном окне
+                            helpInfoText.visibility = View.VISIBLE
                         }
                         return true
                     }
+                    // Передать ход другим слушателям
                     return false
                 }
             })
         }
+        // Инициализация текстового сообщения о том, что нужно делать на странице
+        helpInfoText = binding.pharmacyHelpInfo
     }
 
     // Инициализация списков
@@ -203,6 +214,11 @@ class PharmacySurfaceFragment :
                     // Снятие признака ошибки с текущего числового поля
                     field.isErrorEnabled = false
                 }
+                // Скрытие сообщения с общей информацией о том, что делать в данном окне
+                helpInfoText.visibility = View.INVISIBLE
+            } else {
+                // Отображение сообщения с общей информацией о том, что делать в данном окне
+                helpInfoText.visibility = View.VISIBLE
             }
             // Разблокировка или блоикировка кнопки "Рассчитать"
             binding.pharmacyCalculateButton.isEnabled = it

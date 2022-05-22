@@ -56,7 +56,8 @@ class PharmacySurfaceFragmentViewModel(
 
     // Проверка наличие в текстовых полях данных
     fun checkAreTheFieldsFilledIn(listOfFieldsValue: List<String>){
-//        _checkAreTheFieldsFilledInLiveData.value = listOfFieldsValue.none { it.isBlank() }
-        _checkAreTheFieldsFilledInLiveData.value = listOfFieldsValue.none { !it.checkToExistCorrectDouble() }
+        _checkAreTheFieldsFilledInLiveData.value = listOfFieldsValue.none {
+            !it.checkToExistCorrectDouble()
+        }
     }
 }
