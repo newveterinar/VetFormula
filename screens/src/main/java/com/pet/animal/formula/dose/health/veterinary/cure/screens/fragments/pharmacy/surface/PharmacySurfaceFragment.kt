@@ -66,7 +66,6 @@ class PharmacySurfaceFragment :
             named(FragmentScope.SHOW_PHARMACY_SURFACE_FRAGMENT_SCOPE)
         )
     }
-
     override fun onDetach() {
         // Удаление скоупа для данного фрагмента
         showPharmacySurfaceFragmentScope.close()

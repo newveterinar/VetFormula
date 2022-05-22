@@ -20,8 +20,11 @@ class SettingsImpl: Settings {
     // TODO: Добавить классы для сохранения данных в окнах раздела Conversion
     // Переменные для окна Pharmacy
     private var pharmacySurfaceScreenData: ScreenData = ScreenData()
+    private var pharmacySurfaceResultScreenData: ScreenData = ScreenData()
     private var pharmacyDoseScreenData: ScreenData = ScreenData()
     private var pharmacyCRIScreenData: ScreenData = ScreenData()
+    // Переменные для окна с газовым наркозом
+    // TODO: Добавить классы для сохранения данных в окнах раздела с газовым наркозом
     //endregion
 
     // Задание темы приложения
@@ -69,7 +72,10 @@ class SettingsImpl: Settings {
     override fun getPharmacySurfaceScreenData(): ScreenData {
         return pharmacySurfaceScreenData
     }
-
+    // Получение данных окна PharmacySurface
+    override fun getPharmacySurfaceResultScreenData(): ScreenData {
+        return pharmacySurfaceResultScreenData
+    }
     override fun getPharmacyDosesScreenData(): ScreenData {
         return pharmacyDoseScreenData
     }

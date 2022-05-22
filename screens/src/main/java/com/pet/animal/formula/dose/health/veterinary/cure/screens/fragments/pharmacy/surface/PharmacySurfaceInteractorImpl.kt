@@ -33,12 +33,11 @@ class PharmacySurfaceInteractorImpl: Interactor<AppState> {
                 isExistZeroData = true
             }
         }
-        if (!isExistZeroData) loadAndSaveFormula(screenType, listsAddFirstSecond, values)
+        if (!isExistZeroData) loadAndSaveFormula(screenType, listsAddFirstSecond)
         // Сохранение значений всех списков и числовых полей
         settings.setScreenData(screenType, listsAddFirstSecond, stringValues, values, dimensions)
     }
-    private suspend fun loadAndSaveFormula(screenType: ScreenType, listsAddFirstSecond: List<Int>,
-                                           values: List<Double>) {
+    private suspend fun loadAndSaveFormula(screenType: ScreenType, listsAddFirstSecond: List<Int>) {
         settings.setFormula(fakeRepositoryImpl.getFormula(screenType, listsAddFirstSecond))
     }
     //endregion

@@ -71,14 +71,12 @@
 
             <TextView
                 android:id="@+id/pharmacy_result_text"
+                style="@style/button_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/pharmacy_result_text_text"
-                android:textSize="@dimen/pharmacy_result_text_text_size"
-                android:textStyle="bold"
-                android:paddingBottom="@dimen/pharmacy_result_text_padding_bottom"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="parent" />
 

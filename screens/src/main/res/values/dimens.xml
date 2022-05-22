@@ -37,7 +37,6 @@
     <dimen name="pharmacy_surface_button_container_margin_start">50dp</dimen>
     <dimen name="pharmacy_surface_button_container_margin_top">50dp</dimen>
     <dimen name="pharmacy_surface_previous_text_margin_start">16dp</dimen>
-    <dimen name="pharmacy_result_text_text_size">30sp</dimen>
     <dimen name="fluids_surface_button_width">80dp</dimen>
     <dimen name="fluids_surface_button_height">80dp</dimen>
     <dimen name="fluids_horizontal_border_height">2dp</dimen>
@@ -203,7 +202,6 @@
     <dimen name="clear_button_rotation_angle">180</dimen>
     <dimen name="clear_button_scale_x">1.25</dimen>
     <dimen name="clear_button_scale_y">1.25</dimen>
-    <dimen name="pharmacy_result_text_padding_bottom">40dp</dimen>
     <dimen name="doses_result_text_text_size">30sp</dimen>
     <dimen name="doses_result_text_padding_bottom">40dp</dimen>
     <dimen name="timerText_text_size">48sp</dimen>

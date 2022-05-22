@@ -63,7 +63,7 @@
     <string name="tickInMinutes_text">0.00</string>
     <string name="buttonResetTickCounter_text">Reset tick counter</string>
     <string name="timer_previous_text_text">Timer</string>
-    <string name="pharmacy_help_info_text">Fill in all numeric fields before calculating</string>
+    <string name="pharmacy_help_info_text">Fill in all numeric fields before calculating!</string>
 
     <string-array name="pharmacy_surface_animal_type_list">
         <item>Dog</item>

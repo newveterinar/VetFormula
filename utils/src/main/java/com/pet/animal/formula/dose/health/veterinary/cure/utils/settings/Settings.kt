@@ -22,6 +22,8 @@ interface Settings {
                       dimensions: List<Int>)
     // Получение данных окна PharmacySurface
     fun getPharmacySurfaceScreenData(): ScreenData
+    // Получение данных окна PharmacySurfaceResult
+    fun getPharmacySurfaceResultScreenData(): ScreenData
     // Получение данных окна PharmacyDoses
     fun getPharmacyDosesScreenData(): ScreenData
 }
