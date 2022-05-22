@@ -3,6 +3,7 @@ package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pha
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.Interactor
 import com.pet.animal.formula.dose.health.veterinary.cure.fakerepo.FakeRepositoryImpl
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppState
+import com.pet.animal.formula.dose.health.veterinary.cure.repo.Repository
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.settings.SettingsImpl
 import org.koin.java.KoinJavaComponent
@@ -14,6 +15,8 @@ class PharmacySurfaceInteractorImpl: Interactor<AppState> {
     // Фейковый (временный) репозиторий
     private val fakeRepositoryImpl: FakeRepositoryImpl = KoinJavaComponent.getKoin().get()
     //endregion
+
+    private val repositoryImpl: Repository = KoinJavaComponent.getKoin().get()
 
     // Получение данных полей окна, если они были сохранены ранее
     override suspend fun getData(): AppState {
@@ -38,7 +41,11 @@ class PharmacySurfaceInteractorImpl: Interactor<AppState> {
         settings.setScreenData(screenType, listsAddFirstSecond, stringValues, values, dimensions)
     }
     private suspend fun loadAndSaveFormula(screenType: ScreenType, listsAddFirstSecond: List<Int>) {
-        settings.setFormula(fakeRepositoryImpl.getFormula(screenType, listsAddFirstSecond))
+        //TODO необходимо создать отдельный класс/метод который будет создавать все формулы в базе данных при первом запуске приложения
+        val formulaForDB = fakeRepositoryImpl.getFormula(screenType, listsAddFirstSecond)
+        repositoryImpl.insertFormula(formulaForDB,screenType.ordinal,0,0,0 )
+        val formulaFromDV = repositoryImpl.getFormula(screenType, listsAddFirstSecond)
+        settings.setFormula(formulaFromDV)
     }
     //endregion
 }
