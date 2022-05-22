@@ -1,6 +1,7 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.vetformula.app
 
 import android.app.Application
+import com.pet.animal.formula.dose.health.veterinary.cure.repo.di.DatabaseModule
 import com.pet.animal.formula.dose.health.veterinary.cure.vetformula.di.database
 import com.pet.animal.formula.dose.health.veterinary.cure.vetformula.di.screens
 import com.pet.animal.formula.dose.health.veterinary.cure.vetformula.di.utils
@@ -18,7 +19,7 @@ class appVetCalc: Application() {
         // Koin
         startKoin {
             androidContext(applicationContext)
-            modules(listOf(database, utils, screens))
+            modules(listOf(database, utils, screens,DatabaseModule))
         }
     }
 

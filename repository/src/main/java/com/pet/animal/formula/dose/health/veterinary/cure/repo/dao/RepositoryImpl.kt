@@ -4,6 +4,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.model.formula.Formula
 import com.pet.animal.formula.dose.health.veterinary.cure.repo.FormulaEntity
 import com.pet.animal.formula.dose.health.veterinary.cure.repo.Repository
 import com.pet.animal.formula.dose.health.veterinary.cure.repo.UrlEntity
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
 
 class RepositoryImpl(private val dbDao:VetFormulaDao): Repository {
 
@@ -56,5 +57,16 @@ class RepositoryImpl(private val dbDao:VetFormulaDao): Repository {
 
     override suspend fun deleteUrl(urlEntity: UrlEntity) {
         dbDao.deleteUrl(urlEntity)
+    }
+
+    override suspend fun getFormula(
+        screenType: ScreenType,
+        listsAddFirstSecond: List<Int>
+    ): Formula {
+        val listEntity = getFormulaByScreen(screenType.ordinal, 0,0)
+        if (listEntity.isNotEmpty()){
+            return listEntity[0].formula
+        }
+        return Formula()//TODO так не должно быть, обсудить, возможно бросить эксепшин
     }
 }
