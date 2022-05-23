@@ -5,14 +5,13 @@ import android.os.Bundle
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.webkit.WebView
-import android.webkit.WebViewClient
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.Guideline
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.androidx.AppNavigator
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.WebViewFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator.BackButtonListener
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.MAIN_ACTIVITY_NAME
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.SLIDER_MAX_DIFFERENT_VALUE
@@ -100,27 +99,24 @@ class MainActivity : AppCompatActivity() {
     }
 
     // Функция - слушатель нажатий по FAB
+    @SuppressLint("ResourceType")
     private fun onClickFab() {
         binding.fabMain.setOnClickListener {
             onFabMainButtonClicked()
         }
 
         binding.fabWebView.setOnClickListener {
-            binding.webView.visibility = View.VISIBLE
-            webViewSetup()
+            supportFragmentManager.beginTransaction()
+                .replace(
+                    com.pet.animal.formula.dose.health.veterinary.cure.screens.R.layout.fragment_web_view,
+                    WebViewFragment(), "google"
+                )
+                .commit()
+
         }
 
         binding.fabTextView.setOnClickListener {
             Toast.makeText(this, "TextView Button Clicked", Toast.LENGTH_SHORT).show()
-        }
-    }
-
-    @SuppressLint("SetJavaScriptEnabled")
-    fun webViewSetup() {
-        binding.webView.webViewClient = WebViewClient()
-        binding.webView.apply {
-            loadUrl("https://www.google.ru/")
-            settings.javaScriptEnabled = true
         }
     }
 

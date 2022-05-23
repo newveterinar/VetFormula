@@ -54,6 +54,7 @@ dependencies {
     //Design
     implementation libs.design.material
     implementation libs.design.constrlayout
+
     // Tests
     // Core
     testImplementation libs.tests.junit
