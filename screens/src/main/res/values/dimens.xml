@@ -218,4 +218,8 @@
     <dimen name="spinner_dimension_no_giving_set">16dp</dimen>
     <dimen name="body_surface_layout_height">16dp</dimen>
     <dimen name="body_surface_layout_marginStart">16dp</dimen>
+    <dimen name="pharmacy_result_text_text_size">30sp</dimen>
+    <dimen name="pharmacy_result_text_padding_bottom">60dp</dimen>
+    <dimen name="pharmacy_result_container_padding_top">30dp</dimen>
+    <dimen name="pharmacy_result_container_padding_bottom">30dp</dimen>
 </resources>

@@ -494,7 +494,6 @@
                     android:id="@+id/pharmacy_drop_dimension_list"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/spinner_dimension_no_giving_set"
                     android:entries="@array/pharmacy_drop_animal_dimension_list"
                     android:layout_marginStart="@dimen/pharmacy_drop_dimension_list_margin_start"
                     android:gravity="center"
