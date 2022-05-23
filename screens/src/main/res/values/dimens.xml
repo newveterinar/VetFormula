@@ -195,9 +195,28 @@
     <dimen name="pharmacy_speed_textinputlayout_margin_start">40dp</dimen>
     <dimen name="pharmacy_speed_textinputlayout_textfield_text_size">20sp</dimen>
     <dimen name="pharmacy_speed_dimension_layout_width">130dp</dimen>
-    <dimen name="pharmacy_cri_drop_dimension_list">313dp</dimen>
-    <dimen name="spinner_dimension_no_giving_set">37dp</dimen>
-    <dimen name="body_surface_layout_width">298dp</dimen>
-    <dimen name="body_surface_layout_height">34dp</dimen>
-    <dimen name="body_surface_layout_marginStart">8dp</dimen>
+    <dimen name="timer_surface_button_container_margin_top">64dp</dimen>
+    <dimen name="timer_button_text_text_size">25sp</dimen>
+    <dimen name="timer_button_width">80dp</dimen>
+    <dimen name="timer_button_height">80dp</dimen>
+    <dimen name="settings_button_margin_start">80dp</dimen>
+    <dimen name="arrow_back_rotation_angle">180</dimen>
+    <dimen name="clear_button_rotation_angle">180</dimen>
+    <dimen name="clear_button_scale_x">1.25</dimen>
+    <dimen name="clear_button_scale_y">1.25</dimen>
+    <dimen name="pharmacy_result_text_padding_bottom">40dp</dimen>
+    <dimen name="doses_result_text_text_size">30sp</dimen>
+    <dimen name="doses_result_text_padding_bottom">40dp</dimen>
+    <dimen name="timerText_text_size">48sp</dimen>
+    <dimen name="touchPlace_width">128dp</dimen>
+    <dimen name="touchPlace_height">128dp</dimen>
+    <dimen name="touchPlace_margin_top">64dp</dimen>
+    <dimen name="textView3_width">0dp</dimen>
+    <dimen name="textView3_margin_left">40dp</dimen>
+    <dimen name="buttonResetTickCounter_margin_top">16dp</dimen>
+    <dimen name="body_surface_layout_width">16dp</dimen>
+    <dimen name="spinner_dimension_no_giving_set">16dp</dimen>
+    <dimen name="body_surface_layout_height">16dp</dimen>
+    <dimen name="body_surface_layout_marginStart">16dp</dimen>
+
 </resources>
