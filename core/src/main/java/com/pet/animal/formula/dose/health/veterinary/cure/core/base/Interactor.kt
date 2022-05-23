@@ -6,6 +6,7 @@ interface Interactor<T> {
     suspend fun getData(): T
     suspend fun saveData(screenType: ScreenType,
                          listsAddFirstSecond: List<Int>,
+                         stringValues: List<String>,
                          values: List<Double>,
                          dimensions: List<Int>)
 }

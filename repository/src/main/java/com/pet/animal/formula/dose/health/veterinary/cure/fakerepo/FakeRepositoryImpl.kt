@@ -7,19 +7,14 @@ import com.pet.animal.formula.dose.health.veterinary.cure.model.formula.Formula
 import com.pet.animal.formula.dose.health.veterinary.cure.model.formula.TypedFormula
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.*
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertAddFirstSecondToTypedFormulaName
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.resources.ResourcesProviderImpl
-import org.koin.java.KoinJavaComponent
 
 class FakeRepositoryImpl: FakeRepository {
-    /** Задание переменных */ //region
-    private val resourcesProviderImpl: ResourcesProviderImpl = KoinJavaComponent.getKoin().get()
-    //endregion
-
-    override suspend fun getFormula(screenType: ScreenType, listsAddFirstSecond: List<Int>): Formula {
-        when (screenType) {
+    override suspend fun getFormula(screenType: ScreenType, listsAddFirstSecond: List<Int>
+    ): Formula {
+        return when (screenType) {
             ScreenType.PHARMACY_SURFACE ->
-                return pharmacySurfaceFormula(screenType,listsAddFirstSecond)
-            else -> return Formula()
+                pharmacySurfaceFormula(screenType,listsAddFirstSecond)
+            else -> Formula()
         }
     }
     private fun pharmacySurfaceFormula(
@@ -51,7 +46,7 @@ class FakeRepositoryImpl: FakeRepository {
                         Element(Command.TWO.index(),0),
                         Element(Command.DIVIDE.index(),0),
                         Element(Command.THREE.index(),0),
-                        Element(Command.EQUAL.index(),0)
+                        Element(Command.BRACKET_CLOSE.index(),0),
                     )
                 ))
             askedTypedName.contains(PHARMACY_SURFACE_CAT_BODYSURFACEAREA_NAME) ->
@@ -69,7 +64,7 @@ class FakeRepositoryImpl: FakeRepository {
                         Element(Command.TWO.index(),0),
                         Element(Command.DIVIDE.index(),0),
                         Element(Command.THREE.index(),0),
-                        Element(Command.EQUAL.index(),0)
+                        Element(Command.BRACKET_CLOSE.index(),0),
                     )
                 ))
             askedTypedName.contains(PHARMACY_SURFACE_RABBIT_BODYSURFACEAREA_NAME) ->
@@ -90,7 +85,7 @@ class FakeRepositoryImpl: FakeRepository {
                         Element(Command.TWO.index(),0),
                         Element(Command.DIVIDE.index(),0),
                         Element(Command.THREE.index(),0),
-                        Element(Command.EQUAL.index(),0)
+                        Element(Command.BRACKET_CLOSE.index(),0),
                     )
                 ))
             askedTypedName.contains(PHARMACY_SURFACE_POLECAT_BODYSURFACEAREA_NAME) ->
@@ -111,7 +106,7 @@ class FakeRepositoryImpl: FakeRepository {
                         Element(Command.TWO.index(),0),
                         Element(Command.DIVIDE.index(),0),
                         Element(Command.THREE.index(),0),
-                        Element(Command.EQUAL.index(),0)
+                        Element(Command.BRACKET_CLOSE.index(),0),
                     )
                 ))
             askedTypedName.contains(PHARMACY_SURFACE_GUINEAPIG_BODYSURFACEAREA_NAME) ->
@@ -130,7 +125,7 @@ class FakeRepositoryImpl: FakeRepository {
                         Element(Command.TWO.index(),0),
                         Element(Command.DIVIDE.index(),0),
                         Element(Command.THREE.index(),0),
-                        Element(Command.EQUAL.index(),0)
+                        Element(Command.BRACKET_CLOSE.index(),0),
                     )
                 ))
             askedTypedName.contains(PHARMACY_SURFACE_HAMSTER_BODYSURFACEAREA_NAME) ->
@@ -150,7 +145,7 @@ class FakeRepositoryImpl: FakeRepository {
                         Element(Command.TWO.index(),0),
                         Element(Command.DIVIDE.index(),0),
                         Element(Command.THREE.index(),0),
-                        Element(Command.EQUAL.index(),0)
+                        Element(Command.BRACKET_CLOSE.index(),0),
                     )
                 ))
             askedTypedName.contains(PHARMACY_SURFACE_HORSEEXCEPTLOMUSTIN_BODYSURFACEAREA_NAME) ->
@@ -170,7 +165,7 @@ class FakeRepositoryImpl: FakeRepository {
                         Element(Command.TWO.index(),0),
                         Element(Command.DIVIDE.index(),0),
                         Element(Command.THREE.index(),0),
-                        Element(Command.EQUAL.index(),0)
+                        Element(Command.BRACKET_CLOSE.index(),0),
                     )
                 ))
             askedTypedName.contains(PHARMACY_SURFACE_HORSEONLYLOMUSTIN_BODYSURFACEAREA_NAME) ->
@@ -190,7 +185,7 @@ class FakeRepositoryImpl: FakeRepository {
                         Element(Command.TWO.index(),0),
                         Element(Command.DIVIDE.index(),0),
                         Element(Command.THREE.index(),0),
-                        Element(Command.EQUAL.index(),0)
+                        Element(Command.BRACKET_CLOSE.index(),0),
                     )
                 ))
             askedTypedName.contains(PHARMACY_SURFACE_RAT_BODYSURFACEAREA_NAME) ->
@@ -210,7 +205,7 @@ class FakeRepositoryImpl: FakeRepository {
                         Element(Command.TWO.index(),0),
                         Element(Command.DIVIDE.index(),0),
                         Element(Command.THREE.index(),0),
-                        Element(Command.EQUAL.index(),0)
+                        Element(Command.BRACKET_CLOSE.index(),0),
                     )
                 ))
             askedTypedName.contains(PHARMACY_SURFACE_MOUSE_BODYSURFACEAREA_NAME) ->
@@ -229,7 +224,7 @@ class FakeRepositoryImpl: FakeRepository {
                         Element(Command.TWO.index(),0),
                         Element(Command.DIVIDE.index(),0),
                         Element(Command.THREE.index(),0),
-                        Element(Command.EQUAL.index(),0)
+                        Element(Command.BRACKET_CLOSE.index(),0),
                     )
                 ))
             //endregion

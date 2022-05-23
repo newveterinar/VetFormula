@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android/Projects/ComandWork/VetFormula/app/src/main/res/drawable/splash_background.xml" value="0.2035" />
         <entry key="..\:/Android/Projects/ComandWork/VetFormula/app/src/main/res/layout/activity_main.xml" value="0.1515625" />
         <entry key="..\:/Android/Projects/ComandWork/VetFormula/app/src/main/res/layout/bottom_sheet_layout.xml" value="0.1328125" />
         <entry key="..\:/Android/Projects/ComandWork/VetFormula/screens/src/main/res/drawable/gradient.xml" value="0.1195" />
@@ -14,13 +15,13 @@
         <entry key="..\:/Android/Projects/ComandWork/VetFormula/screens/src/main/res/layout/fragment_hematology.xml" value="0.16822916666666668" />
         <entry key="..\:/Android/Projects/ComandWork/VetFormula/screens/src/main/res/layout/fragment_mainscreen.xml" value="0.23294118300441247" />
         <entry key="..\:/Android/Projects/ComandWork/VetFormula/screens/src/main/res/layout/fragment_pharmacy.xml" value="0.1328125" />
-        <entry key="..\:/Android/Projects/ComandWork/VetFormula/screens/src/main/res/layout/fragment_pharmacy_cri.xml" value="0.1359375" />
+        <entry key="..\:/Android/Projects/ComandWork/VetFormula/screens/src/main/res/layout/fragment_pharmacy_cri.xml" value="0.23294118300441247" />
         <entry key="..\:/Android/Projects/ComandWork/VetFormula/screens/src/main/res/layout/fragment_pharmacy_doses.xml" value="0.2375" />
         <entry key="..\:/Android/Projects/ComandWork/VetFormula/screens/src/main/res/layout/fragment_pharmacy_doses_result.xml" value="0.23294118300441247" />
-        <entry key="..\:/Android/Projects/ComandWork/VetFormula/screens/src/main/res/layout/fragment_pharmacy_surface.xml" value="0.1328125" />
+        <entry key="..\:/Android/Projects/ComandWork/VetFormula/screens/src/main/res/layout/fragment_pharmacy_surface.xml" value="0.3529411863703219" />
         <entry key="..\:/Android/Projects/ComandWork/VetFormula/screens/src/main/res/layout/fragment_pharmacy_surface_calculate.xml" value="0.1328125" />
         <entry key="..\:/Android/Projects/ComandWork/VetFormula/screens/src/main/res/layout/fragment_pharmacy_surface_calculate_result.xml" value="0.1515625" />
-        <entry key="..\:/Android/Projects/ComandWork/VetFormula/screens/src/main/res/layout/fragment_pharmacy_surface_result.xml" value="0.2375" />
+        <entry key="..\:/Android/Projects/ComandWork/VetFormula/screens/src/main/res/layout/fragment_pharmacy_surface_result.xml" value="0.3529411863703219" />
         <entry key="..\:/Android/Projects/ComandWork/VetFormula/screens/src/main/res/layout/fragment_settings.xml" value="0.23294118300441247" />
         <entry key="..\:/Android/Projects/ComandWork/VetFormula/screens/src/main/res/layout/fragment_timer.xml" value="0.23294118300441247" />
         <entry key="..\:/Users/Shaparapatah/StudioProjects/VetFormula/app/src/main/res/layout/activity_main.xml" value="0.18" />

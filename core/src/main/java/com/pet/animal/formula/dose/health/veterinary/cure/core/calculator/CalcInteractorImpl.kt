@@ -72,6 +72,11 @@ class CalcInteractorImpl: CalcInteractor {
         calcLogic.setCurrentNumber(number)
     }
 
+    // Отправить в калькулятор сразу число типа Double
+    override fun setCommand(number: Double) {
+        calcLogic.setCurrentNumber(number)
+    }
+
     // Получить в виде строки все введённые команды
     override fun getInputtedCommands(): String {
 //        TODO("Доработать и вывести заданную строчку для 3 релиза приложения")

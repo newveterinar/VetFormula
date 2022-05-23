@@ -1,6 +1,7 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.repo
 
 import com.pet.animal.formula.dose.health.veterinary.cure.model.formula.Formula
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
 
 interface Repository {
     suspend fun getAllVetFormulas(): List<FormulaEntity>
@@ -17,4 +18,5 @@ interface Repository {
     suspend fun insertUrl(urlEntity: UrlEntity):Long
     suspend fun getUrls(fType:Int):List<UrlEntity>
     suspend fun deleteUrl(urlEntity:UrlEntity)
+    suspend fun getFormula(screenType: ScreenType, listsAddFirstSecond: List<Int>): Formula
 }
