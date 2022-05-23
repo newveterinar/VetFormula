@@ -91,4 +91,11 @@
         app:layout_constraintBottom_toTopOf="@+id/fab_web_view"
         app:layout_constraintEnd_toEndOf="@+id/fab_web_view"
         app:srcCompat="@drawable/ic_add_24" />
+
+
+    <WebView
+        android:id="@+id/web_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

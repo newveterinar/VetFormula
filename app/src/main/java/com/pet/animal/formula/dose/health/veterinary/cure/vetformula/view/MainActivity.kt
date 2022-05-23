@@ -1,9 +1,12 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.vetformula.view
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -73,6 +76,7 @@ class MainActivity : AppCompatActivity() {
             R.anim.to_bottom_anim
         )
     }
+
     //endregion
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -102,11 +106,22 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.fabWebView.setOnClickListener {
-            Toast.makeText(this, "WebView Button Clicked", Toast.LENGTH_SHORT).show()
+            binding.webView.visibility = View.VISIBLE
+            webViewSetup()
         }
 
         binding.fabTextView.setOnClickListener {
             Toast.makeText(this, "TextView Button Clicked", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    @SuppressLint("SetJavaScriptEnabled")
+    fun webViewSetup() {
+        binding.webView.webViewClient = WebViewClient()
+        binding.webView.apply {
+            loadUrl("https://www.google.ru/")
+            settings.javaScriptEnabled = true
+            settings.allowContentAccess = true
         }
     }
 
