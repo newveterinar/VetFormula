@@ -29,7 +29,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="@dimen/hematology_previous_button_margin_start"
                 android:layout_marginTop="@dimen/hematology_previous_button_margin_top"
-                android:rotation="180"
+                android:rotation="@dimen/arrow_back_rotation_angle"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -46,16 +46,16 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/hematology_horizontal_border"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/hematology_horizontal_border_height"
+            android:background="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <View
-        android:id="@+id/hematology_horizontal_border"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/hematology_horizontal_border_height"
-        android:background="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/hematology_header" />
-
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"

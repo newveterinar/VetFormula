@@ -4,7 +4,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.repo.dao.FormulasDatab
 import org.koin.dsl.module
 
 
-val databaseModule = module {
+val DatabaseModule = module {
     single { FormulasDatabase.getInstance(get()) }
     single { get<FormulasDatabase>().vetFormulaDao() }
 }

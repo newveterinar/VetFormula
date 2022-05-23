@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentConversionsBinding
 
 class ConversionsFragment :
@@ -40,11 +41,11 @@ class ConversionsFragment :
             button?.setOnClickListener {
                 when (index) {
                     0 -> viewModel.router.exit()
-                    1 -> Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT)
-                        .show()
+                    1 -> Toast.makeText(requireContext(), requireActivity().resources.getString(
+                            R.string.error_button_is_not_assigned), Toast.LENGTH_SHORT).show()
                     else -> {
-                        Toast.makeText(requireContext(), "Кнопка не назначена", Toast.LENGTH_SHORT)
-                            .show()
+                         Toast.makeText(requireContext(), requireActivity().resources.getString(
+                            R.string.error_button_is_not_assigned), Toast.LENGTH_SHORT).show()
                     }
                 }
             }

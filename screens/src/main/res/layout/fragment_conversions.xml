@@ -29,7 +29,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="@dimen/conversions_previous_button_margin_start"
                 android:layout_marginTop="@dimen/conversions_previous_button_margin_top"
-                android:rotation="180"
+                android:rotation="@dimen/arrow_back_rotation_angle"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -47,16 +47,16 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.466" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/conversions_horizontal_border"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/conversions_horizontal_border_height"
+            android:background="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <View
-        android:id="@+id/conversions_horizontal_border"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/conversions_horizontal_border_height"
-        android:background="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/conversions_header" />
-
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -64,7 +64,6 @@
         android:layout_marginTop="@dimen/pharmacy_header_height"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/conversions_header">
-
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/conversions_surface_button_container"
@@ -75,15 +74,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/conversions_horizontal_border">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/conversions_surface_button"
-                android:layout_width="@dimen/conversions_surface_button_width"
-                android:layout_height="@dimen/conversions_surface_button_height"
-                android:layout_alignParentEnd="true"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_temperature" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/conversions_surface_button"
+            android:layout_width="@dimen/conversions_surface_button_width"
+            android:layout_height="@dimen/conversions_surface_button_height"
+            android:layout_alignParentEnd="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_temperature" />
 
             <TextView
                 android:id="@+id/conversions_surface_button_text"
@@ -95,7 +94,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/conversions_surface_button" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

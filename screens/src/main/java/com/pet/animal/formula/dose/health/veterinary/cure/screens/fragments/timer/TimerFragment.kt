@@ -1,12 +1,12 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.timer
 
+import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentTimerBinding
@@ -31,7 +31,7 @@ class TimerFragment : BaseFragment<FragmentTimerBinding>(FragmentTimerBinding::i
         viewModel.second.observe(viewLifecycleOwner) {
             val minutes: Int = it / 60
             val second: Int = it % 60
-            var sSecond: String
+            val sSecond: String
 
             if (second < 10) {
                 sSecond = "0$second"

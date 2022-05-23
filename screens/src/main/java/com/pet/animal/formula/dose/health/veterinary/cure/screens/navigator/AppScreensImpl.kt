@@ -91,5 +91,4 @@ class AppScreensImpl : AppScreens {
         TimerFragment.newInstance()
     }
     //endregion
-
 }
