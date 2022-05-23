@@ -1,5 +1,6 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator
 
+import MainScreenFragment
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 import com.pet.animal.formula.dose.health.veterinary.cure.core.AppScreens
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.about.AboutFragment
@@ -7,7 +8,6 @@ import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.calc
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.conversions.ConversionsFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.fluids.FluidsFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.hematology.HematologyFragment
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.mainscreen.MainScreenFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.PharmacyFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.cri.PharmacyCRIFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.doses.PharmacyDosesFragment
@@ -15,6 +15,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.phar
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.result.PharmacySurfaceResultFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.surface.PharmacySurfaceFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.settings.SettingsFragment
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.timer.TimerFragment
 
 class AppScreensImpl : AppScreens {
     //region Системные окна
@@ -84,5 +85,11 @@ class AppScreensImpl : AppScreens {
     override fun pharmacyDosesResultScreen() = FragmentScreen {
         PharmacyDosesResultFragment.newInstance()
     }
+
+    //region Timer
+    override fun timerScreen() = FragmentScreen {
+        TimerFragment.newInstance()
+    }
     //endregion
+
 }
