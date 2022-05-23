@@ -214,4 +214,9 @@
     <dimen name="textView3_width">0dp</dimen>
     <dimen name="textView3_margin_left">40dp</dimen>
     <dimen name="buttonResetTickCounter_margin_top">16dp</dimen>
+    <dimen name="body_surface_layout_width">16dp</dimen>
+    <dimen name="spinner_dimension_no_giving_set">16dp</dimen>
+    <dimen name="body_surface_layout_height">16dp</dimen>
+    <dimen name="body_surface_layout_marginStart">16dp</dimen>
+
 </resources>

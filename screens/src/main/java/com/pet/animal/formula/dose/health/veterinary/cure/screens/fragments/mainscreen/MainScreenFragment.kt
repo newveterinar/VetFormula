@@ -1,5 +1,3 @@
-package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.mainscreen
-
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -7,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentMainscreenBinding
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.mainscreen.MainScreenFragmentViewModel
 
 class MainScreenFragment :
     BaseFragment<FragmentMainscreenBinding>(FragmentMainscreenBinding::inflate) {

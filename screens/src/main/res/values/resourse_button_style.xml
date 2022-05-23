@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="text_style">
         <item name="android:textSize">@dimen/fluids_previous_text_text_size</item>
         <item name="android:textStyle">bold</item>
@@ -11,7 +12,7 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-        <style name="calculate_button">
+    <style name="calculate_button">
         <item name="android:textSize">@dimen/pharmacy_calculate_button_text_size</item>
         <item name="android:textStyle">bold</item>
         <item name="android:background">@color/light_appbar</item>
@@ -27,7 +28,8 @@
 
     <style name="number_button">
         <item name="android:background">@color/light_green</item>
-        <item name="android:textSize">@dimen/pharmacy_concentration_textinputlayout_textfield_text_size</item>
+        <item name="android:textSize">
+            @dimen/pharmacy_concentration_textinputlayout_textfield_text_size
+        </item>
     </style>
-
 </resources>
