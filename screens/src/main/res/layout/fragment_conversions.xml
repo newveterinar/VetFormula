@@ -74,15 +74,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/conversions_horizontal_border">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/conversions_surface_button"
-                android:layout_width="@dimen/conversions_surface_button_width"
-                android:layout_height="@dimen/conversions_surface_button_height"
-                android:layout_alignParentEnd="true"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_temperature" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/conversions_surface_button"
+            android:layout_width="@dimen/conversions_surface_button_width"
+            android:layout_height="@dimen/conversions_surface_button_height"
+            android:layout_alignParentEnd="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_temperature" />
 
             <TextView
                 android:id="@+id/conversions_surface_button_text"

@@ -74,9 +74,9 @@
             <TextView
                 android:id="@+id/pharmacy_surface_previous_text"
                 style="@style/text_style"
-                android:layout_width="298dp"
-                android:layout_height="34dp"
-                android:layout_marginStart="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/body_surface_layout_marginStart"
                 android:paddingStart="@dimen/pharmacy_surface_previous_text_padding_start"
                 android:text="@string/pharmacy_surface_previous_text_text"
                 app:layout_constraintBottom_toBottomOf="parent"

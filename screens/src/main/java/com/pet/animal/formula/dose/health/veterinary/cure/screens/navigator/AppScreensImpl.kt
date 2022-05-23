@@ -1,5 +1,6 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator
 
+import MainScreenFragment
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 import com.pet.animal.formula.dose.health.veterinary.cure.core.AppScreens
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.about.AboutFragment
@@ -7,7 +8,6 @@ import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.calc
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.conversions.ConversionsFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.fluids.FluidsFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.hematology.HematologyFragment
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.mainscreen.MainScreenFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.PharmacyFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.cri.PharmacyCRIFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.doses.PharmacyDosesFragment
@@ -86,6 +86,7 @@ class AppScreensImpl : AppScreens {
         PharmacyDosesResultFragment.newInstance()
     }
 
+    //region Timer
     override fun timerScreen() = FragmentScreen {
         TimerFragment.newInstance()
     }

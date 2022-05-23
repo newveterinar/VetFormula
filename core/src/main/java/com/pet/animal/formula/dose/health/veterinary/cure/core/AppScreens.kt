@@ -17,5 +17,4 @@ interface AppScreens {
     fun criScreen(): FragmentScreen
     fun pharmacyDosesResultScreen(): FragmentScreen
     fun timerScreen():FragmentScreen
-
 }

@@ -105,6 +105,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:paddingBottom="@dimen/settings_surface_button_width"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/pharmacy_horizontal_border">
 
@@ -137,7 +138,6 @@
                         android:id="@+id/pharmacy_weight_textinputlayout"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-
                         android:layout_marginStart="@dimen/pharmacy_weight_textinputlayout_margin_start">
 
                         <EditText
@@ -492,8 +492,9 @@
 
                 <androidx.appcompat.widget.AppCompatSpinner
                     android:id="@+id/pharmacy_drop_dimension_list"
-                    android:layout_width="313dp"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/spinner_dimension_no_giving_set"
                     android:entries="@array/pharmacy_drop_animal_dimension_list"
                     android:layout_marginStart="@dimen/pharmacy_drop_dimension_list_margin_start"
                     android:gravity="center"
