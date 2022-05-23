@@ -121,7 +121,6 @@ class MainActivity : AppCompatActivity() {
         binding.webView.apply {
             loadUrl("https://www.google.ru/")
             settings.javaScriptEnabled = true
-            settings.allowContentAccess = true
         }
     }
 
