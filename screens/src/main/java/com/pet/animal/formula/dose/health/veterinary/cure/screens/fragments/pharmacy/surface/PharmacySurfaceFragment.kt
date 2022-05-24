@@ -179,7 +179,10 @@ class PharmacySurfaceFragment :
         navigationButtons.forEachIndexed { index, button ->
             button?.setOnClickListener {
                 when (index) {
-                    0 -> viewModel.router.exit()
+                    0 -> {
+                            saveData()
+                            viewModel.router.exit()
+                         }
                     1 -> {
                             saveData()
                             viewModel.router.
