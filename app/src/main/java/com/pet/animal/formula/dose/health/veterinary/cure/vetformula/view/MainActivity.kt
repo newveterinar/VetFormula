@@ -93,7 +93,7 @@ class MainActivity : AppCompatActivity() {
         params = guideLine.layoutParams as ConstraintLayout.LayoutParams
 
         if (savedInstanceState == null) {
-            this.viewModel.router.newRootScreen(this.viewModel.screens.mainScreen())
+            this.viewModel.router.navigateTo(this.viewModel.screens.mainScreen())
         }
         onClickFab()
     }

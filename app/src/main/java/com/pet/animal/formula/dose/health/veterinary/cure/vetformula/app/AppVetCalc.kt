@@ -28,7 +28,7 @@ class AppVetCalc: Application() {
     companion object {
         var instance: AppVetCalc? = null
     }
-
+    //region Смена конфигурации(языка)
     override fun attachBaseContext(base: Context) {
         super.attachBaseContext(LocaleHelper.onAttach(base))
     }
@@ -41,4 +41,5 @@ class AppVetCalc: Application() {
     override fun getApplicationContext(): Context {
         return LocaleHelper.onAttach(super.getApplicationContext())
     }
+    //endregion
 }

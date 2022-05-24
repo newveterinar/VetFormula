@@ -24,8 +24,10 @@ object LocaleHelper {
     }
 
     fun onResume(activity: Activity){
-        if (currentLocale == Locale.getDefault()) return
-        activity.recreate()
+        if (currentLocale == Locale.getDefault()) {
+            return
+        }
+        //activity.recreate()
     }
 
     fun onPause(){
@@ -68,16 +70,16 @@ object LocaleHelper {
 
     fun getLocale(context: Context) = loadLocale(context)
 
-    fun setLocale(context: Context, locale: Locale): Context {
-        persist(context, locale)
-        Locale.setDefault(locale)
-        return updateContextResources(context, locale)
+    private fun setLocale(context: Context, newLocale: Locale): Context {
+        persist(context, newLocale)
+        Locale.setDefault(newLocale)
+        currentLocale = newLocale
+        return updateContextResources(context, newLocale)
     }
 
     fun setLocale(activity: Activity, newLocale: Locale){
         setLocale((activity as Context), newLocale)
-        currentLocale = newLocale
-        activity.recreate()
+        //activity.recreate()
     }
 
     private fun persist(context: Context, locale: Locale?) {
