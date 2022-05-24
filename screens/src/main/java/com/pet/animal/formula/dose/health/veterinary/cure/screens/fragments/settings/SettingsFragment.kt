@@ -2,17 +2,23 @@ package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.set
 
 import android.os.Bundle
 import android.view.View
+import android.widget.AdapterView
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentSettingsBinding
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.selected
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.language_utils.LocaleHelper
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.language_utils.Locales
 
 class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsBinding::inflate) {
 
     /** Задание переменных */ //region
     // Навигация
     private val navigationButtons = arrayOfNulls<View>(size = 1)
+    private lateinit var languageSpinner: Spinner
 
     // ViewModel
     lateinit var viewModel: SettingsFragmentViewModel
@@ -25,6 +31,7 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsB
         initNavigationButtons()
         // Инициализация ViewModel
         initViewModel()
+        initLanguageSettingsFields()
     }
 
     // Инициализация кнопок
@@ -44,6 +51,34 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsB
                     }
                 }
             }
+        }
+    }
+
+    private fun initLanguageSettingsFields() {
+        languageSpinner = binding.settingsLanguageList
+        selectCurrentLocale()
+        languageSpinner.selected { position ->
+            when (position) {
+                2 -> LocaleHelper.setLocale(requireContext(), Locales.english)
+                4 -> LocaleHelper.setLocale(requireContext(), Locales.german)
+                8 -> LocaleHelper.setLocale(requireContext(), Locales.russian)
+            }
+        }
+    }
+
+
+    private fun selectCurrentLocale() {
+        return when (LocaleHelper.getLocale(requireContext()).language) {
+            Locales.english.language -> {
+                languageSpinner.setSelection(2)
+            }
+            Locales.german.language -> {
+                languageSpinner.setSelection(4)
+            }
+            Locales.russian.language -> {
+                languageSpinner.setSelection(8)
+            }
+            else -> {}
         }
     }
 

@@ -2,6 +2,7 @@ package com.pet.animal.formula.dose.health.veterinary.cure.vetformula.app
 
 import android.app.Application
 import android.content.Context
+import android.content.res.Configuration
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.language_utils.LocaleHelper
 import com.pet.animal.formula.dose.health.veterinary.cure.vetformula.di.database
 import com.pet.animal.formula.dose.health.veterinary.cure.vetformula.di.screens
@@ -30,5 +31,14 @@ class AppVetCalc: Application() {
 
     override fun attachBaseContext(base: Context) {
         super.attachBaseContext(LocaleHelper.onAttach(base))
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        LocaleHelper.onAttach(this)
+    }
+
+    override fun getApplicationContext(): Context {
+        return LocaleHelper.onAttach(super.getApplicationContext())
     }
 }

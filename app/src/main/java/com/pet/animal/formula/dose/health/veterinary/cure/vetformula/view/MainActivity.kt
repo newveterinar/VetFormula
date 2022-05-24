@@ -1,5 +1,6 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.vetformula.view
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.view.animation.Animation
@@ -14,6 +15,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator.Back
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.MAIN_ACTIVITY_NAME
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.SLIDER_MAX_DIFFERENT_VALUE
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.SLIDER_MAX_VALUE
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.language_utils.LocaleHelper
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.screens.UpAndBottomFramesSizesChanger
 import com.pet.animal.formula.dose.health.veterinary.cure.vetformula.R
 import com.pet.animal.formula.dose.health.veterinary.cure.vetformula.databinding.ActivityMainBinding
