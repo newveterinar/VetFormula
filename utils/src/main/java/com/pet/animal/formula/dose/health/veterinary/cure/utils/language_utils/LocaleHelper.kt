@@ -1,5 +1,6 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.utils.language_utils
 
+import android.app.Activity
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
@@ -12,7 +13,7 @@ object LocaleHelper {
     private const val SELECTED_LANGUAGE = "Locale.Helper.Selected.Language"
     private var isInitialised = false
 
-    val systemLocale: Locale = Locale.getDefault()
+    var currentLocale: Locale = Locale.getDefault()
 
     fun onAttach(context: Context): Context {
         if (!isInitialised) {
@@ -20,6 +21,15 @@ object LocaleHelper {
             isInitialised = true
         }
         return updateContextResources(context, Locale.getDefault())
+    }
+
+    fun onResume(activity: Activity){
+        if (currentLocale == Locale.getDefault()) return
+        activity.recreate()
+    }
+
+    fun onPause(){
+        currentLocale = Locale.getDefault()
     }
 
 
@@ -62,6 +72,12 @@ object LocaleHelper {
         persist(context, locale)
         Locale.setDefault(locale)
         return updateContextResources(context, locale)
+    }
+
+    fun setLocale(activity: Activity, newLocale: Locale){
+        setLocale((activity as Context), newLocale)
+        currentLocale = newLocale
+        activity.recreate()
     }
 
     private fun persist(context: Context, locale: Locale?) {

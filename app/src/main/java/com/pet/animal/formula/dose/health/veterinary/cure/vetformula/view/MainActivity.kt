@@ -1,6 +1,7 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.vetformula.view
 
 import android.content.Context
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
 import android.view.animation.Animation
@@ -92,7 +93,7 @@ class MainActivity : AppCompatActivity() {
         params = guideLine.layoutParams as ConstraintLayout.LayoutParams
 
         if (savedInstanceState == null) {
-            this.viewModel.router.navigateTo(this.viewModel.screens.mainScreen())
+            this.viewModel.router.newRootScreen(this.viewModel.screens.mainScreen())
         }
         onClickFab()
     }
@@ -158,12 +159,14 @@ class MainActivity : AppCompatActivity() {
     /** Методы для настройки навигатора */ //region
     override fun onResume() {
         super.onResume()
+        LocaleHelper.onResume(this)
         // Установка навигатора
         navigatorHolder.setNavigator(navigator)
     }
 
     override fun onPause() {
         super.onPause()
+        LocaleHelper.onPause()
         // Удаление навигатора
         navigatorHolder.removeNavigator()
     }
@@ -191,5 +194,14 @@ class MainActivity : AppCompatActivity() {
         params.guidePercent = upAndBottomFramesSizesChanger.constraintGuidePercent
         guideLine.layoutParams = params
         viewModel.router.replaceScreen(viewModel.screens.mainScreen())
+    }
+
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(LocaleHelper.onAttach(newBase))
+    }
+
+    override fun createConfigurationContext(overrideConfiguration: Configuration): Context {
+        val context =  super.createConfigurationContext(overrideConfiguration)
+        return LocaleHelper.onAttach(context)
     }
 }

@@ -2,10 +2,10 @@ package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.set
 
 import android.os.Bundle
 import android.view.View
-import android.widget.AdapterView
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import com.github.terrakok.cicerone.androidx.AppScreen
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentSettingsBinding
@@ -59,9 +59,9 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsB
         selectCurrentLocale()
         languageSpinner.selected { position ->
             when (position) {
-                2 -> LocaleHelper.setLocale(requireContext(), Locales.english)
-                4 -> LocaleHelper.setLocale(requireContext(), Locales.german)
-                8 -> LocaleHelper.setLocale(requireContext(), Locales.russian)
+                2 -> LocaleHelper.setLocale(requireActivity(), Locales.english)
+                4 -> LocaleHelper.setLocale(requireActivity(), Locales.german)
+                8 -> LocaleHelper.setLocale(requireActivity(), Locales.russian)
             }
         }
     }
@@ -70,13 +70,13 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsB
     private fun selectCurrentLocale() {
         return when (LocaleHelper.getLocale(requireContext()).language) {
             Locales.english.language -> {
-                languageSpinner.setSelection(2)
+                languageSpinner.setSelection(2, false)
             }
             Locales.german.language -> {
-                languageSpinner.setSelection(4)
+                languageSpinner.setSelection(4, false)
             }
             Locales.russian.language -> {
-                languageSpinner.setSelection(8)
+                languageSpinner.setSelection(8, false)
             }
             else -> {}
         }
