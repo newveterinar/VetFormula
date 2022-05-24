@@ -2,6 +2,7 @@ package com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator
 
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 import com.pet.animal.formula.dose.health.veterinary.cure.core.AppScreens
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.edittext.EditTextFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.about.AboutFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.calculator.CalculatorFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.conversions.ConversionsFragment
@@ -16,6 +17,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.phar
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.surface.PharmacySurfaceFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.settings.SettingsFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.timer.TimerFragment
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.webview.WebViewFragment
 
 class AppScreensImpl : AppScreens {
     //region Системные окна
@@ -88,6 +90,14 @@ class AppScreensImpl : AppScreens {
 
     override fun timerScreen() = FragmentScreen {
         TimerFragment.newInstance()
+    }
+
+    override fun webViewScreen() = FragmentScreen {
+        WebViewFragment.newInstance()
+    }
+
+    override fun editTextScreen() = FragmentScreen {
+        EditTextFragment.newInstance()
     }
     //endregion
 }

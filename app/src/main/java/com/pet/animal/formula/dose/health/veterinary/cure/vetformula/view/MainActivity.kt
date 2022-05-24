@@ -5,13 +5,11 @@ import android.os.Bundle
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.Guideline
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.androidx.AppNavigator
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.WebViewFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator.BackButtonListener
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.MAIN_ACTIVITY_NAME
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.SLIDER_MAX_DIFFERENT_VALUE
@@ -106,17 +104,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.fabWebView.setOnClickListener {
-            supportFragmentManager.beginTransaction()
-                .replace(
-                    com.pet.animal.formula.dose.health.veterinary.cure.screens.R.layout.fragment_web_view,
-                    WebViewFragment(), "google"
-                )
-                .commit()
+            viewModel.router.navigateTo(viewModel.screens.webViewScreen())
 
         }
 
         binding.fabTextView.setOnClickListener {
-            Toast.makeText(this, "TextView Button Clicked", Toast.LENGTH_SHORT).show()
+            viewModel.router.navigateTo(viewModel.screens.editTextScreen())
         }
     }
 

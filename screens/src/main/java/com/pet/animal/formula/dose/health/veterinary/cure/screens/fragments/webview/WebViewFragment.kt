@@ -1,4 +1,4 @@
-package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments
+package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.webview
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -27,6 +27,7 @@ class WebViewFragment : BaseFragment<FragmentWebViewBinding>(FragmentWebViewBind
         binding.webViewFragment.apply {
             loadUrl("https://www.google.ru/")
             settings.javaScriptEnabled = true
+            settings.allowContentAccess = true
         }
     }
 
