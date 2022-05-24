@@ -3,6 +3,9 @@ package com.pet.animal.formula.dose.health.veterinary.cure.repo.dao
 import androidx.room.*
 import com.pet.animal.formula.dose.health.veterinary.cure.repo.FormulaEntity
 import com.pet.animal.formula.dose.health.veterinary.cure.repo.UrlEntity
+import com.pet.animal.formula.dose.health.veterinary.cure.unientity.UniFormulaEntity
+import com.pet.animal.formula.dose.health.veterinary.cure.unientity.UniParamEntity
+import com.pet.animal.formula.dose.health.veterinary.cure.unientity.UniSectionEntity
 
 @Dao
 interface VetFormulaDao {
@@ -38,6 +41,25 @@ interface VetFormulaDao {
 
     @Delete
     suspend fun deleteUrl(url:UrlEntity)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertSection(sections: List<UniSectionEntity>)
+
+
+    @Query("select * from UniSectionEntity")
+    fun getSections(): List<UniSectionEntity>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun saveUniFormulas(formulas: List<UniFormulaEntity>)
+
+    @Query("select * from UniFormulaEntity where section=:sectionId")
+    fun getUniFormulaByScreen(sectionId: Int): List<UniFormulaEntity>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun saveUniParams(params: List<UniParamEntity>)
+
+    @Query("select * from UniParamEntity where formula = :formulaId")
+    fun getUniParamsByFormula(formulaId: Int): List<UniParamEntity>
 
 
 }

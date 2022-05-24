@@ -7,12 +7,21 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.pet.animal.formula.dose.health.veterinary.cure.repo.FormulaEntity
 import com.pet.animal.formula.dose.health.veterinary.cure.repo.UrlEntity
+import com.pet.animal.formula.dose.health.veterinary.cure.unientity.*
 
-@Database (entities = [FormulaEntity::class, UrlEntity::class], version = 1)
+@Database(entities = [
+    FormulaEntity::class,
+    UrlEntity::class,
+    UniFormulaElement::class,
+    UniFormulaEntity::class,
+    UniParamEntity::class,
+    UniSectionEntity::class,
+    UniTranslateSectionEntity::class], version = 1)
+
 @TypeConverters(ClassTypeConverter::class)
-abstract class FormulasDatabase: RoomDatabase() {
+abstract class FormulasDatabase : RoomDatabase() {
 
-    abstract fun vetFormulaDao():VetFormulaDao
+    abstract fun vetFormulaDao(): VetFormulaDao
 
     companion object {
         private var instance: FormulasDatabase? = null
@@ -20,8 +29,10 @@ abstract class FormulasDatabase: RoomDatabase() {
         fun getInstance(context: Context): FormulasDatabase {
             if (instance == null) {
                 synchronized(this) {
-                    instance = Room.databaseBuilder(context.applicationContext,
-                        FormulasDatabase::class.java, "formulas.db").build()
+                    instance = Room.databaseBuilder(
+                        context.applicationContext,
+                        FormulasDatabase::class.java, "formulas.db"
+                    ).build()
                 }
             }
             return instance!!
