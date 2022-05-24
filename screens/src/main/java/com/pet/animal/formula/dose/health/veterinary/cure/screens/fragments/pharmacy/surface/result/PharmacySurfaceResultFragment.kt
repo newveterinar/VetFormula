@@ -123,8 +123,7 @@ class PharmacySurfaceResultFragment: BaseFragment<FragmentPharmacySurfaceResultB
                         valueFields[element.positionValueOnWindow - 1].value)
                 }
             }
-            Toast.makeText(requireContext(), "Результат вычислений по формуле: ${
-                calcInteractorImpl.getCommandResultValue()}", Toast.LENGTH_SHORT).show()
+            binding.pharmacyResultText.text = calcInteractorImpl.getCommandResultValue().toString()
         }
     }
 }
