@@ -29,6 +29,7 @@
     <string name="settings_previous_text_text">Settings</string>
     <string name="settings_button_text_text">Settings</string>
     <string name="settings_button_surface_text_text">SomeSettings</string>
+    <string name="settings_language_text">Language</string>
     <string name="calculator_previous_text_text">Calculator</string>
     <string name="calculator_button_text_text">Calculator</string>
     <string name="calculator_button_surface_text_text">Calculate</string>
@@ -136,15 +137,15 @@
     <string name="language_arabic" translatable="false">العربية</string>
     <string name="language_chinese" translatable="false">中文</string>
     <string name="language_english" translatable="false">English</string>
-    <string name="language_french" translatable="false">français</string>
-    <string name="language_german" translatable="false">deutsch</string>
+    <string name="language_french" translatable="false">Français</string>
+    <string name="language_german" translatable="false">Deutsch</string>
     <string name="language_hindi" translatable="false">हिन्दी</string>
-    <string name="language_portuguese" translatable="false">português</string>
+    <string name="language_portuguese" translatable="false">Português</string>
     <string name="language_japanese" translatable="false">日本語</string>
     <string name="language_russian" translatable="false">Русский</string>
-    <string name="language_spanish" translatable="false">español</string>
+    <string name="language_spanish" translatable="false">Español</string>
 
-    <string-array name="laguages_list">
+    <string-array name="language_list">
         <item>@string/language_arabic</item>
         <item>@string/language_chinese</item>
         <item>@string/language_english</item>

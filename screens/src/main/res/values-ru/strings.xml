@@ -133,4 +133,5 @@
         <item>20 капель/мл</item>
         <item>60 капель/мл</item>
     </string-array>
+    <string name="settings_language_text">Язык</string>
 </resources>

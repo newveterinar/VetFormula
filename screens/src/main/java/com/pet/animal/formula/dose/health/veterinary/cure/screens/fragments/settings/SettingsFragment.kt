@@ -12,7 +12,7 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsB
 
     /** Задание переменных */ //region
     // Навигация
-    private val navigationButtons = arrayOfNulls<View>(size = 3)
+    private val navigationButtons = arrayOfNulls<View>(size = 1)
 
     // ViewModel
     lateinit var viewModel: SettingsFragmentViewModel
@@ -32,15 +32,12 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsB
         binding.apply {
             navigationButtons.also {
                 it[0] = this.settingsPreviousButtonContainer
-                it[1] = this.settingsSurfaceButtonContainer
             }
         }
         navigationButtons.forEachIndexed { index, button ->
             button?.setOnClickListener {
                 when (index) {
                     0 -> viewModel.router.exit()
-                    1 -> Toast.makeText(requireContext(), requireActivity().resources.getString(
-                            R.string.error_button_is_not_assigned), Toast.LENGTH_SHORT).show()
                     else -> {
                         Toast.makeText(requireContext(), requireActivity().resources.getString(
                             R.string.error_button_is_not_assigned), Toast.LENGTH_SHORT).show()

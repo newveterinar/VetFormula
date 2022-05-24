@@ -214,4 +214,10 @@
     <dimen name="textView3_width">0dp</dimen>
     <dimen name="textView3_margin_left">40dp</dimen>
     <dimen name="buttonResetTickCounter_margin_top">16dp</dimen>
+    <dimen name="settings_screen_margin_top">20dp</dimen>
+    <dimen name="settings_screen_margin_end">20dp</dimen>
+    <dimen name="settings_screen_margin_start">20dp</dimen>
+    <dimen name="settings_divider_margin_top">20dp</dimen>
+    <dimen name="settings_divider_margin_bottom">20dp</dimen>
+    <dimen name="settings_element_margin_top">20dp</dimen>
 </resources>
