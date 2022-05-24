@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
+import com.pet.animal.formula.dose.health.veterinary.cure.core.calculator.CalcInteractorImpl
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentPharmacySurfaceResultBinding
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.FragmentScope
@@ -25,6 +26,8 @@ class PharmacySurfaceResultFragment: BaseFragment<FragmentPharmacySurfaceResultB
 
     // SettingsImpl
     private val settings: SettingsImpl = KoinJavaComponent.getKoin().get()
+    // Интерактор калькулятора
+    private val calcInteractorImpl: CalcInteractorImpl = CalcInteractorImpl()
 
     //endregion
 
@@ -53,8 +56,10 @@ class PharmacySurfaceResultFragment: BaseFragment<FragmentPharmacySurfaceResultB
                 "${settings.getInputedScreenData().listsAddFirstSecond[0]}\n" +
                         "${settings.getInputedScreenData().valueFields[0].stringValue}\n" +
                         "${settings.getInputedScreenData().valueFields[0].value}\n" +
-                        "${settings.getInputedScreenData().valueFields[0].dimension}",
+                        "${settings.getInputedScreenData().valueFields[0].dimension}\n" +
+                        "Количество типизированных формул: ${settings.getFormula().getTypedFormulas().size}",
                 Toast.LENGTH_SHORT).show()
+            tempCalculate()
         }
 
         // Инициализация кнопок
@@ -95,5 +100,26 @@ class PharmacySurfaceResultFragment: BaseFragment<FragmentPharmacySurfaceResultB
     companion object {
         fun newInstance(): PharmacySurfaceResultFragment =
             PharmacySurfaceResultFragment()
+    }
+
+    // Временная демонстрация расчёта
+    fun tempCalculate() {
+        settings.getFormula().getTypedFormulas().forEach { typedFormula ->
+            calcInteractorImpl.clearCalc()
+            typedFormula.elements.forEach { element ->
+                if (element.positionValueOnWindow == 0) {
+                    calcInteractorImpl.setCommand(element.numberCommand)
+                } else {
+                    // Важно вычесть единицу из позиции element.positionValueOnWindow,
+                    // так как нужно перейти от порядкового номера формы с числом
+                    // к индексу элемента в списке
+                    calcInteractorImpl.setCommand(
+                        settings.getInputedScreenData().
+                        valueFields[element.positionValueOnWindow - 1].value)
+                }
+            }
+            Toast.makeText(requireContext(), "Результат вычислений по формуле: ${
+                calcInteractorImpl.getCommandResultValue()}", Toast.LENGTH_SHORT).show()
+        }
     }
 }
