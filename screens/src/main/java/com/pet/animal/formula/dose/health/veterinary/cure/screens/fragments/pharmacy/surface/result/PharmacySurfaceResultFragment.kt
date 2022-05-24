@@ -10,6 +10,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentPharmacySurfaceResultBinding
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.FragmentScope
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.settings.SettingsImpl
+import kotlinx.coroutines.delay
 import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
 import org.koin.java.KoinJavaComponent
@@ -49,6 +50,10 @@ class PharmacySurfaceResultFragment: BaseFragment<FragmentPharmacySurfaceResultB
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        Toast.makeText(requireContext(),
+            "${settings.getInputedScreenData().listsAddFirstSecond.size}\n" +
+                "${settings.getInputedScreenData().valueFields.size}", Toast.LENGTH_SHORT).show()
 
         if ((settings.getInputedScreenData().listsAddFirstSecond.size > 0) &&
             (settings.getInputedScreenData().valueFields.size > 0)) {
