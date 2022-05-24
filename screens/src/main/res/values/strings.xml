@@ -133,4 +133,27 @@
         <item>20 drops/ml</item>
         <item>60 drops/ml</item>
     </string-array>
+    <string name="language_arabic" translatable="false">العربية</string>
+    <string name="language_chinese" translatable="false">中文</string>
+    <string name="language_english" translatable="false">English</string>
+    <string name="language_french" translatable="false">français</string>
+    <string name="language_german" translatable="false">deutsch</string>
+    <string name="language_hindi" translatable="false">हिन्दी</string>
+    <string name="language_portuguese" translatable="false">português</string>
+    <string name="language_japanese" translatable="false">日本語</string>
+    <string name="language_russian" translatable="false">Русский</string>
+    <string name="language_spanish" translatable="false">español</string>
+
+    <string-array name="laguages_list">
+        <item>@string/language_arabic</item>
+        <item>@string/language_chinese</item>
+        <item>@string/language_english</item>
+        <item>@string/language_french</item>
+        <item>@string/language_german</item>
+        <item>@string/language_hindi</item>
+        <item>@string/language_japanese</item>
+        <item>@string/language_portuguese</item>
+        <item>@string/language_russian</item>
+        <item>@string/language_spanish</item>
+    </string-array>
 </resources>
