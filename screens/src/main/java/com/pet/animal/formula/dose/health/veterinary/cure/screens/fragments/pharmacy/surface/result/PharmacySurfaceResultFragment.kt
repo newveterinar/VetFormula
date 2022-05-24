@@ -10,6 +10,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentPharmacySurfaceResultBinding
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.surface.PharmacySurfaceFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.FragmentScope
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.settings.SettingsImpl
 import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
 import org.koin.java.KoinJavaComponent
@@ -19,11 +20,14 @@ class PharmacySurfaceResultFragment: BaseFragment<FragmentPharmacySurfaceResultB
     /** Задание переменных */ //region
     // Навигация
     private val navigationButtons = arrayOfNulls<View>(size = 2)
-
     // ViewModel
     private lateinit var viewModel: PharmacySurfaceResultFragmentViewModel
     // ShowPharmacySurfaceFragmentScope
     private lateinit var showPharmacySurfaceResultFragmentScope: Scope
+
+    // SettingsImpl
+    private val settings: SettingsImpl = KoinJavaComponent.getKoin().get()
+
     //endregion
 
     /** Работа со Scope */ //region
@@ -44,6 +48,17 @@ class PharmacySurfaceResultFragment: BaseFragment<FragmentPharmacySurfaceResultB
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        if ((settings.getInputedScreenData().listsAddFirstSecond.size > 0) &&
+            (settings.getInputedScreenData().valueFields.size > 0)) {
+            Toast.makeText(requireContext(),
+                "${settings.getInputedScreenData().listsAddFirstSecond[0]}\n" +
+                        "${settings.getInputedScreenData().valueFields[0].stringValue}\n" +
+                        "${settings.getInputedScreenData().valueFields[0].value}\n" +
+                        "${settings.getInputedScreenData().valueFields[0].dimension}",
+                Toast.LENGTH_SHORT).show()
+        }
+
         // Инициализация кнопок
         initNavigationButtons()
         // Инициализация ViewModel

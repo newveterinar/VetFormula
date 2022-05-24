@@ -18,6 +18,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.conver
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertListEditTextToListString
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertListSpinnerToListInt
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.stringToDouble
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.settings.SettingsImpl
 import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
 import org.koin.java.KoinJavaComponent
@@ -179,8 +180,11 @@ class PharmacySurfaceFragment :
             button?.setOnClickListener {
                 when (index) {
                     0 -> viewModel.router.exit()
-                    1 -> viewModel.router.
+                    1 -> {
+                            saveData()
+                            viewModel.router.
                             navigateTo(viewModel.screens.pharmacySurfaceResultScreen())
+                        }
                     else -> {
                          Toast.makeText(requireContext(),
                              requireActivity().resources.getString(
@@ -282,24 +286,26 @@ class PharmacySurfaceFragment :
     private fun setActionsFieldsAndLists() {
         listsAddFirstSecond.forEachIndexed { index, spinnerList ->
             spinnerList.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
+                var selectCounter: Int = 0
                 override fun onItemSelected(
                     parent: AdapterView<*>?, view: View?,
                     position: Int, id: Long,
                 ) {
                     // Сохранение текущего состояния всех числовых полей и списков
-                    saveData()
+                    if (selectCounter++ > 0) saveData()
                 }
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
             }
         }
         listsDimensions.forEachIndexed { index, spinnerList ->
             spinnerList.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
+                var selectCounter: Int = 0
                 override fun onItemSelected(
                     parent: AdapterView<*>?, view: View?,
                     position: Int, id: Long,
                 ) {
                     // Сохранение текущего состояния всех числовых полей и списков
-                    saveData()
+                    if (selectCounter++ > 0) saveData()
                 }
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
             }

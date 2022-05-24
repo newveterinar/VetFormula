@@ -8,11 +8,10 @@ import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentPharmacyBinding
 
-class PharmacyFragment : BaseFragment<FragmentPharmacyBinding>(FragmentPharmacyBinding::inflate) {
+class PharmacyFragment: BaseFragment<FragmentPharmacyBinding>(FragmentPharmacyBinding::inflate) {
     /** Задание переменных */ //region
     // Навигация
     private val navigationButtons = arrayOfNulls<View>(5)
-
     // ViewModel
     private lateinit var viewModel: PharmacyFragmentViewModel
     //endregion
@@ -23,7 +22,6 @@ class PharmacyFragment : BaseFragment<FragmentPharmacyBinding>(FragmentPharmacyB
         initViewModel()
         // Инициализация кнопок
         initNavigationButtons()
-
     }
 
     // Инициализация кнопок

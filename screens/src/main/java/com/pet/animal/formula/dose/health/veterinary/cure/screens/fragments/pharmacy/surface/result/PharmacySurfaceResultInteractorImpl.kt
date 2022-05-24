@@ -13,7 +13,7 @@ class PharmacySurfaceResultInteractorImpl: Interactor<AppState> {
     //endregion
 
     override suspend fun getData(): AppState {
-        return AppState.Success(settings.getPharmacySurfaceResultScreenData())
+        return AppState.Success(settings.getInputedScreenData())
     }
 
     // Не используемый в данном интеракторе метод

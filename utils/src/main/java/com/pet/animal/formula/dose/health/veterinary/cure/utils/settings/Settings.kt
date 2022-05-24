@@ -20,10 +20,6 @@ interface Settings {
                       stringValues: List<String>,
                       values: List<Double>,
                       dimensions: List<Int>)
-    // Получение данных окна PharmacySurface
-    fun getPharmacySurfaceScreenData(): ScreenData
-    // Получение данных окна PharmacySurfaceResult
-    fun getPharmacySurfaceResultScreenData(): ScreenData
-    // Получение данных окна PharmacyDoses
-    fun getPharmacyDosesScreenData(): ScreenData
+    // Получение исходных данных для расчётного окна
+    fun getInputedScreenData(): ScreenData
 }

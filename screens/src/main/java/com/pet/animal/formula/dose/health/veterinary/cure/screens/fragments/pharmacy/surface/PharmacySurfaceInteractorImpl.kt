@@ -20,7 +20,7 @@ class PharmacySurfaceInteractorImpl: Interactor<AppState> {
 
     // Получение данных полей окна, если они были сохранены ранее
     override suspend fun getData(): AppState {
-        return AppState.Success(settings.getPharmacySurfaceScreenData())
+        return AppState.Success(settings.getInputedScreenData())
     }
 
     /** Методы для сохранения данных с полей и списков */ //region
