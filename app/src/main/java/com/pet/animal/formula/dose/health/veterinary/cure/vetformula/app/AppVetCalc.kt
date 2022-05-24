@@ -1,13 +1,15 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.vetformula.app
 
 import android.app.Application
+import android.content.Context
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.language_utils.LocaleHelper
 import com.pet.animal.formula.dose.health.veterinary.cure.vetformula.di.database
 import com.pet.animal.formula.dose.health.veterinary.cure.vetformula.di.screens
 import com.pet.animal.formula.dose.health.veterinary.cure.vetformula.di.utils
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
-class appVetCalc: Application() {
+class AppVetCalc: Application() {
     /** Задание переменных */ //region
     //endregion
 
@@ -23,6 +25,10 @@ class appVetCalc: Application() {
     }
 
     companion object {
-        var instance: appVetCalc? = null
+        var instance: AppVetCalc? = null
+    }
+
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(LocaleHelper.onAttach(base))
     }
 }
