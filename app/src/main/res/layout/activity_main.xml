@@ -25,7 +25,7 @@
         app:layout_constraintGuide_percent="@dimen/windows_slider_max_value" />
 
     <!-- Нижнее окно (нижний фрагмент, заменить TextView на FrameLayout) -->
-    <TextView
+    <FrameLayout
         android:id="@+id/bottom_activity_fragments_container"
         android:layout_width="match_parent"
         android:layout_height="@dimen/bottom_activity_fragments_container_height"

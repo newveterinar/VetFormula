@@ -10,6 +10,8 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.Guideline
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.androidx.AppNavigator
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.edittext.EditTextFragment
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.webview.WebViewFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator.BackButtonListener
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.MAIN_ACTIVITY_NAME
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.SLIDER_MAX_DIFFERENT_VALUE
@@ -104,12 +106,14 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.fabWebView.setOnClickListener {
-            viewModel.router.navigateTo(viewModel.screens.webViewScreen())
-
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.bottom_activity_fragments_container, WebViewFragment(), "vetmedical")
+                .commit()
         }
-
         binding.fabTextView.setOnClickListener {
-            viewModel.router.navigateTo(viewModel.screens.editTextScreen())
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.bottom_activity_fragments_container, EditTextFragment(), "vetmedical")
+                .commit()
         }
     }
 

@@ -25,9 +25,10 @@ class WebViewFragment : BaseFragment<FragmentWebViewBinding>(FragmentWebViewBind
     private fun webViewSetup() {
         binding.webViewFragment.webViewClient = WebViewClient()
         binding.webViewFragment.apply {
-            loadUrl("https://www.google.ru/")
+            loadUrl("https://vetmedical.ru/")
             settings.javaScriptEnabled = true
             settings.allowContentAccess = true
+
         }
     }
 
