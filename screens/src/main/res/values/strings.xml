@@ -134,6 +134,7 @@
         <item>20 drops/ml</item>
         <item>60 drops/ml</item>
     </string-array>
+    <string name="language_default">System language</string>
     <string name="language_arabic" translatable="false">العربية</string>
     <string name="language_chinese" translatable="false">中文</string>
     <string name="language_english" translatable="false">English</string>
@@ -146,6 +147,7 @@
     <string name="language_spanish" translatable="false">Español</string>
 
     <string-array name="language_list">
+        <item>@string/language_default</item>
         <item>@string/language_arabic</item>
         <item>@string/language_chinese</item>
         <item>@string/language_english</item>

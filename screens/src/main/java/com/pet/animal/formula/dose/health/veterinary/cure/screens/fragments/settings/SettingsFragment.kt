@@ -2,16 +2,17 @@ package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.set
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Spinner
-import android.widget.Toast
+import android.widget.*
 import androidx.lifecycle.ViewModelProvider
-import com.github.terrakok.cicerone.androidx.AppScreen
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentSettingsBinding
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.selected
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.getItemByValue
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.onItemSelected
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.selectItemByValue
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.language_utils.LocaleHelper
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.language_utils.Locales
+import java.util.*
 
 class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsBinding::inflate) {
 
@@ -26,7 +27,6 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsB
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         // Инициализация кнопок
         initNavigationButtons()
         // Инициализация ViewModel
@@ -57,11 +57,12 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsB
     private fun initLanguageSettingsFields() {
         languageSpinner = binding.settingsLanguageList
         selectCurrentLocale()
-        languageSpinner.selected { position ->
+        languageSpinner.onItemSelected { position ->
             when (position) {
-                2 -> LocaleHelper.setLocale(requireActivity(), Locales.english)
-                4 -> LocaleHelper.setLocale(requireActivity(), Locales.german)
-                8 -> LocaleHelper.setLocale(requireActivity(), Locales.russian)
+                0 -> LocaleHelper.setLocale(requireActivity(), Locale.getDefault())
+                3 -> LocaleHelper.setLocale(requireActivity(), Locales.english)
+                5 -> LocaleHelper.setLocale(requireActivity(), Locales.german)
+                9 -> LocaleHelper.setLocale(requireActivity(), Locales.russian)
             }
         }
     }
@@ -69,14 +70,17 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsB
 
     private fun selectCurrentLocale() {
         return when (LocaleHelper.getLocale(requireContext()).language) {
+            Locale.getDefault().language -> {
+                languageSpinner.setSelection(0, false)
+            }
             Locales.english.language -> {
-                languageSpinner.setSelection(2, false)
+                languageSpinner.selectItemByValue(Locale.getDefault().displayLanguage, false)
             }
             Locales.german.language -> {
-                languageSpinner.setSelection(4, false)
+                languageSpinner.selectItemByValue(Locale.getDefault().displayLanguage, false)
             }
             Locales.russian.language -> {
-                languageSpinner.setSelection(8, false)
+                languageSpinner.selectItemByValue(Locale.getDefault().displayLanguage, false)
             }
             else -> {}
         }

@@ -27,7 +27,7 @@ object LocaleHelper {
         if (currentLocale == Locale.getDefault()) {
             return
         }
-        //activity.recreate()
+        activity.recreate()
     }
 
     fun onPause(){
@@ -44,10 +44,6 @@ object LocaleHelper {
         val config = resources.configuration
         config.setCurrentLocale(locale)
 
-        if (Build.VERSION.SDK_INT > +Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            config.setLayoutDirection(locale)
-        }
-
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             context.createConfigurationContext(config)
         } else {
@@ -57,8 +53,7 @@ object LocaleHelper {
     }
 
     private fun loadLocale(context: Context): Locale {
-        val sPref =
-            context.getSharedPreferences(LocaleHelper::class.java.name, Context.MODE_PRIVATE)
+        val sPref = getSharedPreferences(context)
         val defaultLocale = Locale.getDefault()
         val language =
             sPref.getString(SELECTED_LANGUAGE, defaultLocale.language) ?: return defaultLocale
@@ -66,7 +61,7 @@ object LocaleHelper {
     }
 
     private fun getSharedPreferences(context: Context): SharedPreferences =
-        context.getSharedPreferences(SELECTED_LANGUAGE, Context.MODE_PRIVATE)
+        context.getSharedPreferences(LocaleHelper::class.java.name, Context.MODE_PRIVATE)
 
     fun getLocale(context: Context) = loadLocale(context)
 
@@ -79,7 +74,7 @@ object LocaleHelper {
 
     fun setLocale(activity: Activity, newLocale: Locale){
         setLocale((activity as Context), newLocale)
-        //activity.recreate()
+        activity.recreate()
     }
 
     private fun persist(context: Context, locale: Locale?) {
