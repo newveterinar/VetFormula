@@ -17,7 +17,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.phar
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.surface.PharmacySurfaceFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.settings.SettingsFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.timer.TimerFragment
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.webview.WebViewFragment
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.webview.VetMedicalViewFragment
 
 class AppScreensImpl : AppScreens {
     //region Системные окна
@@ -93,7 +93,7 @@ class AppScreensImpl : AppScreens {
     }
 
     override fun webViewScreen() = FragmentScreen {
-        WebViewFragment.newInstance()
+        VetMedicalViewFragment.newInstance()
     }
 
     override fun editTextScreen() = FragmentScreen {

@@ -6,11 +6,12 @@ import android.view.View
 import android.webkit.WebViewClient
 import androidx.lifecycle.ViewModelProvider
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentWebViewBinding
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentWebViewWasaBinding
 
-class WebViewFragment : BaseFragment<FragmentWebViewBinding>(FragmentWebViewBinding::inflate) {
+class WsavaViewFragment :
+    BaseFragment<FragmentWebViewWasaBinding>(FragmentWebViewWasaBinding::inflate) {
 
-    private lateinit var viewModel: WebViewFragmentViewModel
+    private lateinit var viewModel: WsavaViewFragmentViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -23,22 +24,21 @@ class WebViewFragment : BaseFragment<FragmentWebViewBinding>(FragmentWebViewBind
 
     @SuppressLint("SetJavaScriptEnabled")
     private fun webViewSetup() {
-        binding.webViewFragment.webViewClient = WebViewClient()
-        binding.webViewFragment.apply {
-            loadUrl("https://vetmedical.ru/")
+        binding.webViewFragmentWasa.webViewClient = WebViewClient()
+        binding.webViewFragmentWasa.apply {
+            loadUrl("https://wsava.org/")
             settings.javaScriptEnabled = true
             settings.allowContentAccess = true
 
         }
     }
 
-
     // Инициализация ViewModel
     private fun initViewModel() {
-        viewModel = ViewModelProvider(this).get(WebViewFragmentViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(WsavaViewFragmentViewModel::class.java)
     }
 
     companion object {
-        fun newInstance(): WebViewFragment = WebViewFragment()
+        fun newInstance(): WsavaViewFragment = WsavaViewFragment()
     }
 }
