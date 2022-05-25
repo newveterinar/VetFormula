@@ -25,7 +25,7 @@
         app:layout_constraintGuide_percent="@dimen/windows_slider_max_value" />
 
     <!-- Нижнее окно (нижний фрагмент, заменить TextView на FrameLayout) -->
-    <TextView
+    <FrameLayout
         android:id="@+id/bottom_activity_fragments_container"
         android:layout_width="match_parent"
         android:layout_height="@dimen/bottom_activity_fragments_container_height"
@@ -61,7 +61,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="@dimen/fab_main_margin_bottom"
         android:clickable="true"
         android:focusable="true"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -69,26 +69,41 @@
         app:srcCompat="@drawable/ic_add_24" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_web_view"
+        android:id="@+id/fab_web_view_vetmedical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="@dimen/fab_web_margin_bottom"
         android:clickable="true"
         android:focusable="true"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/fab_main"
         app:layout_constraintEnd_toEndOf="@+id/fab_main"
-        app:srcCompat="@drawable/ic_add_24" />
+        app:srcCompat="@drawable/ic_internet_24">
+
+    </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_web_view_wsava"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/fab_text_margin_bottom"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/fab_web_view_vetmedical"
+        app:layout_constraintEnd_toEndOf="@+id/fab_web_view_vetmedical"
+        app:srcCompat="@drawable/ic_internet_24" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="@dimen/fab_text_margin_bottom"
         android:clickable="true"
         android:focusable="true"
         android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/fab_web_view"
-        app:layout_constraintEnd_toEndOf="@+id/fab_web_view"
-        app:srcCompat="@drawable/ic_add_24" />
+        app:layout_constraintBottom_toTopOf="@+id/fab_web_view_wsava"
+        app:layout_constraintEnd_toEndOf="@+id/fab_web_view_wsava"
+        app:srcCompat="@drawable/ic_note" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

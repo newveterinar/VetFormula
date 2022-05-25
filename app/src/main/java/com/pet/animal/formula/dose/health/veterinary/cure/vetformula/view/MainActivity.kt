@@ -1,15 +1,18 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.vetformula.view
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.Guideline
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.androidx.AppNavigator
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.edittext.EditTextFragment
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.webview.VetMedicalViewFragment
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.webview.WsavaViewFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator.BackButtonListener
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.MAIN_ACTIVITY_NAME
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.SLIDER_MAX_DIFFERENT_VALUE
@@ -73,6 +76,7 @@ class MainActivity : AppCompatActivity() {
             R.anim.to_bottom_anim
         )
     }
+
     //endregion
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -96,17 +100,26 @@ class MainActivity : AppCompatActivity() {
     }
 
     // Функция - слушатель нажатий по FAB
+    @SuppressLint("ResourceType")
     private fun onClickFab() {
         binding.fabMain.setOnClickListener {
             onFabMainButtonClicked()
         }
 
-        binding.fabWebView.setOnClickListener {
-            Toast.makeText(this, "WebView Button Clicked", Toast.LENGTH_SHORT).show()
+        binding.fabWebViewVetmedical.setOnClickListener {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.bottom_activity_fragments_container, VetMedicalViewFragment(), "vetmedical")
+                .commit()
         }
-
+        binding.fabWebViewWsava.setOnClickListener {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.bottom_activity_fragments_container, WsavaViewFragment(), "WSAVA")
+                .commit()
+        }
         binding.fabTextView.setOnClickListener {
-            Toast.makeText(this, "TextView Button Clicked", Toast.LENGTH_SHORT).show()
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.bottom_activity_fragments_container, EditTextFragment(), "note")
+                .commit()
         }
     }
 
@@ -121,10 +134,12 @@ class MainActivity : AppCompatActivity() {
     // Настройка показ/не показ выскакивающих FAB
     private fun setVisibility(clicked: Boolean) {
         if (!clicked) {
-            binding.fabWebView.visibility = View.VISIBLE
+            binding.fabWebViewVetmedical.visibility = View.VISIBLE
+            binding.fabWebViewWsava.visibility = View.VISIBLE
             binding.fabTextView.visibility = View.VISIBLE
         } else {
-            binding.fabWebView.visibility = View.INVISIBLE
+            binding.fabWebViewVetmedical.visibility = View.INVISIBLE
+            binding.fabWebViewWsava.visibility = View.INVISIBLE
             binding.fabTextView.visibility = View.INVISIBLE
         }
     }
@@ -132,11 +147,13 @@ class MainActivity : AppCompatActivity() {
     //Настройка анимации всех FAB
     private fun setAnimation(clicked: Boolean) {
         if (!clicked) {
-            binding.fabWebView.startAnimation(fromBottom)
+            binding.fabWebViewVetmedical.startAnimation(fromBottom)
+            binding.fabWebViewWsava.startAnimation(fromBottom)
             binding.fabTextView.startAnimation(fromBottom)
             binding.fabMain.startAnimation(rotateOpen)
         } else {
-            binding.fabWebView.startAnimation(toBottom)
+            binding.fabWebViewVetmedical.startAnimation(toBottom)
+            binding.fabWebViewWsava.startAnimation(toBottom)
             binding.fabTextView.startAnimation(toBottom)
             binding.fabMain.startAnimation(rotateClose)
         }
@@ -145,10 +162,12 @@ class MainActivity : AppCompatActivity() {
     // Функция, которая убирает "скрытые" клики по выскакивающим FAB
     private fun setClickable(clicked: Boolean) {
         if (!clicked) {
-            binding.fabWebView.isClickable = true
+            binding.fabWebViewVetmedical.isClickable = true
+            binding.fabWebViewWsava.isClickable = true
             binding.fabTextView.isClickable = true
         } else {
-            binding.fabWebView.isClickable = false
+            binding.fabWebViewVetmedical.isClickable = false
+            binding.fabWebViewWsava.isClickable = false
             binding.fabTextView.isClickable = false
         }
     }
