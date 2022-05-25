@@ -119,7 +119,7 @@ class PharmacySurfaceFragment :
                         // Снятие ошибки
                         if (stringToDouble(field.text.toString()) > 0.0) {
                             // Сохранение текущего состояния всех числовых полей и списков
-                            saveData()
+                            saveData(false)
                             // Снятие признака ошибки с текущего числового поля
                             valuesFieldsLayouts[index].isErrorEnabled = false
                             // Скрытие сообщения с общей информацией о том, что делать в данном окне
@@ -181,14 +181,12 @@ class PharmacySurfaceFragment :
             button?.setOnClickListener {
                 when (index) {
                     0 -> {
-                            saveData()
+                            saveData(false)
                             viewModel.router.exit()
-                         }
+                    }
                     1 -> {
-                            saveData()
-                            viewModel.router.
-                            navigateTo(viewModel.screens.pharmacySurfaceResultScreen())
-                        }
+                            saveData(true)
+                    }
                     else -> {
                          Toast.makeText(requireContext(),
                              requireActivity().resources.getString(
@@ -212,7 +210,7 @@ class PharmacySurfaceFragment :
                     it.setSelection(0)
                 }
                 // Сохранение текущего состояния всех числовых полей и списков
-                saveData()
+                saveData(false)
             }
         }
     }
@@ -250,23 +248,28 @@ class PharmacySurfaceFragment :
         when (appState) {
             is AppState.Success -> {
                 appState.screenData.let {
-                    // Установка значений типа addFirst или addSecond
-                    listsAddFirstSecond.forEachIndexed { index, addFirstSecond ->
-                        if (it.listsAddFirstSecond.count() > index)
-                            addFirstSecond.setSelection(it.listsAddFirstSecond[index])
-                    }
-                    // Установка строчного значения в поле
-                    valuesFields.forEachIndexed { index, valueField ->
-                        if (it.valueFields.count() > index)
-                            valueField.setText(
-                                if (it.valueFields[index].value > 0.0)
-                                    it.valueFields[index].stringValue else ""
-                            )
-                    }
-                    // Установка размерности поля
-                    listsDimensions.forEachIndexed { index, dimension ->
-                        if (it.valueFields.count() > index)
-                            dimension.setSelection(it.valueFields[index].dimension)
+                    if (!it.isGoToResultScreen) {
+                        // Установка значений типа addFirst или addSecond
+                        listsAddFirstSecond.forEachIndexed { index, addFirstSecond ->
+                            if (it.listsAddFirstSecond.count() > index)
+                                addFirstSecond.setSelection(it.listsAddFirstSecond[index])
+                        }
+                        // Установка строчного значения в поле
+                        valuesFields.forEachIndexed { index, valueField ->
+                            if (it.valueFields.count() > index)
+                                valueField.setText(
+                                    if (it.valueFields[index].value > 0.0)
+                                        it.valueFields[index].stringValue else ""
+                                )
+                        }
+                        // Установка размерности поля
+                        listsDimensions.forEachIndexed { index, dimension ->
+                            if (it.valueFields.count() > index)
+                                dimension.setSelection(it.valueFields[index].dimension)
+                        }
+                    } else {
+                        // Переход на экран с результатами расчётов
+                        viewModel.router.navigateTo(viewModel.screens.pharmacySurfaceResultScreen())
                     }
                 }
             }
@@ -296,7 +299,7 @@ class PharmacySurfaceFragment :
                     position: Int, id: Long,
                 ) {
                     // Сохранение текущего состояния всех числовых полей и списков
-                    if (selectCounter++ > 0) saveData()
+                    if (selectCounter++ > 0) saveData(false)
                 }
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
             }
@@ -309,7 +312,7 @@ class PharmacySurfaceFragment :
                     position: Int, id: Long,
                 ) {
                     // Сохранение текущего состояния всех числовых полей и списков
-                    if (selectCounter++ > 0) saveData()
+                    if (selectCounter++ > 0) saveData(false)
                 }
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
             }
@@ -317,13 +320,14 @@ class PharmacySurfaceFragment :
     }
 
     // Сохранение текущего состояния всех числовых полей и списков
-    private fun saveData() {
+    private fun saveData(isGoToResultScreen: Boolean) {
         viewModel.saveData(
             screenType,
             listsAddFirstSecond.convertListSpinnerToListInt(),
             valuesFields.convertListEditTextToListString(),
             valuesFields.convertListEditTextToListDouble(),
-            listsDimensions.convertListSpinnerToListInt()
+            listsDimensions.convertListSpinnerToListInt(),
+            isGoToResultScreen
         )
     }
 }

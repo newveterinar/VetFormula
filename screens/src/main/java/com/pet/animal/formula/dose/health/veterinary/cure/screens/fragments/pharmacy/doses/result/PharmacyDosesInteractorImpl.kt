@@ -25,7 +25,8 @@ class PharmacyDosesInteractorImpl: Interactor<AppState> {
                                   listsAddFirstSecond: List<Int>,
                                   stringValues: List<String>,
                                   values: List<Double>,
-                                  dimensions: List<Int>) {
+                                  dimensions: List<Int>,
+                                  isGoToResultScreen: Boolean) {
         settings.setScreenData(screenType, listsAddFirstSecond, stringValues, values, dimensions)
     }
     //endregion

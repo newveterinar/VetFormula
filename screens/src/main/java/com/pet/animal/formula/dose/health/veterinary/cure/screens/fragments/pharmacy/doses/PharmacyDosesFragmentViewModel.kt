@@ -38,9 +38,16 @@ class PharmacyDosesFragmentViewModel(
         stringValues: List<String>,
         values: List<Double>,
         dimensions: List<Int>,
+        isGoToResultScreen: Boolean
     ) {
         viewModelCoroutineScope.launch {
-            startInteractorSetData(screenType, listsAddFirstSecond, stringValues, values, dimensions)
+            startInteractorSetData(
+                screenType,
+                listsAddFirstSecond,
+                stringValues,
+                values,
+                dimensions,
+                isGoToResultScreen)
         }
     }
 
@@ -56,8 +63,10 @@ class PharmacyDosesFragmentViewModel(
                                                listsAddFirstSecond: List<Int>,
                                                stringValues: List<String>,
                                                values: List<Double>,
-                                               dimensions: List<Int>) {
-        interactor.saveData(screenType, listsAddFirstSecond, stringValues, values, dimensions)
+                                               dimensions: List<Int>,
+                                               isGoToResultScreen: Boolean) {
+        interactor.saveData(
+            screenType, listsAddFirstSecond, stringValues, values, dimensions, isGoToResultScreen)
     }
 
     fun subscribe(): LiveData<AppState> {

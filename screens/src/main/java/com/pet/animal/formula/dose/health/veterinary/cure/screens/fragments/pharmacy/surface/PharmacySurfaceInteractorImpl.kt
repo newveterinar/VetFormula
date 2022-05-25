@@ -10,7 +10,9 @@ import com.pet.animal.formula.dose.health.veterinary.cure.utils.resources.Resour
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.settings.SettingsImpl
 import org.koin.java.KoinJavaComponent
 
-class PharmacySurfaceInteractorImpl: Interactor<AppState> {
+class PharmacySurfaceInteractorImpl(
+    private val viewModel: PharmacySurfaceFragmentViewModel
+): Interactor<AppState> {
     /** Задание переменных */ //region
     // SettingsImpl
     private val settings: SettingsImpl = KoinJavaComponent.getKoin().get()
@@ -31,7 +33,8 @@ class PharmacySurfaceInteractorImpl: Interactor<AppState> {
                                   listsAddFirstSecond: List<Int>,
                                   stringValues: List<String>,
                                   values: List<Double>,
-                                  dimensions: List<Int>) {
+                                  dimensions: List<Int>,
+                                  isGoToResultScreen: Boolean) {
         // Проверка на заполненность всех числовых полей
         var isExistZeroData: Boolean = false
         values.forEach {
@@ -43,6 +46,9 @@ class PharmacySurfaceInteractorImpl: Interactor<AppState> {
         // Сохранение значений всех списков и числовых полей
         Toast.makeText(resourcesProviderImpl.context, "${values[0]}", Toast.LENGTH_SHORT).show()
         settings.setScreenData(screenType, listsAddFirstSecond, stringValues, values, dimensions)
+        // Установка в LiveData вьюмодели признака IsGoToResultScreen
+        // для перехода в окно с результатом
+        if (isGoToResultScreen) viewModel.setIsGoToResultScreenToLiveData()
     }
     private suspend fun loadAndSaveFormula(
         screenType: ScreenType,

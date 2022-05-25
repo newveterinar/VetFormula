@@ -1,6 +1,11 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata
 
-class ScreenData {
+class ScreenData() {
     var listsAddFirstSecond: MutableList<Int> = mutableListOf()
     var valueFields: MutableList<ValueField> = mutableListOf()
+    var isGoToResultScreen: Boolean = false
+
+    constructor(isGoToResultScreen: Boolean): this() {
+        this.isGoToResultScreen = isGoToResultScreen
+    }
 }

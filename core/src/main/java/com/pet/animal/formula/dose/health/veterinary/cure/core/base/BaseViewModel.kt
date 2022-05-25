@@ -34,7 +34,8 @@ abstract class BaseViewModel<T: AppState>(
                           listsAddFirstSecond: List<Int>,
                           stringValues: List<String>,
                           values: List<Double>,
-                          dimensions: List<Int>)
+                          dimensions: List<Int>,
+                          isGoToResultScreen: Boolean)
 
     abstract fun handleError(error: Throwable)
 }
