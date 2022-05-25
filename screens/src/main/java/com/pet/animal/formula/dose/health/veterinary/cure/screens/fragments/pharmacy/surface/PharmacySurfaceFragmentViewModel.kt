@@ -1,12 +1,17 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.surface
 
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppState
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.checkToExistCorrectDouble
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.resources.ResourcesProviderImpl
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import org.koin.java.KoinJavaComponent
 
 class PharmacySurfaceFragmentViewModel(
     private val interactor: PharmacySurfaceInteractorImpl
@@ -32,9 +37,11 @@ class PharmacySurfaceFragmentViewModel(
                           stringValues: List<String>,
                           values: List<Double>,
                           dimensions: List<Int>) {
-        viewModelCoroutineScope.launch {
-            startInteractorSetData(
-                screenType, listsAddFirstSecond, stringValues, values, dimensions)
+            viewModelCoroutineScope.launch {
+                withContext(Dispatchers.Main) {
+                    startInteractorSetData(
+                        screenType, listsAddFirstSecond, stringValues, values, dimensions)
+            }
         }
     }
     override fun handleError(error: Throwable) {

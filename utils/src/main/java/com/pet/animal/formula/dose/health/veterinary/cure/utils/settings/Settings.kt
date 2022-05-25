@@ -11,7 +11,7 @@ interface Settings {
     // Получение текущей темы приложения
     fun getTheme(): ThemesNames
     // Сохранение текущей формулы
-    fun setFormula(formula: Formula)
+    suspend fun setFormula(formula: Formula)
     // Получение текущей формулы
     fun getFormula(): Formula
     // Задание данных для окна PharmacySurface

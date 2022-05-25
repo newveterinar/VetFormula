@@ -41,6 +41,7 @@ class PharmacySurfaceInteractorImpl: Interactor<AppState> {
         }
         if (!isExistZeroData) loadAndSaveFormula(screenType, listsAddFirstSecond, values)
         // Сохранение значений всех списков и числовых полей
+        Toast.makeText(resourcesProviderImpl.context, "${values[0]}", Toast.LENGTH_SHORT).show()
         settings.setScreenData(screenType, listsAddFirstSecond, stringValues, values, dimensions)
     }
     private suspend fun loadAndSaveFormula(

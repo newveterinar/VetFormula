@@ -25,7 +25,7 @@ class SettingsImpl: Settings {
         return currentTheme
     }
     // Задание формулы
-    override fun setFormula(formula: Formula) {
+    override suspend fun setFormula(formula: Formula) {
         this.formula = formula
     }
     // Получение формулы
@@ -44,10 +44,10 @@ class SettingsImpl: Settings {
             // Окно PharmacySurface
             ScreenType.PHARMACY_SURFACE -> {
                 inputedScreenData.listsAddFirstSecond.clear()
-                inputedScreenData.valueFields.clear()
                 listsAddFirstSecond.forEach {
                     inputedScreenData.listsAddFirstSecond.add(it)
                 }
+                inputedScreenData.valueFields.clear()
                 stringValues.forEachIndexed { index, it ->
                     inputedScreenData.valueFields.add(
                         ValueField(it, values[index], dimensions[index]))

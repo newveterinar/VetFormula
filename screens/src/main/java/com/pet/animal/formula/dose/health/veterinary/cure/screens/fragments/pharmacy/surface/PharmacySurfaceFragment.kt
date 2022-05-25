@@ -19,6 +19,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.conver
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertListSpinnerToListInt
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.stringToDouble
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.settings.SettingsImpl
+import kotlinx.coroutines.delay
 import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
 import org.koin.java.KoinJavaComponent

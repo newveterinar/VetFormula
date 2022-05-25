@@ -52,7 +52,7 @@ class PharmacySurfaceResultFragment: BaseFragment<FragmentPharmacySurfaceResultB
         super.onViewCreated(view, savedInstanceState)
 
         Toast.makeText(requireContext(),
-            "${settings.getInputedScreenData().listsAddFirstSecond.size}\n" +
+            "!!! ${settings.getInputedScreenData().listsAddFirstSecond.size}\n" +
                 "${settings.getInputedScreenData().valueFields.size}", Toast.LENGTH_SHORT).show()
 
         if ((settings.getInputedScreenData().listsAddFirstSecond.size > 0) &&
@@ -123,6 +123,7 @@ class PharmacySurfaceResultFragment: BaseFragment<FragmentPharmacySurfaceResultB
                         valueFields[element.positionValueOnWindow - 1].value)
                 }
             }
+
             binding.pharmacyResultText.text = calcInteractorImpl.getCommandResultValue().toString()
         }
     }
