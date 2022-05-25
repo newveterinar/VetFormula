@@ -32,6 +32,7 @@ abstract class BaseViewModel<T: AppState>(
     /** Методы сохранения данных */
     abstract fun saveData(screenType: ScreenType,
                           listsAddFirstSecond: List<Int>,
+                          stringValues: List<String>,
                           values: List<Double>,
                           dimensions: List<Int>)
 

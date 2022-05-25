@@ -982,11 +982,18 @@ public class CalcLogic implements CalcConstants {
         return finalResult;
     }
 
-    // Задание текущего значения числа
+    // Задание текущего значения числа в виде строки String
     public void setCurrentNumber(String numberString) {
         double numberValue = Double.parseDouble(numberString);
         inputNumbers.getLast().setIsValue(true);
         inputNumbers.getLast().setValue(numberValue);
         inputNumbers.getLast().setSign(numberValue < 0 ? -1 : 1);
+    }
+
+    // Задание текущего значения числа типа Double
+    public void setCurrentNumber(Double value) {
+        inputNumbers.getLast().setIsValue(true);
+        inputNumbers.getLast().setValue(value);
+        inputNumbers.getLast().setSign(value < 0 ? -1 : 1);
     }
 }

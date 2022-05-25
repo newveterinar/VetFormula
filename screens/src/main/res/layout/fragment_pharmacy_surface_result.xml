@@ -66,8 +66,11 @@
         app:layout_constraintTop_toBottomOf="@id/pharmacy_header">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/pharmacy_result_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:paddingTop="@dimen/pharmacy_result_container_padding_top"
+            android:paddingBottom="@dimen/pharmacy_result_container_padding_bottom">
 
             <TextView
                 android:id="@+id/pharmacy_result_text"
@@ -76,11 +79,9 @@
                 android:text="@string/pharmacy_result_text_text"
                 android:textSize="@dimen/pharmacy_result_text_text_size"
                 android:textStyle="bold"
-                android:paddingBottom="@dimen/pharmacy_result_text_padding_bottom"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="parent" />
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

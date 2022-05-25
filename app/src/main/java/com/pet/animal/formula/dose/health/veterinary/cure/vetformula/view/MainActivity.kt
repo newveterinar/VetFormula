@@ -207,6 +207,6 @@ class MainActivity : AppCompatActivity() {
             SLIDER_MAX_DIFFERENT_VALUE - value / SLIDER_MAX_VALUE
         params.guidePercent = upAndBottomFramesSizesChanger.constraintGuidePercent
         guideLine.layoutParams = params
-        viewModel.router.replaceScreen(viewModel.screens.mainScreen())
+        navigatorHolder.setNavigator(navigator)
     }
 }
