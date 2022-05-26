@@ -17,7 +17,6 @@
     <string name="pharmacy_about_button_hints">О приложении</string>
     <string name="about_logo_text">Информация</string>
     <string name="pharmacy_logo_text">ВетФормула</string>
-    <string name="pharmacy_result_text_text">100</string>
     <string name="fluids_button_text_text">Жидкости</string>
     <string name="fluids_button_surface_text_text">Главная</string>
     <string name="fluids_previous_text_text">Жидкости</string>
@@ -64,6 +63,7 @@
     <string name="buttonResetTickCounter_text">Сбросить значений</string>
     <string name="timer_previous_text_text">Таймер</string>
     <string name="pharmacy_help_info_text">Перед расчётом заполните все числовые поля!</string>
+    <string name="pharmacy_result_title_text">Площадь поверхности животного</string>
 
     <string-array name="pharmacy_surface_animal_type_list">
         <item>Собака</item>

@@ -3,11 +3,14 @@ package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pha
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.Interactor
 import com.pet.animal.formula.dose.health.veterinary.cure.fakerepo.FakeRepositoryImpl
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppState
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.doses.PharmacyDosesFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.settings.SettingsImpl
 import org.koin.java.KoinJavaComponent
 
-class PharmacyDosesInteractorImpl: Interactor<AppState> {
+class PharmacyDosesInteractorImpl(
+    private val viewModel: PharmacyDosesFragmentViewModel
+): Interactor<AppState> {
     /** Задание переменных */ //region
     // Фейковый (временный) репозиторий
     private val fakeRepositoryImpl: FakeRepositoryImpl = KoinJavaComponent.getKoin().get()

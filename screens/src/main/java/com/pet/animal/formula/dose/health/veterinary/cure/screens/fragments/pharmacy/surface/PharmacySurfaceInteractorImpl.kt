@@ -44,7 +44,6 @@ class PharmacySurfaceInteractorImpl(
         }
         if (!isExistZeroData) loadAndSaveFormula(screenType, listsAddFirstSecond, values)
         // Сохранение значений всех списков и числовых полей
-        Toast.makeText(resourcesProviderImpl.context, "${values[0]}", Toast.LENGTH_SHORT).show()
         settings.setScreenData(screenType, listsAddFirstSecond, stringValues, values, dimensions)
         // Установка в LiveData вьюмодели признака IsGoToResultScreen
         // для перехода в окно с результатом
@@ -80,7 +79,7 @@ class PharmacySurfaceInteractorImpl(
                 listsAddFirstSecond[0],
                 if (listsAddFirstSecond.size > 1) listsAddFirstSecond[1] else 0
             )
-            // Корректно работает. Всё время берёт формулу для собки (с индексом 0)
+            // Корректно работает
             val formulaFromDV = repositoryImpl.getFormula(screenType, listsAddFirstSecond)
             settings.setFormula(formulaFromDV)
         }

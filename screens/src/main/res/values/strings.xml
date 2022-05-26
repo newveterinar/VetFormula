@@ -17,7 +17,6 @@
     <string name="pharmacy_about_button_hints">ABOUT\nVetFormula</string>
     <string name="about_logo_text">Information</string>
     <string name="pharmacy_logo_text">VetFormula</string>
-    <string name="pharmacy_result_text_text">100</string>
     <string name="fluids_button_text_text">Fluids</string>
     <string name="fluids_button_surface_text_text">Basic</string>
     <string name="fluids_previous_text_text">Fluids</string>
@@ -64,6 +63,7 @@
     <string name="buttonResetTickCounter_text">Reset tick counter</string>
     <string name="timer_previous_text_text">Timer</string>
     <string name="pharmacy_help_info_text">Fill in all numeric fields before calculating!</string>
+    <string name="pharmacy_result_title_text">Body surface area</string>
 
     <string-array name="pharmacy_surface_animal_type_list">
         <item>Dog</item>

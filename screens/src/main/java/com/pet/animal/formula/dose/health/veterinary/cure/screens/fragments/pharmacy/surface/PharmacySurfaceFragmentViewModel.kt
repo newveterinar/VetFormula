@@ -10,9 +10,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.checkToExistCorrectDouble
 import kotlinx.coroutines.launch
 
-class PharmacySurfaceFragmentViewModel(
-//    private val interactor: PharmacySurfaceInteractorImpl
-): BaseViewModel<AppState>() {
+class PharmacySurfaceFragmentViewModel: BaseViewModel<AppState>() {
     /** Задание переменных */ //region
     // LiveData
     private val liveDataForViewToObserve: LiveData<AppState> = _mutableLiveData

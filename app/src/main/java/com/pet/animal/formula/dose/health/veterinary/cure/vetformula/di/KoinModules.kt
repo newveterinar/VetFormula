@@ -55,30 +55,18 @@ val screens = module {
     //endregion
     /** Классы для Scope фрагментов */ //region
     scope(named(FragmentScope.SHOW_PHARMACY_SURFACE_FRAGMENT_SCOPE)) {
-//        scoped {
-//            PharmacySurfaceInteractorImpl()
-//        }
         viewModel {
-//            PharmacySurfaceFragmentViewModel(
-//                getScope(FragmentScope.SHOW_PHARMACY_SURFACE_FRAGMENT_SCOPE).get())
             PharmacySurfaceFragmentViewModel()
         }
     }
     scope(named(FragmentScope.SHOW_PHARMACY_SURFACE_RESULT_FRAGMENT_SCOPE)) {
-        scoped {
-            PharmacySurfaceResultInteractorImpl()
-        }
         viewModel {
-            PharmacySurfaceResultFragmentViewModel(
-                getScope(FragmentScope.SHOW_PHARMACY_SURFACE_RESULT_FRAGMENT_SCOPE).get())
+            PharmacySurfaceResultFragmentViewModel()
         }
     }
     scope(named(FragmentScope.SHOW_PHARMACY_DOSE_FRAGMENT_SCOPE)) {
-        scoped { PharmacyDosesInteractorImpl() }
         viewModel {
-            PharmacyDosesFragmentViewModel(
-                getScope(FragmentScope.SHOW_PHARMACY_DOSE_FRAGMENT_SCOPE).get()
-            )
+            PharmacyDosesFragmentViewModel()
         }
     }
     //endregion

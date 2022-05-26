@@ -71,3 +71,6 @@ enum class ScreenType {
 const val SLIDER_START_ANGLE: Float = 270f
 const val SLIDER_MAX_VALUE: Float = 100f
 const val SLIDER_MAX_DIFFERENT_VALUE: Float = 1f
+
+// SpannableText
+const val SQUARE_TEXT_RELATIVE_SIZE: Float = 0.65f

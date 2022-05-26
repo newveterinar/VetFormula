@@ -5,19 +5,21 @@ import androidx.lifecycle.MutableLiveData
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppState
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.doses.result.PharmacyDosesInteractorImpl
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.surface.PharmacySurfaceInteractorImpl
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
 import kotlinx.coroutines.launch
 
-class PharmacyDosesFragmentViewModel(
-    private val interactor: PharmacyDosesInteractorImpl
-): BaseViewModel<AppState>() {
-
+class PharmacyDosesFragmentViewModel: BaseViewModel<AppState>() {
+    /** Исходные данные */ //region
     // LiveData
     private val liveDataForViewToObserve: LiveData<AppState> = _mutableLiveData
-
     private val _checkAreTheFieldsFilledInLiveData = MutableLiveData<Boolean>()
     val checkEditTextFieldsLiveData : LiveData<Boolean>
         get() = _checkAreTheFieldsFilledInLiveData
+    // Интерактор
+    private val interactor: PharmacyDosesInteractorImpl =
+        PharmacyDosesInteractorImpl(this)
+    //endregion
 
     fun checkAreTheFieldsFilledIn(listOfFieldsValue: List<String>){
         _checkAreTheFieldsFilledInLiveData.value = listOfFieldsValue.none { it.isBlank() }

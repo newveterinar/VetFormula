@@ -244,6 +244,7 @@ class PharmacySurfaceFragment :
         viewModel.getData()
     }
 
+    // Отображение изменения LiveData у viewModel
     private fun renderData(appState: AppState) {
         when (appState) {
             is AppState.Success -> {

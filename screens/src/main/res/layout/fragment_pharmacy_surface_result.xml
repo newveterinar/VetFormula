@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -73,15 +74,25 @@
             android:paddingBottom="@dimen/pharmacy_result_container_padding_bottom">
 
             <TextView
-                android:id="@+id/pharmacy_result_text"
+                android:id="@+id/pharmacy_result_title"
+                style="@style/button_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/pharmacy_result_text_text"
-                android:textSize="@dimen/pharmacy_result_text_text_size"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="@dimen/pharmacy_result_title_margin_start"
+                android:layout_marginTop="@dimen/pharmacy_result_title_margin_top"
+                android:text="@string/pharmacy_result_title_text"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/pharmacy_result_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/number_button"
+                android:layout_marginStart="@dimen/pharmacy_result_text_margin_start"
+                android:layout_marginEnd="@dimen/pharmacy_weight_relative_layout_margin_end"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/pharmacy_result_title"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
