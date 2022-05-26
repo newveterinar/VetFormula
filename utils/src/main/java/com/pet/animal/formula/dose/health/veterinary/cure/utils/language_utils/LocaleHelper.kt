@@ -11,9 +11,10 @@ import java.util.*
 object LocaleHelper {
 
     private const val SELECTED_LANGUAGE = "Locale.Helper.Selected.Language"
+    private const val SELECTED_COUNTRY = "Locale.Helper.Selected.Country"
     private var isInitialised = false
 
-    var currentLocale: Locale = Locale.getDefault()
+    private var currentAppLocale: Locale = Locale.getDefault()
 
     fun onAttach(context: Context): Context {
         if (!isInitialised) {
@@ -23,15 +24,15 @@ object LocaleHelper {
         return updateContextResources(context, Locale.getDefault())
     }
 
-    fun onResume(activity: Activity){
-        if (currentLocale == Locale.getDefault()) {
+    fun onResume(activity: Activity) {
+        if (currentAppLocale == Locale.getDefault()) {
             return
         }
         activity.recreate()
     }
 
-    fun onPause(){
-        currentLocale = Locale.getDefault()
+    fun onPause() {
+        currentAppLocale = Locale.getDefault()
     }
 
 
@@ -57,7 +58,9 @@ object LocaleHelper {
         val defaultLocale = Locale.getDefault()
         val language =
             sPref.getString(SELECTED_LANGUAGE, defaultLocale.language) ?: return defaultLocale
-        return Locale(language)
+        val country =
+            sPref.getString(SELECTED_COUNTRY, defaultLocale.country) ?: return defaultLocale
+        return Locale(language, country)
     }
 
     private fun getSharedPreferences(context: Context): SharedPreferences =
@@ -67,12 +70,12 @@ object LocaleHelper {
 
     private fun setLocale(context: Context, newLocale: Locale): Context {
         persist(context, newLocale)
+        currentAppLocale  = newLocale
         Locale.setDefault(newLocale)
-        currentLocale = newLocale
         return updateContextResources(context, newLocale)
     }
 
-    fun setLocale(activity: Activity, newLocale: Locale){
+    fun setLocale(activity: Activity, newLocale: Locale) {
         setLocale((activity as Context), newLocale)
         activity.recreate()
     }
@@ -83,6 +86,7 @@ object LocaleHelper {
         }
         getSharedPreferences(context).edit()
             .putString(SELECTED_LANGUAGE, locale.language)
+            .putString(SELECTED_COUNTRY, locale.country)
             .apply()
     }
 }

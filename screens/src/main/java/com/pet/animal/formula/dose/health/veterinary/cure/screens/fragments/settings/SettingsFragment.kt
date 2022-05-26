@@ -59,27 +59,19 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsB
         selectCurrentLocale()
         languageSpinner.onItemSelected { position ->
             when (position) {
-                0 -> LocaleHelper.setLocale(requireActivity(), Locale.getDefault())
-                3 -> LocaleHelper.setLocale(requireActivity(), Locales.english)
-                5 -> LocaleHelper.setLocale(requireActivity(), Locales.german)
-                9 -> LocaleHelper.setLocale(requireActivity(), Locales.russian)
+                0 -> LocaleHelper.setLocale(requireActivity(), Locales.english)
+                1 -> LocaleHelper.setLocale(requireActivity(), Locales.russian)
             }
         }
     }
 
 
     private fun selectCurrentLocale() {
-        return when (LocaleHelper.getLocale(requireContext()).language) {
-            Locale.getDefault().language -> {
-                languageSpinner.setSelection(0, false)
-            }
-            Locales.english.language -> {
+        return when (LocaleHelper.getLocale(requireContext())) {
+            Locales.english -> {
                 languageSpinner.selectItemByValue(Locale.getDefault().displayLanguage, false)
             }
-            Locales.german.language -> {
-                languageSpinner.selectItemByValue(Locale.getDefault().displayLanguage, false)
-            }
-            Locales.russian.language -> {
+            Locales.russian -> {
                 languageSpinner.selectItemByValue(Locale.getDefault().displayLanguage, false)
             }
             else -> {}
