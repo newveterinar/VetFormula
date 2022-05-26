@@ -37,7 +37,6 @@
     <dimen name="pharmacy_surface_button_container_margin_start">50dp</dimen>
     <dimen name="pharmacy_surface_button_container_margin_top">50dp</dimen>
     <dimen name="pharmacy_surface_previous_text_margin_start">16dp</dimen>
-    <dimen name="pharmacy_result_text_text_size">30sp</dimen>
     <dimen name="fluids_surface_button_width">80dp</dimen>
     <dimen name="fluids_surface_button_height">80dp</dimen>
     <dimen name="fluids_horizontal_border_height">2dp</dimen>
@@ -144,7 +143,6 @@
     <dimen name="pharmacy_weight_animal_title_margin_top">20dp</dimen>
     <dimen name="pharmacy_weight_animal_title_text_size">20sp</dimen>
     <dimen name="pharmacy_weight_textinputlayout_margin_start">40dp</dimen>
-    <dimen name="pharmacy_calculate_button_margin_top">20dp</dimen>
     <dimen name="pharmacy_weight_dimension_layout_width">130dp</dimen>
     <dimen name="pharmacy_type_animal_list_margin_end">40dp</dimen>
     <dimen name="pharmacy_weight_relative_layout_margin_end">40dp</dimen>
@@ -204,7 +202,6 @@
     <dimen name="clear_button_rotation_angle">180</dimen>
     <dimen name="clear_button_scale_x">1.25</dimen>
     <dimen name="clear_button_scale_y">1.25</dimen>
-    <dimen name="pharmacy_result_text_padding_bottom">40dp</dimen>
     <dimen name="doses_result_text_text_size">30sp</dimen>
     <dimen name="doses_result_text_padding_bottom">40dp</dimen>
     <dimen name="timerText_text_size">48sp</dimen>
@@ -214,6 +211,17 @@
     <dimen name="textView3_width">0dp</dimen>
     <dimen name="textView3_margin_left">40dp</dimen>
     <dimen name="buttonResetTickCounter_margin_top">16dp</dimen>
+    <dimen name="pharmacy_calculate_button_margin_bottom">20dp</dimen>
+    <dimen name="pharmacy_drop_dimension_list_margin_start">40dp</dimen>
+    <dimen name="pharmacy_help_info_margin_top">20dp</dimen>
+    <dimen name="body_surface_layout_width">16dp</dimen>
+    <dimen name="spinner_dimension_no_giving_set">16dp</dimen>
+    <dimen name="body_surface_layout_height">16dp</dimen>
+    <dimen name="body_surface_layout_marginStart">16dp</dimen>
+    <dimen name="pharmacy_result_text_text_size">30sp</dimen>
+    <dimen name="pharmacy_result_text_padding_bottom">60dp</dimen>
+    <dimen name="pharmacy_result_container_padding_top">30dp</dimen>
+    <dimen name="pharmacy_result_container_padding_bottom">30dp</dimen>
     <dimen name="settings_screen_margin_top">20dp</dimen>
     <dimen name="settings_screen_margin_end">20dp</dimen>
     <dimen name="settings_screen_margin_start">20dp</dimen>

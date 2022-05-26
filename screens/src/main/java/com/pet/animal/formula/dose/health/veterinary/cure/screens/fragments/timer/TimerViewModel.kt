@@ -2,7 +2,6 @@ package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.tim
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseViewModelForNavigation
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
@@ -68,7 +67,7 @@ class TimerViewModel() : BaseViewModelForNavigation(), CoroutineScope {
                 delay(1000)
                 val time = mSeconds.value ?: 0
                 mSeconds.postValue(time + 1)
-                if (time+1==60){
+                if (time + 1 == 60) {
                     stopTimer()
                 }
             }
@@ -85,7 +84,7 @@ class TimerViewModel() : BaseViewModelForNavigation(), CoroutineScope {
             mTickInMinutes.postValue(0.00)
             val tickInt = stringValue.toInt()
             mSeconds.value?.let {
-                val timerMinutes = it.toDouble()/60
+                val timerMinutes = it.toDouble() / 60
                 if (it != 0) {
                     mTickInMinutes.postValue(tickInt.toDouble() / timerMinutes)
                 }

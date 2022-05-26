@@ -4,9 +4,7 @@ import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
@@ -15,11 +13,11 @@ import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.Fr
 
 class TimerFragment : BaseFragment<FragmentTimerBinding>(FragmentTimerBinding::inflate) {
 
-    private lateinit var startTimerButton:View
+    private lateinit var startTimerButton: View
     private val navigationButtons = arrayOfNulls<View>(size = 2)
 
     companion object {
-        fun newInstance():TimerFragment = TimerFragment()
+        fun newInstance(): TimerFragment = TimerFragment()
     }
 
     private lateinit var viewModel: TimerViewModel
@@ -33,9 +31,9 @@ class TimerFragment : BaseFragment<FragmentTimerBinding>(FragmentTimerBinding::i
         viewModel.second.observe(viewLifecycleOwner) {
             val minutes: Int = it / 60
             val second: Int = it % 60
-            var sSecond:String
+            val sSecond: String
 
-            if (second<10){
+            if (second < 10) {
                 sSecond = "0$second"
             } else {
                 sSecond = "$second"
@@ -55,7 +53,7 @@ class TimerFragment : BaseFragment<FragmentTimerBinding>(FragmentTimerBinding::i
         fun Double.format(digits: Int) = "%.${digits}f".format(this)
 
         viewModel.tickInMinutes.observe(viewLifecycleOwner) {
-            val s:String = getString(R.string.tickCaption)
+            val s: String = getString(R.string.tickCaption)
             val tickString = "$s.${it.format(2)}"
             binding.tickInMinutes.text = tickString
         }
@@ -75,7 +73,7 @@ class TimerFragment : BaseFragment<FragmentTimerBinding>(FragmentTimerBinding::i
                     0 -> viewModel.router.exit()
                     1 -> viewModel.router.navigateTo(viewModel.screens.aboutScreen())
                     else -> {
-                         Toast.makeText(requireContext(), requireActivity().resources.getString(
+                        Toast.makeText(requireContext(), requireActivity().resources.getString(
                             R.string.error_button_is_not_assigned), Toast.LENGTH_SHORT).show()
                     }
                 }
@@ -85,9 +83,9 @@ class TimerFragment : BaseFragment<FragmentTimerBinding>(FragmentTimerBinding::i
 
 
     private fun initButton() {
-        startTimerButton = binding.startTimerButton.also{ button ->
-            button.setOnClickListener{
-                if (viewModel.onTimer.value==true){
+        startTimerButton = binding.startTimerButton.also { button ->
+            button.setOnClickListener {
+                if (viewModel.onTimer.value == true) {
                     viewModel.stopTimer()
                 } else {
                     viewModel.startTimer()
@@ -95,17 +93,17 @@ class TimerFragment : BaseFragment<FragmentTimerBinding>(FragmentTimerBinding::i
             }
         }
 
-        binding.touchPlace.setOnClickListener{
+        binding.touchPlace.setOnClickListener {
             viewModel.addTick()
         }
 
-        binding.buttonResetTickCounter.setOnClickListener{
+        binding.buttonResetTickCounter.setOnClickListener {
             viewModel.resetTickCounter()
         }
 
         binding.inputManualCount.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int){
-                if (viewModel.onTimer.value==true){
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                if (viewModel.onTimer.value == true) {
                     viewModel.stopTimer()
                 }
             }
@@ -113,7 +111,7 @@ class TimerFragment : BaseFragment<FragmentTimerBinding>(FragmentTimerBinding::i
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
             override fun afterTextChanged(et: Editable?) {
-                et?.let{
+                et?.let {
                     viewModel.setManualTickValue(it.toString())
                 }
             }

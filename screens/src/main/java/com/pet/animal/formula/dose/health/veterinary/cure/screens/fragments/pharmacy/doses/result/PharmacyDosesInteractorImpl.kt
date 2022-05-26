@@ -1,11 +1,9 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.doses.result
 
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.Interactor
-import com.pet.animal.formula.dose.health.veterinary.cure.fakerepo.FakeRepository
 import com.pet.animal.formula.dose.health.veterinary.cure.fakerepo.FakeRepositoryImpl
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppState
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.settings.Settings
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.settings.SettingsImpl
 import org.koin.java.KoinJavaComponent
 
@@ -25,9 +23,10 @@ class PharmacyDosesInteractorImpl: Interactor<AppState> {
     /** Методы для сохранения данных с полей и списков */ //region
     override suspend fun saveData(screenType: ScreenType,
                                   listsAddFirstSecond: List<Int>,
+                                  stringValues: List<String>,
                                   values: List<Double>,
                                   dimensions: List<Int>) {
-        settings.setScreenData(screenType, listsAddFirstSecond, values, dimensions)
+        settings.setScreenData(screenType, listsAddFirstSecond, stringValues, values, dimensions)
     }
     //endregion
 }

@@ -1,6 +1,5 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.cri
 
-import androidx.lifecycle.ViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppState
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
@@ -13,6 +12,7 @@ class PharmacyCRIFragmentViewModel : BaseViewModel<AppState>() {
     override fun saveData(
         screenType: ScreenType,
         listsAddFirstSecond: List<Int>,
+        stringValues: List<String>,
         values: List<Double>,
         dimensions: List<Int>,
     ) {
