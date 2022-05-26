@@ -65,6 +65,7 @@
     <string name="pharmacy_help_info_text">Перед расчётом заполните все числовые поля!</string>
     <string name="pharmacy_result_title_text">Площадь поверхности животного</string>
 
+    <!-- Ресурсы окон для ввода данных -->
     <string-array name="pharmacy_surface_animal_type_list">
         <item>Собака</item>
         <item>Кошка</item>
@@ -135,4 +136,9 @@
         <item>20 капель/мл</item>
         <item>60 капель/мл</item>
     </string-array>
+
+    <!-- Ресурсы окон с результатами расчётов -->
+    <string name="result_kilogram">кг</string>
+    <string name="result_meter">м</string>
+    <string name="result_second">с</string>
 </resources>

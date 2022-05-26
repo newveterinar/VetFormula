@@ -65,6 +65,7 @@
     <string name="pharmacy_help_info_text">Fill in all numeric fields before calculating!</string>
     <string name="pharmacy_result_title_text">Body surface area</string>
 
+    <!-- Ресурсы окон для ввода данных -->
     <string-array name="pharmacy_surface_animal_type_list">
         <item>Dog</item>
         <item>Cat</item>
@@ -135,4 +136,9 @@
         <item>20 drops/ml</item>
         <item>60 drops/ml</item>
     </string-array>
+
+    <!-- Ресурсы окон с результатами расчётов -->
+    <string name="result_kilogram">kg</string>
+    <string name="result_meter">m</string>
+    <string name="result_second">s</string>
 </resources>
