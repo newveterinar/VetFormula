@@ -16,6 +16,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.utils.SLIDER_MAX_DIFFE
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.SLIDER_MAX_VALUE
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.screens.UpAndBottomFramesSizesChanger
 import com.pet.animal.formula.dose.health.veterinary.cure.vetformula.R
+import com.pet.animal.formula.dose.health.veterinary.cure.vetformula.app.appVetCalc
 import com.pet.animal.formula.dose.health.veterinary.cure.vetformula.databinding.ActivityMainBinding
 import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
@@ -94,6 +95,7 @@ class MainActivity : AppCompatActivity() {
         }
         onClickFab()
     }
+
 
     // Функция - слушатель нажатий по FAB
     private fun onClickFab() {

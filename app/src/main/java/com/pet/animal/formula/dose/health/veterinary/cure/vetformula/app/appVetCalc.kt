@@ -8,6 +8,7 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
 class appVetCalc: Application() {
+
     /** Задание переменных */ //region
     //endregion
 
