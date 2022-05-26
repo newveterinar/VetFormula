@@ -1,6 +1,8 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.vetformula.view
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
 import android.view.animation.Animation
@@ -17,6 +19,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator.Back
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.MAIN_ACTIVITY_NAME
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.SLIDER_MAX_DIFFERENT_VALUE
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.SLIDER_MAX_VALUE
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.language_utils.LocaleHelper
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.screens.UpAndBottomFramesSizesChanger
 import com.pet.animal.formula.dose.health.veterinary.cure.vetformula.R
 import com.pet.animal.formula.dose.health.veterinary.cure.vetformula.databinding.ActivityMainBinding
@@ -175,12 +178,14 @@ class MainActivity : AppCompatActivity() {
     /** Методы для настройки навигатора */ //region
     override fun onResume() {
         super.onResume()
+        LocaleHelper.onResume(this)
         // Установка навигатора
         navigatorHolder.setNavigator(navigator)
     }
 
     override fun onPause() {
         super.onPause()
+        LocaleHelper.onPause()
         // Удаление навигатора
         navigatorHolder.removeNavigator()
     }
@@ -208,5 +213,14 @@ class MainActivity : AppCompatActivity() {
         params.guidePercent = upAndBottomFramesSizesChanger.constraintGuidePercent
         guideLine.layoutParams = params
         navigatorHolder.setNavigator(navigator)
+    }
+
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(LocaleHelper.onAttach(newBase))
+    }
+
+    override fun createConfigurationContext(overrideConfiguration: Configuration): Context {
+        val context =  super.createConfigurationContext(overrideConfiguration)
+        return LocaleHelper.onAttach(context)
     }
 }

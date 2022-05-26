@@ -30,6 +30,7 @@
     <string name="settings_previous_text_text">Settings</string>
     <string name="settings_button_text_text">Settings</string>
     <string name="settings_button_surface_text_text">SomeSettings</string>
+    <string name="settings_language_text">Language</string>
     <string name="calculator_previous_text_text">Calculator</string>
     <string name="calculator_button_text_text">Calculator</string>
     <string name="calculator_button_surface_text_text">Calculate</string>
@@ -134,5 +135,12 @@
         <item>No Giving Set</item>
         <item>20 drops/ml</item>
         <item>60 drops/ml</item>
+    </string-array>
+    <string name="language_english" translatable="false">English</string>
+    <string name="language_russian" translatable="false">Русский</string>
+
+    <string-array name="language_list">
+        <item>@string/language_english</item>
+        <item>@string/language_russian</item>
     </string-array>
 </resources>
