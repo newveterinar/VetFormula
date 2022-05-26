@@ -64,6 +64,7 @@
     <string name="timer_previous_text_text">Таймер</string>
     <string name="light_theme">Светлая тема</string>
     <string name="dark_theme">Темная тема</string>
+    <string name="theme">Тема</string>
 
     <string-array name="pharmacy_surface_animal_type_list">
         <item>Собака</item>
