@@ -48,6 +48,7 @@ class PharmacySurfaceResultInteractorImpl(
             }
             resultValueField.add(
                 ResultValueField(calcInteractorImpl.getCommandResultValue() ?: 0.0))
+//                ResultValueField(calcInteractorImpl.getCommandResultValue() ?: 0.0, 1))
         }
         pharmacySurfaceResultFragmentViewModel.setResultScreenToLiveData(resultValueField)
     }
