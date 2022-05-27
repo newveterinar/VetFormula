@@ -114,12 +114,12 @@
     <dimen name="light_theme_button_layout_width">220dp</dimen>
     <dimen name="light_theme_button_layout_height">49dp</dimen>
     <dimen name="light_theme_button_marginTop">12dp</dimen>
-    <dimen name="light_theme_button_marginEnd">40dp</dimen>
+    <dimen name="light_theme_button_marginEnd">20dp</dimen>
     <dimen name="dark_theme_button_layout_width">220dp</dimen>
     <dimen name="dark_theme_button_layout_height">49dp</dimen>
-    <dimen name="dark_theme_button_marginTop">40dp</dimen>
+    <dimen name="dark_theme_button_marginTop">20dp</dimen>
     <dimen name="dark_theme_button_marginEnd">4dp</dimen>
-    <dimen name="dark_theme_layout_marginBottom">4dp</dimen>
+    <dimen name="dark_theme_layout_marginBottom">2dp</dimen>
     <dimen name="theme_layout_width">97dp</dimen>
     <dimen name="theme_layout_height">41dp</dimen>
     <dimen name="theme_marginStart">16dp</dimen>
@@ -242,4 +242,10 @@
     <dimen name="settings_divider_margin_top">20dp</dimen>
     <dimen name="settings_divider_margin_bottom">20dp</dimen>
     <dimen name="settings_element_margin_top">20dp</dimen>
+    <dimen name="settings_surface_button_margin_start">25dp</dimen>
+    <dimen name="settings_surface_button_margin_top">12dp</dimen>
+    <dimen name="settings_surface_button_container_padding_bottom">10dp</dimen>
+    <dimen name="pharmacy_surface_previous_text_vertical_bias">0.466</dimen>
+    <dimen name="pharmacy_dose_previous_text_vertical_bias">0.466</dimen>
+    <dimen name="input_manual_count_ems">10</dimen>
 </resources>

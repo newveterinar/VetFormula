@@ -12,60 +12,66 @@ import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentSettingsBinding
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.SHARED_PREFERENCES_KEY
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.SHARED_PREFERENCES_THEME_KEY
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.getItemByValue
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.onItemSelected
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.selectItemByValue
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.language_utils.LocaleHelper
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.language_utils.Locales
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.language.LocaleHelper
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.language.Locales
 import java.util.*
 
-class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsBinding::inflate) {
-
+class SettingsFragment: BaseFragment<FragmentSettingsBinding>(FragmentSettingsBinding::inflate) {
     /** Задание переменных */ //region
     // Навигация
     private val navigationButtons = arrayOfNulls<View>(size = 1)
+    // Список с выбором языка
     private lateinit var languageSpinner: Spinner
-    private var lightthemebutton: Chip? = null
-    private var darkthemebutton: Chip? = null
-
+    // Кнопки для смены темы приложения
+    private lateinit var lightThemeButton: Chip
+    private lateinit var darkThemeButton: Chip
     // ViewModel
     lateinit var viewModel: SettingsFragmentViewModel
+    // NewInstance
+    companion object {
+        fun newInstance(): SettingsFragment = SettingsFragment()
+    }
     //endregion
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        lightthemebutton = view.findViewById(R.id.light_theme_button)
-        lightthemebutton?.let {
-            it.setOnClickListener {
+        // Инициализация кнопок переключения темы приложения
+        initThemeButtons()
+        // Инициализация навигационных кнопок
+        initNavigationButtons()
+        // Инициализация ViewModel
+        initViewModel()
+        initLanguageSettingsFields()
+    }
+
+    // Инициализация кнопок переключения темы приложения
+    private fun initThemeButtons() {
+        lightThemeButton = binding.lightThemeButton.also { it.setOnClickListener {
                 val sharedPreferences: SharedPreferences =
-                    requireActivity().getSharedPreferences(SHARED_PREFERENCES_KEY,
+                    requireActivity().getSharedPreferences(
+                        SHARED_PREFERENCES_KEY,
                         AppCompatActivity.MODE_PRIVATE
                     )
-                var sharedPreferencesEditor: SharedPreferences.Editor = sharedPreferences.edit()
+                val sharedPreferencesEditor: SharedPreferences.Editor = sharedPreferences.edit()
                 sharedPreferencesEditor.putBoolean(SHARED_PREFERENCES_THEME_KEY, false)
                 sharedPreferencesEditor.apply()
                 requireActivity().recreate()
             }
         }
-        darkthemebutton = view.findViewById(R.id.dark_theme_button)
-        darkthemebutton?.let {
-            it.setOnClickListener {
-                val sharedPreferences: SharedPreferences =
-                    requireActivity().getSharedPreferences(SHARED_PREFERENCES_KEY,
-                        AppCompatActivity.MODE_PRIVATE
-                    )
-                var sharedPreferencesEditor: SharedPreferences.Editor = sharedPreferences.edit()
-                sharedPreferencesEditor.putBoolean(SHARED_PREFERENCES_THEME_KEY, true)
-                sharedPreferencesEditor.apply()
-                requireActivity().recreate()
+        darkThemeButton = binding.darkThemeButton.also { it.setOnClickListener {
+            val sharedPreferences: SharedPreferences =
+                requireActivity().getSharedPreferences(
+                    SHARED_PREFERENCES_KEY,
+                    AppCompatActivity.MODE_PRIVATE
+                )
+            val sharedPreferencesEditor: SharedPreferences.Editor = sharedPreferences.edit()
+            sharedPreferencesEditor.putBoolean(SHARED_PREFERENCES_THEME_KEY, true)
+            sharedPreferencesEditor.apply()
+            requireActivity().recreate()
             }
         }
-
-        // Инициализация кнопок
-        initNavigationButtons()
-        // Инициализация ViewModel
-        initViewModel()
-        initLanguageSettingsFields()
     }
 
     // Инициализация кнопок
@@ -80,7 +86,8 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsB
                 when (index) {
                     0 -> viewModel.router.exit()
                     else -> {
-                        Toast.makeText(requireContext(), requireActivity().resources.getString(
+                        Toast.makeText(requireContext(),
+                            requireActivity().resources.getString(
                             R.string.error_button_is_not_assigned), Toast.LENGTH_SHORT).show()
                     }
                 }
@@ -115,9 +122,5 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsB
     // Инициализация ViewModel
     fun initViewModel() {
         viewModel = ViewModelProvider(this).get(SettingsFragmentViewModel::class.java)
-    }
-
-    companion object {
-        fun newInstance(): SettingsFragment = SettingsFragment()
     }
 }

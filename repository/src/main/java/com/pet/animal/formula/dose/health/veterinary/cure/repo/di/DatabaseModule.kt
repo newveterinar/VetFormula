@@ -6,7 +6,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.repo.dao.RepositoryImp
 import org.koin.dsl.module
 
 
-val DatabaseModule = module {
+val databaseModule = module {
     single { FormulasDatabase.getInstance(get()) }
     single { get<FormulasDatabase>().vetFormulaDao() }
     single<Repository> {RepositoryImpl(get())}

@@ -1,4 +1,4 @@
-package com.pet.animal.formula.dose.health.veterinary.cure.utils.language_utils
+package com.pet.animal.formula.dose.health.veterinary.cure.utils.language
 
 import android.app.Activity
 import android.app.Application
@@ -6,7 +6,6 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.os.Build
 import java.util.*
-
 
 object LocaleHelper {
 
@@ -28,7 +27,6 @@ object LocaleHelper {
         if (currentAppLocale == Locale.getDefault()) {
             return
         }
-        activity.recreate()
     }
 
     fun onPause() {

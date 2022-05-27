@@ -19,7 +19,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.webv
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.webview.WsavaViewFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator.BackButtonListener
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.*
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.language_utils.LocaleHelper
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.language.LocaleHelper
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.screens.UpAndBottomFramesSizesChanger
 import com.pet.animal.formula.dose.health.veterinary.cure.vetformula.R
 import com.pet.animal.formula.dose.health.veterinary.cure.vetformula.databinding.ActivityMainBinding
@@ -27,7 +27,7 @@ import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
 import org.koin.java.KoinJavaComponent
 
-class MainActivity : AppCompatActivity() {
+class MainActivity: AppCompatActivity() {
     /** Задание переменных */ //region
     // Навигация
     private val navigator =
@@ -39,22 +39,18 @@ class MainActivity : AppCompatActivity() {
         MAIN_ACTIVITY_NAME, named(MAIN_ACTIVITY_NAME)
     )
     private lateinit var viewModel: MainViewModel
+    // Переменная для сохранения признака текущей темы приложения (тёмная или светлая)
     private var isTheme: Boolean = true
-
     // Binding
     private lateinit var binding: ActivityMainBinding
-
     // Класс для хранения размеров верхнего и нижнего окон
     private val upAndBottomFramesSizesChanger: UpAndBottomFramesSizesChanger =
         KoinJavaComponent.getKoin().get()
-
     // Слайдер
     lateinit var guideLine: Guideline
     lateinit var params: ConstraintLayout.LayoutParams
-
     // FAB
     private var clicked = false
-
     // Ленивая инициализация анимаций для FAB
     private val rotateOpen: Animation by lazy {
         AnimationUtils.loadAnimation(
@@ -80,32 +76,24 @@ class MainActivity : AppCompatActivity() {
             R.anim.to_bottom_anim
         )
     }
-
     //endregion
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // Подключение Binding
         binding = ActivityMainBinding.inflate(layoutInflater)
-
         // Создание Scope для MainActivity
         val viewModel: MainViewModel by mainActivityScope.inject()
         this.viewModel = viewModel
-
         // Установка слайдера
         guideLine = binding.horizontalGuideline
         params = guideLine.layoutParams as ConstraintLayout.LayoutParams
-
+        // Установка темы приложения
+        setApplicationTheme()
+        // Установка начального или текущего экрана приложения
         if (savedInstanceState != null) {
-            val sharedPreferences: SharedPreferences =
-                getSharedPreferences(SHARED_PREFERENCES_KEY, MODE_PRIVATE)
-            isTheme = sharedPreferences.getBoolean(
-                SHARED_PREFERENCES_THEME_KEY, true)
-            if (!isTheme) {
-                setTheme(R.style.Splash_LightTheme)
-            } else {
-                setTheme(R.style.Splash_DarkTheme)
-            }
+            navigatorHolder.setNavigator(navigator)
+        } else {
             this.viewModel.router.navigateTo(this.viewModel.screens.mainScreen())
         }
         onClickFab()
@@ -132,17 +120,20 @@ class MainActivity : AppCompatActivity() {
 
         binding.fabWebViewVetmedical.setOnClickListener {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.bottom_activity_fragments_container, VetMedicalViewFragment(), "vetmedical")
+                .replace(R.id.bottom_activity_fragments_container,
+                    VetMedicalViewFragment(), TAG_VETMEDICAL_BOTTOM_WINDOW)
                 .commit()
         }
         binding.fabWebViewWsava.setOnClickListener {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.bottom_activity_fragments_container, WsavaViewFragment(), "WSAVA")
+                .replace(R.id.bottom_activity_fragments_container,
+                    WsavaViewFragment(), TAG_WSAVA_BOTTOM_WINDOW)
                 .commit()
         }
         binding.fabTextView.setOnClickListener {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.bottom_activity_fragments_container, EditTextFragment(), "note")
+                .replace(R.id.bottom_activity_fragments_container,
+                    EditTextFragment(), TAG_NOTE_BOTTOM_WINDOW)
                 .commit()
         }
     }
@@ -241,7 +232,20 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun createConfigurationContext(overrideConfiguration: Configuration): Context {
-        val context =  super.createConfigurationContext(overrideConfiguration)
+        val context = super.createConfigurationContext(overrideConfiguration)
         return LocaleHelper.onAttach(context)
+    }
+
+    // Установка темы приложения
+    private fun setApplicationTheme() {
+        val sharedPreferences: SharedPreferences =
+            getSharedPreferences(SHARED_PREFERENCES_KEY, MODE_PRIVATE)
+        isTheme = sharedPreferences.getBoolean(
+            SHARED_PREFERENCES_THEME_KEY, true)
+        if (!isTheme) {
+            setTheme(R.style.Splash_LightTheme)
+        } else {
+            setTheme(R.style.Splash_DarkTheme)
+        }
     }
 }

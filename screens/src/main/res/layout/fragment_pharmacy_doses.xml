@@ -70,7 +70,7 @@
                 app:srcCompat="@drawable/ic_arrow_right" />
 
             <TextView
-                android:id="@+id/pharmacy_surface_previous_text"
+                android:id="@+id/pharmacy_dose_previous_text"
                 style="@style/text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -80,7 +80,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.466" />
+                app:layout_constraintVertical_bias="@dimen/pharmacy_dose_previous_text_vertical_bias" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <View

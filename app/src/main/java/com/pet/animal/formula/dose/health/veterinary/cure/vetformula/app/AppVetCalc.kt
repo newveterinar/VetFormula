@@ -2,9 +2,9 @@ package com.pet.animal.formula.dose.health.veterinary.cure.vetformula.app
 
 import android.app.Application
 import android.content.Context
-import com.pet.animal.formula.dose.health.veterinary.cure.repo.di.DatabaseModule
 import android.content.res.Configuration
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.language_utils.LocaleHelper
+import com.pet.animal.formula.dose.health.veterinary.cure.repo.di.databaseModule
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.language.LocaleHelper
 import com.pet.animal.formula.dose.health.veterinary.cure.vetformula.di.database
 import com.pet.animal.formula.dose.health.veterinary.cure.vetformula.di.screens
 import com.pet.animal.formula.dose.health.veterinary.cure.vetformula.di.utils
@@ -22,7 +22,7 @@ class AppVetCalc: Application() {
         // Koin
         startKoin {
             androidContext(applicationContext)
-            modules(listOf(database, utils, screens, DatabaseModule))
+            modules(listOf(database, utils, screens, databaseModule))
         }
     }
 

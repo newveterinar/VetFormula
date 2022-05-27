@@ -125,7 +125,7 @@
                 android:id="@+id/inputManualCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="10"
+                android:ems="@dimen/input_manual_count_ems"
                 android:inputType="number"
                 android:text="@string/inputManualCount_text"
                 app:layout_constraintBottom_toBottomOf="parent"

@@ -15,6 +15,11 @@ class FragmentScope() {
 const val SHARED_PREFERENCES_KEY: String = "Shared Preferences"
 const val SHARED_PREFERENCES_THEME_KEY: String = "Shared Preferences Is Theme"
 
+// Тэги страниц нижнего окна
+const val TAG_VETMEDICAL_BOTTOM_WINDOW: String = "vetmadical"
+const val TAG_WSAVA_BOTTOM_WINDOW: String = "WSAVA"
+const val TAG_NOTE_BOTTOM_WINDOW: String = "note"
+
 // Названия типизированных формул для класса TypedFormula()
 const val PHARMACY_SURFACE_DOG_BODYSURFACEAREA_NAME = "DOG surface area"
 const val PHARMACY_SURFACE_CAT_BODYSURFACEAREA_NAME = "CAT surface area"
