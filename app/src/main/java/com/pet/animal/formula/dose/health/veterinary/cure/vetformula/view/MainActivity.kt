@@ -1,9 +1,11 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.vetformula.view
 
+import android.content.SharedPreferences
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.Configuration
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
@@ -16,9 +18,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.edit
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.webview.VetMedicalViewFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.webview.WsavaViewFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator.BackButtonListener
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.MAIN_ACTIVITY_NAME
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.SLIDER_MAX_DIFFERENT_VALUE
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.SLIDER_MAX_VALUE
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.*
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.language_utils.LocaleHelper
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.screens.UpAndBottomFramesSizesChanger
 import com.pet.animal.formula.dose.health.veterinary.cure.vetformula.R
@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity() {
         MAIN_ACTIVITY_NAME, named(MAIN_ACTIVITY_NAME)
     )
     private lateinit var viewModel: MainViewModel
+    private var isTheme: Boolean = true
 
     // Binding
     private lateinit var binding: ActivityMainBinding
@@ -86,7 +87,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         // Подключение Binding
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
         // Создание Scope для MainActivity
         val viewModel: MainViewModel by mainActivityScope.inject()
@@ -96,10 +96,31 @@ class MainActivity : AppCompatActivity() {
         guideLine = binding.horizontalGuideline
         params = guideLine.layoutParams as ConstraintLayout.LayoutParams
 
-        if (savedInstanceState == null) {
+        if (savedInstanceState != null) {
+            val sharedPreferences: SharedPreferences =
+                getSharedPreferences(SHARED_PREFERENCES_KEY, MODE_PRIVATE)
+            isTheme = sharedPreferences.getBoolean(
+                SHARED_PREFERENCES_THEME_KEY, true)
+            if (!isTheme) {
+                setTheme(R.style.Splash_LightTheme)
+            } else {
+                setTheme(R.style.Splash_DarkTheme)
+            }
             this.viewModel.router.navigateTo(this.viewModel.screens.mainScreen())
         }
         onClickFab()
+        setContentView(binding.root)
+    }
+
+    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
+        super.onSaveInstanceState(outState, outPersistentState)
+        val sharedPreferences: SharedPreferences =
+            getSharedPreferences(SHARED_PREFERENCES_KEY,
+                AppCompatActivity.MODE_PRIVATE
+            )
+        var sharedPreferencesEditor: SharedPreferences.Editor = sharedPreferences.edit()
+        sharedPreferencesEditor.putBoolean(SHARED_PREFERENCES_THEME_KEY, isTheme)
+        sharedPreferencesEditor.apply()
     }
 
     // Функция - слушатель нажатий по FAB

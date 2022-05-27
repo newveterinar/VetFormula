@@ -27,9 +27,43 @@
     </style>
 
     <style name="number_button">
-        <item name="android:background">@color/light_green</item>
+        <item name="android:background">?attr/colorPrimary</item>
         <item name="android:textSize">
             @dimen/pharmacy_concentration_textinputlayout_textfield_text_size
         </item>
+    </style>
+
+    <style name="light_button_style">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:background">@color/light_appbar</item>
+        <item name="android:fontFamily">@font/asul_bold</item>
+        <item name="chipBackgroundColor">@color/light_appbar</item>
+        <item name="android:layout_width">@dimen/light_theme_button_layout_width</item>
+        <item name="android:layout_height">@dimen/light_theme_button_layout_height</item>
+        <item name="android:layout_marginTop">@dimen/light_theme_button_marginTop</item>
+        <item name="android:layout_marginEnd">@dimen/light_theme_button_marginEnd</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="dark_button_style">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:background">@color/dark_appbar</item>
+        <item name="android:fontFamily">@font/asul_bold</item>
+        <item name="chipBackgroundColor">@color/dark_appbar</item>
+        <item name="android:layout_width">@dimen/light_theme_button_layout_width</item>
+        <item name="android:layout_height">@dimen/light_theme_button_layout_height</item>
+        <item name="android:layout_marginTop">@dimen/dark_theme_button_marginTop</item>
+        <item name="android:layout_marginEnd">@dimen/dark_theme_button_marginTop</item>
+        <item name="android:layout_marginBottom">@dimen/dark_theme_layout_marginBottom</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="theme_button">
+        <item name="android:layout_width">@dimen/theme_layout_width</item>
+        <item name="android:layout_height">@dimen/theme_layout_height</item>
+        <item name="android:layout_marginStart">@dimen/theme_marginStart</item>
+        <item name="android:textSize">@dimen/calculator_surface_button_text_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
     </style>
 </resources>

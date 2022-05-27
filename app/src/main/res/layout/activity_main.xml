@@ -64,6 +64,7 @@
         android:layout_marginBottom="@dimen/fab_main_margin_bottom"
         android:clickable="true"
         android:focusable="true"
+        android:backgroundTint="@color/transparent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_add_24" />
@@ -76,6 +77,7 @@
         android:clickable="true"
         android:focusable="true"
         android:visibility="invisible"
+        android:backgroundTint="@color/transparent"
         app:layout_constraintBottom_toTopOf="@+id/fab_main"
         app:layout_constraintEnd_toEndOf="@+id/fab_main"
         app:srcCompat="@drawable/ic_internet_24">
@@ -102,6 +104,7 @@
         android:clickable="true"
         android:focusable="true"
         android:visibility="invisible"
+        android:backgroundTint="@color/transparent"
         app:layout_constraintBottom_toTopOf="@+id/fab_web_view_wsava"
         app:layout_constraintEnd_toEndOf="@+id/fab_web_view_wsava"
         app:srcCompat="@drawable/ic_note" />

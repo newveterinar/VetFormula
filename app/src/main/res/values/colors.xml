@@ -9,7 +9,8 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="light_green">#9CFFB8</color>
-    <color name="dark_green">#1C7533</color>
+    <color name="dark_green">#84d69b</color>
     <color name="light_appbar">#20D753</color>
-    <color name="dark_appbar">#1C7533</color>
+    <color name="dark_appbar">#219b43</color>
+
 </resources>

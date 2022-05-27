@@ -63,6 +63,9 @@
     <string name="tickInMinutes_text">0.00</string>
     <string name="buttonResetTickCounter_text">Сбросить значений</string>
     <string name="timer_previous_text_text">Таймер</string>
+    <string name="light_theme">Светлая тема</string>
+    <string name="dark_theme">Темная тема</string>
+    <string name="theme">Тема</string>
     <string name="pharmacy_help_info_text">Перед расчётом заполните все числовые поля!</string>
 
     <string-array name="pharmacy_surface_animal_type_list">

@@ -1,12 +1,17 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.settings
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import android.widget.*
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.chip.Chip
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentSettingsBinding
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.SHARED_PREFERENCES_KEY
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.SHARED_PREFERENCES_THEME_KEY
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.getItemByValue
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.onItemSelected
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.selectItemByValue
@@ -20,6 +25,8 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsB
     // Навигация
     private val navigationButtons = arrayOfNulls<View>(size = 1)
     private lateinit var languageSpinner: Spinner
+    private var lightthemebutton: Chip? = null
+    private var darkthemebutton: Chip? = null
 
     // ViewModel
     lateinit var viewModel: SettingsFragmentViewModel
@@ -27,6 +34,33 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsB
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        lightthemebutton = view.findViewById(R.id.light_theme_button)
+        lightthemebutton?.let {
+            it.setOnClickListener {
+                val sharedPreferences: SharedPreferences =
+                    requireActivity().getSharedPreferences(SHARED_PREFERENCES_KEY,
+                        AppCompatActivity.MODE_PRIVATE
+                    )
+                var sharedPreferencesEditor: SharedPreferences.Editor = sharedPreferences.edit()
+                sharedPreferencesEditor.putBoolean(SHARED_PREFERENCES_THEME_KEY, false)
+                sharedPreferencesEditor.apply()
+                requireActivity().recreate()
+            }
+        }
+        darkthemebutton = view.findViewById(R.id.dark_theme_button)
+        darkthemebutton?.let {
+            it.setOnClickListener {
+                val sharedPreferences: SharedPreferences =
+                    requireActivity().getSharedPreferences(SHARED_PREFERENCES_KEY,
+                        AppCompatActivity.MODE_PRIVATE
+                    )
+                var sharedPreferencesEditor: SharedPreferences.Editor = sharedPreferences.edit()
+                sharedPreferencesEditor.putBoolean(SHARED_PREFERENCES_THEME_KEY, true)
+                sharedPreferencesEditor.apply()
+                requireActivity().recreate()
+            }
+        }
+
         // Инициализация кнопок
         initNavigationButtons()
         // Инициализация ViewModel

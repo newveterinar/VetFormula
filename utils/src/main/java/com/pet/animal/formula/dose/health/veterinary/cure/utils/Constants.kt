@@ -2,14 +2,18 @@ package com.pet.animal.formula.dose.health.veterinary.cure.utils
 
 const val CICERONE_NAME: String = "cicerone"
 const val MAIN_ACTIVITY_NAME: String = "MainActivity"
+
 class FragmentScope() {
     companion object{
-        const val  SHOW_PHARMACY_SURFACE_FRAGMENT_SCOPE = "SHOW_PHARMACY_SURFACE_FRAGMENT_SCOPE"
-        const val  SHOW_PHARMACY_SURFACE_RESULT_FRAGMENT_SCOPE =
+        const val SHOW_PHARMACY_SURFACE_FRAGMENT_SCOPE = "SHOW_PHARMACY_SURFACE_FRAGMENT_SCOPE"
+        const val SHOW_PHARMACY_SURFACE_RESULT_FRAGMENT_SCOPE =
             "SHOW_PHARMACY_SURFACE_RESULT_FRAGMENT_SCOPE"
-        const val  SHOW_PHARMACY_DOSE_FRAGMENT_SCOPE = "SHOW_PHARMACY_DOSE_FRAGMENT_SCOPE"
+        const val SHOW_PHARMACY_DOSE_FRAGMENT_SCOPE = "SHOW_PHARMACY_DOSE_FRAGMENT_SCOPE"
     }
 }
+
+const val SHARED_PREFERENCES_KEY: String = "Shared Preferences"
+const val SHARED_PREFERENCES_THEME_KEY: String = "Shared Preferences Is Theme"
 
 // Названия типизированных формул для класса TypedFormula()
 const val PHARMACY_SURFACE_DOG_BODYSURFACEAREA_NAME = "DOG surface area"
@@ -44,6 +48,7 @@ const val ADDSECOND_INDEX = 1
 enum class ThemesNames {
     // Светлая тема
     DAY,
+
     // Тёмная тема
     NIGHT
 }
@@ -54,15 +59,19 @@ enum class ScreenType {
     FLUIDS_BASIC,                           // При переводе в Int соответствует номеру 1
     FLUIDS_KOMPREHENSIVE,                   // При переводе в Int соответствует номеру 2
     FLUIDS_K_INFUSION,                      // При переводе в Int соответствует номеру 3
+
     // Типы формул для раздела CONVERSTION
     CONVERSION_UNITS,                       // При переводе в Int соответствует номеру 4
+
     // Типы формул для раздела HEMATOLOGY
     HEMATOLOGY_BLOOD,                       // При переводе в Int соответствует номеру 5
     HEMATOLOGY_FLEBOTOMY,                   // При переводе в Int соответствует номеру 6
+
     // Типы формул для раздела PHARMACY
     PHARMACY_DOSES,                         // При переводе в Int соответствует номеру 7
     PHARMACY_CRI,                           // При переводе в Int соответствует номеру 8
     PHARMACY_SURFACE,                       // При переводе в Int соответствует номеру 9
+
     // Типы формул для раздела CALCULATOR
     CALCULATOR                              // При переводе в Int соответствует номеру 10
 }

@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/light_green">
+    android:background="?attr/colorPrimary">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/conversions_header"
         android:layout_width="match_parent"
         android:layout_height="@dimen/conversions_header_height"
-        android:background="@color/light_appbar"
+        android:background="?attr/colorSecondary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -53,8 +53,8 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/conversions_horizontal_border_height"
             android:background="@color/black"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -74,15 +74,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/conversions_horizontal_border">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/conversions_surface_button"
-            android:layout_width="@dimen/conversions_surface_button_width"
-            android:layout_height="@dimen/conversions_surface_button_height"
-            android:layout_alignParentEnd="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_temperature" />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/conversions_surface_button"
+                android:layout_width="@dimen/conversions_surface_button_width"
+                android:layout_height="@dimen/conversions_surface_button_height"
+                android:layout_alignParentEnd="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_temperature" />
 
             <TextView
                 android:id="@+id/conversions_surface_button_text"
