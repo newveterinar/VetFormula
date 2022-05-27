@@ -3,6 +3,7 @@
     <!-- Сообщения об ошибках -->
     <string name="error_appstate_not_loaded_for_fragment">Ошибка: Данные для фрагмента не загружены</string>
     <string name="error_button_is_not_assigned">Ошибка: Кнопка не назначена</string>
+    <string name="error_not_inserted_weight_animal">Пожалуйста, введите число > 0</string>
 
     <!-- Ресурсы макета -->
     <string name="about_surface_button_text_text">О Приложении</string>
@@ -65,6 +66,7 @@
     <string name="light_theme">Светлая тема</string>
     <string name="dark_theme">Темная тема</string>
     <string name="theme">Тема</string>
+    <string name="pharmacy_help_info_text">Перед расчётом заполните все числовые поля!</string>
 
     <string-array name="pharmacy_surface_animal_type_list">
         <item>Собака</item>
@@ -136,4 +138,5 @@
         <item>20 капель/мл</item>
         <item>60 капель/мл</item>
     </string-array>
+    <string name="settings_language_text">Язык</string>
 </resources>

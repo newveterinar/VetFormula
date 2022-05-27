@@ -7,19 +7,13 @@ import com.pet.animal.formula.dose.health.veterinary.cure.utils.*
 
 // Перевод строки типа String в число типа Double
 fun stringToDouble(text: String): Double {
-    return if (text.isEmpty()) 0.0 else text.toDouble()
+    return if (text.isEmpty() || (text.indexOf(".") > -1 && (text.length == 1))) 0.0
+           else text.toDouble()
 }
 
-// Получение списка List<ValueField> из списков List<Double> и List<Int>
-fun valueFieldListCreator(values: List<Double>, dimensions: List<Int>): List<ValueField> {
-    if (dimensions.size > values.size){
-        //TODO: Обработка ошибки
-    }
-    val resultList: MutableList<ValueField> = mutableListOf()
-    values.forEachIndexed { index, value ->
-            resultList.add(ValueField(value, dimensions[index]))
-    }
-    return resultList
+// Проверка на то, что число типа Double > 0.0
+fun String.checkToExistCorrectDouble(): Boolean {
+    return stringToDouble(this) > 0.0
 }
 
 // Получение списка MutableList<Int> из списка MutableList<Spinner>
@@ -27,6 +21,16 @@ fun MutableList<Spinner>.convertListSpinnerToListInt(): List<Int> {
     val resultList: MutableList<Int> = mutableListOf()
     this.forEach {
         resultList.add(it.selectedItemPosition)
+    }
+    return resultList
+}
+
+// Получение списка MutableList<String> из списка MutableList<EditText>
+fun MutableList<EditText>.convertListEditTextToListString(): List<String> {
+    val resultList: MutableList<String> = mutableListOf()
+    this.forEach {
+        if (it.text.toString().isEmpty()) resultList.add("")
+        else resultList.add(if (it.text.toString()[0] == '.') "0${it.text}" else it.text.toString())
     }
     return resultList
 }

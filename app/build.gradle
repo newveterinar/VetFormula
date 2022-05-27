@@ -39,6 +39,12 @@ android {
     buildFeatures {
         viewBinding true
     }
+
+    bundle {
+        language {
+            enableSplit = false
+        }
+    }
 }
 
 //region Подключение модулей и библиотек

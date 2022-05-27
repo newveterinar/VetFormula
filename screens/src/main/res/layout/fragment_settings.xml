@@ -65,59 +65,117 @@
         app:layout_constraintTop_toBottomOf="@id/settings_header">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/settings_surface_button_container"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintStart_toStartOf="parent">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/settings_surface_button"
-                android:layout_width="98dp"
-                android:layout_height="75dp"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="12dp"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/settings_surface_button_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/settings_surface_button_container_margin_start"
+                android:layout_marginTop="@dimen/settings_surface_button_container_margin_top"
+                android:paddingBottom="10dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_theme" />
+                app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/theme_button"
-                style="@style/theme_button"
-                android:text="@string/theme"
-                app:layout_constraintHorizontal_bias="1.0"
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/settings_surface_button"
+                    android:layout_width="98dp"
+                    android:layout_height="75dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="12dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_theme" />
+
+                <TextView
+                    android:id="@+id/theme_button"
+                    style="@style/theme_button"
+                    android:text="@string/theme"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/settings_surface_button" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/light_theme_button"
+                    style="@style/light_button_style"
+                    android:text="@string/light_theme"
+                    android:textAllCaps="true"
+                    app:layout_constrainedHeight="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/settings_surface_button"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/dark_theme_button"
+                    style="@style/dark_button_style"
+                    android:fontFamily="@font/asul_bold"
+                    android:text="@string/dark_theme"
+                    android:textAllCaps="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/theme_button"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0" />
+
+                <View
+                    android:id="@+id/theme_horizontal_border"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/settings_divider_margin_top"
+                    android:background="@android:color/darker_gray"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/dark_theme_button" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/other_parameters_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/settings_surface_button_container_margin_start"
+                android:layout_marginTop="@dimen/settings_surface_button_container_margin_top"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/settings_surface_button" />
+                app:layout_constraintTop_toBottomOf="@id/settings_surface_button_container">
 
+                <TextView
+                    android:id="@+id/language_change_title"
+                    style="@style/button_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_language_text"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/light_theme_button"
-                style="@style/light_button_style"
-                android:text="@string/light_theme"
-                android:textAllCaps="true"
-                app:layout_constrainedHeight="true"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/settings_surface_button"
-                app:layout_constraintTop_toTopOf="parent" />
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/settings_language_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/language_list"
+                    android:gravity="start"
+                    android:singleLine="true"
+                    android:theme="@style/SpinnerDimensions"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/language_change_title"
+                    app:layout_constraintTop_toTopOf="@id/language_change_title"
+                    app:layout_constraintBottom_toBottomOf="@id/language_change_title"/>
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/dark_theme_button"
-                style="@style/dark_button_style"
-                android:fontFamily="@font/asul_bold"
-                android:text="@string/dark_theme"
-                android:textAllCaps="true"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="@+id/theme_button"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/settings_divider_margin_top"
+                    android:layout_marginBottom="@dimen/settings_divider_margin_bottom"
+                    android:background="@android:color/darker_gray"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/language_change_title" />
 
-
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
     </androidx.core.widget.NestedScrollView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,4 +8,7 @@
     <dimen name="windows_slider_value_from">0.01</dimen>
     <dimen name="windows_slider_value_to">100.0</dimen>
     <dimen name="windows_slider_start_angle">270.0</dimen>
+    <dimen name="fab_text_margin_bottom">12dp</dimen>
+    <dimen name="fab_web_margin_bottom">16dp</dimen>
+    <dimen name="fab_main_margin_bottom">24dp</dimen>
 </resources>

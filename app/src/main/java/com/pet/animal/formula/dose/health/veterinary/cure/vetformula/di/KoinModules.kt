@@ -9,6 +9,8 @@ import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.phar
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.doses.result.PharmacyDosesInteractorImpl
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.surface.PharmacySurfaceFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.surface.PharmacySurfaceInteractorImpl
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.surface.result.PharmacySurfaceResultFragmentViewModel
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.surface.result.PharmacySurfaceResultInteractorImpl
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator.AppScreensImpl
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.CICERONE_NAME
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.FragmentScope
@@ -56,6 +58,15 @@ val screens = module {
         viewModel {
             PharmacySurfaceFragmentViewModel(
                 getScope(FragmentScope.SHOW_PHARMACY_SURFACE_FRAGMENT_SCOPE).get())
+        }
+    }
+    scope(named(FragmentScope.SHOW_PHARMACY_SURFACE_RESULT_FRAGMENT_SCOPE)) {
+        scoped {
+            PharmacySurfaceResultInteractorImpl()
+        }
+        viewModel {
+            PharmacySurfaceResultFragmentViewModel(
+                getScope(FragmentScope.SHOW_PHARMACY_SURFACE_RESULT_FRAGMENT_SCOPE).get())
         }
     }
     scope(named(FragmentScope.SHOW_PHARMACY_DOSE_FRAGMENT_SCOPE)) {
