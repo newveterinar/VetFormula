@@ -146,7 +146,7 @@ class PharmacySurfaceResultFragment: BaseFragment<FragmentPharmacySurfaceResultB
     // Подготовка строки с результатом
     private fun createStringResult(screenData: ScreenData): SpannableString {
         val initialString: String = "${screenData.resultValueField[0].value} " +
-                "${requireActivity().resources.getString(R.string.result_meter)}2"
+                requireActivity().resources.getString(R.string.output_data_dimension_square_length)
         val result = SpannableString(initialString)
         if (result.isNotEmpty()) {
 
