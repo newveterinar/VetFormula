@@ -4,6 +4,8 @@ import androidx.room.Room
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.pet.animal.formula.dose.health.veterinary.cure.fakerepo.FakeBackend
+import com.pet.animal.formula.dose.health.veterinary.cure.fakerepo.FakeRepository
+import com.pet.animal.formula.dose.health.veterinary.cure.fakerepo.FakeRepositoryImpl
 import com.pet.animal.formula.dose.health.veterinary.cure.repo.Repository
 import com.pet.animal.formula.dose.health.veterinary.cure.repo.dao.FormulasDatabase
 import com.pet.animal.formula.dose.health.veterinary.cure.repo.dao.RepositoryImpl
@@ -21,6 +23,7 @@ class UniDBTest {
     private lateinit var db: FormulasDatabase
     private lateinit var dao: VetFormulaDao
     private lateinit var repo: Repository
+    private lateinit var fakeRepo: FakeRepository
 
 
 
@@ -31,6 +34,7 @@ class UniDBTest {
             FormulasDatabase::class.java).build()
         dao = db.vetFormulaDao()
         repo = RepositoryImpl(dao)
+        fakeRepo = FakeRepositoryImpl()
     }
 
     @After
@@ -51,6 +55,11 @@ class UniDBTest {
     @Test
     fun testCreateRepository(){
         Assert.assertNotNull(repo)
+    }
+
+    @Test
+    fun testFakeRepo(){
+        Assert.assertNotNull(fakeRepo)
     }
 
     fun saveSection(){
@@ -110,4 +119,29 @@ class UniDBTest {
             assertEquals(1,f2.size)
         }
     }
+
+    @Test
+    fun testSaveParams(){
+        saveSection()
+        seveFormulas()
+        runBlocking {
+            val s1 = repo.getUniFormulasBySection(1)
+            for (frm in s1){
+                saveParams(frm.id)
+            }
+             val s2 = repo.getUniFormulasBySection(2)
+            for (frm in s2){
+                saveParams(frm.id)
+            }
+        }
+        runBlocking {
+            val lParam1 = repo.getUniParamsByFormula(1)
+            assertEquals(2,lParam1.size)
+
+            val lParam2 = repo.getUniParamsByFormula(2)
+            assertEquals(3,lParam2.size)
+        }
+
+    }
+
 }

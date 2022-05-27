@@ -12,7 +12,6 @@ import com.pet.animal.formula.dose.health.veterinary.cure.unientity.*
 @Database(entities = [
     FormulaEntity::class,
     UrlEntity::class,
-    UniFormulaElement::class,
     UniFormulaEntity::class,
     UniParamEntity::class,
     UniSectionEntity::class,
