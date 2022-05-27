@@ -11,6 +11,7 @@
         android:id="@+id/timer_header"
         android:layout_width="match_parent"
         android:layout_height="@dimen/pharmacy_header_height"
+        android:background="?attr/colorSecondary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -91,14 +92,15 @@
                 android:textSize="@dimen/timerText_text_size"
                 app:layout_constraintBottom_toTopOf="@+id/guideline2"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.3" />
+                app:layout_constraintGuide_percent="0.27" />
 
             <Button
                 android:id="@+id/startTimerButton"
@@ -111,8 +113,8 @@
 
             <ImageView
                 android:id="@+id/touchPlace"
-                android:layout_width="@dimen/touchPlace_width"
-                android:layout_height="@dimen/touchPlace_height"
+                android:layout_width="@dimen/timer_layout_width"
+                android:layout_height="@dimen/timer_layout_height"
                 android:layout_marginTop="@dimen/touchPlace_margin_top"
                 android:src="@drawable/ic_touch_place"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -145,11 +147,11 @@
                 android:id="@+id/tickInMinutes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="@string/tickInMinutes_text"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/inputManualCount" />
+                app:layout_constraintTop_toBottomOf="@+id/inputManualCount"
+                tools:text="@string/tickInMinutes_text" />
 
             <Button
                 android:id="@+id/buttonResetTickCounter"

@@ -222,7 +222,9 @@
     <dimen name="timerText_text_size">48sp</dimen>
     <dimen name="touchPlace_width">128dp</dimen>
     <dimen name="touchPlace_height">128dp</dimen>
-    <dimen name="touchPlace_margin_top">64dp</dimen>
+    <dimen name="touchPlace_margin_top">32dp</dimen>
+    <dimen name="timer_layout_width">194dp</dimen>
+    <dimen name="timer_layout_height">168dp</dimen>
     <dimen name="textView3_width">0dp</dimen>
     <dimen name="textView3_margin_left">40dp</dimen>
     <dimen name="buttonResetTickCounter_margin_top">16dp</dimen>

@@ -9,6 +9,7 @@
         android:id="@+id/pharmacy_header"
         android:layout_width="match_parent"
         android:layout_height="@dimen/pharmacy_header_height"
+        android:background="?attr/colorSecondary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -88,8 +89,8 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/pharmacy_horizontal_border_height"
             android:background="@color/black"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="@id/pharmacy_header" />
+            app:layout_constraintBottom_toBottomOf="@id/pharmacy_header"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
