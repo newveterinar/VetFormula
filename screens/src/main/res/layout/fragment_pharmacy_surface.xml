@@ -195,6 +195,7 @@
                         android:gravity="center"
                         android:singleLine="false"
                         android:textAlignment="center"
+                        android:tag="WEIGHT_ANIMAL"
                         android:theme="@style/SpinnerDimensions"
                         android:visibility="visible"
                         app:layout_constraintBottom_toBottomOf="parent"

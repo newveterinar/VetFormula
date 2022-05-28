@@ -74,3 +74,22 @@ const val SLIDER_MAX_DIFFERENT_VALUE: Float = 1f
 
 // SpannableText
 const val SQUARE_TEXT_RELATIVE_SIZE: Float = 0.65f
+
+// Типы размерностей исходных данных
+enum class InputDataDimensionType {
+    WEIGHT_ANIMAL,
+    MASS_DOSE_PER_KG,
+    MASS_DOSE_PER_KG_PER_TIME,
+    VOLUME_DOSE_PER_KG_PER_TIME,
+    CONCENTRATION,
+    VOLUME,
+    ERROR_TYPE
+}
+
+// Типы размерностей результирующих (выходных) данных
+enum class OutputDataDimensionType {
+    LENGTH,
+    MASS,
+    TIME,
+    SQUARE_LENGTH
+}

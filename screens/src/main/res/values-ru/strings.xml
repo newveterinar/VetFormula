@@ -123,19 +123,14 @@
         <item>г/г</item>
         <item>вес/объём</item>
     </string-array>
-    <string-array name="input_data_dimension_concentration_short_list">
-        <item>мгк/мл</item>
-        <item>мг/мл</item>
-        <item>г/мл</item>
-    </string-array>
     <string-array name="input_data_dimension_volume_list">
         <item>мл</item>
         <item>мкл</item>
     </string-array>
 
         <!-- Результирующие данные типа размерностей расчётных численных значений -->
-    <string name="output_data_dimension_mass">кг</string>
     <string name="output_data_dimension_length">м</string>
-    <string name="output_data_dimension_square_length">м2</string>
+    <string name="output_data_dimension_mass">кг</string>
     <string name="output_data_dimension_time">с</string>
+    <string name="output_data_dimension_square_length">м2</string>
 </resources>

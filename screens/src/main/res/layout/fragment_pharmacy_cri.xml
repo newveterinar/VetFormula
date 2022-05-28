@@ -162,6 +162,7 @@
 
                     <androidx.appcompat.widget.AppCompatSpinner
                         android:id="@+id/pharmacy_weight_dimension_list"
+                        android:tag="WEIGHT_ANIMAL"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_centerInParent="true"
@@ -231,6 +232,7 @@
 
                     <androidx.appcompat.widget.AppCompatSpinner
                         android:id="@+id/pharmacy_dose_dimension_list"
+                        android:tag="MASS_DOSE_PER_KG_PER_TIME"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_centerInParent="true"
@@ -302,10 +304,11 @@
 
                     <androidx.appcompat.widget.AppCompatSpinner
                         android:id="@+id/pharmacy_concentration_dimension_list"
+                        android:tag="CONCENTRATION"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_centerInParent="true"
-                        android:entries="@array/input_data_dimension_concentration_short_list"
+                        android:entries="@array/input_data_dimension_concentration_list"
                         android:gravity="center"
                         android:singleLine="false"
                         android:textAlignment="center"
@@ -373,6 +376,7 @@
 
                     <androidx.appcompat.widget.AppCompatSpinner
                         android:id="@+id/pharmacy_fluids_dimension_list"
+                        android:tag="VOLUME"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_centerInParent="true"
@@ -444,6 +448,7 @@
 
                     <androidx.appcompat.widget.AppCompatSpinner
                         android:id="@+id/pharmacy_speed_dimension_list"
+                        android:tag="VOLUME_DOSE_PER_KG_PER_TIME"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_centerInParent="true"

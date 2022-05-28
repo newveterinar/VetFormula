@@ -2,8 +2,11 @@ package com.pet.animal.formula.dose.health.veterinary.cure.utils.functions
 
 import android.widget.EditText
 import android.widget.Spinner
-import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.ValueField
+import android.widget.Toast
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.*
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.dimension.inputDataDimensionConverter
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.resources.ResourcesProviderImpl
+import org.koin.java.KoinJavaComponent
 
 // Перевод строки типа String в число типа Double
 fun stringToDouble(text: String): Double {
@@ -42,6 +45,57 @@ fun MutableList<EditText>.convertListEditTextToListDouble(): List<Double> {
         resultList.add(stringToDouble(it.text.toString()))
     }
     return resultList
+}
+
+// Получение списка MutableList<Double> из списка MutableList<EditText>
+fun MutableList<EditText>.convertListEditTextToListDouble(
+    listsDimensions: MutableList<Spinner>,
+    checkDimension: Spinner?
+): List<Double> {
+    /** Задание переменных */ //region
+    val resourcesProviderImpl: ResourcesProviderImpl = KoinJavaComponent.getKoin().get()
+    //endregion
+
+    return if (this.size != listsDimensions.size)
+              throw Exception(resourcesProviderImpl.context.getString(
+                  R.string.error_variable_size_not_equal_dimension_size))
+    else {
+        val resultList: MutableList<Double> = mutableListOf()
+        this.forEachIndexed { index, it ->
+            resultList.add(stringToDouble(it.text.toString()) *
+                    inputDataDimensionConverter(listsDimensions[index].tag.toString().
+                        convertStringToInputDataDimensionType(),
+                        listsDimensions[index].selectedItemPosition,
+                        checkDimension?.selectedItemPosition ?: -1
+                    ))
+        }
+        resultList
+    }
+}
+
+// Получение значения InputDataDimensionType из переменной типа String
+fun String.convertStringToInputDataDimensionType(): InputDataDimensionType {
+    return when {
+        this == InputDataDimensionType.WEIGHT_ANIMAL.toString() -> {
+            InputDataDimensionType.WEIGHT_ANIMAL
+        }
+        this == InputDataDimensionType.MASS_DOSE_PER_KG.toString() -> {
+            InputDataDimensionType.MASS_DOSE_PER_KG
+        }
+        this == InputDataDimensionType.MASS_DOSE_PER_KG_PER_TIME.toString() -> {
+            InputDataDimensionType.MASS_DOSE_PER_KG_PER_TIME
+        }
+        this == InputDataDimensionType.VOLUME_DOSE_PER_KG_PER_TIME.toString() -> {
+            InputDataDimensionType.VOLUME_DOSE_PER_KG_PER_TIME
+        }
+        this == InputDataDimensionType.CONCENTRATION.toString() -> {
+            InputDataDimensionType.CONCENTRATION
+        }
+        this == InputDataDimensionType.VOLUME.toString() -> {
+            InputDataDimensionType.VOLUME
+        }
+        else -> InputDataDimensionType.ERROR_TYPE
+    }
 }
 
 // Перевод списка параметров addFirstSecond в название типизированной формулы TypedFormula

@@ -86,6 +86,7 @@
 
             <TextView
                 android:id="@+id/pharmacy_result_text"
+                android:tag="SQUARE_LENGTH"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/number_button"

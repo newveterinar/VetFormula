@@ -326,7 +326,8 @@ class PharmacySurfaceFragment :
             screenType,
             listsAddFirstSecond.convertListSpinnerToListInt(),
             valuesFields.convertListEditTextToListString(),
-            valuesFields.convertListEditTextToListDouble(),
+//            valuesFields.convertListEditTextToListDouble(),
+            valuesFields.convertListEditTextToListDouble(listsDimensions, null),
             listsDimensions.convertListSpinnerToListInt(),
             isGoToResultScreen
         )
