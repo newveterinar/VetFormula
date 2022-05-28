@@ -4,6 +4,9 @@ import com.pet.animal.formula.dose.health.veterinary.cure.model.formula.Formula
 import com.pet.animal.formula.dose.health.veterinary.cure.repo.FormulaEntity
 import com.pet.animal.formula.dose.health.veterinary.cure.repo.Repository
 import com.pet.animal.formula.dose.health.veterinary.cure.repo.UrlEntity
+import com.pet.animal.formula.dose.health.veterinary.cure.unientity.UniFormulaEntity
+import com.pet.animal.formula.dose.health.veterinary.cure.unientity.UniParamEntity
+import com.pet.animal.formula.dose.health.veterinary.cure.unientity.UniSectionEntity
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
 
 class RepositoryImpl(private val dbDao:VetFormulaDao): Repository {
@@ -68,5 +71,30 @@ class RepositoryImpl(private val dbDao:VetFormulaDao): Repository {
             return listEntity[0].formula
         }
         return Formula()//TODO так не должно быть, обсудить, возможно бросить эксепшин
+    }
+
+    override suspend fun insertSection(sections: List<UniSectionEntity>) {
+
+        dbDao.insertSection(sections)
+    }
+
+    override suspend fun getSections(): List<UniSectionEntity> {
+        return dbDao.getSections()
+    }
+
+    override suspend fun saveUniFormulas(formulas: List<UniFormulaEntity>) {
+        dbDao.saveUniFormulas(formulas)
+    }
+
+    override suspend fun getUniFormulasBySection(sectionId: Int): List<UniFormulaEntity> {
+        return dbDao.getUniFormulaByScreen(sectionId)
+    }
+
+    override suspend fun saveUniParams(params: List<UniParamEntity>) {
+        dbDao.saveUniParams(params)
+    }
+
+    override suspend fun getUniParamsByFormula(formulaId: Int): List<UniParamEntity> {
+        return dbDao.getUniParamsByFormula(formulaId)
     }
 }
