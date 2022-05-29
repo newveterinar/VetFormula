@@ -3,11 +3,14 @@ package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pha
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.Interactor
 import com.pet.animal.formula.dose.health.veterinary.cure.fakerepo.FakeRepositoryImpl
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppState
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.doses.PharmacyDosesFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.settings.SettingsImpl
 import org.koin.java.KoinJavaComponent
 
-class PharmacyDosesInteractorImpl: Interactor<AppState> {
+class PharmacyDosesInteractorImpl(
+    private val viewModel: PharmacyDosesFragmentViewModel
+): Interactor<AppState> {
     /** Задание переменных */ //region
     // Фейковый (временный) репозиторий
     private val fakeRepositoryImpl: FakeRepositoryImpl = KoinJavaComponent.getKoin().get()
@@ -17,7 +20,7 @@ class PharmacyDosesInteractorImpl: Interactor<AppState> {
 
     // Получение данных полей окна, если они были сохранены ранее
     override suspend fun getData(): AppState {
-        return AppState.Success(settings.getPharmacyDosesScreenData())
+        return AppState.Success(settings.getInputedScreenData())
     }
 
     /** Методы для сохранения данных с полей и списков */ //region
@@ -25,7 +28,8 @@ class PharmacyDosesInteractorImpl: Interactor<AppState> {
                                   listsAddFirstSecond: List<Int>,
                                   stringValues: List<String>,
                                   values: List<Double>,
-                                  dimensions: List<Int>) {
+                                  dimensions: List<Int>,
+                                  isGoToResultScreen: Boolean) {
         settings.setScreenData(screenType, listsAddFirstSecond, stringValues, values, dimensions)
     }
     //endregion

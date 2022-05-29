@@ -12,19 +12,8 @@ class SettingsImpl: Settings {
     private var currentTheme: ThemesNames = ThemesNames.DAY
     // Переменная для хранения текущей формулы
     private var formula: Formula = Formula()
-    // Переменные для окна Fluids
-    // TODO: Добавить классы для сохранения данных в окнах раздела Fluids
-    // Переменные для окна Hematology
-    // TODO: Добавить классы для сохранения данных в окнах раздела Hematology
-    // Переменные для окна Conversion
-    // TODO: Добавить классы для сохранения данных в окнах раздела Conversion
-    // Переменные для окна Pharmacy
-    private var pharmacySurfaceScreenData: ScreenData = ScreenData()
-    private var pharmacySurfaceResultScreenData: ScreenData = ScreenData()
-    private var pharmacyDoseScreenData: ScreenData = ScreenData()
-    private var pharmacyCRIScreenData: ScreenData = ScreenData()
-    // Переменные для окна с газовым наркозом
-    // TODO: Добавить классы для сохранения данных в окнах раздела с газовым наркозом
+    // Переменные для хранения исходных данных пользователя в расчётном окне
+    private var inputedScreenData: ScreenData = ScreenData()
     //endregion
 
     // Задание темы приложения
@@ -36,7 +25,7 @@ class SettingsImpl: Settings {
         return currentTheme
     }
     // Задание формулы
-    override fun setFormula(formula: Formula) {
+    override suspend fun setFormula(formula: Formula) {
         this.formula = formula
     }
     // Получение формулы
@@ -54,13 +43,13 @@ class SettingsImpl: Settings {
         when(screenType) {
             // Окно PharmacySurface
             ScreenType.PHARMACY_SURFACE -> {
-                pharmacySurfaceScreenData.listsAddFirstSecond.clear()
-                pharmacySurfaceScreenData.valueFields.clear()
+                inputedScreenData.listsAddFirstSecond.clear()
                 listsAddFirstSecond.forEach {
-                    pharmacySurfaceScreenData.listsAddFirstSecond.add(it)
+                    inputedScreenData.listsAddFirstSecond.add(it)
                 }
+                inputedScreenData.valueFields.clear()
                 stringValues.forEachIndexed { index, it ->
-                    pharmacySurfaceScreenData.valueFields.add(
+                    inputedScreenData.valueFields.add(
                         ValueField(it, values[index], dimensions[index]))
                 }
             }
@@ -68,16 +57,9 @@ class SettingsImpl: Settings {
             else -> { /* TODO: Сделать действие по умолчанию */ }
         }
     }
-    // Получение данных окна PharmacySurface
-    override fun getPharmacySurfaceScreenData(): ScreenData {
-        return pharmacySurfaceScreenData
-    }
-    // Получение данных окна PharmacySurface
-    override fun getPharmacySurfaceResultScreenData(): ScreenData {
-        return pharmacySurfaceResultScreenData
-    }
-    override fun getPharmacyDosesScreenData(): ScreenData {
-        return pharmacyDoseScreenData
+    // Получение исходных данных данных окна PharmacySurface
+    override fun getInputedScreenData(): ScreenData {
+        return inputedScreenData
     }
     //endregion
 }

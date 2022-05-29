@@ -16,8 +16,9 @@ interface VetFormulaDao {
     @Query("select * from defFormulas where screenType=:screenType")
     suspend fun getFormulaByScreen(screenType:Int):List<FormulaEntity>
 
-    @Query("select * from defFormulas where screenType=:screenType and addFirst =:addFirst ")
-    suspend fun getFormulaByScreen(screenType:Int,addFirst:Int):List<FormulaEntity>
+    // НЕ ИМЕЕТ СМЫСЛА
+//    @Query("select * from defFormulas where screenType=:screenType and addFirst =:addFirst ")
+//    suspend fun getFormulaByScreen(screenType:Int,addFirst:Int):List<FormulaEntity>
 
     @Query("select * from defFormulas where screenType=:screenType and addFirst =:addFirst and addSecond=:addSecond")
     suspend fun getFormulaByScreen(screenType:Int,addFirst:Int,addSecond:Int):List<FormulaEntity>

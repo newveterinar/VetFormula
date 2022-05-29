@@ -11,7 +11,7 @@ interface Settings {
     // Получение текущей темы приложения
     fun getTheme(): ThemesNames
     // Сохранение текущей формулы
-    fun setFormula(formula: Formula)
+    suspend fun setFormula(formula: Formula)
     // Получение текущей формулы
     fun getFormula(): Formula
     // Задание данных для окна PharmacySurface
@@ -20,10 +20,6 @@ interface Settings {
                       stringValues: List<String>,
                       values: List<Double>,
                       dimensions: List<Int>)
-    // Получение данных окна PharmacySurface
-    fun getPharmacySurfaceScreenData(): ScreenData
-    // Получение данных окна PharmacySurfaceResult
-    fun getPharmacySurfaceResultScreenData(): ScreenData
-    // Получение данных окна PharmacyDoses
-    fun getPharmacyDosesScreenData(): ScreenData
+    // Получение исходных данных для расчётного окна
+    fun getInputedScreenData(): ScreenData
 }

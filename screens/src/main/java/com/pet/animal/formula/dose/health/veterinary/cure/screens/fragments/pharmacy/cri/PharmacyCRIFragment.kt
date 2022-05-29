@@ -41,7 +41,7 @@ class PharmacyCRIFragment :
                     0 -> viewModel.router.exit()
                     else -> {
                          Toast.makeText(requireContext(), requireActivity().resources.getString(
-                            R.string.error_button_is_not_assigned), Toast.LENGTH_SHORT).show()
+                                 R.string.error_button_is_not_assigned), Toast.LENGTH_SHORT).show()
                     }
                 }
             }

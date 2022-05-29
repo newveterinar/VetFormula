@@ -15,6 +15,7 @@ class SettingsFragmentViewModel: BaseViewModel<AppState>() {
         stringValues: List<String>,
         values: List<Double>,
         dimensions: List<Int>,
+        isGoToResultScreen: Boolean
     ) {
 //        TODO("Not yet implemented")
     }

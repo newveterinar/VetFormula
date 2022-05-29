@@ -2,4 +2,5 @@
 <resources>
     <!-- Сообщения об ошибках -->
     <string name="error_variable_not_initialized">Ошибка: Обращение к не инициализированной формуле</string>
+    <string name="error_variable_size_not_equal_dimension_size">Ошибка: Количество численных элементов в окне не соответствует количеству их размерностей</string>
 </resources>

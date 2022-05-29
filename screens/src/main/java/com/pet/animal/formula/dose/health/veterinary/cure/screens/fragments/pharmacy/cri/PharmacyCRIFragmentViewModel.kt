@@ -4,7 +4,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseViewMode
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppState
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
 
-class PharmacyCRIFragmentViewModel : BaseViewModel<AppState>() {
+class PharmacyCRIFragmentViewModel: BaseViewModel<AppState>() {
     override fun getData() {
 //        TODO("Not yet implemented")
     }
@@ -15,6 +15,7 @@ class PharmacyCRIFragmentViewModel : BaseViewModel<AppState>() {
         stringValues: List<String>,
         values: List<Double>,
         dimensions: List<Int>,
+        isGoToResultScreen: Boolean,
     ) {
 //        TODO("Not yet implemented")
     }

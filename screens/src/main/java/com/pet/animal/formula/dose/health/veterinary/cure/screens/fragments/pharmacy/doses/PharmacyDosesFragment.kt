@@ -76,10 +76,18 @@ class PharmacyDosesFragment :
         navigationButtons.forEachIndexed { index, button ->
             button?.setOnClickListener {
                 when (index) {
-                    0 -> viewModel.router.exit()
-                    2 -> viewModel.router.navigateTo(viewModel.screens.pharmacyDosesResultScreen())
+                    0 -> {
+                            saveData()
+                            viewModel.router.exit()
+                         }
+                    2 -> {
+                            saveData()
+                            viewModel.router.navigateTo(
+                                viewModel.screens.pharmacyDosesResultScreen())
+                         }
                     else -> {
-                         Toast.makeText(requireContext(), requireActivity().resources.getString(
+                         Toast.makeText(requireContext(),
+                             requireActivity().resources.getString(
                             R.string.error_button_is_not_assigned), Toast.LENGTH_SHORT).show()
                     }
                 }

@@ -20,15 +20,18 @@ class RepositoryImpl(private val dbDao:VetFormulaDao): Repository {
         addFirst: Int,
         addSecond: Int
     ): List<FormulaEntity> {
-        if (addFirst==0&&addSecond!=0){
+        // Почему выявляется критерий равенства или не равенства нулю,
+        // ведь 0 это первое значение индекса в addFirst и addSecond?
+        if (addFirst==0  &&  addSecond!=0){
             throw Exception("not correct arguments")
         }
-        if (addFirst==0&&addSecond==0){
+        if (addFirst==0  &&  addSecond==0){
             return dbDao.getFormulaByScreen(screenType)
         }
-        if (addSecond==0){
-            return dbDao.getFormulaByScreen(screenType,addFirst)
-        }
+        // Предлагаю убрать
+//        if (addSecond==0){
+//            return dbDao.getFormulaByScreen(screenType,addFirst)
+//        }
         return dbDao.getFormulaByScreen(screenType,addFirst,addSecond)
     }
 

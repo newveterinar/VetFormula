@@ -61,27 +61,48 @@ enum class ThemesNames {
 // Класс с типами формул
 enum class ScreenType {
     // Типы формул для раздела FLUIDS
-    FLUIDS_BASIC,                           // При переводе в Int соответствует номеру 1
-    FLUIDS_KOMPREHENSIVE,                   // При переводе в Int соответствует номеру 2
-    FLUIDS_K_INFUSION,                      // При переводе в Int соответствует номеру 3
-
+    FLUIDS_BASIC,                           // При переводе (ordinal) в Int соответствует номеру 0
+    FLUIDS_KOMPREHENSIVE,                   // При переводе (ordinal) в Int соответствует номеру 1
+    FLUIDS_K_INFUSION,                      // При переводе (ordinal) в Int соответствует номеру 2
     // Типы формул для раздела CONVERSTION
-    CONVERSION_UNITS,                       // При переводе в Int соответствует номеру 4
-
+    CONVERSION_UNITS,                       // При переводе (ordinal) в Int соответствует номеру 3
     // Типы формул для раздела HEMATOLOGY
-    HEMATOLOGY_BLOOD,                       // При переводе в Int соответствует номеру 5
-    HEMATOLOGY_FLEBOTOMY,                   // При переводе в Int соответствует номеру 6
-
+    HEMATOLOGY_BLOOD,                       // При переводе (ordinal) в Int соответствует номеру 4
+    HEMATOLOGY_FLEBOTOMY,                   // При переводе (ordinal) в Int соответствует номеру 5
     // Типы формул для раздела PHARMACY
-    PHARMACY_DOSES,                         // При переводе в Int соответствует номеру 7
-    PHARMACY_CRI,                           // При переводе в Int соответствует номеру 8
-    PHARMACY_SURFACE,                       // При переводе в Int соответствует номеру 9
+    PHARMACY_DOSES,                         // При переводе (ordinal) в Int соответствует номеру 6
+    PHARMACY_CRI,                           // При переводе (ordinal) в Int соответствует номеру 7
+    PHARMACY_SURFACE,                       // При переводе (ordinal) в Int соответствует номеру 8
 
     // Типы формул для раздела CALCULATOR
-    CALCULATOR                              // При переводе в Int соответствует номеру 10
+    CALCULATOR                              // При переводе (ordinal) в Int соответствует номеру 9
 }
 
 // Слайдер
 const val SLIDER_START_ANGLE: Float = 270f
 const val SLIDER_MAX_VALUE: Float = 100f
 const val SLIDER_MAX_DIFFERENT_VALUE: Float = 1f
+
+// SpannableText
+const val SQUARE_TEXT_RELATIVE_SIZE: Float = 0.65f
+
+// Типы размерностей исходных данных
+enum class InputDataDimensionType {
+    WEIGHT_ANIMAL,
+    MASS_DOSE_PER_KG,
+    MASS_DOSE_PER_KG_PER_TIME,
+    VOLUME_DOSE_PER_KG_PER_TIME,
+    CONCENTRATION,
+    VOLUME,
+    ERROR_TYPE
+}
+
+// Типы размерностей результирующих (выходных) данных
+enum class OutputDataDimensionType {
+    LENGTH,         // Пример: м
+    SQUARE_LENGTH,  // Пример: м2
+    VOLUME,         // Пример: м3
+    MASS,           // Пример: кг
+    TIME,           // Пример: ч
+    RATE,           // Пример: мл/ч
+}
