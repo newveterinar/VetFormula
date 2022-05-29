@@ -1,5 +1,6 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.utils.dimension
 
+import android.widget.Spinner
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.InputDataDimensionType
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.OutputDataDimensionType
 
@@ -90,14 +91,17 @@ fun inputDataDimensionConverter(
 fun outputDataDimensionConverter(
     outputDataDimensionType: OutputDataDimensionType,
     currentResult: Double,
+    dimension: Spinner?
 ): Double {
     var result: Double = -1.0
-    when(outputDataDimensionType) {
-        OutputDataDimensionType.LENGTH -> result = currentResult * 1.0
-        OutputDataDimensionType.MASS -> result = currentResult * 1.0
-        OutputDataDimensionType.TIME -> result = currentResult * 1.0
-        OutputDataDimensionType.SQUARE_LENGTH -> result = currentResult * 1.0
-        else -> result = -1.0
+    result = when(outputDataDimensionType) {
+        OutputDataDimensionType.LENGTH -> currentResult * 1.0 // Имеет только академический смысл
+        OutputDataDimensionType.SQUARE_LENGTH -> currentResult * 1.0 // PharmacySurfaceResult
+        OutputDataDimensionType.VOLUME -> currentResult * 1.0        // TODO ДОРАБОТАТЬ
+        OutputDataDimensionType.MASS -> currentResult * 1.0          // TODO ДОРАБОТАТЬ
+        OutputDataDimensionType.TIME -> currentResult * 1.0          // TODO ДОРАБОТАТЬ
+        OutputDataDimensionType.RATE -> currentResult * 1.0          // TODO ДОРАБОТАТЬ
+        else -> -1.0
     }
     return result
 }

@@ -88,8 +88,10 @@ enum class InputDataDimensionType {
 
 // Типы размерностей результирующих (выходных) данных
 enum class OutputDataDimensionType {
-    LENGTH,
-    MASS,
-    TIME,
-    SQUARE_LENGTH
+    LENGTH,         // Пример: м
+    SQUARE_LENGTH,  // Пример: м2
+    VOLUME,         // Пример: м3
+    MASS,           // Пример: кг
+    TIME,           // Пример: ч
+    RATE,           // Пример: мл/ч
 }

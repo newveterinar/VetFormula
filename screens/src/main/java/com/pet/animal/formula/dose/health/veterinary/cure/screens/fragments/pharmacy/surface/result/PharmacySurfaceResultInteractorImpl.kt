@@ -4,7 +4,9 @@ import com.pet.animal.formula.dose.health.veterinary.cure.core.base.Interactor
 import com.pet.animal.formula.dose.health.veterinary.cure.core.calculator.CalcInteractorImpl
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppState
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.ResultValueField
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.OutputDataDimensionType
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.dimension.outputDataDimensionConverter
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.settings.SettingsImpl
 import org.koin.java.KoinJavaComponent
 
@@ -31,8 +33,8 @@ class PharmacySurfaceResultInteractorImpl(
         dimensions: List<Int>,
         isGoToResultScreen: Boolean
     ) {
-        var resultValueField: MutableList<ResultValueField> = mutableListOf()
-        settings.getFormula().getTypedFormulas().forEach { typedFormula ->
+        val resultValueField: MutableList<ResultValueField> = mutableListOf()
+        settings.getFormula().getTypedFormulas().forEachIndexed { index, typedFormula ->
             calcInteractorImpl.clearCalc()
             typedFormula.elements.forEach { element ->
                 if (element.positionValueOnWindow == 0) {
@@ -46,9 +48,18 @@ class PharmacySurfaceResultInteractorImpl(
                         valueFields[element.positionValueOnWindow - 1].value)
                 }
             }
-            resultValueField.add(
-                ResultValueField(calcInteractorImpl.getCommandResultValue() ?: 0.0))
-//                ResultValueField(calcInteractorImpl.getCommandResultValue() ?: 0.0, 1))
+            // Назначение различным результирующим данным своих конвертирующих коэффициентов
+            if (index == 0) {
+                resultValueField.add(
+                    ResultValueField(
+                        outputDataDimensionConverter(
+                            OutputDataDimensionType.SQUARE_LENGTH,
+                            calcInteractorImpl.getCommandResultValue() ?: 0.0,
+                            null
+                        )
+                    )
+                )
+            }
         }
         pharmacySurfaceResultFragmentViewModel.setResultScreenToLiveData(resultValueField)
     }
