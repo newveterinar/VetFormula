@@ -15,7 +15,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.unientity.*
     UniFormulaEntity::class,
     UniParamEntity::class,
     UniSectionEntity::class,
-    UniTranslateSectionEntity::class], version = 1)
+    UniTranslateSectionEntity::class], version = 2)
 
 @TypeConverters(ClassTypeConverter::class)
 abstract class FormulasDatabase : RoomDatabase() {
@@ -31,7 +31,7 @@ abstract class FormulasDatabase : RoomDatabase() {
                     instance = Room.databaseBuilder(
                         context.applicationContext,
                         FormulasDatabase::class.java, "formulas.db"
-                    ).build()
+                    ).fallbackToDestructiveMigration().build()
                 }
             }
             return instance!!
