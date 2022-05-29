@@ -62,7 +62,7 @@ class TimerFragment : BaseFragment<FragmentTimerBinding>(FragmentTimerBinding::i
     private fun initNavigationButtons() {
         binding.apply {
             navigationButtons.also {
-                it[0] = this.timerPreviousButton
+                it[0] = this.timerPreviousButtonContainer
                 it[1] = this.timerAboutButton
             }
         }

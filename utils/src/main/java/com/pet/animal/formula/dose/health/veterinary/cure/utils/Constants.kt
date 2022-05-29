@@ -2,14 +2,23 @@ package com.pet.animal.formula.dose.health.veterinary.cure.utils
 
 const val CICERONE_NAME: String = "cicerone"
 const val MAIN_ACTIVITY_NAME: String = "MainActivity"
+
 class FragmentScope() {
     companion object{
-        const val  SHOW_PHARMACY_SURFACE_FRAGMENT_SCOPE = "SHOW_PHARMACY_SURFACE_FRAGMENT_SCOPE"
-        const val  SHOW_PHARMACY_SURFACE_RESULT_FRAGMENT_SCOPE =
+        const val SHOW_PHARMACY_SURFACE_FRAGMENT_SCOPE = "SHOW_PHARMACY_SURFACE_FRAGMENT_SCOPE"
+        const val SHOW_PHARMACY_SURFACE_RESULT_FRAGMENT_SCOPE =
             "SHOW_PHARMACY_SURFACE_RESULT_FRAGMENT_SCOPE"
-        const val  SHOW_PHARMACY_DOSE_FRAGMENT_SCOPE = "SHOW_PHARMACY_DOSE_FRAGMENT_SCOPE"
+        const val SHOW_PHARMACY_DOSE_FRAGMENT_SCOPE = "SHOW_PHARMACY_DOSE_FRAGMENT_SCOPE"
     }
 }
+
+const val SHARED_PREFERENCES_KEY: String = "Shared Preferences"
+const val SHARED_PREFERENCES_THEME_KEY: String = "Shared Preferences Is Theme"
+
+// Тэги страниц нижнего окна
+const val TAG_VETMEDICAL_BOTTOM_WINDOW: String = "vetmadical"
+const val TAG_WSAVA_BOTTOM_WINDOW: String = "WSAVA"
+const val TAG_NOTE_BOTTOM_WINDOW: String = "note"
 
 // Названия типизированных формул для класса TypedFormula()
 const val PHARMACY_SURFACE_DOG_BODYSURFACEAREA_NAME = "DOG surface area"
@@ -44,6 +53,7 @@ const val ADDSECOND_INDEX = 1
 enum class ThemesNames {
     // Светлая тема
     DAY,
+
     // Тёмная тема
     NIGHT
 }
@@ -63,6 +73,7 @@ enum class ScreenType {
     PHARMACY_DOSES,                         // При переводе (ordinal) в Int соответствует номеру 6
     PHARMACY_CRI,                           // При переводе (ordinal) в Int соответствует номеру 7
     PHARMACY_SURFACE,                       // При переводе (ordinal) в Int соответствует номеру 8
+
     // Типы формул для раздела CALCULATOR
     CALCULATOR                              // При переводе (ordinal) в Int соответствует номеру 9
 }
