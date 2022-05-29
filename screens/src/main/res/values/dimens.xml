@@ -247,5 +247,4 @@
     <dimen name="settings_surface_button_container_padding_bottom">10dp</dimen>
     <dimen name="pharmacy_surface_previous_text_vertical_bias">0.466</dimen>
     <dimen name="pharmacy_dose_previous_text_vertical_bias">0.466</dimen>
-    <dimen name="input_manual_count_ems">10</dimen>
 </resources>
