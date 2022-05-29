@@ -18,10 +18,11 @@ class PharmacySurfaceInteractorImpl(
     private val settings: SettingsImpl = KoinJavaComponent.getKoin().get()
     // Фейковый (временный) репозиторий
     private val fakeRepositoryImpl: FakeRepositoryImpl = KoinJavaComponent.getKoin().get()
+    // Репозиторий с базой данной
     private val repositoryImpl: Repository = KoinJavaComponent.getKoin().get()
+    // Класс для доступа к ресурсам
     private val resourcesProviderImpl: ResourcesProviderImpl = KoinJavaComponent.getKoin().get()
     //endregion
-
 
     // Получение данных полей окна, если они были сохранены ранее
     override suspend fun getData(): AppState {
@@ -76,7 +77,7 @@ class PharmacySurfaceInteractorImpl(
                 formulaForDB,
                 screenType.ordinal,
                 values.count(),
-                listsAddFirstSecond[0],
+                if (listsAddFirstSecond.isNotEmpty()) listsAddFirstSecond[0] else 0,
                 if (listsAddFirstSecond.size > 1) listsAddFirstSecond[1] else 0
             )
             // Корректно работает

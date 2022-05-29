@@ -53,28 +53,17 @@ class MainActivity: AppCompatActivity() {
     private var clicked = false
     // Ленивая инициализация анимаций для FAB
     private val rotateOpen: Animation by lazy {
-        AnimationUtils.loadAnimation(
-            this,
-            R.anim.rotate_open_anim
-        )
+        AnimationUtils.loadAnimation(this, R.anim.rotate_open_anim)
     }
     private val rotateClose: Animation by lazy {
-        AnimationUtils.loadAnimation(
-            this,
-            R.anim.rotate_close_anim
-        )
+        AnimationUtils.loadAnimation(this, R.anim.rotate_close_anim)
     }
     private val fromBottom: Animation by lazy {
-        AnimationUtils.loadAnimation(
-            this,
-            R.anim.from_bottom_anim
+        AnimationUtils.loadAnimation(this, R.anim.from_bottom_anim
         )
     }
     private val toBottom: Animation by lazy {
-        AnimationUtils.loadAnimation(
-            this,
-            R.anim.to_bottom_anim
-        )
+        AnimationUtils.loadAnimation(this, R.anim.to_bottom_anim)
     }
     //endregion
 
@@ -96,7 +85,9 @@ class MainActivity: AppCompatActivity() {
         } else {
             this.viewModel.router.navigateTo(this.viewModel.screens.mainScreen())
         }
+        // Установка событий при нажатии на кнопки FAB
         onClickFab()
+        // Отображение содержимого окна
         setContentView(binding.root)
     }
 
@@ -106,7 +97,7 @@ class MainActivity: AppCompatActivity() {
             getSharedPreferences(SHARED_PREFERENCES_KEY,
                 AppCompatActivity.MODE_PRIVATE
             )
-        var sharedPreferencesEditor: SharedPreferences.Editor = sharedPreferences.edit()
+        val sharedPreferencesEditor: SharedPreferences.Editor = sharedPreferences.edit()
         sharedPreferencesEditor.putBoolean(SHARED_PREFERENCES_THEME_KEY, isTheme)
         sharedPreferencesEditor.apply()
     }

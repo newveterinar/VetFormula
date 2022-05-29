@@ -32,6 +32,7 @@ const val PHARMACY_SURFACE_HORSEEXCEPTLOMUSTIN_BODYSURFACEAREA_NAME =
 const val PHARMACY_SURFACE_HORSEONLYLOMUSTIN_BODYSURFACEAREA_NAME = "HORSEONLYLOMUSTIN surface area"
 const val PHARMACY_SURFACE_RAT_BODYSURFACEAREA_NAME = "RAT surface area"
 const val PHARMACY_SURFACE_MOUSE_BODYSURFACEAREA_NAME = "MOUSE surface area"
+const val PHARMACY_DOSES_NAME = "DOSES formula"
 
 // Индексы в массиве addFirstSecond типа Int для класса TypedFormula()
 const val PHARMACY_SURFACE_DOG_INDEX = 0
@@ -44,6 +45,7 @@ const val PHARMACY_SURFACE_HORSEEXCEPTLOMUSTIN_INDEX = 6
 const val PHARMACY_SURFACE_HORSEONLYLOMUSTIN_INDEX = 7
 const val PHARMACY_SURFACE_RAT_INDEX = 8
 const val PHARMACY_SURFACE_MOUSE_INDEX = 9
+const val PHARMACY_DOSES_INDEX = 10
 
 // Индексы в массиве addFirstSecond
 const val ADDFIRST_INDEX = 0
@@ -53,7 +55,6 @@ const val ADDSECOND_INDEX = 1
 enum class ThemesNames {
     // Светлая тема
     DAY,
-
     // Тёмная тема
     NIGHT
 }
@@ -73,7 +74,6 @@ enum class ScreenType {
     PHARMACY_DOSES,                         // При переводе (ordinal) в Int соответствует номеру 6
     PHARMACY_CRI,                           // При переводе (ordinal) в Int соответствует номеру 7
     PHARMACY_SURFACE,                       // При переводе (ordinal) в Int соответствует номеру 8
-
     // Типы формул для раздела CALCULATOR
     CALCULATOR                              // При переводе (ordinal) в Int соответствует номеру 9
 }
