@@ -112,7 +112,7 @@ fun List<Int>.convertAddFirstSecondToTypedFormulaName(screenType: ScreenType): S
         ScreenType.HEMATOLOGY_BLOOD -> {}
         ScreenType.HEMATOLOGY_FLEBOTOMY -> {}
             // Типы формул для раздела PHARMACY
-        ScreenType.PHARMACY_DOSES -> {}
+        ScreenType.PHARMACY_DOSES -> resultTypedFormulaName = PHARMACY_DOSES_NAME
         ScreenType.PHARMACY_CRI -> {}
         ScreenType.PHARMACY_SURFACE -> {
             if (this[ADDFIRST_INDEX] == PHARMACY_SURFACE_DOG_INDEX)

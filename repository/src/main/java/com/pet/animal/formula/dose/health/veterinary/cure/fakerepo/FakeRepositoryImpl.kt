@@ -14,9 +14,55 @@ class FakeRepositoryImpl: FakeRepository {
         return when (screenType) {
             ScreenType.PHARMACY_SURFACE ->
                 pharmacySurfaceFormula(screenType,listsAddFirstSecond)
+            ScreenType.PHARMACY_DOSES ->
+                pharmacyDosesFormula(screenType,listsAddFirstSecond)
             else -> Formula()
         }
     }
+
+    // Задание формулы для окна PHARMACY_DOSES
+    private fun pharmacyDosesFormula(
+         screenType: ScreenType, listsAddFirstSecond: List<Int>): Formula {
+        /** Задание переменных */ //region
+        // Результирующая формула
+        val pharmacyDosesFormula: Formula = Formula()
+        // Типизированное имя запрошенной формулы
+        val askedTypedName: String =
+            listsAddFirstSecond.convertAddFirstSecondToTypedFormulaName(screenType)
+        //endregion
+
+        when {
+            //region Типизированные формулы для окна PHARMACY_DOSES
+            askedTypedName.contains(PHARMACY_DOSES_NAME) -> {
+                pharmacyDosesFormula.addTypedFormula(
+                    TypedFormula(
+                        PHARMACY_DOSES_NAME,
+                        mutableListOf(
+                            Element(Command.NO_COMMAND.index(), 1),
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.NO_COMMAND.index(), 2),
+                            Element(Command.DIVIDE.index(), 0),
+                            Element(Command.NO_COMMAND.index(), 3)
+                        )
+                    )
+                )
+                pharmacyDosesFormula.addTypedFormula(
+                    TypedFormula(
+                        PHARMACY_DOSES_NAME,
+                        mutableListOf(
+                            Element(Command.NO_COMMAND.index(), 1),
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.NO_COMMAND.index(), 2),
+                        )
+                    )
+                )
+            }
+        }
+        //endregion
+        return pharmacyDosesFormula
+    }
+
+    // Задание формулы для окна PHARMACY_SURFACE
     private fun pharmacySurfaceFormula(
         screenType: ScreenType, listsAddFirstSecond: List<Int>): Formula {
         /** Задание переменных */ //region
@@ -28,7 +74,7 @@ class FakeRepositoryImpl: FakeRepository {
         //endregion
 
         when {
-            //region Формулы для окна PHARMACY_SURFACE
+            //region Типизированные формулы для окна PHARMACY_SURFACE
             askedTypedName.contains(PHARMACY_SURFACE_DOG_BODYSURFACEAREA_NAME) ->
                 pharmacySurfaceFormula.addTypedFormula(TypedFormula(
                     PHARMACY_SURFACE_DOG_BODYSURFACEAREA_NAME,
