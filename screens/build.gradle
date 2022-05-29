@@ -5,7 +5,7 @@ apply plugin: 'org.jetbrains.kotlin.android'
 // Подключение плагина для работы с аннотациями (нужно для Room)
 apply plugin: 'kotlin-kapt'
 // Подключение плагина для удобной парселизации
-apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-parcelize'
 
 android {
     compileSdk 32
@@ -54,6 +54,7 @@ dependencies {
     //Design
     implementation libs.design.material
     implementation libs.design.constrlayout
+
     // Tests
     // Core
     testImplementation libs.tests.junit
@@ -110,10 +111,11 @@ dependencies {
     implementation libs.retrofit.interceptor */
     // Room
 /*    implementation libs.room.runtime
-    implementation libs.room.compiler
+    kapt libs.room.compiler
+    implementation libs.room.ktx
+    implementation libs.room.gson
     implementation libs.room.m1Support
-    implementation libs.room.rxJava3
-    implementation libs.room.ktx */
+    implementation libs.room.rxJava3 */
     // Coroutines
 //    implementation libs.coroutines.android
     // Koin

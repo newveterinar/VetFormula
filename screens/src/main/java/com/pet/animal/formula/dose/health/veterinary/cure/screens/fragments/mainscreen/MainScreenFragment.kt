@@ -1,75 +1,74 @@
-package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.mainscreen
-
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.ImageView
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModel
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import com.github.terrakok.cicerone.Router
+import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentMainscreenBinding
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator.AppScreensImpl
-import org.koin.java.KoinJavaComponent
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.mainscreen.MainScreenFragmentViewModel
 
-class MainScreenFragment: Fragment() {
+class MainScreenFragment :
+    BaseFragment<FragmentMainscreenBinding>(FragmentMainscreenBinding::inflate) {
     /** Задание переменных */ //region
-        // Binding
-    private var _binding: FragmentMainscreenBinding? = null
-    private val binding: FragmentMainscreenBinding
-        get() {
-            return _binding!!
-        }
-        // Навигация
-    private val screens: AppScreensImpl = KoinJavaComponent.getKoin().get()
-    private val router: Router = KoinJavaComponent.getKoin().get()
-    lateinit var buttonToPharmacySurfaceScreen: ConstraintLayout
-    lateinit var buttonToAboutScreen: ImageView
-        // ViewModel
-    lateinit var model: ViewModel
+
+    // Навигация
+    private val navigationButtons = arrayOfNulls<View>(size = 8)
+
+    // ViewModel
+    private lateinit var viewModel: MainScreenFragmentViewModel
     //endregion
 
-    companion object {
-        fun newInstance(): MainScreenFragment = MainScreenFragment()
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        _binding = FragmentMainscreenBinding.inflate(inflater, container, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         // Инициализация кнопок
-        initButtons()
+        initNavigationButtons()
         // Инициализация ViewModel
         initViewModel()
-
-        return binding.root
-    }
-
-    // Очистка Binding при уничтожении фрагмента
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
     }
 
     // Инициализация кнопок
-    fun initButtons() {
-        buttonToPharmacySurfaceScreen = binding.pharmacySurfaceButtonContainer
-        buttonToPharmacySurfaceScreen.setOnClickListener {
-            router.navigateTo(screens.pharmacySurfaceScreen())
+    private fun initNavigationButtons() {
+        binding.apply {
+            navigationButtons.also {
+                it[0] = this.pharmacySurfaceButtonContainer
+                it[1] = this.fluidsSurfaceButtonContainer
+                it[2] = this.hematologySurfaceButtonContainer
+                it[3] = this.conversionsSurfaceButtonContainer
+                it[4] = this.settingsButton
+                it[5] = this.calculatorSurfaceButtonContainer
+                it[6] = this.pharmacyAboutButton
+                it[7] = this.timerSurfaceButtonContainer
+            }
+
         }
-        buttonToAboutScreen = binding.pharmacyAboutButton
-        buttonToAboutScreen.setOnClickListener {
-            router.navigateTo(screens.aboutScreen())
+
+        navigationButtons.forEachIndexed { index, button ->
+            button?.setOnClickListener {
+                when (index) {
+                    0 -> viewModel.router.navigateTo(viewModel.screens.pharmacyScreen())
+                    1 -> viewModel.router.navigateTo(viewModel.screens.fluidsScreen())
+                    2 -> viewModel.router.navigateTo(viewModel.screens.hematologyScreen())
+                    3 -> viewModel.router.navigateTo(viewModel.screens.conversionsScreen())
+                    4 -> viewModel.router.navigateTo(viewModel.screens.settingsScreen())
+                    5 -> viewModel.router.navigateTo(viewModel.screens.calculatorScreen())
+                    6 -> viewModel.router.navigateTo(viewModel.screens.aboutScreen())
+                    7 -> viewModel.router.navigateTo(viewModel.screens.timerScreen())
+                    else -> {
+                        Toast.makeText(requireContext(), requireActivity().resources.getString(
+                            R.string.error_button_is_not_assigned), Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
         }
     }
 
     // Инициализация ViewModel
-    fun initViewModel() {
-        model = ViewModelProvider(this).get(MainScreenFragmentViewModel::class.java)
+    private fun initViewModel() {
+        viewModel = ViewModelProvider(this).get(MainScreenFragmentViewModel::class.java)
+    }
+
+    companion object {
+        fun newInstance(): MainScreenFragment = MainScreenFragment()
     }
 }

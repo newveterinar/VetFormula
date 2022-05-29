@@ -1,14 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Сообщения об ошибках -->
+    <string name="error_appstate_not_loaded_for_fragment">Error: The data for the fragment is not loaded</string>
+    <string name="error_button_is_not_assigned">Error: The button is not assigned</string>
+    <string name="error_not_inserted_weight_animal">Please enter a number > 0</string>
+
+    <!-- Ресурсы макета -->
     <string name="about_surface_button_text_text">ABOUT\nVetFormula</string>
     <string name="about_text_text">INFORMATION</string>
     <string name="pharmacy_button_text_text">Pharmacy</string>
     <string name="pharmacy_previous_text_text">Pharmacy</string>
     <string name="pharmacy_surface_button_text_text">Surface\nArea</string>
     <string name="pharmacy_surface_previous_text_text">Body surface area</string>
-    <string name="pharmacy_calculate_button_text">CALCULATE</string>
+    <string name="pharmacy_calculate_button_text">Calculate</string>
     <string name="pharmacy_result_previous_text_text">Result</string>
+    <string name="pharmacy_about_button_hints">ABOUT\nVetFormula</string>
     <string name="about_logo_text">Information</string>
     <string name="pharmacy_logo_text">VetFormula</string>
-    <string name="pharmacy_result_text_text">100</string>
+    <string name="fluids_button_text_text">Fluids</string>
+    <string name="fluids_button_surface_text_text">Basic</string>
+    <string name="fluids_previous_text_text">Fluids</string>
+    <string name="hematology_button_text_text">Hematology</string>
+    <string name="hematology_previous_text_text">Hematology</string>
+    <string name="hematology_button_surface_text_text">Transfusion</string>
+    <string name="conversions_previous_text_text">Conversions</string>
+    <string name="conversions_button_text_text">Conversions</string>
+    <string name="conversions_button_surface_text_text">Temperature</string>
+    <string name="settings_previous_text_text">Settings</string>
+    <string name="settings_button_text_text">Settings</string>
+    <string name="settings_button_surface_text_text">SomeSettings</string>
+    <string name="settings_language_text">Language</string>
+    <string name="calculator_previous_text_text">Calculator</string>
+    <string name="calculator_button_text_text">Calculator</string>
+    <string name="calculator_button_surface_text_text">Calculate</string>
+    <string name="pharmacy_clear_button_text_text">C</string>
+    <string name="pharmacy_type_animal_title_text">Animal type</string>
+    <string name="pharmacy_weight_animal_title_text">Weight</string>
+    <string name="pharmacy_weight_textinputlayout_textfield_hint">Animal weight</string>
+    <string name="pharmacy_dose_animal_title_text">Dose</string>
+    <string name="pharmacy_dose_textinputlayout_textfield_hint">Amount</string>
+    <string name="pharmacy_concentration_animal_title_text">Specify concentration</string>
+    <string name="pharmacy_concentration_textinputlayout_textfield_hint">Concentration value</string>
+    <string name="pharmacy_fluids_textinputlayout_textfield_hint">Amount</string>
+    <string name="pharmacy_fluids_animal_title_text">Amount</string>
+    <string name="pharmacy_drop_textinputlayout_textfield_hint">No Giving Set</string>
+    <string name="pharmacy_drop_animal_title_text">Giving Set</string>
+    <string name="pharmacy_dose_button_text_text">Pharmacy Doses</string>
+    <string name="pharmacy_cri_button_text_text">Pharmacy CRI</string>
+    <string name="pharmacy_cri_previous_text_text">PharmacyCRI</string>
+    <string name="pharmacy_dose_previous_text_text">PharmacyDose</string>
+    <string name="pharmacy_speed_animal_title_text">Rate</string>
+    <string name="pharmacy_speed_textinputlayout_textfield_hint">Rate</string>
+    <string name="tickCaption">tick/min</string>
+    <string name="captionStopTimer">Stop timer</string>
+    <string name="captionStartTimer">Start timer</string>
+    <string name="timer_button_text_text">Timer</string>
+    <string name="doses_result_text_text">100</string>
+    <string name="timerText_text">00:00</string>
+    <string name="startTimerButton_text">Run stop-watch</string>
+    <string name="inputManualCount_text">0</string>
+    <string name="textView3_text">Enter the number of measurements</string>
+    <string name="tickInMinutes_text">0.00</string>
+    <string name="buttonResetTickCounter_text">Reset tick counter</string>
+    <string name="timer_previous_text_text">Timer</string>
+    <string name="light_theme">Light Theme</string>
+    <string name="dark_theme">Dark Theme</string>
+    <string name="theme">Theme</string>
+    <string name="pharmacy_help_info_text">Fill in all numeric fields before calculating!</string>
+    <string name="pharmacy_result_title_text">Body surface area</string>
+
+    <!-- Типы ресурсов для ввода данных -->
+    <!--    Порядок размерностей в ресурсах для каждого числового поля не менять -->
+        <!-- Исходные данные типа addFirstSecond -->
+    <string-array name="addFirstSecond_animal_type_list">
+        <item>Dog</item>
+        <item>Cat</item>
+        <item>Rabbit</item>
+        <item>Polecat</item>
+        <item>Guinea Pig</item>
+        <item>Hamster</item>
+        <item>Horse (except CCNU)</item>
+        <item>Horse (only CCNU)</item>
+        <item>Rat</item>
+        <item>Mouse</item>
+    </string-array>
+    <string-array name="addFirstSecond_giving_set_drop_list">
+        <item>No Giving Set</item>
+        <item>20 drops/ml</item>
+        <item>60 drops/ml</item>
+    </string-array>
+
+        <!-- Исходные данные типа размерностей вводимых численных значений -->
+    <string-array name="input_data_dimension_weight_animal_list">
+        <item>kg</item>
+        <item>g</item>
+    </string-array>
+    <string-array name="input_data_dimension_mass_dose_per_kg_list">
+        <item>µg</item>
+        <item>mg</item>
+        <item>g</item>
+        <item>mEq</item>
+        <item>U</item>
+    </string-array>
+    <string-array name="input_data_dimension_mass_dose_per_kg_per_time_list">
+        <item>µg/kg/min</item>
+        <item>mg/kg/min</item>
+        <item>g/kg/min</item>
+        <item>µg/kg/h</item>
+        <item>mg/kg/h</item>
+        <item>g/kg/h</item>
+    </string-array>
+    <string-array name="input_data_dimension_volume_dose_per_kg_per_time_list">
+        <item>ml/kg/h</item>
+        <item>μl/kg/h</item>
+        <item>ml/kg/min</item>
+        <item>μl/kg/min</item>
+    </string-array>
+    <string-array name="input_data_dimension_concentration_list">
+        <item>µg/ml</item>
+        <item>mg/ml</item>
+        <item>g/ml</item>
+        <item>mEq/ml</item>
+        <item>U/ml</item>
+        <item>µg/g</item>
+        <item>mg/g</item>
+        <item>g/g</item>
+        <item>weight/volume</item>
+    </string-array>
+    <string-array name="input_data_dimension_volume_list">
+        <item>ml</item>
+        <item>μl</item>
+    </string-array>
+
+        <!-- Результирующие данные типа размерностей расчётных численных значений -->
+    <string name="output_data_dimension_length">m</string>
+    <string name="output_data_dimension_mass">kg</string>
+    <string name="output_data_dimension_time">s</string>
+    <string name="output_data_dimension_square_length">m2</string>
+    
+    <!-- Ресурсы для смены языка приложения -->
+    <string name="language_english" translatable="false">English</string>
+    <string name="language_russian" translatable="false">Русский</string>
+    <string-array name="language_list">
+        <item>@string/language_english</item>
+        <item>@string/language_russian</item>
+    </string-array>
 </resources>

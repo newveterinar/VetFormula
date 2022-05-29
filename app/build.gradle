@@ -5,7 +5,7 @@ plugins {
     // Подключение плагина для работы с аннотациями (нужно для Room)
     id 'kotlin-kapt'
     // Подключение плагина для удобной парселизации
-    id 'kotlin-android-extensions'
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -39,6 +39,12 @@ android {
     buildFeatures {
         viewBinding true
     }
+
+    bundle {
+        language {
+            enableSplit = false
+        }
+    }
 }
 
 //region Подключение модулей и библиотек
@@ -60,13 +66,14 @@ dependencies {
     // Tests
     // Core
     testImplementation libs.tests.junit
-    androidTestImplementation libs.tests.ext // Нужно для работы AndroidJUnit4 в инструментальных-тестах
+    androidTestImplementation libs.tests.ext
+    // Нужно для работы AndroidJUnit4 в инструментальных-тестах
     androidTestImplementation libs.tests.espressocore
     implementation fileTree(dir: libs.tests.filetreedir, include: libs.tests.filetreeinclude)
     // Mockito
     testImplementation libs.tests.mockitocore
     testImplementation libs.tests.mockitoinline
-    testImplementation (libs.tests.mockitokotlin) {
+    testImplementation(libs.tests.mockitokotlin) {
         exclude group: 'org.jetbrains.kotlin'
         exclude group: 'org.mockito'
     }
@@ -112,11 +119,13 @@ dependencies {
 //    implementation libs.retrofit.rxJava3 // одновременно с rxJava2 не включать
     implementation libs.retrofit.interceptor */
     // Room
+    // Room
 /*    implementation libs.room.runtime
-    implementation libs.room.compiler
+    kapt libs.room.compiler
+    implementation libs.room.ktx
+    implementation libs.room.gson
     implementation libs.room.m1Support
-    implementation libs.room.rxJava3
-    implementation libs.room.ktx */
+    implementation libs.room.rxJava3 */
     // Coroutines
 //    implementation libs.coroutines.android
     // Koin
@@ -131,5 +140,7 @@ dependencies {
     // Koin for Tests
     testImplementation libs.koin.testsandroidx
     testImplementation libs.koin.testsio
+
+
 }
 //endregion
