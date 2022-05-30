@@ -2,7 +2,6 @@ package com.pet.animal.formula.dose.health.veterinary.cure.utils.functions
 
 import android.widget.EditText
 import android.widget.Spinner
-import android.widget.Toast
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.*
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.dimension.inputDataDimensionConverter
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.resources.ResourcesProviderImpl
@@ -53,6 +52,7 @@ fun MutableList<EditText>.convertListEditTextToListDouble(
     checkDimension: Spinner?
 ): List<Double> {
     /** Задание переменных */ //region
+    // Получение доступа к ресурсам
     val resourcesProviderImpl: ResourcesProviderImpl = KoinJavaComponent.getKoin().get()
     //endregion
 

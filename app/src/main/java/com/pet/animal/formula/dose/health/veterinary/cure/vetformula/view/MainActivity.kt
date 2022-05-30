@@ -79,11 +79,15 @@ class MainActivity: AppCompatActivity() {
         params = guideLine.layoutParams as ConstraintLayout.LayoutParams
         // Установка темы приложения
         setApplicationTheme()
-        // Установка начального или текущего экрана приложения
+        // Отслеживание первого или последующего запусков MainActivity
         if (savedInstanceState != null) {
+            // Установка текущего экрана приложения
             navigatorHolder.setNavigator(navigator)
         } else {
+            // Установка начального экрана приложения
             this.viewModel.router.navigateTo(this.viewModel.screens.mainScreen())
+            // Заполнение базы данных, если приложение запущено в первый раз
+            this.viewModel.writeDataToBDAtFirstRun()
         }
         // Установка событий при нажатии на кнопки FAB
         onClickFab()
