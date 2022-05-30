@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="windows_slider_container_width">20dp</dimen>
+    <dimen name="bottom_activity_fragments_container_height">0dp</dimen>
+    <dimen name="activity_fragments_container_height">0dp</dimen>
+    <dimen name="windows_slider_max_value">1.0</dimen>
+    <dimen name="windows_slider_value">0.01</dimen>
+    <dimen name="windows_slider_value_from">0.01</dimen>
+    <dimen name="windows_slider_value_to">100.0</dimen>
+    <dimen name="windows_slider_start_angle">270.0</dimen>
+    <dimen name="fab_text_margin_bottom">12dp</dimen>
+    <dimen name="fab_web_margin_bottom">16dp</dimen>
+    <dimen name="fab_main_margin_bottom">24dp</dimen>
+</resources>
