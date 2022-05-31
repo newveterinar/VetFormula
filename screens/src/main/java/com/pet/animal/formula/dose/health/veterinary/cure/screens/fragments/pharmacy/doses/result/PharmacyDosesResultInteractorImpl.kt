@@ -8,7 +8,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.settings.SettingsImpl
 import org.koin.java.KoinJavaComponent
 
-class PharmacyDosesInteractorImpl(
+class PharmacyDosesResultInteractorImpl(
     private val viewModel: PharmacyDosesFragmentViewModel
 ): Interactor<AppState> {
     /** Задание переменных */ //region

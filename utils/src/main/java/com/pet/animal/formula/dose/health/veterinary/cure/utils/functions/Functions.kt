@@ -106,7 +106,7 @@ fun List<Int>.convertAddFirstSecondToTypedFormulaName(screenType: ScreenType): S
         ScreenType.FLUIDS_BASIC -> {}
         ScreenType.FLUIDS_KOMPREHENSIVE -> {}
         ScreenType.FLUIDS_K_INFUSION -> {}
-            // Типы формул для раздела CONVERSTION
+            // Типы формул для раздела CONVERSION
         ScreenType.CONVERSION_UNITS -> {}
             // Типы формул для раздела HEMATOLOGY
         ScreenType.HEMATOLOGY_BLOOD -> {}

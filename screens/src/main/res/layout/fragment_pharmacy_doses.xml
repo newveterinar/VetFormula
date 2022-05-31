@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/colorPrimary">
@@ -134,7 +135,11 @@
                         android:id="@+id/pharmacy_weight_textinputlayout"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="@dimen/pharmacy_weight_textinputlayout_margin_start">
+                        android:layout_marginStart="@dimen/pharmacy_weight_textinputlayout_margin_start"
+                        app:errorTextColor="@color/red"
+                        app:errorIconTintMode="src_atop"
+                        app:errorIconTint="@color/red"
+                        app:boxStrokeErrorColor="@color/red" >
 
                         <EditText
                             android:id="@+id/pharmacy_weight_textinputlayout_textfield"
@@ -142,7 +147,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:hint="@string/pharmacy_weight_textinputlayout_textfield_hint"
-                            android:inputType="number|numberDecimal" />
+                            android:inputType="number|numberDecimal"
+                            tools:ignore="TouchTargetSizeCheck" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -158,13 +164,13 @@
 
                     <androidx.appcompat.widget.AppCompatSpinner
                         android:id="@+id/pharmacy_weight_dimension_list"
-                        android:tag="WEIGHT_ANIMAL"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_centerInParent="true"
                         android:entries="@array/input_data_dimension_weight_animal_list"
                         android:gravity="center"
                         android:singleLine="false"
+                        android:tag="WEIGHT_ANIMAL"
                         android:textAlignment="center"
                         android:theme="@style/SpinnerDimensions"
                         android:visibility="visible"
@@ -204,7 +210,11 @@
                         android:id="@+id/pharmacy_dose_textinputlayout"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="@dimen/pharmacy_dose_textinputlayout_margin_start">
+                        android:layout_marginStart="@dimen/pharmacy_dose_textinputlayout_margin_start"
+                        app:errorTextColor="@color/red"
+                        app:errorIconTintMode="src_atop"
+                        app:errorIconTint="@color/red"
+                        app:boxStrokeErrorColor="@color/red" >
 
                         <EditText
                             android:id="@+id/pharmacy_dose_textinputlayout_textfield"
@@ -212,9 +222,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:hint="@string/pharmacy_dose_textinputlayout_textfield_hint"
-                            android:inputType="number|numberDecimal" />
+                            android:inputType="number|numberDecimal"
+                            tools:ignore="TouchTargetSizeCheck" />
                     </com.google.android.material.textfield.TextInputLayout>
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <RelativeLayout
@@ -228,12 +238,12 @@
 
                     <androidx.appcompat.widget.AppCompatSpinner
                         android:id="@+id/pharmacy_dose_dimension_list"
-                        android:tag="MASS_DOSE_PER_KG"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:entries="@array/input_data_dimension_mass_dose_per_kg_list"
                         android:gravity="center"
                         android:singleLine="false"
+                        android:tag="MASS_DOSE_PER_KG"
                         android:textAlignment="center"
                         android:theme="@style/SpinnerDimensions"
                         android:visibility="visible"
@@ -276,7 +286,11 @@
                         app:errorEnabled="true"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:errorTextColor="@color/red"
+                        app:errorIconTintMode="src_atop"
+                        app:errorIconTint="@color/red"
+                        app:boxStrokeErrorColor="@color/red" >
 
                         <EditText
                             android:id="@+id/pharmacy_concentration_textinputlayout_textfield"
@@ -284,7 +298,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:hint="@string/pharmacy_concentration_textinputlayout_textfield_hint"
-                            android:inputType="number|numberDecimal" />
+                            android:inputType="number|numberDecimal"
+                            tools:ignore="TouchTargetSizeCheck" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -300,13 +315,13 @@
 
                     <androidx.appcompat.widget.AppCompatSpinner
                         android:id="@+id/pharmacy_concentration_dimension_list"
-                        android:tag="CONCENTRATION"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_centerInParent="true"
                         android:entries="@array/input_data_dimension_concentration_list"
                         android:gravity="center"
                         android:singleLine="false"
+                        android:tag="CONCENTRATION"
                         android:textAlignment="center"
                         android:theme="@style/SpinnerDimensions"
                         android:visibility="visible"
@@ -316,6 +331,17 @@
 
                 </RelativeLayout>
             </RelativeLayout>
+
+            <TextView
+                android:id="@+id/pharmacy_help_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pharmacy_help_info_margin_top"
+                android:text="@string/pharmacy_help_info_text"
+                app:layout_constraintBottom_toTopOf="@id/pharmacy_calculate_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/pharmacy_concentration_relative_layout" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/pharmacy_calculate_button"
@@ -331,7 +357,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/pharmacy_concentration_relative_layout" />
+                app:layout_constraintTop_toBottomOf="@id/pharmacy_help_info" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
