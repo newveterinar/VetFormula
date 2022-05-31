@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppState
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.ScreenData
-import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.ValueField
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.checkToExistCorrectDouble
 import kotlinx.coroutines.launch
@@ -30,12 +29,13 @@ class PharmacySurfaceFragmentViewModel: BaseViewModel<AppState>() {
             startInteractorGetData()
         }
     }
-    override fun saveData(screenType: ScreenType,
-                          listsAddFirstSecond: List<Int>,
-                          stringValues: List<String>,
-                          values: List<Double>,
-                          dimensions: List<Int>,
-                          isGoToResultScreen: Boolean) {
+    override fun saveData(
+        screenType: ScreenType,
+        listsAddFirstSecond: List<Int>,
+        stringValues: List<String>,
+        values: List<Double>,
+        dimensions: List<Int>,
+        isGoToResultScreen: Boolean) {
             viewModelCoroutineScope.launch {
                 startInteractorSetData(
                     screenType,

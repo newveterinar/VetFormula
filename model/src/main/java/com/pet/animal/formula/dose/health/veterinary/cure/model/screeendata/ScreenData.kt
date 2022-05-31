@@ -2,6 +2,8 @@ package com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata
 
 class ScreenData() {
     /** Исходные данные */ //region
+    // Тип окна, для которого сохранены данные
+    var screenTypeIndex: Int = -1
     // Исходные данные для проведения расчётов
     var listsAddFirstSecond: MutableList<Int> = mutableListOf()
     var valueFields: MutableList<ValueField> = mutableListOf()

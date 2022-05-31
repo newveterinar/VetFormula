@@ -40,21 +40,15 @@ class SettingsImpl: Settings {
                                stringValues: List<String>,
                                values: List<Double>,
                                dimensions: List<Int>) {
-        when(screenType) {
-            // Окно PharmacySurface
-            ScreenType.PHARMACY_SURFACE -> {
-                inputedScreenData.listsAddFirstSecond.clear()
-                listsAddFirstSecond.forEach {
-                    inputedScreenData.listsAddFirstSecond.add(it)
-                }
-                inputedScreenData.valueFields.clear()
-                stringValues.forEachIndexed { index, it ->
-                    inputedScreenData.valueFields.add(
-                        ValueField(it, values[index], dimensions[index]))
-                }
-            }
-            // Окно по умолчанию
-            else -> { /* TODO: Сделать действие по умолчанию */ }
+        inputedScreenData.screenTypeIndex = screenType.ordinal
+        inputedScreenData.listsAddFirstSecond.clear()
+        listsAddFirstSecond.forEach {
+            inputedScreenData.listsAddFirstSecond.add(it)
+        }
+        inputedScreenData.valueFields.clear()
+        stringValues.forEachIndexed { index, it ->
+            inputedScreenData.valueFields.add(
+                ValueField(it, values[index], dimensions[index]))
         }
     }
     // Получение исходных данных данных окна PharmacySurface
