@@ -36,14 +36,14 @@ class PharmacySurfaceFragmentViewModel: BaseViewModel<AppState>() {
         values: List<Double>,
         dimensions: List<Int>,
         isGoToResultScreen: Boolean) {
-            viewModelCoroutineScope.launch {
-                startInteractorSetData(
-                    screenType,
-                    listsAddFirstSecond,
-                    stringValues,
-                    values,
-                    dimensions,
-                    isGoToResultScreen)
+        viewModelCoroutineScope.launch {
+            startInteractorSetData(
+                screenType,
+                listsAddFirstSecond,
+                stringValues,
+                values,
+                dimensions,
+                isGoToResultScreen)
         }
     }
     override fun handleError(error: Throwable) {

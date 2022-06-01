@@ -46,7 +46,7 @@ class PharmacySurfaceInteractorImpl(
     private suspend fun loadAndSaveFormula(
         screenType: ScreenType,
         listsAddFirstSecond: List<Int>) {
-            settings.setFormula(repositoryImpl.getFormula(screenType, listsAddFirstSecond))
+        settings.setFormula(repositoryImpl.getFormula(screenType, listsAddFirstSecond))
     }
     //endregion
 }

@@ -249,4 +249,12 @@
     <dimen name="settings_surface_button_container_padding_bottom">10dp</dimen>
     <dimen name="pharmacy_surface_previous_text_vertical_bias">0.466</dimen>
     <dimen name="pharmacy_dose_previous_text_vertical_bias">0.466</dimen>
+    <dimen name="pharmacy_result_volume_title_margin_start">20dp</dimen>
+    <dimen name="pharmacy_result_volume_title_margin_top">20dp</dimen>
+    <dimen name="pharmacy_result_volume_text_margin_start">40dp</dimen>
+    <dimen name="pharmacy_result_volume_text_margin_end">40dp</dimen>
+    <dimen name="pharmacy_result_mass_title_margin_start">20dp</dimen>
+    <dimen name="pharmacy_result_mass_title_margin_top">20dp</dimen>
+    <dimen name="pharmacy_result_mass_title_text_margin_start">40dp</dimen>
+    <dimen name="pharmacy_result_mass_title_text_margin_end">40dp</dimen>
 </resources>
