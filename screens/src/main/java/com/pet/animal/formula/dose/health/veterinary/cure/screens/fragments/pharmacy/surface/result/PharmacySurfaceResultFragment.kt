@@ -145,21 +145,21 @@ class PharmacySurfaceResultFragment: BaseFragment<FragmentPharmacySurfaceResultB
         val initialString: String = "${screenData.resultValueField[indexData].value} " +
                 requireActivity().resources.getString(R.string.output_data_dimension_square_length)
         val result = SpannableString(initialString)
+        // Изменение формата размерности текста
         if (result.isNotEmpty()) {
-
-            //the symbol will be smaller then the number
+            //region Установка последнего символа в верхний регистр
             result.setSpan(
                 SuperscriptSpan(),
                 initialString.length - 1,
                 initialString.length,
                 Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
             )
-
             result.setSpan(
                 RelativeSizeSpan(SQUARE_TEXT_RELATIVE_SIZE),
                 initialString.length - 1,
                 initialString.length,
-                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+            //endregion
         }
         return result
     }

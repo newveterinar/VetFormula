@@ -2,6 +2,7 @@ package com.pet.animal.formula.dose.health.veterinary.cure.utils.functions
 
 import android.widget.EditText
 import android.widget.Spinner
+import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.ValueField
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.*
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.dimension.inputDataDimensionConverter
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.resources.ResourcesProviderImpl
@@ -71,6 +72,15 @@ fun MutableList<EditText>.convertListEditTextToListDouble(
         }
         resultList
     }
+}
+
+// Получение из списка MutableList<ValueField> списка List<Int> со значениями dimension
+fun MutableList<ValueField>.convertMutableListValueFieldToListIntDimension(): List<Int> {
+    val result: MutableList<Int> = mutableListOf()
+    this.forEach {
+        result.add(it.dimension)
+    }
+    return result
 }
 
 // Получение значения InputDataDimensionType из переменной типа String

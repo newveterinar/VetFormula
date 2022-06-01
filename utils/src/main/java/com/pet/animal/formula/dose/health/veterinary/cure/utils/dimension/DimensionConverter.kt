@@ -1,10 +1,7 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.utils.dimension
 
-import android.widget.Toast
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.InputDataDimensionType
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.OutputDataDimensionType
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.resources.ResourcesProviderImpl
-import org.koin.java.KoinJavaComponent
 
 // Конвертрер типов исходных данных
 fun inputDataDimensionConverter(
@@ -96,8 +93,6 @@ fun outputDataDimensionConverter(
     dimension: List<Int>
 ): Double {
     /** Задание переменных */ //region
-    // Получение доступа к ресурсам
-    val resourcesProviderImpl: ResourcesProviderImpl = KoinJavaComponent.getKoin().get()
     var result: Double = -1.0
     //endregion
 
@@ -105,36 +100,26 @@ fun outputDataDimensionConverter(
         OutputDataDimensionType.LENGTH -> result = currentResult * 1.0 // Имеет только академический смысл
         OutputDataDimensionType.SQUARE_LENGTH -> result = currentResult * 1.0 // PharmacySurfaceResult
         OutputDataDimensionType.VOLUME -> {
-            Toast.makeText(resourcesProviderImpl.context, "${dimension.size}", Toast.LENGTH_SHORT).show()
-            var mass: Double = -1.0
-            when(dimension[1]) {
-                0 -> mass = 1E+9
-                1 -> mass = 1E+6
-                2 -> mass = 1E+3
-                3 -> mass = 1.0
-                4 -> mass = 1.0
-                else -> mass = -1.0
-            }
-            result = when(dimension[2]) {
-                0 -> result * mass * (1E-6) / (1E-9)
-                1 -> result * mass * (1E-6) * (1E-6)
-                2 -> result * mass * (1E-6) * (1E-3)
-                3 -> result * mass * (1E-6) / 1.0
-                4 -> result * mass * (1E-6) / 1.0
-                5 -> result * mass * (1E-3) / (1E-9)
-                6 -> result * mass * (1E-3) / (1E-6)
-                7 -> result * mass * (1E-3) / (1E-3)
-                8 -> result * mass * (1E+2) / (1E-6)
+              result = when(dimension[2]) {
+                    0 -> currentResult * (1E+6)
+                    1 -> currentResult * (1E+6)
+                    2 -> currentResult * (1E+6)
+                    3 -> currentResult * 1.0
+                    4 -> currentResult * 1.0
+                    5 -> currentResult * (1E+3)
+                    6 -> currentResult * (1E+3)
+                    7 -> currentResult * (1E+3)
+                    8 -> currentResult * (1E-3)
                 else -> -1.0
             }
         }
         OutputDataDimensionType.MASS -> {
             result = when(dimension[1]) {
-                0 -> currentResult * (1E-3) * (1E+9)
-                1 -> currentResult * (1E-3) * (1E+6)
-                2 -> currentResult * (1E-3) * (1E+3)
-                3 -> currentResult * (1E-3) * 1
-                4 -> currentResult * (1E-3) * 1
+                0 -> currentResult * (1E+9)
+                1 -> currentResult * (1E+6)
+                2 -> currentResult * (1E+3)
+                3 -> currentResult * 1.0
+                4 -> currentResult * 1.0
                 else -> -1.0
             }
         }

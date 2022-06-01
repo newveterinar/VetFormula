@@ -76,6 +76,8 @@ class PharmacyDosesFragment:
         initButtons()
         // Инициализация ViewModel
         initViewModel()
+        // Настройка события обработки списков (должно быть в конце всех инициализаций)
+        setActionsFieldsAndLists()
     }
 
     // Инициализация текстовых полей
@@ -242,6 +244,48 @@ class PharmacyDosesFragment:
         }
         // Отображение ранее сохранённых значений в полях и списках окна
         viewModel.getData()
+    }
+
+    // Установка события при выборе элементов списков
+    private fun setActionsFieldsAndLists() {
+        listsAddFirstSecond.forEachIndexed { index, spinnerList ->
+            spinnerList.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
+                var selectCounter: Int = 0
+                override fun onItemSelected(
+                    parent: AdapterView<*>?, view: View?,
+                    position: Int, id: Long,
+                ) {
+                    // Сохранение текущего состояния всех числовых полей и списков
+                    if (selectCounter++ > 0) saveData(false)
+                }
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
+            }
+        }
+        listsDimensions.forEachIndexed { index, spinnerList ->
+            spinnerList.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
+                var selectCounter: Int = 0
+                override fun onItemSelected(
+                    parent: AdapterView<*>?, view: View?,
+                    position: Int, id: Long,
+                ) {
+                    // Сохранение текущего состояния всех числовых полей и списков
+                    if (selectCounter++ > 0) {
+                        if ((index == 1) && ((position == 3) || (position == 4))) {
+                            listsDimensions[2].setSelection(position)
+                        }
+                        if ((index == 2) && ((position == 3) || (position == 4))) {
+                            listsDimensions[1].setSelection(position)
+                        }
+                        // TODO Добавить синхронную смену 3 и 4 позиций у списков 1 и 2
+                        //  при снятии с какого-нибудь списка одного из этих значений
+
+                        // Сохранение состояния
+                        saveData(false)
+                    }
+                }
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
+            }
+        }
     }
 
     // Отображение изменения LiveData у viewModel

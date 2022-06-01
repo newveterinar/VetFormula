@@ -96,14 +96,14 @@
         <item>г</item>
     </string-array>
     <string-array name="input_data_dimension_mass_dose_per_kg_list">
-        <item>мгк</item>
+        <item>мкг</item>
         <item>мг</item>
         <item>г</item>
         <item>мЕк</item>
         <item>а.е.м</item>
     </string-array>
     <string-array name="input_data_dimension_mass_dose_per_kg_per_time_list">
-        <item>мгк/кг/мин</item>
+        <item>мкг/кг/мин</item>
         <item>мг/кг/мин</item>
         <item>г/кг/мин</item>
         <item>мгк/кг/ч</item>
@@ -117,7 +117,7 @@
         <item>мкл/кг/мин</item>
     </string-array>
     <string-array name="input_data_dimension_concentration_list">
-        <item>мгк/мл</item>
+        <item>мкг/мл</item>
         <item>мг/мл</item>
         <item>г/мл</item>
         <item>мЕк/мл</item>

@@ -7,15 +7,17 @@ import android.text.Spanned
 import android.text.style.RelativeSizeSpan
 import android.text.style.SuperscriptSpan
 import android.view.View
+import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppState
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.ScreenData
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentPharmacyDosesResultBinding
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.FragmentScope
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.SQUARE_TEXT_RELATIVE_SIZE
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.*
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertStringToInputDataDimensionType
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.settings.SettingsImpl
 import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
 import org.koin.java.KoinJavaComponent
@@ -27,10 +29,14 @@ class PharmacyDosesResultFragment:
     private val screenType: ScreenType = ScreenType.PHARMACY_DOSES
     // Навигация
     private val navigationButtons = arrayOfNulls<View>(size = 1)
+    // Элементы для вывода результирующей информации
+    private val resultsValueFields: MutableList<TextView> = mutableListOf()
     // ViewModel
     private lateinit var viewModel: PharmacyDosesResultFragmentViewModel
     // ShowPharmacyDosesResultFragmentScope
     private lateinit var showPharmacyDosesResultFragmentScope: Scope
+    // SettingsImpl
+    private val settings: SettingsImpl = KoinJavaComponent.getKoin().get()
     // newInstance для данного класса
     companion object {
         fun newInstance() = PharmacyDosesResultFragment()
@@ -57,6 +63,8 @@ class PharmacyDosesResultFragment:
         super.onViewCreated(view, savedInstanceState)
         // Инициализация кнопок
         initNavigationButtons()
+        // Инициализация элементов для вывода результирующей информации
+        initResultValueVields()
         // Инициализация ViewModel
         initViewModel()
     }
@@ -85,8 +93,17 @@ class PharmacyDosesResultFragment:
         }
     }
 
+    // Инициализация элементов для вывода результирующей информации
+    private fun initResultValueVields() {
+        // Очистка переменной
+        resultsValueFields.clear()
+        // Задание полей для вывода результирующей информации
+        resultsValueFields.add(binding.pharmacyResultVolumeText)
+        resultsValueFields.add(binding.pharmacyResultMassTitleText)
+    }
+
     // Инициализация ViewModel
-    fun initViewModel() {
+    private fun initViewModel() {
         val _viewModel: PharmacyDosesResultFragmentViewModel by
         showPharmacyDosesResultFragmentScope.inject()
         viewModel = _viewModel
@@ -115,10 +132,9 @@ class PharmacyDosesResultFragment:
             is AppState.Success -> {
                 appState.screenData.let {
                     if (!it.isGoToResultScreen) {
-                        binding.pharmacyResultVolumeText.text = createStringResult(it, 0)
-                        binding.pharmacyResultMassTitleText.text = createStringResult(it, 1)
-                        Toast.makeText(requireContext(),
-                            "${it.resultValueField[0].value}, ${it.resultValueField[1].value}", Toast.LENGTH_SHORT).show()
+                        resultsValueFields.forEachIndexed { index, resultValueField ->
+                            resultValueField.text = createStringResult(it, index, resultValueField)
+                        }
                     }
                 }
             }
@@ -139,25 +155,67 @@ class PharmacyDosesResultFragment:
     }
 
     // Подготовка строк с результами
-    private fun createStringResult(screenData: ScreenData, indexData: Int): SpannableString {
-        val initialString: String = "${screenData.resultValueField[indexData].value} " +
-                requireActivity().resources.getString(R.string.output_data_dimension_square_length)
-        val result = SpannableString(initialString)
-        if (result.isNotEmpty()) {
-
-            //the symbol will be smaller then the number
-            result.setSpan(
-                SuperscriptSpan(),
-                initialString.length - 1,
-                initialString.length,
-                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-            )
-
-            result.setSpan(
-                RelativeSizeSpan(SQUARE_TEXT_RELATIVE_SIZE),
-                initialString.length - 1,
-                initialString.length,
-                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+    private fun createStringResult(
+        screenData: ScreenData, indexData: Int, resultValueField: TextView): SpannableString {
+        var initialString: String = "${screenData.resultValueField[indexData].value}"
+        lateinit var result: SpannableString
+        // Изменение формата размерности текста
+        if (initialString.isNotEmpty()) {
+            when (resultValueField.tag) {
+                OutputDataDimensionType.LENGTH.toString() -> {
+                    result = SpannableString(initialString)
+                }
+                OutputDataDimensionType.SQUARE_LENGTH.toString() -> {
+                    initialString += " ${requireActivity().resources.getString(
+                        R.string.output_data_dimension_square_length)}"
+                    result = SpannableString(initialString)
+                    result.setSpan(
+                        SuperscriptSpan(),
+                        initialString.length - 1,
+                        initialString.length,
+                        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+                    )
+                    result.setSpan(
+                        RelativeSizeSpan(SQUARE_TEXT_RELATIVE_SIZE),
+                        initialString.length - 1,
+                        initialString.length,
+                        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+                    )
+                }
+                OutputDataDimensionType.VOLUME.toString() -> {
+                    val addString: String = requireActivity().resources.getStringArray(
+                        R.array.input_data_dimension_concentration_list)[
+                            settings.getInputedScreenData().valueFields[2].dimension]
+                    if (settings.getInputedScreenData().valueFields[2].dimension !=
+                        requireActivity().resources.getStringArray(
+                            R.array.input_data_dimension_concentration_list).size - 1)
+                    initialString +=
+                        " ${addString.substring(addString.lastIndexOf('/') + 1)}"
+                    else initialString += " ${requireActivity().resources.getStringArray(
+                        R.array.input_data_dimension_volume_list)[0]}"
+                    result = SpannableString(initialString)
+                }
+                OutputDataDimensionType.MASS.toString() -> {
+                    val addString: String = requireActivity().resources.getStringArray(
+                        R.array.input_data_dimension_mass_dose_per_kg_list)[
+                            settings.getInputedScreenData().valueFields[1].dimension]
+                    initialString += " $addString"
+                    result = SpannableString(initialString)
+                }
+                OutputDataDimensionType.TIME.toString() -> {
+                    result = SpannableString(initialString)
+                }
+                OutputDataDimensionType.RATE.toString() -> {
+                    result = SpannableString(initialString)
+                }
+                OutputDataDimensionType.ERROR_TYPE.toString() -> {
+                    result = SpannableString(initialString)
+                }
+                else -> {
+                    initialString = ""
+                    result = SpannableString(initialString)
+                }
+            }
         }
         return result
     }
