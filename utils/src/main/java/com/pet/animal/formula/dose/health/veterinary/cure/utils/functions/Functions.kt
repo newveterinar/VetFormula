@@ -10,7 +10,7 @@ import org.koin.java.KoinJavaComponent
 // Перевод строки типа String в число типа Double
 fun stringToDouble(text: String): Double {
     return if (text.isEmpty() || (text.indexOf(".") > -1 && (text.length == 1))) 0.0
-           else text.toDouble()
+    else text.toDouble()
 }
 
 // Проверка на то, что число типа Double > 0.0
@@ -57,14 +57,14 @@ fun MutableList<EditText>.convertListEditTextToListDouble(
     //endregion
 
     return if (this.size != listsDimensions.size)
-              throw Exception(resourcesProviderImpl.context.getString(
-                  R.string.error_variable_size_not_equal_dimension_size))
+        throw Exception(resourcesProviderImpl.context.getString(
+            R.string.error_variable_size_not_equal_dimension_size))
     else {
         val resultList: MutableList<Double> = mutableListOf()
         this.forEachIndexed { index, it ->
             resultList.add(stringToDouble(it.text.toString()) *
                     inputDataDimensionConverter(listsDimensions[index].tag.toString().
-                        convertStringToInputDataDimensionType(),
+                    convertStringToInputDataDimensionType(),
                         listsDimensions[index].selectedItemPosition,
                         checkDimension?.selectedItemPosition ?: -1
                     ))
@@ -102,16 +102,16 @@ fun String.convertStringToInputDataDimensionType(): InputDataDimensionType {
 fun List<Int>.convertAddFirstSecondToTypedFormulaName(screenType: ScreenType): String {
     var resultTypedFormulaName: String = ""
     when (screenType) {
-            // Типы формул для раздела FLUIDS
+        // Типы формул для раздела FLUIDS
         ScreenType.FLUIDS_BASIC -> {}
         ScreenType.FLUIDS_KOMPREHENSIVE -> {}
         ScreenType.FLUIDS_K_INFUSION -> {}
-            // Типы формул для раздела CONVERSION
+        // Типы формул для раздела CONVERSION
         ScreenType.CONVERSION_UNITS -> {}
-            // Типы формул для раздела HEMATOLOGY
+        // Типы формул для раздела HEMATOLOGY
         ScreenType.HEMATOLOGY_BLOOD -> {}
         ScreenType.HEMATOLOGY_FLEBOTOMY -> {}
-            // Типы формул для раздела PHARMACY
+        // Типы формул для раздела PHARMACY
         ScreenType.PHARMACY_DOSES -> resultTypedFormulaName = PHARMACY_DOSES_NAME
         ScreenType.PHARMACY_CRI -> {}
         ScreenType.PHARMACY_SURFACE -> {
@@ -136,9 +136,8 @@ fun List<Int>.convertAddFirstSecondToTypedFormulaName(screenType: ScreenType): S
             if (this[ADDFIRST_INDEX] == PHARMACY_SURFACE_MOUSE_INDEX)
                 resultTypedFormulaName = PHARMACY_SURFACE_MOUSE_BODYSURFACEAREA_NAME
         }
-            // Типы формул для раздела CALCULATOR
+        // Типы формул для раздела CALCULATOR
         ScreenType.CALCULATOR -> {}
     }
     return resultTypedFormulaName
 }
-

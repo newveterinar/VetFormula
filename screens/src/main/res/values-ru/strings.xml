@@ -67,6 +67,7 @@
     <string name="theme">Тема</string>
     <string name="pharmacy_help_info_text">Перед расчётом заполните все числовые поля!</string>
     <string name="pharmacy_result_title_text">Площадь поверхности животного</string>
+    <string name="pharmacy_result_volume_title_text">Объём</string>
 
     <!-- Типы ресурсов для ввода данных -->
     <!--    Порядок размерностей в ресурсах для каждого числового поля не менять -->
@@ -89,7 +90,7 @@
         <item>60 капель/мл</item>
     </string-array>
 
-        <!-- Исходные данные типа размерностей вводимых численных значений -->
+    <!-- Исходные данные типа размерностей вводимых численных значений -->
     <string-array name="input_data_dimension_weight_animal_list">
         <item>кг</item>
         <item>г</item>
@@ -131,12 +132,12 @@
         <item>мкл</item>
     </string-array>
 
-        <!-- Результирующие данные типа размерностей расчётных численных значений -->
+    <!-- Результирующие данные типа размерностей расчётных численных значений -->
     <string name="output_data_dimension_length">м</string>
     <string name="output_data_dimension_mass">кг</string>
     <string name="output_data_dimension_time">с</string>
     <string name="output_data_dimension_square_length">м2</string>
-  
+
     <!-- Ресурсы для смены языка приложения -->
     <string name="settings_language_text">Язык</string>
 </resources>

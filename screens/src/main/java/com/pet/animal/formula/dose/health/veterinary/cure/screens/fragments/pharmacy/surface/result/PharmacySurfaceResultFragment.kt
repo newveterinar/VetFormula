@@ -9,7 +9,6 @@ import android.text.style.SuperscriptSpan
 import android.view.View
 import android.widget.Toast
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
-import com.pet.animal.formula.dose.health.veterinary.cure.core.calculator.CalcInteractorImpl
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppState
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.ScreenData
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
@@ -17,7 +16,6 @@ import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.Fr
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.FragmentScope
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.SQUARE_TEXT_RELATIVE_SIZE
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.settings.SettingsImpl
 import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
 import org.koin.java.KoinJavaComponent
@@ -29,17 +27,16 @@ class PharmacySurfaceResultFragment: BaseFragment<FragmentPharmacySurfaceResultB
     // Установка типа формулы для текущего окна
     private val screenType: ScreenType = ScreenType.PHARMACY_SURFACE
     // Навигация
-    private val navigationButtons = arrayOfNulls<View>(size = 2)
+    private val navigationButtons = arrayOfNulls<View>(size = 1)
     // ViewModel
     private lateinit var viewModel: PharmacySurfaceResultFragmentViewModel
-    // ShowPharmacySurfaceFragmentScope
+    // ShowPharmacySurfaceResultFragmentScope
     private lateinit var showPharmacySurfaceResultFragmentScope: Scope
-
-    // SettingsImpl
-    private val settings: SettingsImpl = KoinJavaComponent.getKoin().get()
-    // Интерактор калькулятора
-    private val calcInteractorImpl: CalcInteractorImpl = CalcInteractorImpl()
-
+    // newInstance для данного класса
+    companion object {
+        fun newInstance(): PharmacySurfaceResultFragment =
+            PharmacySurfaceResultFragment()
+    }
     //endregion
 
     /** Работа со Scope */ //region
@@ -75,13 +72,18 @@ class PharmacySurfaceResultFragment: BaseFragment<FragmentPharmacySurfaceResultB
         }
 
         navigationButtons.forEachIndexed { index, button ->
-            button?.setOnClickListener {
-                when (index) {
-                    0 -> viewModel.router.exit()
-                    else -> {
-                         Toast.makeText(requireContext(),
-                             requireActivity().resources.getString(
-                            R.string.error_button_is_not_assigned), Toast.LENGTH_SHORT).show()
+            button?.let {
+                it.setOnClickListener {
+                    when (index) {
+                        0 -> viewModel.router.exit()
+                        else -> {
+                            Toast.makeText(
+                                requireContext(),
+                                requireActivity().resources.getString(
+                                    R.string.error_button_is_not_assigned
+                                ), Toast.LENGTH_SHORT
+                            ).show()
+                        }
                     }
                 }
             }
@@ -91,18 +93,13 @@ class PharmacySurfaceResultFragment: BaseFragment<FragmentPharmacySurfaceResultB
     // Инициализация ViewModel
     fun initViewModel() {
         val _viewModel: PharmacySurfaceResultFragmentViewModel by
-            showPharmacySurfaceResultFragmentScope.inject()
+        showPharmacySurfaceResultFragmentScope.inject()
         viewModel = _viewModel
         // Отображение текущих значений числовых поле и списков
         viewModel.subscribe().observe(viewLifecycleOwner) {
             renderData(it)
         }
         saveData(false)
-    }
-
-    companion object {
-        fun newInstance(): PharmacySurfaceResultFragment =
-            PharmacySurfaceResultFragment()
     }
 
     // Сохранение текущего состояния всех числовых полей и списков
@@ -123,7 +120,7 @@ class PharmacySurfaceResultFragment: BaseFragment<FragmentPharmacySurfaceResultB
             is AppState.Success -> {
                 appState.screenData.let {
                     if (!it.isGoToResultScreen) {
-                        binding.pharmacyResultText.text = createStringResult(it)
+                        binding.pharmacyResultText.text = createStringResult(it, 0)
                     }
                 }
             }
@@ -143,9 +140,9 @@ class PharmacySurfaceResultFragment: BaseFragment<FragmentPharmacySurfaceResultB
         }
     }
 
-    // Подготовка строки с результатом
-    private fun createStringResult(screenData: ScreenData): SpannableString {
-        val initialString: String = "${screenData.resultValueField[0].value} " +
+    // Подготовка строк с результатами
+    private fun createStringResult(screenData: ScreenData, indexData: Int): SpannableString {
+        val initialString: String = "${screenData.resultValueField[indexData].value} " +
                 requireActivity().resources.getString(R.string.output_data_dimension_square_length)
         val result = SpannableString(initialString)
         if (result.isNotEmpty()) {

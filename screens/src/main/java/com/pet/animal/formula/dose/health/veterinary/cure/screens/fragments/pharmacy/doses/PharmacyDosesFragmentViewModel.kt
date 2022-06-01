@@ -60,7 +60,7 @@ class PharmacyDosesFragmentViewModel: BaseViewModel<AppState>() {
         values: List<Double>,
         dimensions: List<Int>,
         isGoToResultScreen: Boolean) {
-            interactor.saveData(
+        interactor.saveData(
             screenType, listsAddFirstSecond, stringValues, values, dimensions, isGoToResultScreen)
     }
     //endregion

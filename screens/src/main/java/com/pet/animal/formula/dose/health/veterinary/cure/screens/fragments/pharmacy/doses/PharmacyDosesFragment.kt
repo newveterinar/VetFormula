@@ -54,8 +54,8 @@ class PharmacyDosesFragment:
         // Задание Scope для данного фрагмента
         showPharmacyDoseFragmentScope =
             getKoin().getOrCreateScope(
-                FragmentScope.SHOW_PHARMACY_DOSE_FRAGMENT_SCOPE,
-                named(FragmentScope.SHOW_PHARMACY_DOSE_FRAGMENT_SCOPE)
+                FragmentScope.SHOW_PHARMACY_DOSES_FRAGMENT_SCOPE,
+                named(FragmentScope.SHOW_PHARMACY_DOSES_FRAGMENT_SCOPE)
             )
     }
     override fun onDetach() {
@@ -180,16 +180,16 @@ class PharmacyDosesFragment:
             button?.setOnClickListener {
                 when (index) {
                     0 -> {
-                            saveData(false)
-                            viewModel.router.exit()
-                         }
+                        saveData(false)
+                        viewModel.router.exit()
+                    }
                     1 -> {
-                            saveData(true)
-                         }
+                        saveData(true)
+                    }
                     else -> {
-                         Toast.makeText(requireContext(),
-                             requireActivity().resources.getString(
-                            R.string.error_button_is_not_assigned), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(),
+                            requireActivity().resources.getString(
+                                R.string.error_button_is_not_assigned), Toast.LENGTH_SHORT).show()
                     }
                 }
             }
@@ -272,7 +272,7 @@ class PharmacyDosesFragment:
                         }
                     } else {
                         // Переход на экран с результатами расчётов
-                        viewModel.router.navigateTo(viewModel.screens.pharmacySurfaceResultScreen())
+                        viewModel.router.navigateTo(viewModel.screens.pharmacyDosesResultScreen())
                     }
                 }
             }

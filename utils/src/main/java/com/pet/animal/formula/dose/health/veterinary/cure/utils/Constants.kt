@@ -3,12 +3,14 @@ package com.pet.animal.formula.dose.health.veterinary.cure.utils
 const val CICERONE_NAME: String = "cicerone"
 const val MAIN_ACTIVITY_NAME: String = "MainActivity"
 
-class FragmentScope() {
+class FragmentScope {
     companion object{
         const val SHOW_PHARMACY_SURFACE_FRAGMENT_SCOPE = "SHOW_PHARMACY_SURFACE_FRAGMENT_SCOPE"
         const val SHOW_PHARMACY_SURFACE_RESULT_FRAGMENT_SCOPE =
             "SHOW_PHARMACY_SURFACE_RESULT_FRAGMENT_SCOPE"
-        const val SHOW_PHARMACY_DOSE_FRAGMENT_SCOPE = "SHOW_PHARMACY_DOSE_FRAGMENT_SCOPE"
+        const val SHOW_PHARMACY_DOSES_FRAGMENT_SCOPE = "SHOW_PHARMACY_DOSES_FRAGMENT_SCOPE"
+        const val SHOW_PHARMACY_DOSES_RESULT_FRAGMENT_SCOPE =
+            "SHOW_PHARMACY_DOSES_RESULT_FRAGMENT_SCOPE"
     }
 }
 
@@ -105,4 +107,5 @@ enum class OutputDataDimensionType {
     MASS,           // Пример: кг
     TIME,           // Пример: ч
     RATE,           // Пример: мл/ч
+    ERROR_TYPE      // Ошибка с выбором индекса
 }

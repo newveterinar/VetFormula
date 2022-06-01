@@ -178,16 +178,16 @@ class PharmacySurfaceFragment:
             button?.setOnClickListener {
                 when (index) {
                     0 -> {
-                            saveData(false)
-                            viewModel.router.exit()
+                        saveData(false)
+                        viewModel.router.exit()
                     }
                     1 -> {
-                            saveData(true)
+                        saveData(true)
                     }
                     else -> {
-                         Toast.makeText(requireContext(),
-                             requireActivity().resources.getString(
-                            R.string.error_button_is_not_assigned), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(),
+                            requireActivity().resources.getString(
+                                R.string.error_button_is_not_assigned), Toast.LENGTH_SHORT).show()
                     }
                 }
             }
