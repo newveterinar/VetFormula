@@ -2,22 +2,15 @@ package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pha
 
 import android.content.Context
 import android.os.Bundle
-import android.text.SpannableString
-import android.text.Spanned
-import android.text.style.RelativeSizeSpan
-import android.text.style.SuperscriptSpan
 import android.view.View
-import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppState
-import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.ResultValueField
-import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.ScreenData
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentPharmacyDosesResultBinding
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.*
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertStringToInputDataDimensionType
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.FragmentScope
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.createStringResult
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.settings.SettingsImpl
 import org.koin.core.qualifier.named

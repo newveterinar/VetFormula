@@ -34,7 +34,7 @@ class SettingsImpl: Settings {
     }
 
     /** Функции для работы с данными окон */ // region
-    // Задание данных для окон
+    // Задание данных для текущего окна
     override fun setScreenData(screenType: ScreenType,
                                listsAddFirstSecond: List<Int>,
                                stringValues: List<String>,
@@ -51,7 +51,7 @@ class SettingsImpl: Settings {
                 ValueField(it, values[index], dimensions[index]))
         }
     }
-    // Получение исходных данных данных окна PharmacySurface
+    // Получение исходных данных для текущего окна
     override fun getInputedScreenData(): ScreenData {
         return inputedScreenData
     }
