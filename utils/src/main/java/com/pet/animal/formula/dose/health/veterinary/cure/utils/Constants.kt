@@ -88,6 +88,10 @@ const val SLIDER_MAX_DIFFERENT_VALUE: Float = 1f
 // SpannableText
 const val SQUARE_TEXT_RELATIVE_SIZE: Float = 0.65f
 
+// Позиции размерностей mEq и U в списках размерностей
+const val DIMENSION_MEQ_POSITION: Int = 3
+const val DIMENSION_U_POSITION: Int = 4
+
 // Типы размерностей исходных данных
 enum class InputDataDimensionType {
     WEIGHT_ANIMAL,

@@ -12,11 +12,13 @@ import android.widget.TextView
 import android.widget.Toast
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppState
+import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.ResultValueField
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.ScreenData
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentPharmacyDosesResultBinding
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.*
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertStringToInputDataDimensionType
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.createStringResult
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.settings.SettingsImpl
 import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
@@ -132,8 +134,9 @@ class PharmacyDosesResultFragment:
             is AppState.Success -> {
                 appState.screenData.let {
                     if (!it.isGoToResultScreen) {
-                        resultsValueFields.forEachIndexed { index, resultValueField ->
-                            resultValueField.text = createStringResult(it, index, resultValueField)
+                        resultsValueFields.forEachIndexed { index, resultValueTextView ->
+                            resultValueTextView.createStringResult(it.resultValueField,
+                                index, settings.getInputedScreenData().valueFields)
                         }
                     }
                 }
@@ -152,71 +155,5 @@ class PharmacyDosesResultFragment:
                 ).show()
             }
         }
-    }
-
-    // Подготовка строк с результами
-    private fun createStringResult(
-        screenData: ScreenData, indexData: Int, resultValueField: TextView): SpannableString {
-        var initialString: String = "${screenData.resultValueField[indexData].value}"
-        lateinit var result: SpannableString
-        // Изменение формата размерности текста
-        if (initialString.isNotEmpty()) {
-            when (resultValueField.tag) {
-                OutputDataDimensionType.LENGTH.toString() -> {
-                    result = SpannableString(initialString)
-                }
-                OutputDataDimensionType.SQUARE_LENGTH.toString() -> {
-                    initialString += " ${requireActivity().resources.getString(
-                        R.string.output_data_dimension_square_length)}"
-                    result = SpannableString(initialString)
-                    result.setSpan(
-                        SuperscriptSpan(),
-                        initialString.length - 1,
-                        initialString.length,
-                        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-                    )
-                    result.setSpan(
-                        RelativeSizeSpan(SQUARE_TEXT_RELATIVE_SIZE),
-                        initialString.length - 1,
-                        initialString.length,
-                        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-                    )
-                }
-                OutputDataDimensionType.VOLUME.toString() -> {
-                    val addString: String = requireActivity().resources.getStringArray(
-                        R.array.input_data_dimension_concentration_list)[
-                            settings.getInputedScreenData().valueFields[2].dimension]
-                    if (settings.getInputedScreenData().valueFields[2].dimension !=
-                        requireActivity().resources.getStringArray(
-                            R.array.input_data_dimension_concentration_list).size - 1)
-                    initialString +=
-                        " ${addString.substring(addString.lastIndexOf('/') + 1)}"
-                    else initialString += " ${requireActivity().resources.getStringArray(
-                        R.array.input_data_dimension_volume_list)[0]}"
-                    result = SpannableString(initialString)
-                }
-                OutputDataDimensionType.MASS.toString() -> {
-                    val addString: String = requireActivity().resources.getStringArray(
-                        R.array.input_data_dimension_mass_dose_per_kg_list)[
-                            settings.getInputedScreenData().valueFields[1].dimension]
-                    initialString += " $addString"
-                    result = SpannableString(initialString)
-                }
-                OutputDataDimensionType.TIME.toString() -> {
-                    result = SpannableString(initialString)
-                }
-                OutputDataDimensionType.RATE.toString() -> {
-                    result = SpannableString(initialString)
-                }
-                OutputDataDimensionType.ERROR_TYPE.toString() -> {
-                    result = SpannableString(initialString)
-                }
-                else -> {
-                    initialString = ""
-                    result = SpannableString(initialString)
-                }
-            }
-        }
-        return result
     }
 }

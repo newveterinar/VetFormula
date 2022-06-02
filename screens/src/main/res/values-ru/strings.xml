@@ -30,6 +30,7 @@
     <string name="settings_button_text_text">Настройки</string>
     <string name="settings_button_surface_text_text">SomeSettings</string>
     <string name="calculator_previous_text_text">Калькулятор</string>
+    <string name="settings_language_text">Язык</string>
     <string name="calculator_button_text_text">Калькулятор</string>
     <string name="calculator_button_surface_text_text">Посчитать</string>
     <string name="pharmacy_clear_button_text_text">C</string>
@@ -68,76 +69,4 @@
     <string name="pharmacy_help_info_text">Перед расчётом заполните все числовые поля!</string>
     <string name="pharmacy_result_title_text">Площадь поверхности животного</string>
     <string name="pharmacy_result_volume_title_text">Объём</string>
-
-    <!-- Типы ресурсов для ввода данных -->
-    <!--    Порядок размерностей в ресурсах для каждого числового поля не менять -->
-    <!-- Исходные данные типа addFirstSecond -->
-    <string-array name="addFirstSecond_animal_type_list">
-        <item>Собака</item>
-        <item>Кошка</item>
-        <item>Кролик</item>
-        <item>Хорёк</item>
-        <item>Морская свинка</item>
-        <item>Хомяк</item>
-        <item>Лошадь (кроме "Ломустин")</item>
-        <item>Лошадь (только "Ломустин")</item>
-        <item>Крыса</item>
-        <item>Мышь</item>
-    </string-array>
-    <string-array name="addFirstSecond_giving_set_drop_list">
-        <item>Нет капельной системы</item>
-        <item>20 капель/мл</item>
-        <item>60 капель/мл</item>
-    </string-array>
-
-    <!-- Исходные данные типа размерностей вводимых численных значений -->
-    <string-array name="input_data_dimension_weight_animal_list">
-        <item>кг</item>
-        <item>г</item>
-    </string-array>
-    <string-array name="input_data_dimension_mass_dose_per_kg_list">
-        <item>мкг</item>
-        <item>мг</item>
-        <item>г</item>
-        <item>мЕк</item>
-        <item>а.е.м</item>
-    </string-array>
-    <string-array name="input_data_dimension_mass_dose_per_kg_per_time_list">
-        <item>мкг/кг/мин</item>
-        <item>мг/кг/мин</item>
-        <item>г/кг/мин</item>
-        <item>мгк/кг/ч</item>
-        <item>мг/кг/ч</item>
-        <item>г/кг/ч</item>
-    </string-array>
-    <string-array name="input_data_dimension_volume_dose_per_kg_per_time_list">
-        <item>мл/кг/ч</item>
-        <item>мкл/кг/ч</item>
-        <item>мл/кг/мин</item>
-        <item>мкл/кг/мин</item>
-    </string-array>
-    <string-array name="input_data_dimension_concentration_list">
-        <item>мкг/мл</item>
-        <item>мг/мл</item>
-        <item>г/мл</item>
-        <item>мЕк/мл</item>
-        <item>а.е.м/мл</item>
-        <item>мкг/г</item>
-        <item>мг/г</item>
-        <item>г/г</item>
-        <item>вес/объём</item>
-    </string-array>
-    <string-array name="input_data_dimension_volume_list">
-        <item>мл</item>
-        <item>мкл</item>
-    </string-array>
-
-    <!-- Результирующие данные типа размерностей расчётных численных значений -->
-    <string name="output_data_dimension_length">м</string>
-    <string name="output_data_dimension_mass">кг</string>
-    <string name="output_data_dimension_time">с</string>
-    <string name="output_data_dimension_square_length">м2</string>
-
-    <!-- Ресурсы для смены языка приложения -->
-    <string name="settings_language_text">Язык</string>
 </resources>
