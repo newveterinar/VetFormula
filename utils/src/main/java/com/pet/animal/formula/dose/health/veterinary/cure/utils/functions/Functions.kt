@@ -1,7 +1,14 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.utils.functions
 
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.style.RelativeSizeSpan
+import android.text.style.SuperscriptSpan
 import android.widget.EditText
 import android.widget.Spinner
+import android.widget.TextView
+import android.widget.Toast
+import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.ResultValueField
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.ValueField
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.*
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.dimension.inputDataDimensionConverter
@@ -113,17 +120,24 @@ fun List<Int>.convertAddFirstSecondToTypedFormulaName(screenType: ScreenType): S
     var resultTypedFormulaName: String = ""
     when (screenType) {
         // Типы формул для раздела FLUIDS
-        ScreenType.FLUIDS_BASIC -> {}
-        ScreenType.FLUIDS_KOMPREHENSIVE -> {}
-        ScreenType.FLUIDS_K_INFUSION -> {}
+        ScreenType.FLUIDS_BASIC -> {
+        }
+        ScreenType.FLUIDS_KOMPREHENSIVE -> {
+        }
+        ScreenType.FLUIDS_K_INFUSION -> {
+        }
         // Типы формул для раздела CONVERSION
-        ScreenType.CONVERSION_UNITS -> {}
+        ScreenType.CONVERSION_UNITS -> {
+        }
         // Типы формул для раздела HEMATOLOGY
-        ScreenType.HEMATOLOGY_BLOOD -> {}
-        ScreenType.HEMATOLOGY_FLEBOTOMY -> {}
+        ScreenType.HEMATOLOGY_BLOOD -> {
+        }
+        ScreenType.HEMATOLOGY_FLEBOTOMY -> {
+        }
         // Типы формул для раздела PHARMACY
         ScreenType.PHARMACY_DOSES -> resultTypedFormulaName = PHARMACY_DOSES_NAME
-        ScreenType.PHARMACY_CRI -> {}
+        ScreenType.PHARMACY_CRI -> {
+        }
         ScreenType.PHARMACY_SURFACE -> {
             if (this[ADDFIRST_INDEX] == PHARMACY_SURFACE_DOG_INDEX)
                 resultTypedFormulaName = PHARMACY_SURFACE_DOG_BODYSURFACEAREA_NAME
@@ -147,7 +161,81 @@ fun List<Int>.convertAddFirstSecondToTypedFormulaName(screenType: ScreenType): S
                 resultTypedFormulaName = PHARMACY_SURFACE_MOUSE_BODYSURFACEAREA_NAME
         }
         // Типы формул для раздела CALCULATOR
-        ScreenType.CALCULATOR -> {}
+        ScreenType.CALCULATOR -> {
+        }
     }
     return resultTypedFormulaName
+}
+
+fun TextView.createStringResult(
+        resultValueField: MutableList<ResultValueField>,
+        indexData: Int,
+        valueFields: List<ValueField>
+    ) {
+    /** Задание переменных */ //region
+    // Получение доступа к ресурсам
+    val resourcesProviderImpl: ResourcesProviderImpl = KoinJavaComponent.getKoin().get()
+    //endregion
+
+    var initialString: String = "${resultValueField[indexData].value}"
+    lateinit var result: SpannableString
+    // Изменение формата размерности текста
+    if (initialString.isNotEmpty()) {
+        when (this.tag) {
+            OutputDataDimensionType.LENGTH.toString() -> {
+                result = SpannableString(initialString)
+            }
+            OutputDataDimensionType.SQUARE_LENGTH.toString() -> {
+                initialString += " ${resourcesProviderImpl.context.resources.getString(
+                    R.string.output_data_dimension_square_length)}"
+                result = SpannableString(initialString)
+                result.setSpan(
+                    SuperscriptSpan(),
+                    initialString.length - 1,
+                    initialString.length,
+                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+                )
+                result.setSpan(
+                    RelativeSizeSpan(SQUARE_TEXT_RELATIVE_SIZE),
+                    initialString.length - 1,
+                    initialString.length,
+                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+                )
+            }
+            OutputDataDimensionType.VOLUME.toString() -> {
+                val addString: String = resourcesProviderImpl.context.resources.getStringArray(
+                    R.array.input_data_dimension_concentration_list)[
+                        valueFields[2].dimension]
+                if (valueFields[2].dimension !=
+                    resourcesProviderImpl.context.resources.getStringArray(
+                        R.array.input_data_dimension_concentration_list).size - 1)
+                    initialString +=
+                        " ${addString.substring(addString.lastIndexOf('/') + 1)}"
+                else initialString += " ${resourcesProviderImpl.context.resources.getStringArray(
+                    R.array.input_data_dimension_volume_list)[0]}"
+                result = SpannableString(initialString)
+            }
+            OutputDataDimensionType.MASS.toString() -> {
+                val addString: String = resourcesProviderImpl.context.resources.getStringArray(
+                    R.array.input_data_dimension_mass_dose_per_kg_list)[
+                        valueFields[1].dimension]
+                initialString += " $addString"
+                result = SpannableString(initialString)
+            }
+            OutputDataDimensionType.TIME.toString() -> {
+                result = SpannableString(initialString)
+            }
+            OutputDataDimensionType.RATE.toString() -> {
+                result = SpannableString(initialString)
+            }
+            OutputDataDimensionType.ERROR_TYPE.toString() -> {
+                result = SpannableString(initialString)
+            }
+            else -> {
+                initialString = ""
+                result = SpannableString(initialString)
+            }
+        }
+    }
+    this.text = result
 }

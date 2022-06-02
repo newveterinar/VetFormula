@@ -12,6 +12,8 @@ import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppState
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentPharmacyDosesBinding
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.DIMENSION_MEQ_POSITION
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.DIMENSION_U_POSITION
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.FragmentScope
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertListEditTextToListDouble
@@ -185,9 +187,7 @@ class PharmacyDosesFragment:
                         saveData(false)
                         viewModel.router.exit()
                     }
-                    1 -> {
-                        saveData(true)
-                    }
+                    1 -> saveData(true)
                     else -> {
                         Toast.makeText(requireContext(),
                             requireActivity().resources.getString(
@@ -202,15 +202,9 @@ class PharmacyDosesFragment:
     private fun initButtons() {
         clearButton = binding.pharmacyClearButtonContainer.also { button ->
             button.setOnClickListener {
-                listsAddFirstSecond.forEach {
-                    it.setSelection(0)
-                }
-                valuesFields.forEach {
-                    it.setText("")
-                }
-                listsDimensions.forEach {
-                    it.setSelection(0)
-                }
+                listsAddFirstSecond.forEach { it.setSelection(0) }
+                valuesFields.forEach { it.setText("") }
+                listsDimensions.forEach { it.setSelection(0) }
                 // Сохранение текущего состояния всех числовых полей и списков
                 saveData(false)
             }
@@ -270,15 +264,30 @@ class PharmacyDosesFragment:
                 ) {
                     // Сохранение текущего состояния всех числовых полей и списков
                     if (selectCounter++ > 0) {
-                        if ((index == 1) && ((position == 3) || (position == 4))) {
+                        // Синхронное выделение mEq или U в поле Formulation с полем Dose
+                        if ((index == 1) && ((position == DIMENSION_MEQ_POSITION) ||
+                                    (position == DIMENSION_U_POSITION))) {
                             listsDimensions[2].setSelection(position)
                         }
-                        if ((index == 2) && ((position == 3) || (position == 4))) {
+                        // Синхронное выделение mEq или U в поле Dose с полем Formulation
+                        if ((index == 2) && ((position == DIMENSION_MEQ_POSITION) ||
+                                    (position == DIMENSION_U_POSITION))) {
                             listsDimensions[1].setSelection(position)
                         }
-                        // TODO Добавить синхронную смену 3 и 4 позиций у списков 1 и 2
-                        //  при снятии с какого-нибудь списка одного из этих значений
-
+                        // Синхронное снятие выделения mEq или U в поле Formulation с полем Dose
+                        if ((index == 1) && (position != DIMENSION_MEQ_POSITION) &&
+                            (position != DIMENSION_U_POSITION) &&
+                            ((listsDimensions[2].selectedItemPosition == DIMENSION_MEQ_POSITION) ||
+                            (listsDimensions[2].selectedItemPosition == DIMENSION_U_POSITION))) {
+                            listsDimensions[2].setSelection(0)
+                        }
+                        // Синхронное снятие выделения mEq или U в поле Dose с полем Formulation
+                        if ((index == 2) && (position != DIMENSION_MEQ_POSITION) &&
+                            (position != DIMENSION_U_POSITION) &&
+                            ((listsDimensions[1].selectedItemPosition == DIMENSION_MEQ_POSITION) ||
+                            (listsDimensions[1].selectedItemPosition == DIMENSION_U_POSITION))) {
+                            listsDimensions[1].setSelection(0)
+                        }
                         // Сохранение состояния
                         saveData(false)
                     }
