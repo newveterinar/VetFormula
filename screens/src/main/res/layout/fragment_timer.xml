@@ -103,7 +103,7 @@
                 app:layout_constraintGuide_percent="0.27" />
 
             <Button
-                android:id="@+id/startTimerButton"
+                android:id="@+id/buttonStartTimer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/startTimerButton_text"
@@ -119,7 +119,7 @@
                 android:src="@drawable/ic_touch_place"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/startTimerButton" />
+                app:layout_constraintTop_toBottomOf="@+id/buttonStartTimer" />
 
             <EditText
                 android:id="@+id/inputManualCount"
@@ -162,6 +162,27 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/touchPlace" />
+
+            <Button
+                android:id="@+id/buttonStopTimer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/captionBtnStopTimer"
+                app:layout_constraintBottom_toBottomOf="@+id/buttonStartTimer"
+                app:layout_constraintEnd_toStartOf="@+id/buttonStartTimer"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline2" />
+
+            <Button
+                android:id="@+id/buttonResetTimer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="23dp"
+                android:text="@string/captionBtnResetTimer"
+                app:layout_constraintBottom_toBottomOf="@+id/buttonStartTimer"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/buttonStartTimer"
+                app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

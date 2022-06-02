@@ -51,7 +51,7 @@
     <string name="pharmacy_dose_previous_text_text">Доза препарата</string>
     <string name="pharmacy_speed_animal_title_text">Скорость введения</string>
     <string name="pharmacy_speed_textinputlayout_textfield_hint">Скорость введения</string>
-    <string name="tickCaption">Ед./мин</string>
+    <string name="tickCaption">ЧСС</string>
     <string name="captionStopTimer">Остановить таймер</string>
     <string name="captionStartTimer">Остановить таймер</string>
     <string name="timer_button_text_text">Таймер</string>
