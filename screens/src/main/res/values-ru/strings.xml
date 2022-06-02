@@ -41,7 +41,7 @@
     <string name="pharmacy_dose_textinputlayout_textfield_hint">Объём препарата</string>
     <string name="pharmacy_concentration_animal_title_text">Концентрация препарата</string>
     <string name="pharmacy_concentration_textinputlayout_textfield_hint">Значение концентрации</string>
-    <string name="pharmacy_fluids_textinputlayout_textfield_hint">Объём</string>
+    <string name="pharmacy_amount_textinputlayout_textfield_hint">Объём</string>
     <string name="pharmacy_fluids_animal_title_text">Объём жидкости</string>
     <string name="pharmacy_drop_textinputlayout_textfield_hint">Нет капельной системы</string>
     <string name="pharmacy_drop_animal_title_text">Капельная система</string>
@@ -50,7 +50,7 @@
     <string name="pharmacy_cri_previous_text_text">Препараты CRI</string>
     <string name="pharmacy_dose_previous_text_text">Доза препарата</string>
     <string name="pharmacy_speed_animal_title_text">Скорость введения</string>
-    <string name="pharmacy_speed_textinputlayout_textfield_hint">Скорость введения</string>
+    <string name="pharmacy_rate_textinputlayout_textfield_hint">Скорость введения</string>
     <string name="tickCaption">ЧСС</string>
     <string name="captionStopTimer">Остановить таймер</string>
     <string name="captionStartTimer">Остановить таймер</string>

@@ -62,6 +62,11 @@
         <item>г/г</item>
         <item>вес/объём</item>
     </string-array>
+    <string-array name="input_data_dimension_concentration_short_list">
+        <item>мкг/мл</item>
+        <item>мг/мл</item>
+        <item>г/мл</item>
+    </string-array>
     <string-array name="input_data_dimension_volume_list">
         <item>мл</item>
         <item>мкл</item>

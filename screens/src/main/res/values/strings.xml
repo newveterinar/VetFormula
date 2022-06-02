@@ -41,7 +41,7 @@
     <string name="pharmacy_dose_textinputlayout_textfield_hint">Amount</string>
     <string name="pharmacy_concentration_animal_title_text">Specify concentration</string>
     <string name="pharmacy_concentration_textinputlayout_textfield_hint">Concentration value</string>
-    <string name="pharmacy_fluids_textinputlayout_textfield_hint">Amount</string>
+    <string name="pharmacy_amount_textinputlayout_textfield_hint">Amount</string>
     <string name="pharmacy_fluids_animal_title_text">Amount</string>
     <string name="pharmacy_drop_textinputlayout_textfield_hint">No Giving Set</string>
     <string name="pharmacy_drop_animal_title_text">Giving Set</string>
@@ -50,7 +50,7 @@
     <string name="pharmacy_cri_previous_text_text">PharmacyCRI</string>
     <string name="pharmacy_dose_previous_text_text">PharmacyDose</string>
     <string name="pharmacy_speed_animal_title_text">Rate</string>
-    <string name="pharmacy_speed_textinputlayout_textfield_hint">Rate</string>
+    <string name="pharmacy_rate_textinputlayout_textfield_hint">Rate</string>
     <string name="tickCaption">HR</string>
     <string name="captionStopTimer">Stop timer</string>
     <string name="captionStartTimer">Start timer</string>

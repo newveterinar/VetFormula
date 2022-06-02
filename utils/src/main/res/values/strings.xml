@@ -62,6 +62,11 @@
         <item>g/g</item>
         <item>weight/volume</item>
     </string-array>
+    <string-array name="input_data_dimension_concentration_short_list">
+        <item>µg/ml</item>
+        <item>mg/ml</item>
+        <item>g/ml</item>
+    </string-array>
     <string-array name="input_data_dimension_volume_list">
         <item>ml</item>
         <item>µl</item>
