@@ -51,7 +51,7 @@
     <string name="pharmacy_dose_previous_text_text">PharmacyDose</string>
     <string name="pharmacy_speed_animal_title_text">Rate</string>
     <string name="pharmacy_speed_textinputlayout_textfield_hint">Rate</string>
-    <string name="tickCaption">tick/min</string>
+    <string name="tickCaption">HR</string>
     <string name="captionStopTimer">Stop timer</string>
     <string name="captionStartTimer">Start timer</string>
     <string name="timer_button_text_text">Timer</string>
@@ -142,6 +142,8 @@
     <!-- Ресурсы для смены языка приложения -->
     <string name="language_english" translatable="false">English</string>
     <string name="language_russian" translatable="false">Русский</string>
+    <string name="captionBtnStopTimer">STOP</string>
+    <string name="captionBtnResetTimer">RESET</string>
     <string-array name="language_list">
         <item>@string/language_english</item>
         <item>@string/language_russian</item>

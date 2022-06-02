@@ -1,5 +1,7 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.timer
 
+import android.media.AudioManager
+import android.media.ToneGenerator
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseViewModelForNavigation
@@ -14,6 +16,8 @@ class TimerViewModel() : BaseViewModelForNavigation(), CoroutineScope {
     private val mOnTimer = MutableLiveData<Boolean>()
     private val mSeconds = MutableLiveData<Int>()
 
+    private val toneGenerator = ToneGenerator(AudioManager.STREAM_ALARM, 100)
+
 
     lateinit var job: Job
 
@@ -24,10 +28,14 @@ class TimerViewModel() : BaseViewModelForNavigation(), CoroutineScope {
 
     fun startTimer() {
         if (mOnTimer.value == true) return
-        ticks.clear()
-        mSeconds.postValue(0)
         mOnTimer.postValue(true)
         countTimer()
+    }
+
+    fun resetTimer(){
+        ticks.clear()
+        mSeconds.postValue(0)
+        stopTimer()
     }
 
     fun addTick() {
@@ -49,7 +57,6 @@ class TimerViewModel() : BaseViewModelForNavigation(), CoroutineScope {
     }
 
     fun stopTimer() {
-
         if (mOnTimer.value != true) return
         job.cancel()
         mOnTimer.postValue(false)
@@ -67,8 +74,8 @@ class TimerViewModel() : BaseViewModelForNavigation(), CoroutineScope {
                 delay(1000)
                 val time = mSeconds.value ?: 0
                 mSeconds.postValue(time + 1)
-                if (time + 1 == 60) {
-                    stopTimer()
+                if ((time + 1) % 15==0) {
+                    toneGenerator.startTone(ToneGenerator.TONE_CDMA_ALERT_CALL_GUARD, 200)
                 }
             }
         }

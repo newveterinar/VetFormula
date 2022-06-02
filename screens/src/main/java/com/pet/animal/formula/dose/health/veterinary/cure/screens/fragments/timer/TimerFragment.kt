@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
-import android.widget.Button
 import android.widget.Toast
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
@@ -42,13 +41,6 @@ class TimerFragment : BaseFragment<FragmentTimerBinding>(FragmentTimerBinding::i
             binding.timerText.text = "$minutes:$sSecond"
         }
 
-        viewModel.onTimer.observe(viewLifecycleOwner) {
-            if (it) {
-                (startTimerButton as Button).text = getString(R.string.captionStopTimer)
-            } else {
-                (startTimerButton as Button).text = getString(R.string.captionStartTimer)
-            }
-        }
 
         fun Double.format(digits: Int) = "%.${digits}f".format(this)
 
@@ -83,15 +75,20 @@ class TimerFragment : BaseFragment<FragmentTimerBinding>(FragmentTimerBinding::i
 
 
     private fun initButton() {
-        startTimerButton = binding.startTimerButton.also { button ->
+        binding.buttonStartTimer.also { button ->
             button.setOnClickListener {
-                if (viewModel.onTimer.value == true) {
-                    viewModel.stopTimer()
-                } else {
                     viewModel.startTimer()
-                }
             }
         }
+
+        binding.buttonStopTimer.setOnClickListener{
+            viewModel.stopTimer()
+        }
+
+        binding.buttonResetTimer.setOnClickListener{
+            viewModel.resetTimer()
+        }
+
 
         binding.touchPlace.setOnClickListener {
             viewModel.addTick()
