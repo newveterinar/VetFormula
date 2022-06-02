@@ -18,17 +18,12 @@ class MainViewModelInteractor {
 
     // Запись в базу данных формул при первом запуске приложения
     suspend fun writeDataToBDAtFirstRun() {
-        // Временная очистка базы данных (потом удалить!)
-//        repeat(300) {
-//            repositoryImpl.deleteFormulaByID(it.toLong())
-//        }
-
         // Проверка отсутствия в базе данных типизированной формулы для окна PHARMACY_SURFACE
         if (repositoryImpl.getFormula(ScreenType.PHARMACY_SURFACE, listOf(0, 0))
                 .getTypedFormulas().size == 0) {
             // Сохранение формул для окна PHARMACY_SURFACE
             repeat(resourcesProviderImpl.getStringArray(
-                com.pet.animal.formula.dose.health.veterinary.cure.screens.R.array.
+                com.pet.animal.formula.dose.health.veterinary.cure.utils.R.array.
                 addFirstSecond_animal_type_list).size) {
                 repositoryImpl.insertFormula(
                     fakeRepositoryImpl.getFormula(ScreenType.PHARMACY_SURFACE, listOf(it, 0)),
@@ -47,11 +42,5 @@ class MainViewModelInteractor {
                 )
             }
         }
-//        Toast.makeText(resourcesProviderImpl.context,
-//            "${repositoryImpl.getFormula(ScreenType.PHARMACY_SURFACE, listOf(0, 0))
-//                .getTypedFormulas().size}", Toast.LENGTH_SHORT).show()
-//        Toast.makeText(resourcesProviderImpl.context,
-//            "${repositoryImpl.getFormula(ScreenType.PHARMACY_DOSES, listOf(0, 0))
-//                .getTypedFormulas().size}", Toast.LENGTH_SHORT).show()
     }
 }
