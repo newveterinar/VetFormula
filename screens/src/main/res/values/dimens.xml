@@ -173,7 +173,7 @@
     <dimen name="pharmacy_concentration_dimension_layout_width">130dp</dimen>
     <dimen name="pharmacy_fluids_animal_title_text_size">20sp</dimen>
     <dimen name="pharmacy_fluids_relative_layout_margin_end">40dp</dimen>
-    <dimen name="pharmacy_fluids_textinputlayout_margin_start">40dp</dimen>
+    <dimen name="pharmacy_amount_textinputlayout_margin_start">40dp</dimen>
     <dimen name="pharmacy_fluids_textinputlayout_textfield_text_size">20sp</dimen>
     <dimen name="pharmacy_fluids_dimension_layout_width">130dp</dimen>
     <dimen name="pharmacy_drop_animal_title_text_size">20sp</dimen>
@@ -202,7 +202,7 @@
     <dimen name="pharmacy_speed_button_height">80dp</dimen>
     <dimen name="pharmacy_speed_animal_title_text_size">20sp</dimen>
     <dimen name="pharmacy_speed_relative_layout_margin_end">40dp</dimen>
-    <dimen name="pharmacy_speed_textinputlayout_margin_start">40dp</dimen>
+    <dimen name="pharmacy_rate_textinputlayout_margin_start">40dp</dimen>
     <dimen name="pharmacy_speed_textinputlayout_textfield_text_size">20sp</dimen>
     <dimen name="pharmacy_speed_dimension_layout_width">130dp</dimen>
     <dimen name="timer_surface_button_container_margin_top">64dp</dimen>
