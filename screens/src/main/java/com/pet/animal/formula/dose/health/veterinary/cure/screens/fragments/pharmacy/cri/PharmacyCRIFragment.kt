@@ -270,30 +270,6 @@ class PharmacyCRIFragment:
                 ) {
                     // Сохранение текущего состояния всех числовых полей и списков
                     if (selectCounter++ > 0) {
-//                        // Синхронное выделение mEq или U в поле Formulation с полем Dose
-//                        if ((index == 1) && ((position == DIMENSION_MEQ_POSITION) ||
-//                                    (position == DIMENSION_U_POSITION))) {
-//                            listsDimensions[2].setSelection(position)
-//                        }
-//                        // Синхронное выделение mEq или U в поле Dose с полем Formulation
-//                        if ((index == 2) && ((position == DIMENSION_MEQ_POSITION) ||
-//                                    (position == DIMENSION_U_POSITION))) {
-//                            listsDimensions[1].setSelection(position)
-//                        }
-//                        // Синхронное снятие выделения mEq или U в поле Formulation с полем Dose
-//                        if ((index == 1) && (position != DIMENSION_MEQ_POSITION) &&
-//                            (position != DIMENSION_U_POSITION) &&
-//                            ((listsDimensions[2].selectedItemPosition == DIMENSION_MEQ_POSITION) ||
-//                                    (listsDimensions[2].selectedItemPosition == DIMENSION_U_POSITION))) {
-//                            listsDimensions[2].setSelection(0)
-//                        }
-//                        // Синхронное снятие выделения mEq или U в поле Dose с полем Formulation
-//                        if ((index == 2) && (position != DIMENSION_MEQ_POSITION) &&
-//                            (position != DIMENSION_U_POSITION) &&
-//                            ((listsDimensions[1].selectedItemPosition == DIMENSION_MEQ_POSITION) ||
-//                                    (listsDimensions[1].selectedItemPosition == DIMENSION_U_POSITION))) {
-//                            listsDimensions[1].setSelection(0)
-//                        }
                         // Сохранение состояния
                         saveData(false)
                     }
@@ -331,7 +307,7 @@ class PharmacyCRIFragment:
                         }
                     } else {
                         // Переход на экран с результатами расчётов
-                        viewModel.router.navigateTo(viewModel.screens.pharmacyDosesResultScreen())
+//                        viewModel.router.navigateTo(viewModel.screens.pharmacyDosesResultScreen())
                     }
                 }
             }
