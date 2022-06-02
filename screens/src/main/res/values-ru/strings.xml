@@ -69,4 +69,6 @@
     <string name="pharmacy_help_info_text">Перед расчётом заполните все числовые поля!</string>
     <string name="pharmacy_result_title_text">Площадь поверхности животного</string>
     <string name="pharmacy_result_volume_title_text">Объём</string>
+    <string name="captionBtnStopTimer">СТОП</string>
+    <string name="captionBtnResetTimer">СБРОС</string>
 </resources>

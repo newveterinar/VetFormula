@@ -69,4 +69,6 @@
     <string name="pharmacy_help_info_text">Fill in all numeric fields before calculating!</string>
     <string name="pharmacy_result_title_text">Body surface area</string>
     <string name="pharmacy_result_volume_title_text">Amount</string>
+    <string name="captionBtnStopTimer">STOP</string>
+    <string name="captionBtnResetTimer">RESET</string>
 </resources>
