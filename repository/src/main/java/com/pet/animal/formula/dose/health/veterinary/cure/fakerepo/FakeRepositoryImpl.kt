@@ -13,11 +13,11 @@ class FakeRepositoryImpl: FakeRepository {
     ): Formula {
         return when (screenType) {
             ScreenType.PHARMACY_SURFACE ->
-                pharmacySurfaceFormula(screenType,listsAddFirstSecond)
+                pharmacySurfaceFormula(screenType, listsAddFirstSecond)
             ScreenType.PHARMACY_DOSES ->
-                pharmacyDosesFormula(screenType,listsAddFirstSecond)
+                pharmacyDosesFormula(screenType, listsAddFirstSecond)
             ScreenType.PHARMACY_CRI ->
-                pharmacyCRIFormula(screenType,listsAddFirstSecond)
+                pharmacyCRIFormula(screenType, listsAddFirstSecond)
             else -> Formula()
         }
     }
@@ -34,7 +34,7 @@ class FakeRepositoryImpl: FakeRepository {
         //endregion
 
         when {
-            //region Типизированные формулы для окна PHARMACY_DOSES
+            //region Типизированные формулы для окна PHARMACY_CRI
             askedTypedName.contains(PHARMACY_CRI_NO_GIVING_SET_NAME) -> {
                 pharmacyCRIFormula.addTypedFormula(
                     TypedFormula(

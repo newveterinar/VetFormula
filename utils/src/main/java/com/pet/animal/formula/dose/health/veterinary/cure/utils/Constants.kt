@@ -51,7 +51,10 @@ const val PHARMACY_SURFACE_HORSEEXCEPTLOMUSTIN_INDEX = 6
 const val PHARMACY_SURFACE_HORSEONLYLOMUSTIN_INDEX = 7
 const val PHARMACY_SURFACE_RAT_INDEX = 8
 const val PHARMACY_SURFACE_MOUSE_INDEX = 9
-const val PHARMACY_DOSES_INDEX = 10
+const val PHARMACY_DOSES_INDEX = 0
+const val PHARMACY_CRI_NO_GIVING_SET_INDEX = 0
+const val PHARMACY_CRI_20_DROPS_PER_ML_INDEX = 1
+const val PHARMACY_CRI_60_DROPS_PER_ML_INDEX = 2
 
 // Индексы в массиве addFirstSecond
 const val ADDFIRST_INDEX = 0
@@ -83,6 +86,15 @@ enum class ScreenType {
     // Типы формул для раздела CALCULATOR
     CALCULATOR                              // При переводе (ordinal) в Int соответствует номеру 9
 }
+
+// Количество формул по параметру addFirst
+const val PHARMACY_DOSES_ADDFIRST_FORMULA_NUMBER: Int = 1
+const val PHARMACY_CRI_ADDFIRST_FORMULA_NUMBER: Int = 3
+
+// Максимальные количества пользовательских элементов в формулах
+const val PHARMACY_SURFACE_FORMULA_ELEMENT_COUNT: Int = 1
+const val PHARMACY_DOSES_FORMULA_ELEMENT_COUNT: Int = 3
+const val PHARMACY_CRI_FORMULA_ELEMENT_COUNT: Int = 5
 
 // Слайдер
 const val SLIDER_START_ANGLE: Float = 270f

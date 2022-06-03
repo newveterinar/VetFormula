@@ -135,29 +135,52 @@ fun List<Int>.convertAddFirstSecondToTypedFormulaName(screenType: ScreenType): S
         ScreenType.HEMATOLOGY_FLEBOTOMY -> {
         }
         // Типы формул для раздела PHARMACY
-        ScreenType.PHARMACY_DOSES -> resultTypedFormulaName = PHARMACY_DOSES_NAME
+        ScreenType.PHARMACY_DOSES -> {
+            if ((this[ADDFIRST_INDEX] == PHARMACY_DOSES_INDEX) &&
+                (this[ADDSECOND_INDEX] == 0))
+                resultTypedFormulaName = PHARMACY_DOSES_NAME
+        }
         ScreenType.PHARMACY_CRI -> {
+            if ((this[ADDFIRST_INDEX] == PHARMACY_CRI_NO_GIVING_SET_INDEX) &&
+                (this[ADDSECOND_INDEX] == 0))
+                resultTypedFormulaName = PHARMACY_CRI_NO_GIVING_SET_NAME
+            if ((this[ADDFIRST_INDEX] == PHARMACY_CRI_20_DROPS_PER_ML_INDEX) &&
+                (this[ADDSECOND_INDEX] == 0))
+                resultTypedFormulaName = PHARMACY_CRI_20_DROPS_PER_ML_NAME
+            if ((this[ADDFIRST_INDEX] == PHARMACY_CRI_60_DROPS_PER_ML_INDEX) &&
+                (this[ADDSECOND_INDEX] == 0))
+                resultTypedFormulaName = PHARMACY_CRI_60_DROPS_PER_ML_NAME
         }
         ScreenType.PHARMACY_SURFACE -> {
-            if (this[ADDFIRST_INDEX] == PHARMACY_SURFACE_DOG_INDEX)
+            if ((this[ADDFIRST_INDEX] == PHARMACY_SURFACE_DOG_INDEX) &&
+                (this[ADDSECOND_INDEX] == 0))
                 resultTypedFormulaName = PHARMACY_SURFACE_DOG_BODYSURFACEAREA_NAME
-            if (this[ADDFIRST_INDEX] == PHARMACY_SURFACE_CAT_INDEX)
+            if ((this[ADDFIRST_INDEX] == PHARMACY_SURFACE_CAT_INDEX) &&
+                (this[ADDSECOND_INDEX] == 0))
                 resultTypedFormulaName = PHARMACY_SURFACE_CAT_BODYSURFACEAREA_NAME
-            if (this[ADDFIRST_INDEX] == PHARMACY_SURFACE_RABBIT_INDEX)
+            if ((this[ADDFIRST_INDEX] == PHARMACY_SURFACE_RABBIT_INDEX) &&
+                (this[ADDSECOND_INDEX] == 0))
                 resultTypedFormulaName = PHARMACY_SURFACE_RABBIT_BODYSURFACEAREA_NAME
-            if (this[ADDFIRST_INDEX] == PHARMACY_SURFACE_POLECAT_INDEX)
+            if ((this[ADDFIRST_INDEX] == PHARMACY_SURFACE_POLECAT_INDEX) &&
+                (this[ADDSECOND_INDEX] == 0))
                 resultTypedFormulaName = PHARMACY_SURFACE_POLECAT_BODYSURFACEAREA_NAME
-            if (this[ADDFIRST_INDEX] == PHARMACY_SURFACE_GUINEAPIG_INDEX)
+            if ((this[ADDFIRST_INDEX] == PHARMACY_SURFACE_GUINEAPIG_INDEX) &&
+                (this[ADDSECOND_INDEX] == 0))
                 resultTypedFormulaName = PHARMACY_SURFACE_GUINEAPIG_BODYSURFACEAREA_NAME
-            if (this[ADDFIRST_INDEX] == PHARMACY_SURFACE_HAMSTER_INDEX)
+            if ((this[ADDFIRST_INDEX] == PHARMACY_SURFACE_HAMSTER_INDEX) &&
+                (this[ADDSECOND_INDEX] == 0))
                 resultTypedFormulaName = PHARMACY_SURFACE_HAMSTER_BODYSURFACEAREA_NAME
-            if (this[ADDFIRST_INDEX] == PHARMACY_SURFACE_HORSEEXCEPTLOMUSTIN_INDEX)
+            if ((this[ADDFIRST_INDEX] == PHARMACY_SURFACE_HORSEEXCEPTLOMUSTIN_INDEX) &&
+                (this[ADDSECOND_INDEX] == 0))
                 resultTypedFormulaName = PHARMACY_SURFACE_HORSEEXCEPTLOMUSTIN_BODYSURFACEAREA_NAME
-            if (this[ADDFIRST_INDEX] == PHARMACY_SURFACE_HORSEONLYLOMUSTIN_INDEX)
+            if ((this[ADDFIRST_INDEX] == PHARMACY_SURFACE_HORSEONLYLOMUSTIN_INDEX)
+                && (this[ADDSECOND_INDEX] == 0))
                 resultTypedFormulaName = PHARMACY_SURFACE_HORSEONLYLOMUSTIN_BODYSURFACEAREA_NAME
-            if (this[ADDFIRST_INDEX] == PHARMACY_SURFACE_RAT_INDEX)
+            if ((this[ADDFIRST_INDEX] == PHARMACY_SURFACE_RAT_INDEX) &&
+                (this[ADDSECOND_INDEX] == 0))
                 resultTypedFormulaName = PHARMACY_SURFACE_RAT_BODYSURFACEAREA_NAME
-            if (this[ADDFIRST_INDEX] == PHARMACY_SURFACE_MOUSE_INDEX)
+            if ((this[ADDFIRST_INDEX] == PHARMACY_SURFACE_MOUSE_INDEX) &&
+                (this[ADDSECOND_INDEX] == 0))
                 resultTypedFormulaName = PHARMACY_SURFACE_MOUSE_BODYSURFACEAREA_NAME
         }
         // Типы формул для раздела CALCULATOR
