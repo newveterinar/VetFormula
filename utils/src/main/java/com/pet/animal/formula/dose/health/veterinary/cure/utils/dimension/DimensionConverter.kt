@@ -23,10 +23,7 @@ fun inputDataDimensionConverter(
                 0 -> 1E-9
                 1 -> 1E-6
                 2 -> 1E-3
-                3 -> {
-                    if (checkIndex != 3) -1.0
-                    else 1.0
-                }
+                3 -> 1.0
                 4 -> {
                     if (checkIndex != 4) -1.0
                     else 1.0
