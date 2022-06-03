@@ -36,6 +36,9 @@ const val PHARMACY_SURFACE_HORSEONLYLOMUSTIN_BODYSURFACEAREA_NAME = "HORSEONLYLO
 const val PHARMACY_SURFACE_RAT_BODYSURFACEAREA_NAME = "RAT surface area"
 const val PHARMACY_SURFACE_MOUSE_BODYSURFACEAREA_NAME = "MOUSE surface area"
 const val PHARMACY_DOSES_NAME = "DOSES formula"
+const val PHARMACY_CRI_NO_GIVING_SET_NAME = "CRI no giving set formula"
+const val PHARMACY_CRI_20_DROPS_PER_ML_NAME = "CRI 20 drops/ml formula"
+const val PHARMACY_CRI_60_DROPS_PER_ML_NAME = "CRI 60 drops/ml formula"
 
 // Индексы в массиве addFirstSecond типа Int для класса TypedFormula()
 const val PHARMACY_SURFACE_DOG_INDEX = 0
