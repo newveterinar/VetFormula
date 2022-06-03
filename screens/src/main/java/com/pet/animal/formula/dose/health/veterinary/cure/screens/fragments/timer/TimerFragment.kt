@@ -8,9 +8,10 @@ import android.view.View
 import android.widget.Toast
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentTimerBinding
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentTimer2Binding
 
-class TimerFragment : BaseFragment<FragmentTimerBinding>(FragmentTimerBinding::inflate) {
+
+class TimerFragment : BaseFragment<FragmentTimer2Binding>(FragmentTimer2Binding::inflate) {
 
     private lateinit var startTimerButton: View
     private val navigationButtons = arrayOfNulls<View>(size = 2)
@@ -21,15 +22,14 @@ class TimerFragment : BaseFragment<FragmentTimerBinding>(FragmentTimerBinding::i
 
     private lateinit var viewModel: TimerViewModel
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this)[TimerViewModel::class.java]
 
-        initNavigationButtons()
-        initButton()
-        viewModel.second.observe(viewLifecycleOwner) {
-            val minutes: Int = it / 60
-            val second: Int = it % 60
+    private fun initObservable(){
+        viewModel.second.observe(viewLifecycleOwner) {sec->
+
+            val secTo=viewModel.timerTo-sec
+
+            val minutes: Int = secTo / 60
+            val second: Int = secTo % 60
             val sSecond: String
 
             if (second < 10) {
@@ -41,14 +41,47 @@ class TimerFragment : BaseFragment<FragmentTimerBinding>(FragmentTimerBinding::i
             binding.timerText.text = "$minutes:$sSecond"
         }
 
-
-        fun Double.format(digits: Int) = "%.${digits}f".format(this)
+        viewModel.mute.observe(viewLifecycleOwner){
+            if (it){
+                binding.buttonMuteUnMute.text = "Unmute"
+            } else {
+                binding.buttonMuteUnMute.text = "Mute"
+            }
+        }
 
         viewModel.tickInMinutes.observe(viewLifecycleOwner) {
             val s: String = getString(R.string.tickCaption)
             val tickString = "$s.${it.format(2)}"
             binding.tickInMinutes.text = tickString
         }
+
+        viewModel.timerHeartRate.observe(viewLifecycleOwner){
+            val s:String = getString(R.string.tickCaption)
+            val tickString = "$s.${it.format(2)}"
+            binding.tickInMinutesTimer.text = tickString
+        }
+
+        viewModel.tickManual.observe(viewLifecycleOwner){
+            val s:String = getString(R.string.tickCaption)
+            val tickString = "$s.${it.format(2)}"
+            binding.tickInMinutesTimer.text = tickString
+        }
+    }
+
+    private fun Double.format(digits: Int) = "%.${digits}f".format(this)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(this)[TimerViewModel::class.java]
+
+        initNavigationButtons()
+        initButton()
+        initObservable()
+        viewModel.resetTimer()
+
+
+
+
     }
 
     private fun initNavigationButtons() {
@@ -113,5 +146,13 @@ class TimerFragment : BaseFragment<FragmentTimerBinding>(FragmentTimerBinding::i
                 }
             }
         })
+
+        binding.buttonMuteUnMute.setOnClickListener {
+            viewModel.changeMuteSound()
+        }
+
+        binding.buttonPlusMinute.setOnClickListener{
+            viewModel.plusOneMinutes()
+        }
     }
 }
