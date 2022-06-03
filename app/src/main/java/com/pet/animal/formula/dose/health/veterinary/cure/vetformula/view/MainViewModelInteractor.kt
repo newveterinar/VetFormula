@@ -1,5 +1,6 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.vetformula.view
 
+import android.widget.Toast
 import com.pet.animal.formula.dose.health.veterinary.cure.fakerepo.FakeRepositoryImpl
 import com.pet.animal.formula.dose.health.veterinary.cure.repo.Repository
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.*
@@ -51,12 +52,15 @@ class MainViewModelInteractor {
             repeat(PHARMACY_CRI_ADDFIRST_FORMULA_NUMBER) {
                 repositoryImpl.insertFormula(
                     fakeRepositoryImpl.getFormula(ScreenType.PHARMACY_CRI, listOf(it, 0)),
-                    ScreenType.PHARMACY_DOSES.ordinal,
+                    ScreenType.PHARMACY_CRI.ordinal,
                     PHARMACY_CRI_FORMULA_ELEMENT_COUNT,
                     it,
                     0
                 )
             }
+
+            Toast.makeText(resourcesProviderImpl.context, "${repositoryImpl.getFormula(
+                ScreenType.PHARMACY_CRI, listOf(1, 0)).getTypedFormulas().size}", Toast.LENGTH_SHORT).show()
         }
     }
 }

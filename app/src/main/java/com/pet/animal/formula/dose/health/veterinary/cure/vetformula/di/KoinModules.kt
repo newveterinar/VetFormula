@@ -6,6 +6,7 @@ import com.github.terrakok.cicerone.Router
 import com.pet.animal.formula.dose.health.veterinary.cure.core.AppScreens
 import com.pet.animal.formula.dose.health.veterinary.cure.fakerepo.FakeRepositoryImpl
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.cri.PharmacyCRIFragmentViewModel
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.cri.result.PharmacyCRIResultFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.doses.PharmacyDosesFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.doses.result.PharmacyDosesResultFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.surface.PharmacySurfaceFragmentViewModel
@@ -73,6 +74,11 @@ val screens = module {
     scope(named(FragmentScope.SHOW_PHARMACY_CRI_FRAGMENT_SCOPE)) {
         viewModel {
             PharmacyCRIFragmentViewModel()
+        }
+    }
+    scope(named(FragmentScope.SHOW_PHARMACY_CRI_RESULT_FRAGMENT_SCOPE)) {
+        viewModel {
+            PharmacyCRIResultFragmentViewModel()
         }
     }
     //endregion

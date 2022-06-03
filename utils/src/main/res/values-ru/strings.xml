@@ -77,4 +77,5 @@
     <string name="output_data_dimension_mass">кг</string>
     <string name="output_data_dimension_time">с</string>
     <string name="output_data_dimension_square_length">м2</string>
+    <string name="output_data_dimension_drop">капель</string>
 </resources>

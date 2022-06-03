@@ -1,5 +1,6 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.utils.functions
 
+import android.annotation.SuppressLint
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.RelativeSizeSpan
@@ -190,6 +191,7 @@ fun List<Int>.convertAddFirstSecondToTypedFormulaName(screenType: ScreenType): S
     return resultTypedFormulaName
 }
 
+@SuppressLint("SetTextI18n")
 fun TextView.createStringResult(
         resultValueField: MutableList<ResultValueField>,
         indexData: Int,

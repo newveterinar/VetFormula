@@ -71,4 +71,10 @@
     <string name="pharmacy_result_volume_title_text">Amount</string>
     <string name="captionBtnStopTimer">STOP</string>
     <string name="captionBtnResetTimer">RESET</string>
+    <string name="pharmacy_result_drip_rate_title_text">Drip rate</string>
+    <string name="pharmacy_result_drip_rate_time_title_text_text">One drop every</string>
+    <string name="pharmacy_result_rate_rate_title_text_text">Rate of:</string>
+    <string name="pharmacy_result_rate_mass_dose_per_kg_per_time_title_text_text">Gives:</string>
+    <string name="pharmacy_result_rate_time_title_text_text">For:</string>
+    <string name="pharmacy_result_amount_volume_text_text">Add:</string>
 </resources>

@@ -307,7 +307,7 @@ class PharmacyCRIFragment:
                         }
                     } else {
                         // Переход на экран с результатами расчётов
-//                        viewModel.router.navigateTo(viewModel.screens.pharmacyDosesResultScreen())
+                        viewModel.router.navigateTo(viewModel.screens.pharmacyCRIResultScreen())
                     }
                 }
             }

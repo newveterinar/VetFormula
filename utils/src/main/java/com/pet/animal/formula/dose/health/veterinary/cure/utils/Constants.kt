@@ -12,6 +12,8 @@ class FragmentScope {
         const val SHOW_PHARMACY_DOSES_RESULT_FRAGMENT_SCOPE =
             "SHOW_PHARMACY_DOSES_RESULT_FRAGMENT_SCOPE"
         const val SHOW_PHARMACY_CRI_FRAGMENT_SCOPE = "SHOW_PHARMACY_CRI_FRAGMENT_SCOPE"
+        const val SHOW_PHARMACY_CRI_RESULT_FRAGMENT_SCOPE =
+            "SHOW_PHARMACY_CRI_RESULT_FRAGMENT_SCOPE"
     }
 }
 
@@ -121,11 +123,13 @@ enum class InputDataDimensionType {
 
 // Типы размерностей результирующих (выходных) данных
 enum class OutputDataDimensionType {
-    LENGTH,         // Пример: м
-    SQUARE_LENGTH,  // Пример: м2
-    VOLUME,         // Пример: м3
-    MASS,           // Пример: кг
-    TIME,           // Пример: ч
-    RATE,           // Пример: мл/ч
-    ERROR_TYPE      // Ошибка с выбором индекса
+    LENGTH,                         // Пример: м
+    SQUARE_LENGTH,                  // Пример: м2
+    VOLUME,                         // Пример: м3
+    MASS,                           // Пример: кг
+    MASS_DOSE_PER_KG_PER_TIME,      // Пример: кг/кг/с
+    TIME,                           // Пример: с
+    RATE,                           // Пример: мл/с
+    DROP,                           // Пример: капля
+    ERROR_TYPE                      // Ошибка с выбором индекса
 }

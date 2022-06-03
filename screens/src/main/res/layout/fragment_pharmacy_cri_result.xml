@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorPrimary">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/pharmacy_header"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/pharmacy_header_height"
+        android:background="?attr/colorSecondary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/pharmacy_previous_button_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/pharmacy_previous_button"
+                android:layout_width="@dimen/pharmacy_previous_button_width"
+                android:layout_height="@dimen/pharmacy_previous_button_height"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="@dimen/pharmacy_previous_button_margin_start"
+                android:layout_marginTop="@dimen/pharmacy_previous_button_margin_top"
+                android:rotation="@dimen/arrow_back_rotation_angle"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_arrow_right" />
+
+            <TextView
+                android:id="@+id/pharmacy_result_previous_text"
+                style="@style/text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/pharmacy_result_previous_text_padding_start"
+                android:text="@string/pharmacy_result_previous_text_text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/pharmacy_horizontal_border"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/pharmacy_horizontal_border_height"
+            android:background="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pharmacy_header">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/pharmacy_result_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="@dimen/pharmacy_result_container_padding_top"
+            android:paddingBottom="@dimen/pharmacy_result_container_padding_bottom">
+
+            <TextView
+                android:id="@+id/pharmacy_result_volume_title"
+                style="@style/button_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/pharmacy_result_volume_title_margin_start"
+                android:layout_marginTop="@dimen/pharmacy_result_volume_title_margin_top"
+                android:text="@string/pharmacy_result_volume_title_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/pharmacy_result_amount_volume_text"
+                android:tag="VOLUME"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pharmacy_result_amount_volume_text_text"
+                style="@style/number_button"
+                android:layout_marginStart="@dimen/pharmacy_result_volume_text_margin_start"
+                android:layout_marginEnd="@dimen/pharmacy_result_volume_text_margin_end"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/pharmacy_result_volume_title"/>
+
+            <TextView
+                android:id="@+id/pharmacy_result_rate_title"
+                style="@style/button_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/pharmacy_result_rate_title_margin_start"
+                android:layout_marginTop="@dimen/pharmacy_result_rate_title_margin_top"
+                android:text="@string/pharmacy_speed_animal_title_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/pharmacy_result_amount_volume_text" />
+
+            <TextView
+                android:id="@+id/pharmacy_result_rate_rate_title_text"
+                android:tag="RATE"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pharmacy_result_rate_rate_title_text_text"
+                style="@style/number_button"
+                android:layout_marginStart="@dimen/pharmacy_result_rate_title_text_margin_start"
+                android:layout_marginEnd="@dimen/pharmacy_result_rate_title_text_margin_end"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/pharmacy_result_rate_title"/>
+
+            <TextView
+                android:id="@+id/pharmacy_result_rate_mass_dose_per_kg_per_time_title_text"
+                android:tag="MASS_DOSE_PER_KG_PER_TIME"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pharmacy_result_rate_mass_dose_per_kg_per_time_title_text_text"
+                style="@style/number_button"
+                android:layout_marginStart="@dimen/pharmacy_result_mass_dose_per_kg_per_time_title_text_margin_start"
+                android:layout_marginEnd="@dimen/pharmacy_result_mass_dose_per_kg_per_time_title_text_margin_end"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/pharmacy_result_rate_rate_title_text"/>
+
+            <TextView
+                android:id="@+id/pharmacy_result_rate_time_title_text"
+                android:tag="TIME"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pharmacy_result_rate_time_title_text_text"
+                style="@style/number_button"
+                android:layout_marginStart="@dimen/pharmacy_result_time_title_text_margin_start"
+                android:layout_marginEnd="@dimen/pharmacy_result_time_title_text_margin_end"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/pharmacy_result_rate_mass_dose_per_kg_per_time_title_text"/>
+
+            <TextView
+                android:id="@+id/pharmacy_result_drip_rate_title"
+                style="@style/button_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/pharmacy_result_drip_rate_title_margin_start"
+                android:layout_marginTop="@dimen/pharmacy_result_drip_rate_title_margin_top"
+                android:text="@string/pharmacy_result_drip_rate_title_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/pharmacy_result_rate_time_title_text" />
+
+            <TextView
+                android:id="@+id/pharmacy_result_drip_rate_time_title_text"
+                android:tag="TIME"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pharmacy_result_drip_rate_time_title_text_text"
+                style="@style/number_button"
+                android:layout_marginStart="@dimen/pharmacy_result_rate_title_text_margin_start"
+                android:layout_marginEnd="@dimen/pharmacy_result_rate_title_text_margin_end"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/pharmacy_result_drip_rate_title"/>
+
+            <TextView
+                android:id="@+id/pharmacy_result_drip_rate_drop_title_text"
+                android:tag="DROP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/number_button"
+                android:layout_marginStart="@dimen/pharmacy_result_drip_rate_drop_title_text_margin_start"
+                android:layout_marginEnd="@dimen/pharmacy_result_drip_rate_drop_title_text_margin_end"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/pharmacy_result_drip_rate_time_title_text"/>
+
+            <TextView
+                android:id="@+id/pharmacy_result_drip_rate_drop_rate_title_text"
+                android:tag="DROP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/number_button"
+                android:layout_marginStart="@dimen/pharmacy_result_drip_rate_drop_rate_title_text_margin_start"
+                android:layout_marginEnd="@dimen/pharmacy_result_drip_rate_drop_rate_title_text_margin_end"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/pharmacy_result_drip_rate_drop_title_text"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

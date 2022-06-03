@@ -77,6 +77,7 @@
     <string name="output_data_dimension_mass">kg</string>
     <string name="output_data_dimension_time">s</string>
     <string name="output_data_dimension_square_length">m2</string>
+    <string name="output_data_dimension_drop">drops</string>
 
     <!-- Ресурсы для смены языка приложения -->
     <string name="language_english" translatable="false">English</string>
