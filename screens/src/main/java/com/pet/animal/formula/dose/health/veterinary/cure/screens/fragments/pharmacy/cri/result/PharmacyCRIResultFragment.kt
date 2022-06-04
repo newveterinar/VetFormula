@@ -132,6 +132,7 @@ class PharmacyCRIResultFragment:
             is AppState.Success -> {
                 appState.screenData.let {
                     if (!it.isGoToResultScreen) {
+
                         resultsValueFields.forEachIndexed { index, resultValueTextView ->
                             resultValueTextView.createStringResult(it.resultValueField,
                                 index, settings.getInputedScreenData().valueFields)

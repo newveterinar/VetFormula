@@ -36,12 +36,11 @@ class PharmacyCRIInteractorImpl(
         // Проверка на заполненность всех числовых полей
         var isExistZeroData: Boolean = false
         values.forEach {
+            Toast.makeText(resourcesProviderImpl.context, "$it", Toast.LENGTH_SHORT).show()
             if (it == 0.0)  {
                 isExistZeroData = true
             }
         }
-//        Toast.makeText(resourcesProviderImpl.context, "${repositoryImpl.getFormula(screenType, listsAddFirstSecond).getTypedFormulas().size}", Toast.LENGTH_SHORT).show()
-        Toast.makeText(resourcesProviderImpl.context, "${screenType.name}, ${listsAddFirstSecond[0]}, ${listsAddFirstSecond[1]}", Toast.LENGTH_SHORT).show()
 
         if (!isExistZeroData) loadAndSaveFormula(screenType, listsAddFirstSecond)
         // Сохранение значений всех списков и числовых полей
