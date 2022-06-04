@@ -14,8 +14,8 @@
     <color name="dark_back_icon">#00000000</color>
     <color name="calc_back">#4a2e42</color>
 
-    <color name="light_green">#9CFFB8</color>
-    <color name="dark_green">#84d69b</color>
+    <color name="light_green">#ddfee6</color>
+    <color name="dark_green">#c6e9d0</color>
     <color name="light_appbar">#20D753</color>
     <color name="dark_appbar">#219b43</color>
     <color name="transparent">#278d44</color>
