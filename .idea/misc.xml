@@ -46,6 +46,7 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/app/src/main/res/drawable/ic_cat_dog.xml" value="0.1455" />
         <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/app/src/main/res/drawable/ic_internet_24.xml" value="0.242" />
         <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/app/src/main/res/drawable/ic_launcher_background.xml" value="0.242" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/app/src/main/res/drawable/ic_line.xml" value="0.263" />
         <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/app/src/main/res/drawable/ic_note.xml" value="0.242" />
         <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/app/src/main/res/drawable/ic_notebook.xml" value="0.1455" />
         <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/app/src/main/res/drawable/ic_paw.xml" value="0.1035" />
@@ -65,13 +66,22 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/screens/src/main/res/drawable/ic_baseline_touch_place_green_64.xml" value="0.1365" />
         <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/screens/src/main/res/drawable/ic_internet_24.xml" value="0.1365" />
         <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/screens/src/main/res/drawable/shape_button.xml" value="0.1365" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/screens/src/main/res/layout/fragment_about.xml" value="0.24003623188405798" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/screens/src/main/res/layout/fragment_conversions.xml" value="0.24003623188405798" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/screens/src/main/res/layout/fragment_edit_text.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/screens/src/main/res/layout/fragment_fluids.xml" value="0.24003623188405798" />
         <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/screens/src/main/res/layout/fragment_hematology.xml" value="0.17831813576494426" />
         <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/screens/src/main/res/layout/fragment_mainscreen.xml" value="0.5" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/screens/src/main/res/layout/fragment_pharmacy.xml" value="0.14564336372847012" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/screens/src/main/res/layout/fragment_pharmacy.xml" value="0.33" />
         <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/screens/src/main/res/layout/fragment_pharmacy_cri.xml" value="0.33" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/screens/src/main/res/layout/fragment_pharmacy_doses.xml" value="0.24003623188405798" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/screens/src/main/res/layout/fragment_pharmacy_doses_result.xml" value="0.24003623188405798" />
         <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/screens/src/main/res/layout/fragment_pharmacy_surface.xml" value="0.33" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/screens/src/main/res/layout/fragment_pharmacy_surface_result.xml" value="0.1707193515704154" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/screens/src/main/res/layout/fragment_pharmacy_surface_result.xml" value="0.25" />
         <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/screens/src/main/res/layout/fragment_settings.xml" value="0.33" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/screens/src/main/res/layout/fragment_timer.xml" value="0.24003623188405798" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/screens/src/main/res/layout/fragment_web_view_vetmedical.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/VetFormula/screens/src/main/res/layout/fragment_web_view_wasa.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>
