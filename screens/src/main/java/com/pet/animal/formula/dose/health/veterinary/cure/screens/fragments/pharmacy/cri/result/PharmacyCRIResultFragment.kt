@@ -62,6 +62,8 @@ class PharmacyCRIResultFragment:
         initResultValueVields()
         // Инициализация ViewModel
         initViewModel()
+        // Скрытие лишних результирующих элементов
+        hideSurplusResultsElements()
     }
 
     // Инициализация кнопок
@@ -114,6 +116,21 @@ class PharmacyCRIResultFragment:
         saveData(false)
     }
 
+    // Скрытие лишних результирующих элементов
+    private fun hideSurplusResultsElements() {
+        if (settings.getInputedScreenData().listsAddFirstSecond[0] == 0) {
+            binding.pharmacyResultDripRateTitle.visibility = View.INVISIBLE
+            resultsValueFields[4].visibility = View.INVISIBLE
+            resultsValueFields[5].visibility = View.INVISIBLE
+            resultsValueFields[6].visibility = View.INVISIBLE
+        } else {
+            binding.pharmacyResultDripRateTitle.visibility = View.VISIBLE
+            resultsValueFields[4].visibility = View.VISIBLE
+            resultsValueFields[5].visibility = View.VISIBLE
+            resultsValueFields[6].visibility = View.VISIBLE
+        }
+    }
+
     // Сохранение текущего состояния всех числовых полей и списков
     private fun saveData(isGoToResultScreen: Boolean) {
         viewModel.saveData(
@@ -132,7 +149,6 @@ class PharmacyCRIResultFragment:
             is AppState.Success -> {
                 appState.screenData.let {
                     if (!it.isGoToResultScreen) {
-
                         resultsValueFields.forEachIndexed { index, resultValueTextView ->
                             resultValueTextView.createStringResult(it.resultValueField,
                                 index, settings.getInputedScreenData().valueFields)

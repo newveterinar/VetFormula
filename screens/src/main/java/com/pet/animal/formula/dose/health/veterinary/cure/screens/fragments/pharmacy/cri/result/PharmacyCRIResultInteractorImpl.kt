@@ -1,6 +1,5 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.cri.result
 
-import android.widget.Toast
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.Interactor
 import com.pet.animal.formula.dose.health.veterinary.cure.core.calculator.CalcInteractorImpl
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppState
@@ -9,7 +8,6 @@ import com.pet.animal.formula.dose.health.veterinary.cure.utils.OutputDataDimens
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.dimension.outputDataDimensionConverter
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertMutableListValueFieldToListIntDimension
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.resources.ResourcesProviderImpl
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.settings.SettingsImpl
 import org.koin.java.KoinJavaComponent
 
@@ -21,8 +19,6 @@ class PharmacyCRIResultInteractorImpl(
     private val settings: SettingsImpl = KoinJavaComponent.getKoin().get()
     // Интерактор калькулятора
     private val calcInteractorImpl: CalcInteractorImpl = CalcInteractorImpl()
-    // Получение доступа к ресурсам
-    val resourcesProviderImpl: ResourcesProviderImpl = KoinJavaComponent.getKoin().get()
     //endregion
 
     // Получение данных полей окна, если они были сохранены ранее
@@ -40,7 +36,6 @@ class PharmacyCRIResultInteractorImpl(
         isGoToResultScreen: Boolean
     ) {
         val resultValueField: MutableList<ResultValueField> = mutableListOf()
-        Toast.makeText(resourcesProviderImpl.context, "${settings.getFormula().getTypedFormulas().size}", Toast.LENGTH_SHORT).show()
         settings.getFormula().getTypedFormulas().forEachIndexed { index, typedFormula ->
             calcInteractorImpl.clearCalc()
             typedFormula.elements.forEach { element ->
@@ -58,12 +53,18 @@ class PharmacyCRIResultInteractorImpl(
             // Назначение различным результирующим данным своих конвертирующих коэффициентов
             val outputDataDimensionType: OutputDataDimensionType = when(index) {
                 0 -> OutputDataDimensionType.VOLUME
-                1 -> OutputDataDimensionType.MASS
+                1 -> OutputDataDimensionType.RATE
+                2 -> OutputDataDimensionType.MASS_DOSE_PER_KG_PER_TIME
+                3 -> OutputDataDimensionType.TIME
+                4 -> OutputDataDimensionType.TIME
+                5 -> OutputDataDimensionType.DROP
+                6 -> OutputDataDimensionType.DROP
                 else -> OutputDataDimensionType.ERROR_TYPE
             }
             resultValueField.add(
                 ResultValueField(
                     outputDataDimensionConverter(
+                        screenType,
                         outputDataDimensionType,
                         calcInteractorImpl.getCommandResultValue() ?: 0.0,
                         settings.getInputedScreenData().valueFields.

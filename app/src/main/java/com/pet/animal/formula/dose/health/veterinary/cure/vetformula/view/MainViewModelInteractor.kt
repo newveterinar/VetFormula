@@ -19,8 +19,8 @@ class MainViewModelInteractor {
 
     // Запись в базу данных формул при первом запуске приложения
     suspend fun writeDataToBDAtFirstRun() {
-//        // Очистка базы данных перед добавлением новых формул
-//        repeat(300) {
+        // Очистка базы данных перед добавлением новых формул
+//        repeat(500) {
 //            repositoryImpl.deleteFormulaByID(it.toLong())
 //        }
 
@@ -58,9 +58,15 @@ class MainViewModelInteractor {
                     0
                 )
             }
-
-            Toast.makeText(resourcesProviderImpl.context, "${repositoryImpl.getFormula(
-                ScreenType.PHARMACY_CRI, listOf(1, 0)).getTypedFormulas().size}", Toast.LENGTH_SHORT).show()
         }
+
+        Toast.makeText(resourcesProviderImpl.context,
+            "${repositoryImpl.getFormula(
+                ScreenType.PHARMACY_CRI, listOf(0, 0)).getTypedFormulas().size}\n" +
+                    "${repositoryImpl.getFormula(
+                        ScreenType.PHARMACY_CRI, listOf(1, 0)).getTypedFormulas().size}\n" +
+                    "${repositoryImpl.getFormula(
+                        ScreenType.PHARMACY_CRI, listOf(2, 0)).getTypedFormulas().size}\n",
+            Toast.LENGTH_SHORT).show()
     }
 }

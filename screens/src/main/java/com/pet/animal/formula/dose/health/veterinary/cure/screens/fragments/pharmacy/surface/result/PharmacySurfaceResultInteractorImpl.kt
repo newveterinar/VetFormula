@@ -56,6 +56,7 @@ class PharmacySurfaceResultInteractorImpl(
             resultValueField.add(
                 ResultValueField(
                     outputDataDimensionConverter(
+                        screenType,
                         outputDataDimensionType,
                         calcInteractorImpl.getCommandResultValue() ?: 0.0,
                         listOf()

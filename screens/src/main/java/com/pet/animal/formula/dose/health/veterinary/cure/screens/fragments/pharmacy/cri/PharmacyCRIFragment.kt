@@ -100,12 +100,21 @@ class PharmacyCRIFragment:
         valuesFields.add(binding.pharmacyConcentrationTextinputlayoutTextfield)
         valuesFields.add(binding.pharmacyAmountTextinputlayoutTextfield)
         valuesFields.add(binding.pharmacyRateTextinputlayoutTextfield)
+
+        // ВРЕМЕННОЕ ЗАДАНИЕ НАЧАЛЬНЫХ ЗНАЧЕНИЙ
+        valuesFields[0].setText("7.5")
+        valuesFields[1].setText("40")
+        valuesFields[2].setText("20")
+        valuesFields[3].setText("20")
+        valuesFields[4].setText("4")
+
         // Настройка события изменения значений в полях ввода чисел
         valuesFields.forEach { field ->
             field.doOnTextChanged { _, _, _, _ ->
                 viewModel.checkAreTheFieldsFilledIn(valuesFields.map { it.text.toString() })
             }
         }
+
         // Настройка события завершения ввода числового значения
         valuesFields.forEachIndexed { index, field ->
             field.setOnKeyListener(object: View.OnKeyListener {
@@ -175,6 +184,9 @@ class PharmacyCRIFragment:
         listsDimensions.add(binding.pharmacyConcentrationDimensionList)
         listsDimensions.add(binding.pharmacyAmountDimensionList)
         listsDimensions.add(binding.pharmacyRateDimensionList)
+
+        // ВРЕМЕННАЯ НАСТРОЙКА НАЧАЛЬНОГО ЗНАЧЕНИЯ
+        listsDimensions[2].setSelection(1)
     }
 
     // Инициализация навигационных кнопок

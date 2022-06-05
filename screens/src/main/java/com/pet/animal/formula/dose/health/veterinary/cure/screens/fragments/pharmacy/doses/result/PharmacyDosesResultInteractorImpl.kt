@@ -59,6 +59,7 @@ class PharmacyDosesResultInteractorImpl(
             resultValueField.add(
                 ResultValueField(
                     outputDataDimensionConverter(
+                        screenType,
                         outputDataDimensionType,
                         calcInteractorImpl.getCommandResultValue() ?: 0.0,
                         settings.getInputedScreenData().valueFields.

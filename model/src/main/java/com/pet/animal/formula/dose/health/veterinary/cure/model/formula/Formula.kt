@@ -7,6 +7,11 @@ class Formula {
     private val formula: MutableList<TypedFormula> = mutableListOf()
     //endregion
 
+    // Удаление всех типизированных формул
+    fun clearAllTypedFormulas() {
+        formula.clear()
+    }
+
     // Добавление новой типизированной формулы
     fun addTypedFormula(newTypedFormula: TypedFormula) {
         formula.add(newTypedFormula)

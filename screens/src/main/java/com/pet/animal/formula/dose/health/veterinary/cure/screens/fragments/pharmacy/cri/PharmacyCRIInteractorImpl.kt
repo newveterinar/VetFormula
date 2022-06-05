@@ -1,11 +1,9 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.cri
 
-import android.widget.Toast
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.Interactor
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppState
 import com.pet.animal.formula.dose.health.veterinary.cure.repo.Repository
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.resources.ResourcesProviderImpl
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.settings.SettingsImpl
 import org.koin.java.KoinJavaComponent
 
@@ -17,8 +15,6 @@ class PharmacyCRIInteractorImpl(
     private val settings: SettingsImpl = KoinJavaComponent.getKoin().get()
     // Репозиторий с базой данной
     private val repositoryImpl: Repository = KoinJavaComponent.getKoin().get()
-    // Получение доступа к ресурсам
-    private val resourcesProviderImpl: ResourcesProviderImpl = KoinJavaComponent.getKoin().get()
     //endregion
 
     // Получение данных полей окна, если они были сохранены ранее
@@ -36,7 +32,6 @@ class PharmacyCRIInteractorImpl(
         // Проверка на заполненность всех числовых полей
         var isExistZeroData: Boolean = false
         values.forEach {
-            Toast.makeText(resourcesProviderImpl.context, "$it", Toast.LENGTH_SHORT).show()
             if (it == 0.0)  {
                 isExistZeroData = true
             }

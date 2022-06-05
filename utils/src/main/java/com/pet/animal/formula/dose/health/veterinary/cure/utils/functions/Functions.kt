@@ -118,7 +118,10 @@ fun String.convertStringToInputDataDimensionType(): InputDataDimensionType {
 
 // Перевод списка параметров addFirstSecond в название типизированной формулы TypedFormula
 fun List<Int>.convertAddFirstSecondToTypedFormulaName(screenType: ScreenType): String {
+    /** Задание переменных */ //region
     var resultTypedFormulaName: String = ""
+    //endregion
+
     when (screenType) {
         // Типы формул для раздела FLUIDS
         ScreenType.FLUIDS_BASIC -> {
@@ -143,14 +146,17 @@ fun List<Int>.convertAddFirstSecondToTypedFormulaName(screenType: ScreenType): S
         }
         ScreenType.PHARMACY_CRI -> {
             if ((this[ADDFIRST_INDEX] == PHARMACY_CRI_NO_GIVING_SET_INDEX) &&
-                (this[ADDSECOND_INDEX] == 0))
+                (this[ADDSECOND_INDEX] == 0)) {
                 resultTypedFormulaName = PHARMACY_CRI_NO_GIVING_SET_NAME
+            }
             if ((this[ADDFIRST_INDEX] == PHARMACY_CRI_20_DROPS_PER_ML_INDEX) &&
-                (this[ADDSECOND_INDEX] == 0))
+                (this[ADDSECOND_INDEX] == 0)) {
                 resultTypedFormulaName = PHARMACY_CRI_20_DROPS_PER_ML_NAME
+            }
             if ((this[ADDFIRST_INDEX] == PHARMACY_CRI_60_DROPS_PER_ML_INDEX) &&
-                (this[ADDSECOND_INDEX] == 0))
+                (this[ADDSECOND_INDEX] == 0)) {
                 resultTypedFormulaName = PHARMACY_CRI_60_DROPS_PER_ML_NAME
+            }
         }
         ScreenType.PHARMACY_SURFACE -> {
             if ((this[ADDFIRST_INDEX] == PHARMACY_SURFACE_DOG_INDEX) &&
@@ -202,8 +208,9 @@ fun TextView.createStringResult(
     val resourcesProviderImpl: ResourcesProviderImpl = KoinJavaComponent.getKoin().get()
     //endregion
 
-    var initialString: String = "${resultValueField[indexData].value}"
-    lateinit var result: SpannableString
+    var initialString: String = if (indexData <= resultValueField.size - 1)
+        "${resultValueField[indexData].value}" else ""
+    var result: SpannableString = SpannableString(initialString)
     // Изменение формата размерности текста
     if (initialString.isNotEmpty()) {
         when (this.tag) {
@@ -251,6 +258,12 @@ fun TextView.createStringResult(
                 result = SpannableString(initialString)
             }
             OutputDataDimensionType.RATE.toString() -> {
+                result = SpannableString(initialString)
+            }
+            OutputDataDimensionType.MASS_DOSE_PER_KG_PER_TIME.toString() -> {
+                result = SpannableString(initialString)
+            }
+            OutputDataDimensionType.DROP.toString() -> {
                 result = SpannableString(initialString)
             }
             OutputDataDimensionType.ERROR_TYPE.toString() -> {
