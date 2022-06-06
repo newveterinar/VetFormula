@@ -63,22 +63,22 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="@dimen/pharmacy_about_button_margin_top"
         android:layout_marginBottom="@dimen/fab_main_margin_bottom"
+        android:backgroundTint="@color/transparent"
         android:clickable="true"
         android:focusable="true"
-        android:backgroundTint="@color/transparent"
+        android:src="@drawable/ic_add_24"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:src="@drawable/ic_add_24"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_web_view_vetmedical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/fab_web_margin_bottom"
+        android:backgroundTint="@color/transparent"
         android:clickable="true"
         android:focusable="true"
         android:visibility="invisible"
-        android:backgroundTint="@color/transparent"
         app:layout_constraintBottom_toTopOf="@+id/fab_main"
         app:layout_constraintEnd_toEndOf="@+id/fab_main"
         app:srcCompat="@drawable/ic_vet_med">
@@ -90,6 +90,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/fab_text_margin_bottom"
+        android:backgroundTint="@color/transparent"
         android:clickable="true"
         android:focusable="true"
         android:visibility="invisible"
@@ -102,10 +103,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/fab_text_margin_bottom"
+        android:backgroundTint="@color/transparent"
         android:clickable="true"
         android:focusable="true"
         android:visibility="invisible"
-        android:backgroundTint="@color/transparent"
         app:layout_constraintBottom_toTopOf="@+id/fab_web_view_wsava"
         app:layout_constraintEnd_toEndOf="@+id/fab_web_view_wsava"
         app:srcCompat="@drawable/ic_notebook" />
