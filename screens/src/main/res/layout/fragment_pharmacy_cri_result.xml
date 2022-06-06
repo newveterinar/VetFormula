@@ -154,7 +154,7 @@
 
             <TextView
                 android:id="@+id/pharmacy_result_drip_rate_time_title_text"
-                android:tag="TIME"
+                android:tag="DROP_TIME"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/pharmacy_result_drip_rate_time_title_text_text"

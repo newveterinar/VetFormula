@@ -1,6 +1,5 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.utils.dimension
 
-import android.widget.Toast
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.*
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.resources.ResourcesProviderImpl
 import org.koin.java.KoinJavaComponent
@@ -13,8 +12,6 @@ fun inputDataDimensionConverter(
 ): Double {
     /** Задание переменных */ //region
     var result: Double = -1.0
-    // Получение доступа к ресурсам
-    val resourcesProviderImpl: ResourcesProviderImpl = KoinJavaComponent.getKoin().get()
     //endregion
     when(inputDataDimensionType) {
         InputDataDimensionType.WEIGHT_ANIMAL -> {
@@ -51,8 +48,7 @@ fun inputDataDimensionConverter(
                 else -> ERROR_VALUE
             }
         }
-        InputDataDimensionType.VOLUME_DOSE_PER_KG_PER_TIME -> {
-//!!!!!!!!!!!!
+        InputDataDimensionType.VOLUME_DOSE_PER_KG_PER_TIME -> { // Rate
             result = when(index) {
                 0 -> TEN_IN_MINUS_SIX_POWER * NUMBER_SECONDS_IN_HOUR
                 1 -> TEN_IN_MINUS_NINE_POWER * NUMBER_SECONDS_IN_HOUR
@@ -83,7 +79,6 @@ fun inputDataDimensionConverter(
         }
         InputDataDimensionType.VOLUME -> {
             result = when(index) {
-//!!!!!!!!!
                 0 -> TEN_IN_MINUS_SIX_POWER
                 1 -> TEN_IN_MINUS_NINE_POWER
                 else -> ERROR_VALUE
@@ -104,8 +99,6 @@ fun outputDataDimensionConverter(
     /** Задание переменных */ //region
     // Задание начального значения для результата
     var result: Double = RESULT_VALUE_NOT_CHANGED
-    // Получение доступа к ресурсам
-    val resourcesProviderImpl: ResourcesProviderImpl = KoinJavaComponent.getKoin().get()
     //endregion
 
     when(outputDataDimensionType) {
@@ -164,6 +157,20 @@ fun outputDataDimensionConverter(
                         1 -> currentResult * NUMBER_SECONDS_IN_HOUR
                         2 -> currentResult * NUMBER_SECONDS_IN_MINUTE
                         3 -> currentResult * NUMBER_SECONDS_IN_MINUTE
+                        else -> ERROR_VALUE
+                    }
+                }
+                else -> currentResult
+            }
+        }
+        OutputDataDimensionType.DROP_TIME -> {
+            result = when(screenType) {
+                ScreenType.PHARMACY_CRI -> {
+                    when (dimension[4]) {
+                        0 -> currentResult / (TEN_IN_MINUS_SIX_POWER * NUMBER_SECONDS_IN_HOUR)
+                        1 -> currentResult / (TEN_IN_MINUS_NINE_POWER * NUMBER_SECONDS_IN_HOUR)
+                        2 -> currentResult / (TEN_IN_MINUS_SIX_POWER * NUMBER_SECONDS_IN_MINUTE)
+                        3 -> currentResult / (TEN_IN_MINUS_NINE_POWER * NUMBER_SECONDS_IN_MINUTE)
                         else -> ERROR_VALUE
                     }
                 }

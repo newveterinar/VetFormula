@@ -142,6 +142,7 @@ enum class OutputDataDimensionType {
     MASS,                           // Пример: кг
     MASS_DOSE_PER_KG_PER_TIME,      // Пример: кг/кг/с
     TIME,                           // Пример: с
+    DROP_TIME,                      // Пример: капель в с
     RATE,                           // Пример: мл/с
     DROP,                           // Пример: капля
     ERROR_TYPE                      // Ошибка с выбором индекса

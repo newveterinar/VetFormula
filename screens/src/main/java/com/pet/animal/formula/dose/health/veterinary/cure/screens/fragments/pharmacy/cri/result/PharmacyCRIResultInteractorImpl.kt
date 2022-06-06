@@ -56,7 +56,7 @@ class PharmacyCRIResultInteractorImpl(
                 1 -> OutputDataDimensionType.RATE
                 2 -> OutputDataDimensionType.MASS_DOSE_PER_KG_PER_TIME
                 3 -> OutputDataDimensionType.TIME
-                4 -> OutputDataDimensionType.TIME
+                4 -> OutputDataDimensionType.DROP_TIME
                 5 -> OutputDataDimensionType.DROP
                 6 -> OutputDataDimensionType.DROP
                 else -> OutputDataDimensionType.ERROR_TYPE
