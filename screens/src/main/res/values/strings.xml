@@ -57,7 +57,7 @@
     <string name="timer_button_text_text">Timer</string>
     <string name="doses_result_text_text">100</string>
     <string name="timerText_text">00:00</string>
-    <string name="startTimerButton_text">Run stop-watch</string>
+    <string name="startTimerButton_text">Run</string>
     <string name="inputManualCount_text">0</string>
     <string name="textView3_text">Enter the number of measurements</string>
     <string name="tickInMinutes_text">0.00</string>
