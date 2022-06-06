@@ -1,5 +1,6 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.fakerepo
 
+import android.widget.Toast
 import com.pet.animal.formula.dose.health.veterinary.cure.core.calculator.Command
 import com.pet.animal.formula.dose.health.veterinary.cure.core.calculator.index
 import com.pet.animal.formula.dose.health.veterinary.cure.model.formula.Element
@@ -7,6 +8,8 @@ import com.pet.animal.formula.dose.health.veterinary.cure.model.formula.Formula
 import com.pet.animal.formula.dose.health.veterinary.cure.model.formula.TypedFormula
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.*
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertAddFirstSecondToTypedFormulaName
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.resources.ResourcesProviderImpl
+import org.koin.java.KoinJavaComponent
 
 class FakeRepositoryImpl: FakeRepository {
     override suspend fun getFormula(screenType: ScreenType, listsAddFirstSecond: List<Int>
@@ -31,6 +34,8 @@ class FakeRepositoryImpl: FakeRepository {
         // Типизированное имя запрошенной формулы
         val askedTypedName: String =
             listsAddFirstSecond.convertAddFirstSecondToTypedFormulaName(screenType)
+        // Получение доступа к ресурсам
+        val resourcesProviderImpl: ResourcesProviderImpl = KoinJavaComponent.getKoin().get()
         //endregion
 
         when {
@@ -95,17 +100,18 @@ class FakeRepositoryImpl: FakeRepository {
                         )
                     )
                 )
-                pharmacyCRIFormula.addTypedFormula(
-                    TypedFormula(PHARMACY_CRI_NO_GIVING_SET_NAME, mutableListOf(
-                        Element(Command.ZERO.index(), 0))))
-                pharmacyCRIFormula.addTypedFormula(
-                    TypedFormula(PHARMACY_CRI_NO_GIVING_SET_NAME, mutableListOf(
-                        Element(Command.ZERO.index(), 0))))
-                pharmacyCRIFormula.addTypedFormula(
-                    TypedFormula(PHARMACY_CRI_NO_GIVING_SET_NAME, mutableListOf(
-                            Element(Command.ZERO.index(), 0))))
+//                pharmacyCRIFormula.addTypedFormula(
+//                    TypedFormula(PHARMACY_CRI_NO_GIVING_SET_NAME, mutableListOf(
+//                        Element(Command.ZERO.index(), 0))))
+//                pharmacyCRIFormula.addTypedFormula(
+//                    TypedFormula(PHARMACY_CRI_NO_GIVING_SET_NAME, mutableListOf(
+//                        Element(Command.ZERO.index(), 0))))
+//                pharmacyCRIFormula.addTypedFormula(
+//                    TypedFormula(PHARMACY_CRI_NO_GIVING_SET_NAME, mutableListOf(
+//                            Element(Command.ZERO.index(), 0))))
             }
             askedTypedName.contains(PHARMACY_CRI_20_DROPS_PER_ML_NAME) -> {
+                Toast.makeText(resourcesProviderImpl.context, "PHARMACY_CRI_20_DROPS_PER_ML_NAME", Toast.LENGTH_SHORT).show()
                 pharmacyCRIFormula.addTypedFormula(
                     TypedFormula(
                         PHARMACY_CRI_20_DROPS_PER_ML_NAME,
@@ -246,6 +252,7 @@ class FakeRepositoryImpl: FakeRepository {
                 )
             }
             askedTypedName.contains(PHARMACY_CRI_60_DROPS_PER_ML_NAME) -> {
+                Toast.makeText(resourcesProviderImpl.context, "PHARMACY_CRI_60_DROPS_PER_ML_NAME", Toast.LENGTH_SHORT).show()
                 pharmacyCRIFormula.addTypedFormula(
                     TypedFormula(
                         PHARMACY_CRI_60_DROPS_PER_ML_NAME,

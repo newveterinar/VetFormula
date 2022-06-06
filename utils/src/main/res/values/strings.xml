@@ -3,6 +3,8 @@
     <!-- Сообщения об ошибках -->
     <string name="error_variable_not_initialized">Error: Referring to an uninitialized formula</string>
     <string name="error_variable_size_not_equal_dimension_size">Error: The number of numerical elements in the window does not correspond to the number of their dimensions</string>
+    <string name="error_not_correct_argument">Error: Not correct argument in request to data base</string>
+
 
     <!-- Типы ресурсов для ввода данных -->
     <!--    Порядок размерностей в ресурсах для каждого числового поля не менять -->

@@ -1,6 +1,5 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.vetformula.view
 
-import android.widget.Toast
 import com.pet.animal.formula.dose.health.veterinary.cure.fakerepo.FakeRepositoryImpl
 import com.pet.animal.formula.dose.health.veterinary.cure.repo.Repository
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.*
@@ -19,7 +18,7 @@ class MainViewModelInteractor {
 
     // Запись в базу данных формул при первом запуске приложения
     suspend fun writeDataToBDAtFirstRun() {
-        // Очистка базы данных перед добавлением новых формул
+        // Принудительная очистка базы данных перед добавлением новых формул
 //        repeat(500) {
 //            repositoryImpl.deleteFormulaByID(it.toLong())
 //        }
@@ -59,14 +58,5 @@ class MainViewModelInteractor {
                 )
             }
         }
-
-        Toast.makeText(resourcesProviderImpl.context,
-            "${repositoryImpl.getFormula(
-                ScreenType.PHARMACY_CRI, listOf(0, 0)).getTypedFormulas().size}\n" +
-                    "${repositoryImpl.getFormula(
-                        ScreenType.PHARMACY_CRI, listOf(1, 0)).getTypedFormulas().size}\n" +
-                    "${repositoryImpl.getFormula(
-                        ScreenType.PHARMACY_CRI, listOf(2, 0)).getTypedFormulas().size}\n",
-            Toast.LENGTH_SHORT).show()
     }
 }

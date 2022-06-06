@@ -195,7 +195,6 @@ fun outputDataDimensionConverter(
                         TEN_IN_PLUS_THREE_POWER / NUMBER_SECONDS_IN_HOUR
                 else -> ERROR_VALUE
             }
-            Toast.makeText(resourcesProviderImpl.context, "Output: $currentResult", Toast.LENGTH_SHORT).show()
         }
         OutputDataDimensionType.DROP -> {
             result = currentResult
