@@ -78,6 +78,9 @@ class FakeRepositoryImpl: FakeRepository {
                     TypedFormula(
                         PHARMACY_CRI_NO_GIVING_SET_NAME,
                         mutableListOf(
+                            Element(Command.SIX.index(), 0),
+                            Element(Command.ZERO.index(), 0),
+                            Element(Command.MULTIPLY.index(), 0),
                             Element(Command.NO_COMMAND.index(), 4),
                             Element(Command.DIVIDE.index(), 0),
                             Element(Command.BRACKET_OPEN.index(), 0),
@@ -145,6 +148,9 @@ class FakeRepositoryImpl: FakeRepository {
                     TypedFormula(
                         PHARMACY_CRI_20_DROPS_PER_ML_NAME,
                         mutableListOf(
+                            Element(Command.SIX.index(), 0),
+                            Element(Command.ZERO.index(), 0),
+                            Element(Command.MULTIPLY.index(), 0),
                             Element(Command.NO_COMMAND.index(), 4),
                             Element(Command.DIVIDE.index(), 0),
                             Element(Command.BRACKET_OPEN.index(), 0),
@@ -282,6 +288,9 @@ class FakeRepositoryImpl: FakeRepository {
                     TypedFormula(
                         PHARMACY_CRI_60_DROPS_PER_ML_NAME,
                         mutableListOf(
+                            Element(Command.SIX.index(), 0),
+                            Element(Command.ZERO.index(), 0),
+                            Element(Command.MULTIPLY.index(), 0),
                             Element(Command.NO_COMMAND.index(), 4),
                             Element(Command.DIVIDE.index(), 0),
                             Element(Command.BRACKET_OPEN.index(), 0),

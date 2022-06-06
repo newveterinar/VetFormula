@@ -53,7 +53,8 @@
             android:rotation="@dimen/windows_slider_start_angle"
             android:value="@dimen/windows_slider_value"
             android:valueFrom="@dimen/windows_slider_value_from"
-            android:valueTo="@dimen/windows_slider_value_to" />
+            android:valueTo="@dimen/windows_slider_value_to"
+            app:labelBehavior="gone" />
     </FrameLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

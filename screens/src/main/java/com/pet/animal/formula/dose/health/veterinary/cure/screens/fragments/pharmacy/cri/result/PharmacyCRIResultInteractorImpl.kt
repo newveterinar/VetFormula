@@ -1,5 +1,6 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.cri.result
 
+import android.widget.Toast
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.Interactor
 import com.pet.animal.formula.dose.health.veterinary.cure.core.calculator.CalcInteractorImpl
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppState
@@ -8,6 +9,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.utils.OutputDataDimens
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.dimension.outputDataDimensionConverter
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertMutableListValueFieldToListIntDimension
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.resources.ResourcesProviderImpl
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.settings.SettingsImpl
 import org.koin.java.KoinJavaComponent
 
@@ -19,6 +21,8 @@ class PharmacyCRIResultInteractorImpl(
     private val settings: SettingsImpl = KoinJavaComponent.getKoin().get()
     // Интерактор калькулятора
     private val calcInteractorImpl: CalcInteractorImpl = CalcInteractorImpl()
+    // Получение доступа к ресурсам
+    val resourcesProviderImpl: ResourcesProviderImpl = KoinJavaComponent.getKoin().get()
     //endregion
 
     // Получение данных полей окна, если они были сохранены ранее
@@ -48,6 +52,11 @@ class PharmacyCRIResultInteractorImpl(
                     calcInteractorImpl.setCommand(
                         settings.getInputedScreenData().
                         valueFields[element.positionValueOnWindow - 1].value)
+
+                    if (index == 3) {
+                        Toast.makeText(resourcesProviderImpl.context, "${settings.getInputedScreenData().valueFields[element.positionValueOnWindow - 1].value}\n" +
+                                "result: ${calcInteractorImpl.getCommandResultValue() ?: 0.0}", Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
             // Назначение различным результирующим данным своих конвертирующих коэффициентов

@@ -50,9 +50,9 @@ fun inputDataDimensionConverter(
                 5 -> TEN_IN_MINUS_THREE_POWER * NUMBER_SECONDS_IN_HOUR
                 else -> ERROR_VALUE
             }
-            Toast.makeText(resourcesProviderImpl.context, "Input: $result", Toast.LENGTH_SHORT).show()
         }
         InputDataDimensionType.VOLUME_DOSE_PER_KG_PER_TIME -> {
+//!!!!!!!!!!!!
             result = when(index) {
                 0 -> TEN_IN_MINUS_SIX_POWER * NUMBER_SECONDS_IN_HOUR
                 1 -> TEN_IN_MINUS_NINE_POWER * NUMBER_SECONDS_IN_HOUR
@@ -83,6 +83,7 @@ fun inputDataDimensionConverter(
         }
         InputDataDimensionType.VOLUME -> {
             result = when(index) {
+//!!!!!!!!!
                 0 -> TEN_IN_MINUS_SIX_POWER
                 1 -> TEN_IN_MINUS_NINE_POWER
                 else -> ERROR_VALUE
@@ -142,7 +143,7 @@ fun outputDataDimensionConverter(
                         else -> ERROR_VALUE
                     }
                 }
-                else -> {}
+                else -> result = ERROR_VALUE
             }
         }
         OutputDataDimensionType.MASS -> {
@@ -156,7 +157,18 @@ fun outputDataDimensionConverter(
             }
         }
         OutputDataDimensionType.TIME -> {
-            result = currentResult * RESULT_VALUE_NOT_CHANGED
+            result = when(screenType) {
+                ScreenType.PHARMACY_CRI -> {
+                    when (dimension[4]) {
+                        0 -> currentResult * NUMBER_SECONDS_IN_HOUR
+                        1 -> currentResult * NUMBER_SECONDS_IN_HOUR
+                        2 -> currentResult * NUMBER_SECONDS_IN_MINUTE
+                        3 -> currentResult * NUMBER_SECONDS_IN_MINUTE
+                        else -> ERROR_VALUE
+                    }
+                }
+                else -> currentResult
+            }
         }
         OutputDataDimensionType.RATE -> {
             result = when (dimension[4]) {
