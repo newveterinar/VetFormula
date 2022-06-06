@@ -1,9 +1,7 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.utils.dimension
 
 import android.widget.Toast
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.InputDataDimensionType
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.OutputDataDimensionType
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.*
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.resources.ResourcesProviderImpl
 import org.koin.java.KoinJavaComponent
 
@@ -21,76 +19,76 @@ fun inputDataDimensionConverter(
     when(inputDataDimensionType) {
         InputDataDimensionType.WEIGHT_ANIMAL -> {
             result = when(index) {
-                0 -> 1.0
-                1 -> 1E-3
-                else -> -1.0
+                0 -> RESULT_VALUE_NOT_CHANGED
+                1 -> TEN_IN_MINUS_THREE_POWER
+                else -> ERROR_VALUE
             }
         }
         InputDataDimensionType.MASS_DOSE_PER_KG -> {
             result = when(index) {
-                0 -> 1E-9
-                1 -> 1E-6
-                2 -> 1E-3
+                0 -> TEN_IN_MINUS_NINE_POWER
+                1 -> TEN_IN_MINUS_SIX_POWER
+                2 -> TEN_IN_MINUS_THREE_POWER
                 3 -> {
-                    if (checkIndex != 3) -1.0
-                    else 1.0
+                    if (checkIndex != 3) ERROR_VALUE
+                    else RESULT_VALUE_NOT_CHANGED
                 }
                 4 -> {
-                    if (checkIndex != 4) -1.0
-                    else 1.0
+                    if (checkIndex != 4) ERROR_VALUE
+                    else RESULT_VALUE_NOT_CHANGED
                 }
-                else -> -1.0
+                else -> ERROR_VALUE
             }
         }
         InputDataDimensionType.MASS_DOSE_PER_KG_PER_TIME -> {
             result = when(index) {
-                0 -> (1E-9) * 60.0
-                1 -> (1E-6) * 60.0
-                2 -> (1E-3) * 60.0
-                3 -> (1E-9) * 3600.0
-                4 -> (1E-6) * 3600.0
-                5 -> (1E-3) * 3600.0
-                else -> -1.0
+                0 -> TEN_IN_MINUS_NINE_POWER * NUMBER_SECONDS_IN_MINUTE
+                1 -> TEN_IN_MINUS_SIX_POWER * NUMBER_SECONDS_IN_MINUTE
+                2 -> TEN_IN_MINUS_THREE_POWER * NUMBER_SECONDS_IN_MINUTE
+                3 -> TEN_IN_MINUS_NINE_POWER * NUMBER_SECONDS_IN_HOUR
+                4 -> TEN_IN_MINUS_SIX_POWER * NUMBER_SECONDS_IN_HOUR
+                5 -> TEN_IN_MINUS_THREE_POWER * NUMBER_SECONDS_IN_HOUR
+                else -> ERROR_VALUE
             }
             Toast.makeText(resourcesProviderImpl.context, "Input: $result", Toast.LENGTH_SHORT).show()
         }
         InputDataDimensionType.VOLUME_DOSE_PER_KG_PER_TIME -> {
             result = when(index) {
-                0 -> (1E-6) * 3600.0
-                1 -> (1E-9) * 3600.0
-                2 -> (1E-6) * 60.0
-                3 -> (1E-9) * 60.0
-                else -> -1.0
+                0 -> TEN_IN_MINUS_SIX_POWER * NUMBER_SECONDS_IN_HOUR
+                1 -> TEN_IN_MINUS_NINE_POWER * NUMBER_SECONDS_IN_HOUR
+                2 -> TEN_IN_MINUS_SIX_POWER * NUMBER_SECONDS_IN_MINUTE
+                3 -> TEN_IN_MINUS_NINE_POWER * NUMBER_SECONDS_IN_MINUTE
+                else -> ERROR_VALUE
             }
         }
         InputDataDimensionType.CONCENTRATION -> { // Formulation
             result = when(index) {
-                0 -> (1E-9) / (1E-6)
-                1 -> (1E-6) / (1E-6)
-                2 -> (1E-3) / (1E-6)
+                0 -> TEN_IN_MINUS_NINE_POWER / TEN_IN_MINUS_SIX_POWER
+                1 -> TEN_IN_MINUS_SIX_POWER / TEN_IN_MINUS_SIX_POWER
+                2 -> TEN_IN_MINUS_THREE_POWER / TEN_IN_MINUS_SIX_POWER
                 3 -> {
-                    if (checkIndex != 3) -1.0
-                    else 1.0 / 1E-6
+                    if (checkIndex != 3) ERROR_VALUE
+                    else RESULT_VALUE_NOT_CHANGED / TEN_IN_MINUS_SIX_POWER
                 }
                 4 -> {
-                    if (checkIndex != 4) -1.0
-                    else 1.0 / 1E-6
+                    if (checkIndex != 4) ERROR_VALUE
+                    else RESULT_VALUE_NOT_CHANGED / TEN_IN_MINUS_SIX_POWER
                 }
-                5 -> (1E-9) / (1E-3)
-                6 -> (1E-6) / (1E-3)
-                7 -> (1E-3) / (1E-3)
-                8 -> (1E-6) / (1E+2)
-                else -> -1.0
+                5 -> TEN_IN_MINUS_NINE_POWER / TEN_IN_MINUS_THREE_POWER
+                6 -> TEN_IN_MINUS_SIX_POWER / TEN_IN_MINUS_THREE_POWER
+                7 -> TEN_IN_MINUS_THREE_POWER / TEN_IN_MINUS_THREE_POWER
+                8 -> TEN_IN_MINUS_SIX_POWER / TEN_IN_PLUS_TWO_POWER
+                else -> ERROR_VALUE
             }
         }
         InputDataDimensionType.VOLUME -> {
             result = when(index) {
-                0 -> (1E-6)
-                1 -> (1E-9)
-                else -> -1.0
+                0 -> TEN_IN_MINUS_SIX_POWER
+                1 -> TEN_IN_MINUS_NINE_POWER
+                else -> ERROR_VALUE
             }
         }
-        else -> result = -1.0
+        else -> result = ERROR_VALUE
     }
     return result
 }
@@ -104,42 +102,44 @@ fun outputDataDimensionConverter(
 ): Double {
     /** Задание переменных */ //region
     // Задание начального значения для результата
-    var result: Double = -1.0
+    var result: Double = RESULT_VALUE_NOT_CHANGED
     // Получение доступа к ресурсам
     val resourcesProviderImpl: ResourcesProviderImpl = KoinJavaComponent.getKoin().get()
     //endregion
 
     when(outputDataDimensionType) {
-        OutputDataDimensionType.LENGTH -> result = currentResult * 1.0 // Имеет только академический смысл
-        OutputDataDimensionType.SQUARE_LENGTH -> result = currentResult * 1.0 // PharmacySurfaceResult
+        // Имеет только академический смысл
+        OutputDataDimensionType.LENGTH -> result = currentResult * RESULT_VALUE_NOT_CHANGED
+        // PharmacySurfaceResult
+        OutputDataDimensionType.SQUARE_LENGTH -> result = currentResult * RESULT_VALUE_NOT_CHANGED
         OutputDataDimensionType.VOLUME -> {
             when(screenType) {
                 ScreenType.PHARMACY_DOSES -> {
                     result = when(dimension[2]) {
-                        0 -> currentResult * (1E+6)
-                        1 -> currentResult * (1E+6)
-                        2 -> currentResult * (1E+6)
-                        3 -> currentResult * 1.0
-                        4 -> currentResult * 1.0
-                        5 -> currentResult * (1E+3)
-                        6 -> currentResult * (1E+3)
-                        7 -> currentResult * (1E+3)
-                        8 -> currentResult * (1E-3)
-                        else -> -1.0
+                        0 -> currentResult * TEN_IN_PLUS_SIX_POWER
+                        1 -> currentResult * TEN_IN_PLUS_SIX_POWER
+                        2 -> currentResult * TEN_IN_PLUS_SIX_POWER
+                        3 -> currentResult * RESULT_VALUE_NOT_CHANGED
+                        4 -> currentResult * RESULT_VALUE_NOT_CHANGED
+                        5 -> currentResult * TEN_IN_PLUS_THREE_POWER
+                        6 -> currentResult * TEN_IN_PLUS_THREE_POWER
+                        7 -> currentResult * TEN_IN_PLUS_THREE_POWER
+                        8 -> currentResult * TEN_IN_MINUS_THREE_POWER
+                        else -> ERROR_VALUE
                     }
                 }
                 ScreenType.PHARMACY_CRI -> {
                     result = when(dimension[3]) {
-                        0 -> currentResult * (1E+6)
-                        1 -> currentResult * (1E+9)
-                        else -> -1.0
+                        0 -> currentResult * TEN_IN_PLUS_SIX_POWER
+                        1 -> currentResult * TEN_IN_PLUS_NINE_POWER
+                        else -> ERROR_VALUE
                     }
                     result = when(dimension[4]) {
-                        0 -> result * 3600
-                        1 -> result * 3600
-                        2 -> result * 1.0
-                        3 -> result * 1.0
-                        else -> -1.0
+                        0 -> result * NUMBER_SECONDS_IN_HOUR
+                        1 -> result * NUMBER_SECONDS_IN_HOUR
+                        2 -> result * RESULT_VALUE_NOT_CHANGED
+                        3 -> result * RESULT_VALUE_NOT_CHANGED
+                        else -> ERROR_VALUE
                     }
                 }
                 else -> {}
@@ -147,42 +147,48 @@ fun outputDataDimensionConverter(
         }
         OutputDataDimensionType.MASS -> {
             result = when(dimension[1]) {
-                0 -> currentResult * (1E+9)
-                1 -> currentResult * (1E+6)
-                2 -> currentResult * (1E+3)
-                3 -> currentResult * 1.0
-                4 -> currentResult * 1.0
-                else -> -1.0
+                0 -> currentResult * TEN_IN_PLUS_NINE_POWER
+                1 -> currentResult * TEN_IN_PLUS_SIX_POWER
+                2 -> currentResult * TEN_IN_PLUS_THREE_POWER
+                3 -> currentResult * RESULT_VALUE_NOT_CHANGED
+                4 -> currentResult * RESULT_VALUE_NOT_CHANGED
+                else -> ERROR_VALUE
             }
         }
         OutputDataDimensionType.TIME -> {
-            result = currentResult * 1.0
+            result = currentResult * RESULT_VALUE_NOT_CHANGED
         }
         OutputDataDimensionType.RATE -> {
             result = when (dimension[4]) {
-                0 -> currentResult * (1E+6) / 3600.0
-                1 -> currentResult * (1E+9) / 3600.0
-                2 -> currentResult * (1E+6) / 60.0
-                3 -> currentResult * (1E+9) / 60.0
-                else -> -1.0
+                0 -> currentResult * TEN_IN_PLUS_SIX_POWER / NUMBER_SECONDS_IN_HOUR
+                1 -> currentResult * TEN_IN_PLUS_NINE_POWER / NUMBER_SECONDS_IN_HOUR
+                2 -> currentResult * TEN_IN_PLUS_SIX_POWER / NUMBER_SECONDS_IN_MINUTE
+                3 -> currentResult * TEN_IN_PLUS_NINE_POWER / NUMBER_SECONDS_IN_MINUTE
+                else -> ERROR_VALUE
             }
         }
         OutputDataDimensionType.MASS_DOSE_PER_KG_PER_TIME -> {
             result = when(dimension[2]) {
-                0 -> currentResult * (1E+3) * (1E+9) / 60.0
-                1 -> currentResult * (1E+3) * (1E+6) / 60.0
-                2 -> currentResult * (1E+3) * (1E+3) / 60.0
-                3 -> currentResult * (1E+3) * (1E+9) / 3600.0
-                4 -> currentResult * (1E+3) * (1E+6) / 3600.0
-                5 -> currentResult * (1E+3) * (1E+3) / 3600.0
-                else -> -1.0
+                0 -> currentResult * TEN_IN_PLUS_THREE_POWER *
+                        TEN_IN_PLUS_NINE_POWER / NUMBER_SECONDS_IN_MINUTE
+                1 -> currentResult * TEN_IN_PLUS_THREE_POWER *
+                        TEN_IN_PLUS_SIX_POWER / NUMBER_SECONDS_IN_MINUTE
+                2 -> currentResult * TEN_IN_PLUS_THREE_POWER *
+                        TEN_IN_PLUS_THREE_POWER / NUMBER_SECONDS_IN_MINUTE
+                3 -> currentResult * TEN_IN_PLUS_THREE_POWER *
+                        TEN_IN_PLUS_NINE_POWER / NUMBER_SECONDS_IN_HOUR
+                4 -> currentResult * TEN_IN_PLUS_THREE_POWER *
+                        TEN_IN_PLUS_SIX_POWER / NUMBER_SECONDS_IN_HOUR
+                5 -> currentResult * TEN_IN_PLUS_THREE_POWER *
+                        TEN_IN_PLUS_THREE_POWER / NUMBER_SECONDS_IN_HOUR
+                else -> ERROR_VALUE
             }
             Toast.makeText(resourcesProviderImpl.context, "Output: $currentResult", Toast.LENGTH_SHORT).show()
         }
         OutputDataDimensionType.DROP -> {
             result = currentResult
         }
-        else -> result = -1.0
+        else -> result = ERROR_VALUE
     }
     return result
 }

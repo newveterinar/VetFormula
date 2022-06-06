@@ -62,6 +62,19 @@ const val PHARMACY_CRI_60_DROPS_PER_ML_INDEX = 2
 const val ADDFIRST_INDEX = 0
 const val ADDSECOND_INDEX = 1
 
+// Константы для конвертера размерностей
+const val RESULT_VALUE_NOT_CHANGED: Double = 1.0
+const val ERROR_VALUE: Double = -1.0
+const val NUMBER_SECONDS_IN_MINUTE: Double = 60.0
+const val NUMBER_SECONDS_IN_HOUR: Double = 3600.0
+const val TEN_IN_PLUS_TWO_POWER: Double = 1E+2
+const val TEN_IN_PLUS_THREE_POWER: Double = 1E+3
+const val TEN_IN_PLUS_SIX_POWER: Double = 1E+6
+const val TEN_IN_PLUS_NINE_POWER: Double = 1E+9
+const val TEN_IN_MINUS_THREE_POWER: Double = 1E-3
+const val TEN_IN_MINUS_SIX_POWER: Double = 1E-6
+const val TEN_IN_MINUS_NINE_POWER: Double = 1E-9
+
 // Класс с названиями тем
 enum class ThemesNames {
     // Светлая тема
