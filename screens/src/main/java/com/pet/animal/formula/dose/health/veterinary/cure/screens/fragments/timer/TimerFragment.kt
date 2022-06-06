@@ -64,7 +64,7 @@ class TimerFragment : BaseFragment<FragmentTimer2Binding>(FragmentTimer2Binding:
         viewModel.tickManual.observe(viewLifecycleOwner){
             val s:String = getString(R.string.tickCaption)
             val tickString = "$s.${it.format(2)}"
-            binding.tickInMinutesTimer.text = tickString
+            binding.textViewHR.text = tickString
         }
     }
 

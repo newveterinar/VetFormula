@@ -14,7 +14,7 @@ class TimerViewModel() : BaseViewModelForNavigation(), CoroutineScope {
 
     private var mTickInMinutes: MutableLiveData<Double> = MutableLiveData()
     private var mTimerHeartRate:MutableLiveData<Double> = MutableLiveData()
-    private var mmManualRate: MutableLiveData<Double> = MutableLiveData()
+    private var mManualRate: MutableLiveData<Double> = MutableLiveData()
 
     private val mOnTimer = MutableLiveData<Boolean>()
     private val mSeconds = MutableLiveData<Int>()
@@ -32,7 +32,7 @@ class TimerViewModel() : BaseViewModelForNavigation(), CoroutineScope {
 
     var timerHeartRate:LiveData<Double> = mTimerHeartRate
     var tickInMinutes: LiveData<Double> = mTickInMinutes
-    var tickManual : LiveData<Double> = mTickInMinutes
+    var tickManual : LiveData<Double> = mManualRate
 
     var onTimer: LiveData<Boolean> = mOnTimer
     var second: LiveData<Int> = mSeconds
@@ -73,6 +73,7 @@ class TimerViewModel() : BaseViewModelForNavigation(), CoroutineScope {
     fun resetTickCounter() {
         ticks.clear()
         mTickInMinutes.postValue(0.00)
+        tapCount = 0
     }
 
     fun stopTimer() {
@@ -80,11 +81,18 @@ class TimerViewModel() : BaseViewModelForNavigation(), CoroutineScope {
         job.cancel()
         mOnTimer.postValue(false)
         updateTicks()
+
+        mSeconds.value?.let {
+            mTimerHeartRate.postValue(60.0 * (tapCount.toDouble()/it.toDouble()))
+        }
+
     }
 
     fun plusOneMinutes() {
         timerTo += 60
-        val sec = mSeconds.value
+        val sec = mSeconds.value?:0
+        mSeconds.postValue(sec)
+
     }
 
     override val coroutineContext: CoroutineContext
@@ -106,7 +114,7 @@ class TimerViewModel() : BaseViewModelForNavigation(), CoroutineScope {
                 }
 
                 if (tapCount!=0 && newtime>0){
-                    mTimerHeartRate.postValue(60.0*(tapCount/newtime))
+                    mTimerHeartRate.postValue(60.0*(tapCount.toDouble()/newtime.toDouble()))
                 }
 
             }
@@ -125,7 +133,7 @@ class TimerViewModel() : BaseViewModelForNavigation(), CoroutineScope {
             mSeconds.value?.let {
                 val timerMinutes = it.toDouble() / 60
                 if (it != 0) {
-                    mmManualRate.postValue(tickInt.toDouble() / timerMinutes)
+                    mManualRate.postValue(tickInt.toDouble() / timerMinutes)
                 }
             }
 
