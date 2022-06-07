@@ -1,5 +1,6 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.timer
 
+import android.content.Context
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.text.Editable
@@ -7,6 +8,7 @@ import android.text.TextWatcher
 import android.view.View
 import android.widget.Toast
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
+import com.pet.animal.formula.dose.health.veterinary.cure.core.base.SliderFABHideShow
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentTimer2Binding
 
@@ -21,7 +23,12 @@ class TimerFragment : BaseFragment<FragmentTimer2Binding>(FragmentTimer2Binding:
     }
 
     private lateinit var viewModel: TimerViewModel
+    lateinit var mainActivity: SliderFABHideShow
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mainActivity = context as SliderFABHideShow
+    }
 
     private fun initObservable(){
         viewModel.second.observe(viewLifecycleOwner) {sec->
@@ -79,9 +86,8 @@ class TimerFragment : BaseFragment<FragmentTimer2Binding>(FragmentTimer2Binding:
         initObservable()
         viewModel.resetTimer()
 
-
-
-
+        mainActivity.hideSliderFAB()
+//        mainActivity.showSliderFAB()
     }
 
     private fun initNavigationButtons() {

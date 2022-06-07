@@ -9,11 +9,13 @@ import android.os.PersistableBundle
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.Guideline
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.androidx.AppNavigator
+import com.pet.animal.formula.dose.health.veterinary.cure.core.base.SliderFABHideShow
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.edittext.EditTextFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.webview.VetMedicalViewFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.webview.WsavaViewFragment
@@ -27,7 +29,7 @@ import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
 import org.koin.java.KoinJavaComponent
 
-class MainActivity: AppCompatActivity() {
+class MainActivity: AppCompatActivity(), SliderFABHideShow {
     /** Задание переменных */ //region
     // Навигация
     private val navigator =
@@ -49,7 +51,10 @@ class MainActivity: AppCompatActivity() {
     // Слайдер
     lateinit var guideLine: Guideline
     lateinit var params: ConstraintLayout.LayoutParams
+    lateinit var slider: com.pet.animal.formula.dose.health.veterinary.
+                            cure.vetformula.view.behavior.VerticalSlider
     // FAB
+    lateinit var mainFAB: com.google.android.material.floatingactionbutton.FloatingActionButton
     private var clicked = false
     // Ленивая инициализация анимаций для FAB
     private val rotateOpen: Animation by lazy {
@@ -77,6 +82,7 @@ class MainActivity: AppCompatActivity() {
         // Установка слайдера
         guideLine = binding.horizontalGuideline
         params = guideLine.layoutParams as ConstraintLayout.LayoutParams
+        slider = binding.windowsSlider
         // Установка темы приложения
         setApplicationTheme()
         // Отслеживание первого или последующего запусков MainActivity
@@ -109,6 +115,7 @@ class MainActivity: AppCompatActivity() {
     // Функция - слушатель нажатий по FAB
     @SuppressLint("ResourceType")
     private fun onClickFab() {
+        mainFAB = binding.fabMain
         binding.fabMain.setOnClickListener {
             onFabMainButtonClicked()
         }
@@ -243,4 +250,16 @@ class MainActivity: AppCompatActivity() {
             setTheme(R.style.Splash_DarkTheme)
         }
     }
+
+    //region Методы для скрытия слайда
+    override fun hideSliderFAB() {
+        Toast.makeText(this, "hide", Toast.LENGTH_SHORT).show()
+        slider.visibility = View.INVISIBLE
+        mainFAB.visibility = View.INVISIBLE
+    }
+    override fun showSliderFAB() {
+        Toast.makeText(this, "show", Toast.LENGTH_SHORT).show()
+        // TODO сюда вставить появление слайдера в других окнах
+    }
+    //endregion
 }
