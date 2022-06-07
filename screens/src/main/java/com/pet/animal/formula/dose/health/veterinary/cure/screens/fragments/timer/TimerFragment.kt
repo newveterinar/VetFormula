@@ -23,11 +23,12 @@ class TimerFragment : BaseFragment<FragmentTimer2Binding>(FragmentTimer2Binding:
     }
 
     private lateinit var viewModel: TimerViewModel
-    lateinit var mainActivity: SliderFABHideShow
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        mainActivity = context as SliderFABHideShow
+        // Скрыть слайдер и кнопку FAB
+        (context as SliderFABHideShow).hideSliderFAB()
+//        (context as SliderFABHideShow).showSliderFAB()
     }
 
     private fun initObservable(){
@@ -85,9 +86,6 @@ class TimerFragment : BaseFragment<FragmentTimer2Binding>(FragmentTimer2Binding:
         initButton()
         initObservable()
         viewModel.resetTimer()
-
-        mainActivity.hideSliderFAB()
-//        mainActivity.showSliderFAB()
     }
 
     private fun initNavigationButtons() {
