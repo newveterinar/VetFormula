@@ -65,6 +65,7 @@ const val ADDSECOND_INDEX = 1
 // Константы для конвертера размерностей
 const val RESULT_VALUE_NOT_CHANGED: Double = 1.0
 const val ERROR_VALUE: Double = -1.0
+const val TEN_SECONDS: Double = 10.0
 const val NUMBER_SECONDS_IN_MINUTE: Double = 60.0
 const val NUMBER_SECONDS_IN_HOUR: Double = 3600.0
 const val TEN_IN_PLUS_TWO_POWER: Double = 1E+2
@@ -142,7 +143,9 @@ enum class OutputDataDimensionType {
     MASS,                           // Пример: кг
     MASS_DOSE_PER_KG_PER_TIME,      // Пример: кг/кг/с
     TIME,                           // Пример: с
-    DROP_TIME,                      // Пример: капель в с
+    DROP_TIME_IN_SEC,               // Пример: капель за 1 с
+    DROP_TIME_IN_TEN_SEC,           // Пример: капель за 10 с
+    DROP_TIME_IN_MIN,               // Пример: капель за 1 мин
     RATE,                           // Пример: мл/с
     DROP,                           // Пример: капля
     ERROR_TYPE                      // Ошибка с выбором индекса

@@ -182,23 +182,13 @@ class FakeRepositoryImpl: FakeRepository {
                         PHARMACY_CRI_20_DROPS_PER_ML_NAME,
                         mutableListOf(
                             Element(Command.ONE.index(), 0),
-                            Element(Command.ZERO.index(), 0),
+                            Element(Command.MULTIPLY.index(), 0),
                             Element(Command.NO_COMMAND.index(), 1),
                             Element(Command.MULTIPLY.index(), 0),
                             Element(Command.NO_COMMAND.index(), 5),
                             Element(Command.MULTIPLY.index(), 0),
                             Element(Command.TWO.index(), 0),
                             Element(Command.ZERO.index(), 0),
-                            Element(Command.MULTIPLY.index(), 0),
-                            Element(Command.ZERO.index(), 0),
-                            Element(Command.ZPT_ON_OFF.index(), 0),
-                            Element(Command.ZERO.index(), 0),
-                            Element(Command.ZERO.index(), 0),
-                            Element(Command.ZERO.index(), 0),
-                            Element(Command.ZERO.index(), 0),
-                            Element(Command.ZERO.index(), 0),
-                            Element(Command.ONE.index(), 0),
-                            Element(Command.ZPT_ON_OFF.index(), 0)
                         )
                     )
                 )
@@ -206,22 +196,14 @@ class FakeRepositoryImpl: FakeRepository {
                     TypedFormula(
                         PHARMACY_CRI_20_DROPS_PER_ML_NAME,
                         mutableListOf(
+                            Element(Command.ONE.index(), 0),
+                            Element(Command.MULTIPLY.index(), 0),
                             Element(Command.NO_COMMAND.index(), 1),
                             Element(Command.MULTIPLY.index(), 0),
                             Element(Command.NO_COMMAND.index(), 5),
                             Element(Command.MULTIPLY.index(), 0),
                             Element(Command.TWO.index(), 0),
                             Element(Command.ZERO.index(), 0),
-                            Element(Command.MULTIPLY.index(), 0),
-                            Element(Command.ZERO.index(), 0),
-                            Element(Command.ZPT_ON_OFF.index(), 0),
-                            Element(Command.ZERO.index(), 0),
-                            Element(Command.ZERO.index(), 0),
-                            Element(Command.ZERO.index(), 0),
-                            Element(Command.ZERO.index(), 0),
-                            Element(Command.ZERO.index(), 0),
-                            Element(Command.ONE.index(), 0),
-                            Element(Command.ZPT_ON_OFF.index(), 0)
                         )
                     )
                 )
@@ -301,7 +283,7 @@ class FakeRepositoryImpl: FakeRepository {
                             Element(Command.MULTIPLY.index(), 0),
                             Element(Command.NO_COMMAND.index(), 5),
                             Element(Command.MULTIPLY.index(), 0),
-                            Element(Command.TWO.index(), 0),
+                            Element(Command.SIX.index(), 0),
                             Element(Command.ZERO.index(), 0),
                             Element(Command.BRACKET_CLOSE.index(), 0)
                         )
@@ -312,23 +294,13 @@ class FakeRepositoryImpl: FakeRepository {
                         PHARMACY_CRI_60_DROPS_PER_ML_NAME,
                         mutableListOf(
                             Element(Command.ONE.index(), 0),
-                            Element(Command.ZERO.index(), 0),
+                            Element(Command.MULTIPLY.index(), 0),
                             Element(Command.NO_COMMAND.index(), 1),
                             Element(Command.MULTIPLY.index(), 0),
                             Element(Command.NO_COMMAND.index(), 5),
                             Element(Command.MULTIPLY.index(), 0),
                             Element(Command.SIX.index(), 0),
                             Element(Command.ZERO.index(), 0),
-                            Element(Command.MULTIPLY.index(), 0),
-                            Element(Command.ZERO.index(), 0),
-                            Element(Command.ZPT_ON_OFF.index(), 0),
-                            Element(Command.ZERO.index(), 0),
-                            Element(Command.ZERO.index(), 0),
-                            Element(Command.ZERO.index(), 0),
-                            Element(Command.ZERO.index(), 0),
-                            Element(Command.ZERO.index(), 0),
-                            Element(Command.ONE.index(), 0),
-                            Element(Command.ZPT_ON_OFF.index(), 0)
                         )
                     )
                 )
@@ -336,22 +308,14 @@ class FakeRepositoryImpl: FakeRepository {
                     TypedFormula(
                         PHARMACY_CRI_60_DROPS_PER_ML_NAME,
                         mutableListOf(
+                            Element(Command.ONE.index(), 0),
+                            Element(Command.MULTIPLY.index(), 0),
                             Element(Command.NO_COMMAND.index(), 1),
                             Element(Command.MULTIPLY.index(), 0),
                             Element(Command.NO_COMMAND.index(), 5),
                             Element(Command.MULTIPLY.index(), 0),
                             Element(Command.SIX.index(), 0),
                             Element(Command.ZERO.index(), 0),
-                            Element(Command.MULTIPLY.index(), 0),
-                            Element(Command.ZERO.index(), 0),
-                            Element(Command.ZPT_ON_OFF.index(), 0),
-                            Element(Command.ZERO.index(), 0),
-                            Element(Command.ZERO.index(), 0),
-                            Element(Command.ZERO.index(), 0),
-                            Element(Command.ZERO.index(), 0),
-                            Element(Command.ZERO.index(), 0),
-                            Element(Command.ONE.index(), 0),
-                            Element(Command.ZPT_ON_OFF.index(), 0)
                         )
                     )
                 )

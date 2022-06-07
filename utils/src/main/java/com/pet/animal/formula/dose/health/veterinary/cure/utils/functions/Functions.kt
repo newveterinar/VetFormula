@@ -8,7 +8,6 @@ import android.text.style.SuperscriptSpan
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
-import android.widget.Toast
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.ResultValueField
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.ValueField
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.*
@@ -257,7 +256,13 @@ fun TextView.createStringResult(
             OutputDataDimensionType.TIME.toString() -> {
                 result = SpannableString(initialString)
             }
-            OutputDataDimensionType.DROP_TIME.toString() -> {
+            OutputDataDimensionType.DROP_TIME_IN_SEC.toString() -> {
+                result = SpannableString(initialString)
+            }
+            OutputDataDimensionType.DROP_TIME_IN_TEN_SEC.toString() -> {
+                result = SpannableString(initialString)
+            }
+            OutputDataDimensionType.DROP_TIME_IN_MIN.toString() -> {
                 result = SpannableString(initialString)
             }
             OutputDataDimensionType.RATE.toString() -> {

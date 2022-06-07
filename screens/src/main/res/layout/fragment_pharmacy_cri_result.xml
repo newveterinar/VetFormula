@@ -154,7 +154,7 @@
 
             <TextView
                 android:id="@+id/pharmacy_result_drip_rate_time_title_text"
-                android:tag="DROP_TIME"
+                android:tag="DROP_TIME_IN_SEC"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/pharmacy_result_drip_rate_time_title_text_text"
@@ -166,7 +166,7 @@
 
             <TextView
                 android:id="@+id/pharmacy_result_drip_rate_drop_title_text"
-                android:tag="DROP"
+                android:tag="DROP_TIME_IN_TEN_SEC"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/number_button"
@@ -177,7 +177,7 @@
 
             <TextView
                 android:id="@+id/pharmacy_result_drip_rate_drop_rate_title_text"
-                android:tag="DROP"
+                android:tag="DROP_TIME_IN_MIN"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/number_button"
