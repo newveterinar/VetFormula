@@ -1,5 +1,6 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.utils.dimension
 
+import android.widget.Toast
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.*
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.resources.ResourcesProviderImpl
 import org.koin.java.KoinJavaComponent
@@ -99,6 +100,8 @@ fun outputDataDimensionConverter(
     /** Задание переменных */ //region
     // Задание начального значения для результата
     var result: Double = RESULT_VALUE_NOT_CHANGED
+    // Получение доступа к ресурсам
+    val resourcesProviderImpl: ResourcesProviderImpl = KoinJavaComponent.getKoin().get()
     //endregion
 
     when(outputDataDimensionType) {
@@ -167,10 +170,14 @@ fun outputDataDimensionConverter(
             result = when(screenType) {
                 ScreenType.PHARMACY_CRI -> {
                     when (dimension[4]) {
-                        0 -> currentResult / (TEN_IN_MINUS_SIX_POWER * NUMBER_SECONDS_IN_HOUR)
-                        1 -> currentResult / (TEN_IN_MINUS_NINE_POWER * NUMBER_SECONDS_IN_HOUR)
-                        2 -> currentResult / (TEN_IN_MINUS_SIX_POWER * NUMBER_SECONDS_IN_MINUTE)
-                        3 -> currentResult / (TEN_IN_MINUS_NINE_POWER * NUMBER_SECONDS_IN_MINUTE)
+                        0 -> currentResult * NUMBER_SECONDS_IN_HOUR *
+                                (TEN_IN_MINUS_SIX_POWER * NUMBER_SECONDS_IN_HOUR)
+                        1 -> currentResult * NUMBER_SECONDS_IN_HOUR *
+                                (TEN_IN_MINUS_NINE_POWER * NUMBER_SECONDS_IN_HOUR)
+                        2 -> currentResult * NUMBER_SECONDS_IN_MINUTE *
+                                (TEN_IN_MINUS_SIX_POWER * NUMBER_SECONDS_IN_MINUTE)
+                        3 -> currentResult * NUMBER_SECONDS_IN_MINUTE *
+                                (TEN_IN_MINUS_NINE_POWER * NUMBER_SECONDS_IN_MINUTE)
                         else -> ERROR_VALUE
                     }
                 }

@@ -257,6 +257,9 @@ fun TextView.createStringResult(
             OutputDataDimensionType.TIME.toString() -> {
                 result = SpannableString(initialString)
             }
+            OutputDataDimensionType.DROP_TIME.toString() -> {
+                result = SpannableString(initialString)
+            }
             OutputDataDimensionType.RATE.toString() -> {
                 result = SpannableString(initialString)
             }
