@@ -79,4 +79,13 @@
     <string name="output_data_dimension_time">с</string>
     <string name="output_data_dimension_square_length">м2</string>
     <string name="output_data_dimension_drop">капель</string>
+
+    <!-- Вспомогательные слова для вывода результирующих данных -->
+    <string name="solution">раствор</string>
+    <string name="hour">ч</string>
+    <string name="minute">м</string>
+    <string name="second">с</string>
+    <string name="seconds">секунды</string>
+    <string name="drops_every_ten_seconds">капель каждые 10 секунд</string>
+    <string name="drops_in_minute">капель/мин</string>
 </resources>

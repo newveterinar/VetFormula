@@ -7,17 +7,12 @@ import android.view.View
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.widget.doOnTextChanged
-import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.textfield.TextInputLayout
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppState
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentPharmacyCriBinding
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.doses.PharmacyDosesFragmentViewModel
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.DIMENSION_MEQ_POSITION
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.DIMENSION_U_POSITION
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.FragmentScope
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.*
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertListEditTextToListDouble
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertListEditTextToListString
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertListSpinnerToListInt
@@ -32,7 +27,8 @@ class PharmacyCRIFragment:
     // Установка типа формулы для текущего окна
     private val screenType: ScreenType = ScreenType.PHARMACY_CRI
     // Навигационные кнопки (для перехода на другие экраны)
-    private val navigationButtons = arrayOfNulls<View>(size = 2)
+    private val navigationButtons = arrayOfNulls<View>(
+        size = NUMBER_NAVIGATION_BUTTONS_ON_INPUT_DATA_SCREENS)
     // Обнуление значений во всех полях
     private lateinit var clearButton: ConstraintLayout
     // ViewModel
@@ -100,13 +96,6 @@ class PharmacyCRIFragment:
         valuesFields.add(binding.pharmacyConcentrationTextinputlayoutTextfield)
         valuesFields.add(binding.pharmacyAmountTextinputlayoutTextfield)
         valuesFields.add(binding.pharmacyRateTextinputlayoutTextfield)
-
-        // ВРЕМЕННОЕ ЗАДАНИЕ НАЧАЛЬНЫХ ЗНАЧЕНИЙ
-        valuesFields[0].setText("7.5")
-        valuesFields[1].setText("40")
-        valuesFields[2].setText("20")
-        valuesFields[3].setText("20")
-        valuesFields[4].setText("4")
 
         // Настройка события изменения значений в полях ввода чисел
         valuesFields.forEach { field ->
@@ -184,9 +173,6 @@ class PharmacyCRIFragment:
         listsDimensions.add(binding.pharmacyConcentrationDimensionList)
         listsDimensions.add(binding.pharmacyAmountDimensionList)
         listsDimensions.add(binding.pharmacyRateDimensionList)
-
-        // ВРЕМЕННАЯ НАСТРОЙКА НАЧАЛЬНОГО ЗНАЧЕНИЯ
-        listsDimensions[2].setSelection(1)
     }
 
     // Инициализация навигационных кнопок

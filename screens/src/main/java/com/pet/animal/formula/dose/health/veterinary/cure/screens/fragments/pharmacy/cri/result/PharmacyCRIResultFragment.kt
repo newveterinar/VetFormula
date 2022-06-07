@@ -10,6 +10,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppS
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentPharmacyCriResultBinding
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.FragmentScope
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.NUMBER_NAVIGATION_BUTTONS_ON_OUTPUT_DATA_SCREENS
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.createStringResult
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.settings.SettingsImpl
@@ -23,7 +24,8 @@ class PharmacyCRIResultFragment:
     // Установка типа формулы для текущего окна
     private val screenType: ScreenType = ScreenType.PHARMACY_CRI
     // Навигация
-    private val navigationButtons = arrayOfNulls<View>(size = 1)
+    private val navigationButtons = arrayOfNulls<View>(
+        size = NUMBER_NAVIGATION_BUTTONS_ON_OUTPUT_DATA_SCREENS)
     // Элементы для вывода результирующей информации
     private val resultsValueFields: MutableList<TextView> = mutableListOf()
     // ViewModel
@@ -150,8 +152,9 @@ class PharmacyCRIResultFragment:
                 appState.screenData.let {
                     if (!it.isGoToResultScreen) {
                         resultsValueFields.forEachIndexed { index, resultValueTextView ->
-                            resultValueTextView.createStringResult(it.resultValueField,
-                                index, settings.getInputedScreenData().valueFields)
+                            resultValueTextView.createStringResult(screenType.ordinal,
+                                it.resultValueField, index,
+                                settings.getInputedScreenData().valueFields)
                         }
                     }
                 }

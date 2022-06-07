@@ -1,8 +1,6 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.utils.dimension
 
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.*
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.resources.ResourcesProviderImpl
-import org.koin.java.KoinJavaComponent
 
 // Конвертрер типов исходных данных
 fun inputDataDimensionConverter(
@@ -99,8 +97,6 @@ fun outputDataDimensionConverter(
     /** Задание переменных */ //region
     // Задание начального значения для результата
     var result: Double = RESULT_VALUE_NOT_CHANGED
-    // Получение доступа к ресурсам
-    val resourcesProviderImpl: ResourcesProviderImpl = KoinJavaComponent.getKoin().get()
     //endregion
 
     when(outputDataDimensionType) {

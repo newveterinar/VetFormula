@@ -5,7 +5,6 @@
     <string name="error_variable_size_not_equal_dimension_size">Error: The number of numerical elements in the window does not correspond to the number of their dimensions</string>
     <string name="error_not_correct_argument">Error: Not correct argument in request to data base</string>
 
-
     <!-- Типы ресурсов для ввода данных -->
     <!--    Порядок размерностей в ресурсах для каждого числового поля не менять -->
     <!-- Исходные данные типа addFirstSecond -->
@@ -80,6 +79,15 @@
     <string name="output_data_dimension_time">s</string>
     <string name="output_data_dimension_square_length">m2</string>
     <string name="output_data_dimension_drop">drops</string>
+
+    <!-- Вспомогательные слова для вывода результирующих данных -->
+    <string name="solution">solution</string>
+    <string name="hour">h</string>
+    <string name="minute">m</string>
+    <string name="second">s</string>
+    <string name="seconds">seconds</string>
+    <string name="drops_every_ten_seconds">drops every 10 seconds</string>
+    <string name="drops_in_minute">drops/min</string>
 
     <!-- Ресурсы для смены языка приложения -->
     <string name="language_english" translatable="false">English</string>

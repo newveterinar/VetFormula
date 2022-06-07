@@ -8,12 +8,14 @@ import android.text.style.SuperscriptSpan
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
+import android.widget.Toast
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.ResultValueField
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.ValueField
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.*
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.dimension.inputDataDimensionConverter
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.resources.ResourcesProviderImpl
 import org.koin.java.KoinJavaComponent
+import kotlin.math.roundToInt
 
 // Перевод строки типа String в число типа Double
 fun stringToDouble(text: String): Double {
@@ -198,6 +200,7 @@ fun List<Int>.convertAddFirstSecondToTypedFormulaName(screenType: ScreenType): S
 
 @SuppressLint("SetTextI18n")
 fun TextView.createStringResult(
+        screenTypeIndex: Int,
         resultValueField: MutableList<ResultValueField>,
         indexData: Int,
         valueFields: List<ValueField>
@@ -244,7 +247,17 @@ fun TextView.createStringResult(
                         " ${addString.substring(addString.lastIndexOf('/') + 1)}"
                 else initialString += " ${resourcesProviderImpl.context.resources.getStringArray(
                     R.array.input_data_dimension_volume_list)[0]}"
-                result = SpannableString(initialString)
+
+                if (screenTypeIndex == ScreenType.PHARMACY_CRI.ordinal) {
+                    result = SpannableString("${this.text} $initialString " +
+                            "(${valueFields[2].value} ${resourcesProviderImpl.context.resources.
+                            getStringArray(R.array.
+                            input_data_dimension_concentration_short_list)[valueFields[2].
+                            dimension]} ${resourcesProviderImpl.context.resources.
+                            getString(R.string.solution)})")
+                } else {
+                    result = SpannableString("${this.text} $initialString")
+                }
             }
             OutputDataDimensionType.MASS.toString() -> {
                 val addString: String = resourcesProviderImpl.context.resources.getStringArray(
@@ -254,22 +267,62 @@ fun TextView.createStringResult(
                 result = SpannableString(initialString)
             }
             OutputDataDimensionType.TIME.toString() -> {
-                result = SpannableString(initialString)
+                val minutes: Double = if (indexData <= resultValueField.size - 1)
+                    resultValueField[indexData].value else 0.0
+                val hoursToOutput: Int = (minutes / NUMBER_MINUTES_IN_HOUR).toInt()
+                var minutesToOutput: Int = minutes.toInt()
+                var secondsToOutput: Int =
+                    ((minutes - minutes.toInt()) * NUMBER_SECONDS_IN_MINUTE).roundToInt()
+                if (secondsToOutput == NUMBER_SECONDS_IN_MINUTE.toInt()) {
+                    minutesToOutput++
+                    secondsToOutput = 0
+                }
+                result = SpannableString("${this.text} " +
+                        "$hoursToOutput" +
+                        " ${resourcesProviderImpl.context.resources.getString(R.string.hour)} " +
+                        "$minutesToOutput" +
+                        " ${resourcesProviderImpl.context.resources.getString(R.string.minute)} " +
+                        "$secondsToOutput" +
+                        " ${resourcesProviderImpl.context.resources.getString(R.string.second)}")
             }
             OutputDataDimensionType.DROP_TIME_IN_SEC.toString() -> {
-                result = SpannableString(initialString)
+                result = SpannableString("${this.text} $initialString " +
+                        resourcesProviderImpl.context.resources.getString(R.string.seconds))
             }
             OutputDataDimensionType.DROP_TIME_IN_TEN_SEC.toString() -> {
-                result = SpannableString(initialString)
+                result = SpannableString("$initialString " +
+                        resourcesProviderImpl.context.resources.getString(
+                            R.string.drops_every_ten_seconds))
             }
             OutputDataDimensionType.DROP_TIME_IN_MIN.toString() -> {
-                result = SpannableString(initialString)
+                result = SpannableString("$initialString " +
+                        resourcesProviderImpl.context.resources.getString(
+                            R.string.drops_in_minute))
             }
             OutputDataDimensionType.RATE.toString() -> {
-                result = SpannableString(initialString)
+                if (screenTypeIndex == ScreenType.PHARMACY_CRI.ordinal) {
+                    val dimenString: String = resourcesProviderImpl.context.resources.
+                    getStringArray(R.array.
+                    input_data_dimension_volume_dose_per_kg_per_time_list)[valueFields[4].dimension]
+                    val startDimenString = dimenString.substring(0, dimenString.indexOf("/"))
+                    val endDimenString = dimenString.substring(dimenString.lastIndexOf("/"),
+                        dimenString.length)
+                    result = SpannableString(
+                        "${this.text} $initialString $startDimenString$endDimenString")
+                } else {
+                    result = SpannableString("${this.text} $initialString")
+                }
             }
             OutputDataDimensionType.MASS_DOSE_PER_KG_PER_TIME.toString() -> {
-                result = SpannableString(initialString)
+                if (screenTypeIndex == ScreenType.PHARMACY_CRI.ordinal) {
+                    val dimenString: String = resourcesProviderImpl.context.resources.
+                    getStringArray(R.array.
+                    input_data_dimension_mass_dose_per_kg_per_time_list)[valueFields[1].dimension]
+                    result = SpannableString(
+                        "${this.text} $initialString $dimenString")
+                } else {
+                    result = SpannableString("${this.text} $initialString")
+                }
             }
             OutputDataDimensionType.DROP.toString() -> {
                 result = SpannableString(initialString)

@@ -68,6 +68,7 @@ const val ERROR_VALUE: Double = -1.0
 const val TEN_SECONDS: Double = 10.0
 const val NUMBER_SECONDS_IN_MINUTE: Double = 60.0
 const val NUMBER_SECONDS_IN_HOUR: Double = 3600.0
+const val NUMBER_MINUTES_IN_HOUR: Double = 60.0
 const val TEN_IN_PLUS_TWO_POWER: Double = 1E+2
 const val TEN_IN_PLUS_THREE_POWER: Double = 1E+3
 const val TEN_IN_PLUS_SIX_POWER: Double = 1E+6
@@ -102,6 +103,10 @@ enum class ScreenType {
     // Типы формул для раздела CALCULATOR
     CALCULATOR                              // При переводе (ordinal) в Int соответствует номеру 9
 }
+
+// Количество навигационных кнопок на окнах
+const val NUMBER_NAVIGATION_BUTTONS_ON_INPUT_DATA_SCREENS: Int = 2
+const val NUMBER_NAVIGATION_BUTTONS_ON_OUTPUT_DATA_SCREENS: Int = 1
 
 // Количество формул по параметру addFirst
 const val PHARMACY_DOSES_ADDFIRST_FORMULA_NUMBER: Int = 1
