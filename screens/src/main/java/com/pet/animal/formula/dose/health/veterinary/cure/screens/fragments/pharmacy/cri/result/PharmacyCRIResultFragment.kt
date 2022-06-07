@@ -1,4 +1,4 @@
-package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.surface.result
+package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.cri.result
 
 import android.content.Context
 import android.os.Bundle
@@ -8,7 +8,7 @@ import android.widget.Toast
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppState
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentPharmacySurfaceResultBinding
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentPharmacyCriResultBinding
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.FragmentScope
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.NUMBER_NAVIGATION_BUTTONS_ON_OUTPUT_DATA_SCREENS
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
@@ -18,27 +18,25 @@ import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
 import org.koin.java.KoinJavaComponent
 
-
-class PharmacySurfaceResultFragment: BaseFragment<FragmentPharmacySurfaceResultBinding>(
-    FragmentPharmacySurfaceResultBinding::inflate) {
+class PharmacyCRIResultFragment:
+    BaseFragment<FragmentPharmacyCriResultBinding>(FragmentPharmacyCriResultBinding::inflate) {
     /** Задание переменных */ //region
     // Установка типа формулы для текущего окна
-    private val screenType: ScreenType = ScreenType.PHARMACY_SURFACE
+    private val screenType: ScreenType = ScreenType.PHARMACY_CRI
     // Навигация
     private val navigationButtons = arrayOfNulls<View>(
         size = NUMBER_NAVIGATION_BUTTONS_ON_OUTPUT_DATA_SCREENS)
     // Элементы для вывода результирующей информации
     private val resultsValueFields: MutableList<TextView> = mutableListOf()
     // ViewModel
-    private lateinit var viewModel: PharmacySurfaceResultFragmentViewModel
-    // ShowPharmacySurfaceResultFragmentScope
-    private lateinit var showPharmacySurfaceResultFragmentScope: Scope
+    private lateinit var viewModel: PharmacyCRIResultFragmentViewModel
+    // ShowPharmacyDosesResultFragmentScope
+    private lateinit var showPharmacyCRIResultFragmentScope: Scope
     // SettingsImpl
     private val settings: SettingsImpl = KoinJavaComponent.getKoin().get()
     // newInstance для данного класса
     companion object {
-        fun newInstance(): PharmacySurfaceResultFragment =
-            PharmacySurfaceResultFragment()
+        fun newInstance() = PharmacyCRIResultFragment()
     }
     //endregion
 
@@ -46,14 +44,14 @@ class PharmacySurfaceResultFragment: BaseFragment<FragmentPharmacySurfaceResultB
     override fun onAttach(context: Context) {
         super.onAttach(context)
         // Задание Scope для данного фрагмента
-        showPharmacySurfaceResultFragmentScope = KoinJavaComponent.getKoin().getOrCreateScope(
-            FragmentScope.SHOW_PHARMACY_SURFACE_RESULT_FRAGMENT_SCOPE,
-            named(FragmentScope.SHOW_PHARMACY_SURFACE_RESULT_FRAGMENT_SCOPE)
+        showPharmacyCRIResultFragmentScope = KoinJavaComponent.getKoin().getOrCreateScope(
+            FragmentScope.SHOW_PHARMACY_CRI_RESULT_FRAGMENT_SCOPE,
+            named(FragmentScope.SHOW_PHARMACY_CRI_RESULT_FRAGMENT_SCOPE)
         )
     }
     override fun onDetach() {
         // Удаление скоупа для данного фрагмента
-        showPharmacySurfaceResultFragmentScope.close()
+        showPharmacyCRIResultFragmentScope.close()
         super.onDetach()
     }
     //endregion
@@ -66,6 +64,8 @@ class PharmacySurfaceResultFragment: BaseFragment<FragmentPharmacySurfaceResultB
         initResultValueVields()
         // Инициализация ViewModel
         initViewModel()
+        // Скрытие лишних результирующих элементов
+        hideSurplusResultsElements()
     }
 
     // Инициализация кнопок
@@ -82,12 +82,9 @@ class PharmacySurfaceResultFragment: BaseFragment<FragmentPharmacySurfaceResultB
                     when (index) {
                         0 -> viewModel.router.exit()
                         else -> {
-                            Toast.makeText(
-                                requireContext(),
-                                requireActivity().resources.getString(
-                                    R.string.error_button_is_not_assigned
-                                ), Toast.LENGTH_SHORT
-                            ).show()
+                            Toast.makeText(requireContext(), requireActivity().resources.getString(
+                                R.string.error_button_is_not_assigned),
+                                Toast.LENGTH_SHORT).show()
                         }
                     }
                 }
@@ -100,19 +97,40 @@ class PharmacySurfaceResultFragment: BaseFragment<FragmentPharmacySurfaceResultB
         // Очистка переменной
         resultsValueFields.clear()
         // Задание полей для вывода результирующей информации
-        resultsValueFields.add(binding.pharmacyResultText)
+        resultsValueFields.add(binding.pharmacyResultAmountVolumeText)
+        resultsValueFields.add(binding.pharmacyResultRateRateTitleText)
+        resultsValueFields.add(binding.pharmacyResultRateMassDosePerKgPerTimeTitleText)
+        resultsValueFields.add(binding.pharmacyResultRateTimeTitleText)
+        resultsValueFields.add(binding.pharmacyResultDripRateTimeTitleText)
+        resultsValueFields.add(binding.pharmacyResultDripRateDropTitleText)
+        resultsValueFields.add(binding.pharmacyResultDripRateDropRateTitleText)
     }
 
     // Инициализация ViewModel
-    fun initViewModel() {
-        val _viewModel: PharmacySurfaceResultFragmentViewModel by
-        showPharmacySurfaceResultFragmentScope.inject()
+    private fun initViewModel() {
+        val _viewModel: PharmacyCRIResultFragmentViewModel by
+        showPharmacyCRIResultFragmentScope.inject()
         viewModel = _viewModel
         // Отображение текущих значений числовых поле и списков
         viewModel.subscribe().observe(viewLifecycleOwner) {
             renderData(it)
         }
         saveData(false)
+    }
+
+    // Скрытие лишних результирующих элементов
+    private fun hideSurplusResultsElements() {
+        if (settings.getInputedScreenData().listsAddFirstSecond[0] == 0) {
+            binding.pharmacyResultDripRateTitle.visibility = View.INVISIBLE
+            resultsValueFields[4].visibility = View.INVISIBLE
+            resultsValueFields[5].visibility = View.INVISIBLE
+            resultsValueFields[6].visibility = View.INVISIBLE
+        } else {
+            binding.pharmacyResultDripRateTitle.visibility = View.VISIBLE
+            resultsValueFields[4].visibility = View.VISIBLE
+            resultsValueFields[5].visibility = View.VISIBLE
+            resultsValueFields[6].visibility = View.VISIBLE
+        }
     }
 
     // Сохранение текущего состояния всех числовых полей и списков

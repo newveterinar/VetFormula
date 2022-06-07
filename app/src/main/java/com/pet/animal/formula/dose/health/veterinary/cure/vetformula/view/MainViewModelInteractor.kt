@@ -2,7 +2,7 @@ package com.pet.animal.formula.dose.health.veterinary.cure.vetformula.view
 
 import com.pet.animal.formula.dose.health.veterinary.cure.fakerepo.FakeRepositoryImpl
 import com.pet.animal.formula.dose.health.veterinary.cure.repo.Repository
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.*
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.resources.ResourcesProviderImpl
 import org.koin.java.KoinJavaComponent
 
@@ -18,26 +18,42 @@ class MainViewModelInteractor {
 
     // Запись в базу данных формул при первом запуске приложения
     suspend fun writeDataToBDAtFirstRun() {
+        // Принудительная очистка базы данных перед добавлением новых формул
+//        repeat(500) {
+//            repositoryImpl.deleteFormulaByID(it.toLong())
+//        }
+
         // Проверка отсутствия в базе данных типизированной формулы для окна PHARMACY_SURFACE
-        if (repositoryImpl.getFormula(ScreenType.PHARMACY_SURFACE, listOf(0, 0))
-                .getTypedFormulas().size == 0) {
+        if (repositoryImpl.getFormula(ScreenType.PHARMACY_SURFACE,
+                listOf(PHARMACY_SURFACE_DOG_INDEX, 0)).getTypedFormulas().size == 0) {
             // Сохранение формул для окна PHARMACY_SURFACE
-            repeat(resourcesProviderImpl.getStringArray(
-                com.pet.animal.formula.dose.health.veterinary.cure.utils.R.array.
+            repeat(resourcesProviderImpl.getStringArray(R.array.
                 addFirstSecond_animal_type_list).size) {
                 repositoryImpl.insertFormula(
                     fakeRepositoryImpl.getFormula(ScreenType.PHARMACY_SURFACE, listOf(it, 0)),
                     ScreenType.PHARMACY_SURFACE.ordinal,
-                    1,
+                    PHARMACY_SURFACE_FORMULA_ELEMENT_COUNT,
                     it,
                     0
                 )
-                // Сохранение формул для окна PHARMACY_SURFACE
+            }
+            // Сохранение формул для окна PHARMACY_DOSES
+            repeat(PHARMACY_DOSES_ADDFIRST_FORMULA_NUMBER) {
                 repositoryImpl.insertFormula(
-                    fakeRepositoryImpl.getFormula(ScreenType.PHARMACY_DOSES, listOf(0, 0)),
+                    fakeRepositoryImpl.getFormula(ScreenType.PHARMACY_DOSES, listOf(it, 0)),
                     ScreenType.PHARMACY_DOSES.ordinal,
-                    3,
-                    0,
+                    PHARMACY_DOSES_FORMULA_ELEMENT_COUNT,
+                    it,
+                    0
+                )
+            }
+            // Сохранение формул для окна PHARMACY_CRI
+            repeat(PHARMACY_CRI_ADDFIRST_FORMULA_NUMBER) {
+                repositoryImpl.insertFormula(
+                    fakeRepositoryImpl.getFormula(ScreenType.PHARMACY_CRI, listOf(it, 0)),
+                    ScreenType.PHARMACY_CRI.ordinal,
+                    PHARMACY_CRI_FORMULA_ELEMENT_COUNT,
+                    it,
                     0
                 )
             }

@@ -46,8 +46,8 @@
     <string name="pharmacy_drop_textinputlayout_textfield_hint">No Giving Set</string>
     <string name="pharmacy_drop_animal_title_text">Giving Set</string>
     <string name="pharmacy_dose_button_text_text">Pharmacy Doses</string>
-    <string name="pharmacy_cri_button_text_text">Pharmacy CRI</string>
-    <string name="pharmacy_cri_previous_text_text">PharmacyCRI</string>
+    <string name="pharmacy_cri_button_text_text">Pharneg CRI</string>
+    <string name="pharmacy_cri_previous_text_text">Pharneg CRI</string>
     <string name="pharmacy_dose_previous_text_text">PharmacyDose</string>
     <string name="pharmacy_speed_animal_title_text">Rate</string>
     <string name="pharmacy_rate_textinputlayout_textfield_hint">Rate</string>
@@ -71,4 +71,10 @@
     <string name="pharmacy_result_volume_title_text">Amount</string>
     <string name="captionBtnStopTimer">STOP</string>
     <string name="captionBtnResetTimer">RESET</string>
+    <string name="pharmacy_result_drip_rate_title_text">Drip rate</string>
+    <string name="pharmacy_result_drip_rate_time_title_text_text">One drop every</string>
+    <string name="pharmacy_result_rate_rate_title_text_text">Rate of:</string>
+    <string name="pharmacy_result_rate_mass_dose_per_kg_per_time_title_text_text">Gives:</string>
+    <string name="pharmacy_result_rate_time_title_text_text">For:</string>
+    <string name="pharmacy_result_amount_volume_text_text">Add:</string>
 </resources>

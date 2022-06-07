@@ -13,53 +13,316 @@ class FakeRepositoryImpl: FakeRepository {
     ): Formula {
         return when (screenType) {
             ScreenType.PHARMACY_SURFACE ->
-                pharmacySurfaceFormula(screenType,listsAddFirstSecond)
+                pharmacySurfaceFormula(screenType, listsAddFirstSecond)
             ScreenType.PHARMACY_DOSES ->
-                pharmacyDosesFormula(screenType,listsAddFirstSecond)
+                pharmacyDosesFormula(screenType, listsAddFirstSecond)
+            ScreenType.PHARMACY_CRI ->
+                pharmacyCRIFormula(screenType, listsAddFirstSecond)
             else -> Formula()
         }
     }
 
-    // Задание формулы для окна PHARMACY_DOSES
-    private fun pharmacyDosesFormula(
-         screenType: ScreenType, listsAddFirstSecond: List<Int>): Formula {
+    // Задание формулы для окна PHARMACY_CRI
+    private fun pharmacyCRIFormula(
+        screenType: ScreenType, listsAddFirstSecond: List<Int>): Formula {
         /** Задание переменных */ //region
         // Результирующая формула
-        val pharmacyDosesFormula: Formula = Formula()
+        val pharmacyCRIFormula: Formula = Formula()
         // Типизированное имя запрошенной формулы
         val askedTypedName: String =
             listsAddFirstSecond.convertAddFirstSecondToTypedFormulaName(screenType)
         //endregion
 
         when {
-            //region Типизированные формулы для окна PHARMACY_DOSES
-            askedTypedName.contains(PHARMACY_DOSES_NAME) -> {
-                pharmacyDosesFormula.addTypedFormula(
+            //region Типизированные формулы для окна PHARMACY_CRI
+            askedTypedName.contains(PHARMACY_CRI_NO_GIVING_SET_NAME) -> {
+                pharmacyCRIFormula.addTypedFormula(
                     TypedFormula(
-                        PHARMACY_DOSES_NAME,
+                        PHARMACY_CRI_NO_GIVING_SET_NAME,
                         mutableListOf(
-                            Element(Command.NO_COMMAND.index(), 1),
-                            Element(Command.MULTIPLY.index(), 0),
                             Element(Command.NO_COMMAND.index(), 2),
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.NO_COMMAND.index(), 4),
                             Element(Command.DIVIDE.index(), 0),
-                            Element(Command.NO_COMMAND.index(), 3)
+                            Element(Command.BRACKET_OPEN.index(), 0),
+                            // Заглушка для устранения бага работы скобок
+                            Element(Command.ONE.index(), 0),
+                            // Заглушка для устранения бага работы скобок
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.NO_COMMAND.index(), 3),
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.NO_COMMAND.index(), 5),
+                            Element(Command.BRACKET_CLOSE.index(), 0)
                         )
                     )
                 )
-                pharmacyDosesFormula.addTypedFormula(
+                pharmacyCRIFormula.addTypedFormula(
                     TypedFormula(
-                        PHARMACY_DOSES_NAME,
+                        PHARMACY_CRI_NO_GIVING_SET_NAME,
                         mutableListOf(
                             Element(Command.NO_COMMAND.index(), 1),
                             Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.NO_COMMAND.index(), 5)
+                        )
+                    )
+                )
+                pharmacyCRIFormula.addTypedFormula(
+                    TypedFormula(
+                        PHARMACY_CRI_NO_GIVING_SET_NAME,
+                        mutableListOf(
+                            Element(Command.NO_COMMAND.index(), 2)
+                        )
+                    )
+                )
+                pharmacyCRIFormula.addTypedFormula(
+                    TypedFormula(
+                        PHARMACY_CRI_NO_GIVING_SET_NAME,
+                        mutableListOf(
+                            Element(Command.SIX.index(), 0),
+                            Element(Command.ZERO.index(), 0),
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.NO_COMMAND.index(), 4),
+                            Element(Command.DIVIDE.index(), 0),
+                            Element(Command.BRACKET_OPEN.index(), 0),
+                            // Заглушка для устранения бага работы скобок
+                            Element(Command.ONE.index(), 0),
+                            // Заглушка для устранения бага работы скобок
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.NO_COMMAND.index(), 5),
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.NO_COMMAND.index(), 1),
+                            Element(Command.BRACKET_CLOSE.index(), 0)
+                        )
+                    )
+                )
+            }
+            askedTypedName.contains(PHARMACY_CRI_20_DROPS_PER_ML_NAME) -> {
+                pharmacyCRIFormula.addTypedFormula(
+                    TypedFormula(
+                        PHARMACY_CRI_20_DROPS_PER_ML_NAME,
+                        mutableListOf(
                             Element(Command.NO_COMMAND.index(), 2),
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.NO_COMMAND.index(), 4),
+                            Element(Command.DIVIDE.index(), 0),
+                            Element(Command.BRACKET_OPEN.index(), 0),
+                            // Заглушка для устранения бага работы скобок
+                            Element(Command.ONE.index(), 0),
+                            // Заглушка для устранения бага работы скобок
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.NO_COMMAND.index(), 3),
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.NO_COMMAND.index(), 5),
+                            Element(Command.BRACKET_CLOSE.index(), 0)
+                        )
+                    )
+                )
+                pharmacyCRIFormula.addTypedFormula(
+                    TypedFormula(
+                        PHARMACY_CRI_20_DROPS_PER_ML_NAME,
+                        mutableListOf(
+                            Element(Command.NO_COMMAND.index(), 1),
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.NO_COMMAND.index(), 5)
+                        )
+                    )
+                )
+                pharmacyCRIFormula.addTypedFormula(
+                    TypedFormula(
+                        PHARMACY_CRI_20_DROPS_PER_ML_NAME,
+                        mutableListOf(
+                            Element(Command.NO_COMMAND.index(), 2)
+                        )
+                    )
+                )
+                pharmacyCRIFormula.addTypedFormula(
+                    TypedFormula(
+                        PHARMACY_CRI_20_DROPS_PER_ML_NAME,
+                        mutableListOf(
+                            Element(Command.SIX.index(), 0),
+                            Element(Command.ZERO.index(), 0),
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.NO_COMMAND.index(), 4),
+                            Element(Command.DIVIDE.index(), 0),
+                            Element(Command.BRACKET_OPEN.index(), 0),
+                            // Заглушка для устранения бага работы скобок
+                            Element(Command.ONE.index(), 0),
+                            // Заглушка для устранения бага работы скобок
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.NO_COMMAND.index(), 5),
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.NO_COMMAND.index(), 1),
+                            Element(Command.BRACKET_CLOSE.index(), 0)
+                        )
+                    )
+                )
+                pharmacyCRIFormula.addTypedFormula(
+                    TypedFormula(
+                        PHARMACY_CRI_20_DROPS_PER_ML_NAME,
+                        mutableListOf(
+                            Element(Command.ONE.index(), 0),
+                            Element(Command.DIVIDE.index(), 0),
+                            Element(Command.BRACKET_OPEN.index(), 0),
+                            // Заглушка для устранения бага работы скобок
+                            Element(Command.ONE.index(), 0),
+                            // Заглушка для устранения бага работы скобок
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.NO_COMMAND.index(), 1),
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.NO_COMMAND.index(), 5),
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.TWO.index(), 0),
+                            Element(Command.ZERO.index(), 0),
+                            Element(Command.BRACKET_CLOSE.index(), 0)
+                        )
+                    )
+                )
+                pharmacyCRIFormula.addTypedFormula(
+                    TypedFormula(
+                        PHARMACY_CRI_20_DROPS_PER_ML_NAME,
+                        mutableListOf(
+                            Element(Command.ONE.index(), 0),
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.NO_COMMAND.index(), 1),
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.NO_COMMAND.index(), 5),
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.TWO.index(), 0),
+                            Element(Command.ZERO.index(), 0),
+                        )
+                    )
+                )
+                pharmacyCRIFormula.addTypedFormula(
+                    TypedFormula(
+                        PHARMACY_CRI_20_DROPS_PER_ML_NAME,
+                        mutableListOf(
+                            Element(Command.ONE.index(), 0),
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.NO_COMMAND.index(), 1),
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.NO_COMMAND.index(), 5),
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.TWO.index(), 0),
+                            Element(Command.ZERO.index(), 0),
+                        )
+                    )
+                )
+            }
+            askedTypedName.contains(PHARMACY_CRI_60_DROPS_PER_ML_NAME) -> {
+                pharmacyCRIFormula.addTypedFormula(
+                    TypedFormula(
+                        PHARMACY_CRI_60_DROPS_PER_ML_NAME,
+                        mutableListOf(
+                            Element(Command.NO_COMMAND.index(), 2),
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.NO_COMMAND.index(), 4),
+                            Element(Command.DIVIDE.index(), 0),
+                            Element(Command.BRACKET_OPEN.index(), 0),
+                            // Заглушка для устранения бага работы скобок
+                            Element(Command.ONE.index(), 0),
+                            // Заглушка для устранения бага работы скобок
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.NO_COMMAND.index(), 3),
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.NO_COMMAND.index(), 5),
+                            Element(Command.BRACKET_CLOSE.index(), 0)
+                        )
+                    )
+                )
+                pharmacyCRIFormula.addTypedFormula(
+                    TypedFormula(
+                        PHARMACY_CRI_60_DROPS_PER_ML_NAME,
+                        mutableListOf(
+                            Element(Command.NO_COMMAND.index(), 1),
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.NO_COMMAND.index(), 5)
+                        )
+                    )
+                )
+                pharmacyCRIFormula.addTypedFormula(
+                    TypedFormula(
+                        PHARMACY_CRI_60_DROPS_PER_ML_NAME,
+                        mutableListOf(
+                            Element(Command.NO_COMMAND.index(), 2)
+                        )
+                    )
+                )
+                pharmacyCRIFormula.addTypedFormula(
+                    TypedFormula(
+                        PHARMACY_CRI_60_DROPS_PER_ML_NAME,
+                        mutableListOf(
+                            Element(Command.SIX.index(), 0),
+                            Element(Command.ZERO.index(), 0),
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.NO_COMMAND.index(), 4),
+                            Element(Command.DIVIDE.index(), 0),
+                            Element(Command.BRACKET_OPEN.index(), 0),
+                            // Заглушка для устранения бага работы скобок
+                            Element(Command.ONE.index(), 0),
+                            // Заглушка для устранения бага работы скобок
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.NO_COMMAND.index(), 5),
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.NO_COMMAND.index(), 1),
+                            Element(Command.BRACKET_CLOSE.index(), 0)
+                        )
+                    )
+                )
+                pharmacyCRIFormula.addTypedFormula(
+                    TypedFormula(
+                        PHARMACY_CRI_60_DROPS_PER_ML_NAME,
+                        mutableListOf(
+                            Element(Command.ONE.index(), 0),
+                            Element(Command.DIVIDE.index(), 0),
+                            Element(Command.BRACKET_OPEN.index(), 0),
+                            // Заглушка для устранения бага работы скобок
+                            Element(Command.ONE.index(), 0),
+                            // Заглушка для устранения бага работы скобок
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.NO_COMMAND.index(), 1),
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.NO_COMMAND.index(), 5),
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.SIX.index(), 0),
+                            Element(Command.ZERO.index(), 0),
+                            Element(Command.BRACKET_CLOSE.index(), 0)
+                        )
+                    )
+                )
+                pharmacyCRIFormula.addTypedFormula(
+                    TypedFormula(
+                        PHARMACY_CRI_60_DROPS_PER_ML_NAME,
+                        mutableListOf(
+                            Element(Command.ONE.index(), 0),
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.NO_COMMAND.index(), 1),
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.NO_COMMAND.index(), 5),
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.SIX.index(), 0),
+                            Element(Command.ZERO.index(), 0),
+                        )
+                    )
+                )
+                pharmacyCRIFormula.addTypedFormula(
+                    TypedFormula(
+                        PHARMACY_CRI_60_DROPS_PER_ML_NAME,
+                        mutableListOf(
+                            Element(Command.ONE.index(), 0),
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.NO_COMMAND.index(), 1),
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.NO_COMMAND.index(), 5),
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.SIX.index(), 0),
+                            Element(Command.ZERO.index(), 0),
                         )
                     )
                 )
             }
         }
         //endregion
-        return pharmacyDosesFormula
+        return pharmacyCRIFormula
     }
 
     // Задание формулы для окна PHARMACY_SURFACE
@@ -89,10 +352,14 @@ class FakeRepositoryImpl: FakeRepository {
                         Element(Command.NO_COMMAND.index(),1),
                         Element(Command.STEPEN.index(),0),
                         Element(Command.BRACKET_OPEN.index(),0),
+                        // Заглушка для устранения бага работы скобок
+                        Element(Command.ONE.index(), 0),
+                        // Заглушка для устранения бага работы скобок
+                        Element(Command.MULTIPLY.index(), 0),
                         Element(Command.TWO.index(),0),
                         Element(Command.DIVIDE.index(),0),
                         Element(Command.THREE.index(),0),
-                        Element(Command.BRACKET_CLOSE.index(),0),
+                        Element(Command.BRACKET_CLOSE.index(),0)
                     )
                 ))
             askedTypedName.contains(PHARMACY_SURFACE_CAT_BODYSURFACEAREA_NAME) ->
@@ -107,10 +374,14 @@ class FakeRepositoryImpl: FakeRepository {
                         Element(Command.NO_COMMAND.index(),1),
                         Element(Command.STEPEN.index(),0),
                         Element(Command.BRACKET_OPEN.index(),0),
+                        // Заглушка для устранения бага работы скобок
+                        Element(Command.ONE.index(), 0),
+                        // Заглушка для устранения бага работы скобок
+                        Element(Command.MULTIPLY.index(), 0),
                         Element(Command.TWO.index(),0),
                         Element(Command.DIVIDE.index(),0),
                         Element(Command.THREE.index(),0),
-                        Element(Command.BRACKET_CLOSE.index(),0),
+                        Element(Command.BRACKET_CLOSE.index(),0)
                     )
                 ))
             askedTypedName.contains(PHARMACY_SURFACE_RABBIT_BODYSURFACEAREA_NAME) ->
@@ -128,10 +399,14 @@ class FakeRepositoryImpl: FakeRepository {
                         Element(Command.NO_COMMAND.index(),1),
                         Element(Command.STEPEN.index(),0),
                         Element(Command.BRACKET_OPEN.index(),0),
+                        // Заглушка для устранения бага работы скобок
+                        Element(Command.ONE.index(), 0),
+                        // Заглушка для устранения бага работы скобок
+                        Element(Command.MULTIPLY.index(), 0),
                         Element(Command.TWO.index(),0),
                         Element(Command.DIVIDE.index(),0),
                         Element(Command.THREE.index(),0),
-                        Element(Command.BRACKET_CLOSE.index(),0),
+                        Element(Command.BRACKET_CLOSE.index(),0)
                     )
                 ))
             askedTypedName.contains(PHARMACY_SURFACE_POLECAT_BODYSURFACEAREA_NAME) ->
@@ -149,10 +424,14 @@ class FakeRepositoryImpl: FakeRepository {
                         Element(Command.NO_COMMAND.index(),1),
                         Element(Command.STEPEN.index(),0),
                         Element(Command.BRACKET_OPEN.index(),0),
+                        // Заглушка для устранения бага работы скобок
+                        Element(Command.ONE.index(), 0),
+                        // Заглушка для устранения бага работы скобок
+                        Element(Command.MULTIPLY.index(), 0),
                         Element(Command.TWO.index(),0),
                         Element(Command.DIVIDE.index(),0),
                         Element(Command.THREE.index(),0),
-                        Element(Command.BRACKET_CLOSE.index(),0),
+                        Element(Command.BRACKET_CLOSE.index(),0)
                     )
                 ))
             askedTypedName.contains(PHARMACY_SURFACE_GUINEAPIG_BODYSURFACEAREA_NAME) ->
@@ -168,10 +447,14 @@ class FakeRepositoryImpl: FakeRepository {
                         Element(Command.NO_COMMAND.index(),1),
                         Element(Command.STEPEN.index(),0),
                         Element(Command.BRACKET_OPEN.index(),0),
+                        // Заглушка для устранения бага работы скобок
+                        Element(Command.ONE.index(), 0),
+                        // Заглушка для устранения бага работы скобок
+                        Element(Command.MULTIPLY.index(), 0),
                         Element(Command.TWO.index(),0),
                         Element(Command.DIVIDE.index(),0),
                         Element(Command.THREE.index(),0),
-                        Element(Command.BRACKET_CLOSE.index(),0),
+                        Element(Command.BRACKET_CLOSE.index(),0)
                     )
                 ))
             askedTypedName.contains(PHARMACY_SURFACE_HAMSTER_BODYSURFACEAREA_NAME) ->
@@ -188,10 +471,14 @@ class FakeRepositoryImpl: FakeRepository {
                         Element(Command.NO_COMMAND.index(),1),
                         Element(Command.STEPEN.index(),0),
                         Element(Command.BRACKET_OPEN.index(),0),
+                        // Заглушка для устранения бага работы скобок
+                        Element(Command.ONE.index(), 0),
+                        // Заглушка для устранения бага работы скобок
+                        Element(Command.MULTIPLY.index(), 0),
                         Element(Command.TWO.index(),0),
                         Element(Command.DIVIDE.index(),0),
                         Element(Command.THREE.index(),0),
-                        Element(Command.BRACKET_CLOSE.index(),0),
+                        Element(Command.BRACKET_CLOSE.index(),0)
                     )
                 ))
             askedTypedName.contains(PHARMACY_SURFACE_HORSEEXCEPTLOMUSTIN_BODYSURFACEAREA_NAME) ->
@@ -208,10 +495,14 @@ class FakeRepositoryImpl: FakeRepository {
                         Element(Command.NO_COMMAND.index(),1),
                         Element(Command.STEPEN.index(),0),
                         Element(Command.BRACKET_OPEN.index(),0),
+                        // Заглушка для устранения бага работы скобок
+                        Element(Command.ONE.index(), 0),
+                        // Заглушка для устранения бага работы скобок
+                        Element(Command.MULTIPLY.index(), 0),
                         Element(Command.TWO.index(),0),
                         Element(Command.DIVIDE.index(),0),
                         Element(Command.THREE.index(),0),
-                        Element(Command.BRACKET_CLOSE.index(),0),
+                        Element(Command.BRACKET_CLOSE.index(),0)
                     )
                 ))
             askedTypedName.contains(PHARMACY_SURFACE_HORSEONLYLOMUSTIN_BODYSURFACEAREA_NAME) ->
@@ -228,10 +519,14 @@ class FakeRepositoryImpl: FakeRepository {
                         Element(Command.NO_COMMAND.index(),1),
                         Element(Command.STEPEN.index(),0),
                         Element(Command.BRACKET_OPEN.index(),0),
+                        // Заглушка для устранения бага работы скобок
+                        Element(Command.ONE.index(), 0),
+                        // Заглушка для устранения бага работы скобок
+                        Element(Command.MULTIPLY.index(), 0),
                         Element(Command.TWO.index(),0),
                         Element(Command.DIVIDE.index(),0),
                         Element(Command.THREE.index(),0),
-                        Element(Command.BRACKET_CLOSE.index(),0),
+                        Element(Command.BRACKET_CLOSE.index(),0)
                     )
                 ))
             askedTypedName.contains(PHARMACY_SURFACE_RAT_BODYSURFACEAREA_NAME) ->
@@ -248,10 +543,14 @@ class FakeRepositoryImpl: FakeRepository {
                         Element(Command.NO_COMMAND.index(),1),
                         Element(Command.STEPEN.index(),0),
                         Element(Command.BRACKET_OPEN.index(),0),
+                        // Заглушка для устранения бага работы скобок
+                        Element(Command.ONE.index(), 0),
+                        // Заглушка для устранения бага работы скобок
+                        Element(Command.MULTIPLY.index(), 0),
                         Element(Command.TWO.index(),0),
                         Element(Command.DIVIDE.index(),0),
                         Element(Command.THREE.index(),0),
-                        Element(Command.BRACKET_CLOSE.index(),0),
+                        Element(Command.BRACKET_CLOSE.index(),0)
                     )
                 ))
             askedTypedName.contains(PHARMACY_SURFACE_MOUSE_BODYSURFACEAREA_NAME) ->
@@ -267,14 +566,60 @@ class FakeRepositoryImpl: FakeRepository {
                         Element(Command.NO_COMMAND.index(),1),
                         Element(Command.STEPEN.index(),0),
                         Element(Command.BRACKET_OPEN.index(),0),
+                        // Заглушка для устранения бага работы скобок
+                        Element(Command.ONE.index(), 0),
+                        // Заглушка для устранения бага работы скобок
+                        Element(Command.MULTIPLY.index(), 0),
                         Element(Command.TWO.index(),0),
                         Element(Command.DIVIDE.index(),0),
                         Element(Command.THREE.index(),0),
-                        Element(Command.BRACKET_CLOSE.index(),0),
+                        Element(Command.BRACKET_CLOSE.index(),0)
                     )
                 ))
             //endregion
         }
         return pharmacySurfaceFormula
+    }
+
+    // Задание формулы для окна PHARMACY_DOSES
+    private fun pharmacyDosesFormula(
+        screenType: ScreenType, listsAddFirstSecond: List<Int>): Formula {
+        /** Задание переменных */ //region
+        // Результирующая формула
+        val pharmacyDosesFormula: Formula = Formula()
+        // Типизированное имя запрошенной формулы
+        val askedTypedName: String =
+            listsAddFirstSecond.convertAddFirstSecondToTypedFormulaName(screenType)
+        //endregion
+
+        when {
+            //region Типизированные формулы для окна PHARMACY_DOSES
+            askedTypedName.contains(PHARMACY_DOSES_NAME) -> {
+                pharmacyDosesFormula.addTypedFormula(
+                    TypedFormula(
+                        PHARMACY_DOSES_NAME,
+                        mutableListOf(
+                            Element(Command.NO_COMMAND.index(), 1),
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.NO_COMMAND.index(), 2),
+                            Element(Command.DIVIDE.index(), 0),
+                            Element(Command.NO_COMMAND.index(), 3)
+                        )
+                    )
+                )
+                pharmacyDosesFormula.addTypedFormula(
+                    TypedFormula(
+                        PHARMACY_DOSES_NAME,
+                        mutableListOf(
+                            Element(Command.NO_COMMAND.index(), 1),
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.NO_COMMAND.index(), 2)
+                        )
+                    )
+                )
+            }
+        }
+        //endregion
+        return pharmacyDosesFormula
     }
 }
