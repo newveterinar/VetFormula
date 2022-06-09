@@ -76,7 +76,7 @@
             <TextView
                 android:id="@+id/pharmacy_result_title"
                 style="@style/button_result_style"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/pharmacy_result_title_margin_start"
                 android:layout_marginTop="@dimen/pharmacy_result_title_margin_top"

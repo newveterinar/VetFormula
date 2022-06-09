@@ -7,17 +7,12 @@ import android.view.View
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.widget.doOnTextChanged
-import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.textfield.TextInputLayout
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppState
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentPharmacyCriBinding
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.doses.PharmacyDosesFragmentViewModel
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.DIMENSION_MEQ_POSITION
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.DIMENSION_U_POSITION
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.FragmentScope
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.*
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertListEditTextToListDouble
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertListEditTextToListString
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertListSpinnerToListInt
@@ -32,7 +27,8 @@ class PharmacyCRIFragment:
     // Установка типа формулы для текущего окна
     private val screenType: ScreenType = ScreenType.PHARMACY_CRI
     // Навигационные кнопки (для перехода на другие экраны)
-    private val navigationButtons = arrayOfNulls<View>(size = 2)
+    private val navigationButtons = arrayOfNulls<View>(
+        size = NUMBER_NAVIGATION_BUTTONS_ON_INPUT_DATA_SCREENS)
     // Обнуление значений во всех полях
     private lateinit var clearButton: ConstraintLayout
     // ViewModel
@@ -81,6 +77,14 @@ class PharmacyCRIFragment:
         initViewModel()
         // Настройка события обработки списков (должно быть в конце всех инициализаций)
         setActionsFieldsAndLists()
+        //Обзервер для подсказок
+        showToastHint()
+    }
+
+    private fun showToastHint() {
+        viewModel.toastHint.observe(viewLifecycleOwner) {
+            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+        }
     }
 
     // Инициализация текстовых полей
@@ -100,12 +104,14 @@ class PharmacyCRIFragment:
         valuesFields.add(binding.pharmacyConcentrationTextinputlayoutTextfield)
         valuesFields.add(binding.pharmacyAmountTextinputlayoutTextfield)
         valuesFields.add(binding.pharmacyRateTextinputlayoutTextfield)
+        showFieldHintOnLongClick(valuesFields)
         // Настройка события изменения значений в полях ввода чисел
         valuesFields.forEach { field ->
             field.doOnTextChanged { _, _, _, _ ->
                 viewModel.checkAreTheFieldsFilledIn(valuesFields.map { it.text.toString() })
             }
         }
+
         // Настройка события завершения ввода числового значения
         valuesFields.forEachIndexed { index, field ->
             field.setOnKeyListener(object: View.OnKeyListener {
@@ -175,6 +181,53 @@ class PharmacyCRIFragment:
         listsDimensions.add(binding.pharmacyConcentrationDimensionList)
         listsDimensions.add(binding.pharmacyAmountDimensionList)
         listsDimensions.add(binding.pharmacyRateDimensionList)
+        showSpinnerHintOnLongClick(listsAddFirstSecond)
+    }
+
+
+
+    private fun showFieldHintOnLongClick(valuesFields: MutableList<EditText>) {
+        for (field in 0 until valuesFields.size) {
+            valuesFields[field].setOnLongClickListener {
+                when (field) {
+                    0 -> {
+                        setToastHint(getString(R.string.pharmacy_cri_animal_weight_description))
+                        true
+                    }
+                    1 -> {
+                        setToastHint(getString(R.string.pharmacy_cri_dose_description))
+                        true
+                    }
+                    2 -> {
+                        setToastHint(getString(R.string.pharmacy_cri_drug_concentration_description))
+                        true
+                    }
+                    3 -> {
+                        setToastHint(getString(R.string.pharmacy_cri_fluid_amount_description))
+                        true
+                    }
+                    4 -> {
+                        setToastHint(getString(R.string.pharmacy_cri_rate_description))
+                        true
+                    }
+                    else -> {
+                        false
+                    }
+                }
+            }
+        }
+    }
+
+    private fun showSpinnerHintOnLongClick(listsAddFirstSecond: MutableList<Spinner>) {
+        listsAddFirstSecond[0].setOnLongClickListener{
+            setToastHint(getString(R.string.pharmacy_cri_giving_set_description))
+            true
+        }
+    }
+
+    private fun setToastHint(hint: String) {
+        viewModel.setToastHint(getString(R.string.long_click_hint,
+            hint))
     }
 
     // Инициализация навигационных кнопок
@@ -307,7 +360,7 @@ class PharmacyCRIFragment:
                         }
                     } else {
                         // Переход на экран с результатами расчётов
-//                        viewModel.router.navigateTo(viewModel.screens.pharmacyDosesResultScreen())
+                        viewModel.router.navigateTo(viewModel.screens.pharmacyCRIResultScreen())
                     }
                 }
             }

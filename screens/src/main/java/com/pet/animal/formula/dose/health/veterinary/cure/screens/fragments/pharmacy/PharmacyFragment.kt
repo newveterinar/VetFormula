@@ -42,8 +42,8 @@ class PharmacyFragment: BaseFragment<FragmentPharmacyBinding>(FragmentPharmacyBi
                 when (index) {
                     0 -> viewModel.router.exit()
                     1 -> viewModel.router.navigateTo(viewModel.screens.pharmacySurfaceScreen())
-                    2 -> viewModel.router.navigateTo(viewModel.screens.doseScreen())
-                    3 -> viewModel.router.navigateTo(viewModel.screens.criScreen())
+                    2 -> viewModel.router.navigateTo(viewModel.screens.pharmacyDosesScreen())
+                    3 -> viewModel.router.navigateTo(viewModel.screens.pharmacyCRIScreen())
                     else -> {
                          Toast.makeText(requireContext(), requireActivity().resources.getString(
                             R.string.error_button_is_not_assigned), Toast.LENGTH_SHORT).show()
