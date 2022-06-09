@@ -6,8 +6,6 @@ import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.os.Bundle
 import android.os.PersistableBundle
-import android.view.View
-import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -57,23 +55,6 @@ class MainActivity : AppCompatActivity() {
     // FAB
     private var clicked = false
 
-    // Ленивая инициализация анимаций для FAB
-    private val rotateOpen: Animation by lazy {
-        AnimationUtils.loadAnimation(this, R.anim.rotate_open_anim)
-    }
-    private val rotateClose: Animation by lazy {
-        AnimationUtils.loadAnimation(this, R.anim.rotate_close_anim)
-    }
-    private val fromBottom: Animation by lazy {
-        AnimationUtils.loadAnimation(
-            this, R.anim.from_bottom_anim
-        )
-    }
-    private val toBottom: Animation by lazy {
-        AnimationUtils.loadAnimation(this, R.anim.to_bottom_anim)
-    }
-    //endregion
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // Подключение Binding
@@ -121,7 +102,6 @@ class MainActivity : AppCompatActivity() {
             fabMain.setOnClickListener {
                 setAnimation()
             }
-
             fabWebViewVetmedical.setOnClickListener {
                 supportFragmentManager.beginTransaction()
                     .replace(
@@ -149,40 +129,36 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    //Настройка анимации всех FAB
+    // Вызов кнопок FAB и их анимации
     private fun setAnimation() {
+        val fabOpen = AnimationUtils.loadAnimation(this, R.anim.fab_open)
+        val fabClose = AnimationUtils.loadAnimation(this, R.anim.fab_close)
+        val rotateForward = AnimationUtils.loadAnimation(this, R.anim.rotate_forward)
+        val rotateBackward = AnimationUtils.loadAnimation(this, R.anim.rotate_backward)
+
         if (clicked) {
             with(binding) {
-                fabMain.startAnimation(rotateOpen)
-                fabTextView.startAnimation(toBottom)
-                fabWebViewVetmedical.startAnimation(toBottom)
-                fabWebViewWsava.startAnimation(toBottom)
-
+                fabMain.startAnimation(rotateForward)
+                fabTextView.startAnimation(fabClose)
+                fabWebViewWsava.startAnimation(fabClose)
+                fabWebViewVetmedical.startAnimation(fabClose)
                 fabTextView.isClickable = false
-                fabWebViewVetmedical.isClickable = false
                 fabWebViewWsava.isClickable = false
-
-                fabWebViewVetmedical.visibility = View.INVISIBLE
-                fabWebViewWsava.visibility = View.INVISIBLE
-                fabTextView.visibility = View.INVISIBLE
+                fabWebViewVetmedical.isClickable = false
+                clicked = false
             }
         } else {
             with(binding) {
-                fabMain.startAnimation(rotateClose)
-                fabTextView.startAnimation(fromBottom)
-                fabWebViewVetmedical.startAnimation(fromBottom)
-                fabWebViewWsava.startAnimation(fromBottom)
-
+                fabMain.startAnimation(rotateBackward)
+                fabTextView.startAnimation(fabOpen)
+                fabWebViewWsava.startAnimation(fabOpen)
+                fabWebViewVetmedical.startAnimation(fabOpen)
                 fabTextView.isClickable = true
-                fabWebViewVetmedical.isClickable = true
                 fabWebViewWsava.isClickable = true
-
-                fabWebViewVetmedical.visibility = View.VISIBLE
-                fabWebViewWsava.visibility = View.VISIBLE
-                fabTextView.visibility = View.VISIBLE
+                fabWebViewVetmedical.isClickable = true
+                clicked = true
             }
         }
-        clicked = !clicked
     }
 
     /** Методы для настройки навигатора */ //region
