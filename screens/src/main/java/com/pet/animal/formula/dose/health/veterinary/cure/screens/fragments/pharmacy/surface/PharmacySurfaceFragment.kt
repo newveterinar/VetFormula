@@ -19,7 +19,6 @@ import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.conver
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertListEditTextToListString
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertListSpinnerToListInt
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.stringToDouble
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.screens.showToastedHintOnLongClick
 import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
 import org.koin.java.KoinJavaComponent
@@ -178,16 +177,21 @@ class PharmacySurfaceFragment:
 
     private fun showFiledHintOnLongClick(valuesFields: MutableList<EditText>) {
         valuesFields[0].setOnLongClickListener {
-            viewModel.setToastHint(getString(R.string.long_click_hint, getString(R.string.pharmacy_surface_animal_weight_description)))
+            setToastHint(getString(R.string.pharmacy_surface_animal_weight_description))
             true
         }
     }
 
     private fun showSpinnerHintOnLongClick(listsAddFirstSecond: MutableList<Spinner>) {
         listsAddFirstSecond[0].setOnLongClickListener{
-            viewModel.setToastHint(getString(R.string.long_click_hint, getString(R.string.pharmacy_surface_animal_type_description)))
+            setToastHint(getString(R.string.pharmacy_surface_animal_type_description))
             true
         }
+    }
+
+    private fun setToastHint(hint: String) {
+        viewModel.setToastHint(getString(R.string.long_click_hint,
+            hint))
     }
 
     // Инициализация навигационных кнопок

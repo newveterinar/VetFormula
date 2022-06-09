@@ -82,5 +82,5 @@
     <string name="pharmacy_cri_dose_description">введите дозу препарата.</string>
     <string name="pharmacy_cri_rate_description">введите скорость введения  препарата.</string>
     <string name="pharmacy_cri_giving_set_description">выберите имеется ли у вас капельная система.</string>
-    <string name="pharmacy_cri_fluid_volume_description">введите объем жидкости.</string>
+    <string name="pharmacy_cri_fluid_amount_description">введите объем жидкости.</string>
 </resources>

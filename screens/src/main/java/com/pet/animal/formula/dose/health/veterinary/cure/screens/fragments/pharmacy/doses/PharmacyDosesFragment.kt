@@ -24,27 +24,34 @@ import org.koin.android.ext.android.getKoin
 import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
 
-class PharmacyDosesFragment:
+class PharmacyDosesFragment :
     BaseFragment<FragmentPharmacyDosesBinding>(FragmentPharmacyDosesBinding::inflate) {
 
     /** Задание переменных */ //region
     // Установка типа формулы для текущего окна
     private val screenType: ScreenType = ScreenType.PHARMACY_DOSES
+
     // Навигационные кнопки (для перехода на другие экраны)
     private val navigationButtons = arrayOfNulls<View>(size = 3)
+
     // Обнуление значений во всех полях
     private lateinit var clearButton: ConstraintLayout
+
     // ViewModel
     private lateinit var viewModel: PharmacyDosesFragmentViewModel
     private lateinit var showPharmacyDoseFragmentScope: Scope
+
     // Списки (Spinner)
     private val listsAddFirstSecond: MutableList<Spinner> = mutableListOf()
     private val listsDimensions: MutableList<Spinner> = mutableListOf()
+
     // Текстовые поля для ввода чисел
     private val valuesFields: MutableList<EditText> = mutableListOf()
     private val valuesFieldsLayouts: MutableList<TextInputLayout> = mutableListOf()
+
     // Текстовое поле для отображения общей информации о том, что нужно делать в данном окне
     private lateinit var helpInfoText: TextView
+
     // newInstance для данного класса
     companion object {
         fun newInstance(): PharmacyDosesFragment = PharmacyDosesFragment()
@@ -60,6 +67,7 @@ class PharmacyDosesFragment:
                 named(FragmentScope.SHOW_PHARMACY_DOSES_FRAGMENT_SCOPE)
             )
     }
+
     override fun onDetach() {
         // Удаление скоупа для данного фрагмента
         showPharmacyDoseFragmentScope.close()
@@ -80,6 +88,14 @@ class PharmacyDosesFragment:
         initViewModel()
         // Настройка события обработки списков (должно быть в конце всех инициализаций)
         setActionsFieldsAndLists()
+        //Обзервер для подсказок
+        showToastHint()
+    }
+
+    private fun showToastHint() {
+        viewModel.toastHint.observe(viewLifecycleOwner) {
+            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+        }
     }
 
     // Инициализация текстовых полей
@@ -95,6 +111,7 @@ class PharmacyDosesFragment:
         valuesFields.add(binding.pharmacyWeightTextinputlayoutTextfield)
         valuesFields.add(binding.pharmacyDoseTextinputlayoutTextfield)
         valuesFields.add(binding.pharmacyConcentrationTextinputlayoutTextfield)
+        showFieldHintOnLongClick(valuesFields)
         // Настройка события изменения значений в полях ввода чисел
         valuesFields.forEach { field ->
             field.doOnTextChanged { _, _, _, _ ->
@@ -103,11 +120,12 @@ class PharmacyDosesFragment:
         }
         // Настройка события завершения ввода числового значения
         valuesFields.forEachIndexed { index, field ->
-            field.setOnKeyListener(object: View.OnKeyListener {
+            field.setOnKeyListener(object : View.OnKeyListener {
                 override fun onKey(v: View?, keyCode: Int, event: KeyEvent): Boolean {
                     // Переопределение события от нажатия на кнопку "Enter"
                     if ((event.action == KeyEvent.ACTION_DOWN) &&
-                        (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                        (keyCode == KeyEvent.KEYCODE_ENTER)
+                    ) {
                         // Скрытие курсора
                         field.isCursorVisible = false
                         // Снятие ошибки
@@ -128,8 +146,8 @@ class PharmacyDosesFragment:
                         } else {
                             // Установка признака ошибки на текущем числовом поле
                             valuesFieldsLayouts[index].isErrorEnabled = true
-                            valuesFieldsLayouts[index].error = requireActivity().
-                            resources.getString(R.string.error_not_inserted_weight_animal)
+                            valuesFieldsLayouts[index].error =
+                                requireActivity().resources.getString(R.string.error_not_inserted_weight_animal)
                             // Отображение сообщения с общей информацией о том,
                             // что делать в данном окне
                             helpInfoText.visibility = View.VISIBLE
@@ -142,7 +160,8 @@ class PharmacyDosesFragment:
                         val start: Int = field.selectionStart
                         if (((stringToDouble(field.text.toString()) > 0.0) && (start > 0)) ||
                             ((field.text.toString().indexOf(".") > -1) && (start > 0)) ||
-                            (field.text.isEmpty()))
+                            (field.text.isEmpty())
+                        )
                             field.text.insert(start, "0")
                         return true
                     }
@@ -169,6 +188,36 @@ class PharmacyDosesFragment:
         listsDimensions.add(binding.pharmacyWeightDimensionList)
         listsDimensions.add(binding.pharmacyDoseDimensionList)
         listsDimensions.add(binding.pharmacyConcentrationDimensionList)
+    }
+
+
+    private fun showFieldHintOnLongClick(valuesFields: MutableList<EditText>) {
+        for (field in 0 until valuesFields.size) {
+            valuesFields[field].setOnLongClickListener {
+                when (field) {
+                    0 -> {
+                        setToastHint(getString(R.string.pharmacy_dose_animal_weight_description))
+                        true
+                    }
+                    1 -> {
+                        setToastHint(getString(R.string.pharmacy_dose_dose_description))
+                        true
+                    }
+                    2 -> {
+                        setToastHint(getString(R.string.pharmacy_dose_drug_concentration_description))
+                        true
+                    }
+                    else -> {
+                        false
+                    }
+                }
+            }
+        }
+    }
+
+    private fun setToastHint(hint: String) {
+        viewModel.setToastHint(getString(R.string.long_click_hint,
+            hint))
     }
 
     // Инициализация навигационных кнопок
@@ -243,7 +292,7 @@ class PharmacyDosesFragment:
     // Установка события при выборе элементов списков
     private fun setActionsFieldsAndLists() {
         listsAddFirstSecond.forEachIndexed { index, spinnerList ->
-            spinnerList.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
+            spinnerList.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 var selectCounter: Int = 0
                 override fun onItemSelected(
                     parent: AdapterView<*>?, view: View?,
@@ -252,11 +301,12 @@ class PharmacyDosesFragment:
                     // Сохранение текущего состояния всех числовых полей и списков
                     if (selectCounter++ > 0) saveData(false)
                 }
+
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
             }
         }
         listsDimensions.forEachIndexed { index, spinnerList ->
-            spinnerList.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
+            spinnerList.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 var selectCounter: Int = 0
                 override fun onItemSelected(
                     parent: AdapterView<*>?, view: View?,
@@ -266,32 +316,37 @@ class PharmacyDosesFragment:
                     if (selectCounter++ > 0) {
                         // Синхронное выделение mEq или U в поле Formulation с полем Dose
                         if ((index == 1) && ((position == DIMENSION_MEQ_POSITION) ||
-                                    (position == DIMENSION_U_POSITION))) {
+                                    (position == DIMENSION_U_POSITION))
+                        ) {
                             listsDimensions[2].setSelection(position)
                         }
                         // Синхронное выделение mEq или U в поле Dose с полем Formulation
                         if ((index == 2) && ((position == DIMENSION_MEQ_POSITION) ||
-                                    (position == DIMENSION_U_POSITION))) {
+                                    (position == DIMENSION_U_POSITION))
+                        ) {
                             listsDimensions[1].setSelection(position)
                         }
                         // Синхронное снятие выделения mEq или U в поле Formulation с полем Dose
                         if ((index == 1) && (position != DIMENSION_MEQ_POSITION) &&
                             (position != DIMENSION_U_POSITION) &&
                             ((listsDimensions[2].selectedItemPosition == DIMENSION_MEQ_POSITION) ||
-                            (listsDimensions[2].selectedItemPosition == DIMENSION_U_POSITION))) {
+                                    (listsDimensions[2].selectedItemPosition == DIMENSION_U_POSITION))
+                        ) {
                             listsDimensions[2].setSelection(0)
                         }
                         // Синхронное снятие выделения mEq или U в поле Dose с полем Formulation
                         if ((index == 2) && (position != DIMENSION_MEQ_POSITION) &&
                             (position != DIMENSION_U_POSITION) &&
                             ((listsDimensions[1].selectedItemPosition == DIMENSION_MEQ_POSITION) ||
-                            (listsDimensions[1].selectedItemPosition == DIMENSION_U_POSITION))) {
+                                    (listsDimensions[1].selectedItemPosition == DIMENSION_U_POSITION))
+                        ) {
                             listsDimensions[1].setSelection(0)
                         }
                         // Сохранение состояния
                         saveData(false)
                     }
                 }
+
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
             }
         }

@@ -81,6 +81,6 @@
     <string name="pharmacy_cri_dose_description">enter the drug dose.</string>
     <string name="pharmacy_cri_drug_concentration_description">enter the drug concentration.</string>
     <string name="pharmacy_cri_rate_description">enter the drug rate.</string>
-    <string name="pharmacy_cri_fluid_volume_description">enter volume of fluid.</string>
+    <string name="pharmacy_cri_fluid_amount_description">enter volume of fluid.</string>
     <string name="pharmacy_cri_giving_set_description">select if you have giving set.</string>
 </resources>
