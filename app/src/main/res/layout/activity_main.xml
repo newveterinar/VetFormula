@@ -28,7 +28,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/bottom_activity_fragments_container_height"
-        android:background="@color/red"
+        android:background="@color/white"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -105,6 +105,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/fab_text_margin_bottom"
+        android:backgroundTint="@color/transparent"
         android:clickable="true"
         android:focusable="true"
         android:visibility="invisible"
