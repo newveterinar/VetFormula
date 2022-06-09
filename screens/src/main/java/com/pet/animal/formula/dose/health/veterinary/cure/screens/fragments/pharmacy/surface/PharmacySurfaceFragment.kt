@@ -1,6 +1,7 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.surface
 
 import android.content.Context
+import android.content.res.Resources
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.View
@@ -18,6 +19,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.conver
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertListEditTextToListString
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertListSpinnerToListInt
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.stringToDouble
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.screens.showToastedHintOnLongClick
 import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
 import org.koin.java.KoinJavaComponent
@@ -79,6 +81,14 @@ class PharmacySurfaceFragment:
         initViewModel()
         // Настройка события обработки списков (должно быть в конце всех инициализаций)
         setActionsFieldsAndLists()
+        //Обзервер для подсказок
+        showToastHint()
+    }
+
+    private fun showToastHint() {
+        viewModel.toastHint.observe(viewLifecycleOwner) {
+            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+        }
     }
 
     // Инициализация текстовых полей
@@ -90,6 +100,8 @@ class PharmacySurfaceFragment:
         valuesFieldsLayouts.add(binding.pharmacyWeightTextinputlayout)
         // Сюда по порядку задаются числовые поля
         valuesFields.add(binding.pharmacyWeightTextinputlayoutTextfield)
+        //Всплывающа подсказка при долгом нажатии
+        showFiledHintOnLongClick(valuesFields)
         // Настройка события изменения значений в полях ввода чисел
         valuesFields.forEach { field ->
             field.doOnTextChanged { _, _, _, _ ->
@@ -161,6 +173,21 @@ class PharmacySurfaceFragment:
         listsAddFirstSecond.add(binding.pharmacyTypeAnimalList)
         // Сюда нужно вносить списки с размерностью для числового поля
         listsDimensions.add(binding.pharmacyWeightDimensionList)
+        showSpinnerHintOnLongClick(listsAddFirstSecond)
+    }
+
+    private fun showFiledHintOnLongClick(valuesFields: MutableList<EditText>) {
+        valuesFields[0].setOnLongClickListener {
+            viewModel.setToastHint(getString(R.string.long_click_hint, getString(R.string.pharmacy_surface_animal_weight_description)))
+            true
+        }
+    }
+
+    private fun showSpinnerHintOnLongClick(listsAddFirstSecond: MutableList<Spinner>) {
+        listsAddFirstSecond[0].setOnLongClickListener{
+            viewModel.setToastHint(getString(R.string.long_click_hint, getString(R.string.pharmacy_surface_animal_type_description)))
+            true
+        }
     }
 
     // Инициализация навигационных кнопок
