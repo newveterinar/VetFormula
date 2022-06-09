@@ -12,8 +12,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppState
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentPharmacyCriBinding
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.FragmentScope
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.*
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertListEditTextToListDouble
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertListEditTextToListString
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertListSpinnerToListInt
@@ -28,7 +27,8 @@ class PharmacyCRIFragment:
     // Установка типа формулы для текущего окна
     private val screenType: ScreenType = ScreenType.PHARMACY_CRI
     // Навигационные кнопки (для перехода на другие экраны)
-    private val navigationButtons = arrayOfNulls<View>(size = 2)
+    private val navigationButtons = arrayOfNulls<View>(
+        size = NUMBER_NAVIGATION_BUTTONS_ON_INPUT_DATA_SCREENS)
     // Обнуление значений во всех полях
     private lateinit var clearButton: ConstraintLayout
     // ViewModel
@@ -111,6 +111,7 @@ class PharmacyCRIFragment:
                 viewModel.checkAreTheFieldsFilledIn(valuesFields.map { it.text.toString() })
             }
         }
+
         // Настройка события завершения ввода числового значения
         valuesFields.forEachIndexed { index, field ->
             field.setOnKeyListener(object: View.OnKeyListener {
@@ -359,7 +360,7 @@ class PharmacyCRIFragment:
                         }
                     } else {
                         // Переход на экран с результатами расчётов
-//                        viewModel.router.navigateTo(viewModel.screens.pharmacyDosesResultScreen())
+                        viewModel.router.navigateTo(viewModel.screens.pharmacyCRIResultScreen())
                     }
                 }
             }

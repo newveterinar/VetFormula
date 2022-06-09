@@ -12,10 +12,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppState
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentPharmacyDosesBinding
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.DIMENSION_MEQ_POSITION
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.DIMENSION_U_POSITION
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.FragmentScope
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.*
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertListEditTextToListDouble
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertListEditTextToListString
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertListSpinnerToListInt
@@ -32,8 +29,9 @@ class PharmacyDosesFragment :
     private val screenType: ScreenType = ScreenType.PHARMACY_DOSES
 
     // Навигационные кнопки (для перехода на другие экраны)
-    private val navigationButtons = arrayOfNulls<View>(size = 3)
-
+    private val navigationButtons = arrayOfNulls<View>(
+        size = NUMBER_NAVIGATION_BUTTONS_ON_INPUT_DATA_SCREENS)
+    
     // Обнуление значений во всех полях
     private lateinit var clearButton: ConstraintLayout
 

@@ -1,4 +1,4 @@
-package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.doses.result
+package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.cri.result
 
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.Interactor
 import com.pet.animal.formula.dose.health.veterinary.cure.core.calculator.CalcInteractorImpl
@@ -11,8 +11,8 @@ import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.conver
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.settings.SettingsImpl
 import org.koin.java.KoinJavaComponent
 
-class PharmacyDosesResultInteractorImpl(
-    private val viewModel: PharmacyDosesResultFragmentViewModel
+class PharmacyCRIResultInteractorImpl(
+    private val viewModel: PharmacyCRIResultFragmentViewModel
 ): Interactor<AppState> {
     /** Задание переменных */ //region
     // SettingsImpl
@@ -53,7 +53,12 @@ class PharmacyDosesResultInteractorImpl(
             // Назначение различным результирующим данным своих конвертирующих коэффициентов
             val outputDataDimensionType: OutputDataDimensionType = when(index) {
                 0 -> OutputDataDimensionType.VOLUME
-                1 -> OutputDataDimensionType.MASS
+                1 -> OutputDataDimensionType.RATE
+                2 -> OutputDataDimensionType.MASS_DOSE_PER_KG_PER_TIME
+                3 -> OutputDataDimensionType.TIME
+                4 -> OutputDataDimensionType.DROP_TIME_IN_SEC
+                5 -> OutputDataDimensionType.DROP_TIME_IN_TEN_SEC
+                6 -> OutputDataDimensionType.DROP_TIME_IN_MIN
                 else -> OutputDataDimensionType.ERROR_TYPE
             }
             resultValueField.add(
@@ -63,7 +68,7 @@ class PharmacyDosesResultInteractorImpl(
                         outputDataDimensionType,
                         calcInteractorImpl.getCommandResultValue() ?: 0.0,
                         settings.getInputedScreenData().valueFields.
-                            convertMutableListValueFieldToListIntDimension()
+                        convertMutableListValueFieldToListIntDimension()
                     )
                 )
             )

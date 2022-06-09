@@ -3,6 +3,7 @@
     <!-- Сообщения об ошибках -->
     <string name="error_variable_not_initialized">Ошибка: Обращение к не инициализированной формуле</string>
     <string name="error_variable_size_not_equal_dimension_size">Ошибка: Количество численных элементов в окне не соответствует количеству их размерностей</string>
+    <string name="error_not_correct_argument">Ошибка: Не корректный аргумент в запросе к базе данных</string>
 
     <!-- Типы ресурсов для ввода данных -->
     <!--    Порядок размерностей в ресурсах для каждого числового поля не менять -->
@@ -77,4 +78,14 @@
     <string name="output_data_dimension_mass">кг</string>
     <string name="output_data_dimension_time">с</string>
     <string name="output_data_dimension_square_length">м2</string>
+    <string name="output_data_dimension_drop">капель</string>
+
+    <!-- Вспомогательные слова для вывода результирующих данных -->
+    <string name="solution">раствор</string>
+    <string name="hour">ч</string>
+    <string name="minute">м</string>
+    <string name="second">с</string>
+    <string name="seconds">секунды</string>
+    <string name="drops_every_ten_seconds">капель каждые 10 секунд</string>
+    <string name="drops_in_minute">капель/мин</string>
 </resources>

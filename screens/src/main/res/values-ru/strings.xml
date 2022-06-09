@@ -46,8 +46,8 @@
     <string name="pharmacy_drop_textinputlayout_textfield_hint">Нет капельной системы</string>
     <string name="pharmacy_drop_animal_title_text">Капельная система</string>
     <string name="pharmacy_dose_button_text_text">Доза препарата</string>
-    <string name="pharmacy_cri_button_text_text">Препараты CRI</string>
-    <string name="pharmacy_cri_previous_text_text">Препараты CRI</string>
+    <string name="pharmacy_cri_button_text_text">Расчёт ИПС</string>
+    <string name="pharmacy_cri_previous_text_text">Расчёт ИПС</string>
     <string name="pharmacy_dose_previous_text_text">Доза препарата</string>
     <string name="pharmacy_speed_animal_title_text">Скорость введения</string>
     <string name="pharmacy_rate_textinputlayout_textfield_hint">Скорость введения</string>
@@ -83,4 +83,10 @@
     <string name="pharmacy_cri_rate_description">введите скорость введения  препарата.</string>
     <string name="pharmacy_cri_giving_set_description">выберите имеется ли у вас капельная система.</string>
     <string name="pharmacy_cri_fluid_amount_description">введите объем жидкости.</string>
+    <string name="pharmacy_result_drip_rate_title_text">Скорость капельной системы</string>
+    <string name="pharmacy_result_drip_rate_time_title_text_text">Одна капля каждые</string>
+    <string name="pharmacy_result_rate_rate_title_text_text">Скорость:</string>
+    <string name="pharmacy_result_rate_mass_dose_per_kg_per_time_title_text_text">Будет получено:</string>
+    <string name="pharmacy_result_rate_time_title_text_text">Длительность:</string>
+    <string name="pharmacy_result_amount_volume_text_text">Добавить:</string>
 </resources>

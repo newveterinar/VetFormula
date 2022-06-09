@@ -14,6 +14,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppS
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentPharmacySurfaceBinding
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.FragmentScope
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.NUMBER_NAVIGATION_BUTTONS_ON_INPUT_DATA_SCREENS
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertListEditTextToListDouble
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertListEditTextToListString
@@ -29,7 +30,8 @@ class PharmacySurfaceFragment:
     // Установка типа формулы для текущего окна
     private val screenType: ScreenType = ScreenType.PHARMACY_SURFACE
     // Навигационные кнопки (для перехода на другие экраны)
-    private val navigationButtons = arrayOfNulls<View>(size = 3)
+    private val navigationButtons = arrayOfNulls<View>(
+        size = NUMBER_NAVIGATION_BUTTONS_ON_INPUT_DATA_SCREENS)
     // Обнуление значений во всех полях
     private lateinit var clearButton: ConstraintLayout
     // ViewModel
