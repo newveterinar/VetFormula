@@ -77,6 +77,14 @@ class PharmacyCRIFragment:
         initViewModel()
         // Настройка события обработки списков (должно быть в конце всех инициализаций)
         setActionsFieldsAndLists()
+        //Обзервер для подсказок
+        showToastHint()
+    }
+
+    private fun showToastHint() {
+        viewModel.toastHint.observe(viewLifecycleOwner) {
+            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+        }
     }
 
     // Инициализация текстовых полей
@@ -96,7 +104,7 @@ class PharmacyCRIFragment:
         valuesFields.add(binding.pharmacyConcentrationTextinputlayoutTextfield)
         valuesFields.add(binding.pharmacyAmountTextinputlayoutTextfield)
         valuesFields.add(binding.pharmacyRateTextinputlayoutTextfield)
-
+        showFieldHintOnLongClick(valuesFields)
         // Настройка события изменения значений в полях ввода чисел
         valuesFields.forEach { field ->
             field.doOnTextChanged { _, _, _, _ ->
@@ -173,6 +181,53 @@ class PharmacyCRIFragment:
         listsDimensions.add(binding.pharmacyConcentrationDimensionList)
         listsDimensions.add(binding.pharmacyAmountDimensionList)
         listsDimensions.add(binding.pharmacyRateDimensionList)
+        showSpinnerHintOnLongClick(listsAddFirstSecond)
+    }
+
+
+
+    private fun showFieldHintOnLongClick(valuesFields: MutableList<EditText>) {
+        for (field in 0 until valuesFields.size) {
+            valuesFields[field].setOnLongClickListener {
+                when (field) {
+                    0 -> {
+                        setToastHint(getString(R.string.pharmacy_cri_animal_weight_description))
+                        true
+                    }
+                    1 -> {
+                        setToastHint(getString(R.string.pharmacy_cri_dose_description))
+                        true
+                    }
+                    2 -> {
+                        setToastHint(getString(R.string.pharmacy_cri_drug_concentration_description))
+                        true
+                    }
+                    3 -> {
+                        setToastHint(getString(R.string.pharmacy_cri_fluid_amount_description))
+                        true
+                    }
+                    4 -> {
+                        setToastHint(getString(R.string.pharmacy_cri_rate_description))
+                        true
+                    }
+                    else -> {
+                        false
+                    }
+                }
+            }
+        }
+    }
+
+    private fun showSpinnerHintOnLongClick(listsAddFirstSecond: MutableList<Spinner>) {
+        listsAddFirstSecond[0].setOnLongClickListener{
+            setToastHint(getString(R.string.pharmacy_cri_giving_set_description))
+            true
+        }
+    }
+
+    private fun setToastHint(hint: String) {
+        viewModel.setToastHint(getString(R.string.long_click_hint,
+            hint))
     }
 
     // Инициализация навигационных кнопок
