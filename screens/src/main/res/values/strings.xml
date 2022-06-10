@@ -71,6 +71,12 @@
     <string name="pharmacy_result_volume_title_text">Amount</string>
     <string name="captionBtnStopTimer">STOP</string>
     <string name="captionBtnResetTimer">RESET</string>
+    <string name="develop">Developed by:\nAndrey Khakhalin
+    \nAndrey Skripin
+    \nOlga Egonskaya
+    \nRoman Zakharov
+    \nMaksim Fedorchenko    </string>
+    <string name="contact">Contact: newveterinar@mail.ru</string>
     <string name="long_click_hint">Hint: %s</string>
     <string name="pharmacy_surface_animal_type_description">select animal type.</string>
     <string name="pharmacy_surface_animal_weight_description">enter animal weight.</string>

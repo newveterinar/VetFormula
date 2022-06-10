@@ -37,6 +37,8 @@
         <item name="android:textSize">
             @dimen/pharmacy_concentration_textinputlayout_textfield_text_size
         </item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="light_button_style">
@@ -72,4 +74,24 @@
         <item name="android:textStyle">bold</item>
         <item name="android:gravity">center</item>
     </style>
+
+    <style name="about_button">
+        <item name="android:layout_width">@dimen/about_layout_width</item>
+        <item name="android:layout_height">@dimen/about_layout_height</item>
+        <item name="android:layout_marginTop">@dimen/about_marginTop</item>
+        <item name="android:textSize">@dimen/develop_textSize</item>
+        <item name="android:gravity">right</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="contact_button">
+        <item name="android:layout_width">@dimen/contact_layout_width</item>
+        <item name="android:layout_height">@dimen/contact_layout_height</item>
+        <item name="android:layout_marginTop">@dimen/contact_marginTop</item>
+        <item name="android:textSize">@dimen/contact_textSize</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
 </resources>
