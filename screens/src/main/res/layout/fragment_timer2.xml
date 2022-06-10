@@ -163,7 +163,7 @@
             android:id="@+id/touchPlace"
             android:layout_width="@dimen/timer_layout_width"
             android:layout_height="@dimen/timer_layout_height"
-            android:src="@drawable/ic_touch_place"
+            android:src="@drawable/ic_touch_paw"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/labelManualCount" />
