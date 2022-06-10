@@ -57,37 +57,68 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/about_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/fluids_surface_button"
-                android:layout_width="394dp"
-                android:layout_height="333dp"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.314"
-                app:layout_constraintStart_toStartOf="parent"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/about_image_container"
+                android:layout_height="@dimen/about_image_container_height"
+                android:layout_width="@dimen/about_image_container_width"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/about_v21" />
+                app:layout_constraintStart_toStartOf="@id/about_vertical_guideline_left"
+                app:layout_constraintEnd_toEndOf="@id/about_vertical_guideline_right"
+                app:layout_constraintBottom_toBottomOf="@id/about_horizontal_guideline_down" >
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/about_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/about_image_layout_height"
+                    android:layout_marginTop="@dimen/about_image_margin_top"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/about_v21" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/about_vertical_guideline_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="@dimen/about_vertical_guideline_left_percent" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/about_vertical_guideline_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="@dimen/about_vertical_guideline_right_percent" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/about_horizontal_guideline_down"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="@dimen/about_horizontal_guideline_down_percent" />
 
             <TextView
-                android:id="@+id/develop"
+                android:id="@+id/about_develop"
                 style="@style/about_button"
-                android:text="@string/develop"
+                android:text="@string/about_develop"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.369"
+                app:layout_constraintHorizontal_bias="@dimen/about_develop_horizontal_bias"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/fluids_surface_button" />
+                app:layout_constraintTop_toBottomOf="@id/about_image_container" />
 
             <TextView
-                android:id="@+id/contact"
+                android:id="@+id/about_contact"
                 style="@style/contact_button"
-                android:text="@string/contact"
+                android:text="@string/about_contact"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.271"
+                app:layout_constraintHorizontal_bias="@dimen/about_horizontal_bias"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/develop" />
+                app:layout_constraintTop_toBottomOf="@id/about_develop" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

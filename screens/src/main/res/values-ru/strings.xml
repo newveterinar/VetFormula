@@ -71,12 +71,12 @@
     <string name="pharmacy_result_volume_title_text">Объём</string>
     <string name="captionBtnStopTimer">СТОП</string>
     <string name="captionBtnResetTimer">СБРОС</string>
-    <string name="develop"> Разработано:\nХахалин Андрей Владимирович
+    <string name="about_develop"> Разработано:\nХахалин Андрей Владимирович
     \nСкрипин Андрей Михайлович
     \nЕгонская Ольга Александровна
     \nЗахаров Роман Владимирович
     \nФедорченко Максим Константинович </string>
-    <string name="contact">Связаться с нами: newveterinar@mail.ru</string>
+    <string name="about_contact">Связаться с нами: newveterinar@mail.ru</string>
     <string name="long_click_hint">Подсказка: %s</string>
     <string name="pharmacy_surface_animal_type_description">выберите тип животого.</string>
     <string name="pharmacy_surface_animal_weight_description">введите вес животного.</string>
