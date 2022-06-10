@@ -13,7 +13,6 @@ import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.Fr
 
 class TimerFragment : BaseFragment<FragmentTimer2Binding>(FragmentTimer2Binding::inflate) {
 
-    private lateinit var startTimerButton: View
     private val navigationButtons = arrayOfNulls<View>(size = 2)
 
     companion object {
@@ -127,9 +126,6 @@ class TimerFragment : BaseFragment<FragmentTimer2Binding>(FragmentTimer2Binding:
             viewModel.addTick()
         }
 
-        binding.buttonResetTickCounter.setOnClickListener {
-            viewModel.resetTickCounter()
-        }
 
         binding.inputManualCount.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
