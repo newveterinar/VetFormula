@@ -9,6 +9,7 @@ import android.widget.Toast
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentTimer2Binding
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.FabAndSliderControl
 
 
 class TimerFragment : BaseFragment<FragmentTimer2Binding>(FragmentTimer2Binding::inflate) {
@@ -77,10 +78,9 @@ class TimerFragment : BaseFragment<FragmentTimer2Binding>(FragmentTimer2Binding:
         initButton()
         initObservable()
         viewModel.resetTimer()
-
-
-
-
+        val ma = (activity as FabAndSliderControl)
+        ma.hideFab()
+        ma.hideSlider()
     }
 
     private fun initNavigationButtons() {
@@ -94,7 +94,10 @@ class TimerFragment : BaseFragment<FragmentTimer2Binding>(FragmentTimer2Binding:
         navigationButtons.forEachIndexed { index, button ->
             button?.setOnClickListener {
                 when (index) {
-                    0 -> viewModel.router.exit()
+                    0 -> {
+                       // (getActivity() as MainFab).showFab()
+                        viewModel.router.exit()
+                    }
                     1 -> viewModel.router.navigateTo(viewModel.screens.aboutScreen())
                     else -> {
                         Toast.makeText(requireContext(), requireActivity().resources.getString(
@@ -153,5 +156,12 @@ class TimerFragment : BaseFragment<FragmentTimer2Binding>(FragmentTimer2Binding:
         binding.buttonPlusMinute.setOnClickListener{
             viewModel.plusOneMinutes()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        val ma = (activity as FabAndSliderControl)
+        ma.showFab()
+        ma.showSlider()
     }
 }
