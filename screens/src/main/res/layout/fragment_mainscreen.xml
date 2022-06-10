@@ -72,6 +72,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/pharmacy_surface_button_container_margin_start"
                 android:layout_marginTop="@dimen/pharmacy_surface_button_container_margin_top"
+                android:layout_marginBottom="63dp"
+                app:layout_constraintBottom_toTopOf="@+id/hematology_surface_button_container"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/pharmacy_header">
 
@@ -135,8 +137,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/hematology_surface_button_marginTop"
-                app:layout_constraintEnd_toEndOf="@+id/pharmacy_surface_button_container"
-                app:layout_constraintStart_toStartOf="@+id/pharmacy_surface_button_container"
+                app:layout_constraintEnd_toStartOf="@+id/conversions_surface_button_container"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/pharmacy_surface_button_container">
 
                 <TextView

@@ -46,8 +46,8 @@
     <string name="pharmacy_drop_textinputlayout_textfield_hint">No Giving Set</string>
     <string name="pharmacy_drop_animal_title_text">Giving Set</string>
     <string name="pharmacy_dose_button_text_text">Pharmacy Doses</string>
-    <string name="pharmacy_cri_button_text_text">Pharmacy CRI</string>
-    <string name="pharmacy_cri_previous_text_text">PharmacyCRI</string>
+    <string name="pharmacy_cri_button_text_text">Pharneg CRI</string>
+    <string name="pharmacy_cri_previous_text_text">Pharneg CRI</string>
     <string name="pharmacy_dose_previous_text_text">PharmacyDose</string>
     <string name="pharmacy_speed_animal_title_text">Rate</string>
     <string name="pharmacy_rate_textinputlayout_textfield_hint">Rate</string>
@@ -57,7 +57,7 @@
     <string name="timer_button_text_text">Timer</string>
     <string name="doses_result_text_text">100</string>
     <string name="timerText_text">00:00</string>
-    <string name="startTimerButton_text">Run stop-watch</string>
+    <string name="startTimerButton_text">Run</string>
     <string name="inputManualCount_text">0</string>
     <string name="textView3_text">Enter the number of measurements</string>
     <string name="tickInMinutes_text">0.00</string>
@@ -77,4 +77,22 @@
     \nRoman Zakharov
     \nMaksim Fedorchenko    </string>
     <string name="contact">Contact: newveterinar@mail.ru</string>
+    <string name="long_click_hint">Hint: %s</string>
+    <string name="pharmacy_surface_animal_type_description">select animal type.</string>
+    <string name="pharmacy_surface_animal_weight_description">enter animal weight.</string>
+    <string name="pharmacy_dose_animal_weight_description">enter the animal weight.</string>
+    <string name="pharmacy_dose_dose_description">enter the drug dose.</string>
+    <string name="pharmacy_dose_drug_concentration_description">enter the drug concentration.</string>
+    <string name="pharmacy_cri_animal_weight_description">enter the animal weight.</string>
+    <string name="pharmacy_cri_dose_description">enter the drug dose.</string>
+    <string name="pharmacy_cri_drug_concentration_description">enter the drug concentration.</string>
+    <string name="pharmacy_cri_rate_description">enter the drug rate.</string>
+    <string name="pharmacy_cri_fluid_amount_description">enter volume of fluid.</string>
+    <string name="pharmacy_cri_giving_set_description">select if you have giving set.</string>
+    <string name="pharmacy_result_drip_rate_title_text">Drip rate</string>
+    <string name="pharmacy_result_drip_rate_time_title_text_text">One drop every</string>
+    <string name="pharmacy_result_rate_rate_title_text_text">Rate of:</string>
+    <string name="pharmacy_result_rate_mass_dose_per_kg_per_time_title_text_text">Gives:</string>
+    <string name="pharmacy_result_rate_time_title_text_text">For:</string>
+    <string name="pharmacy_result_amount_volume_text_text">Add:</string>
 </resources>

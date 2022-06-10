@@ -146,6 +146,7 @@
 
                         <EditText
                             android:id="@+id/pharmacy_weight_textinputlayout_textfield"
+                            android:tag="WEIGHT_ANIMAL"
                             style="@style/number_button"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -166,13 +167,13 @@
 
                     <androidx.appcompat.widget.AppCompatSpinner
                         android:id="@+id/pharmacy_weight_dimension_list"
-                        android:entries="@array/input_data_dimension_weight_animal_list"
-                        android:tag="WEIGHT_ANIMAL"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_centerInParent="true"
+                        android:entries="@array/input_data_dimension_weight_animal_list"
                         android:gravity="center"
                         android:singleLine="false"
+                        android:tag="WEIGHT_ANIMAL"
                         android:textAlignment="center"
                         android:theme="@style/SpinnerDimensions"
                         android:visibility="visible"
@@ -221,6 +222,7 @@
                         <EditText
                             android:id="@+id/pharmacy_dose_textinputlayout_textfield"
                             style="@style/number_button"
+                            android:tag="MASS_DOSE_PER_KG_PER_TIME"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:hint="@string/pharmacy_dose_textinputlayout_textfield_hint"
@@ -240,13 +242,13 @@
 
                     <androidx.appcompat.widget.AppCompatSpinner
                         android:id="@+id/pharmacy_dose_dimension_list"
-                        android:entries="@array/input_data_dimension_mass_dose_per_kg_per_time_list"
-                        android:tag="MASS_DOSE_PER_KG_PER_TIME"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_centerInParent="true"
+                        android:entries="@array/input_data_dimension_mass_dose_per_kg_per_time_list"
                         android:gravity="center"
                         android:singleLine="false"
+                        android:tag="MASS_DOSE_PER_KG_PER_TIME"
                         android:textAlignment="center"
                         android:theme="@style/SpinnerDimensions"
                         android:visibility="visible"
@@ -297,6 +299,7 @@
                         <EditText
                             android:id="@+id/pharmacy_concentration_textinputlayout_textfield"
                             style="@style/number_button"
+                            android:tag="CONCENTRATION"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:hint="@string/pharmacy_concentration_textinputlayout_textfield_hint"
@@ -373,6 +376,7 @@
                         <EditText
                             android:id="@+id/pharmacy_amount_textinputlayout_textfield"
                             style="@style/number_button"
+                            android:tag="VOLUME"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:hint="@string/pharmacy_amount_textinputlayout_textfield_hint"
@@ -392,13 +396,13 @@
 
                     <androidx.appcompat.widget.AppCompatSpinner
                         android:id="@+id/pharmacy_amount_dimension_list"
-                        android:entries="@array/input_data_dimension_volume_list"
-                        android:tag="VOLUME"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_centerInParent="true"
+                        android:entries="@array/input_data_dimension_volume_list"
                         android:gravity="center"
                         android:singleLine="false"
+                        android:tag="VOLUME"
                         android:textAlignment="center"
                         android:theme="@style/SpinnerDimensions"
                         android:visibility="visible"
@@ -449,6 +453,7 @@
                         <EditText
                             android:id="@+id/pharmacy_rate_textinputlayout_textfield"
                             style="@style/number_button"
+                            android:tag="VOLUME_DOSE_PER_KG_PER_TIME"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:hint="@string/pharmacy_rate_textinputlayout_textfield_hint"

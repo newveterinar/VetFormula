@@ -36,6 +36,7 @@ class PharmacyCRIInteractorImpl(
                 isExistZeroData = true
             }
         }
+
         if (!isExistZeroData) loadAndSaveFormula(screenType, listsAddFirstSecond)
         // Сохранение значений всех списков и числовых полей
         settings.setScreenData(screenType, listsAddFirstSecond, stringValues, values, dimensions)
