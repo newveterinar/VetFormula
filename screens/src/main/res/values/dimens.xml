@@ -42,7 +42,7 @@
     <dimen name="fluids_horizontal_border_height">2dp</dimen>
     <dimen name="fluids_surface_button_container_margin_start">50dp</dimen>
     <dimen name="fluids_surface_button_container_margin_top">50dp</dimen>
-    <dimen name="fluids_previous_text_text_size">30sp</dimen>
+    <dimen name="fluids_previous_text_text_size">29sp</dimen>
     <dimen name="fluids_previous_button_margin_start">15dp</dimen>
     <dimen name="fluids_previous_button_margin_top">5dp</dimen>
     <dimen name="fluids_previous_button_width">50dp</dimen>
@@ -257,4 +257,12 @@
     <dimen name="pharmacy_result_mass_title_margin_top">20dp</dimen>
     <dimen name="pharmacy_result_mass_title_text_margin_start">40dp</dimen>
     <dimen name="pharmacy_result_mass_title_text_margin_end">40dp</dimen>
+    <dimen name="about_layout_width">374dp</dimen>
+    <dimen name="about_layout_height">152dp</dimen>
+    <dimen name="about_marginTop">8dp</dimen>
+    <dimen name="contact_layout_width">364dp</dimen>
+    <dimen name="contact_layout_height">54dp</dimen>
+    <dimen name="contact_marginTop">4dp</dimen>
+    <dimen name="develop_textSize">19dp</dimen>
+    <dimen name="contact_textSize">19dp</dimen>
 </resources>

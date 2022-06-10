@@ -71,4 +71,10 @@
     <string name="pharmacy_result_volume_title_text">Amount</string>
     <string name="captionBtnStopTimer">STOP</string>
     <string name="captionBtnResetTimer">RESET</string>
+    <string name="develop">Developed by:\nAndrey Khakhalin
+    \nAndrey Skripin
+    \nOlga Egonskaya
+    \nRoman Zakharov
+    \nMaksim Fedorchenko    </string>
+    <string name="contact">Contact: newveterinar@mail.ru</string>
 </resources>
