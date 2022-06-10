@@ -137,7 +137,7 @@ class TimerViewModel() : BaseViewModelForNavigation(), CoroutineScope {
 
     fun setManualTickValue(stringValue: String) {
         try {
-            mTickInMinutes.postValue(START_VALUE)
+            mManualRate.postValue(START_VALUE)
             val tickInt = stringValue.toInt()
             mSeconds.value?.let {
                 val timerMinutes = it.toDouble() / NUMBER_SECONDS_IN_MINUTE
@@ -147,7 +147,7 @@ class TimerViewModel() : BaseViewModelForNavigation(), CoroutineScope {
             }
 
         } catch (e: NumberFormatException) {
-            mTickInMinutes.postValue(START_VALUE)
+            mManualRate.postValue(START_VALUE)
         }
     }
 
