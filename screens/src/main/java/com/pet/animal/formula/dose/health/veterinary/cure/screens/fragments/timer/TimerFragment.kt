@@ -42,27 +42,27 @@ class TimerFragment : BaseFragment<FragmentTimer2Binding>(FragmentTimer2Binding:
 
         viewModel.mute.observe(viewLifecycleOwner){
             if (it){
-                binding.buttonMuteUnMute.text = "Unmute"
+                binding.buttonMuteUnMute.text = getString(R.string.buttonMuteUnMute_unmute_text)
             } else {
-                binding.buttonMuteUnMute.text = "Mute"
+                binding.buttonMuteUnMute.text = getString(R.string.buttonMuteUnMute_mute_text)
             }
         }
 
         viewModel.tickInMinutes.observe(viewLifecycleOwner) {
-            val s: String = getString(R.string.tickCaption)
-            val tickString = "$s.${it.format(2)}"
+            val s: String = getString(R.string.tickCaptionBDD)
+            val tickString = "$s.${it.format(1)}"
             binding.tickInMinutes.text = tickString
         }
 
-        viewModel.timerHeartRate.observe(viewLifecycleOwner){
-            val s:String = getString(R.string.tickCaption)
-            val tickString = "$s.${it.format(2)}"
+        viewModel.timerBDD.observe(viewLifecycleOwner){
+            val s:String = getString(R.string.tickCaptionBDD)
+            val tickString = "$s.${it.format(1)}"
             binding.tickInMinutesTimer.text = tickString
         }
 
         viewModel.tickManual.observe(viewLifecycleOwner){
-            val s:String = getString(R.string.tickCaption)
-            val tickString = "$s.${it.format(2)}"
+            val s:String = getString(R.string.tickCaptionHeartRate)
+            val tickString = "$s.${it.format(1)}"
             binding.textViewHR.text = tickString
         }
     }
@@ -109,7 +109,10 @@ class TimerFragment : BaseFragment<FragmentTimer2Binding>(FragmentTimer2Binding:
     private fun initButton() {
         binding.buttonStartTimer.also { button ->
             button.setOnClickListener {
-                    viewModel.startTimer()
+                // Обнуление таймера (каждый новый старт - это новые измерения, старые нужно удалить)
+                viewModel.resetTimer()
+                // Запуск таймера
+                viewModel.startTimer()
             }
         }
 
