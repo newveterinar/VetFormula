@@ -51,7 +51,10 @@ class TimerViewModel() : BaseViewModelForNavigation(), CoroutineScope {
         mSeconds.postValue(0)
         stopTimer()
         timerTo = 60
-        tapCount = 0
+
+        mManualRate.postValue(0.00)
+        mTimerHeartRate.postValue(0.00)
+        resetTickCounter()
     }
 
     fun addTick() {
@@ -106,15 +109,16 @@ class TimerViewModel() : BaseViewModelForNavigation(), CoroutineScope {
                 delay(1000)
                 val time = mSeconds.value ?: 0
                 val newtime = time+1
+
                 mSeconds.postValue(newtime)
-                if ((time + 1) % 15 == 0) {
-                    if (mMute.value != true) {
-                        toneGenerator.startTone(ToneGenerator.TONE_CDMA_ALERT_CALL_GUARD, 200)
-                    }
-                }
 
                 if (tapCount!=0 && newtime>0){
                     mTimerHeartRate.postValue(60.0*(tapCount.toDouble()/newtime.toDouble()))
+                }
+
+                if (newtime==timerTo){
+                    stopTimer()
+                    toneGenerator.startTone(ToneGenerator.TONE_CDMA_ALERT_CALL_GUARD, 200)
                 }
 
             }
