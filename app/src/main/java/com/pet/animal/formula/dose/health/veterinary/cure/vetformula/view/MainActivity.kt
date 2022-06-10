@@ -6,8 +6,8 @@ import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.view.View
 import android.view.animation.AnimationUtils
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.Guideline
@@ -26,7 +26,7 @@ import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
 import org.koin.java.KoinJavaComponent
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(),FabAndSliderControl {
     /** Задание переменных */ //region
     // Навигация
     private val navigator =
@@ -224,4 +224,24 @@ class MainActivity : AppCompatActivity() {
             setTheme(R.style.Splash_DarkTheme)
         }
     }
+
+    override fun hideFab() {
+        binding.fabMain.visibility = View.INVISIBLE
+    }
+
+    override fun showFab() {
+        binding.fabMain.visibility = View.VISIBLE
+    }
+
+    override fun hideSlider() {
+        changeUpAndBottomFramesSizes(0f)
+        binding.sliderLinearLayout.visibility = View.INVISIBLE
+        binding.windowsSlider.visibility = View.INVISIBLE
+    }
+
+    override fun showSlider() {
+        binding.sliderLinearLayout.visibility = View.VISIBLE
+        binding.windowsSlider.visibility = View.VISIBLE
+    }
+
 }

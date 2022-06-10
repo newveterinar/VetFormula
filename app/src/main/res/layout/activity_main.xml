@@ -26,6 +26,7 @@
 
     <!-- Нижнее окно (нижний фрагмент, заменить TextView на FrameLayout) -->
     <LinearLayout
+        android:id="@+id/sliderLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/bottom_activity_fragments_container_height"
         android:background="@color/white"
