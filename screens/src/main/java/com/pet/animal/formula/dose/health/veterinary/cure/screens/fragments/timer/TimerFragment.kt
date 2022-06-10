@@ -9,7 +9,7 @@ import android.widget.Toast
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentTimer2Binding
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.FabAndSliderControl
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.screens.FabAndSliderControl
 
 
 class TimerFragment : BaseFragment<FragmentTimer2Binding>(FragmentTimer2Binding::inflate) {

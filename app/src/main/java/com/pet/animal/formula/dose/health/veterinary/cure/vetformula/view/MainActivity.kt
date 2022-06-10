@@ -19,6 +19,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.webv
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator.BackButtonListener
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.*
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.language.LocaleHelper
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.screens.FabAndSliderControl
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.screens.UpAndBottomFramesSizesChanger
 import com.pet.animal.formula.dose.health.veterinary.cure.vetformula.R
 import com.pet.animal.formula.dose.health.veterinary.cure.vetformula.databinding.ActivityMainBinding
@@ -26,7 +27,7 @@ import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
 import org.koin.java.KoinJavaComponent
 
-class MainActivity : AppCompatActivity(),FabAndSliderControl {
+class MainActivity: AppCompatActivity(), FabAndSliderControl {
     /** Задание переменных */ //region
     // Навигация
     private val navigator =
@@ -55,6 +56,7 @@ class MainActivity : AppCompatActivity(),FabAndSliderControl {
 
     // FAB
     private var clicked = false
+    //endregion
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -225,23 +227,21 @@ class MainActivity : AppCompatActivity(),FabAndSliderControl {
         }
     }
 
+    //region Методы скрытия и отображения слайдера и FAB
     override fun hideFab() {
         binding.fabMain.visibility = View.INVISIBLE
     }
-
     override fun showFab() {
         binding.fabMain.visibility = View.VISIBLE
     }
-
     override fun hideSlider() {
         changeUpAndBottomFramesSizes(0f)
         binding.sliderLinearLayout.visibility = View.INVISIBLE
         binding.windowsSlider.visibility = View.INVISIBLE
     }
-
     override fun showSlider() {
         binding.sliderLinearLayout.visibility = View.VISIBLE
         binding.windowsSlider.visibility = View.VISIBLE
     }
-
+    //endregion
 }

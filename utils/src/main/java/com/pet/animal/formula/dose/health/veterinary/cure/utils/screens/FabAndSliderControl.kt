@@ -1,4 +1,4 @@
-package com.pet.animal.formula.dose.health.veterinary.cure.utils
+package com.pet.animal.formula.dose.health.veterinary.cure.utils.screens
 
 interface FabAndSliderControl {
     fun hideFab()
