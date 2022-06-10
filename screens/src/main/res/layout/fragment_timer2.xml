@@ -219,7 +219,7 @@
             android:layout_height="@dimen/zero_dimension"
             android:layout_marginStart="@dimen/touchPlace_margin_start"
             android:layout_marginEnd="@dimen/touchPlace_margin_end"
-            android:src="@drawable/ic_touch_place"
+            android:src="@drawable/ic_touch_paw"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"

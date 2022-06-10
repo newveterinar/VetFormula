@@ -260,6 +260,11 @@
     <dimen name="about_layout_width">374dp</dimen>
     <dimen name="about_layout_height">152dp</dimen>
     <dimen name="about_marginTop">8dp</dimen>
+    <dimen name="about_horizontal_bias">0.271</dimen>
+    <dimen name="about_develop_horizontal_bias">0.369</dimen>
+    <dimen name="about_horizontal_guideline_down_percent">0.6</dimen>
+    <dimen name="about_vertical_guideline_right_percent">0.95</dimen>
+    <dimen name="about_vertical_guideline_left_percent">0.05</dimen>
     <dimen name="contact_layout_width">364dp</dimen>
     <dimen name="contact_layout_height">54dp</dimen>
     <dimen name="contact_marginTop">4dp</dimen>
@@ -279,6 +284,10 @@
     <dimen name="pharmacy_result_drip_rate_drop_title_text_margin_end">40dp</dimen>
     <dimen name="pharmacy_result_drip_rate_drop_rate_title_text_margin_start">40dp</dimen>
     <dimen name="pharmacy_result_drip_rate_drop_rate_title_text_margin_end">40dp</dimen>
+    <dimen name="about_image_margin_top">16dp</dimen>
+    <dimen name="about_image_layout_height">0dp</dimen>
+    <dimen name="about_image_container_height">0dp</dimen>
+    <dimen name="about_image_container_width">0dp</dimen>
     <dimen name="timer_about_button_margin_top">8dp</dimen>
     <dimen name="timer_about_button_margin_end">8dp</dimen>
     <dimen name="timer_previous_button_margin_start">8dp</dimen>
