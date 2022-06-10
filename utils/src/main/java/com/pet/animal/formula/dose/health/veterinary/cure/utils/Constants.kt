@@ -58,6 +58,12 @@ const val PHARMACY_CRI_NO_GIVING_SET_INDEX = 0
 const val PHARMACY_CRI_20_DROPS_PER_ML_INDEX = 1
 const val PHARMACY_CRI_60_DROPS_PER_ML_INDEX = 2
 
+// Константы для таймера
+const val DELAY_TIME: Long = 1000
+const val START_VALUE: Double = 0.00
+const val SHORT_CONSTANT = 100
+const val LONG_CONSTANT = 200
+
 // Индексы в массиве addFirstSecond
 const val ADDFIRST_INDEX = 0
 const val ADDSECOND_INDEX = 1

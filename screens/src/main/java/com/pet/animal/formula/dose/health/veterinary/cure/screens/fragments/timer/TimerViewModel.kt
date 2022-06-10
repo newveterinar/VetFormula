@@ -5,6 +5,7 @@ import android.media.ToneGenerator
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseViewModelForNavigation
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.*
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
@@ -13,13 +14,13 @@ class TimerViewModel() : BaseViewModelForNavigation(), CoroutineScope {
     private var ticks: MutableList<Long> = mutableListOf()
 
     private var mTickInMinutes: MutableLiveData<Double> = MutableLiveData()
-    private var mTimerHeartRate:MutableLiveData<Double> = MutableLiveData()
+    private var mTimerBDD:MutableLiveData<Double> = MutableLiveData()
     private var mManualRate: MutableLiveData<Double> = MutableLiveData()
 
     private val mOnTimer = MutableLiveData<Boolean>()
     private val mSeconds = MutableLiveData<Int>()
 
-    private val toneGenerator = ToneGenerator(AudioManager.STREAM_ALARM, 100)
+    private val toneGenerator = ToneGenerator(AudioManager.STREAM_ALARM, SHORT_CONSTANT)
     private val mMute = MutableLiveData(false)
 
     private var tapCount: Int = 0
@@ -30,7 +31,7 @@ class TimerViewModel() : BaseViewModelForNavigation(), CoroutineScope {
 
 
 
-    var timerHeartRate:LiveData<Double> = mTimerHeartRate
+    var timerBDD:LiveData<Double> = mTimerBDD
     var tickInMinutes: LiveData<Double> = mTickInMinutes
     var tickManual : LiveData<Double> = mManualRate
 
@@ -38,7 +39,7 @@ class TimerViewModel() : BaseViewModelForNavigation(), CoroutineScope {
     var second: LiveData<Int> = mSeconds
     val mute: LiveData<Boolean> = mMute
 
-    var timerTo = 60
+    var timerTo = NUMBER_SECONDS_IN_MINUTE.toInt()
 
     fun startTimer() {
         if (mOnTimer.value == true) return
@@ -50,8 +51,11 @@ class TimerViewModel() : BaseViewModelForNavigation(), CoroutineScope {
         ticks.clear()
         mSeconds.postValue(0)
         stopTimer()
-        timerTo = 60
-        tapCount = 0
+        timerTo = NUMBER_SECONDS_IN_MINUTE.toInt()
+
+        mManualRate.postValue(START_VALUE)
+        mTimerBDD.postValue(START_VALUE)
+        resetTickCounter()
     }
 
     fun addTick() {
@@ -65,14 +69,15 @@ class TimerViewModel() : BaseViewModelForNavigation(), CoroutineScope {
     private fun updateTicks() {
         if (ticks.size > 1) {
             val totalTimeOverTicks = ticks[ticks.size - 1] - ticks[0]
-            val totalTimeMinutes: Double = totalTimeOverTicks.toDouble() / 1000 / 60
+            val totalTimeMinutes: Double =
+                totalTimeOverTicks.toDouble() / DELAY_TIME.toDouble() / NUMBER_SECONDS_IN_MINUTE
             mTickInMinutes.postValue(ticks.size.toDouble() / totalTimeMinutes)
         }
     }
 
     fun resetTickCounter() {
         ticks.clear()
-        mTickInMinutes.postValue(0.00)
+        mTickInMinutes.postValue(START_VALUE)
         tapCount = 0
     }
 
@@ -83,13 +88,13 @@ class TimerViewModel() : BaseViewModelForNavigation(), CoroutineScope {
         updateTicks()
 
         mSeconds.value?.let {
-            mTimerHeartRate.postValue(60.0 * (tapCount.toDouble()/it.toDouble()))
+            mTimerBDD.postValue(NUMBER_SECONDS_IN_MINUTE * (tapCount.toDouble()/it.toDouble()))
         }
 
     }
 
     fun plusOneMinutes() {
-        timerTo += 60
+        timerTo += NUMBER_SECONDS_IN_MINUTE.toInt()
         val sec = mSeconds.value?:0
         mSeconds.postValue(sec)
 
@@ -103,18 +108,22 @@ class TimerViewModel() : BaseViewModelForNavigation(), CoroutineScope {
         job = launch {
             val timer = mOnTimer.value ?: false
             while (timer) {
-                delay(1000)
+                delay(DELAY_TIME)
                 val time = mSeconds.value ?: 0
                 val newtime = time+1
+
                 mSeconds.postValue(newtime)
-                if ((time + 1) % 15 == 0) {
-                    if (mMute.value != true) {
-                        toneGenerator.startTone(ToneGenerator.TONE_CDMA_ALERT_CALL_GUARD, 200)
-                    }
-                }
 
                 if (tapCount!=0 && newtime>0){
-                    mTimerHeartRate.postValue(60.0*(tapCount.toDouble()/newtime.toDouble()))
+                    mTimerBDD.postValue(
+                        NUMBER_SECONDS_IN_MINUTE*(tapCount.toDouble()/newtime.toDouble()))
+                }
+
+                if (newtime==timerTo){
+                    stopTimer()
+                    if (mute.value != true)
+                        toneGenerator.startTone(
+                            ToneGenerator.TONE_CDMA_ALERT_CALL_GUARD, LONG_CONSTANT)
                 }
 
             }
@@ -128,17 +137,17 @@ class TimerViewModel() : BaseViewModelForNavigation(), CoroutineScope {
 
     fun setManualTickValue(stringValue: String) {
         try {
-            mTickInMinutes.postValue(0.00)
+            mTickInMinutes.postValue(START_VALUE)
             val tickInt = stringValue.toInt()
             mSeconds.value?.let {
-                val timerMinutes = it.toDouble() / 60
+                val timerMinutes = it.toDouble() / NUMBER_SECONDS_IN_MINUTE
                 if (it != 0) {
                     mManualRate.postValue(tickInt.toDouble() / timerMinutes)
                 }
             }
 
         } catch (e: NumberFormatException) {
-            mTickInMinutes.postValue(0.00)
+            mTickInMinutes.postValue(START_VALUE)
         }
     }
 

@@ -51,7 +51,8 @@
     <string name="pharmacy_dose_previous_text_text">PharmacyDose</string>
     <string name="pharmacy_speed_animal_title_text">Rate</string>
     <string name="pharmacy_rate_textinputlayout_textfield_hint">Rate</string>
-    <string name="tickCaption">HR</string>
+    <string name="tickCaptionHeartRate">HR</string>
+    <string name="tickCaptionBDD">BDD</string>
     <string name="captionStopTimer">Stop timer</string>
     <string name="captionStartTimer">Start timer</string>
     <string name="timer_button_text_text">Timer</string>
@@ -95,4 +96,10 @@
     <string name="pharmacy_result_rate_mass_dose_per_kg_per_time_title_text_text">Gives:</string>
     <string name="pharmacy_result_rate_time_title_text_text">For:</string>
     <string name="pharmacy_result_amount_volume_text_text">Add:</string>
+    <string name="buttonPlusMinute_text">+1</string>
+    <string name="buttonMuteUnMute_mute_text">MUTE</string>
+    <string name="buttonMuteUnMute_unmute_text">UNMUTE</string>
+    <string name="textView_text">Calculation for all clicks</string>
+    <string name="textView2_text">Calculation taking into account the timer</string>
+    <string name="textViewHR_text">(HR)</string>
 </resources>
