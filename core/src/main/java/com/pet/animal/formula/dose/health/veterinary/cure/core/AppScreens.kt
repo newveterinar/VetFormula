@@ -17,6 +17,7 @@ interface AppScreens {
     fun conversionsScreen(): FragmentScreen
     fun settingsScreen(): FragmentScreen
     fun calculatorScreen(): FragmentScreen
+    fun calculatorKeyboardScreen(): FragmentScreen
     fun timerScreen(): FragmentScreen
     fun webViewScreen(): FragmentScreen
     fun editTextScreen(): FragmentScreen

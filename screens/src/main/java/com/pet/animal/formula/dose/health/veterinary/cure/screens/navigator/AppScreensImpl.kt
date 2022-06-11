@@ -6,6 +6,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.core.AppScreens
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.edittext.EditTextFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.about.AboutFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.calculator.CalculatorFragment
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.calculator.keyboard.CalculatorKeyboardFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.conversions.ConversionsFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.fluids.FluidsFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.hematology.HematologyFragment
@@ -87,6 +88,10 @@ class AppScreensImpl: AppScreens {
     override fun calculatorScreen() = FragmentScreen {
         CalculatorFragment.newInstance()
     }
+    override fun calculatorKeyboardScreen() = FragmentScreen {
+        CalculatorKeyboardFragment.newInstance()
+    }
+    //endregion
 
     //region Timer
     override fun timerScreen() = FragmentScreen {

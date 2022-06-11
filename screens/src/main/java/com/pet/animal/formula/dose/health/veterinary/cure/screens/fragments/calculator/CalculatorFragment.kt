@@ -23,6 +23,10 @@ class CalculatorFragment:
     private lateinit var viewModel: CalculatorFragmentViewModel
     // ShowCalculatorFragmentScope
     private lateinit var showCalculatorFragmentScope: Scope
+    // newInstance для данного класса
+    companion object {
+        fun newInstance(): CalculatorFragment = CalculatorFragment()
+    }
     //endregion
 
     /** Работа со Scope */ //region
@@ -62,9 +66,7 @@ class CalculatorFragment:
             button?.setOnClickListener {
                 when (index) {
                     0 -> viewModel.router.exit()
-                    1 -> Toast.makeText(requireContext(),
-                        requireActivity().resources.getString(
-                            R.string.error_button_is_not_assigned), Toast.LENGTH_SHORT).show()
+                    1 -> viewModel.router.navigateTo(viewModel.screens.calculatorKeyboardScreen())
                     else -> {
                         Toast.makeText(requireContext(),
                             requireActivity().resources.getString(
@@ -79,9 +81,5 @@ class CalculatorFragment:
     private fun initViewModel() {
         val _viewModel: CalculatorFragmentViewModel by showCalculatorFragmentScope.inject()
         viewModel = _viewModel
-    }
-
-    companion object {
-        fun newInstance(): CalculatorFragment = CalculatorFragment()
     }
 }
