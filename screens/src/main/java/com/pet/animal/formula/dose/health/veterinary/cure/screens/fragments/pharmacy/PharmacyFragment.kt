@@ -15,7 +15,7 @@ import org.koin.java.KoinJavaComponent
 class PharmacyFragment: BaseFragment<FragmentPharmacyBinding>(FragmentPharmacyBinding::inflate) {
     /** Задание переменных */ //region
     // Навигация
-    private val navigationButtons = arrayOfNulls<View>(5)
+    private val navigationButtons = arrayOfNulls<View>(4)
     // ViewModel
     private lateinit var viewModel: PharmacyFragmentViewModel
     // ShowPharmacyFragmentScope
