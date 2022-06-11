@@ -5,6 +5,40 @@
     <string name="error_button_is_not_assigned">Ошибка: Кнопка не назначена</string>
     <string name="error_not_inserted_weight_animal">Пожалуйста, введите число > 0</string>
 
+    <!-- Строчные ресурсы для окна с калькулятором -->
+    <string name="_0">0</string>
+    <string name="_1">1</string>
+    <string name="_2">2</string>
+    <string name="_3">3</string>
+    <string name="_4">4</string>
+    <string name="_5">5</string>
+    <string name="_6">6</string>
+    <string name="_7">7</string>
+    <string name="_8">8</string>
+    <string name="_9">9</string>
+    <string name="_divide">/</string>
+    <string name="_minus">-</string>
+    <string name="_zapitay">,</string>
+    <string name="_equal">=</string>
+    <string name="_multiply">*</string>
+    <string name="_plus">+</string>
+    <string name="_bracket_open">(</string>
+    <string name="_bracket_close">)</string>
+    <string name="_percent">%</string>
+    <string name="_plus_minus">+/-</string>
+    <string name="_stepen">x^n</string>
+    <string name="_sqrt">Kx</string>
+    <string name="_backspaceTwo"><![CDATA[<--]]></string>
+    <string name="_backspace">C</string>
+    <string name="InputHistory_text"></string>
+    <string name="RESULT_text">0</string>
+    <string name="_backspaceOne"><![CDATA[<-]]></string>
+    <string name="default_radius_text">177</string>
+    <string name="error_different_number_brackets">Ошибка: Различное количество открытых и закрытых скобок</string>
+    <string name="error_undersquare_low_zero">Ошибка: Подкоренное выражение меньше нуля</string>
+    <string name="error_divide_on_zero">Ошибка: Деление на ноль</string>
+    <string name="error_inside_brackets_empty">Ошибка: Внутри скобок ничего нет</string>
+
     <!-- Ресурсы макета -->
     <string name="about_surface_button_text_text">О Приложении</string>
     <string name="about_text_text">ИНФОРМАЦИЯ</string>

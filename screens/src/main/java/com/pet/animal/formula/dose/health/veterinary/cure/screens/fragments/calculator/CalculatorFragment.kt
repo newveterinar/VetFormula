@@ -7,13 +7,14 @@ import androidx.lifecycle.ViewModelProvider
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentCalculatorBinding
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.NUMBER_NAVIGATION_BUTTONS_ON_INPUT_DATA_SCREENS
 
-class CalculatorFragment :
+class CalculatorFragment:
     BaseFragment<FragmentCalculatorBinding>(FragmentCalculatorBinding::inflate) {
     /** Задание переменных */ //region
     // Навигация
-    private val navigationButtons = arrayOfNulls<View>(size = 3)
-
+    private val navigationButtons =
+        arrayOfNulls<View>(size = NUMBER_NAVIGATION_BUTTONS_ON_INPUT_DATA_SCREENS)
     // ViewModel
     private lateinit var viewModel: CalculatorFragmentViewModel
     //endregion
@@ -39,10 +40,12 @@ class CalculatorFragment :
             button?.setOnClickListener {
                 when (index) {
                     0 -> viewModel.router.exit()
-                    1 -> Toast.makeText(requireContext(), requireActivity().resources.getString(
+                    1 -> Toast.makeText(requireContext(),
+                        requireActivity().resources.getString(
                             R.string.error_button_is_not_assigned), Toast.LENGTH_SHORT).show()
                     else -> {
-                         Toast.makeText(requireContext(), requireActivity().resources.getString(
+                         Toast.makeText(requireContext(),
+                             requireActivity().resources.getString(
                             R.string.error_button_is_not_assigned), Toast.LENGTH_SHORT).show()
                     }
                 }

@@ -19,4 +19,28 @@
         <item name="android:background">?attr/colorPrimary</item>
         <item name="android:gravity">center</item>
     </style>
+
+    <!-- Стили для калькулятора -->
+    <style name="Day.Actions_style" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:layout_width">@dimen/standart_button_action_width</item>
+        <item name="android:layout_height">@dimen/standart_button_action_height</item>
+        <item name="android:textSize">@dimen/text_button_actions_size</item>
+        <item name="android:textColor">@color/red_erase_day</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:padding">@dimen/text_in_button_padding</item>
+        <item name="android:background">@drawable/buttons_with_actions_mg_day</item>
+        <item name="backgroundTint">@null</item>
+    </style>
+    <style name="Day.Numbers_style" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:layout_width">@dimen/standart_button_number_width</item>
+        <item name="android:layout_height">@dimen/standart_button_number_height</item>
+        <item name="android:textSize">@dimen/text_button_numbers_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/background_input_history_color_day</item>
+        <item name="android:padding">@dimen/text_in_button_padding</item>
+        <item name="android:background">@drawable/buttons_with_numbers_mg_day</item>
+        <item name="backgroundTint">@null</item>
+        <item name="layout_constraintCircle">@id/_RESULT</item>
+        <item name="layout_constraintCircleRadius">@dimen/button_circle_radius</item>
+    </style>
 </resources>

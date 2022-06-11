@@ -5,6 +5,40 @@
     <string name="error_button_is_not_assigned">Error: The button is not assigned</string>
     <string name="error_not_inserted_weight_animal">Please enter a number > 0</string>
 
+    <!-- Строчные ресурсы для окна с калькулятором -->
+    <string name="_0">0</string>
+    <string name="_1">1</string>
+    <string name="_2">2</string>
+    <string name="_3">3</string>
+    <string name="_4">4</string>
+    <string name="_5">5</string>
+    <string name="_6">6</string>
+    <string name="_7">7</string>
+    <string name="_8">8</string>
+    <string name="_9">9</string>
+    <string name="_divide">/</string>
+    <string name="_minus">-</string>
+    <string name="_zapitay">,</string>
+    <string name="_equal">=</string>
+    <string name="_multiply">*</string>
+    <string name="_plus">+</string>
+    <string name="_bracket_open">(</string>
+    <string name="_bracket_close">)</string>
+    <string name="_percent">%</string>
+    <string name="_plus_minus">+/-</string>
+    <string name="_stepen">x^n</string>
+    <string name="_sqrt">Kx</string>
+    <string name="_backspaceTwo"><![CDATA[<--]]></string>
+    <string name="_backspace">C</string>
+    <string name="InputHistory_text"></string>
+    <string name="RESULT_text">0</string>
+    <string name="_backspaceOne"><![CDATA[<-]]></string>
+    <string name="default_radius_text">177</string>
+    <string name="error_different_number_brackets">Error: Different number of open and closed brackets</string>
+    <string name="error_undersquare_low_zero">Error: The root expression is less than zero</string>
+    <string name="error_divide_on_zero">Error: Division by zero</string>
+    <string name="error_inside_brackets_empty">Error: There is nothing inside the brackets</string>
+
     <!-- Ресурсы макета -->
     <string name="about_surface_button_text_text">ABOUT\nVetFormula</string>
     <string name="about_text_text">INFORMATION</string>
