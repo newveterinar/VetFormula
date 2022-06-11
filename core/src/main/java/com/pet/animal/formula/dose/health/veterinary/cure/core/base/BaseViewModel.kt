@@ -9,16 +9,12 @@ import kotlinx.coroutines.*
 abstract class BaseViewModel<T : AppState>(
     protected open val _mutableLiveData: MutableLiveData<T> = MutableLiveData(),
 ) : BaseViewModelForNavigation() {
-
+    /** Задание переменных */ //region
+    // Переменные для вывода подсказок
     private val _toastHint = MutableLiveData<String>()
     val toastHint: LiveData<String>
         get() = _toastHint
-
-    fun setToastHint(hint: String) {
-        _toastHint.value = hint
-    }
-
-    /** Задание переменных */ //region
+    // Скоуп для вьюмодели
     protected val viewModelCoroutineScope = CoroutineScope(
         Dispatchers.Main
                 + SupervisorJob()
@@ -26,6 +22,11 @@ abstract class BaseViewModel<T : AppState>(
             handleError(throwable)
         })
     //endregion
+
+    // Функция для вывода подсказок пользователю
+    fun setToastHint(hint: String) {
+        _toastHint.value = hint
+    }
 
     override fun onCleared() {
         super.onCleared()

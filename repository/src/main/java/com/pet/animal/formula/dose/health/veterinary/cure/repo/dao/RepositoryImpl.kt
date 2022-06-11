@@ -73,7 +73,7 @@ class RepositoryImpl(private val dbDao:VetFormulaDao): Repository {
         listsAddFirstSecond: List<Int>
     ): Formula {
         val listEntity = getFormulaByScreen(
-            screenType.ordinal, listsAddFirstSecond[0],
+            screenType.ordinal, if (listsAddFirstSecond.isNotEmpty()) listsAddFirstSecond[0] else 0,
             if (listsAddFirstSecond.size > 1) listsAddFirstSecond[1] else 0)
         if (listEntity.isNotEmpty()) {
             return listEntity[0].formula

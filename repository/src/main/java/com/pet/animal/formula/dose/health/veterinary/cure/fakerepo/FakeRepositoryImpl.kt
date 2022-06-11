@@ -33,8 +33,8 @@ class FakeRepositoryImpl: FakeRepository {
             listsAddFirstSecond.convertAddFirstSecondToTypedFormulaName(screenType)
         //endregion
 
+        //region Типизированные формулы для окна PHARMACY_CRI
         when {
-            //region Типизированные формулы для окна PHARMACY_CRI
             askedTypedName.contains(PHARMACY_CRI_NO_GIVING_SET_NAME) -> {
                 pharmacyCRIFormula.addTypedFormula(
                     TypedFormula(
@@ -336,8 +336,8 @@ class FakeRepositoryImpl: FakeRepository {
             listsAddFirstSecond.convertAddFirstSecondToTypedFormulaName(screenType)
         //endregion
 
+        //region Типизированные формулы для окна PHARMACY_SURFACE
         when {
-            //region Типизированные формулы для окна PHARMACY_SURFACE
             askedTypedName.contains(PHARMACY_SURFACE_DOG_BODYSURFACEAREA_NAME) ->
                 pharmacySurfaceFormula.addTypedFormula(TypedFormula(
                     PHARMACY_SURFACE_DOG_BODYSURFACEAREA_NAME,
@@ -576,8 +576,8 @@ class FakeRepositoryImpl: FakeRepository {
                         Element(Command.BRACKET_CLOSE.index(),0)
                     )
                 ))
-            //endregion
         }
+        //endregion
         return pharmacySurfaceFormula
     }
 
@@ -592,8 +592,8 @@ class FakeRepositoryImpl: FakeRepository {
             listsAddFirstSecond.convertAddFirstSecondToTypedFormulaName(screenType)
         //endregion
 
+        //region Типизированные формулы для окна PHARMACY_DOSES
         when {
-            //region Типизированные формулы для окна PHARMACY_DOSES
             askedTypedName.contains(PHARMACY_DOSES_NAME) -> {
                 pharmacyDosesFormula.addTypedFormula(
                     TypedFormula(
