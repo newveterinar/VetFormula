@@ -19,6 +19,7 @@
     <color name="light_appbar">#20D753</color>
     <color name="dark_appbar">#219b43</color>
     <color name="transparent">#278d44</color>
+    <color name="invisible">#00000000</color>
     <color name="fill_color">#630606</color>
     <color name="spinner_dimension">#b1ffbf</color>
 

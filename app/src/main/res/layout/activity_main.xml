@@ -69,7 +69,11 @@
             android:value="@dimen/windows_slider_value"
             android:valueFrom="@dimen/windows_slider_value_from"
             android:valueTo="@dimen/windows_slider_value_to"
-            app:labelBehavior="gone" />
+            android:thumb="@drawable/ic_triangle"
+            app:labelBehavior="gone"
+            app:thumbColor="@color/transparent"
+            app:trackColor="@color/invisible"
+            app:thumbRadius="@dimen/windows_slider_thumb_radius" />
     </FrameLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
