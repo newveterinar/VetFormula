@@ -9,7 +9,6 @@ import android.os.PersistableBundle
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.Guideline
@@ -28,6 +27,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.vetformula.databinding
 import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
 import org.koin.java.KoinJavaComponent
+
 
 class MainActivity: AppCompatActivity(), FabAndSliderControl {
     /** Задание переменных */ //region
