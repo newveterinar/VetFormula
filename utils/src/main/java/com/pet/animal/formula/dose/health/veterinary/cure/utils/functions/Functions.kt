@@ -211,7 +211,7 @@ fun TextView.createStringResult(
     //endregion
 
     var initialString: String = if (indexData <= resultValueField.size - 1)
-        "${resultValueField[indexData].value}" else ""
+        resultValueField[indexData].value.format(3) else ""
     var result: SpannableString = SpannableString(initialString)
     // Изменение формата размерности текста
     if (initialString.isNotEmpty()) {
@@ -269,13 +269,24 @@ fun TextView.createStringResult(
             OutputDataDimensionType.TIME.toString() -> {
                 val minutes: Double = if (indexData <= resultValueField.size - 1)
                     resultValueField[indexData].value else 0.0
-                val hoursToOutput: Int = (minutes / NUMBER_MINUTES_IN_HOUR).toInt()
+                var hoursToOutput: Int = (minutes / NUMBER_MINUTES_IN_HOUR).toInt()
                 var minutesToOutput: Int = minutes.toInt()
                 var secondsToOutput: Int =
                     ((minutes - minutes.toInt()) * NUMBER_SECONDS_IN_MINUTE).roundToInt()
+                // Корректция минут и секунд при округлении секунд до 60
                 if (secondsToOutput == NUMBER_SECONDS_IN_MINUTE.toInt()) {
                     minutesToOutput++
                     secondsToOutput = 0
+                }
+                // Коррекция часов и минут при округлении минут до 60
+                if (minutesToOutput == NUMBER_MINUTES_IN_HOUR.toInt()) {
+                    hoursToOutput++
+                    minutesToOutput = 0
+                }
+                // Коррекция часов и минут при округлении минут и секунд до 61
+                if (minutesToOutput == NUMBER_MINUTES_IN_HOUR.toInt()) {
+                    hoursToOutput++
+                    minutesToOutput = 1
                 }
                 result = SpannableString("${this.text} " +
                         "$hoursToOutput" +
@@ -338,3 +349,6 @@ fun TextView.createStringResult(
     }
     this.text = result
 }
+
+// Вывод значения с заданным количеством цифр после запятой
+fun Double.format(digits: Int) = "%.${digits}f".format(this)
