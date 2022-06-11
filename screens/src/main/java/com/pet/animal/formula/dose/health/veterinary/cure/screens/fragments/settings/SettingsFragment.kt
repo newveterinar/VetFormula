@@ -1,11 +1,11 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.settings
 
+import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.*
-import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.chip.Chip
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
@@ -14,8 +14,12 @@ import com.pet.animal.formula.dose.health.veterinary.cure.utils.SHARED_PREFERENC
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.SHARED_PREFERENCES_THEME_KEY
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.onItemSelected
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.selectItemByValue
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.FragmentScope
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.language.LocaleHelper
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.language.Locales
+import org.koin.core.qualifier.named
+import org.koin.core.scope.Scope
+import org.koin.java.KoinJavaComponent
 import java.util.*
 
 class SettingsFragment: BaseFragment<FragmentSettingsBinding>(FragmentSettingsBinding::inflate) {
@@ -29,9 +33,27 @@ class SettingsFragment: BaseFragment<FragmentSettingsBinding>(FragmentSettingsBi
     private lateinit var darkThemeButton: Chip
     // ViewModel
     lateinit var viewModel: SettingsFragmentViewModel
+    // ShowSettingsFragmentScope
+    private lateinit var showSettingsFragmentScope: Scope
     // NewInstance
     companion object {
         fun newInstance(): SettingsFragment = SettingsFragment()
+    }
+    //endregion
+
+    /** Работа со Scope */ //region
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        // Задание Scope для данного фрагмента
+        showSettingsFragmentScope = KoinJavaComponent.getKoin().getOrCreateScope(
+            FragmentScope.SHOW_SETTINGS_FRAGMENT_SCOPE,
+            named(FragmentScope.SHOW_SETTINGS_FRAGMENT_SCOPE)
+        )
+    }
+    override fun onDetach() {
+        // Удаление скоупа для данного фрагмента
+        showSettingsFragmentScope.close()
+        super.onDetach()
     }
     //endregion
 
@@ -49,16 +71,16 @@ class SettingsFragment: BaseFragment<FragmentSettingsBinding>(FragmentSettingsBi
     // Инициализация кнопок переключения темы приложения
     private fun initThemeButtons() {
         lightThemeButton = binding.lightThemeButton.also { it.setOnClickListener {
-                val sharedPreferences: SharedPreferences =
-                    requireActivity().getSharedPreferences(
-                        SHARED_PREFERENCES_KEY,
-                        AppCompatActivity.MODE_PRIVATE
-                    )
-                val sharedPreferencesEditor: SharedPreferences.Editor = sharedPreferences.edit()
-                sharedPreferencesEditor.putBoolean(SHARED_PREFERENCES_THEME_KEY, false)
-                sharedPreferencesEditor.apply()
-                requireActivity().recreate()
-            }
+            val sharedPreferences: SharedPreferences =
+                requireActivity().getSharedPreferences(
+                    SHARED_PREFERENCES_KEY,
+                    AppCompatActivity.MODE_PRIVATE
+                )
+            val sharedPreferencesEditor: SharedPreferences.Editor = sharedPreferences.edit()
+            sharedPreferencesEditor.putBoolean(SHARED_PREFERENCES_THEME_KEY, false)
+            sharedPreferencesEditor.apply()
+            requireActivity().recreate()
+        }
         }
         darkThemeButton = binding.darkThemeButton.also { it.setOnClickListener {
             val sharedPreferences: SharedPreferences =
@@ -70,7 +92,7 @@ class SettingsFragment: BaseFragment<FragmentSettingsBinding>(FragmentSettingsBi
             sharedPreferencesEditor.putBoolean(SHARED_PREFERENCES_THEME_KEY, true)
             sharedPreferencesEditor.apply()
             requireActivity().recreate()
-            }
+        }
         }
     }
 
@@ -88,7 +110,7 @@ class SettingsFragment: BaseFragment<FragmentSettingsBinding>(FragmentSettingsBi
                     else -> {
                         Toast.makeText(requireContext(),
                             requireActivity().resources.getString(
-                            R.string.error_button_is_not_assigned), Toast.LENGTH_SHORT).show()
+                                R.string.error_button_is_not_assigned), Toast.LENGTH_SHORT).show()
                     }
                 }
             }
@@ -121,6 +143,7 @@ class SettingsFragment: BaseFragment<FragmentSettingsBinding>(FragmentSettingsBi
 
     // Инициализация ViewModel
     fun initViewModel() {
-        viewModel = ViewModelProvider(this).get(SettingsFragmentViewModel::class.java)
+        val _viewModel: SettingsFragmentViewModel by showSettingsFragmentScope.inject()
+        viewModel = _viewModel
     }
 }
