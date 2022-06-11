@@ -7,7 +7,9 @@ import android.content.res.Configuration
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.view.View
+import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.Guideline
@@ -56,10 +58,19 @@ class MainActivity: AppCompatActivity(), FabAndSliderControl {
 
     // FAB
     private var clicked = false
+    lateinit var fabOpen: Animation
+    lateinit var fabClose: Animation
+    lateinit var rotateForward: Animation
+    lateinit var rotateBackward: Animation
     //endregion
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Инициализация анимаций для FAB
+        fabOpen = AnimationUtils.loadAnimation(this, R.anim.fab_open)
+        fabClose = AnimationUtils.loadAnimation(this, R.anim.fab_close)
+        rotateForward = AnimationUtils.loadAnimation(this, R.anim.rotate_forward)
+        rotateBackward = AnimationUtils.loadAnimation(this, R.anim.rotate_backward)
         // Подключение Binding
         binding = ActivityMainBinding.inflate(layoutInflater)
         // Создание Scope для MainActivity
@@ -134,11 +145,6 @@ class MainActivity: AppCompatActivity(), FabAndSliderControl {
 
     // Вызов кнопок FAB и их анимации
     private fun setAnimation() {
-        val fabOpen = AnimationUtils.loadAnimation(this, R.anim.fab_open)
-        val fabClose = AnimationUtils.loadAnimation(this, R.anim.fab_close)
-        val rotateForward = AnimationUtils.loadAnimation(this, R.anim.rotate_forward)
-        val rotateBackward = AnimationUtils.loadAnimation(this, R.anim.rotate_backward)
-
         if (clicked) {
             with(binding) {
                 fabMain.startAnimation(rotateForward)
@@ -229,10 +235,27 @@ class MainActivity: AppCompatActivity(), FabAndSliderControl {
 
     //region Методы скрытия и отображения слайдера и FAB
     override fun hideFab() {
-        binding.fabMain.visibility = View.INVISIBLE
+        with(binding) {
+            fabMain.startAnimation(fabClose)
+            fabMain.isClickable = false
+
+            if (clicked) {
+                fabTextView.startAnimation(fabClose)
+                fabWebViewWsava.startAnimation(fabClose)
+                fabWebViewVetmedical.startAnimation(fabClose)
+                fabTextView.isClickable = false
+                fabWebViewWsava.isClickable = false
+                fabWebViewVetmedical.isClickable = false
+                clicked = false
+            }
+        }
     }
     override fun showFab() {
-        binding.fabMain.visibility = View.VISIBLE
+        with(binding) {
+            fabMain.startAnimation(fabOpen)
+            fabMain.isClickable = true
+            clicked = false
+        }
     }
     override fun hideSlider() {
         changeUpAndBottomFramesSizes(0f)
