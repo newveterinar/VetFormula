@@ -23,4 +23,13 @@
     <color name="fill_color">#630606</color>
     <color name="spinner_dimension">#b1ffbf</color>
 
+    <!-- Цвета для калькулятора -->
+    <!-- Main theme colors day -->
+    <color name="red_day">#D50000</color>
+    <color name="red_center_day">#D53900</color>
+    <color name="red_erase_day">#6F0000</color>
+    <color name="green_day">#669900</color>
+    <color name="background_color_day">#FF6D00</color>
+    <color name="background_input_history_color_day">#FFD600</color>
+
 </resources>

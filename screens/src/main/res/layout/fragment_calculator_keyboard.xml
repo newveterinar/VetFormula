@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/run_calculator"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:background="?attr/colorPrimary">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/header"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/header_height"
+                android:background="?attr/colorSecondary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/previous_button_container"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/previous_button"
+                        android:layout_width="@dimen/previous_button_width"
+                        android:layout_height="@dimen/previous_button_height"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="@dimen/previous_button_margin_start"
+                        android:layout_marginTop="@dimen/previous_button_margin_top"
+                        android:rotation="@dimen/arrow_back_rotation_angle"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_arrow_right" />
+
+                    <TextView
+                        android:id="@+id/previous_text"
+                        style="@style/text_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="@dimen/previous_text_padding_start"
+                        android:text="@string/calculator_previous_text_text"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <View
+                    android:id="@+id/horizontal_border"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/horizontal_border_height"
+                    android:background="@color/black"
+                    app:layout_constraintBottom_toBottomOf="@id/header"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/calculator_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/calculator_container_margin_start"
+                android:layout_marginTop="@dimen/calculator_container_margin_top"
+                android:layout_marginEnd="@dimen/calculator_container_margin_end"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/header">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/zero"
+                    style="@style/Day.Numbers_style"
+                    android:text="@string/_0"
+                    android:visibility="visible"
+                    app:layout_constraintCircle="@id/result"
+                    app:layout_constraintCircleAngle="0"
+                    app:layout_constraintCircleRadius="@dimen/button_circle_radius"
+                    app:layout_constraintEnd_toStartOf="@id/one"
+                    app:layout_constraintTop_toBottomOf="parent" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/one"
+                    style="@style/Day.Numbers_style"
+                    android:text="@string/_1"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toTopOf="@id/two"
+                    app:layout_constraintCircle="@id/result"
+                    app:layout_constraintCircleAngle="30"
+                    app:layout_constraintCircleRadius="@dimen/button_circle_radius"
+                    app:layout_constraintStart_toEndOf="@id/zero" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/two"
+                    style="@style/Day.Numbers_style"
+                    android:text="@string/_2"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toTopOf="@id/result"
+                    app:layout_constraintCircle="@id/result"
+                    app:layout_constraintCircleAngle="60"
+                    app:layout_constraintCircleRadius="@dimen/button_circle_radius"
+                    app:layout_constraintStart_toEndOf="@id/result" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/three"
+                    style="@style/Day.Numbers_style"
+                    android:text="@string/_3"
+                    android:visibility="visible"
+                    app:layout_constraintCircle="@id/result"
+                    app:layout_constraintCircleAngle="90"
+                    app:layout_constraintCircleRadius="@dimen/button_circle_radius"
+                    app:layout_constraintStart_toEndOf="@id/result"
+                    app:layout_constraintTop_toBottomOf="@id/two" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/four"
+                    style="@style/Day.Numbers_style"
+                    android:text="@string/_4"
+                    android:visibility="visible"
+                    app:layout_constraintCircle="@id/result"
+                    app:layout_constraintCircleAngle="120"
+                    app:layout_constraintCircleRadius="@dimen/button_circle_radius"
+                    app:layout_constraintStart_toEndOf="@id/result"
+                    app:layout_constraintTop_toBottomOf="@id/three" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/five"
+                    style="@style/Day.Numbers_style"
+                    android:text="@string/_5"
+                    android:visibility="visible"
+                    app:layout_constraintCircle="@id/result"
+                    app:layout_constraintCircleAngle="150"
+                    app:layout_constraintCircleRadius="@dimen/button_circle_radius"
+                    app:layout_constraintEnd_toStartOf="@id/four"
+                    app:layout_constraintTop_toBottomOf="@id/four" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/six"
+                    style="@style/Day.Numbers_style"
+                    android:text="@string/_6"
+                    android:visibility="visible"
+                    app:layout_constraintCircle="@id/result"
+                    app:layout_constraintCircleAngle="180"
+                    app:layout_constraintCircleRadius="@dimen/button_circle_radius"
+                    app:layout_constraintEnd_toStartOf="@id/five"
+                    app:layout_constraintTop_toBottomOf="@id/equal" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/seven"
+                    style="@style/Day.Numbers_style"
+                    android:text="@string/_7"
+                    android:visibility="visible"
+                    app:layout_constraintCircle="@id/result"
+                    app:layout_constraintCircleAngle="210"
+                    app:layout_constraintCircleRadius="@dimen/button_circle_radius"
+                    app:layout_constraintEnd_toStartOf="@id/six"
+                    app:layout_constraintTop_toBottomOf="@id/eight" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/eight"
+                    style="@style/Day.Numbers_style"
+                    android:text="@string/_8"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toTopOf="@id/seven"
+                    app:layout_constraintCircle="@id/result"
+                    app:layout_constraintCircleAngle="240"
+                    app:layout_constraintCircleRadius="@dimen/button_circle_radius"
+                    app:layout_constraintEnd_toStartOf="@id/seven" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/nine"
+                    style="@style/Day.Numbers_style"
+                    android:text="@string/_9"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toTopOf="@id/eight"
+                    app:layout_constraintCircle="@id/result"
+                    app:layout_constraintCircleAngle="270"
+                    app:layout_constraintCircleRadius="@dimen/button_circle_radius"
+                    app:layout_constraintEnd_toStartOf="@id/result" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/divide"
+                    style="@style/Day.Actions_style"
+                    android:text="@string/_divide"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toTopOf="@id/result"
+                    app:layout_constraintCircle="@id/result"
+                    app:layout_constraintCircleAngle="300"
+                    app:layout_constraintCircleRadius="@dimen/button_circle_radius"
+                    app:layout_constraintEnd_toStartOf="@id/result" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/minus"
+                    style="@style/Day.Actions_style"
+                    android:text="@string/_minus"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toTopOf="@id/divide"
+                    app:layout_constraintCircle="@id/result"
+                    app:layout_constraintCircleAngle="330"
+                    app:layout_constraintCircleRadius="@dimen/button_circle_radius"
+                    app:layout_constraintEnd_toStartOf="@id/zero" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/zapitay"
+                    style="@style/Day.Actions_style"
+                    android:text="@string/_zapitay"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="@id/stepen"
+                    app:layout_constraintStart_toEndOf="@id/plus_minus"
+                    app:layout_constraintTop_toBottomOf="@id/bracket_open" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/zapitay_on_off"
+                    style="@style/Day.Zapitay_style"
+                    android:text="@string/_zapitay"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="@id/stepen"
+                    app:layout_constraintStart_toEndOf="@id/plus_minus"
+                    app:layout_constraintTop_toBottomOf="@id/bracket_open" />
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/multiply"
+                    style="@style/Day.Actions_style"
+                    android:text="@string/_multiply"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toStartOf="@id/divide"
+                    app:layout_constraintTop_toTopOf="@id/divide" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/plus"
+                    style="@style/Day.Actions_style"
+                    android:text="@string/_plus"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toStartOf="@id/minus"
+                    app:layout_constraintTop_toTopOf="@id/minus" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/bracket_open"
+                    style="@style/Day.Actions_style"
+                    android:text="@string/_bracket_open"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toEndOf="@id/one"
+                    app:layout_constraintTop_toTopOf="@id/one" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/bracket_close"
+                    style="@style/Day.Actions_style"
+                    android:text="@string/_bracket_close"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/two"
+                    app:layout_constraintTop_toTopOf="@id/two" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/percent"
+                    style="@style/Day.Actions_style"
+                    android:text="@string/_percent"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toEndOf="@id/five"
+                    app:layout_constraintTop_toBottomOf="@id/four" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/plus_minus"
+                    style="@style/Day.Actions_style"
+                    android:text="@string/_plus_minus"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/four"
+                    app:layout_constraintTop_toTopOf="@id/four" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/stepen"
+                    style="@style/Day.Actions_style"
+                    android:text="@string/_stepen"
+                    android:textStyle="normal"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toStartOf="@id/eight"
+                    app:layout_constraintTop_toTopOf="@id/eight" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/sqrt"
+                    style="@style/Day.Actions_style"
+                    android:text="@string/_sqrt"
+                    android:textStyle="normal"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toStartOf="@id/seven"
+                    app:layout_constraintTop_toBottomOf="@id/eight" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/equal"
+                    style="@style/Day.Actions_style"
+                    android:text="@string/_equal"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toTopOf="@id/six"
+                    app:layout_constraintEnd_toStartOf="@id/five"
+                    app:layout_constraintStart_toEndOf="@id/seven" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/backspace_one"
+                    style="@style/Day.Actions_style"
+                    android:text="@string/_backspaceOne"
+                    android:textStyle="normal"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toTopOf="@id/input_history"
+                    app:layout_constraintEnd_toStartOf="@id/backspace_two"
+                    app:layout_constraintTop_toBottomOf="@id/six" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/backspace_two"
+                    style="@style/Day.Actions_style"
+                    android:text="@string/_backspaceTwo"
+                    android:textStyle="normal"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toTopOf="@id/input_history"
+                    app:layout_constraintEnd_toStartOf="@id/backspace"
+                    app:layout_constraintTop_toBottomOf="@id/six" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/backspace"
+                    style="@style/Day.Actions_style"
+                    android:text="@string/_backspace"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toTopOf="@id/input_history"
+                    app:layout_constraintEnd_toEndOf="@id/input_history" />
+
+                <TextView
+                    android:id="@+id/result"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/height_result_text"
+                    android:background="@drawable/background_result_textview_day"
+                    android:ems="@integer/number_output_symbols_forEMS"
+                    android:gravity="end|center"
+                    android:paddingStart="@dimen/padding_output_text"
+                    android:paddingEnd="@dimen/padding_output_text"
+                    android:text="@string/RESULT_text"
+                    android:textColor="@color/red_erase_day"
+                    android:textSize="@dimen/result_history_text_size"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toTopOf="@id/equal"
+                    app:layout_constraintEnd_toStartOf="@id/three"
+                    app:layout_constraintStart_toEndOf="@id/nine"
+                    app:layout_constraintTop_toTopOf="@id/zapitay" />
+
+                <androidx.core.widget.NestedScrollView
+                    android:id="@+id/input_history"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_max="@dimen/default_input_history_max_height_portrait"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/backspace_two">
+
+                    <TextView
+                        android:id="@+id/inputed_history_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/input_history_margin_start"
+                        android:background="@drawable/background_input_history_day"
+                        android:ems="@integer/number_inputed_symbols_forEMS_portret"
+                        android:paddingStart="@dimen/padding_output_text"
+                        android:paddingEnd="@dimen/padding_output_text"
+                        android:text="@string/InputHistory_text"
+                        android:textColor="@color/red_erase_day"
+                        android:textSize="@dimen/result_history_text_size"
+                        android:visibility="visible" />
+                </androidx.core.widget.NestedScrollView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

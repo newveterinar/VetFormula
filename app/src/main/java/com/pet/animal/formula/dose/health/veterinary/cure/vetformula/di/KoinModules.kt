@@ -5,12 +5,17 @@ import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.Router
 import com.pet.animal.formula.dose.health.veterinary.cure.core.AppScreens
 import com.pet.animal.formula.dose.health.veterinary.cure.fakerepo.FakeRepositoryImpl
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.about.AboutFragmentViewModel
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.calculator.CalculatorFragmentViewModel
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.calculator.keyboard.CalculatorKeyboardFragmentViewModel
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.PharmacyFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.cri.PharmacyCRIFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.cri.result.PharmacyCRIResultFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.doses.PharmacyDosesFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.doses.result.PharmacyDosesResultFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.surface.PharmacySurfaceFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.surface.result.PharmacySurfaceResultFragmentViewModel
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.settings.SettingsFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator.AppScreensImpl
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.CICERONE_NAME
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.FragmentScope
@@ -51,6 +56,11 @@ val screens = module {
     single<AppScreens> { AppScreensImpl() }
     //endregion
     /** Классы для Scope фрагментов */ //region
+    scope(named(FragmentScope.SHOW_PHARMACY_FRAGMENT_SCOPE)) {
+        viewModel {
+            PharmacyFragmentViewModel()
+        }
+    }
     scope(named(FragmentScope.SHOW_PHARMACY_SURFACE_FRAGMENT_SCOPE)) {
         viewModel {
             PharmacySurfaceFragmentViewModel()
@@ -79,6 +89,26 @@ val screens = module {
     scope(named(FragmentScope.SHOW_PHARMACY_CRI_RESULT_FRAGMENT_SCOPE)) {
         viewModel {
             PharmacyCRIResultFragmentViewModel()
+        }
+    }
+    scope(named(FragmentScope.SHOW_CALCULATOR_FRAGMENT_SCOPE)) {
+        viewModel {
+            CalculatorFragmentViewModel()
+        }
+    }
+    scope(named(FragmentScope.SHOW_CALCULATOR_KEYBOARD_FRAGMENT_SCOPE)) {
+        viewModel {
+            CalculatorKeyboardFragmentViewModel()
+        }
+    }
+    scope(named(FragmentScope.SHOW_ABOUT_FRAGMENT_SCOPE)) {
+        viewModel {
+            AboutFragmentViewModel()
+        }
+    }
+    scope(named(FragmentScope.SHOW_SETTINGS_FRAGMENT_SCOPE)) {
+        viewModel {
+            SettingsFragmentViewModel()
         }
     }
     //endregion
