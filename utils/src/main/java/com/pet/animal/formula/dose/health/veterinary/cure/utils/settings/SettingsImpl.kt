@@ -1,5 +1,6 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.utils.settings
 
+import com.pet.animal.formula.dose.health.veterinary.cure.model.calculator.CalcConstants.CALCULATOR_CURRENT_RADIUS_BUTTONS
 import com.pet.animal.formula.dose.health.veterinary.cure.model.formula.Formula
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.ScreenData
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.ValueField
@@ -14,6 +15,8 @@ class SettingsImpl: Settings {
     private var formula: Formula = Formula()
     // Переменные для хранения исходных данных пользователя в расчётном окне
     private var inputedScreenData: ScreenData = ScreenData()
+    // Переменная для хранения радиуса кнопок в калькуляторе
+    private var calculatorRadiusButtons: Int = CALCULATOR_CURRENT_RADIUS_BUTTONS
     //endregion
 
     // Задание темы приложения
@@ -54,6 +57,15 @@ class SettingsImpl: Settings {
     // Получение исходных данных для текущего окна
     override fun getInputedScreenData(): ScreenData {
         return inputedScreenData
+    }
+    //endregion
+
+    //region Методы для задания и получения текущего значения радиуса кнопок в калькуляторе
+    fun setCalculatorRadiusButtons(newRadius: Int) {
+        calculatorRadiusButtons = newRadius
+    }
+    fun getCalculatorRadiusButtons(): Int {
+        return calculatorRadiusButtons
     }
     //endregion
 }

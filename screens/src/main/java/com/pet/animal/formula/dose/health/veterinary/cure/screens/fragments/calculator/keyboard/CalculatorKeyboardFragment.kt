@@ -6,6 +6,8 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintSet
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.model.calculator.CalcConstants
 import com.pet.animal.formula.dose.health.veterinary.cure.model.calculator.CalcConstants.ACTIONS
@@ -15,6 +17,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentCalculatorKeyboardBinding
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.FragmentScope
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.NUMBER_NAVIGATION_BUTTONS_ON_OUTPUT_DATA_SCREENS
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.settings.SettingsImpl
 import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
 import org.koin.java.KoinJavaComponent
@@ -31,7 +34,7 @@ class CalculatorKeyboardFragment:
     private lateinit var viewModel: CalculatorKeyboardFragmentViewModel
     // ShowCalculatorKeyboardFragmentScope
     private lateinit var showCalculatorKeyboardFragmentScope: Scope
-    // Поля ввода и вывода данных калькулятора
+    // Текстовые поля ввода и вывода данных калькулятора
     lateinit var outputResultText: TextView
     lateinit var inputedHistoryText: TextView
     // Кнопки калькулятора
@@ -56,14 +59,16 @@ class CalculatorKeyboardFragment:
     lateinit var button_divide: Button
     lateinit var button_minus: Button
     lateinit var button_multiply: Button
-    lateinit var  button_percent: Button
+    lateinit var button_percent: Button
     lateinit var button_plus: Button
     lateinit var button_plus_minus: Button
     lateinit var button_sqrt: Button
     lateinit var button_stepen: Button
-    // Параметры для изменения радиуса расположения кнопок
+    // SettingsImpl
+    private val settings: SettingsImpl = KoinJavaComponent.getKoin().get()
+    // Параметры для изменения радиуса расположения кнопок калькулятора
     private var koeff_DP: Float = 0f
-    private val curRadiusButtons: Int = 0
+    private var calculatorRadiusButtons: Int = settings.getCalculatorRadiusButtons()
     // newInstance для данного класса
     companion object {
         fun newInstance(): CalculatorKeyboardFragment = CalculatorKeyboardFragment()
@@ -88,26 +93,43 @@ class CalculatorKeyboardFragment:
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // Инициализация кнопок
+        initNavigationButton()
         // Получение значения коэффициента экрана для адаптации радиуса кнопок калькулятора
         koeff_DP = resources.displayMetrics.density
-        // Инициализация текстовых полей
-        initTextFields()
         // Инициализация кнопок
-        initNavigationButtons()
-        // Инициализация элементов для вывода результирующей информации
-//        initResultValueVields()
+        initCalculatorButtons()
+        // Инициализация элементов для вывода входящей и результирующей информации
+        initTextFields()
         // Инициализация ViewModel
         initViewModel()
-    }
-
-    // Инициализация текстовых полей
-    private fun initTextFields() {
-        outputResultText = binding.result
-        inputedHistoryText = binding.inputedHistoryText
+        // Установка обновлённого значения радиуса окружности кнопок
+        setNewRadiusButtons(calculatorRadiusButtons * koeff_DP.toInt());
     }
 
     // Инициализация кнопок
-    private fun initNavigationButtons() {
+    private fun initNavigationButton() {
+        binding.apply {
+            navigationButtons.also {
+                it[0] = this.previousButtonContainer
+            }
+        }
+        navigationButtons.forEachIndexed { index, button ->
+            button?.setOnClickListener {
+                when (index) {
+                    0 -> viewModel.router.exit()
+                    else -> {
+                        Toast.makeText(requireContext(),
+                            requireActivity().resources.getString(
+                                R.string.error_button_is_not_assigned), Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
+    }
+
+    // Инициализация кнопок
+    private fun initCalculatorButtons() {
         // Установка кнопок с числами
         button_0 = binding.zero
         button_0.setOnClickListener(this)
@@ -165,6 +187,7 @@ class CalculatorKeyboardFragment:
         button_stepen.setOnClickListener(this)
     }
 
+    // Установщика оработчиков нажатий на кнопки калькулятора
     override fun onClick(p0: View?) {
         p0?.let {
             if (it.id == button_0.id) {
@@ -224,6 +247,12 @@ class CalculatorKeyboardFragment:
             }
             buttonZapitayChange()
         }
+    }
+
+    // Инициализация текстовых полей
+    private fun initTextFields() {
+        outputResultText = binding.result
+        inputedHistoryText = binding.inputedHistoryText
     }
 
     // Отобразить индикатор ввода вещественного числа
@@ -315,5 +344,26 @@ class CalculatorKeyboardFragment:
                     R.string.error_appstate_not_loaded_for_fragment), Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    private fun setNewRadiusButtons(newRadius: Int) {
+        // Смена значения поля в constraintLayout
+        val constraintLayout: ConstraintLayout = binding.calculatorContainer
+        val constraintSet = ConstraintSet()
+        constraintSet.clone(constraintLayout)
+        constraintSet.constrainCircle(R.id.zero, R.id.result, newRadius, 0f)
+        constraintSet.constrainCircle(R.id.one, R.id.result, newRadius, 30f)
+        constraintSet.constrainCircle(R.id.two, R.id.result, newRadius, 60f)
+        constraintSet.constrainCircle(R.id.three, R.id.result, newRadius, 90f)
+        constraintSet.constrainCircle(R.id.four, R.id.result, newRadius, 120f)
+        constraintSet.constrainCircle(R.id.five, R.id.result, newRadius, 150f)
+        constraintSet.constrainCircle(R.id.six, R.id.result, newRadius, 180f)
+        constraintSet.constrainCircle(R.id.seven, R.id.result, newRadius, 210f)
+        constraintSet.constrainCircle(R.id.eight, R.id.result, newRadius, 240f)
+        constraintSet.constrainCircle(R.id.nine, R.id.result, newRadius, 270f)
+        constraintSet.constrainCircle(R.id.divide, R.id.result, newRadius, 300f)
+        constraintSet.constrainCircle(R.id.minus, R.id.result, newRadius, 330f)
+        constraintSet.constrainCircle(R.id.minus, R.id.result, newRadius, 330f)
+        constraintSet.applyTo(constraintLayout)
     }
 }
