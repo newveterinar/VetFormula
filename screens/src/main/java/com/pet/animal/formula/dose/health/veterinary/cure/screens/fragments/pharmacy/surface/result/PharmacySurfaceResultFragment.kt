@@ -106,7 +106,7 @@ class PharmacySurfaceResultFragment: BaseFragment<FragmentPharmacySurfaceResultB
     // Инициализация ViewModel
     fun initViewModel() {
         val _viewModel: PharmacySurfaceResultFragmentViewModel by
-        showPharmacySurfaceResultFragmentScope.inject()
+            showPharmacySurfaceResultFragmentScope.inject()
         viewModel = _viewModel
         // Отображение текущих значений числовых поле и списков
         viewModel.subscribe().observe(viewLifecycleOwner) {
