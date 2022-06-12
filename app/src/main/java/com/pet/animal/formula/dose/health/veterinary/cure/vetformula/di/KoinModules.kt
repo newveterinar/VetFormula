@@ -8,6 +8,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.fakerepo.FakeRepositor
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.about.AboutFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.calculator.CalculatorFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.calculator.keyboard.CalculatorKeyboardFragmentViewModel
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.edittext.EditTextFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.PharmacyFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.cri.PharmacyCRIFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.cri.result.PharmacyCRIResultFragmentViewModel
@@ -16,6 +17,8 @@ import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.phar
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.surface.PharmacySurfaceFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.surface.result.PharmacySurfaceResultFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.settings.SettingsFragmentViewModel
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.webview.VetMedicalViewFragmentViewModel
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.webview.WsavaViewFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator.AppScreensImpl
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.CICERONE_NAME
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.FragmentScope
@@ -109,6 +112,21 @@ val screens = module {
     scope(named(FragmentScope.SHOW_SETTINGS_FRAGMENT_SCOPE)) {
         viewModel {
             SettingsFragmentViewModel()
+        }
+    }
+    scope(named(FragmentScope.SHOW_VETMEDICAL_VIEW_FRAGMENT_SCOPE)) {
+        viewModel {
+            VetMedicalViewFragmentViewModel()
+        }
+    }
+    scope(named(FragmentScope.SHOW_WSAVA_VIEW_FRAGMENT_SCOPE)) {
+        viewModel {
+            WsavaViewFragmentViewModel()
+        }
+    }
+    scope(named(FragmentScope.SHOW_EDIT_TEXT_FRAGMENT_SCOPE)) {
+        viewModel {
+            EditTextFragmentViewModel()
         }
     }
     //endregion

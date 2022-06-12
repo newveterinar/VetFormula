@@ -20,11 +20,19 @@ class FragmentScope {
             "SHOW_CALCULATOR_KEYBOARD_FRAGMENT_SCOPE"
         const val SHOW_ABOUT_FRAGMENT_SCOPE = "SHOW_ABOUT_FRAGMENT_SCOPE"
         const val SHOW_SETTINGS_FRAGMENT_SCOPE = "SHOW_SETTINGS_FRAGMENT_SCOPE"
+        const val SHOW_VETMEDICAL_VIEW_FRAGMENT_SCOPE = "SHOW_VETMEDICAL_VIEW_FRAGMENT_SCOPE"
+        const val SHOW_EDIT_TEXT_FRAGMENT_SCOPE = "SHOW_EDIT_TEXT_FRAGMENT_SCOPE"
+        const val SHOW_WSAVA_VIEW_FRAGMENT_SCOPE = "SHOW_WSAVA_VIEW_FRAGMENT_SCOPE"
     }
 }
 
+// SharedPreferences
 const val SHARED_PREFERENCES_KEY: String = "Shared Preferences"
 const val SHARED_PREFERENCES_THEME_KEY: String = "Shared Preferences Is Theme"
+
+// Константы для WebView
+const val VETMEDICAL_URL: String = "https://vetmedical.ru/"
+const val WSAVA_URL: String = "https://wsava.org/"
 
 // Тэги страниц нижнего окна
 const val TAG_VETMEDICAL_BOTTOM_WINDOW: String = "vetmadical"

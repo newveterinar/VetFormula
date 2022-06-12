@@ -6,6 +6,8 @@ import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.Scre
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.ValueField
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ThemesNames
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.VETMEDICAL_URL
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.WSAVA_URL
 
 class SettingsImpl: Settings {
     /** Задание переменных */ //region
@@ -17,6 +19,12 @@ class SettingsImpl: Settings {
     private var inputedScreenData: ScreenData = ScreenData()
     // Переменная для хранения радиуса кнопок в калькуляторе
     private var calculatorRadiusButtons: Int = CALCULATOR_CURRENT_RADIUS_BUTTONS
+    // Переменные для хранения текущей ссылки на сайте Vetmedical
+    private var isVetmedicalOnline: Boolean = false
+    private var currentVetmedicalUrl: String = VETMEDICAL_URL
+    // Переменные для хранения текущей ссылки на сайте Wsava
+    private var isWsavaOnline: Boolean = false
+    private var currentWsavaUrl: String = WSAVA_URL
     //endregion
 
     // Задание темы приложения
@@ -66,6 +74,32 @@ class SettingsImpl: Settings {
     }
     fun getCalculatorRadiusButtons(): Int {
         return calculatorRadiusButtons
+    }
+    //endregion
+
+    //region Методы для сохранения текущей ссылки в окне VetMedicalViewFragment
+    fun getIsVetmedicalOnline(): Boolean {
+        return isVetmedicalOnline
+    }
+    fun setCurrentVetmedicalUrl(currentVetmedicalUrl: String) {
+        isVetmedicalOnline = true
+        this.currentVetmedicalUrl = currentVetmedicalUrl
+    }
+    fun getCurrentVetmedicalUrl(): String {
+        return currentVetmedicalUrl
+    }
+    //endregion
+
+    //region Методы для сохранения текущей ссылки в окне WsavaViewFragment
+    fun getIsWsavaOnline(): Boolean {
+        return isWsavaOnline
+    }
+    fun setCurrentWsavaUrl(currentWsavaUrl: String) {
+        isWsavaOnline = true
+        this.currentWsavaUrl = currentWsavaUrl
+    }
+    fun getCurrentWsavaUrl(): String {
+        return currentWsavaUrl
     }
     //endregion
 }
