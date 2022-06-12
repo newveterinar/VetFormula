@@ -2,12 +2,11 @@ package com.pet.animal.formula.dose.health.veterinary.cure.core.base
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppState
+import com.pet.animal.formula.dose.health.veterinary.cure.model.calculator.CalcConstants
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppStateCalcKeyboard
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
 import kotlinx.coroutines.*
 
-abstract class BaseViewModelCalcKeyboard<T : AppStateCalcKeyboard>(
+abstract class BaseViewModelCalcKeyboard<T: AppStateCalcKeyboard>(
     protected open val _mutableLiveData: MutableLiveData<T> = MutableLiveData(),
 ): BaseViewModelForNavigation() {
     /** Задание переменных */ //region
@@ -38,11 +37,13 @@ abstract class BaseViewModelCalcKeyboard<T : AppStateCalcKeyboard>(
         viewModelCoroutineScope.coroutineContext.cancelChildren()
     }
 
-    // Метод получения данных
-    abstract fun getData()
+    // Метод для отображения вводимой информации
+    abstract fun setInputedHistoryText(newText: String)
+    // Метод для отображения результирующей информации
+    abstract fun setOutputResultText(newText: String)
+    // Отображение ошибок в процессе вычислений
+    abstract fun setErrorText(error: CalcConstants.ERRORS)
 
-    /** Методы сохранения данных */
-    abstract fun saveData()
-
+    // Отображение системной ошибки в работе корутин
     abstract fun handleError(error: Throwable)
 }
