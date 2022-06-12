@@ -229,11 +229,11 @@ class CalculatorKeyboardFragment:
     // Отобразить индикатор ввода вещественного числа
     private fun buttonZapitayChange() {
         if (!viewModel.getPressedZapitay()) {
-            button_zapitay.visibility = View.INVISIBLE
-            button_zapitay_on_off.visibility = View.VISIBLE
-        } else {
             button_zapitay.visibility = View.VISIBLE
             button_zapitay_on_off.visibility = View.INVISIBLE
+        } else {
+            button_zapitay.visibility = View.INVISIBLE
+            button_zapitay_on_off.visibility = View.VISIBLE
         }
     }
 
@@ -252,38 +252,56 @@ class CalculatorKeyboardFragment:
     private fun renderData(appStateCalcKeyboard: AppStateCalcKeyboard) {
         when (appStateCalcKeyboard) {
             is AppStateCalcKeyboard.Success -> {
-                if (appStateCalcKeyboard.calculatorKeyboardData.inputedCalcDates.isNotEmpty() &&
-                    appStateCalcKeyboard.calculatorKeyboardData.errorInCalculator ==
-                    CalcConstants.ERRORS.NO) {
+                if ((appStateCalcKeyboard.calculatorKeyboardData.isInputedCalcDates) &&
+                    (appStateCalcKeyboard.calculatorKeyboardData.errorInCalculator ==
+                    CalcConstants.ERRORS.NO)) {
+                    Toast.makeText(requireContext(), appStateCalcKeyboard.calculatorKeyboardData.inputedCalcDates, Toast.LENGTH_SHORT).show()
                     inputedHistoryText.text =
                         appStateCalcKeyboard.calculatorKeyboardData.inputedCalcDates
                 }
-                if (appStateCalcKeyboard.calculatorKeyboardData.outputedCalcDates.isNotEmpty() &&
-                    appStateCalcKeyboard.calculatorKeyboardData.errorInCalculator ==
-                    CalcConstants.ERRORS.NO) {
+                if ((appStateCalcKeyboard.calculatorKeyboardData.isOutputedCalcDates) &&
+                    (appStateCalcKeyboard.calculatorKeyboardData.errorInCalculator ==
+                    CalcConstants.ERRORS.NO)) {
                     outputResultText.text =
                         appStateCalcKeyboard.calculatorKeyboardData.outputedCalcDates
                 }
-                when(appStateCalcKeyboard.calculatorKeyboardData.errorInCalculator) {
-                    CalcConstants.ERRORS.SQRT_MINUS -> {
-                        // Ошибка: Подкоренное значение меньше нуля
-                        Toast.makeText(requireContext(), resources.getString(
-                            R.string.error_undersquare_low_zero), Toast.LENGTH_SHORT).show()
-                    }
-                    CalcConstants.ERRORS.BRACKET_DISBALANCE -> {
-                        // Ошибка: Количество открытых скобок и закрытых скобок не равно друг другу
-                        Toast.makeText(requireContext(), resources.getString(
-                            R.string.error_different_number_brackets), Toast.LENGTH_SHORT).show()
-                    }
-                    CalcConstants.ERRORS.ZERO_DIVIDE -> {
-                        // Ошибка: Деление на ноль
-                        Toast.makeText(requireContext(), resources.getString(
-                            R.string.error_divide_on_zero), Toast.LENGTH_SHORT).show()
-                    }
-                    CalcConstants.ERRORS.BRACKETS_EMPTY -> {
-                        // Ошибка: Внутри скобок отсутствует число
-                        Toast.makeText(requireContext(), resources.getString(
-                            R.string.error_inside_brackets_empty), Toast.LENGTH_SHORT).show()
+                if ((!appStateCalcKeyboard.calculatorKeyboardData.isOutputedCalcDates) &&
+                    (!appStateCalcKeyboard.calculatorKeyboardData.isOutputedCalcDates)) {
+                    when (appStateCalcKeyboard.calculatorKeyboardData.errorInCalculator) {
+                        CalcConstants.ERRORS.SQRT_MINUS -> {
+                            // Ошибка: Подкоренное значение меньше нуля
+                            Toast.makeText(
+                                requireContext(), resources.getString(
+                                    R.string.error_undersquare_low_zero
+                                ), Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                        CalcConstants.ERRORS.BRACKET_DISBALANCE -> {
+                            // Ошибка: Количество открытых скобок
+                            // и закрытых скобок не равно друг другу
+                            Toast.makeText(
+                                requireContext(), resources.getString(
+                                    R.string.error_different_number_brackets
+                                ), Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                        CalcConstants.ERRORS.ZERO_DIVIDE -> {
+                            // Ошибка: Деление на ноль
+                            Toast.makeText(
+                                requireContext(), resources.getString(
+                                    R.string.error_divide_on_zero
+                                ), Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                        CalcConstants.ERRORS.BRACKETS_EMPTY -> {
+                            // Ошибка: Внутри скобок отсутствует число
+                            Toast.makeText(
+                                requireContext(), resources.getString(
+                                    R.string.error_inside_brackets_empty
+                                ), Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                        else -> {/* Ошибок не обнаружено */}
                     }
                 }
             }

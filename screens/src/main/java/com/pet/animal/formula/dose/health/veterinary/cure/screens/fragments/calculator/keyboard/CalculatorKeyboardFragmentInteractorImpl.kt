@@ -1,15 +1,21 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.calculator.keyboard
 
+import android.widget.Toast
 import com.pet.animal.formula.dose.health.veterinary.cure.core.calculator.CalcLogic
 import com.pet.animal.formula.dose.health.veterinary.cure.model.calculator.CalcConstants
 import com.pet.animal.formula.dose.health.veterinary.cure.model.calculator.CalcKeyboardContract
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.resources.ResourcesProviderImpl
+import org.koin.java.KoinJavaComponent
 import java.util.*
 
 class CalculatorKeyboardFragmentInteractorImpl (
     private val viewModel: CalculatorKeyboardFragmentViewModel
 ): CalcKeyboardContract {
     /** Задание исходных данных */ //region
+    // Сам калькулятор (его логика)
     private val calcLogic = CalcLogic()
+    // Получение доступа к ресурсам
+    val resourcesProviderImpl: ResourcesProviderImpl = KoinJavaComponent.getKoin().get()
     //endregion
 
     //region Методы калькулятора
@@ -32,17 +38,18 @@ class CalculatorKeyboardFragmentInteractorImpl (
             "%s", createOutput()))
     }
     override fun clearAll() {
-        calcLogic.clearAll();
-        viewModel.setInputedHistoryText(String.format(Locale.getDefault(),
-            "%s", createOutput()))
+        calcLogic.clearAll()
+//        viewModel.setInputedHistoryText(String.format(Locale.getDefault(),
+//            "%s", createOutput()))
+        viewModel.setInputedHistoryText("")
         calculate()
         getError()
         viewModel.setOutputResultText(calcLogic.getFinalResult())
+        Toast.makeText(resourcesProviderImpl.context, "clearAll()", Toast.LENGTH_SHORT).show()
     }
     override fun clearOne() {
         if (calcLogic.clearOne()) {
             // TODO: Обновление поля с результатом, доделать, если нужно
-//            setEqual();
         }
         viewModel.setInputedHistoryText(String.format(Locale.getDefault(),
             "%s", createOutput()))
@@ -50,7 +57,6 @@ class CalculatorKeyboardFragmentInteractorImpl (
     override fun clearTwo() {
         if (calcLogic.clearTwo()) {
             // TODO: Обновление поля с результатом, доделать, если нужно
-//            setEqual();
         }
         viewModel.setInputedHistoryText(String.format(Locale.getDefault(),
             "%s", createOutput()))

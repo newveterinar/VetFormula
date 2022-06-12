@@ -20,15 +20,18 @@ class CalculatorKeyboardFragmentViewModel:
     //region Базовые методы вьюмодели
     override fun setInputedHistoryText(newText: String) {
         _mutableLiveData.postValue(AppStateCalcKeyboard.Success(
-            CalculatorKeyboardData(newText, "", CalcConstants.ERRORS.NO)))
+            CalculatorKeyboardData(true, newText,
+                false,"", CalcConstants.ERRORS.NO)))
     }
     override fun setOutputResultText(newText: String) {
         _mutableLiveData.postValue(AppStateCalcKeyboard.Success(
-            CalculatorKeyboardData("", newText, CalcConstants.ERRORS.NO)))
+            CalculatorKeyboardData(false, "",
+                true, newText, CalcConstants.ERRORS.NO)))
     }
     override fun setErrorText(error: CalcConstants.ERRORS) {
         _mutableLiveData.postValue(AppStateCalcKeyboard.Success(
-            CalculatorKeyboardData("", "", error)))
+            CalculatorKeyboardData(false, "",
+                false, "", error)))
     }
     override fun handleError(error: Throwable) {
 //        TODO("Not yet implemented")
@@ -40,55 +43,55 @@ class CalculatorKeyboardFragmentViewModel:
         interactor.setMaxNumberSymbolsInOutputTextField(maxNumberSymbolsInOutputTextField)
     }
     override fun addNumeral(newNumeral: Int): Double {
-        TODO("Not yet implemented")
+        return interactor.addNumeral(newNumeral)
     }
     override fun calculate() {
-        TODO("Not yet implemented")
+        interactor.calculate()
     }
     override fun setCurZapitay() {
-        TODO("Not yet implemented")
+        interactor.setCurZapitay()
     }
     override fun clearAll() {
-        TODO("Not yet implemented")
+        interactor.clearAll()
     }
     override fun clearOne() {
-        TODO("Not yet implemented")
+        interactor.clearOne()
     }
     override fun clearTwo() {
-        TODO("Not yet implemented")
+        interactor.clearTwo()
     }
     override fun setNewAction(action: CalcConstants.ACTIONS) {
-        TODO("Not yet implemented")
+        interactor.setNewAction(action)
     }
     override fun changeSign() {
-        TODO("Not yet implemented")
+        interactor.changeSign()
     }
     override fun setNewFunction(typeFuncInBracket: CalcConstants.FUNCTIONS): String {
-        TODO("Not yet implemented")
+        return interactor.setNewFunction(typeFuncInBracket)
     }
     override fun getPressedZapitay(): Boolean {
-        TODO("Not yet implemented")
+        return interactor.getPressedZapitay()
     }
     override fun createOutput(): String {
-        TODO("Not yet implemented")
+        return interactor.createOutput()
     }
     override fun getFinalResult(): String {
-        TODO("Not yet implemented")
+        return interactor.getFinalResult()
     }
     override fun setEqual() {
-        TODO("Not yet implemented")
+        interactor.setEqual()
     }
     override fun getError() {
-        TODO("Not yet implemented")
+        interactor.getError()
     }
     override fun setBracketOpen() {
-        TODO("Not yet implemented")
+        interactor.setBracketOpen()
     }
     override fun setBracketClose() {
-        TODO("Not yet implemented")
+        interactor.setBracketClose()
     }
     override fun getInit() {
-        TODO("Not yet implemented")
+        interactor.getInit()
     }
     //endregion
 
