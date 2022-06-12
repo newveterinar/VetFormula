@@ -39,13 +39,12 @@ class CalculatorKeyboardFragmentInteractorImpl (
     }
     override fun clearAll() {
         calcLogic.clearAll()
-//        viewModel.setInputedHistoryText(String.format(Locale.getDefault(),
-//            "%s", createOutput()))
         viewModel.setInputedHistoryText("")
         calculate()
         getError()
         viewModel.setOutputResultText(calcLogic.getFinalResult())
-        Toast.makeText(resourcesProviderImpl.context, "clearAll()", Toast.LENGTH_SHORT).show()
+        viewModel.setInputedHistoryText(String.format(Locale.getDefault(),
+            "%s", createOutput()))
     }
     override fun clearOne() {
         if (calcLogic.clearOne()) {

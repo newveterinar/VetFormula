@@ -22,7 +22,6 @@ import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
 import org.koin.java.KoinJavaComponent
 
-
 class CalculatorKeyboardFragment:
     BaseFragment<FragmentCalculatorKeyboardBinding>(FragmentCalculatorKeyboardBinding::inflate),
     View.OnClickListener {
@@ -284,7 +283,6 @@ class CalculatorKeyboardFragment:
                 if ((appStateCalcKeyboard.calculatorKeyboardData.isInputedCalcDates) &&
                     (appStateCalcKeyboard.calculatorKeyboardData.errorInCalculator ==
                     CalcConstants.ERRORS.NO)) {
-                    Toast.makeText(requireContext(), appStateCalcKeyboard.calculatorKeyboardData.inputedCalcDates, Toast.LENGTH_SHORT).show()
                     inputedHistoryText.text =
                         appStateCalcKeyboard.calculatorKeyboardData.inputedCalcDates
                 }
@@ -299,8 +297,8 @@ class CalculatorKeyboardFragment:
                     when (appStateCalcKeyboard.calculatorKeyboardData.errorInCalculator) {
                         CalcConstants.ERRORS.SQRT_MINUS -> {
                             // Ошибка: Подкоренное значение меньше нуля
-                            Toast.makeText(
-                                requireContext(), resources.getString(
+                            Toast.makeText(requireContext(),
+                                resources.getString(
                                     R.string.error_undersquare_low_zero
                                 ), Toast.LENGTH_SHORT
                             ).show()
@@ -308,24 +306,23 @@ class CalculatorKeyboardFragment:
                         CalcConstants.ERRORS.BRACKET_DISBALANCE -> {
                             // Ошибка: Количество открытых скобок
                             // и закрытых скобок не равно друг другу
-                            Toast.makeText(
-                                requireContext(), resources.getString(
+                            Toast.makeText(requireContext(),
+                                resources.getString(
                                     R.string.error_different_number_brackets
-                                ), Toast.LENGTH_SHORT
-                            ).show()
+                                ),
+                                Toast.LENGTH_SHORT).show()
                         }
                         CalcConstants.ERRORS.ZERO_DIVIDE -> {
                             // Ошибка: Деление на ноль
-                            Toast.makeText(
-                                requireContext(), resources.getString(
+                            Toast.makeText(requireContext(),
+                                resources.getString(
                                     R.string.error_divide_on_zero
-                                ), Toast.LENGTH_SHORT
-                            ).show()
+                                ), Toast.LENGTH_SHORT).show()
                         }
                         CalcConstants.ERRORS.BRACKETS_EMPTY -> {
                             // Ошибка: Внутри скобок отсутствует число
-                            Toast.makeText(
-                                requireContext(), resources.getString(
+                            Toast.makeText(requireContext(),
+                                resources.getString(
                                     R.string.error_inside_brackets_empty
                                 ), Toast.LENGTH_SHORT
                             ).show()
