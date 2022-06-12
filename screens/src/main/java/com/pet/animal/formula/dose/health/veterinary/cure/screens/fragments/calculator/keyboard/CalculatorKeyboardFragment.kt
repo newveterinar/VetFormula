@@ -348,19 +348,30 @@ class CalculatorKeyboardFragment:
         val constraintLayout: ConstraintLayout = binding.calculatorContainer
         val constraintSet = ConstraintSet()
         constraintSet.clone(constraintLayout)
-        constraintSet.constrainCircle(R.id.zero, R.id.result, newRadius, 0f)
-        constraintSet.constrainCircle(R.id.one, R.id.result, newRadius, 30f)
-        constraintSet.constrainCircle(R.id.two, R.id.result, newRadius, 60f)
-        constraintSet.constrainCircle(R.id.three, R.id.result, newRadius, 90f)
-        constraintSet.constrainCircle(R.id.four, R.id.result, newRadius, 120f)
-        constraintSet.constrainCircle(R.id.five, R.id.result, newRadius, 150f)
-        constraintSet.constrainCircle(R.id.six, R.id.result, newRadius, 180f)
-        constraintSet.constrainCircle(R.id.seven, R.id.result, newRadius, 210f)
-        constraintSet.constrainCircle(R.id.eight, R.id.result, newRadius, 240f)
-        constraintSet.constrainCircle(R.id.nine, R.id.result, newRadius, 270f)
-        constraintSet.constrainCircle(R.id.divide, R.id.result, newRadius, 300f)
-        constraintSet.constrainCircle(R.id.minus, R.id.result, newRadius, 330f)
-        constraintSet.constrainCircle(R.id.minus, R.id.result, newRadius, 330f)
+        constraintSet.constrainCircle(R.id.zero, R.id.result, newRadius,
+            resources.getInteger(R.integer.angle_zero).toFloat())
+        constraintSet.constrainCircle(R.id.one, R.id.result, newRadius,
+            resources.getInteger(R.integer.angle_thirty).toFloat())
+        constraintSet.constrainCircle(R.id.two, R.id.result, newRadius,
+            resources.getInteger(R.integer.angle_sixty).toFloat())
+        constraintSet.constrainCircle(R.id.three, R.id.result, newRadius,
+            resources.getInteger(R.integer.angle_ninety).toFloat())
+        constraintSet.constrainCircle(R.id.four, R.id.result, newRadius,
+            resources.getInteger(R.integer.angle_one_hundred_and_twenty).toFloat())
+        constraintSet.constrainCircle(R.id.five, R.id.result, newRadius,
+            resources.getInteger(R.integer.angle_one_hundred_and_fifty).toFloat())
+        constraintSet.constrainCircle(R.id.six, R.id.result, newRadius,
+            resources.getInteger(R.integer.angle_one_hundred_and_eighty).toFloat())
+        constraintSet.constrainCircle(R.id.seven, R.id.result, newRadius,
+            resources.getInteger(R.integer.angle_two_hundred_and_ten).toFloat())
+        constraintSet.constrainCircle(R.id.eight, R.id.result, newRadius,
+            resources.getInteger(R.integer.angle_two_hundred_and_forty).toFloat())
+        constraintSet.constrainCircle(R.id.nine, R.id.result, newRadius,
+            resources.getInteger(R.integer.angle_two_hundred_and_seventy).toFloat())
+        constraintSet.constrainCircle(R.id.divide, R.id.result, newRadius,
+            resources.getInteger(R.integer.angle_three_hundred).toFloat())
+        constraintSet.constrainCircle(R.id.minus, R.id.result, newRadius,
+            resources.getInteger(R.integer.angle_three_hundred_and_thirty).toFloat())
         constraintSet.applyTo(constraintLayout)
     }
 }

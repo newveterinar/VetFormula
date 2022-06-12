@@ -90,7 +90,7 @@
                     android:text="@string/_0"
                     android:visibility="visible"
                     app:layout_constraintCircle="@id/result"
-                    app:layout_constraintCircleAngle="0"
+                    app:layout_constraintCircleAngle="@integer/angle_zero"
                     app:layout_constraintCircleRadius="@dimen/button_circle_radius"
                     app:layout_constraintEnd_toStartOf="@id/one"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -102,7 +102,7 @@
                     android:visibility="visible"
                     app:layout_constraintBottom_toTopOf="@id/two"
                     app:layout_constraintCircle="@id/result"
-                    app:layout_constraintCircleAngle="30"
+                    app:layout_constraintCircleAngle="@integer/angle_thirty"
                     app:layout_constraintCircleRadius="@dimen/button_circle_radius"
                     app:layout_constraintStart_toEndOf="@id/zero" />
 
@@ -113,7 +113,7 @@
                     android:visibility="visible"
                     app:layout_constraintBottom_toTopOf="@id/result"
                     app:layout_constraintCircle="@id/result"
-                    app:layout_constraintCircleAngle="60"
+                    app:layout_constraintCircleAngle="@integer/angle_sixty"
                     app:layout_constraintCircleRadius="@dimen/button_circle_radius"
                     app:layout_constraintStart_toEndOf="@id/result" />
 
@@ -123,7 +123,7 @@
                     android:text="@string/_3"
                     android:visibility="visible"
                     app:layout_constraintCircle="@id/result"
-                    app:layout_constraintCircleAngle="90"
+                    app:layout_constraintCircleAngle="@integer/angle_ninety"
                     app:layout_constraintCircleRadius="@dimen/button_circle_radius"
                     app:layout_constraintStart_toEndOf="@id/result"
                     app:layout_constraintTop_toBottomOf="@id/two" />
@@ -134,7 +134,7 @@
                     android:text="@string/_4"
                     android:visibility="visible"
                     app:layout_constraintCircle="@id/result"
-                    app:layout_constraintCircleAngle="120"
+                    app:layout_constraintCircleAngle="@integer/angle_one_hundred_and_twenty"
                     app:layout_constraintCircleRadius="@dimen/button_circle_radius"
                     app:layout_constraintStart_toEndOf="@id/result"
                     app:layout_constraintTop_toBottomOf="@id/three" />
@@ -145,7 +145,7 @@
                     android:text="@string/_5"
                     android:visibility="visible"
                     app:layout_constraintCircle="@id/result"
-                    app:layout_constraintCircleAngle="150"
+                    app:layout_constraintCircleAngle="@integer/angle_one_hundred_and_fifty"
                     app:layout_constraintCircleRadius="@dimen/button_circle_radius"
                     app:layout_constraintEnd_toStartOf="@id/four"
                     app:layout_constraintTop_toBottomOf="@id/four" />
@@ -156,7 +156,7 @@
                     android:text="@string/_6"
                     android:visibility="visible"
                     app:layout_constraintCircle="@id/result"
-                    app:layout_constraintCircleAngle="180"
+                    app:layout_constraintCircleAngle="@integer/angle_one_hundred_and_eighty"
                     app:layout_constraintCircleRadius="@dimen/button_circle_radius"
                     app:layout_constraintEnd_toStartOf="@id/five"
                     app:layout_constraintTop_toBottomOf="@id/equal" />
@@ -167,7 +167,7 @@
                     android:text="@string/_7"
                     android:visibility="visible"
                     app:layout_constraintCircle="@id/result"
-                    app:layout_constraintCircleAngle="210"
+                    app:layout_constraintCircleAngle="@integer/angle_two_hundred_and_ten"
                     app:layout_constraintCircleRadius="@dimen/button_circle_radius"
                     app:layout_constraintEnd_toStartOf="@id/six"
                     app:layout_constraintTop_toBottomOf="@id/eight" />
@@ -179,7 +179,7 @@
                     android:visibility="visible"
                     app:layout_constraintBottom_toTopOf="@id/seven"
                     app:layout_constraintCircle="@id/result"
-                    app:layout_constraintCircleAngle="240"
+                    app:layout_constraintCircleAngle="@integer/angle_two_hundred_and_forty"
                     app:layout_constraintCircleRadius="@dimen/button_circle_radius"
                     app:layout_constraintEnd_toStartOf="@id/seven" />
 
@@ -190,7 +190,7 @@
                     android:visibility="visible"
                     app:layout_constraintBottom_toTopOf="@id/eight"
                     app:layout_constraintCircle="@id/result"
-                    app:layout_constraintCircleAngle="270"
+                    app:layout_constraintCircleAngle="@integer/angle_two_hundred_and_seventy"
                     app:layout_constraintCircleRadius="@dimen/button_circle_radius"
                     app:layout_constraintEnd_toStartOf="@id/result" />
 
@@ -201,7 +201,7 @@
                     android:visibility="visible"
                     app:layout_constraintBottom_toTopOf="@id/result"
                     app:layout_constraintCircle="@id/result"
-                    app:layout_constraintCircleAngle="300"
+                    app:layout_constraintCircleAngle="@integer/angle_three_hundred"
                     app:layout_constraintCircleRadius="@dimen/button_circle_radius"
                     app:layout_constraintEnd_toStartOf="@id/result" />
 
@@ -212,7 +212,7 @@
                     android:visibility="visible"
                     app:layout_constraintBottom_toTopOf="@id/divide"
                     app:layout_constraintCircle="@id/result"
-                    app:layout_constraintCircleAngle="330"
+                    app:layout_constraintCircleAngle="@integer/angle_three_hundred_and_thirty"
                     app:layout_constraintCircleRadius="@dimen/button_circle_radius"
                     app:layout_constraintEnd_toStartOf="@id/zero" />
 
