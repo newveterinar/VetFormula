@@ -61,6 +61,10 @@ class EditTextFragment : BaseFragment<FragmentEditTextBinding>(FragmentEditTextB
         initViewModel()
         initButtons()
 
+        viewModel.notesLiveData.observe(viewLifecycleOwner){
+            binding.editTextText.setText(it)
+        }
+
         viewModel.urlLiveData.observe(viewLifecycleOwner) { pair ->
             val builder = AlertDialog.Builder(requireContext())
             val inflater = layoutInflater
@@ -72,11 +76,11 @@ class EditTextFragment : BaseFragment<FragmentEditTextBinding>(FragmentEditTextB
                 dialogView.findViewById<Button>(R.id.btn_save_vetmedical)
             val btnSaveCancle = dialogView.findViewById<Button>(R.id.btn_save_cancle)
             btnSaveVetmedical.setOnClickListener {
-                binding.editTextText.setText(viewModel.urlLiveData.value?.second)
+                viewModel.addUrlAsNote(viewModel.urlLiveData.value?.first)
                 dialog.dismiss()
             }
             btnSaveWasa.setOnClickListener {
-                binding.editTextText.setText(viewModel.urlLiveData.value?.first)
+                viewModel.addUrlAsNote(viewModel.urlLiveData.value?.second)
                 dialog.dismiss()
             }
             btnSaveCancle.setOnClickListener {
