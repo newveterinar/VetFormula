@@ -39,6 +39,7 @@
         android:id="@+id/edit_text_text"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:gravity="top"
         android:background="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_save_load_group"

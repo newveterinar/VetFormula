@@ -71,21 +71,8 @@ class EditTextFragment : BaseFragment<FragmentEditTextBinding>(FragmentEditTextB
             val dialogView = inflater.inflate(R.layout.dialog_save, null)
             builder.setView(dialogView)
             val dialog = builder.create()
-            val btnSaveWasa = dialogView.findViewById<Button>(R.id.btn_save_wasa)
-            val btnSaveVetmedical =
-                dialogView.findViewById<Button>(R.id.btn_save_vetmedical)
-            val btnSaveCancle = dialogView.findViewById<Button>(R.id.btn_save_cancle)
-            btnSaveVetmedical.setOnClickListener {
-                viewModel.addUrlAsNote(viewModel.urlLiveData.value?.first)
-                dialog.dismiss()
-            }
-            btnSaveWasa.setOnClickListener {
-                viewModel.addUrlAsNote(viewModel.urlLiveData.value?.second)
-                dialog.dismiss()
-            }
-            btnSaveCancle.setOnClickListener {
-                dialog.dismiss()
-            }
+            setAlertDialogButtonListener(dialog, dialogView)
+
             dialog.show()
         }
     }
@@ -114,5 +101,25 @@ class EditTextFragment : BaseFragment<FragmentEditTextBinding>(FragmentEditTextB
     private fun initViewModel() {
         val _viewModel: EditTextFragmentViewModel by showEditTextFragmentScope.inject()
         viewModel = _viewModel
+    }
+
+
+
+    private fun setAlertDialogButtonListener(dialog: AlertDialog, dialogView: View) {
+        val btnSaveWasa = dialogView.findViewById<Button>(R.id.btn_save_wasa)
+        val btnSaveVetmedical =
+            dialogView.findViewById<Button>(R.id.btn_save_vetmedical)
+        val btnSaveCancle = dialogView.findViewById<Button>(R.id.btn_save_cancle)
+        btnSaveVetmedical.setOnClickListener {
+            viewModel.addUrlAsNote(viewModel.urlLiveData.value?.first)
+            dialog.dismiss()
+        }
+        btnSaveWasa.setOnClickListener {
+            viewModel.addUrlAsNote(viewModel.urlLiveData.value?.second)
+            dialog.dismiss()
+        }
+        btnSaveCancle.setOnClickListener {
+            dialog.dismiss()
+        }
     }
 }
