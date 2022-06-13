@@ -9,8 +9,8 @@ import com.pet.animal.formula.dose.health.veterinary.cure.utils.*
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
-class TimerViewModel() : BaseViewModelForNavigation(), CoroutineScope {
-
+class TimerViewModel: BaseViewModelForNavigation(), CoroutineScope {
+    /** Задание переменных */ //region
     private var ticks: MutableList<Long> = mutableListOf()
 
     private var mTickInMinutes: MutableLiveData<Double> = MutableLiveData()
@@ -25,14 +25,10 @@ class TimerViewModel() : BaseViewModelForNavigation(), CoroutineScope {
 
     private var tapCount: Int = 0
 
-
     lateinit var job: Job
 
 
-
-
     var timerBDD:LiveData<Double> = mTimerBDD
-    var tickInMinutes: LiveData<Double> = mTickInMinutes
     var tickManual : LiveData<Double> = mManualRate
 
     var onTimer: LiveData<Boolean> = mOnTimer
@@ -40,6 +36,7 @@ class TimerViewModel() : BaseViewModelForNavigation(), CoroutineScope {
     val mute: LiveData<Boolean> = mMute
 
     var timerTo = NUMBER_SECONDS_IN_MINUTE.toInt()
+    //endregion
 
     fun startTimer() {
         if (mOnTimer.value == true) return

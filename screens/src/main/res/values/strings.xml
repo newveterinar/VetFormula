@@ -94,7 +94,7 @@
     <string name="timerText_text">00:00</string>
     <string name="startTimerButton_text">Run</string>
     <string name="inputManualCount_text">0</string>
-    <string name="textView3_text">Enter the number of measurements</string>
+    <string name="textView3_text">Heartbeats</string>
     <string name="tickInMinutes_text">0.00</string>
     <string name="buttonResetTickCounter_text">Reset tick counter</string>
     <string name="timer_previous_text_text">Timer</string>
@@ -133,7 +133,6 @@
     <string name="buttonPlusMinute_text">+1</string>
     <string name="buttonMuteUnMute_mute_text">MUTE</string>
     <string name="buttonMuteUnMute_unmute_text">UNMUTE</string>
-    <string name="textView_text">Calculation for all clicks</string>
-    <string name="textView2_text">Calculation taking into account the timer</string>
+    <string name="textView2_text">Calculation BDD</string>
     <string name="textViewHR_text">(HR)</string>
 </resources>

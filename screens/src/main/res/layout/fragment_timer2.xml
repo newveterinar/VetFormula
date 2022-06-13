@@ -130,7 +130,8 @@
                 style="@style/number_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number|numberDecimal" />
+                android:inputType="number|numberDecimal"
+                android:cursorVisible="true"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -169,37 +170,15 @@
             app:layout_constraintTop_toBottomOf="@+id/buttonPlusMinute" />
 
         <TextView
-            android:id="@+id/textView"
-            android:layout_width="@dimen/zero_dimension"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/textView_margin_top"
-            android:layout_marginStart="@dimen/textView_margin_start"
-            android:layout_marginEnd="@dimen/textView_margin_end"
-            android:layout_marginBottom="@dimen/textView_margin_bottom"
-            android:text="@string/textView_text"
-            app:layout_constraintTop_toBottomOf="@+id/labelManualCount"
-            app:layout_constraintEnd_toStartOf="@+id/tickInMinutes"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/tickInMinutes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/tickInMinutes_margin_end"
-            android:textSize="@dimen/tickInMinutes_text_size"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="@+id/textView"
-            tools:text="@string/tickInMinutes_text" />
-
-        <TextView
             android:id="@+id/textView2"
+            style="@style/number_button"
             android:layout_width="@dimen/zero_dimension"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/textView2_margin_start"
             android:layout_marginBottom="@dimen/textView2_margin_bottom"
             android:layout_marginTop="@dimen/textView2_margin_top"
             android:text="@string/textView2_text"
-            app:layout_constraintTop_toBottomOf="@id/textView"
+            app:layout_constraintTop_toBottomOf="@id/labelManualCount"
             app:layout_constraintEnd_toStartOf="@+id/tickInMinutesTimer"
             app:layout_constraintStart_toStartOf="parent" />
 

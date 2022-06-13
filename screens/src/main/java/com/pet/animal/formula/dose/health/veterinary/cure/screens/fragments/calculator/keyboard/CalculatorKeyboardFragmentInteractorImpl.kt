@@ -42,7 +42,8 @@ class CalculatorKeyboardFragmentInteractorImpl (
         viewModel.setInputedHistoryText("")
         calculate()
         getError()
-        viewModel.setOutputResultText(calcLogic.getFinalResult())
+//        viewModel.setOutputResultText(calcLogic.getFinalResult())
+        viewModel.setOutputResultText("0")
         viewModel.setInputedHistoryText(String.format(Locale.getDefault(),
             "%s", createOutput()))
     }
