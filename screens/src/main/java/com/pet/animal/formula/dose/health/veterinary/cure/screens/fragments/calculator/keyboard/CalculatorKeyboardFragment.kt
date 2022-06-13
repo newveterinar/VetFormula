@@ -10,8 +10,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.model.calculator.CalcConstants
-import com.pet.animal.formula.dose.health.veterinary.cure.model.calculator.CalcConstants.ACTIONS
-import com.pet.animal.formula.dose.health.veterinary.cure.model.calculator.CalcConstants.FUNCTIONS
+import com.pet.animal.formula.dose.health.veterinary.cure.model.calculator.CalcConstants.*
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppStateCalcKeyboard
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentCalculatorKeyboardBinding
@@ -221,6 +220,8 @@ class CalculatorKeyboardFragment:
                 viewModel.setBracketClose()
             } else if (it.id == button_backspace.id) {
                 viewModel.clearAll()
+                // Заглушка для обнуления поля с результатом
+                outputResultText.text = ZERO_TEXT
             } else if (it.id == button_backspace_one.id) {
                 viewModel.clearOne()
             } else if (it.id == button_backspace_two.id) {

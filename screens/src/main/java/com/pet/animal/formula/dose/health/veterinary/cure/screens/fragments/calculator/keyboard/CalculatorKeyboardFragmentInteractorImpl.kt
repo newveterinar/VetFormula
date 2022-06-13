@@ -39,11 +39,9 @@ class CalculatorKeyboardFragmentInteractorImpl (
     }
     override fun clearAll() {
         calcLogic.clearAll()
-        viewModel.setInputedHistoryText("")
         calculate()
         getError()
-//        viewModel.setOutputResultText(calcLogic.getFinalResult())
-        viewModel.setOutputResultText("0")
+        viewModel.setOutputResultText(calcLogic.getFinalResult())
         viewModel.setInputedHistoryText(String.format(Locale.getDefault(),
             "%s", createOutput()))
     }
