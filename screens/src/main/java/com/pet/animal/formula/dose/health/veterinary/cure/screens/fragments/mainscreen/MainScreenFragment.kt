@@ -25,6 +25,14 @@ class MainScreenFragment :
         initNavigationButtons()
         // Инициализация ViewModel
         initViewModel()
+
+        setToastHintObserver()
+    }
+
+    private fun setToastHintObserver() {
+        viewModel.toastHint.observe(viewLifecycleOwner){
+            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+        }
     }
 
     // Инициализация кнопок
@@ -60,7 +68,27 @@ class MainScreenFragment :
                     }
                 }
             }
+            button?.setOnLongClickListener {
+                when (index) {
+                    4 -> {
+                        setToastHint(getString(R.string.main_screen_settings_hint))
+                        true
+                    }
+                    6 -> {
+                        setToastHint(getString(R.string.main_screen_about_hint))
+                        true
+                    }
+                    else -> {
+                        false
+                    }
+                }
+            }
         }
+    }
+
+    private fun setToastHint(hint: String) {
+        viewModel.setToastHint(getString(R.string.long_click_hint,
+            hint))
     }
 
     // Инициализация ViewModel

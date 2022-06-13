@@ -113,17 +113,17 @@
     \nФедорченко Максим Константинович </string>
     <string name="about_contact">Связаться с нами: newveterinar@mail.ru</string>
     <string name="long_click_hint">Подсказка: %s</string>
-    <string name="pharmacy_surface_animal_type_description">выберите тип животого.</string>
-    <string name="pharmacy_surface_animal_weight_description">введите вес животного.</string>
-    <string name="pharmacy_dose_animal_weight_description">введите вес животного.</string>
-    <string name="pharmacy_dose_dose_description">введите дозу препарата.</string>
-    <string name="pharmacy_dose_drug_concentration_description">введите концентрацию препарата.</string>
-    <string name="pharmacy_cri_animal_weight_description">введите вес животного.</string>
-    <string name="pharmacy_cri_drug_concentration_description">введите концентрацию препарата.</string>
-    <string name="pharmacy_cri_dose_description">введите дозу препарата.</string>
-    <string name="pharmacy_cri_rate_description">введите скорость введения  препарата.</string>
-    <string name="pharmacy_cri_giving_set_description">выберите имеется ли у вас капельная система.</string>
-    <string name="pharmacy_cri_fluid_amount_description">введите объем жидкости.</string>
+    <string name="pharmacy_surface_animal_type_hint">выберите тип животого.</string>
+    <string name="pharmacy_surface_animal_weight_hint">введите вес животного.</string>
+    <string name="pharmacy_dose_animal_weight_hint">введите вес животного.</string>
+    <string name="pharmacy_dose_dose_hint">введите дозу препарата.</string>
+    <string name="pharmacy_dose_drug_concentration_hint">введите концентрацию препарата.</string>
+    <string name="pharmacy_cri_animal_weight_hint">введите вес животного.</string>
+    <string name="pharmacy_cri_drug_concentration_hint">введите концентрацию препарата.</string>
+    <string name="pharmacy_cri_dose_hint">введите дозу препарата.</string>
+    <string name="pharmacy_cri_rate_hint">введите скорость введения  препарата.</string>
+    <string name="pharmacy_cri_giving_set_hint">выберите имеется ли у вас капельная система.</string>
+    <string name="pharmacy_cri_fluid_amount_hint">введите объем жидкости.</string>
     <string name="pharmacy_result_drip_rate_title_text">Скорость капельной системы</string>
     <string name="pharmacy_result_drip_rate_time_title_text_text">Одна капля каждые</string>
     <string name="pharmacy_result_rate_rate_title_text_text">Скорость:</string>
@@ -135,4 +135,6 @@
     <string name="buttonMuteUnMute_unmute_text">Без\nзвука</string>
     <string name="textView2_text">Расчет ЧДД</string>
     <string name="textViewHR_text">(ЧСС)</string>
+    <string name="main_screen_settings_hint">переход на экран настроек.</string>
+    <string name="main_screen_about_hint">переход на экран \"О приложении\".</string>
 </resources>
