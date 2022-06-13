@@ -94,7 +94,7 @@
     <string name="timerText_text">00:00</string>
     <string name="startTimerButton_text">Запустить\nтаймер</string>
     <string name="inputManualCount_text">0</string>
-    <string name="textView3_text">Введите количество измерений</string>
+    <string name="textView3_text">Сердцебиение</string>
     <string name="tickInMinutes_text">0.00</string>
     <string name="buttonResetTickCounter_text">Сбросить значений</string>
     <string name="timer_previous_text_text">Таймер</string>
@@ -133,7 +133,6 @@
     <string name="buttonPlusMinute_text">+1</string>
     <string name="buttonMuteUnMute_mute_text">Есть\nзвук</string>
     <string name="buttonMuteUnMute_unmute_text">Без\nзвука</string>
-    <string name="textView_text">Расчет по всем нажатиям</string>
-    <string name="textView2_text">Расчет с учетом таймера</string>
+    <string name="textView2_text">Расчет ЧДД</string>
     <string name="textViewHR_text">(ЧСС)</string>
 </resources>

@@ -77,6 +77,7 @@ const val DELAY_TIME: Long = 1000
 const val START_VALUE: Double = 0.00
 const val SHORT_CONSTANT = 100
 const val LONG_CONSTANT = 200
+const val START_LABEL_TIMER: String = "1:00"
 
 // Индексы в массиве addFirstSecond
 const val ADDFIRST_INDEX = 0
