@@ -25,11 +25,11 @@
 
     <!-- Цвета для калькулятора -->
     <!-- Main theme colors day -->
-    <color name="red_day">#D50000</color>
-    <color name="red_center_day">#D53900</color>
-    <color name="red_erase_day">#6F0000</color>
-    <color name="green_day">#669900</color>
-    <color name="background_color_day">#FF6D00</color>
-    <color name="background_input_history_color_day">#FFD600</color>
+    <color name="red_day">#e9ff7d</color>
+    <color name="red_center_day">#FF3700B3</color>
+    <color name="red_erase_day">#FF000000</color>
+    <color name="green_day">#219b43</color>
+    <color name="background_color_day">#20D753</color>
+    <color name="background_input_history_color_day">#FF03DAC5</color>
 
 </resources>
