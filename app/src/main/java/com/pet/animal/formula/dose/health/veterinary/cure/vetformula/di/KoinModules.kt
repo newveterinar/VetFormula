@@ -9,6 +9,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.abou
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.calculator.CalculatorFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.calculator.keyboard.CalculatorKeyboardFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.edittext.EditTextFragmentViewModel
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.gas.GasFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.PharmacyFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.cri.PharmacyCRIFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.cri.result.PharmacyCRIResultFragmentViewModel
@@ -102,6 +103,11 @@ val screens = module {
     scope(named(FragmentScope.SHOW_CALCULATOR_KEYBOARD_FRAGMENT_SCOPE)) {
         viewModel {
             CalculatorKeyboardFragmentViewModel()
+        }
+    }
+    scope(named(FragmentScope.SHOW_GAS_FRAGMENT_SCOPE)) {
+        viewModel {
+            GasFragmentViewModel()
         }
     }
     scope(named(FragmentScope.SHOW_ABOUT_FRAGMENT_SCOPE)) {

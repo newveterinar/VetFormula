@@ -269,7 +269,7 @@ class CalculatorKeyboardFragment:
     // Инициализация ViewModel
     private fun initViewModel() {
         val _viewModel: CalculatorKeyboardFragmentViewModel by
-        showCalculatorKeyboardFragmentScope.inject()
+            showCalculatorKeyboardFragmentScope.inject()
         viewModel = _viewModel
         // Отображение текущих значений числовых поле и списков
         viewModel.subscribe().observe(viewLifecycleOwner) {

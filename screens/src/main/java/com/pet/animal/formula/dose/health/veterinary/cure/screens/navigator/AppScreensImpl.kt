@@ -7,7 +7,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.edit
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.about.AboutFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.calculator.CalculatorFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.calculator.keyboard.CalculatorKeyboardFragment
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.conversions.ConversionsFragment
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.gas.GasFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.fluids.FluidsFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.hematology.HematologyFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.PharmacyFragment
@@ -72,9 +72,9 @@ class AppScreensImpl: AppScreens {
     }
     //endregion
 
-    //region Conversions
-    override fun conversionsScreen() = FragmentScreen {
-        ConversionsFragment.newInstance()
+    //region Gas
+    override fun gasScreen() = FragmentScreen {
+        GasFragment.newInstance()
     }
     //endregion
 

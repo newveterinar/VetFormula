@@ -49,7 +49,7 @@ class MainScreenFragment :
                     0 -> viewModel.router.navigateTo(viewModel.screens.pharmacyScreen())
                     1 -> viewModel.router.navigateTo(viewModel.screens.fluidsScreen())
                     2 -> viewModel.router.navigateTo(viewModel.screens.hematologyScreen())
-                    3 -> viewModel.router.navigateTo(viewModel.screens.conversionsScreen())
+                    3 -> viewModel.router.navigateTo(viewModel.screens.gasScreen())
                     4 -> viewModel.router.navigateTo(viewModel.screens.settingsScreen())
                     5 -> viewModel.router.navigateTo(viewModel.screens.calculatorScreen())
                     6 -> viewModel.router.navigateTo(viewModel.screens.aboutScreen())
