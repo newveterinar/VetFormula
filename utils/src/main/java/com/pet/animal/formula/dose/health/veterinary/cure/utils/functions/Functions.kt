@@ -248,12 +248,13 @@ fun TextView.createStringResult(
                     R.array.input_data_dimension_volume_list)[0]}"
 
                 if (screenTypeIndex == ScreenType.PHARMACY_CRI.ordinal) {
+                    val ending = "(${valueFields[2].value} ${resourcesProviderImpl.context.resources.
+                    getStringArray(R.array.
+                    input_data_dimension_concentration_short_list)[valueFields[2].
+                    dimension]} ${resourcesProviderImpl.context.resources.
+                    getString(R.string.solution)})"
                     result = SpannableString("${this.text} $initialString " +
-                            "(${valueFields[2].value} ${resourcesProviderImpl.context.resources.
-                            getStringArray(R.array.
-                            input_data_dimension_concentration_short_list)[valueFields[2].
-                            dimension]} ${resourcesProviderImpl.context.resources.
-                            getString(R.string.solution)})")
+                            ending)
                 } else {
                     result = SpannableString("${this.text} $initialString")
                 }
