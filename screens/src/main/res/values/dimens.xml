@@ -414,7 +414,7 @@
     <dimen name="progressbar_wsava_width">70dp</dimen>
     <dimen name="progressbar_wsava_height">70dp</dimen>
     <dimen name="btn_save_load_group_margin_start">16dp</dimen>
-    <dimen name="btn_save_load_group_horizontal_gap">32dp</dimen>
+    <dimen name="btn_save_load_group_horizontal_gap">5dp</dimen>
     <dimen name="btn_save_note_width">0dp</dimen>
     <dimen name="btn_load_note_width">0dp</dimen>
     <dimen name="btn_delete_note_width">0dp</dimen>

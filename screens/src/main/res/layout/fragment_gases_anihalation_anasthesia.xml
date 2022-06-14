@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/colorPrimary">
@@ -33,7 +34,6 @@
                 android:scaleY="@dimen/clear_button_scale_y"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_triangle" />
 
@@ -76,9 +76,9 @@
                 style="@style/text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/pharmacy_surface_previous_text_margin_start"
+                android:layout_marginStart="@dimen/body_surface_layout_marginStart"
                 android:paddingStart="@dimen/pharmacy_surface_previous_text_padding_start"
-                android:text="@string/pharmacy_cri_previous_text_text"
+                android:text="@string/pharmacy_surface_previous_text_text"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -105,21 +105,42 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingBottom="@dimen/settings_surface_button_width"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/pharmacy_horizontal_border">
 
+            <TextView
+                android:id="@+id/pharmacy_type_animal_title"
+                style="@style/button_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/pharmacy_type_animal_title_margin_start"
+                android:layout_marginTop="@dimen/pharmacy_type_animal_title_margin_top"
+                android:text="@string/pharmacy_type_animal_title_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/pharmacy_type_animal_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/pharmacy_type_animal_list_margin_start"
+                android:layout_marginEnd="@dimen/pharmacy_type_animal_list_margin_end"
+                android:entries="@array/addFirstSecond_animal_type_list"
+                android:singleLine="false"
+                android:theme="@style/SpinnerTypes"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/pharmacy_type_animal_title" />
 
             <TextView
                 android:id="@+id/pharmacy_weight_animal_title"
                 style="@style/button_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/pharmacy_type_animal_title_margin_start"
-                android:layout_marginTop="@dimen/pharmacy_type_animal_title_margin_top"
+                android:layout_marginStart="@dimen/pharmacy_weight_animal_title_margin_start"
+                android:layout_marginTop="@dimen/pharmacy_weight_animal_title_margin_top"
                 android:text="@string/pharmacy_weight_animal_title_text"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/pharmacy_type_animal_list" />
 
             <RelativeLayout
                 android:id="@+id/pharmacy_weight_relative_layout"
@@ -142,16 +163,16 @@
                         app:errorTextColor="@color/red"
                         app:errorIconTintMode="src_atop"
                         app:errorIconTint="@color/red"
-                        app:boxStrokeErrorColor="@color/red">
+                        app:boxStrokeErrorColor="@color/red" >
 
                         <EditText
                             android:id="@+id/pharmacy_weight_textinputlayout_textfield"
-                            android:tag="WEIGHT_ANIMAL"
                             style="@style/number_button"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:hint="@string/pharmacy_weight_textinputlayout_textfield_hint"
-                            android:inputType="number|numberDecimal" />
+                            android:inputType="number|numberDecimal"
+                            tools:ignore="TouchTargetSizeCheck" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -173,8 +194,8 @@
                         android:entries="@array/input_data_dimension_weight_animal_list"
                         android:gravity="center"
                         android:singleLine="false"
+                        android:textAlignment="center"
                         android:tag="WEIGHT_ANIMAL"
-                        android:textAlignment="center"
                         android:theme="@style/SpinnerDimensions"
                         android:visibility="visible"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -182,347 +203,6 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                 </RelativeLayout>
-            </RelativeLayout>
-
-
-            <TextView
-                android:id="@+id/pharmacy_dose_animal_title"
-                style="@style/button_style"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/pharmacy_type_animal_title_margin_start"
-                android:layout_marginTop="@dimen/pharmacy_type_animal_title_margin_top"
-                android:text="@string/pharmacy_dose_animal_title_text"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/pharmacy_weight_relative_layout" />
-
-            <RelativeLayout
-                android:id="@+id/pharmacy_dose_relative_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/pharmacy_dose_relative_layout_margin_end"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/pharmacy_dose_animal_title">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_toStartOf="@id/pharmacy_dose_dimension_layout">
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/pharmacy_dose_textinputlayout"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="@dimen/pharmacy_dose_textinputlayout_margin_start"
-                        app:errorTextColor="@color/red"
-                        app:errorIconTintMode="src_atop"
-                        app:errorIconTint="@color/red"
-                        app:boxStrokeErrorColor="@color/red">
-
-                        <EditText
-                            android:id="@+id/pharmacy_dose_textinputlayout_textfield"
-                            style="@style/number_button"
-                            android:tag="MASS_DOSE_PER_KG_PER_TIME"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:hint="@string/pharmacy_dose_textinputlayout_textfield_hint"
-                            android:inputType="number|numberDecimal" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <RelativeLayout
-                    android:id="@+id/pharmacy_dose_dimension_layout"
-                    android:layout_width="@dimen/pharmacy_dose_dimension_layout_width"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <androidx.appcompat.widget.AppCompatSpinner
-                        android:id="@+id/pharmacy_dose_dimension_list"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_centerInParent="true"
-                        android:entries="@array/input_data_dimension_mass_dose_per_kg_per_time_list"
-                        android:gravity="center"
-                        android:singleLine="false"
-                        android:tag="MASS_DOSE_PER_KG_PER_TIME"
-                        android:textAlignment="center"
-                        android:theme="@style/SpinnerDimensions"
-                        android:visibility="visible"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </RelativeLayout>
-            </RelativeLayout>
-
-            <TextView
-                android:id="@+id/pharmacy_concentration_animal_title"
-                style="@style/button_style"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/pharmacy_type_animal_title_margin_start"
-                android:layout_marginTop="@dimen/pharmacy_type_animal_title_margin_top"
-                android:text="@string/pharmacy_concentration_animal_title_text"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/pharmacy_dose_relative_layout" />
-
-            <RelativeLayout
-                android:id="@+id/pharmacy_concentration_relative_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/pharmacy_concentration_relative_layout_margin_end"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/pharmacy_concentration_animal_title">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_toStartOf="@id/pharmacy_concentration_dimension_layout">
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/pharmacy_concentration_textinputlayout"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="@dimen/pharmacy_concentration_textinputlayout_margin_start"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:errorTextColor="@color/red"
-                        app:errorIconTintMode="src_atop"
-                        app:errorIconTint="@color/red"
-                        app:boxStrokeErrorColor="@color/red">
-
-                        <EditText
-                            android:id="@+id/pharmacy_concentration_textinputlayout_textfield"
-                            style="@style/number_button"
-                            android:tag="CONCENTRATION"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:hint="@string/pharmacy_concentration_textinputlayout_textfield_hint"
-                            android:inputType="number|numberDecimal" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <RelativeLayout
-                    android:id="@+id/pharmacy_concentration_dimension_layout"
-                    android:layout_width="@dimen/pharmacy_concentration_dimension_layout_width"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <androidx.appcompat.widget.AppCompatSpinner
-                        android:id="@+id/pharmacy_concentration_dimension_list"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_centerInParent="true"
-                        android:entries="@array/input_data_dimension_concentration_short_list"
-                        android:gravity="center"
-                        android:singleLine="false"
-                        android:tag="CONCENTRATION"
-                        android:textAlignment="center"
-                        android:theme="@style/SpinnerDimensions"
-                        android:visibility="visible"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </RelativeLayout>
-            </RelativeLayout>
-
-            <TextView
-                android:id="@+id/pharmacy_fluids_animal_title"
-                style="@style/button_style"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/pharmacy_type_animal_title_margin_start"
-                android:layout_marginTop="@dimen/pharmacy_type_animal_title_margin_top"
-                android:text="@string/pharmacy_fluids_animal_title_text"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/pharmacy_concentration_relative_layout" />
-
-            <RelativeLayout
-                android:id="@+id/pharmacy_fluids_relative_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/pharmacy_fluids_relative_layout_margin_end"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/pharmacy_fluids_animal_title">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_toStartOf="@id/pharmacy_fluids_dimension_layout">
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/pharmacy_amount_textinputlayout"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="@dimen/pharmacy_amount_textinputlayout_margin_start"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:errorTextColor="@color/red"
-                        app:errorIconTintMode="src_atop"
-                        app:errorIconTint="@color/red"
-                        app:boxStrokeErrorColor="@color/red">
-
-                        <EditText
-                            android:id="@+id/pharmacy_amount_textinputlayout_textfield"
-                            style="@style/number_button"
-                            android:tag="VOLUME"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:hint="@string/pharmacy_amount_textinputlayout_textfield_hint"
-                            android:inputType="number|numberDecimal" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <RelativeLayout
-                    android:id="@+id/pharmacy_fluids_dimension_layout"
-                    android:layout_width="@dimen/pharmacy_fluids_dimension_layout_width"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <androidx.appcompat.widget.AppCompatSpinner
-                        android:id="@+id/pharmacy_amount_dimension_list"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_centerInParent="true"
-                        android:entries="@array/input_data_dimension_volume_list"
-                        android:gravity="center"
-                        android:singleLine="false"
-                        android:tag="VOLUME"
-                        android:textAlignment="center"
-                        android:theme="@style/SpinnerDimensions"
-                        android:visibility="visible"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </RelativeLayout>
-            </RelativeLayout>
-
-            <TextView
-                android:id="@+id/pharmacy_speed_animal_title"
-                style="@style/button_style"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/pharmacy_type_animal_title_margin_start"
-                android:layout_marginTop="@dimen/pharmacy_type_animal_title_margin_top"
-                android:text="@string/pharmacy_speed_animal_title_text"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/pharmacy_fluids_relative_layout" />
-
-            <RelativeLayout
-                android:id="@+id/pharmacy_speed_relative_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/pharmacy_speed_relative_layout_margin_end"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/pharmacy_speed_animal_title">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_toStartOf="@id/pharmacy_speed_dimension_layout">
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/pharmacy_rate_textinputlayout"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="@dimen/pharmacy_rate_textinputlayout_margin_start"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:errorTextColor="@color/red"
-                        app:errorIconTintMode="src_atop"
-                        app:errorIconTint="@color/red"
-                        app:boxStrokeErrorColor="@color/red">
-
-                        <EditText
-                            android:id="@+id/pharmacy_rate_textinputlayout_textfield"
-                            style="@style/number_button"
-                            android:tag="VOLUME_DOSE_PER_KG_PER_TIME"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:hint="@string/pharmacy_rate_textinputlayout_textfield_hint"
-                            android:inputType="number|numberDecimal" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <RelativeLayout
-                    android:id="@+id/pharmacy_speed_dimension_layout"
-                    android:layout_width="@dimen/pharmacy_speed_dimension_layout_width"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <androidx.appcompat.widget.AppCompatSpinner
-                        android:id="@+id/pharmacy_rate_dimension_list"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_centerInParent="true"
-                        android:entries="@array/input_data_dimension_volume_dose_per_kg_per_time_list"
-                        android:gravity="center"
-                        android:singleLine="false"
-                        android:tag="VOLUME_DOSE_PER_KG_PER_TIME"
-                        android:textAlignment="center"
-                        android:theme="@style/SpinnerDimensions"
-                        android:visibility="visible"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </RelativeLayout>
-            </RelativeLayout>
-
-            <TextView
-                android:id="@+id/pharmacy_drop_animal_title"
-                style="@style/button_style"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/pharmacy_type_animal_title_margin_start"
-                android:layout_marginTop="@dimen/pharmacy_type_animal_title_margin_top"
-                android:text="@string/pharmacy_drop_animal_title_text"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/pharmacy_speed_relative_layout" />
-
-            <RelativeLayout
-                android:id="@+id/pharmacy_drop_relative_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/pharmacy_fluids_relative_layout_margin_end"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/pharmacy_drop_animal_title">
-
-                <androidx.appcompat.widget.AppCompatSpinner
-                    android:id="@+id/pharmacy_drop_dimension_list"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/pharmacy_drop_dimension_list_margin_start"
-                    android:entries="@array/addFirstSecond_giving_set_drop_list"
-                    android:gravity="center"
-                    android:singleLine="false"
-                    android:textAlignment="center"
-                    android:theme="@style/SpinnerDimensions"
-                    android:visibility="visible"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
             </RelativeLayout>
 
             <TextView
@@ -534,7 +214,7 @@
                 app:layout_constraintBottom_toTopOf="@id/pharmacy_calculate_button"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/pharmacy_drop_relative_layout" />
+                app:layout_constraintTop_toBottomOf="@id/pharmacy_weight_relative_layout" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/pharmacy_calculate_button"
