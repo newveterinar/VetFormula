@@ -82,7 +82,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/anesthesia" />
+                app:srcCompat="@drawable/ic_baseline_gas" />
 
             <TextView
                 android:id="@+id/gases_inhalation_anesthesia_button_text"

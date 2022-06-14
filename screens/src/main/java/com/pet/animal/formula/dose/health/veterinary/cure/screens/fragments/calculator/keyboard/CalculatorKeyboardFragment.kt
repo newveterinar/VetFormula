@@ -14,9 +14,8 @@ import com.pet.animal.formula.dose.health.veterinary.cure.model.calculator.CalcC
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppStateCalcKeyboard
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentCalculatorKeyboardBinding
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator.AppScreensImpl
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.FragmentScope
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.NUMBER_NAVIGATION_BUTTONS_ON_OUTPUT_DATA_SCREENS
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.NUMBER_NAVIGATION_BUTTONS_ON_INPUT_DATA_SCREENS
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.settings.SettingsImpl
 import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
@@ -28,7 +27,7 @@ class CalculatorKeyboardFragment:
     /** Задание переменных */ //region
     // Навигация
     private val navigationButtons =
-        arrayOfNulls<View>(size = NUMBER_NAVIGATION_BUTTONS_ON_OUTPUT_DATA_SCREENS)
+        arrayOfNulls<View>(size = NUMBER_NAVIGATION_BUTTONS_ON_INPUT_DATA_SCREENS)
     // ViewModel
     private lateinit var viewModel: CalculatorKeyboardFragmentViewModel
     // ShowCalculatorKeyboardFragmentScope
@@ -272,7 +271,7 @@ class CalculatorKeyboardFragment:
     // Инициализация ViewModel
     private fun initViewModel() {
         val _viewModel: CalculatorKeyboardFragmentViewModel by
-            showCalculatorKeyboardFragmentScope.inject()
+        showCalculatorKeyboardFragmentScope.inject()
         viewModel = _viewModel
         // Отображение текущих значений числовых поле и списков
         viewModel.subscribe().observe(viewLifecycleOwner) {
@@ -286,13 +285,13 @@ class CalculatorKeyboardFragment:
             is AppStateCalcKeyboard.Success -> {
                 if ((appStateCalcKeyboard.calculatorKeyboardData.isInputedCalcDates) &&
                     (appStateCalcKeyboard.calculatorKeyboardData.errorInCalculator ==
-                    CalcConstants.ERRORS.NO)) {
+                            CalcConstants.ERRORS.NO)) {
                     inputedHistoryText.text =
                         appStateCalcKeyboard.calculatorKeyboardData.inputedCalcDates
                 }
                 if ((appStateCalcKeyboard.calculatorKeyboardData.isOutputedCalcDates) &&
                     (appStateCalcKeyboard.calculatorKeyboardData.errorInCalculator ==
-                    CalcConstants.ERRORS.NO)) {
+                            CalcConstants.ERRORS.NO)) {
                     outputResultText.text =
                         appStateCalcKeyboard.calculatorKeyboardData.outputedCalcDates
                 }
@@ -341,7 +340,8 @@ class CalculatorKeyboardFragment:
                 }
             }
             is AppStateCalcKeyboard.Error -> {
-                Toast.makeText(requireContext(), requireContext().getString(
+                Toast.makeText(requireContext(),
+                    requireContext().getString(
                     R.string.error_appstate_not_loaded_for_fragment), Toast.LENGTH_SHORT).show()
             }
         }

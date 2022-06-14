@@ -427,4 +427,5 @@
     <dimen name="about_calc_margin_start">16dp</dimen>
     <dimen name="about_calc_margin_top">16dp</dimen>
     <dimen name="about_calc_margin_end">16dp</dimen>
+    <dimen name="timer_about_button_margin_bottom">8dp</dimen>
 </resources>
