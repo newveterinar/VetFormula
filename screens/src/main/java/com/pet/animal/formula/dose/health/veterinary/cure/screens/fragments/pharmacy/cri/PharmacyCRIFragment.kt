@@ -78,10 +78,10 @@ class PharmacyCRIFragment:
         // Настройка события обработки списков (должно быть в конце всех инициализаций)
         setActionsFieldsAndLists()
         //Обзервер для подсказок
-        showToastHint()
+        setToastHintObserver()
     }
 
-    private fun showToastHint() {
+    private fun setToastHintObserver() {
         viewModel.toastHint.observe(viewLifecycleOwner) {
             Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
         }
@@ -191,23 +191,23 @@ class PharmacyCRIFragment:
             valuesFields[field].setOnLongClickListener {
                 when (field) {
                     0 -> {
-                        setToastHint(getString(R.string.pharmacy_cri_animal_weight_description))
+                        setToastHint(getString(R.string.pharmacy_cri_animal_weight_hint))
                         true
                     }
                     1 -> {
-                        setToastHint(getString(R.string.pharmacy_cri_dose_description))
+                        setToastHint(getString(R.string.pharmacy_cri_dose_hint))
                         true
                     }
                     2 -> {
-                        setToastHint(getString(R.string.pharmacy_cri_drug_concentration_description))
+                        setToastHint(getString(R.string.pharmacy_cri_drug_concentration_hint))
                         true
                     }
                     3 -> {
-                        setToastHint(getString(R.string.pharmacy_cri_fluid_amount_description))
+                        setToastHint(getString(R.string.pharmacy_cri_fluid_amount_hint))
                         true
                     }
                     4 -> {
-                        setToastHint(getString(R.string.pharmacy_cri_rate_description))
+                        setToastHint(getString(R.string.pharmacy_cri_rate_hint))
                         true
                     }
                     else -> {
@@ -220,7 +220,7 @@ class PharmacyCRIFragment:
 
     private fun showSpinnerHintOnLongClick(listsAddFirstSecond: MutableList<Spinner>) {
         listsAddFirstSecond[0].setOnLongClickListener{
-            setToastHint(getString(R.string.pharmacy_cri_giving_set_description))
+            setToastHint(getString(R.string.pharmacy_cri_giving_set_hint))
             true
         }
     }

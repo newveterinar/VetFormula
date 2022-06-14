@@ -2,6 +2,7 @@ package com.pet.animal.formula.dose.health.veterinary.cure.repo.dao
 
 import com.pet.animal.formula.dose.health.veterinary.cure.model.formula.Formula
 import com.pet.animal.formula.dose.health.veterinary.cure.repo.FormulaEntity
+import com.pet.animal.formula.dose.health.veterinary.cure.repo.NoteEntity
 import com.pet.animal.formula.dose.health.veterinary.cure.repo.Repository
 import com.pet.animal.formula.dose.health.veterinary.cure.repo.UrlEntity
 import com.pet.animal.formula.dose.health.veterinary.cure.unientity.UniFormulaEntity
@@ -85,7 +86,6 @@ class RepositoryImpl(private val dbDao:VetFormulaDao): Repository {
     }
 
     override suspend fun insertSection(sections: List<UniSectionEntity>) {
-
         dbDao.insertSection(sections)
     }
 
@@ -107,5 +107,21 @@ class RepositoryImpl(private val dbDao:VetFormulaDao): Repository {
 
     override suspend fun getUniParamsByFormula(formulaId: Int): List<UniParamEntity> {
         return dbDao.getUniParamsByFormula(formulaId)
+    }
+
+    override suspend fun saveNote(noteEntity: NoteEntity):Long {
+        return dbDao.saveNote(noteEntity)
+    }
+
+    override suspend fun loadNote(id: Long): List<NoteEntity> {
+        return dbDao.loadNote(id)
+    }
+
+    override suspend fun deleteNote(id: Long) {
+        dbDao.deleteNote(id)
+    }
+
+    override suspend fun getNotesList(): List<NoteEntity> {
+        return dbDao.getNotesList()
     }
 }

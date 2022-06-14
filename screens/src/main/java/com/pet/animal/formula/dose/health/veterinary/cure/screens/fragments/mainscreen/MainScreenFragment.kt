@@ -1,3 +1,4 @@
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -5,8 +6,13 @@ import androidx.lifecycle.ViewModelProvider
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentMainscreenBinding
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.edittext.EditTextFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.mainscreen.MainScreenFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.NUMBER_NAVIGATION_BUTTONS_ON_MAINSCREEN
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.FragmentScope
+import org.koin.core.qualifier.named
+import org.koin.core.scope.Scope
+import org.koin.java.KoinJavaComponent
 
 class MainScreenFragment :
     BaseFragment<FragmentMainscreenBinding>(FragmentMainscreenBinding::inflate) {
@@ -18,6 +24,31 @@ class MainScreenFragment :
 
     // ViewModel
     private lateinit var viewModel: MainScreenFragmentViewModel
+
+    // ShowPharmacySurfaceResultFragmentScope
+    private lateinit var showMainScreenFragmentScope: Scope
+
+    // newInstance для данного класса
+    companion object {
+        fun newInstance(): MainScreenFragment = MainScreenFragment()
+    }
+    //endregion
+
+    /** Работа со Scope */ //region
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        // Задание Scope для данного фрагмента
+        showMainScreenFragmentScope = KoinJavaComponent.getKoin().getOrCreateScope(
+            FragmentScope.SHOW_MAIN_SCREEN_FRAGMENT_SCOPE,
+            named(FragmentScope.SHOW_MAIN_SCREEN_FRAGMENT_SCOPE)
+        )
+    }
+
+    override fun onDetach() {
+        // Удаление скоупа для данного фрагмента
+        showMainScreenFragmentScope.close()
+        super.onDetach()
+    }
     //endregion
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -27,6 +58,14 @@ class MainScreenFragment :
         initNavigationButtons()
         // Инициализация ViewModel
         initViewModel()
+
+        setToastHintObserver()
+    }
+
+    private fun setToastHintObserver() {
+        viewModel.toastHint.observe(viewLifecycleOwner){
+            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+        }
     }
 
     // Инициализация кнопок
@@ -58,15 +97,32 @@ class MainScreenFragment :
                     }
                 }
             }
+            button?.setOnLongClickListener {
+                when (index) {
+                    4 -> {
+                        setToastHint(getString(R.string.main_screen_settings_hint))
+                        true
+                    }
+                    6 -> {
+                        setToastHint(getString(R.string.main_screen_about_hint))
+                        true
+                    }
+                    else -> {
+                        false
+                    }
+                }
+            }
         }
+    }
+
+    private fun setToastHint(hint: String) {
+        viewModel.setToastHint(getString(R.string.long_click_hint,
+            hint))
     }
 
     // Инициализация ViewModel
     private fun initViewModel() {
-        viewModel = ViewModelProvider(this).get(MainScreenFragmentViewModel::class.java)
-    }
-
-    companion object {
-        fun newInstance(): MainScreenFragment = MainScreenFragment()
+        val _viewModel: MainScreenFragmentViewModel by showMainScreenFragmentScope.inject()
+        viewModel = _viewModel
     }
 }

@@ -1,7 +1,6 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.surface
 
 import android.content.Context
-import android.content.res.Resources
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.View
@@ -83,10 +82,10 @@ class PharmacySurfaceFragment:
         // Настройка события обработки списков (должно быть в конце всех инициализаций)
         setActionsFieldsAndLists()
         //Обзервер для подсказок
-        showToastHint()
+        setToastHintObserver()
     }
 
-    private fun showToastHint() {
+    private fun setToastHintObserver() {
         viewModel.toastHint.observe(viewLifecycleOwner) {
             Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
         }
@@ -179,14 +178,14 @@ class PharmacySurfaceFragment:
 
     private fun showFiledHintOnLongClick(valuesFields: MutableList<EditText>) {
         valuesFields[0].setOnLongClickListener {
-            setToastHint(getString(R.string.pharmacy_surface_animal_weight_description))
+            setToastHint(getString(R.string.pharmacy_surface_animal_weight_hint))
             true
         }
     }
 
     private fun showSpinnerHintOnLongClick(listsAddFirstSecond: MutableList<Spinner>) {
         listsAddFirstSecond[0].setOnLongClickListener{
-            setToastHint(getString(R.string.pharmacy_surface_animal_type_description))
+            setToastHint(getString(R.string.pharmacy_surface_animal_type_hint))
             true
         }
     }

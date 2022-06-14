@@ -87,10 +87,10 @@ class PharmacyDosesFragment :
         // Настройка события обработки списков (должно быть в конце всех инициализаций)
         setActionsFieldsAndLists()
         //Обзервер для подсказок
-        showToastHint()
+        setToastHintObserver()
     }
 
-    private fun showToastHint() {
+    private fun setToastHintObserver() {
         viewModel.toastHint.observe(viewLifecycleOwner) {
             Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
         }
@@ -194,15 +194,15 @@ class PharmacyDosesFragment :
             valuesFields[field].setOnLongClickListener {
                 when (field) {
                     0 -> {
-                        setToastHint(getString(R.string.pharmacy_dose_animal_weight_description))
+                        setToastHint(getString(R.string.pharmacy_dose_animal_weight_hint))
                         true
                     }
                     1 -> {
-                        setToastHint(getString(R.string.pharmacy_dose_dose_description))
+                        setToastHint(getString(R.string.pharmacy_dose_dose_hint))
                         true
                     }
                     2 -> {
-                        setToastHint(getString(R.string.pharmacy_dose_drug_concentration_description))
+                        setToastHint(getString(R.string.pharmacy_dose_drug_concentration_hint))
                         true
                     }
                     else -> {

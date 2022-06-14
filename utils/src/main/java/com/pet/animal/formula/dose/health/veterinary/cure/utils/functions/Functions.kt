@@ -248,12 +248,13 @@ fun TextView.createStringResult(
                     R.array.input_data_dimension_volume_list)[0]}"
 
                 if (screenTypeIndex == ScreenType.PHARMACY_CRI.ordinal) {
+                    val ending = "\n(${valueFields[2].value} ${resourcesProviderImpl.context.
+                    resources.getStringArray(R.array.
+                    input_data_dimension_concentration_short_list)[valueFields[2].
+                    dimension]} ${resourcesProviderImpl.context.resources.
+                    getString(R.string.solution)})"
                     result = SpannableString("${this.text} $initialString " +
-                            "(${valueFields[2].value} ${resourcesProviderImpl.context.resources.
-                            getStringArray(R.array.
-                            input_data_dimension_concentration_short_list)[valueFields[2].
-                            dimension]} ${resourcesProviderImpl.context.resources.
-                            getString(R.string.solution)})")
+                            ending)
                 } else {
                     result = SpannableString("${this.text} $initialString")
                 }
@@ -269,10 +270,12 @@ fun TextView.createStringResult(
                 val minutes: Double = if (indexData <= resultValueField.size - 1)
                     resultValueField[indexData].value else 0.0
                 var hoursToOutput: Int = (minutes / NUMBER_MINUTES_IN_HOUR).toInt()
-                var minutesToOutput: Int = minutes.toInt()
+                val curMinutes: Int = minutes.toInt() - hoursToOutput *
+                        NUMBER_MINUTES_IN_HOUR.toInt()
+                var minutesToOutput: Int = if (curMinutes >= 0) curMinutes else 0
                 var secondsToOutput: Int =
                     ((minutes - minutes.toInt()) * NUMBER_SECONDS_IN_MINUTE).roundToInt()
-                // Корректция минут и секунд при округлении секунд до 60
+                // Коррекция минут и секунд при округлении секунд до 60
                 if (secondsToOutput == NUMBER_SECONDS_IN_MINUTE.toInt()) {
                     minutesToOutput++
                     secondsToOutput = 0
@@ -296,7 +299,7 @@ fun TextView.createStringResult(
                         " ${resourcesProviderImpl.context.resources.getString(R.string.second)}")
             }
             OutputDataDimensionType.DROP_TIME_IN_SEC.toString() -> {
-                result = SpannableString("${this.text} $initialString " +
+                result = SpannableString("${this.text}\n$initialString " +
                         resourcesProviderImpl.context.resources.getString(R.string.seconds))
             }
             OutputDataDimensionType.DROP_TIME_IN_TEN_SEC.toString() -> {
@@ -318,9 +321,9 @@ fun TextView.createStringResult(
                     val endDimenString = dimenString.substring(dimenString.lastIndexOf("/"),
                         dimenString.length)
                     result = SpannableString(
-                        "${this.text} $initialString $startDimenString$endDimenString")
+                        "${this.text}\n$initialString $startDimenString$endDimenString")
                 } else {
-                    result = SpannableString("${this.text} $initialString")
+                    result = SpannableString("${this.text}\n$initialString")
                 }
             }
             OutputDataDimensionType.MASS_DOSE_PER_KG_PER_TIME.toString() -> {
@@ -329,9 +332,9 @@ fun TextView.createStringResult(
                     getStringArray(R.array.
                     input_data_dimension_mass_dose_per_kg_per_time_list)[valueFields[1].dimension]
                     result = SpannableString(
-                        "${this.text} $initialString $dimenString")
+                        "${this.text}\n$initialString $dimenString")
                 } else {
-                    result = SpannableString("${this.text} $initialString")
+                    result = SpannableString("${this.text}\n$initialString")
                 }
             }
             OutputDataDimensionType.DROP.toString() -> {
