@@ -57,6 +57,17 @@ class MainViewModelInteractor {
                     0
                 )
             }
+            // Сохранение формул для окна GASES_INHALATION_ANESTHESIA
+            repeat(GASES_INHALATION_ANESTHESIA_ADDFIRST_FORMULA_NUMBER) {
+                repositoryImpl.insertFormula(
+                    fakeRepositoryImpl.getFormula(
+                        ScreenType.GASES_INHALATION_ANESTHESIA, listOf(it, 0)),
+                    ScreenType.GASES_INHALATION_ANESTHESIA.ordinal,
+                    GASES_INHALATION_ANESTHESIA_ELEMENT_COUNT,
+                    it,
+                    0
+                )
+            }
         }
     }
 }

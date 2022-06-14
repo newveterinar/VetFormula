@@ -52,6 +52,12 @@
         <item>мл/кг/мин</item>
         <item>мкл/кг/мин</item>
     </string-array>
+    <string-array name="input_data_dimension_volume_dose_per_time_list">
+        <item>мл/ч</item>
+        <item>мкл/ч</item>
+        <item>мл/мин</item>
+        <item>мкл/мин</item>
+    </string-array>
     <string-array name="input_data_dimension_concentration_list">
         <item>мкг/мл</item>
         <item>мг/мл</item>
@@ -68,9 +74,17 @@
         <item>мг/мл</item>
         <item>г/мл</item>
     </string-array>
+    <string-array name="input_data_dimension_concentration_volume_percent">
+        <item>об. %</item>
+    </string-array>
     <string-array name="input_data_dimension_volume_list">
         <item>мл</item>
         <item>мкл</item>
+    </string-array>
+    <string-array name="input_data_dimension_time_list">
+        <item>ч</item>
+        <item>мин</item>
+        <item>сек</item>
     </string-array>
 
     <!-- Результирующие данные типа размерностей расчётных численных значений -->

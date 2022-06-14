@@ -18,6 +18,8 @@ class FakeRepositoryImpl: FakeRepository {
                 pharmacyDosesFormula(screenType, listsAddFirstSecond)
             ScreenType.PHARMACY_CRI ->
                 pharmacyCRIFormula(screenType, listsAddFirstSecond)
+            ScreenType.GASES ->
+                gasesInhalationAnesthesiaFormula(screenType, listsAddFirstSecond)
             else -> Formula()
         }
     }
@@ -621,5 +623,137 @@ class FakeRepositoryImpl: FakeRepository {
         }
         //endregion
         return pharmacyDosesFormula
+    }
+
+    // Задание формулы для окна GASES_INHALATION_ANESTHESIA
+    private fun gasesInhalationAnesthesiaFormula(
+        screenType: ScreenType, listsAddFirstSecond: List<Int>): Formula {
+        /** Задание переменных */ //region
+        // Результирующая формула
+        val gasesInhalationAnesthesiaFormula: Formula = Formula()
+        // Типизированное имя запрошенной формулы
+        val askedTypedName: String =
+            listsAddFirstSecond.convertAddFirstSecondToTypedFormulaName(screenType)
+        //endregion
+
+        //region Типизированные формулы для окна PHARMACY_SURFACE
+        when {
+            askedTypedName.contains(GASES_INHALATION_ANESTHESIA_SEVOFLURANE_NAME) ->
+                gasesInhalationAnesthesiaFormula.addTypedFormula(
+                    TypedFormula(
+                        GASES_INHALATION_ANESTHESIA_SEVOFLURANE_NAME,
+                        mutableListOf(
+                            Element(Command.BRACKET_OPEN.index(), 0),
+                            // Заглушка для устранения бага работы скобок
+                            Element(Command.ONE.index(), 0),
+                            // Заглушка для устранения бага работы скобок
+                            Element(Command.NO_COMMAND.index(), 1),
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.NO_COMMAND.index(), 2),
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.NO_COMMAND.index(), 3),
+                            Element(Command.BRACKET_CLOSE.index(), 0),
+                            Element(Command.DIVIDE.index(), 0),
+                            Element(Command.BRACKET_OPEN.index(), 0),
+                            Element(Command.ONE.index(), 0),
+                            Element(Command.EIGHT.index(), 0),
+                            Element(Command.FOUR.index(), 0),
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.ZERO.index(), 0),
+                            Element(Command.ZPT_ON_OFF.index(), 0),
+                            Element(Command.ZERO.index(), 0),
+                            Element(Command.ZERO.index(), 0),
+                            Element(Command.ZERO.index(), 0),
+                            Element(Command.ZERO.index(), 0),
+                            Element(Command.ZERO.index(), 0),
+                            Element(Command.ONE.index(), 0),
+                            Element(Command.ZPT_ON_OFF.index(), 0),
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.ONE.index(), 0),
+                            Element(Command.ZERO.index(), 0),
+                            Element(Command.ZERO.index(), 0),
+                            Element(Command.BRACKET_CLOSE.index(), 0)
+                        )
+                    )
+                )
+            askedTypedName.contains(GASES_INHALATION_ANESTHESIA_DESFLURANE_NAME) ->
+                gasesInhalationAnesthesiaFormula.addTypedFormula(
+                    TypedFormula(
+                        GASES_INHALATION_ANESTHESIA_DESFLURANE_NAME,
+                        mutableListOf(
+                            Element(Command.BRACKET_OPEN.index(), 0),
+                            // Заглушка для устранения бага работы скобок
+                            Element(Command.ONE.index(), 0),
+                            // Заглушка для устранения бага работы скобок
+                            Element(Command.NO_COMMAND.index(), 1),
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.NO_COMMAND.index(), 2),
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.NO_COMMAND.index(), 3),
+                            Element(Command.BRACKET_CLOSE.index(), 0),
+                            Element(Command.DIVIDE.index(), 0),
+                            Element(Command.BRACKET_OPEN.index(), 0),
+                            Element(Command.TWO.index(), 0),
+                            Element(Command.ONE.index(), 0),
+                            Element(Command.ZERO.index(), 0),
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.ZERO.index(), 0),
+                            Element(Command.ZPT_ON_OFF.index(), 0),
+                            Element(Command.ZERO.index(), 0),
+                            Element(Command.ZERO.index(), 0),
+                            Element(Command.ZERO.index(), 0),
+                            Element(Command.ZERO.index(), 0),
+                            Element(Command.ZERO.index(), 0),
+                            Element(Command.ONE.index(), 0),
+                            Element(Command.ZPT_ON_OFF.index(), 0),
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.ONE.index(), 0),
+                            Element(Command.ZERO.index(), 0),
+                            Element(Command.ZERO.index(), 0),
+                            Element(Command.BRACKET_CLOSE.index(), 0)
+                        )
+                    )
+                )
+            askedTypedName.contains(GASES_INHALATION_ANESTHESIA_ISOFLURANE_NAME) ->
+                gasesInhalationAnesthesiaFormula.addTypedFormula(
+                    TypedFormula(
+                        GASES_INHALATION_ANESTHESIA_ISOFLURANE_NAME,
+                        mutableListOf(
+                            Element(Command.BRACKET_OPEN.index(), 0),
+                            // Заглушка для устранения бага работы скобок
+                            Element(Command.ONE.index(), 0),
+                            // Заглушка для устранения бага работы скобок
+                            Element(Command.NO_COMMAND.index(), 1),
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.NO_COMMAND.index(), 2),
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.NO_COMMAND.index(), 3),
+                            Element(Command.BRACKET_CLOSE.index(), 0),
+                            Element(Command.DIVIDE.index(), 0),
+                            Element(Command.BRACKET_OPEN.index(), 0),
+                            Element(Command.ONE.index(), 0),
+                            Element(Command.NINE.index(), 0),
+                            Element(Command.FIVE.index(), 0),
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.ZERO.index(), 0),
+                            Element(Command.ZPT_ON_OFF.index(), 0),
+                            Element(Command.ZERO.index(), 0),
+                            Element(Command.ZERO.index(), 0),
+                            Element(Command.ZERO.index(), 0),
+                            Element(Command.ZERO.index(), 0),
+                            Element(Command.ZERO.index(), 0),
+                            Element(Command.ONE.index(), 0),
+                            Element(Command.ZPT_ON_OFF.index(), 0),
+                            Element(Command.MULTIPLY.index(), 0),
+                            Element(Command.ONE.index(), 0),
+                            Element(Command.ZERO.index(), 0),
+                            Element(Command.ZERO.index(), 0),
+                            Element(Command.BRACKET_CLOSE.index(), 0)
+                        )
+                    )
+                )
+        }
+        //endregion
+        return gasesInhalationAnesthesiaFormula
     }
 }
