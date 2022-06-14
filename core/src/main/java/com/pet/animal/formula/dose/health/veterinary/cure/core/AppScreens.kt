@@ -12,6 +12,7 @@ interface AppScreens {
     fun pharmacyCRIScreen(): FragmentScreen
     fun pharmacyCRIResultScreen(): FragmentScreen
     fun aboutScreen(): FragmentScreen
+    fun infoScreen(): FragmentScreen
     fun fluidsScreen(): FragmentScreen
     fun hematologyScreen(): FragmentScreen
     fun gasScreen(): FragmentScreen
@@ -21,4 +22,6 @@ interface AppScreens {
     fun timerScreen(): FragmentScreen
     fun webViewScreen(): FragmentScreen
     fun editTextScreen(): FragmentScreen
+    fun aboutCalc(): FragmentScreen
+    fun aboutTimer(): FragmentScreen
 }

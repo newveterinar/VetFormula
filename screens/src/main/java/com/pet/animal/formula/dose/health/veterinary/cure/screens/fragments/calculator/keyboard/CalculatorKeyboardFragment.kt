@@ -14,6 +14,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.model.calculator.CalcC
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppStateCalcKeyboard
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentCalculatorKeyboardBinding
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator.AppScreensImpl
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.FragmentScope
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.NUMBER_NAVIGATION_BUTTONS_ON_OUTPUT_DATA_SCREENS
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.settings.SettingsImpl
@@ -109,13 +110,15 @@ class CalculatorKeyboardFragment:
     private fun initNavigationButton() {
         binding.apply {
             navigationButtons.also {
-                it[0] = this.previousButtonContainer
+                it[0] = this.calculatorPreviousButtonContainer
+                it[1] = this.calcAboutButton
             }
         }
         navigationButtons.forEachIndexed { index, button ->
             button?.setOnClickListener {
                 when (index) {
                     0 -> viewModel.router.exit()
+                    1 -> viewModel.router.navigateTo(viewModel.screens.aboutCalc())
                     else -> {
                         Toast.makeText(requireContext(),
                             requireActivity().resources.getString(

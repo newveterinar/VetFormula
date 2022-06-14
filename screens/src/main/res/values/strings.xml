@@ -49,7 +49,8 @@
     <string name="pharmacy_calculate_button_text">Calculate</string>
     <string name="pharmacy_result_previous_text_text">Result</string>
     <string name="pharmacy_about_button_hints">ABOUT\nVetFormula</string>
-    <string name="about_logo_text">Information</string>
+    <string name="about_logo_text">About</string>
+    <string name="info_logo_text">Information</string>
     <string name="pharmacy_logo_text">VetFormula</string>
     <string name="fluids_button_text_text">Fluids</string>
     <string name="fluids_button_surface_text_text">Basic</string>
@@ -140,4 +141,24 @@
     <string name="btn_delete_note_text">Delete</string>
     <string name="btn_load_note_text">Load</string>
     <string name="btn_save_note_text">Save</string>
+    <string name="info_text_app">\n\nABOUT THE APPLICATION:\n\n
+        The application has sections such as: "Drugs", "Gases", "Calculator", "Timer".\n\n
+        Sections "Drugs" and "Gases" - help to determine the calculation of doses of drugs:\n
+        1. The surface area of the animal\n
+        2. The dose of the drug \n
+        3. Infusion at a constant rate \n
+        4. Gas anesthesia\n\n
+        "Timer" - helps to determine the heart rate (HR) and the frequency of respiratory movements (BDD).\n\n
+        "Calculator" - helps to calculate the source data.\n\n
+        In the left part of the application, a "Slider" is implemented, which can divide the screen into two parts.To do this, pull the green circle on the left up or down.The bottom screen provides access to the following windows: \n
+        1. Access to the information resource "WSAVA".\n
+        2. Access to the information resource "VetMedical".\n
+        3. Notepad for entering and saving text information.\n
+    </string>
+    <string name="about_timer_title">Timer for determining the heart rate (HR) and respiratory rate (HRD).</string>
+    <string name="about_timer_tv_start">It allows you to simultaneously measure heart rate and BPD. The parameters are measured simultaneously. During the measurement, the user is required to:</string>
+    <string name="about_timer_tv_middle">1) turn it on, stop it, reset the values obtained, add another minute or several minutes during the measurement; \n2) use a stethoscope to count the number of heartbeats; 3) by hearing, determining the moment of the patients breathing, click on the picture of the foot at the time of the timer and it will count the number of patients breaths;\n3) at the end of the timer, enter the number of counted heartbeats, after which the heart rate result will be displayed.\n</string>
+    <string name="about_timer_tv_end">It is not necessary to wait for the timer to end. Measurements can be stopped at any time, thereby speeding up the operation.</string>
+    <string name="about_calc_title">Calculator for calculations</string>
+    <string name="about_calc_tv">It is used for performing intermediate calculations during the preparation of initial data. It allows you to perform all standard arithmetic operations, work with brackets, degrees, percentages, provide a history of the characters entered, separately enter integers and fractions of numbers, delete one, two and all operations at once</string>
 </resources>

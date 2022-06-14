@@ -2,11 +2,9 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentMainscreenBinding
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.edittext.EditTextFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.mainscreen.MainScreenFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.NUMBER_NAVIGATION_BUTTONS_ON_MAINSCREEN
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.FragmentScope
@@ -63,7 +61,7 @@ class MainScreenFragment :
     }
 
     private fun setToastHintObserver() {
-        viewModel.toastHint.observe(viewLifecycleOwner){
+        viewModel.toastHint.observe(viewLifecycleOwner) {
             Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
         }
     }
@@ -85,7 +83,7 @@ class MainScreenFragment :
             button?.setOnClickListener {
                 when (index) {
                     0 -> viewModel.router.navigateTo(viewModel.screens.settingsScreen())
-                    1 -> viewModel.router.navigateTo(viewModel.screens.aboutScreen())
+                    1 -> viewModel.router.navigateTo(viewModel.screens.infoScreen())
                     2 -> viewModel.router.navigateTo(viewModel.screens.pharmacyScreen())
                     3 -> viewModel.router.navigateTo(viewModel.screens.gasScreen())
                     4 -> viewModel.router.navigateTo(viewModel.screens.calculatorScreen())
@@ -116,8 +114,12 @@ class MainScreenFragment :
     }
 
     private fun setToastHint(hint: String) {
-        viewModel.setToastHint(getString(R.string.long_click_hint,
-            hint))
+        viewModel.setToastHint(
+            getString(
+                R.string.long_click_hint,
+                hint
+            )
+        )
     }
 
     // Инициализация ViewModel

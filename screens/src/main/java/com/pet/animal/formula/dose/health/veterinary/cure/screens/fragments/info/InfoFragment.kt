@@ -1,48 +1,51 @@
-package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.about
+package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.info
 
 import android.content.Context
 import android.os.Bundle
 import android.view.View
-import androidx.constraintlayout.widget.ConstraintLayout
+import android.widget.Toast
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentAboutBinding
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentInfoBinding
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.FragmentScope
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.NUMBER_NAVIGATION_BUTTONS_ON_INPUT_DATA_SCREENS
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.screens.FabAndSliderControl
 import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
 import org.koin.java.KoinJavaComponent
 
-class  AboutFragment : BaseFragment<FragmentAboutBinding>(FragmentAboutBinding::inflate) {
+class InfoFragment : BaseFragment<FragmentInfoBinding>(FragmentInfoBinding::inflate) {
     /** Задание переменных */ //region
     // Навигация
-    private lateinit var buttonToBackScreen: ConstraintLayout
+    private val navigationButtons =
+        arrayOfNulls<View>(size = NUMBER_NAVIGATION_BUTTONS_ON_INPUT_DATA_SCREENS)
 
     // ViewModel
-    private lateinit var viewModel: AboutFragmentViewModel
+    private lateinit var viewModel: InfoFragmentViewModel
 
     // ShowAboutFragmentScope
-    private lateinit var showAboutFragmentScope: Scope
+    private lateinit var showInfoFragmentScope: Scope
     //endregion
 
     /** Работа со Scope */ //region
     override fun onAttach(context: Context) {
         super.onAttach(context)
         // Задание Scope для данного фрагмента
-        showAboutFragmentScope = KoinJavaComponent.getKoin().getOrCreateScope(
-            FragmentScope.SHOW_ABOUT_FRAGMENT_SCOPE,
-            named(FragmentScope.SHOW_ABOUT_FRAGMENT_SCOPE)
+        showInfoFragmentScope = KoinJavaComponent.getKoin().getOrCreateScope(
+            FragmentScope.SHOW_INFO_FRAGMENT_SCOPE,
+            named(FragmentScope.SHOW_INFO_FRAGMENT_SCOPE)
         )
     }
 
     override fun onDetach() {
         // Удаление скоупа для данного фрагмента
-        showAboutFragmentScope.close()
+        showInfoFragmentScope.close()
         super.onDetach()
     }
     //endregion
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         // Инициализация кнопок
         initButtons()
         // Инициализация ViewModel
@@ -55,28 +58,37 @@ class  AboutFragment : BaseFragment<FragmentAboutBinding>(FragmentAboutBinding::
 
     // Инициализация кнопок
     private fun initButtons() {
-        buttonToBackScreen = binding.aboutPreviousButtonContainer
-        buttonToBackScreen.setOnClickListener {
-            viewModel.router.navigateTo(viewModel.screens.infoScreen())
+        binding.apply {
+            navigationButtons.also {
+                it[0] = this.infoPreviousButtonContainer
+                it[1] = this.infoAboutButton
+            }
+        }
+        navigationButtons.forEachIndexed { index, button ->
+            button?.setOnClickListener {
+                when (index) {
+                    0 -> viewModel.router.navigateTo(viewModel.screens.mainScreen())
+                    1 -> viewModel.router.navigateTo(viewModel.screens.aboutScreen())
+                }
+            }
         }
     }
 
     // Инициализация ViewModel
     private fun initViewModel() {
-        val _viewModel: AboutFragmentViewModel by showAboutFragmentScope.inject()
+        val _viewModel: InfoFragmentViewModel by showInfoFragmentScope.inject()
         viewModel = _viewModel
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    companion object {
+        fun newInstance(): InfoFragment = InfoFragment()
+    }
+
+    override fun onPause() {
+        super.onPause()
         // Отображение слайдера и FAB
         val ma = (activity as FabAndSliderControl)
         ma.showFab()
         ma.showSlider()
-    }
-
-    // newInstance для данного класса
-    companion object {
-        fun newInstance(): AboutFragment = AboutFragment()
     }
 }

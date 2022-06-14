@@ -5,10 +5,13 @@ import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.Router
 import com.pet.animal.formula.dose.health.veterinary.cure.core.AppScreens
 import com.pet.animal.formula.dose.health.veterinary.cure.fakerepo.FakeRepositoryImpl
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.about.AboutCaclFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.about.AboutFragmentViewModel
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.about.AboutTimerFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.calculator.CalculatorFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.calculator.keyboard.CalculatorKeyboardFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.edittext.EditTextFragmentViewModel
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.info.InfoFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.gas.GasFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.mainscreen.MainScreenFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.PharmacyFragmentViewModel
@@ -56,7 +59,8 @@ val screens = module {
     /** Классы для навигации */ //region
     single<Cicerone<Router>>(named(CICERONE_NAME)) { Cicerone.create() }
     single<NavigatorHolder> {
-        get<Cicerone<Router>>(named(CICERONE_NAME)).getNavigatorHolder() }
+        get<Cicerone<Router>>(named(CICERONE_NAME)).getNavigatorHolder()
+    }
     single<Router> { get<Cicerone<Router>>(named(CICERONE_NAME)).router }
     single<AppScreens> { AppScreensImpl() }
     //endregion
@@ -121,6 +125,11 @@ val screens = module {
             AboutFragmentViewModel()
         }
     }
+    scope(named(FragmentScope.SHOW_INFO_FRAGMENT_SCOPE)) {
+        viewModel {
+            InfoFragmentViewModel()
+        }
+    }
     scope(named(FragmentScope.SHOW_SETTINGS_FRAGMENT_SCOPE)) {
         viewModel {
             SettingsFragmentViewModel()
@@ -139,6 +148,16 @@ val screens = module {
     scope(named(FragmentScope.SHOW_EDIT_TEXT_FRAGMENT_SCOPE)) {
         viewModel {
             EditTextFragmentViewModel()
+        }
+    }
+    scope(named(FragmentScope.SHOW_ABOUT_CALC_SCOPE)) {
+        viewModel {
+            AboutCaclFragmentViewModel()
+        }
+    }
+    scope(named(FragmentScope.SHOW_ABOUT_TIMER_SCOPE)) {
+        viewModel {
+            AboutTimerFragmentViewModel()
         }
     }
     //endregion
