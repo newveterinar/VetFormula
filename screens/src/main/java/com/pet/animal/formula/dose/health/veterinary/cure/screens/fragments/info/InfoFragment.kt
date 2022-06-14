@@ -14,7 +14,7 @@ import org.koin.java.KoinJavaComponent
 class InfoFragment : BaseFragment<FragmentInfoBinding>(FragmentInfoBinding::inflate) {
     /** Задание переменных */ //region
     // Навигация
-    private val navigationButtons = arrayOfNulls<View>(size = 8)
+    private val navigationButtons = arrayOfNulls<View>(size = 3)
 
     // ViewModel
     private lateinit var viewModel: InfoFragmentViewModel
@@ -77,15 +77,15 @@ class InfoFragment : BaseFragment<FragmentInfoBinding>(FragmentInfoBinding::infl
         viewModel = _viewModel
     }
 
+    companion object {
+        fun newInstance(): InfoFragment = InfoFragment()
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         // Отображение слайдера и FAB
         val ma = (activity as FabAndSliderControl)
         ma.showFab()
         ma.showSlider()
-    }
-
-    companion object {
-        fun newInstance(): InfoFragment = InfoFragment()
     }
 }

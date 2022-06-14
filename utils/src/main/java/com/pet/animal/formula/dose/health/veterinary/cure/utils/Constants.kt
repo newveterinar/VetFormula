@@ -131,6 +131,7 @@ enum class ScreenType {
 const val NUMBER_NAVIGATION_BUTTONS_ON_INPUT_DATA_SCREENS: Int = 2
 const val NUMBER_NAVIGATION_BUTTONS_ON_OUTPUT_DATA_SCREENS: Int = 1
 
+
 // Количество формул по параметру addFirst
 const val PHARMACY_DOSES_ADDFIRST_FORMULA_NUMBER: Int = 1
 const val PHARMACY_CRI_ADDFIRST_FORMULA_NUMBER: Int = 3
