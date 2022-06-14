@@ -127,7 +127,7 @@ class TimerFragment: BaseFragment<FragmentTimer2Binding>(FragmentTimer2Binding::
                     0 -> {
                         viewModel.router.exit()
                     }
-                    1 -> viewModel.router.navigateTo(viewModel.screens.aboutScreen())
+                    1 -> viewModel.router.navigateTo(viewModel.screens.aboutTimer())
                     else -> {
                         Toast.makeText(requireContext(),
                             requireActivity().resources.getString(

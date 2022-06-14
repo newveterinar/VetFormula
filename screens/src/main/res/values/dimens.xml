@@ -373,4 +373,10 @@
     <dimen name="gases_button_width">80dp</dimen>
     <dimen name="gases_button_height">80dp</dimen>
     <dimen name="pharmacy_surface_button_container_margin_bottom">63dp</dimen>
+    <dimen name="about_timer_margin_start">16dp</dimen>
+    <dimen name="about_timer_margin_top">16dp</dimen>
+    <dimen name="about_timer_margin_end">16dp</dimen>
+    <dimen name="about_calc_margin_start">16dp</dimen>
+    <dimen name="about_calc_margin_top">16dp</dimen>
+    <dimen name="about_calc_margin_end">16dp</dimen>
 </resources>

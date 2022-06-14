@@ -57,65 +57,30 @@
             android:id="@+id/about_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/about_calc_margin_start"
+            android:layout_marginTop="@dimen/about_calc_margin_top"
+            android:layout_marginEnd="@dimen/about_calc_margin_end"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/about_image_container"
-                android:layout_width="@dimen/about_image_container_width"
-                android:layout_height="@dimen/about_image_container_height"
-                app:layout_constraintBottom_toBottomOf="@id/about_horizontal_guideline_down"
-                app:layout_constraintEnd_toEndOf="@id/about_vertical_guideline_right"
-                app:layout_constraintStart_toStartOf="@id/about_vertical_guideline_left"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/about_image"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/about_image_layout_height"
-                    android:layout_marginTop="@dimen/about_image_margin_top"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/about_v21" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/about_vertical_guideline_left"
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/about_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="@dimen/about_vertical_guideline_left_percent" />
+                android:text="@string/about_calc_title"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/about_vertical_guideline_right"
+            <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="@dimen/about_vertical_guideline_right_percent" />
+                android:text="@string/about_calc_tv"
+                android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/about_title" />
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/about_horizontal_guideline_down"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="@dimen/about_horizontal_guideline_down_percent" />
 
-            <TextView
-                android:id="@+id/about_develop"
-                style="@style/about_button"
-                android:text="@string/about_develop"
-                app:layout_constraintEnd_toStartOf="@+id/about_vertical_guideline_right"
-                app:layout_constraintStart_toStartOf="@+id/about_vertical_guideline_left"
-                app:layout_constraintTop_toBottomOf="@id/about_image_container" />
-
-            <TextView
-                android:id="@+id/about_contact"
-                style="@style/contact_button"
-                android:text="@string/about_contact"
-                app:layout_constraintEnd_toStartOf="@+id/about_vertical_guideline_right"
-                app:layout_constraintStart_toStartOf="@+id/about_vertical_guideline_left"
-                app:layout_constraintTop_toBottomOf="@id/about_develop" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
