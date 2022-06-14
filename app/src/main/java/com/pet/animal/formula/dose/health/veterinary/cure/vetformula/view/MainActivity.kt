@@ -94,6 +94,8 @@ class MainActivity: AppCompatActivity(), FabAndSliderControl {
         }
         // Установка событий при нажатии на кнопки FAB
         onClickFab()
+        // Загрузка в нижнее окно блокнота по умолчанию
+        loadEditText()
         // Отображение содержимого окна
         setContentView(binding.root)
     }
@@ -134,14 +136,18 @@ class MainActivity: AppCompatActivity(), FabAndSliderControl {
                     .commit()
             }
             fabTextView.setOnClickListener {
-                supportFragmentManager.beginTransaction()
-                    .replace(
-                        R.id.bottom_activity_fragments_container,
-                        EditTextFragment(), TAG_NOTE_BOTTOM_WINDOW
-                    )
-                    .commit()
+                loadEditText()
             }
         }
+    }
+
+    private fun loadEditText() {
+        supportFragmentManager.beginTransaction()
+            .replace(
+                R.id.bottom_activity_fragments_container,
+                EditTextFragment(), TAG_NOTE_BOTTOM_WINDOW
+            )
+            .commit()
     }
 
     // Вызов кнопок FAB и их анимации

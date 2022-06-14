@@ -138,6 +138,9 @@
     <string name="buttonMuteUnMute_unmute_text">UNMUTE</string>
     <string name="textView2_text">Calculation BDD</string>
     <string name="textViewHR_text">(HR)</string>
+    <string name="btn_delete_note_text">Delete</string>
+    <string name="btn_load_note_text">Load</string>
+    <string name="btn_save_note_text">Save</string>
     <string name="info_text_app">\n\nABOUT THE APPLICATION:\n\n
         The application has sections such as: "Drugs", "Gases", "Calculator", "Timer".\n\n
         Sections "Drugs" and "Gases" - help to determine the calculation of doses of drugs:\n

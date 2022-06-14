@@ -138,6 +138,9 @@
     <string name="textViewHR_text">(ЧСС)</string>
     <string name="main_screen_settings_hint">переход на экран настроек.</string>
     <string name="main_screen_about_hint">переход на экран \"О приложении\".</string>
+    <string name="btn_delete_note_text">Удалить</string>
+    <string name="btn_load_note_text">Загрузить</string>
+    <string name="btn_save_note_text">Сохранить</string>
     <string name="info_text_app">\n\nО ПРИЛОЖЕНИИ:\n\n
         В приложении есть такие разделы как: «Препараты», «Газы», «Калькулятор», «Таймер».\n\n
         Разделы «Препараты» и «Газы» - помогают определить расчёт доз лекарственных препаратов:\n

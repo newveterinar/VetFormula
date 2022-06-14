@@ -5,7 +5,8 @@
     android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.MainActivity">
+    tools:context=".view.MainActivity"
+    android:background="?attr/colorPrimary" >
 
     <!-- Верхнее окно (верхний фрагмент) -->
     <FrameLayout
@@ -25,11 +26,10 @@
         app:layout_constraintGuide_percent="@dimen/windows_slider_max_value" />
 
     <!-- Нижнее окно (нижний фрагмент, заменить TextView на FrameLayout) -->
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/sliderLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/bottom_activity_fragments_container_height"
-        android:background="@color/white"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,16 +39,18 @@
         <View
             android:id="@+id/bottom_fragment_divider"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/black" />
+            android:layout_height="@dimen/bottom_fragment_divider_height"
+            android:background="@android:color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
 
         <FrameLayout
             android:id="@+id/bottom_activity_fragments_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-
-    </LinearLayout>
+            android:layout_height="@dimen/bottom_activity_fragments_container_height"
+            app:layout_constraintTop_toBottomOf="@id/bottom_fragment_divider"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!-- Слайдер -->
     <FrameLayout
