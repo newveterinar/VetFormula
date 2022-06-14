@@ -101,7 +101,7 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/fab_main"
         app:layout_constraintEnd_toEndOf="@+id/fab_main"
-        app:srcCompat="@drawable/ic_vet_med">
+        app:srcCompat="@drawable/ic_red_v">
 
     </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
@@ -116,7 +116,7 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/fab_web_view_vetmedical"
         app:layout_constraintEnd_toEndOf="@+id/fab_web_view_vetmedical"
-        app:srcCompat="@drawable/ic_paw" />
+        app:srcCompat="@drawable/ic_red_w" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_text_view"

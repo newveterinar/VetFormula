@@ -11,6 +11,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.abou
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.calculator.CalculatorFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.calculator.keyboard.CalculatorKeyboardFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.edittext.EditTextFragmentViewModel
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.info.InfoFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.gas.GasFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.mainscreen.MainScreenFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.PharmacyFragmentViewModel
@@ -58,7 +59,8 @@ val screens = module {
     /** Классы для навигации */ //region
     single<Cicerone<Router>>(named(CICERONE_NAME)) { Cicerone.create() }
     single<NavigatorHolder> {
-        get<Cicerone<Router>>(named(CICERONE_NAME)).getNavigatorHolder() }
+        get<Cicerone<Router>>(named(CICERONE_NAME)).getNavigatorHolder()
+    }
     single<Router> { get<Cicerone<Router>>(named(CICERONE_NAME)).router }
     single<AppScreens> { AppScreensImpl() }
     //endregion
@@ -121,6 +123,11 @@ val screens = module {
     scope(named(FragmentScope.SHOW_ABOUT_FRAGMENT_SCOPE)) {
         viewModel {
             AboutFragmentViewModel()
+        }
+    }
+    scope(named(FragmentScope.SHOW_INFO_FRAGMENT_SCOPE)) {
+        viewModel {
+            InfoFragmentViewModel()
         }
     }
     scope(named(FragmentScope.SHOW_SETTINGS_FRAGMENT_SCOPE)) {
