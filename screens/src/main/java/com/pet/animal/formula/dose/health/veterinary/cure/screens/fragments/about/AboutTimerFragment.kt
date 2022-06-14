@@ -14,7 +14,7 @@ class AboutTimerFragment: BaseFragment<FragmentAboutTimerBinding>(FragmentAboutT
     private lateinit var buttonToBackScreen: ImageView
 
     // ViewModel
-    private lateinit var model: AboutFragmentViewModel
+    private lateinit var model: AboutTimerFragmentViewModel
     //endregion
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -35,7 +35,7 @@ class AboutTimerFragment: BaseFragment<FragmentAboutTimerBinding>(FragmentAboutT
 
     // Инициализация ViewModel
     private fun initViewModel() {
-        model = ViewModelProvider(this).get(AboutFragmentViewModel::class.java)
+        model = ViewModelProvider(this).get(AboutTimerFragmentViewModel::class.java)
     }
 
     companion object {

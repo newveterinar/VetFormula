@@ -14,7 +14,7 @@ class AboutCalcFragment: BaseFragment<FragmentAboutCalcBinding>(FragmentAboutCal
     private lateinit var buttonToBackScreen: ImageView
 
     // ViewModel
-    private lateinit var model: AboutFragmentViewModel
+    private lateinit var model: AboutCaclFragmentViewModel
     //endregion
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -35,7 +35,7 @@ class AboutCalcFragment: BaseFragment<FragmentAboutCalcBinding>(FragmentAboutCal
 
     // Инициализация ViewModel
     private fun initViewModel() {
-        model = ViewModelProvider(this).get(AboutFragmentViewModel::class.java)
+        model = ViewModelProvider(this).get(AboutCaclFragmentViewModel::class.java)
     }
 
     companion object {
