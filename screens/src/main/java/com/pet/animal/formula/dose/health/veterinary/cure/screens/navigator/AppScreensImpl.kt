@@ -8,6 +8,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.abou
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.about.AboutTimerFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.calculator.CalculatorFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.calculator.keyboard.CalculatorKeyboardFragment
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.edittext.EditTextFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.gas.GasFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.fluids.FluidsFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.hematology.HematologyFragment

@@ -110,7 +110,7 @@ class CalculatorKeyboardFragment:
     private fun initNavigationButton() {
         binding.apply {
             navigationButtons.also {
-                it[0] = this.previousButtonContainer
+                it[0] = this.calculatorPreviousButtonContainer
                 it[1] = this.calcAboutButton
             }
         }

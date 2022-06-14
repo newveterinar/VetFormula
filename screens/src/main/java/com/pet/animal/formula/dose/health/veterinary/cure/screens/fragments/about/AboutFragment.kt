@@ -3,7 +3,7 @@ package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.abo
 import android.content.Context
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentAboutBinding
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.FragmentScope
@@ -15,7 +15,7 @@ import org.koin.java.KoinJavaComponent
 class  AboutFragment : BaseFragment<FragmentAboutBinding>(FragmentAboutBinding::inflate) {
     /** Задание переменных */ //region
     // Навигация
-    private lateinit var buttonToBackScreen: ImageView
+    private lateinit var buttonToBackScreen: ConstraintLayout
 
     // ViewModel
     private lateinit var viewModel: AboutFragmentViewModel
@@ -55,7 +55,7 @@ class  AboutFragment : BaseFragment<FragmentAboutBinding>(FragmentAboutBinding::
 
     // Инициализация кнопок
     private fun initButtons() {
-        buttonToBackScreen = binding.aboutPreviousButton
+        buttonToBackScreen = binding.aboutPreviousButtonContainer
         buttonToBackScreen.setOnClickListener {
             viewModel.router.navigateTo(viewModel.screens.infoScreen())
         }

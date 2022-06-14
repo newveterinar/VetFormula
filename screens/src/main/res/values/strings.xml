@@ -139,23 +139,23 @@
     <string name="textView2_text">Calculation BDD</string>
     <string name="textViewHR_text">(HR)</string>
     <string name="info_text_app">\n\nABOUT THE APPLICATION:\n\n
-        The application has such sections as: "Pharmacy", "Fluids", "Hematology", "Calculator", "Conversions", "Timer".\n\n
-        "Pharmacy" - helps to determine the calculation of doses of drugs:\n
-        1. Animal surface area\n
-        2. Dose of the drug\n
-        3. Infusion at a constant rate\n
+        The application has sections such as: "Drugs", "Gases", "Calculator", "Timer".\n\n
+        Sections "Drugs" and "Gases" - help to determine the calculation of doses of drugs:\n
+        1. The surface area of the animal\n
+        2. The dose of the drug \n
+        3. Infusion at a constant rate \n
         4. Gas anesthesia\n\n
-        "Timer" - helps to determine the heart rate (HR) and respiratory rate (RR).\n\n
-        "Calculator" - helps to make calculations.\n\n
-        The application has a "Slider" that can divide the screen in half and in which you can display using the "active button on the screen" + ":\n
-        1. Access to the information resource "WSAVA"\n
-        2. Access to the information resource "VetMedical"\n
-        3. Notepad for entering and saving text information\n
+        "Timer" - helps to determine the heart rate (HR) and the frequency of respiratory movements (BDD).\n\n
+        "Calculator" - helps to calculate the source data.\n\n
+        In the left part of the application, a "Slider" is implemented, which can divide the screen into two parts.To do this, pull the green circle on the left up or down.The bottom screen provides access to the following windows: \n
+        1. Access to the information resource "WSAVA".\n
+        2. Access to the information resource "VetMedical".\n
+        3. Notepad for entering and saving text information.\n
     </string>
-    <string name="about_timer_title">Таймер для определения частоты сердечных сокращений (ЧСС) и частоты дыхательных движений (ЧДД).</string>
-    <string name="about_timer_tv_start">Позволяет одновременно измерять ЧСС и ЧДД. Замер параметров осуществляется одновременно. Во время проведения измерения от пользователя требуется:</string>
-    <string name="about_timer_tv_middle">1)Настроить необходимое время отсчета таймера и включить его. \n2)С помощью стетоскопа считать количество сердечных сокращений. И одновременно, определяя на слух, второй рукой нажимать на иконку лапы собаки в такт дыхания животного. \n3)В конце работы таймера ввести количество посчитанных сердечных сокращений, после этого будет отображен результат ЧСС.</string>
-    <string name="about_timer_tv_end">Не обязательно дожидаться конца работы таймера. Измерения могут быть остановлены в любой момент отсчета времени, тем самым ускоряя выполнение операции.</string>
-    <string name="about_calc_title">Калькулятор для вычислений</string>
-    <string name="about_calc_tv">Используется для проведения промежуточных расчётов при подготовке исходных данных. Он позволяет осуществлять все стандартные арифметические операции, работать со скобками, степенями, процентами, предоставлять историю вводимых символов, отдельно вводить целые и дробные части чисел, удалять по одной, две и все операции сразу</string>
+    <string name="about_timer_title">Timer for determining the heart rate (HR) and respiratory rate (HRD).</string>
+    <string name="about_timer_tv_start">It allows you to simultaneously measure heart rate and BPD. The parameters are measured simultaneously. During the measurement, the user is required to:</string>
+    <string name="about_timer_tv_middle">1) turn it on, stop it, reset the values obtained, add another minute or several minutes during the measurement; \n2) use a stethoscope to count the number of heartbeats; 3) by hearing, determining the moment of the patients breathing, click on the picture of the foot at the time of the timer and it will count the number of patients breaths;\n3) at the end of the timer, enter the number of counted heartbeats, after which the heart rate result will be displayed.\n</string>
+    <string name="about_timer_tv_end">It is not necessary to wait for the timer to end. Measurements can be stopped at any time, thereby speeding up the operation.</string>
+    <string name="about_calc_title">Calculator for calculations</string>
+    <string name="about_calc_tv">It is used for performing intermediate calculations during the preparation of initial data. It allows you to perform all standard arithmetic operations, work with brackets, degrees, percentages, provide a history of the characters entered, separately enter integers and fractions of numbers, delete one, two and all operations at once</string>
 </resources>

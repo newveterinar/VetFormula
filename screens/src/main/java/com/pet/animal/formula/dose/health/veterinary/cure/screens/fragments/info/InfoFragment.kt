@@ -3,9 +3,11 @@ package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.inf
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentInfoBinding
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.FragmentScope
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.NUMBER_NAVIGATION_BUTTONS_ON_INPUT_DATA_SCREENS
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.screens.FabAndSliderControl
 import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
@@ -14,7 +16,8 @@ import org.koin.java.KoinJavaComponent
 class InfoFragment : BaseFragment<FragmentInfoBinding>(FragmentInfoBinding::inflate) {
     /** Задание переменных */ //region
     // Навигация
-    private val navigationButtons = arrayOfNulls<View>(size = 3)
+    private val navigationButtons =
+        arrayOfNulls<View>(size = NUMBER_NAVIGATION_BUTTONS_ON_INPUT_DATA_SCREENS)
 
     // ViewModel
     private lateinit var viewModel: InfoFragmentViewModel
@@ -57,15 +60,15 @@ class InfoFragment : BaseFragment<FragmentInfoBinding>(FragmentInfoBinding::infl
     private fun initButtons() {
         binding.apply {
             navigationButtons.also {
-                it[0] = this.infoAboutButton
-                it[1] = this.infoPreviousButton
+                it[0] = this.infoPreviousButtonContainer
+                it[1] = this.infoAboutButton
             }
         }
         navigationButtons.forEachIndexed { index, button ->
             button?.setOnClickListener {
                 when (index) {
-                    0 -> viewModel.router.navigateTo(viewModel.screens.aboutScreen())
-                    1 -> viewModel.router.navigateTo(viewModel.screens.mainScreen())
+                    0 -> viewModel.router.navigateTo(viewModel.screens.mainScreen())
+                    1 -> viewModel.router.navigateTo(viewModel.screens.aboutScreen())
                 }
             }
         }
@@ -81,8 +84,8 @@ class InfoFragment : BaseFragment<FragmentInfoBinding>(FragmentInfoBinding::infl
         fun newInstance(): InfoFragment = InfoFragment()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onPause() {
+        super.onPause()
         // Отображение слайдера и FAB
         val ma = (activity as FabAndSliderControl)
         ma.showFab()
