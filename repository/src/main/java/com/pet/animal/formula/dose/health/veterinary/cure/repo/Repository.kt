@@ -33,4 +33,9 @@ interface Repository {
     suspend fun saveUniParams(params:List<UniParamEntity>)
     suspend fun getUniParamsByFormula(formulaId:Int):List<UniParamEntity>
 
+    //NOTE_ENTITY
+    suspend fun saveNote(noteEntity:NoteEntity):Long
+    suspend fun loadNote(id:Long):List<NoteEntity>
+    suspend fun deleteNote(id:Long)
+    suspend fun getNotesList():List<NoteEntity>
 }
