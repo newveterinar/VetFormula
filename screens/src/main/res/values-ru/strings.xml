@@ -49,7 +49,8 @@
     <string name="pharmacy_calculate_button_text">Рассчитать</string>
     <string name="pharmacy_result_previous_text_text">Результат</string>
     <string name="pharmacy_about_button_hints">О приложении</string>
-    <string name="about_logo_text">Информация</string>
+    <string name="about_logo_text">Разработчики</string>
+    <string name="info_logo_text">Информация</string>
     <string name="pharmacy_logo_text">ВетФормула</string>
     <string name="fluids_button_text_text">Жидкости</string>
     <string name="fluids_button_surface_text_text">Главная</string>
@@ -137,4 +138,18 @@
     <string name="textViewHR_text">(ЧСС)</string>
     <string name="main_screen_settings_hint">переход на экран настроек.</string>
     <string name="main_screen_about_hint">переход на экран \"О приложении\".</string>
+    <string name="info_text_app">\n\nО ПРИЛОЖЕНИИ:\n\n
+        В приложении есть такие разделы как: «Препараты», «Жидкости», «Гематология», «Калькулятор», «Преобразования», «Таймер».\n\n
+        «Препараты» - помогают определить расчёт доз лекарственных препаратов:\n
+        1.	Площадь поверхности животного\n
+        2.	Доза препарата\n
+        3.	Инфузия с постоянной скоростью\n
+        4.	Газовый наркоз\n\n
+        «Таймер» - помогает определить частоты сердечных сокращений (ЧСС) и частоты дыхательных движений (ЧДД)\n\n
+        «Калькулятор» - помогает произвести вычисления.\n\n
+        В приложении реализован «Слайдер», который умеет делить экран напополам и в котором можно отобразить с помощью «активной кнопки на экране «+»:\n
+        1.	Доступ к информационному ресурсу «WSAVA»\n
+        2.	Доступ к информационному ресурсу «VetMedical»\n
+        3.	Блокнот для ввода и сохранения текстовой информации\n
+</string>
 </resources>

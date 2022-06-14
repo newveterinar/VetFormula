@@ -49,7 +49,8 @@
     <string name="pharmacy_calculate_button_text">Calculate</string>
     <string name="pharmacy_result_previous_text_text">Result</string>
     <string name="pharmacy_about_button_hints">ABOUT\nVetFormula</string>
-    <string name="about_logo_text">Information</string>
+    <string name="about_logo_text">About</string>
+    <string name="info_logo_text">Information</string>
     <string name="pharmacy_logo_text">VetFormula</string>
     <string name="fluids_button_text_text">Fluids</string>
     <string name="fluids_button_surface_text_text">Basic</string>
@@ -137,4 +138,18 @@
     <string name="buttonMuteUnMute_unmute_text">UNMUTE</string>
     <string name="textView2_text">Calculation BDD</string>
     <string name="textViewHR_text">(HR)</string>
+    <string name="info_text_app">\n\nABOUT THE APPLICATION:\n\n
+        The application has such sections as: "Pharmacy", "Fluids", "Hematology", "Calculator", "Conversions", "Timer".\n\n
+        "Pharmacy" - helps to determine the calculation of doses of drugs:\n
+        1. Animal surface area\n
+        2. Dose of the drug\n
+        3. Infusion at a constant rate\n
+        4. Gas anesthesia\n\n
+        "Timer" - helps to determine the heart rate (HR) and respiratory rate (RR).\n\n
+        "Calculator" - helps to make calculations.\n\n
+        The application has a "Slider" that can divide the screen in half and in which you can display using the "active button on the screen" + ":\n
+        1. Access to the information resource "WSAVA"\n
+        2. Access to the information resource "VetMedical"\n
+        3. Notepad for entering and saving text information\n
+    </string>
 </resources>

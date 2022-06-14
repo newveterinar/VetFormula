@@ -2,11 +2,9 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentMainscreenBinding
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.edittext.EditTextFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.mainscreen.MainScreenFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.FragmentScope
 import org.koin.core.qualifier.named
@@ -61,7 +59,7 @@ class MainScreenFragment :
     }
 
     private fun setToastHintObserver() {
-        viewModel.toastHint.observe(viewLifecycleOwner){
+        viewModel.toastHint.observe(viewLifecycleOwner) {
             Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
         }
     }
@@ -91,11 +89,14 @@ class MainScreenFragment :
                     3 -> viewModel.router.navigateTo(viewModel.screens.conversionsScreen())
                     4 -> viewModel.router.navigateTo(viewModel.screens.settingsScreen())
                     5 -> viewModel.router.navigateTo(viewModel.screens.calculatorScreen())
-                    6 -> viewModel.router.navigateTo(viewModel.screens.aboutScreen())
+                    6 -> viewModel.router.navigateTo(viewModel.screens.infoScreen())
                     7 -> viewModel.router.navigateTo(viewModel.screens.timerScreen())
                     else -> {
-                        Toast.makeText(requireContext(), requireActivity().resources.getString(
-                            R.string.error_button_is_not_assigned), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            requireContext(), requireActivity().resources.getString(
+                                R.string.error_button_is_not_assigned
+                            ), Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
             }
@@ -118,8 +119,12 @@ class MainScreenFragment :
     }
 
     private fun setToastHint(hint: String) {
-        viewModel.setToastHint(getString(R.string.long_click_hint,
-            hint))
+        viewModel.setToastHint(
+            getString(
+                R.string.long_click_hint,
+                hint
+            )
+        )
     }
 
     // Инициализация ViewModel

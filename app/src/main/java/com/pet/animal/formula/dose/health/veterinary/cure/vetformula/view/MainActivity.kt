@@ -1,6 +1,7 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.vetformula.view
 
 import android.annotation.SuppressLint
+import android.app.Fragment
 import android.content.Context
 import android.content.SharedPreferences
 import android.content.res.Configuration
