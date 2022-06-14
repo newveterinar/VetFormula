@@ -16,8 +16,8 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/timer_about_button"
-            android:layout_width="@dimen/pharmacy_about_button_width"
-            android:layout_height="@dimen/pharmacy_about_button_height"
+            android:layout_width="@dimen/about_app_button_width"
+            android:layout_height="@dimen/about_app_button_height"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="@dimen/timer_about_button_margin_top"
             android:layout_marginEnd="@dimen/timer_about_button_margin_end"

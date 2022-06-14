@@ -18,11 +18,6 @@ class MainViewModelInteractor {
 
     // Запись в базу данных формул при первом запуске приложения
     suspend fun writeDataToBDAtFirstRun() {
-        // Принудительная очистка базы данных перед добавлением новых формул
-//        repeat(500) {
-//            repositoryImpl.deleteFormulaByID(it.toLong())
-//        }
-
         // Проверка отсутствия в базе данных типизированной формулы для окна PHARMACY_SURFACE
         if (repositoryImpl.getFormula(ScreenType.PHARMACY_SURFACE,
                 listOf(PHARMACY_SURFACE_DOG_INDEX, 0)).getTypedFormulas().size == 0) {
@@ -53,6 +48,17 @@ class MainViewModelInteractor {
                     fakeRepositoryImpl.getFormula(ScreenType.PHARMACY_CRI, listOf(it, 0)),
                     ScreenType.PHARMACY_CRI.ordinal,
                     PHARMACY_CRI_FORMULA_ELEMENT_COUNT,
+                    it,
+                    0
+                )
+            }
+            // Сохранение формул для окна GASES_INHALATION_ANESTHESIA
+            repeat(GASES_INHALATION_ANESTHESIA_ADDFIRST_FORMULA_NUMBER) {
+                repositoryImpl.insertFormula(
+                    fakeRepositoryImpl.getFormula(
+                        ScreenType.GASES_INHALATION_ANESTHESIA, listOf(it, 0)),
+                    ScreenType.GASES_INHALATION_ANESTHESIA.ordinal,
+                    GASES_INHALATION_ANESTHESIA_ELEMENT_COUNT,
                     it,
                     0
                 )

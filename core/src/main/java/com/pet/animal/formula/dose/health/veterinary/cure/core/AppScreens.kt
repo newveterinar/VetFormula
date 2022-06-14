@@ -14,7 +14,7 @@ interface AppScreens {
     fun aboutScreen(): FragmentScreen
     fun fluidsScreen(): FragmentScreen
     fun hematologyScreen(): FragmentScreen
-    fun conversionsScreen(): FragmentScreen
+    fun gasScreen(): FragmentScreen
     fun settingsScreen(): FragmentScreen
     fun calculatorScreen(): FragmentScreen
     fun calculatorKeyboardScreen(): FragmentScreen

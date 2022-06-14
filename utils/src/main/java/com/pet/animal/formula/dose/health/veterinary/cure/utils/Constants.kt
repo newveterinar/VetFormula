@@ -19,6 +19,7 @@ class FragmentScope {
         const val SHOW_CALCULATOR_FRAGMENT_SCOPE = "SHOW_CALCULATOR_FRAGMENT_SCOPE"
         const val SHOW_CALCULATOR_KEYBOARD_FRAGMENT_SCOPE =
             "SHOW_CALCULATOR_KEYBOARD_FRAGMENT_SCOPE"
+        const val SHOW_GAS_FRAGMENT_SCOPE = "SHOW_GAS_FRAGMENT_SCOPE"
         const val SHOW_ABOUT_FRAGMENT_SCOPE = "SHOW_ABOUT_FRAGMENT_SCOPE"
         const val SHOW_SETTINGS_FRAGMENT_SCOPE = "SHOW_SETTINGS_FRAGMENT_SCOPE"
         const val SHOW_VETMEDICAL_VIEW_FRAGMENT_SCOPE = "SHOW_VETMEDICAL_VIEW_FRAGMENT_SCOPE"
@@ -56,6 +57,9 @@ const val PHARMACY_DOSES_NAME = "DOSES formula"
 const val PHARMACY_CRI_NO_GIVING_SET_NAME = "CRI no giving set formula"
 const val PHARMACY_CRI_20_DROPS_PER_ML_NAME = "CRI 20 drops/ml formula"
 const val PHARMACY_CRI_60_DROPS_PER_ML_NAME = "CRI 60 drops/ml formula"
+const val GASES_INHALATION_ANESTHESIA_SEVOFLURANE_NAME = "GASES sevoglurane"
+const val GASES_INHALATION_ANESTHESIA_DESFLURANE_NAME = "GASES desflurane"
+const val GASES_INHALATION_ANESTHESIA_ISOFLURANE_NAME = "GASES isoflurane"
 
 // Индексы в массиве addFirstSecond типа Int для класса TypedFormula()
 const val PHARMACY_SURFACE_DOG_INDEX = 0
@@ -123,21 +127,26 @@ enum class ScreenType {
     PHARMACY_CRI,                           // При переводе (ordinal) в Int соответствует номеру 7
     PHARMACY_SURFACE,                       // При переводе (ordinal) в Int соответствует номеру 8
     // Типы формул для раздела CALCULATOR
-    CALCULATOR                              // При переводе (ordinal) в Int соответствует номеру 9
+    CALCULATOR,                              // При переводе (ordinal) в Int соответствует номеру 9
+    // Типы формул для раздела GASES
+    GASES_INHALATION_ANESTHESIA              // При переводе (ordinal) в Int соответствует номеру 10
 }
 
 // Количество навигационных кнопок на окнах
+const val NUMBER_NAVIGATION_BUTTONS_ON_MAINSCREEN: Int = 6
 const val NUMBER_NAVIGATION_BUTTONS_ON_INPUT_DATA_SCREENS: Int = 2
 const val NUMBER_NAVIGATION_BUTTONS_ON_OUTPUT_DATA_SCREENS: Int = 1
 
 // Количество формул по параметру addFirst
 const val PHARMACY_DOSES_ADDFIRST_FORMULA_NUMBER: Int = 1
 const val PHARMACY_CRI_ADDFIRST_FORMULA_NUMBER: Int = 3
+const val GASES_INHALATION_ANESTHESIA_ADDFIRST_FORMULA_NUMBER: Int = 3
 
 // Максимальные количества пользовательских элементов в формулах
 const val PHARMACY_SURFACE_FORMULA_ELEMENT_COUNT: Int = 1
 const val PHARMACY_DOSES_FORMULA_ELEMENT_COUNT: Int = 3
 const val PHARMACY_CRI_FORMULA_ELEMENT_COUNT: Int = 5
+const val GASES_INHALATION_ANESTHESIA_ELEMENT_COUNT: Int = 3
 
 // Слайдер
 const val SLIDER_START_ANGLE: Float = 270f
@@ -157,8 +166,11 @@ enum class InputDataDimensionType {
     MASS_DOSE_PER_KG,
     MASS_DOSE_PER_KG_PER_TIME,
     VOLUME_DOSE_PER_KG_PER_TIME,
+    VOLUME_DOSE_PER_TIME,
     CONCENTRATION,
+    CONCENTRATION_VOLUME_PERCENT,
     VOLUME,
+    TIME,
     ERROR_TYPE
 }
 
