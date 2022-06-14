@@ -137,4 +137,7 @@
     <string name="buttonMuteUnMute_unmute_text">UNMUTE</string>
     <string name="textView2_text">Calculation BDD</string>
     <string name="textViewHR_text">(HR)</string>
+    <string name="btn_delete_note_text">Delete</string>
+    <string name="btn_load_note_text">Load</string>
+    <string name="btn_save_note_text">Save</string>
 </resources>

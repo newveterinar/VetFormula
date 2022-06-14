@@ -14,4 +14,5 @@
     <dimen name="fab_layout_width">50dp</dimen>
     <dimen name="fab_layout_height">50dp</dimen>
     <dimen name="windows_slider_thumb_radius">12dp</dimen>
+    <dimen name="bottom_fragment_divider_height">2dp</dimen>
 </resources>
