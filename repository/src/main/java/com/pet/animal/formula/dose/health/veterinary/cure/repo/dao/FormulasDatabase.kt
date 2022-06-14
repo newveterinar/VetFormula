@@ -17,7 +17,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.unientity.*
     UniParamEntity::class,
     UniSectionEntity::class,
     UniTranslateSectionEntity::class,
-    NoteEntity::class], version = 3)
+    NoteEntity::class], version = 5)
 
 @TypeConverters(ClassTypeConverter::class)
 abstract class FormulasDatabase : RoomDatabase() {

@@ -86,7 +86,6 @@ class RepositoryImpl(private val dbDao:VetFormulaDao): Repository {
     }
 
     override suspend fun insertSection(sections: List<UniSectionEntity>) {
-
         dbDao.insertSection(sections)
     }
 
@@ -110,15 +109,19 @@ class RepositoryImpl(private val dbDao:VetFormulaDao): Repository {
         return dbDao.getUniParamsByFormula(formulaId)
     }
 
-    override suspend fun saveNote(noteEntity: NoteEntity) {
-        dbDao.saveNote(noteEntity)
+    override suspend fun saveNote(noteEntity: NoteEntity):Long {
+        return dbDao.saveNote(noteEntity)
     }
 
-    override suspend fun loadNote(id: Int): List<NoteEntity> {
+    override suspend fun loadNote(id: Long): List<NoteEntity> {
         return dbDao.loadNote(id)
     }
 
-    override suspend fun deleteNote(id: Int) {
+    override suspend fun deleteNote(id: Long) {
         dbDao.deleteNote(id)
+    }
+
+    override suspend fun getNotesList(): List<NoteEntity> {
+        return dbDao.getNotesList()
     }
 }

@@ -4,10 +4,16 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class NoteEntity
+class NoteEntity
     (
     @PrimaryKey(autoGenerate = true)
-    val id:Int,
+    val id:Long?,
     val name:String,
     val note:String
-)
+){
+    override fun toString(): String {
+        return name
+    }
+}
+
+

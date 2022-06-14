@@ -65,13 +65,17 @@ interface VetFormulaDao {
 
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun saveNote(noteEntity:NoteEntity)
+    fun saveNote(noteEntity:NoteEntity):Long
 
     @Query("select * from NoteEntity where id=:id")
-    fun loadNote(id:Int):List<NoteEntity>
+    fun loadNote(id:Long):List<NoteEntity>
 
     @Query("delete from NoteEntity where id=:id")
-    fun deleteNote(id:Int)
+    fun deleteNote(id:Long)
+
+    @Query("select * from NoteEntity")
+    fun getNotesList():List<NoteEntity>
+
 
 
 }

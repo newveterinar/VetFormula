@@ -3,10 +3,10 @@ package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.edi
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.TextView
+import android.widget.*
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentEditTextBinding
@@ -15,6 +15,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.utils.settings.Setting
 import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
 import org.koin.java.KoinJavaComponent
+
 
 class EditTextFragment : BaseFragment<FragmentEditTextBinding>(FragmentEditTextBinding::inflate) {
     /** Задание переменных */ //region
@@ -65,27 +66,66 @@ class EditTextFragment : BaseFragment<FragmentEditTextBinding>(FragmentEditTextB
             binding.editTextText.setText(it)
         }
 
-        viewModel.urlLiveData.observe(viewLifecycleOwner) { pair ->
+        viewModel.urlLiveData.observe(viewLifecycleOwner) { _ ->
             val builder = AlertDialog.Builder(requireContext())
             val inflater = layoutInflater
             val dialogView = inflater.inflate(R.layout.dialog_save, null)
             builder.setView(dialogView)
             val dialog = builder.create()
             setAlertDialogButtonListener(dialog, dialogView)
-
             dialog.show()
+        }
+
+        viewModel.noteList.observe(viewLifecycleOwner){noteList->
+
+
+            val elements = arrayOfNulls<String>(noteList.size)
+            var pos=0
+            for(note in noteList){
+                elements[pos]=note.name
+                pos++
+            }
+
+            val alertDialog =AlertDialog.Builder(context)
+            alertDialog
+                .setTitle("Select note")
+                .setItems(elements,DialogInterface.OnClickListener(){_,pos->
+                    val id = noteList[pos].id
+                    id?.let {
+                        viewModel.loadNote(it)
+                    }
+                })
+            alertDialog.show()
         }
     }
 
     private fun initButtons() {
         binding.apply {
             btnSaveNote.setOnClickListener {
-                viewModel.setUrlLiveData(Pair(settings.getCurrentVetmedicalUrl(),
-                    settings.getCurrentWsavaUrl()))
+                val input = EditText(context)
+                val lp = LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.MATCH_PARENT)
+                input.layoutParams = lp
+
+                val alertDialog  = AlertDialog.Builder(context)
+                alertDialog
+                    .setTitle("Enter note name")
+                    .setView(input)
+                    .setPositiveButton("Save"){_,_->
+                        val text = input.text.toString()
+                        val note = binding.editTextText.text.toString()
+                        viewModel.saveNote(text,note)
+                    }
+                alertDialog.show()
             }
 
             btnLoadNote.setOnClickListener {
+                viewModel.getNoteList()
+            }
 
+            btnDeleteNote.setOnClickListener{
+                viewModel.deleteNote()
             }
         }
     }
@@ -122,4 +162,6 @@ class EditTextFragment : BaseFragment<FragmentEditTextBinding>(FragmentEditTextB
             dialog.dismiss()
         }
     }
+
+
 }
