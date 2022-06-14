@@ -3,8 +3,10 @@ package com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator
 import MainScreenFragment
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 import com.pet.animal.formula.dose.health.veterinary.cure.core.AppScreens
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.about.AboutCalcFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.edittext.EditTextFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.about.AboutFragment
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.about.AboutTimerFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.calculator.CalculatorFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.calculator.keyboard.CalculatorKeyboardFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.gas.GasFragment
@@ -104,6 +106,14 @@ class AppScreensImpl: AppScreens {
 
     override fun editTextScreen() = FragmentScreen {
         EditTextFragment.newInstance()
+    }
+
+    override fun aboutCalc() = FragmentScreen {
+        AboutCalcFragment.newInstance()
+    }
+
+    override fun aboutTimer() = FragmentScreen {
+        AboutTimerFragment.newInstance()
     }
     //endregion
 }

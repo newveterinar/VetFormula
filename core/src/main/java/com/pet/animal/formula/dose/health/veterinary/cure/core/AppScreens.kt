@@ -21,4 +21,6 @@ interface AppScreens {
     fun timerScreen(): FragmentScreen
     fun webViewScreen(): FragmentScreen
     fun editTextScreen(): FragmentScreen
+    fun aboutCalc(): FragmentScreen
+    fun aboutTimer(): FragmentScreen
 }
