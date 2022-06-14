@@ -171,5 +171,6 @@
     <string name="gases_middle_anesthesia_concentration_textinputlayout_textfield_hint">Сoncentration</string>
     <string name="gases_duration_anesthesia_title_text">Duration of anesthesia</string>
     <string name="gases_duration_anesthesia_textinputlayout_textfield_hint">Duration</string>
+    <string name="gases_inhalation_anasthesia_result_title_text">Anesthetic consumption</string>
 
 </resources>

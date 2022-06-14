@@ -7,16 +7,16 @@
     android:background="?attr/colorPrimary">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/pharmacy_header"
+        android:id="@+id/header"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/pharmacy_header_height"
+        android:layout_height="@dimen/header_height"
         android:background="?attr/colorSecondary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/pharmacy_previous_button_container"
+            android:id="@+id/previous_button_container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -24,12 +24,12 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/pharmacy_previous_button"
-                android:layout_width="@dimen/pharmacy_previous_button_width"
-                android:layout_height="@dimen/pharmacy_previous_button_height"
+                android:id="@+id/previous_button"
+                android:layout_width="@dimen/previous_button_width"
+                android:layout_height="@dimen/previous_button_height"
                 android:layout_alignParentEnd="true"
-                android:layout_marginStart="@dimen/pharmacy_previous_button_margin_start"
-                android:layout_marginTop="@dimen/pharmacy_previous_button_margin_top"
+                android:layout_marginStart="@dimen/previous_button_margin_start"
+                android:layout_marginTop="@dimen/previous_button_margin_top"
                 android:rotation="@dimen/arrow_back_rotation_angle"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -37,12 +37,12 @@
                 app:srcCompat="@drawable/ic_arrow_right" />
 
             <TextView
-                android:id="@+id/pharmacy_result_previous_text"
+                android:id="@+id/result_previous_text"
                 style="@style/text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingStart="@dimen/pharmacy_result_previous_text_padding_start"
-                android:text="@string/pharmacy_result_previous_text_text"
+                android:paddingStart="@dimen/result_previous_text_padding_start"
+                android:text="@string/gases_inhalation_anesthesia_previous_text"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -50,11 +50,11 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <View
-            android:id="@+id/pharmacy_horizontal_border"
+            android:id="@+id/horizontal_border"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/pharmacy_horizontal_border_height"
+            android:layout_height="@dimen/horizontal_border_height"
             android:background="@color/black"
-            app:layout_constraintBottom_toBottomOf="@id/pharmacy_header"
+            app:layout_constraintBottom_toBottomOf="@id/header"
             app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -64,36 +64,36 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/pharmacy_header">
+        app:layout_constraintTop_toBottomOf="@id/header">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/pharmacy_result_container"
+            android:id="@+id/gases_inhalation_anasthesia_result_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingTop="@dimen/pharmacy_result_container_padding_top"
-            android:paddingBottom="@dimen/pharmacy_result_container_padding_bottom">
+            android:paddingTop="@dimen/gases_inhalation_anasthesia_result_container_padding_top"
+            android:paddingBottom="@dimen/gases_inhalation_anasthesia_result_container_padding_bottom">
 
             <TextView
-                android:id="@+id/pharmacy_result_title"
+                android:id="@+id/gases_inhalation_anasthesia_result_title"
                 style="@style/button_result_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/pharmacy_result_title_margin_start"
-                android:layout_marginTop="@dimen/pharmacy_result_title_margin_top"
-                android:text="@string/pharmacy_result_title_text"
+                android:layout_marginStart="@dimen/gases_inhalation_anasthesia_result_title_margin_start"
+                android:layout_marginTop="@dimen/gases_inhalation_anasthesia_result_title_margin_top"
+                android:text="@string/gases_inhalation_anasthesia_result_title_text"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/pharmacy_result_text"
+                android:id="@+id/gases_inhalation_anasthesia_result_text"
                 style="@style/number_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/pharmacy_result_text_margin_start"
-                android:layout_marginTop="@dimen/pharmacy_result_text_margin_top"
-                android:tag="SQUARE_LENGTH"
+                android:layout_marginStart="@dimen/gases_inhalation_anasthesia_result_text_margin_start"
+                android:layout_marginTop="@dimen/gases_inhalation_anasthesia_result_text_margin_top"
+                android:tag="RATE"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/pharmacy_result_title" />
+                app:layout_constraintTop_toBottomOf="@id/gases_inhalation_anasthesia_result_title" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
