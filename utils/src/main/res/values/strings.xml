@@ -25,6 +25,11 @@
         <item>20 drops/ml</item>
         <item>60 drops/ml</item>
     </string-array>
+    <string-array name="addFirstSecond_anesthetic_list">
+        <item>Sevoflurane</item>
+        <item>Isoflurane</item>
+        <item>Desflurane</item>
+    </string-array>
 
     <!-- Исходные данные типа размерностей вводимых численных значений -->
     <string-array name="input_data_dimension_weight_animal_list">
