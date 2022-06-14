@@ -36,7 +36,7 @@ class MainScreenFragment :
                 it[0] = this.settingsButton
                 it[1] = this.aboutAppButton
                 it[2] = this.pharmacySurfaceButtonContainer
-                it[3] = this.gasesButtonContainer
+                it[3] = this.gasesButtonsContainer
                 it[4] = this.calculatorSurfaceButtonContainer
                 it[5] = this.timerSurfaceButtonContainer
             }

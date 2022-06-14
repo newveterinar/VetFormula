@@ -59,7 +59,7 @@
     <string name="hematology_button_surface_text_text">Transfusion</string>
     <string name="gases_previous_text_text">Gases</string>
     <string name="gases_button_text_text">Gases</string>
-    <string name="conversions_button_surface_text_text">Temperature</string>
+    <string name="gases_inhalation_anesthesia_button_text_text">Inhalation\nanesthesia</string>
     <string name="settings_previous_text_text">Settings</string>
     <string name="settings_button_text_text">Settings</string>
     <string name="settings_button_surface_text_text">SomeSettings</string>

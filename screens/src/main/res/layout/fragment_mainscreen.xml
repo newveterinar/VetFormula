@@ -71,7 +71,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/pharmacy_surface_button_container_margin_top"
                 android:layout_marginBottom="@dimen/pharmacy_surface_button_container_margin_bottom"
-                app:layout_constraintEnd_toStartOf="@+id/gases_button_container"
+                app:layout_constraintEnd_toStartOf="@+id/gases_buttons_container"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/pharmacy_header">
 
@@ -99,7 +99,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/gases_button_container"
+                android:id="@+id/gases_buttons_container"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/gases_button_container_margin_top"
@@ -167,9 +167,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/timer_surface_button_container_margin_top"
-                app:layout_constraintEnd_toEndOf="@+id/gases_button_container"
-                app:layout_constraintStart_toStartOf="@+id/gases_button_container"
-                app:layout_constraintTop_toBottomOf="@+id/gases_button_container">
+                app:layout_constraintEnd_toEndOf="@+id/gases_buttons_container"
+                app:layout_constraintStart_toStartOf="@+id/gases_buttons_container"
+                app:layout_constraintTop_toBottomOf="@+id/gases_buttons_container">
 
                 <TextView
                     android:id="@+id/timer_button_text"
