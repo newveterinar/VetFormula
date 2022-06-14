@@ -18,7 +18,7 @@ class FakeRepositoryImpl: FakeRepository {
                 pharmacyDosesFormula(screenType, listsAddFirstSecond)
             ScreenType.PHARMACY_CRI ->
                 pharmacyCRIFormula(screenType, listsAddFirstSecond)
-            ScreenType.GASES ->
+            ScreenType.GASES_INHALATION_ANESTHESIA ->
                 gasesInhalationAnesthesiaFormula(screenType, listsAddFirstSecond)
             else -> Formula()
         }

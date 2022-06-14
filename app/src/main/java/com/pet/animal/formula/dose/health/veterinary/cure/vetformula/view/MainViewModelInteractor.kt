@@ -18,11 +18,6 @@ class MainViewModelInteractor {
 
     // Запись в базу данных формул при первом запуске приложения
     suspend fun writeDataToBDAtFirstRun() {
-        // Принудительная очистка базы данных перед добавлением новых формул
-//        repeat(500) {
-//            repositoryImpl.deleteFormulaByID(it.toLong())
-//        }
-
         // Проверка отсутствия в базе данных типизированной формулы для окна PHARMACY_SURFACE
         if (repositoryImpl.getFormula(ScreenType.PHARMACY_SURFACE,
                 listOf(PHARMACY_SURFACE_DOG_INDEX, 0)).getTypedFormulas().size == 0) {

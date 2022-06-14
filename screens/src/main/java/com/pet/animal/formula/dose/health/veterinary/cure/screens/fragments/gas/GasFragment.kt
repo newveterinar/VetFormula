@@ -6,7 +6,7 @@ import android.view.View
 import android.widget.Toast
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentGasBinding
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentGasesBinding
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.FragmentScope
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.NUMBER_NAVIGATION_BUTTONS_ON_INPUT_DATA_SCREENS
 import org.koin.core.qualifier.named
@@ -14,7 +14,7 @@ import org.koin.core.scope.Scope
 import org.koin.java.KoinJavaComponent
 
 class GasFragment:
-    BaseFragment<FragmentGasBinding>(FragmentGasBinding::inflate) {
+    BaseFragment<FragmentGasesBinding>(FragmentGasesBinding::inflate) {
     /** Задание переменных */ //region
     // Навигация
     private val navigationButtons =
