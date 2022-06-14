@@ -127,6 +127,7 @@ enum class ScreenType {
 }
 
 // Количество навигационных кнопок на окнах
+const val NUMBER_NAVIGATION_BUTTONS_ON_MAINSCREEN: Int = 6
 const val NUMBER_NAVIGATION_BUTTONS_ON_INPUT_DATA_SCREENS: Int = 2
 const val NUMBER_NAVIGATION_BUTTONS_ON_OUTPUT_DATA_SCREENS: Int = 1
 

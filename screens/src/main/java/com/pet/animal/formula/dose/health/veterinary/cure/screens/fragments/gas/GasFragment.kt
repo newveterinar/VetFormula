@@ -59,7 +59,7 @@ class GasFragment:
         binding.apply {
             navigationButtons.also {
                 it[0] = this.conversionsPreviousButtonContainer
-                it[1] = this.conversionsSurfaceButtonContainer
+//                it[1] = this.conversionsSurfaceButtonContainer
             }
         }
 

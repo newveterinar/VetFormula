@@ -41,7 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingStart="@dimen/conversions_previous_text_padding_start"
-                android:text="@string/conversions_previous_text_text"
+                android:text="@string/gases_previous_text_text"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -66,7 +66,7 @@
         app:layout_constraintTop_toBottomOf="@id/conversions_header">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/conversions_surface_button_container"
+            android:id="@+id/gases_button_container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/conversions_surface_button_container_margin_start"

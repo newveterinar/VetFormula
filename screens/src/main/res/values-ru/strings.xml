@@ -57,8 +57,8 @@
     <string name="hematology_button_text_text">Гематология</string>
     <string name="hematology_previous_text_text">Гематология</string>
     <string name="hematology_button_surface_text_text">Трансфузия</string>
-    <string name="conversions_previous_text_text">Преобразования</string>
-    <string name="conversions_button_text_text">Преобразования</string>
+    <string name="gases_previous_text_text">Преобразования</string>
+    <string name="gases_button_text_text">Преобразования</string>
     <string name="conversions_button_surface_text_text">Температура</string>
     <string name="settings_previous_text_text">Настройки</string>
     <string name="settings_button_text_text">Настройки</string>
