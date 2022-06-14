@@ -126,7 +126,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_baseline_gas" />
+                    app:srcCompat="@drawable/ic_gas_icon" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -191,7 +191,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_stopwatch" />
+                    app:srcCompat="@drawable/ic_timer_icon" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

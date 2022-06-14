@@ -24,7 +24,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_developers_icon" />
+            app:srcCompat="@drawable/ic_develop_team" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/info_previous_button_container"
