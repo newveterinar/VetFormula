@@ -12,7 +12,7 @@ import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
 import org.koin.java.KoinJavaComponent
 
-class AboutFragment : BaseFragment<FragmentAboutBinding>(FragmentAboutBinding::inflate) {
+class  AboutFragment : BaseFragment<FragmentAboutBinding>(FragmentAboutBinding::inflate) {
     /** Задание переменных */ //region
     // Навигация
     private lateinit var buttonToBackScreen: ImageView

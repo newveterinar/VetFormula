@@ -61,6 +61,37 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/about_header"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/about_header_height"
+                        android:background="?attr/colorSecondary"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/calc_about_button"
+                            android:layout_width="@dimen/about_about_button_width"
+                            android:layout_height="@dimen/about_about_button_height"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="@dimen/about_about_button_margin_top"
+                            android:layout_marginEnd="@dimen/about_about_button_margin_end"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/ic_information_about" />
+
+                        <View
+                            android:id="@+id/about_horizontal_border"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/about_horizontal_border_height"
+                            android:background="@color/black"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <View

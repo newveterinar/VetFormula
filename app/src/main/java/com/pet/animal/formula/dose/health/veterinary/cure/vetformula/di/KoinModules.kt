@@ -5,7 +5,9 @@ import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.Router
 import com.pet.animal.formula.dose.health.veterinary.cure.core.AppScreens
 import com.pet.animal.formula.dose.health.veterinary.cure.fakerepo.FakeRepositoryImpl
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.about.AboutCaclFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.about.AboutFragmentViewModel
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.about.AboutTimerFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.calculator.CalculatorFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.calculator.keyboard.CalculatorKeyboardFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.edittext.EditTextFragmentViewModel
@@ -139,6 +141,16 @@ val screens = module {
     scope(named(FragmentScope.SHOW_EDIT_TEXT_FRAGMENT_SCOPE)) {
         viewModel {
             EditTextFragmentViewModel()
+        }
+    }
+    scope(named(FragmentScope.SHOW_ABOUT_CALC_SCOPE)) {
+        viewModel {
+            AboutCaclFragmentViewModel()
+        }
+    }
+    scope(named(FragmentScope.SHOW_ABOUT_TIMER_SCOPE)) {
+        viewModel {
+            AboutTimerFragmentViewModel()
         }
     }
     //endregion
