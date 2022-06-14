@@ -5,11 +5,14 @@ import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.Router
 import com.pet.animal.formula.dose.health.veterinary.cure.core.AppScreens
 import com.pet.animal.formula.dose.health.veterinary.cure.fakerepo.FakeRepositoryImpl
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.about.AboutCaclFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.about.AboutFragmentViewModel
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.about.AboutTimerFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.calculator.CalculatorFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.calculator.keyboard.CalculatorKeyboardFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.edittext.EditTextFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.info.InfoFragmentViewModel
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.gas.GasFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.mainscreen.MainScreenFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.PharmacyFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.cri.PharmacyCRIFragmentViewModel
@@ -112,6 +115,11 @@ val screens = module {
             CalculatorKeyboardFragmentViewModel()
         }
     }
+    scope(named(FragmentScope.SHOW_GAS_FRAGMENT_SCOPE)) {
+        viewModel {
+            GasFragmentViewModel()
+        }
+    }
     scope(named(FragmentScope.SHOW_ABOUT_FRAGMENT_SCOPE)) {
         viewModel {
             AboutFragmentViewModel()
@@ -140,6 +148,16 @@ val screens = module {
     scope(named(FragmentScope.SHOW_EDIT_TEXT_FRAGMENT_SCOPE)) {
         viewModel {
             EditTextFragmentViewModel()
+        }
+    }
+    scope(named(FragmentScope.SHOW_ABOUT_CALC_SCOPE)) {
+        viewModel {
+            AboutCaclFragmentViewModel()
+        }
+    }
+    scope(named(FragmentScope.SHOW_ABOUT_TIMER_SCOPE)) {
+        viewModel {
+            AboutTimerFragmentViewModel()
         }
     }
     //endregion

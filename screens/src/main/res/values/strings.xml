@@ -58,9 +58,9 @@
     <string name="hematology_button_text_text">Hematology</string>
     <string name="hematology_previous_text_text">Hematology</string>
     <string name="hematology_button_surface_text_text">Transfusion</string>
-    <string name="conversions_previous_text_text">Conversions</string>
-    <string name="conversions_button_text_text">Conversions</string>
-    <string name="conversions_button_surface_text_text">Temperature</string>
+    <string name="gases_previous_text_text">Gases</string>
+    <string name="gases_button_text_text">Gases</string>
+    <string name="gases_inhalation_anesthesia_button_text_text">Inhalation\nanesthesia</string>
     <string name="settings_previous_text_text">Settings</string>
     <string name="settings_button_text_text">Settings</string>
     <string name="settings_button_surface_text_text">SomeSettings</string>
@@ -152,4 +152,10 @@
         2. Access to the information resource "VetMedical"\n
         3. Notepad for entering and saving text information\n
     </string>
+    <string name="about_timer_title">Таймер для определения частоты сердечных сокращений (ЧСС) и частоты дыхательных движений (ЧДД).</string>
+    <string name="about_timer_tv_start">Позволяет одновременно измерять ЧСС и ЧДД. Замер параметров осуществляется одновременно. Во время проведения измерения от пользователя требуется:</string>
+    <string name="about_timer_tv_middle">1)Настроить необходимое время отсчета таймера и включить его. \n2)С помощью стетоскопа считать количество сердечных сокращений. И одновременно, определяя на слух, второй рукой нажимать на иконку лапы собаки в такт дыхания животного. \n3)В конце работы таймера ввести количество посчитанных сердечных сокращений, после этого будет отображен результат ЧСС.</string>
+    <string name="about_timer_tv_end">Не обязательно дожидаться конца работы таймера. Измерения могут быть остановлены в любой момент отсчета времени, тем самым ускоряя выполнение операции.</string>
+    <string name="about_calc_title">Калькулятор для вычислений</string>
+    <string name="about_calc_tv">Используется для проведения промежуточных расчётов при подготовке исходных данных. Он позволяет осуществлять все стандартные арифметические операции, работать со скобками, степенями, процентами, предоставлять историю вводимых символов, отдельно вводить целые и дробные части чисел, удалять по одной, две и все операции сразу</string>
 </resources>

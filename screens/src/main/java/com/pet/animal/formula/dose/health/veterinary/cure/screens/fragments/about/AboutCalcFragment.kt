@@ -6,37 +6,44 @@ import android.view.View
 import android.widget.ImageView
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentAboutBinding
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentAboutCalcBinding
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.FragmentScope
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.screens.FabAndSliderControl
 import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
 import org.koin.java.KoinJavaComponent
 
-class  AboutFragment : BaseFragment<FragmentAboutBinding>(FragmentAboutBinding::inflate) {
+class AboutCalcFragment : BaseFragment<FragmentAboutCalcBinding>(FragmentAboutCalcBinding::inflate) {
     /** Задание переменных */ //region
     // Навигация
     private lateinit var buttonToBackScreen: ImageView
 
     // ViewModel
-    private lateinit var viewModel: AboutFragmentViewModel
+    private lateinit var viewModel: AboutCaclFragmentViewModel
 
     // ShowAboutFragmentScope
-    private lateinit var showAboutFragmentScope: Scope
+    private lateinit var showAboutCalcFragmentScope: Scope
+
+
+    // newInstance для данного класса
+    companion object {
+        fun newInstance(): AboutCalcFragment = AboutCalcFragment()
+    }
     //endregion
 
     /** Работа со Scope */ //region
     override fun onAttach(context: Context) {
         super.onAttach(context)
         // Задание Scope для данного фрагмента
-        showAboutFragmentScope = KoinJavaComponent.getKoin().getOrCreateScope(
-            FragmentScope.SHOW_ABOUT_FRAGMENT_SCOPE,
-            named(FragmentScope.SHOW_ABOUT_FRAGMENT_SCOPE)
+        showAboutCalcFragmentScope = KoinJavaComponent.getKoin().getOrCreateScope(
+            FragmentScope.SHOW_ABOUT_CALC_SCOPE,
+            named(FragmentScope.SHOW_ABOUT_CALC_SCOPE)
         )
     }
 
     override fun onDetach() {
         // Удаление скоупа для данного фрагмента
-        showAboutFragmentScope.close()
+        showAboutCalcFragmentScope.close()
         super.onDetach()
     }
     //endregion
@@ -55,15 +62,15 @@ class  AboutFragment : BaseFragment<FragmentAboutBinding>(FragmentAboutBinding::
 
     // Инициализация кнопок
     private fun initButtons() {
-        buttonToBackScreen = binding.aboutPreviousButton
+        buttonToBackScreen = binding.aboutAboutButton
         buttonToBackScreen.setOnClickListener {
-            viewModel.router.navigateTo(viewModel.screens.infoScreen())
+            viewModel.router.exit()
         }
     }
 
     // Инициализация ViewModel
     private fun initViewModel() {
-        val _viewModel: AboutFragmentViewModel by showAboutFragmentScope.inject()
+        val _viewModel: AboutCaclFragmentViewModel by showAboutCalcFragmentScope.inject()
         viewModel = _viewModel
     }
 
@@ -73,10 +80,5 @@ class  AboutFragment : BaseFragment<FragmentAboutBinding>(FragmentAboutBinding::
         val ma = (activity as FabAndSliderControl)
         ma.showFab()
         ma.showSlider()
-    }
-
-    // newInstance для данного класса
-    companion object {
-        fun newInstance(): AboutFragment = AboutFragment()
     }
 }

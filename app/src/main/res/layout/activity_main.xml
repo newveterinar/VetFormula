@@ -81,7 +81,7 @@
         android:layout_width="@dimen/fab_layout_width"
         android:layout_height="@dimen/fab_layout_height"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="@dimen/pharmacy_about_button_margin_top"
+        android:layout_marginEnd="@dimen/about_app_button_margin_top"
         android:layout_marginBottom="@dimen/fab_main_margin_bottom"
         android:backgroundTint="@color/transparent"
         android:clickable="true"
