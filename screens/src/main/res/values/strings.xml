@@ -172,5 +172,8 @@
     <string name="gases_duration_anesthesia_title_text">Duration of anesthesia</string>
     <string name="gases_duration_anesthesia_textinputlayout_textfield_hint">Duration</string>
     <string name="gases_inhalation_anasthesia_result_title_text">Anesthetic consumption</string>
-
+    <string name="gases_inhalation_anasthesia_middle_flow_hint">Enter a medium flow of anesthetic</string>
+    <string name="gases_inhalation_anasthesia_concentration_hint">Enter the average concentration of the anesthetic</string>
+    <string name="gases_inhalation_anasthesia_duration_anesthesia_hint">Enter the duration of anesthesia</string>
+    <string name="gases_inhalation_anasthesia_gases_anesthetics_hint">Choose an anesthetic</string>
 </resources>

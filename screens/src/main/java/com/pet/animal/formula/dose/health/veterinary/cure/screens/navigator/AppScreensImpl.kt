@@ -11,6 +11,8 @@ import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.calc
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.edittext.EditTextFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.gas.GasFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.fluids.FluidsFragment
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.gas.inhanasth.GasInhalationAnasthesiaFragment
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.gas.inhanasth.result.GasInhalationAnasthesiaResultFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.hematology.HematologyFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.info.InfoFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.PharmacyFragment
@@ -71,6 +73,16 @@ class AppScreensImpl : AppScreens {
 
     override fun pharmacyCRIResultScreen() = FragmentScreen {
         PharmacyCRIResultFragment.newInstance()
+    }
+    //endregion
+
+    // GasesInhalationAnasthesia
+    override fun gasesInhalationAnasthesiaScreen() = FragmentScreen {
+        GasInhalationAnasthesiaFragment.newInstance()
+    }
+
+    override fun gasesInhalationAnasthesiaResultScreen() = FragmentScreen {
+        GasInhalationAnasthesiaResultFragment.newInstance()
     }
     //endregion
 
