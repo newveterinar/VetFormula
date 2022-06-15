@@ -15,15 +15,17 @@ class VerticalSlider @JvmOverloads constructor(
     private var mainActivity: MainActivity = (context as MainActivity)
     //endregion
 
+    // Стартовое задание угла поворота слайдера
     init {
         rotation = SLIDER_START_ANGLE
     }
 
-    // Необходимы метод для получени
+    // Необходимый метод для получени численного эквивалента позиции слайдера (Thumb)
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(heightMeasureSpec, widthMeasureSpec)
     }
 
+    // Необходимый метод для прорисовки изменений слайдера
     override fun onDraw(canvas: Canvas) {
         mainActivity.changeUpAndBottomFramesSizes(value)
         super.onDraw(canvas)

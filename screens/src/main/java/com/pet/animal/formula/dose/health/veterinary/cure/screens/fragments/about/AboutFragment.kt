@@ -1,23 +1,44 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.about
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import com.github.terrakok.cicerone.Router
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentAboutBinding
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator.AppScreensImpl
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.FragmentScope
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.screens.FabAndSliderControl
+import org.koin.core.qualifier.named
+import org.koin.core.scope.Scope
 import org.koin.java.KoinJavaComponent
 
-class AboutFragment : BaseFragment<FragmentAboutBinding>(FragmentAboutBinding::inflate) {
+class  AboutFragment : BaseFragment<FragmentAboutBinding>(FragmentAboutBinding::inflate) {
     /** Задание переменных */ //region
     // Навигация
-    private lateinit var buttonToBackScreen: ImageView
+    private lateinit var buttonToBackScreen: ConstraintLayout
 
     // ViewModel
-    private lateinit var model: AboutFragmentViewModel
+    private lateinit var viewModel: AboutFragmentViewModel
+
+    // ShowAboutFragmentScope
+    private lateinit var showAboutFragmentScope: Scope
+    //endregion
+
+    /** Работа со Scope */ //region
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        // Задание Scope для данного фрагмента
+        showAboutFragmentScope = KoinJavaComponent.getKoin().getOrCreateScope(
+            FragmentScope.SHOW_ABOUT_FRAGMENT_SCOPE,
+            named(FragmentScope.SHOW_ABOUT_FRAGMENT_SCOPE)
+        )
+    }
+
+    override fun onDetach() {
+        // Удаление скоупа для данного фрагмента
+        showAboutFragmentScope.close()
+        super.onDetach()
+    }
     //endregion
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -26,21 +47,35 @@ class AboutFragment : BaseFragment<FragmentAboutBinding>(FragmentAboutBinding::i
         initButtons()
         // Инициализация ViewModel
         initViewModel()
+        // Скрыти слайдера и FAB
+        val ma = (activity as FabAndSliderControl)
+        ma.hideFab()
+        ma.hideSlider()
     }
 
     // Инициализация кнопок
     private fun initButtons() {
-        buttonToBackScreen = binding.aboutAboutButton
+        buttonToBackScreen = binding.aboutPreviousButtonContainer
         buttonToBackScreen.setOnClickListener {
-            model.router.exit()
+            viewModel.router.navigateTo(viewModel.screens.infoScreen())
         }
     }
 
     // Инициализация ViewModel
     private fun initViewModel() {
-        model = ViewModelProvider(this).get(AboutFragmentViewModel::class.java)
+        val _viewModel: AboutFragmentViewModel by showAboutFragmentScope.inject()
+        viewModel = _viewModel
     }
-    
+
+    override fun onDestroy() {
+        super.onDestroy()
+        // Отображение слайдера и FAB
+        val ma = (activity as FabAndSliderControl)
+        ma.showFab()
+        ma.showSlider()
+    }
+
+    // newInstance для данного класса
     companion object {
         fun newInstance(): AboutFragment = AboutFragment()
     }

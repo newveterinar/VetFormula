@@ -2,14 +2,21 @@ package com.pet.animal.formula.dose.health.veterinary.cure.repo.dao
 
 import com.pet.animal.formula.dose.health.veterinary.cure.model.formula.Formula
 import com.pet.animal.formula.dose.health.veterinary.cure.repo.FormulaEntity
+import com.pet.animal.formula.dose.health.veterinary.cure.repo.NoteEntity
 import com.pet.animal.formula.dose.health.veterinary.cure.repo.Repository
 import com.pet.animal.formula.dose.health.veterinary.cure.repo.UrlEntity
 import com.pet.animal.formula.dose.health.veterinary.cure.unientity.UniFormulaEntity
 import com.pet.animal.formula.dose.health.veterinary.cure.unientity.UniParamEntity
 import com.pet.animal.formula.dose.health.veterinary.cure.unientity.UniSectionEntity
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.resources.ResourcesProviderImpl
+import org.koin.java.KoinJavaComponent
 
 class RepositoryImpl(private val dbDao:VetFormulaDao): Repository {
+    /** Исходные данные */ //region
+    // Получение доступа к ресурсам
+    private val resourcesProviderImpl: ResourcesProviderImpl = KoinJavaComponent.getKoin().get()
+    //endregion
 
     override suspend fun getAllVetFormulas(): List<FormulaEntity> {
         return dbDao.getAllVetFormulas()
@@ -22,19 +29,16 @@ class RepositoryImpl(private val dbDao:VetFormulaDao): Repository {
     ): List<FormulaEntity> {
         // Почему выявляется критерий равенства или не равенства нулю,
         // ведь 0 это первое значение индекса в addFirst и addSecond?
-        if (addFirst==0  &&  addSecond!=0){
-            throw Exception("not correct arguments")
+        if (addFirst == 0  &&  addSecond != 0) {
+            throw Exception(resourcesProviderImpl.context.resources.getString(
+                com.pet.animal.formula.dose.health.veterinary.cure.utils.
+                R.string.error_not_correct_argument))
         }
-        if (addFirst==0  &&  addSecond==0){
+        if (addFirst == 0  &&  addSecond == 0) {
             return dbDao.getFormulaByScreen(screenType)
         }
-        // Предлагаю убрать
-//        if (addSecond==0){
-//            return dbDao.getFormulaByScreen(screenType,addFirst)
-//        }
-        return dbDao.getFormulaByScreen(screenType,addFirst,addSecond)
+        return dbDao.getFormulaByScreen(screenType, addFirst, addSecond)
     }
-
 
     override suspend fun insertFormula(formula: Formula,screenType:Int,elementCount:Int,addFirst:Int,addSecond:Int):Long {
         val formulaEntity = FormulaEntity(screenType,elementCount,addFirst,addSecond,formula)
@@ -69,15 +73,19 @@ class RepositoryImpl(private val dbDao:VetFormulaDao): Repository {
         screenType: ScreenType,
         listsAddFirstSecond: List<Int>
     ): Formula {
-        val listEntity = getFormulaByScreen(screenType.ordinal, 0,0)
-        if (listEntity.isNotEmpty()){
+        val listEntity = getFormulaByScreen(
+            screenType.ordinal, if (listsAddFirstSecond.isNotEmpty()) listsAddFirstSecond[0] else 0,
+            if (listsAddFirstSecond.size > 1) listsAddFirstSecond[1] else 0)
+        if (listEntity.isNotEmpty()) {
             return listEntity[0].formula
         }
-        return Formula()//TODO так не должно быть, обсудить, возможно бросить эксепшин
+        // Возвращаем пустую формулу, а информацию о том,
+        // что произошла ошибка отобразим в текущем окне. У пустого класса Formula()
+        // количество типизированных формул равно нулю, по их количеству можно отловить такую ошибку
+        return Formula()
     }
 
     override suspend fun insertSection(sections: List<UniSectionEntity>) {
-
         dbDao.insertSection(sections)
     }
 
@@ -99,5 +107,21 @@ class RepositoryImpl(private val dbDao:VetFormulaDao): Repository {
 
     override suspend fun getUniParamsByFormula(formulaId: Int): List<UniParamEntity> {
         return dbDao.getUniParamsByFormula(formulaId)
+    }
+
+    override suspend fun saveNote(noteEntity: NoteEntity):Long {
+        return dbDao.saveNote(noteEntity)
+    }
+
+    override suspend fun loadNote(id: Long): List<NoteEntity> {
+        return dbDao.loadNote(id)
+    }
+
+    override suspend fun deleteNote(id: Long) {
+        dbDao.deleteNote(id)
+    }
+
+    override suspend fun getNotesList(): List<NoteEntity> {
+        return dbDao.getNotesList()
     }
 }

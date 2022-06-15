@@ -13,46 +13,38 @@ import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppS
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentPharmacySurfaceBinding
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.FragmentScope
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.NUMBER_NAVIGATION_BUTTONS_ON_INPUT_DATA_SCREENS
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertListEditTextToListDouble
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertListEditTextToListString
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertListSpinnerToListInt
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.stringToDouble
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.settings.SettingsImpl
-import kotlinx.coroutines.delay
 import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
 import org.koin.java.KoinJavaComponent
 
-class PharmacySurfaceFragment :
+class PharmacySurfaceFragment:
     BaseFragment<FragmentPharmacySurfaceBinding>(FragmentPharmacySurfaceBinding::inflate) {
     /** Задание переменных */ //region
     // Установка типа формулы для текущего окна
     private val screenType: ScreenType = ScreenType.PHARMACY_SURFACE
-
     // Навигационные кнопки (для перехода на другие экраны)
-    private val navigationButtons = arrayOfNulls<View>(size = 3)
-
+    private val navigationButtons = arrayOfNulls<View>(
+        size = NUMBER_NAVIGATION_BUTTONS_ON_INPUT_DATA_SCREENS)
     // Обнуление значений во всех полях
-    private lateinit var pharmacyClearButtonContainer: ConstraintLayout
-
+    private lateinit var clearButton: ConstraintLayout
     // ViewModel
     private lateinit var viewModel: PharmacySurfaceFragmentViewModel
-
     // ShowPharmacySurfaceFragmentScope
     private lateinit var showPharmacySurfaceFragmentScope: Scope
-
     // Списки (Spinner)
     private val listsAddFirstSecond: MutableList<Spinner> = mutableListOf()
     private val listsDimensions: MutableList<Spinner> = mutableListOf()
-
     // Текстовые поля для ввода чисел
     private val valuesFields: MutableList<EditText> = mutableListOf()
     private val valuesFieldsLayouts: MutableList<TextInputLayout> = mutableListOf()
-
     // Текстовое поле для отображения общей информации о том, что нужно делать в данном окне
     private lateinit var helpInfoText: TextView
-
     // newInstance для данного класса
     companion object {
         fun newInstance(): PharmacySurfaceFragment = PharmacySurfaceFragment()
@@ -77,18 +69,26 @@ class PharmacySurfaceFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // Инициализация кнопок навигации
+        initNavigationButtons()
         // Инициализация текстовых полей
         initTextFields()
         // Инициализация списков
         initLists()
-        // Инициализация кнопок навигации
-        initNavigationButtons()
-        //Инициализация кнопок
+        // Инициализация кнопок
         initButtons()
         // Инициализация ViewModel
         initViewModel()
         // Настройка события обработки списков (должно быть в конце всех инициализаций)
         setActionsFieldsAndLists()
+        //Обзервер для подсказок
+        setToastHintObserver()
+    }
+
+    private fun setToastHintObserver() {
+        viewModel.toastHint.observe(viewLifecycleOwner) {
+            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+        }
     }
 
     // Инициализация текстовых полей
@@ -96,9 +96,12 @@ class PharmacySurfaceFragment :
         // Очистка списков
         valuesFieldsLayouts.clear()
         valuesFields.clear()
-        // Сюда по порядку задаются числовые поля
+        // Сюда по порядку задаются TextInputLayout числовых полей
         valuesFieldsLayouts.add(binding.pharmacyWeightTextinputlayout)
+        // Сюда по порядку задаются числовые поля
         valuesFields.add(binding.pharmacyWeightTextinputlayoutTextfield)
+        //Всплывающа подсказка при долгом нажатии
+        showFiledHintOnLongClick(valuesFields)
         // Настройка события изменения значений в полях ввода чисел
         valuesFields.forEach { field ->
             field.doOnTextChanged { _, _, _, _ ->
@@ -112,8 +115,6 @@ class PharmacySurfaceFragment :
                     // Переопределение события от нажатия на кнопку "Enter"
                     if ((event.action == KeyEvent.ACTION_DOWN) &&
                         (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                        // Удаление фокуса с текстового поля
-                        field.clearFocus()
                         // Скрытие курсора
                         field.isCursorVisible = false
                         // Снятие ошибки
@@ -124,6 +125,13 @@ class PharmacySurfaceFragment :
                             valuesFieldsLayouts[index].isErrorEnabled = false
                             // Скрытие сообщения с общей информацией о том, что делать в данном окне
                             helpInfoText.visibility = View.INVISIBLE
+                            // Нажатие на кнопку "Расчитать", если сняты признаки ошибки
+                            // со всех числовых полей
+                            var isErrorEnabled: Boolean = false
+                            valuesFields.forEach {
+                                if (stringToDouble(it.text.toString()) <= 0.0) isErrorEnabled = true
+                            }
+                            if (!isErrorEnabled) binding.pharmacyCalculateButton.callOnClick()
                         } else {
                             // Установка признака ошибки на текущем числовом поле
                             valuesFieldsLayouts[index].isErrorEnabled = true
@@ -165,6 +173,26 @@ class PharmacySurfaceFragment :
         listsAddFirstSecond.add(binding.pharmacyTypeAnimalList)
         // Сюда нужно вносить списки с размерностью для числового поля
         listsDimensions.add(binding.pharmacyWeightDimensionList)
+        showSpinnerHintOnLongClick(listsAddFirstSecond)
+    }
+
+    private fun showFiledHintOnLongClick(valuesFields: MutableList<EditText>) {
+        valuesFields[0].setOnLongClickListener {
+            setToastHint(getString(R.string.pharmacy_surface_animal_weight_hint))
+            true
+        }
+    }
+
+    private fun showSpinnerHintOnLongClick(listsAddFirstSecond: MutableList<Spinner>) {
+        listsAddFirstSecond[0].setOnLongClickListener{
+            setToastHint(getString(R.string.pharmacy_surface_animal_type_hint))
+            true
+        }
+    }
+
+    private fun setToastHint(hint: String) {
+        viewModel.setToastHint(getString(R.string.long_click_hint,
+            hint))
     }
 
     // Инициализация навигационных кнопок
@@ -181,24 +209,25 @@ class PharmacySurfaceFragment :
             button?.setOnClickListener {
                 when (index) {
                     0 -> {
-                            saveData(false)
-                            viewModel.router.exit()
+                        saveData(false)
+                        viewModel.router.exit()
                     }
                     1 -> {
-                            saveData(true)
+                        saveData(true)
                     }
                     else -> {
-                         Toast.makeText(requireContext(),
-                             requireActivity().resources.getString(
-                            R.string.error_button_is_not_assigned), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(),
+                            requireActivity().resources.getString(
+                                R.string.error_button_is_not_assigned), Toast.LENGTH_SHORT).show()
                     }
                 }
             }
         }
     }
 
+    // Инициализация кнопок
     private fun initButtons() {
-        pharmacyClearButtonContainer = binding.pharmacyClearButtonContainer.also { button ->
+        clearButton = binding.pharmacyClearButtonContainer.also { button ->
             button.setOnClickListener {
                 listsAddFirstSecond.forEach {
                     it.setSelection(0)
@@ -240,7 +269,7 @@ class PharmacySurfaceFragment :
             // Разблокировка или блоикировка кнопки "Рассчитать"
             binding.pharmacyCalculateButton.isEnabled = it
         }
-        // Необходимо запустить для отображения ранее сохранённых значений в полях и списках окна
+        // Отображение ранее сохранённых значений в полях и списках окна
         viewModel.getData()
     }
 
@@ -250,23 +279,25 @@ class PharmacySurfaceFragment :
             is AppState.Success -> {
                 appState.screenData.let {
                     if (!it.isGoToResultScreen) {
-                        // Установка значений типа addFirst или addSecond
-                        listsAddFirstSecond.forEachIndexed { index, addFirstSecond ->
-                            if (it.listsAddFirstSecond.count() > index)
-                                addFirstSecond.setSelection(it.listsAddFirstSecond[index])
-                        }
-                        // Установка строчного значения в поле
-                        valuesFields.forEachIndexed { index, valueField ->
-                            if (it.valueFields.count() > index)
-                                valueField.setText(
-                                    if (it.valueFields[index].value > 0.0)
-                                        it.valueFields[index].stringValue else ""
-                                )
-                        }
-                        // Установка размерности поля
-                        listsDimensions.forEachIndexed { index, dimension ->
-                            if (it.valueFields.count() > index)
-                                dimension.setSelection(it.valueFields[index].dimension)
+                        if (it.screenTypeIndex == screenType.ordinal) {
+                            // Установка значений типа addFirst или addSecond
+                            listsAddFirstSecond.forEachIndexed { index, addFirstSecond ->
+                                if (it.listsAddFirstSecond.count() > index)
+                                    addFirstSecond.setSelection(it.listsAddFirstSecond[index])
+                            }
+                            // Установка строчных значений в числовые поля
+                            valuesFields.forEachIndexed { index, valueField ->
+                                if (it.valueFields.count() > index)
+                                    valueField.setText(
+                                        if (it.valueFields[index].value > 0.0)
+                                            it.valueFields[index].stringValue else ""
+                                    )
+                            }
+                            // Установка размерности для числовых полей
+                            listsDimensions.forEachIndexed { index, dimension ->
+                                if (it.valueFields.count() > index)
+                                    dimension.setSelection(it.valueFields[index].dimension)
+                            }
                         }
                     } else {
                         // Переход на экран с результатами расчётов
@@ -326,7 +357,6 @@ class PharmacySurfaceFragment :
             screenType,
             listsAddFirstSecond.convertListSpinnerToListInt(),
             valuesFields.convertListEditTextToListString(),
-//            valuesFields.convertListEditTextToListDouble(),
             valuesFields.convertListEditTextToListDouble(listsDimensions, null),
             listsDimensions.convertListSpinnerToListInt(),
             isGoToResultScreen

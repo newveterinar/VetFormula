@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="angle_zero">0</integer>
+    <integer name="angle_thirty">30</integer>
+    <integer name="angle_sixty">60</integer>
+    <integer name="angle_ninety">90</integer>
+    <integer name="angle_one_hundred_and_twenty">120</integer>
+    <integer name="angle_one_hundred_and_fifty">150</integer>
+    <integer name="angle_one_hundred_and_eighty">180</integer>
+    <integer name="angle_two_hundred_and_ten">210</integer>
+    <integer name="angle_two_hundred_and_forty">240</integer>
+    <integer name="angle_two_hundred_and_seventy">270</integer>
+    <integer name="angle_three_hundred">300</integer>
+    <integer name="angle_three_hundred_and_thirty">330</integer>
+</resources>

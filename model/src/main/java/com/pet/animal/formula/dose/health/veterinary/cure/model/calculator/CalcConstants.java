@@ -39,6 +39,9 @@ public interface CalcConstants {
         NIGHT_THEME        // Ночная тема
     };
 
+    int CALCULATOR_CURRENT_RADIUS_BUTTONS = 175;
+
+    String ZERO_TEXT = "0";
     String KEY_SETTINGS = "Settings";
     String KEY_CURRENT_THEME = "CurrentTheme";
     String KEY_CURRENT_RADIUS = "Radius";

@@ -1,21 +1,20 @@
-package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.doses.result
+package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.cri
 
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.Interactor
-import com.pet.animal.formula.dose.health.veterinary.cure.fakerepo.FakeRepositoryImpl
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppState
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.doses.PharmacyDosesFragmentViewModel
+import com.pet.animal.formula.dose.health.veterinary.cure.repo.Repository
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.settings.SettingsImpl
 import org.koin.java.KoinJavaComponent
 
-class PharmacyDosesInteractorImpl(
-    private val viewModel: PharmacyDosesFragmentViewModel
+class PharmacyCRIInteractorImpl(
+    private val viewModel: PharmacyCRIFragmentViewModel
 ): Interactor<AppState> {
     /** Задание переменных */ //region
-    // Фейковый (временный) репозиторий
-    private val fakeRepositoryImpl: FakeRepositoryImpl = KoinJavaComponent.getKoin().get()
     // SettingsImpl
     private val settings: SettingsImpl = KoinJavaComponent.getKoin().get()
+    // Репозиторий с базой данной
+    private val repositoryImpl: Repository = KoinJavaComponent.getKoin().get()
     //endregion
 
     // Получение данных полей окна, если они были сохранены ранее
@@ -30,7 +29,25 @@ class PharmacyDosesInteractorImpl(
                                   values: List<Double>,
                                   dimensions: List<Int>,
                                   isGoToResultScreen: Boolean) {
+        // Проверка на заполненность всех числовых полей
+        var isExistZeroData: Boolean = false
+        values.forEach {
+            if (it == 0.0)  {
+                isExistZeroData = true
+            }
+        }
+
+        if (!isExistZeroData) loadAndSaveFormula(screenType, listsAddFirstSecond)
+        // Сохранение значений всех списков и числовых полей
         settings.setScreenData(screenType, listsAddFirstSecond, stringValues, values, dimensions)
+        // Установка в LiveData вьюмодели признака IsGoToResultScreen
+        // для перехода в окно с результатом
+        if (isGoToResultScreen) viewModel.setIsGoToResultScreenToLiveData()
+    }
+    private suspend fun loadAndSaveFormula(
+        screenType: ScreenType,
+        listsAddFirstSecond: List<Int>) {
+        settings.setFormula(repositoryImpl.getFormula(screenType, listsAddFirstSecond))
     }
     //endregion
 }

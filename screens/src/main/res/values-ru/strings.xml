@@ -5,17 +5,52 @@
     <string name="error_button_is_not_assigned">Ошибка: Кнопка не назначена</string>
     <string name="error_not_inserted_weight_animal">Пожалуйста, введите число > 0</string>
 
+    <!-- Строчные ресурсы для окна с калькулятором -->
+    <string name="_0">0</string>
+    <string name="_1">1</string>
+    <string name="_2">2</string>
+    <string name="_3">3</string>
+    <string name="_4">4</string>
+    <string name="_5">5</string>
+    <string name="_6">6</string>
+    <string name="_7">7</string>
+    <string name="_8">8</string>
+    <string name="_9">9</string>
+    <string name="_divide">/</string>
+    <string name="_minus">-</string>
+    <string name="_zapitay">,</string>
+    <string name="_equal">=</string>
+    <string name="_multiply">*</string>
+    <string name="_plus">+</string>
+    <string name="_bracket_open">(</string>
+    <string name="_bracket_close">)</string>
+    <string name="_percent">%</string>
+    <string name="_plus_minus">+/-</string>
+    <string name="_stepen">x^n</string>
+    <string name="_sqrt">Kx</string>
+    <string name="_backspaceTwo"><![CDATA[<--]]></string>
+    <string name="_backspace">C</string>
+    <string name="InputHistory_text"></string>
+    <string name="RESULT_text">0</string>
+    <string name="_backspaceOne"><![CDATA[<-]]></string>
+    <string name="default_radius_text">177</string>
+    <string name="error_different_number_brackets">Ошибка: Различное количество открытых и закрытых скобок</string>
+    <string name="error_undersquare_low_zero">Ошибка: Подкоренное выражение меньше нуля</string>
+    <string name="error_divide_on_zero">Ошибка: Деление на ноль</string>
+    <string name="error_inside_brackets_empty">Ошибка: Внутри скобок ничего нет</string>
+
     <!-- Ресурсы макета -->
     <string name="about_surface_button_text_text">О Приложении</string>
     <string name="about_text_text">ИНФОРМАЦИЯ</string>
     <string name="pharmacy_button_text_text">Препараты</string>
     <string name="pharmacy_previous_text_text">Препараты</string>
     <string name="pharmacy_surface_button_text_text">Площадь\nповерхности</string>
-    <string name="pharmacy_surface_previous_text_text">Площадь поверхности тела</string>
+    <string name="pharmacy_surface_previous_text_text">Площадь\nповерхности тела</string>
     <string name="pharmacy_calculate_button_text">Рассчитать</string>
     <string name="pharmacy_result_previous_text_text">Результат</string>
     <string name="pharmacy_about_button_hints">О приложении</string>
-    <string name="about_logo_text">Информация</string>
+    <string name="about_logo_text">Разработчики</string>
+    <string name="info_logo_text">Информация</string>
     <string name="pharmacy_logo_text">ВетФормула</string>
     <string name="fluids_button_text_text">Жидкости</string>
     <string name="fluids_button_surface_text_text">Главная</string>
@@ -23,13 +58,14 @@
     <string name="hematology_button_text_text">Гематология</string>
     <string name="hematology_previous_text_text">Гематология</string>
     <string name="hematology_button_surface_text_text">Трансфузия</string>
-    <string name="conversions_previous_text_text">Преобразования</string>
-    <string name="conversions_button_text_text">Преобразования</string>
-    <string name="conversions_button_surface_text_text">Температура</string>
+    <string name="gases_previous_text_text">Преобразования</string>
+    <string name="gases_button_text_text">Газовый\nнаркоз</string>
+    <string name="gases_inhalation_anesthesia_button_text_text">Ингаляционная\nанастезия</string>
     <string name="settings_previous_text_text">Настройки</string>
     <string name="settings_button_text_text">Настройки</string>
     <string name="settings_button_surface_text_text">SomeSettings</string>
     <string name="calculator_previous_text_text">Калькулятор</string>
+    <string name="settings_language_text">Язык</string>
     <string name="calculator_button_text_text">Калькулятор</string>
     <string name="calculator_button_surface_text_text">Посчитать</string>
     <string name="pharmacy_clear_button_text_text">C</string>
@@ -40,25 +76,26 @@
     <string name="pharmacy_dose_textinputlayout_textfield_hint">Объём препарата</string>
     <string name="pharmacy_concentration_animal_title_text">Концентрация препарата</string>
     <string name="pharmacy_concentration_textinputlayout_textfield_hint">Значение концентрации</string>
-    <string name="pharmacy_fluids_textinputlayout_textfield_hint">Объём</string>
+    <string name="pharmacy_amount_textinputlayout_textfield_hint">Объём</string>
     <string name="pharmacy_fluids_animal_title_text">Объём жидкости</string>
     <string name="pharmacy_drop_textinputlayout_textfield_hint">Нет капельной системы</string>
     <string name="pharmacy_drop_animal_title_text">Капельная система</string>
     <string name="pharmacy_dose_button_text_text">Доза препарата</string>
-    <string name="pharmacy_cri_button_text_text">Препараты CRI</string>
-    <string name="pharmacy_cri_previous_text_text">Препараты CRI</string>
+    <string name="pharmacy_cri_button_text_text">Расчёт ИПС</string>
+    <string name="pharmacy_cri_previous_text_text">Расчёт ИПС</string>
     <string name="pharmacy_dose_previous_text_text">Доза препарата</string>
     <string name="pharmacy_speed_animal_title_text">Скорость введения</string>
-    <string name="pharmacy_speed_textinputlayout_textfield_hint">Скорость введения</string>
-    <string name="tickCaption">Ед./мин</string>
+    <string name="pharmacy_rate_textinputlayout_textfield_hint">Скорость введения</string>
+    <string name="tickCaptionHeartRate">ЧСС</string>
+    <string name="tickCaptionBDD">ЧДД</string>
     <string name="captionStopTimer">Остановить таймер</string>
     <string name="captionStartTimer">Остановить таймер</string>
     <string name="timer_button_text_text">Таймер</string>
     <string name="doses_result_text_text">100</string>
     <string name="timerText_text">00:00</string>
-    <string name="startTimerButton_text">Запустить таймер</string>
+    <string name="startTimerButton_text">Запустить\nтаймер</string>
     <string name="inputManualCount_text">0</string>
-    <string name="textView3_text">Введите количество измерений</string>
+    <string name="textView3_text">Сердцебиение</string>
     <string name="tickInMinutes_text">0.00</string>
     <string name="buttonResetTickCounter_text">Сбросить значений</string>
     <string name="timer_previous_text_text">Таймер</string>
@@ -67,76 +104,79 @@
     <string name="theme">Тема</string>
     <string name="pharmacy_help_info_text">Перед расчётом заполните все числовые поля!</string>
     <string name="pharmacy_result_title_text">Площадь поверхности животного</string>
-
-    <!-- Типы ресурсов для ввода данных -->
-    <!--    Порядок размерностей в ресурсах для каждого числового поля не менять -->
-    <!-- Исходные данные типа addFirstSecond -->
-    <string-array name="addFirstSecond_animal_type_list">
-        <item>Собака</item>
-        <item>Кошка</item>
-        <item>Кролик</item>
-        <item>Хорёк</item>
-        <item>Морская свинка</item>
-        <item>Хомяк</item>
-        <item>Лошадь (кроме "Ломустин")</item>
-        <item>Лошадь (только "Ломустин")</item>
-        <item>Крыса</item>
-        <item>Мышь</item>
-    </string-array>
-    <string-array name="addFirstSecond_giving_set_drop_list">
-        <item>Нет капельной системы</item>
-        <item>20 капель/мл</item>
-        <item>60 капель/мл</item>
-    </string-array>
-
-        <!-- Исходные данные типа размерностей вводимых численных значений -->
-    <string-array name="input_data_dimension_weight_animal_list">
-        <item>кг</item>
-        <item>г</item>
-    </string-array>
-    <string-array name="input_data_dimension_mass_dose_per_kg_list">
-        <item>мгк</item>
-        <item>мг</item>
-        <item>г</item>
-        <item>мЕк</item>
-        <item>а.е.м</item>
-    </string-array>
-    <string-array name="input_data_dimension_mass_dose_per_kg_per_time_list">
-        <item>мгк/кг/мин</item>
-        <item>мг/кг/мин</item>
-        <item>г/кг/мин</item>
-        <item>мгк/кг/ч</item>
-        <item>мг/кг/ч</item>
-        <item>г/кг/ч</item>
-    </string-array>
-    <string-array name="input_data_dimension_volume_dose_per_kg_per_time_list">
-        <item>мл/кг/ч</item>
-        <item>мкл/кг/ч</item>
-        <item>мл/кг/мин</item>
-        <item>мкл/кг/мин</item>
-    </string-array>
-    <string-array name="input_data_dimension_concentration_list">
-        <item>мгк/мл</item>
-        <item>мг/мл</item>
-        <item>г/мл</item>
-        <item>мЕк/мл</item>
-        <item>а.е.м/мл</item>
-        <item>мкг/г</item>
-        <item>мг/г</item>
-        <item>г/г</item>
-        <item>вес/объём</item>
-    </string-array>
-    <string-array name="input_data_dimension_volume_list">
-        <item>мл</item>
-        <item>мкл</item>
-    </string-array>
-
-        <!-- Результирующие данные типа размерностей расчётных численных значений -->
-    <string name="output_data_dimension_length">м</string>
-    <string name="output_data_dimension_mass">кг</string>
-    <string name="output_data_dimension_time">с</string>
-    <string name="output_data_dimension_square_length">м2</string>
-  
-    <!-- Ресурсы для смены языка приложения -->
-    <string name="settings_language_text">Язык</string>
+    <string name="pharmacy_result_volume_title_text">Объём</string>
+    <string name="captionBtnStopTimer">СТОП</string>
+    <string name="captionBtnResetTimer">СБРОС</string>
+    <string name="about_develop"> Разработано:\nХахалин Андрей Владимирович
+    \nСкрипин Андрей Михайлович
+    \nЕгонская Ольга Александровна
+    \nЗахаров Роман Владимирович
+    \nФедорченко Максим Константинович </string>
+    <string name="about_contact">Связаться с нами: newveterinar@mail.ru</string>
+    <string name="long_click_hint">Подсказка: %s</string>
+    <string name="pharmacy_surface_animal_type_hint">выберите тип животого.</string>
+    <string name="pharmacy_surface_animal_weight_hint">введите вес животного.</string>
+    <string name="pharmacy_dose_animal_weight_hint">введите вес животного.</string>
+    <string name="pharmacy_dose_dose_hint">введите дозу препарата.</string>
+    <string name="pharmacy_dose_drug_concentration_hint">введите концентрацию препарата.</string>
+    <string name="pharmacy_cri_animal_weight_hint">введите вес животного.</string>
+    <string name="pharmacy_cri_drug_concentration_hint">введите концентрацию препарата.</string>
+    <string name="pharmacy_cri_dose_hint">введите дозу препарата.</string>
+    <string name="pharmacy_cri_rate_hint">введите скорость введения  препарата.</string>
+    <string name="pharmacy_cri_giving_set_hint">выберите имеется ли у вас капельная система.</string>
+    <string name="pharmacy_cri_fluid_amount_hint">введите объем жидкости.</string>
+    <string name="pharmacy_result_drip_rate_title_text">Скорость капельной системы</string>
+    <string name="pharmacy_result_drip_rate_time_title_text_text">Одна капля каждые</string>
+    <string name="pharmacy_result_rate_rate_title_text_text">Скорость:</string>
+    <string name="pharmacy_result_rate_mass_dose_per_kg_per_time_title_text_text">Будет получено:</string>
+    <string name="pharmacy_result_rate_time_title_text_text">Длительность:</string>
+    <string name="pharmacy_result_amount_volume_text_text">Добавить:</string>
+    <string name="buttonPlusMinute_text">+1</string>
+    <string name="buttonMuteUnMute_mute_text">Есть\nзвук</string>
+    <string name="buttonMuteUnMute_unmute_text">Без\nзвука</string>
+    <string name="textView2_text">Расчет ЧДД</string>
+    <string name="textViewHR_text">(ЧСС)</string>
+    <string name="main_screen_settings_hint">переход на экран настроек.</string>
+    <string name="main_screen_about_hint">переход на экран \"О приложении\".</string>
+    <string name="btn_delete_note_text">Удалить</string>
+    <string name="btn_load_note_text">Загрузить</string>
+    <string name="btn_save_note_text">Сохранить</string>
+    <string name="info_text_app">\n\nО ПРИЛОЖЕНИИ:\n\n
+        В приложении есть такие разделы как: «Препараты», «Газы», «Калькулятор», «Таймер».\n\n
+        Разделы «Препараты» и «Газы» - помогают определить расчёт доз лекарственных препаратов:\n
+        1.	Площадь поверхности животного\n
+        2.	Доза препарата\n
+        3.	Инфузия с постоянной скоростью\n
+        4.	Газовый наркоз\n\n
+        «Таймер» - помогает определить частоты сердечных сокращений (ЧСС) и частоты дыхательных движений (ЧДД).\n\n
+        «Калькулятор» - помогает произвести вычисления исходных данных.\n\n
+        В левой части приложения реализован «Слайдер», который умеет делить экран на две части.\nДля этого нужно потянуть за зелёный кружок слева вверх или вниз.\nНижний экран предоставляет доступ к следующим окнам:\n
+        1.	Доступ к информационному ресурсу «WSAVA».\n
+        2.	Доступ к информационному ресурсу «VetMedical».\n
+        3.	Блокнот для ввода и сохранения текстовой информации.\n
+    </string>
+    <string name="about_timer_title">Таймер для определения частоты сердечных сокращений (ЧСС) и частоты дыхательных движений (ЧДД).</string>
+    <string name="about_timer_tv_start">Он позволяет одновременно измерять ЧСС и ЧДД. Замер параметров осуществляется одновременно. Во время проведения измерения от пользователя требуется:</string>
+    <string name="about_timer_tv_middle">1) включить его, остановить его, сбросить полученные значения, добавить ещё минуту или несколько минут в процессе измерения;\n2) с помощью стетоскопа считать количество сердечных сокращений; 3) по слуху, определяя момент дыхания пациента, нажимать на картинку лапки в момент работы таймера и он будет считать количество вздохов пациента;\n3) в конце работы таймера ввести количество посчитанных сердечных сокращений, после этого будет отображен результат ЧСС.\n</string>
+    <string name="about_timer_tv_end">Не обязательно дожидаться конца работы таймера. Измерения могут быть остановлены в любой момент отсчета времени, тем самым ускоряя выполнение операции.</string>
+    <string name="about_calc_title">Калькулятор для вычислений</string>
+    <string name="about_calc_tv">Используется для проведения промежуточных расчётов при подготовке исходных данных. Он позволяет осуществлять все стандартные арифметические операции, работать со скобками, степенями, процентами, предоставлять историю вводимых символов, отдельно вводить целые и дробные части чисел, удалять по одной, две и все операции сразу</string>
+    <string name="gases_inhalation_anesthesia_previous_text">Ингаляционная\nанастезия</string>
+    <string name="gases_anesthetics_title_text">Анестетик</string>
+    <string name="gases_middle_flow_title_text">Средний поток газа</string>
+    <string name="gases_middle_flow_textinputlayout_textfield_hint">Поток</string>
+    <string name="help_info_text">Перед расчётом заполните все числовые поля!</string>
+    <string name="calculate_button_text">Вычислить</string>
+    <string name="gases_middle_anesthesia_concentration_title_text">Средняя концентрация</string>
+    <string name="gases_middle_anesthesia_concentration_textinputlayout_textfield_hint">Концентрация</string>
+    <string name="gases_duration_anesthesia_title_text">Продолжительность\nанестезии</string>
+    <string name="gases_duration_anesthesia_textinputlayout_textfield_hint">Длительность</string>
+    <string name="gases_inhalation_anasthesia_result_title_text">Расход анестетика</string>
+    <string name="gases_inhalation_anasthesia_middle_flow_hint">Введие средний поток анестетика</string>
+    <string name="gases_inhalation_anasthesia_concentration_hint">Введите среднюю концентрацию анестетика</string>
+    <string name="gases_inhalation_anasthesia_duration_anesthesia_hint">Введите продолжительность анестезии</string>
+    <string name="gases_inhalation_anasthesia_gases_anesthetics_hint">Выберите анестетик</string>
+    <string name="select_note">Выбор заметки</string>
+    <string name="enter_note_name">Добавить название  заметки</string>
+    <string name="save">Сохранить</string>
 </resources>

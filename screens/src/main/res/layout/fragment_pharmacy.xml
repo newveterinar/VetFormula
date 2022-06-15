@@ -75,7 +75,7 @@
                 android:id="@+id/pharmacy_surface_button_container"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/pharmacy_surface_button_container_margin_start"
+                android:layout_marginStart="@dimen/pharmacy_surface_button_container_margin_top"
                 android:layout_marginTop="@dimen/pharmacy_surface_button_container_margin_top"
                 android:layout_marginEnd="@dimen/pharmacy_surface_button_container_margin_end"
                 app:layout_constraintEnd_toEndOf="parent"

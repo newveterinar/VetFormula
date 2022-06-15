@@ -8,6 +8,8 @@
         <option value="features_v\.1" />
         <option value="develop_v\.2\.3" />
         <option value="features_v\.2\.3" />
+        <option value="develop" />
+        <option value="features" />
       </list>
     </option>
   </component>

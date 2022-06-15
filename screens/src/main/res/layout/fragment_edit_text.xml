@@ -1,13 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:background="@color/color_note">
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/btn_save_load_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/btn_save_load_group_margin_start"
+        app:constraint_referenced_ids="btn_save_note,btn_load_note,btn_delete_note"
+        app:flow_horizontalGap="@dimen/btn_save_load_group_horizontal_gap"
+        app:flow_horizontalStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_save_note"
+        android:layout_width="@dimen/btn_save_note_width"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_load_note"
+        android:text="@string/btn_save_note_text" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_load_note"
+        android:layout_width="@dimen/btn_load_note_width"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_save_note"
+        android:text="@string/btn_load_note_text" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_delete_note"
+        android:layout_width="@dimen/btn_delete_note_width"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_load_note"
+        android:text="@string/btn_delete_note_text" />
 
     <EditText
-        android:id="@+id/edit_text_fragment"
+        android:id="@+id/edit_text_text"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white"
-        android:inputType="text" />
-</LinearLayout>
+        android:layout_height="@dimen/edit_text_text_height"
+        android:layout_marginStart="@dimen/edit_text_text_margin_start"
+        android:layout_marginEnd="@dimen/edit_text_text_margin_end"
+        android:gravity="top"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_save_load_group"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
