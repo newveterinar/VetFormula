@@ -14,8 +14,11 @@ _Назначение приложения_
 
 _Видео с презентацией и демонстрацией работы приложения_
 -------------------------------------------------------
+Презентация работы приложения:
 [![Презентация работы приложения "VetFormula"](https://sun9-66.userapi.com/s/v1/if2/Y3EVkDmO-jlR0IsQS29opYEPO_q4fXU0ppkb5XT55mL_QvUIwCi7shV-L2TkUjNibMJCXL4dHtIV8YNS7OHDHNdQ.jpg?size=500x500&quality=95&type=album)](https://youtu.be/dTtAuG94mek)
-[![Демонстрация работы приложения "VetFormula"]]([https://youtu.be/dTtAuG94mek](https://youtu.be/8H9K7Yz7MBA))
+
+Демонстрация работы приложения: 
+[![Демонстрация работы приложения "VetFormula"](https://sun9-66.userapi.com/s/v1/if2/Y3EVkDmO-jlR0IsQS29opYEPO_q4fXU0ppkb5XT55mL_QvUIwCi7shV-L2TkUjNibMJCXL4dHtIV8YNS7OHDHNdQ.jpg?size=500x500&quality=95&type=album)](https://youtu.be/8H9K7Yz7MBA)
 
 _Архитектурные решения_
 -----------------------
@@ -64,7 +67,7 @@ _Разработчики приложения_
 5. Федорченко Максим.
 Связь с разработчиками: newveterinar@mail.ru
 
-Installation
+_Installation_
 ------------
 - Приложение разработано под Android.
 - Требования к SDK: минимум - 24, максимум - 32.
