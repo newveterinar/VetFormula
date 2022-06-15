@@ -36,6 +36,15 @@ fun MutableList<Spinner>.convertListSpinnerToListInt(): List<Int> {
     return resultList
 }
 
+// Получение списка List<Int> (с Dimensions) из списка MutableList<ValueField>
+fun MutableList<ValueField>.convertListValuefFieldToListIntDimensions(): List<Int> {
+    val resultList: MutableList<Int> = mutableListOf()
+    this.forEach {
+        resultList.add(it.dimension)
+    }
+    return resultList
+}
+
 // Получение списка MutableList<String> из списка MutableList<EditText>
 fun MutableList<EditText>.convertListEditTextToListString(): List<String> {
     val resultList: MutableList<String> = mutableListOf()
@@ -106,11 +115,20 @@ fun String.convertStringToInputDataDimensionType(): InputDataDimensionType {
         this == InputDataDimensionType.VOLUME_DOSE_PER_KG_PER_TIME.toString() -> {
             InputDataDimensionType.VOLUME_DOSE_PER_KG_PER_TIME
         }
+        this == InputDataDimensionType.VOLUME_DOSE_PER_TIME.toString() -> {
+            InputDataDimensionType.VOLUME_DOSE_PER_TIME
+        }
         this == InputDataDimensionType.CONCENTRATION.toString() -> {
             InputDataDimensionType.CONCENTRATION
         }
+        this == InputDataDimensionType.CONCENTRATION_VOLUME_PERCENT.toString() -> {
+            InputDataDimensionType.CONCENTRATION_VOLUME_PERCENT
+        }
         this == InputDataDimensionType.VOLUME.toString() -> {
             InputDataDimensionType.VOLUME
+        }
+        this == InputDataDimensionType.TIME.toString() -> {
+            InputDataDimensionType.TIME
         }
         else -> InputDataDimensionType.ERROR_TYPE
     }
@@ -189,6 +207,21 @@ fun List<Int>.convertAddFirstSecondToTypedFormulaName(screenType: ScreenType): S
             if ((this[ADDFIRST_INDEX] == PHARMACY_SURFACE_MOUSE_INDEX) &&
                 (this[ADDSECOND_INDEX] == 0))
                 resultTypedFormulaName = PHARMACY_SURFACE_MOUSE_BODYSURFACEAREA_NAME
+        }
+        // Типы формул для раздела GASES
+        ScreenType.GASES_INHALATION_ANESTHESIA -> {
+            if ((this[ADDFIRST_INDEX] == GASES_INHALATION_ANESTHESIA_SEVOFLURANE_INDEX) &&
+                (this[ADDSECOND_INDEX] == 0)) {
+                resultTypedFormulaName = GASES_INHALATION_ANESTHESIA_SEVOFLURANE_NAME
+            }
+            if ((this[ADDFIRST_INDEX] == GASES_INHALATION_ANESTHESIA_DESFLURANE_INDEX) &&
+                (this[ADDSECOND_INDEX] == 0)) {
+                resultTypedFormulaName = GASES_INHALATION_ANESTHESIA_DESFLURANE_NAME
+            }
+            if ((this[ADDFIRST_INDEX] == GASES_INHALATION_ANESTHESIA_ISOFLURANE_INDEX) &&
+                (this[ADDSECOND_INDEX] == 0)) {
+                resultTypedFormulaName = GASES_INHALATION_ANESTHESIA_ISOFLURANE_NAME
+            }
         }
         // Типы формул для раздела CALCULATOR
         ScreenType.CALCULATOR -> {
@@ -314,14 +347,25 @@ fun TextView.createStringResult(
             }
             OutputDataDimensionType.RATE.toString() -> {
                 if (screenTypeIndex == ScreenType.PHARMACY_CRI.ordinal) {
-                    val dimenString: String = resourcesProviderImpl.context.resources.
-                    getStringArray(R.array.
-                    input_data_dimension_volume_dose_per_kg_per_time_list)[valueFields[4].dimension]
+                    val dimenString: String =
+                        resourcesProviderImpl.context.resources.getStringArray(
+                            R.array.input_data_dimension_volume_dose_per_kg_per_time_list
+                        )[valueFields[4].dimension]
                     val startDimenString = dimenString.substring(0, dimenString.indexOf("/"))
-                    val endDimenString = dimenString.substring(dimenString.lastIndexOf("/"),
-                        dimenString.length)
+                    val endDimenString = dimenString.substring(
+                        dimenString.lastIndexOf("/"),
+                        dimenString.length
+                    )
                     result = SpannableString(
-                        "${this.text}\n$initialString $startDimenString$endDimenString")
+                        "${this.text}\n$initialString $startDimenString$endDimenString"
+                    )
+                } else if (screenTypeIndex == ScreenType.GASES_INHALATION_ANESTHESIA.ordinal) {
+                        val dimenString: String = resourcesProviderImpl.context.resources.
+                        getStringArray(R.array.
+                        input_data_dimension_volume_dose_per_time_list)[valueFields[0].dimension]
+                        val startDimenString = dimenString.substring(0, dimenString.indexOf("/"))
+                        result = SpannableString(
+                            "${this.text}\n$initialString $startDimenString")
                 } else {
                     result = SpannableString("${this.text}\n$initialString")
                 }

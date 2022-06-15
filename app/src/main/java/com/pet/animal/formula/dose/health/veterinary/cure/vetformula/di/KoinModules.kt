@@ -13,6 +13,8 @@ import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.calc
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.edittext.EditTextFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.info.InfoFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.gas.GasFragmentViewModel
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.gas.inhanasth.GasInhalationAnasthesiaFragmentViewModel
+import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.gas.inhanasth.result.GasInhalationAnasthesiaResultFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.mainscreen.MainScreenFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.PharmacyFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.cri.PharmacyCRIFragmentViewModel
@@ -118,6 +120,16 @@ val screens = module {
     scope(named(FragmentScope.SHOW_GAS_FRAGMENT_SCOPE)) {
         viewModel {
             GasFragmentViewModel()
+        }
+    }
+    scope(named(FragmentScope.SHOW_GAS_INHALATION_ANASTHESIA_FRAGMENT_SCOPE)) {
+        viewModel {
+            GasInhalationAnasthesiaFragmentViewModel()
+        }
+    }
+    scope(named(FragmentScope.SHOW_GAS_INHALATION_ANASTHESIA_RESULT_FRAGMENT_SCOPE)) {
+        viewModel {
+            GasInhalationAnasthesiaResultFragmentViewModel()
         }
     }
     scope(named(FragmentScope.SHOW_ABOUT_FRAGMENT_SCOPE)) {

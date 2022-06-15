@@ -25,6 +25,11 @@
         <item>20 капель/мл</item>
         <item>60 капель/мл</item>
     </string-array>
+    <string-array name="addFirstSecond_anesthetic_list">
+        <item>Севофлуран</item>
+        <item>Изофлуран</item>
+        <item>Десфлуран</item>
+    </string-array>
 
     <!-- Исходные данные типа размерностей вводимых численных значений -->
     <string-array name="input_data_dimension_weight_animal_list">

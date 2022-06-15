@@ -11,6 +11,8 @@ interface AppScreens {
     fun pharmacyDosesResultScreen(): FragmentScreen
     fun pharmacyCRIScreen(): FragmentScreen
     fun pharmacyCRIResultScreen(): FragmentScreen
+    fun gasesInhalationAnasthesiaScreen(): FragmentScreen
+    fun gasesInhalationAnasthesiaResultScreen(): FragmentScreen
     fun aboutScreen(): FragmentScreen
     fun infoScreen(): FragmentScreen
     fun fluidsScreen(): FragmentScreen
