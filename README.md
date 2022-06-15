@@ -14,10 +14,12 @@ _Назначение приложения_
 
 _Видео с презентацией и демонстрацией работы приложения_
 -------------------------------------------------------
-Презентация работы приложения:
-[![Презентация работы приложения "VetFormula"](https://sun9-66.userapi.com/s/v1/if2/Y3EVkDmO-jlR0IsQS29opYEPO_q4fXU0ppkb5XT55mL_QvUIwCi7shV-L2TkUjNibMJCXL4dHtIV8YNS7OHDHNdQ.jpg?size=500x500&quality=95&type=album)](https://youtu.be/dTtAuG94mek)
+- Презентация работы приложения:
 
-Демонстрация работы приложения: 
+[![Презентация работы приложения "VetFormula"](https://sun9-77.userapi.com/s/v1/if2/7ncz3G8mruH81fl1aJNbOkb2zLUPvkrL9JlftFbN9u9ks6M7YR9VsTxZV8EF1STCBQOZDZTpnxj1Dm3mQrod6yFV.jpg?size=1723x962&quality=95&type=album)](https://youtu.be/dTtAuG94mek)
+
+- Демонстрация работы приложения: 
+
 [![Демонстрация работы приложения "VetFormula"](https://sun9-66.userapi.com/s/v1/if2/Y3EVkDmO-jlR0IsQS29opYEPO_q4fXU0ppkb5XT55mL_QvUIwCi7shV-L2TkUjNibMJCXL4dHtIV8YNS7OHDHNdQ.jpg?size=500x500&quality=95&type=album)](https://youtu.be/8H9K7Yz7MBA)
 
 _Архитектурные решения_
