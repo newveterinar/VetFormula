@@ -59,7 +59,7 @@
     <string name="hematology_previous_text_text">Гематология</string>
     <string name="hematology_button_surface_text_text">Трансфузия</string>
     <string name="gases_previous_text_text">Преобразования</string>
-    <string name="gases_button_text_text">Преобразования</string>
+    <string name="gases_button_text_text">Газовый наркоз</string>
     <string name="gases_inhalation_anesthesia_button_text_text">Ингаляционная\nанастезия</string>
     <string name="settings_previous_text_text">Настройки</string>
     <string name="settings_button_text_text">Настройки</string>
@@ -176,4 +176,7 @@
     <string name="gases_inhalation_anasthesia_concentration_hint">Введите среднюю концентрацию анестетика</string>
     <string name="gases_inhalation_anasthesia_duration_anesthesia_hint">Введите продолжительность анестезии</string>
     <string name="gases_inhalation_anasthesia_gases_anesthetics_hint">Выберите анестетик</string>
+    <string name="select_note">Выбор заметки</string>
+    <string name="enter_note_name">Добавить название  заметки</string>
+    <string name="save">Сохранить</string>
 </resources>

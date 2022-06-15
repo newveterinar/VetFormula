@@ -176,4 +176,7 @@
     <string name="gases_inhalation_anasthesia_concentration_hint">Enter the average concentration of the anesthetic</string>
     <string name="gases_inhalation_anasthesia_duration_anesthesia_hint">Enter the duration of anesthesia</string>
     <string name="gases_inhalation_anasthesia_gases_anesthetics_hint">Choose an anesthetic</string>
+    <string name="select_note">Select note</string>
+    <string name="enter_note_name">Enter note name</string>
+    <string name="save">Save</string>
 </resources>
