@@ -59,7 +59,7 @@
     <string name="hematology_previous_text_text">Гематология</string>
     <string name="hematology_button_surface_text_text">Трансфузия</string>
     <string name="gases_previous_text_text">Преобразования</string>
-    <string name="gases_button_text_text">Преобразования</string>
+    <string name="gases_button_text_text">Газовый наркоз</string>
     <string name="gases_inhalation_anesthesia_button_text_text">Ингаляционная\nанастезия</string>
     <string name="settings_previous_text_text">Настройки</string>
     <string name="settings_button_text_text">Настройки</string>
@@ -161,4 +161,7 @@
     <string name="about_timer_tv_end">Не обязательно дожидаться конца работы таймера. Измерения могут быть остановлены в любой момент отсчета времени, тем самым ускоряя выполнение операции.</string>
     <string name="about_calc_title">Калькулятор для вычислений</string>
     <string name="about_calc_tv">Используется для проведения промежуточных расчётов при подготовке исходных данных. Он позволяет осуществлять все стандартные арифметические операции, работать со скобками, степенями, процентами, предоставлять историю вводимых символов, отдельно вводить целые и дробные части чисел, удалять по одной, две и все операции сразу</string>
+    <string name="select_note">Выбор заметки</string>
+    <string name="enter_note_name">Добавить название  заметки</string>
+    <string name="save">Сохранить</string>
 </resources>

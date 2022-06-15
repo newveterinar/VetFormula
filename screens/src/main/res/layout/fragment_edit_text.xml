@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/colorPrimary">
+    android:background="@color/color_note">
 
     <androidx.constraintlayout.helper.widget.Flow
         android:id="@+id/btn_save_load_group"

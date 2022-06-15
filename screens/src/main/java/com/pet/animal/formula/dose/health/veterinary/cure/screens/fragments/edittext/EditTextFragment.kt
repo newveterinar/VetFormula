@@ -88,7 +88,7 @@ class EditTextFragment : BaseFragment<FragmentEditTextBinding>(FragmentEditTextB
 
             val alertDialog =AlertDialog.Builder(context)
             alertDialog
-                .setTitle("Select note")
+                .setTitle(resources.getString(R.string.select_note))
                 .setItems(elements,DialogInterface.OnClickListener(){_,pos->
                     val id = noteList[pos].id
                     id?.let {
@@ -110,9 +110,9 @@ class EditTextFragment : BaseFragment<FragmentEditTextBinding>(FragmentEditTextB
 
                 val alertDialog  = AlertDialog.Builder(context)
                 alertDialog
-                    .setTitle("Enter note name")
+                    .setTitle(resources.getString(R.string.enter_note_name))
                     .setView(input)
-                    .setPositiveButton("Save"){_,_->
+                    .setPositiveButton(resources.getString(R.string.save)){_,_->
                         val text = input.text.toString()
                         val note = binding.editTextText.text.toString()
                         viewModel.saveNote(text,note)

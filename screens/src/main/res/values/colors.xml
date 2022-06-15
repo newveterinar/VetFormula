@@ -22,6 +22,8 @@
     <color name="invisible">#00000000</color>
     <color name="fill_color">#630606</color>
     <color name="spinner_dimension">#b1ffbf</color>
+    <color name="color_note">#c8ffd2</color>
+
 
     <!-- Цвета для калькулятора -->
     <!-- Main theme colors day -->
