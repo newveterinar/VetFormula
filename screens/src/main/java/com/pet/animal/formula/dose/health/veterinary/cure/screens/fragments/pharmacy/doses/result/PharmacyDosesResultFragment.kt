@@ -12,6 +12,9 @@ import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.Fr
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.FragmentScope
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.NUMBER_NAVIGATION_BUTTONS_ON_OUTPUT_DATA_SCREENS
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertListValueFieldToListDoubleValue
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertListValueFieldToListIntDimensions
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertListValueFieldToListStringValue
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.createStringResult
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.settings.SettingsImpl
 import org.koin.core.qualifier.named
@@ -117,8 +120,11 @@ class PharmacyDosesResultFragment:
             screenType,
             listOf(),
             listOf(),
+//            settings.getInputedScreenData().valueFields.convertListValueFieldToListStringValue(),
             listOf(),
+//            settings.getInputedScreenData().valueFields.convertListValueFieldToListDoubleValue(),
             listOf(),
+//            settings.getInputedScreenData().valueFields.convertListValueFieldToListIntDimensions(),
             isGoToResultScreen
         )
     }

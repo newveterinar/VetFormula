@@ -37,10 +37,28 @@ fun MutableList<Spinner>.convertListSpinnerToListInt(): List<Int> {
 }
 
 // Получение списка List<Int> (с Dimensions) из списка MutableList<ValueField>
-fun MutableList<ValueField>.convertListValuefFieldToListIntDimensions(): List<Int> {
+fun MutableList<ValueField>.convertListValueFieldToListIntDimensions(): List<Int> {
     val resultList: MutableList<Int> = mutableListOf()
     this.forEach {
         resultList.add(it.dimension)
+    }
+    return resultList
+}
+
+// Получение списка List<Double> (с Value) из списка MutableList<ValueField>
+fun MutableList<ValueField>.convertListValueFieldToListDoubleValue(): List<Double> {
+    val resultList: MutableList<Double> = mutableListOf()
+    this.forEach {
+        resultList.add(it.value)
+    }
+    return resultList
+}
+
+// Получение списка List<String> (с Value) из списка MutableList<ValueField>
+fun MutableList<ValueField>.convertListValueFieldToListStringValue(): List<String> {
+    val resultList: MutableList<String> = mutableListOf()
+    this.forEach {
+        resultList.add(it.stringValue)
     }
     return resultList
 }

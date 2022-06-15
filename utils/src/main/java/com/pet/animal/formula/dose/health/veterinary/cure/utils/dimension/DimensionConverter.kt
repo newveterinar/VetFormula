@@ -9,7 +9,7 @@ fun inputDataDimensionConverter(
     checkIndex: Int
 ): Double {
     /** Задание переменных */ //region
-    var result: Double = -1.0
+    var result: Double = ERROR_VALUE
     //endregion
     when(inputDataDimensionType) {
         InputDataDimensionType.WEIGHT_ANIMAL -> {
@@ -25,11 +25,11 @@ fun inputDataDimensionConverter(
                 1 -> TEN_IN_MINUS_SIX_POWER
                 2 -> TEN_IN_MINUS_THREE_POWER
                 3 -> {
-                    if (checkIndex != 3) ERROR_VALUE
+                    if (checkIndex != 3) NOT_ERROR_VALUE
                     else RESULT_VALUE_NOT_CHANGED
                 }
                 4 -> {
-                    if (checkIndex != 4) ERROR_VALUE
+                    if (checkIndex != 4) NOT_ERROR_VALUE
                     else RESULT_VALUE_NOT_CHANGED
                 }
                 else -> ERROR_VALUE
@@ -70,11 +70,11 @@ fun inputDataDimensionConverter(
                 1 -> TEN_IN_MINUS_SIX_POWER / TEN_IN_MINUS_SIX_POWER
                 2 -> TEN_IN_MINUS_THREE_POWER / TEN_IN_MINUS_SIX_POWER
                 3 -> {
-                    if (checkIndex != 3) ERROR_VALUE
+                    if (checkIndex != 3) NOT_ERROR_VALUE
                     else RESULT_VALUE_NOT_CHANGED / TEN_IN_MINUS_SIX_POWER
                 }
                 4 -> {
-                    if (checkIndex != 4) ERROR_VALUE
+                    if (checkIndex != 4) NOT_ERROR_VALUE
                     else RESULT_VALUE_NOT_CHANGED / TEN_IN_MINUS_SIX_POWER
                 }
                 5 -> TEN_IN_MINUS_NINE_POWER / TEN_IN_MINUS_THREE_POWER

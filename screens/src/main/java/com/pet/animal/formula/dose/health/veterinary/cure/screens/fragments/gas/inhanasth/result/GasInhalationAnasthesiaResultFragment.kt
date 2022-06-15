@@ -12,7 +12,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.Fr
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.FragmentScope
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.NUMBER_NAVIGATION_BUTTONS_ON_OUTPUT_DATA_SCREENS
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertListValuefFieldToListIntDimensions
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertListValueFieldToListIntDimensions
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.createStringResult
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.settings.SettingsImpl
 import org.koin.core.qualifier.named
@@ -123,7 +123,7 @@ class GasInhalationAnasthesiaResultFragment: BaseFragment<FragmentGasesAnihalati
             listOf(),
             listOf(),
             listOf(),
-            settings.getInputedScreenData().valueFields.convertListValuefFieldToListIntDimensions(),
+            settings.getInputedScreenData().valueFields.convertListValueFieldToListIntDimensions(),
             isGoToResultScreen
         )
     }

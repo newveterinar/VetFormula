@@ -100,6 +100,7 @@ const val ADDSECOND_INDEX = 1
 
 // Константы для конвертера размерностей
 const val RESULT_VALUE_NOT_CHANGED: Double = 1.0
+const val NOT_ERROR_VALUE: Double = 1.0
 const val ERROR_VALUE: Double = -1.0
 const val TEN_SECONDS: Double = 10.0
 const val NUMBER_SECONDS_IN_MINUTE: Double = 60.0
