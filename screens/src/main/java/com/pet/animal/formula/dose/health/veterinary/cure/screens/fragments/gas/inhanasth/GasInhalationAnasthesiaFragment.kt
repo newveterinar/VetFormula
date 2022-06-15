@@ -12,9 +12,6 @@ import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppState
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentGasesAnihalationAnasthesiaBinding
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentPharmacySurfaceBinding
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.surface.PharmacySurfaceFragment
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.surface.PharmacySurfaceFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.FragmentScope
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.NUMBER_NAVIGATION_BUTTONS_ON_INPUT_DATA_SCREENS
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType

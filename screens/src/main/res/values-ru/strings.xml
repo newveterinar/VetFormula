@@ -161,10 +161,10 @@
     <string name="about_timer_tv_end">Не обязательно дожидаться конца работы таймера. Измерения могут быть остановлены в любой момент отсчета времени, тем самым ускоряя выполнение операции.</string>
     <string name="about_calc_title">Калькулятор для вычислений</string>
     <string name="about_calc_tv">Используется для проведения промежуточных расчётов при подготовке исходных данных. Он позволяет осуществлять все стандартные арифметические операции, работать со скобками, степенями, процентами, предоставлять историю вводимых символов, отдельно вводить целые и дробные части чисел, удалять по одной, две и все операции сразу</string>
-    <string name="gases_inhalation_anesthesia_previous_text">Ингаляционная анастезия</string>
+    <string name="gases_inhalation_anesthesia_previous_text">Ингаляционная\nанастезия</string>
     <string name="gases_anesthetics_title_text">Анестетик</string>
     <string name="gases_middle_flow_title_text">Средний поток газа</string>
-    <string name="gases_middle_flow_textinputlayout_textfield_hint">Поток свежего воздуха</string>
+    <string name="gases_middle_flow_textinputlayout_textfield_hint">Поток</string>
     <string name="help_info_text">Перед расчётом заполните все числовые поля!</string>
     <string name="calculate_button_text">Вычислить</string>
     <string name="gases_middle_anesthesia_concentration_title_text">Средняя концентрация</string>

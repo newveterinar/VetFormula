@@ -55,6 +55,15 @@ fun inputDataDimensionConverter(
                 else -> ERROR_VALUE
             }
         }
+        InputDataDimensionType.VOLUME_DOSE_PER_TIME -> {
+            result = when(index) {
+                0 -> TEN_IN_MINUS_SIX_POWER / NUMBER_SECONDS_IN_HOUR
+                1 -> TEN_IN_MINUS_NINE_POWER / NUMBER_SECONDS_IN_HOUR
+                2 -> TEN_IN_MINUS_SIX_POWER / NUMBER_SECONDS_IN_MINUTE
+                3 -> TEN_IN_MINUS_NINE_POWER / NUMBER_SECONDS_IN_MINUTE
+                else -> ERROR_VALUE
+            }
+        }
         InputDataDimensionType.CONCENTRATION -> { // Formulation
             result = when(index) {
                 0 -> TEN_IN_MINUS_NINE_POWER / TEN_IN_MINUS_SIX_POWER
@@ -75,10 +84,21 @@ fun inputDataDimensionConverter(
                 else -> ERROR_VALUE
             }
         }
+        InputDataDimensionType.CONCENTRATION_VOLUME_PERCENT -> {
+            result = 1.0
+        }
         InputDataDimensionType.VOLUME -> {
             result = when(index) {
                 0 -> TEN_IN_MINUS_SIX_POWER
                 1 -> TEN_IN_MINUS_NINE_POWER
+                else -> ERROR_VALUE
+            }
+        }
+        InputDataDimensionType.TIME -> {
+            result = when(index) {
+                0 -> NUMBER_SECONDS_IN_HOUR
+                1 -> NUMBER_SECONDS_IN_MINUTE
+                2 -> 1.0
                 else -> ERROR_VALUE
             }
         }
