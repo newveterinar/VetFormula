@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorPrimary">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/header_height"
+        android:background="?attr/colorSecondary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clear_button_container"
+            android:layout_width="@dimen/clear_button_container_width"
+            android:layout_height="@dimen/clear_button_container_height"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/clear_button"
+                style="@style/clear_button"
+                android:layout_width="@dimen/clear_button_width"
+                android:layout_height="@dimen/clear_button_height"
+                android:layout_alignParentEnd="true"
+                android:rotation="@dimen/clear_button_rotation_angle"
+                android:scaleX="@dimen/clear_button_scale_x"
+                android:scaleY="@dimen/clear_button_scale_y"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_triangle" />
+
+            <TextView
+                android:id="@+id/clear_button_text"
+                style="@style/clear_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/clear_button_text_margin_bottom"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/previous_button_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/previous_button"
+                android:layout_width="@dimen/previous_button_width"
+                android:layout_height="@dimen/previous_button_height"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="@dimen/previous_button_margin_start"
+                android:layout_marginTop="@dimen/previous_button_margin_top"
+                android:rotation="@dimen/arrow_back_rotation_angle"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_arrow_right" />
+
+            <TextView
+                android:id="@+id/previous_text"
+                style="@style/text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/previous_text_margin_start"
+                android:paddingStart="@dimen/previous_text_paddint_start"
+                android:text="@string/gases_inhalation_anesthesia_previous_text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="@dimen/previous_text_vertical_bias" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/horizontal_border"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/horizontal_border_height"
+            android:background="@color/black"
+            app:layout_constraintBottom_toBottomOf="@id/header"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/header_height"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/horizontal_border">
+
+            <TextView
+                android:id="@+id/gases_anesthetics_title"
+                style="@style/button_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gases_anesthetics_title_margin_start"
+                android:layout_marginTop="@dimen/gases_anesthetics_title_margin_top"
+                android:text="@string/gases_anesthetics_title_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/gases_anesthetics_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gases_anesthetics_list_margin_start"
+                android:layout_marginEnd="@dimen/gases_anesthetics_list_margin_end"
+                android:entries="@array/addFirstSecond_anesthetic_list"
+                android:singleLine="false"
+                android:theme="@style/SpinnerTypes"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/gases_anesthetics_title" />
+
+            <TextView
+                android:id="@+id/gases_middle_flow_title"
+                style="@style/button_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gases_middle_flow_title_margin_start"
+                android:layout_marginTop="@dimen/gases_middle_flow_title_margin_top"
+                android:text="@string/gases_middle_flow_title_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/gases_anesthetics_list" />
+
+            <RelativeLayout
+                android:id="@+id/gases_middle_flow_relative_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/gases_middle_flow_relative_layout_margin_end"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/gases_middle_flow_title">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toStartOf="@id/gases_middle_flow_dimension_layout">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/gases_middle_flow_textinputlayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/gases_middle_flow_textinputlayout_margin_start"
+                        app:errorTextColor="@color/red"
+                        app:errorIconTintMode="src_atop"
+                        app:errorIconTint="@color/red"
+                        app:boxStrokeErrorColor="@color/red" >
+
+                        <EditText
+                            android:id="@+id/gases_middle_flow_textinputlayout_textfield"
+                            android:tag="VOLUME_DOSE_PER_TIME"
+                            style="@style/number_button"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:hint="@string/gases_middle_flow_textinputlayout_textfield_hint"
+                            android:inputType="number|numberDecimal"
+                            tools:ignore="TouchTargetSizeCheck" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <RelativeLayout
+                    android:id="@+id/gases_middle_flow_dimension_layout"
+                    android:layout_width="@dimen/gases_middle_flow_dimension_layout_width"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/gases_middle_flow_dimension_list"
+                        android:tag="VOLUME_DOSE_PER_TIME"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:entries="@array/input_data_dimension_volume_dose_per_time_list"
+                        android:gravity="center"
+                        android:singleLine="false"
+                        android:textAlignment="center"
+                        android:theme="@style/SpinnerDimensions"
+                        android:visibility="visible"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/gases_middle_anesthesia_concentration_title"
+                style="@style/button_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gases_middle_anesthesia_concentration_title_margin_start"
+                android:layout_marginTop="@dimen/gases_middle_anesthesia_concentration_title_margin_top"
+                android:text="@string/gases_middle_anesthesia_concentration_title_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/gases_middle_flow_relative_layout" />
+
+            <RelativeLayout
+                android:id="@+id/gases_middle_anesthesia_concentration_relative_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/gases_middle_anesthesia_concentration_relative_layout_margin_end"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/gases_middle_anesthesia_concentration_title">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toStartOf="@id/gases_middle_anesthesia_concentration_dimension_layout">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/gases_middle_anesthesia_concentration_textinputlayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/gases_middle_anesthesia_concentration_textinputlayout_margin_start"
+                        app:errorTextColor="@color/red"
+                        app:errorIconTintMode="src_atop"
+                        app:errorIconTint="@color/red"
+                        app:boxStrokeErrorColor="@color/red" >
+
+                        <EditText
+                            android:id="@+id/gases_middle_anesthesia_concentration_textinputlayout_textfield"
+                            android:tag="CONCENTRATION_VOLUME_PERCENT"
+                            style="@style/number_button"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:hint="@string/gases_middle_anesthesia_concentration_textinputlayout_textfield_hint"
+                            android:inputType="number|numberDecimal"
+                            tools:ignore="TouchTargetSizeCheck" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <RelativeLayout
+                    android:id="@+id/gases_middle_anesthesia_concentration_dimension_layout"
+                    android:layout_width="@dimen/gases_middle_anesthesia_concentration_dimension_layout_width"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/gases_middle_anesthesia_concentration_dimension_list"
+                        android:tag="CONCENTRATION_VOLUME_PERCENT"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:entries="@array/input_data_dimension_concentration_volume_percent"
+                        android:gravity="center"
+                        android:singleLine="false"
+                        android:textAlignment="center"
+                        android:theme="@style/SpinnerDimensions"
+                        android:visibility="visible"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/gases_duration_anesthesia_title"
+                style="@style/button_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gases_duration_anesthesia_title_margin_start"
+                android:layout_marginTop="@dimen/gases_duration_anesthesia_title_margin_top"
+                android:text="@string/gases_duration_anesthesia_title_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/gases_middle_anesthesia_concentration_relative_layout" />
+
+            <RelativeLayout
+                android:id="@+id/gases_duration_anesthesia_relative_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/gases_duration_anesthesia_relative_layout_margin_end"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/gases_duration_anesthesia_title">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toStartOf="@id/gases_duration_anesthesia_dimension_layout">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/gases_duration_anesthesia_textinputlayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/gases_duration_anesthesia_textinputlayout_margin_start"
+                        app:errorTextColor="@color/red"
+                        app:errorIconTintMode="src_atop"
+                        app:errorIconTint="@color/red"
+                        app:boxStrokeErrorColor="@color/red" >
+
+                        <EditText
+                            android:id="@+id/gases_duration_anesthesia_textinputlayout_textfield"
+                            android:tag="TIME"
+                            style="@style/number_button"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:hint="@string/gases_duration_anesthesia_textinputlayout_textfield_hint"
+                            android:inputType="number|numberDecimal"
+                            tools:ignore="TouchTargetSizeCheck" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <RelativeLayout
+                    android:id="@+id/gases_duration_anesthesia_dimension_layout"
+                    android:layout_width="@dimen/gases_duration_anesthesia_dimension_layout_width"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/gases_duration_anesthesia_dimension_list"
+                        android:tag="TIME"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:entries="@array/input_data_dimension_time_list"
+                        android:gravity="center"
+                        android:singleLine="false"
+                        android:textAlignment="center"
+                        android:theme="@style/SpinnerDimensions"
+                        android:visibility="visible"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/help_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/help_info_margin_top"
+                android:text="@string/pharmacy_help_info_text"
+                app:layout_constraintBottom_toTopOf="@id/calculate_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/gases_duration_anesthesia_relative_layout" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/calculate_button"
+                style="@style/calculate_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/calculate_button_margin_start"
+                android:layout_marginEnd="@dimen/calculate_button_margin_end"
+                android:layout_marginBottom="@dimen/calculate_button_margin_bottom"
+                android:enabled="false"
+                android:gravity="center"
+                android:text="@string/calculate_button_text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/help_info" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

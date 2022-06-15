@@ -11,7 +11,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.utils.settings.Setting
 import org.koin.java.KoinJavaComponent
 
 class PharmacySurfaceResultInteractorImpl(
-    private val pharmacySurfaceResultFragmentViewModel: PharmacySurfaceResultFragmentViewModel
+    private val viewModel: PharmacySurfaceResultFragmentViewModel
 ): Interactor<AppState> {
     /** Задание переменных */ //region
     // SettingsImpl
@@ -49,18 +49,21 @@ class PharmacySurfaceResultInteractorImpl(
                 }
             }
             // Назначение различным результирующим данным своих конвертирующих коэффициентов
-            if (index == 0) {
-                resultValueField.add(
-                    ResultValueField(
-                        outputDataDimensionConverter(
-                            OutputDataDimensionType.SQUARE_LENGTH,
-                            calcInteractorImpl.getCommandResultValue() ?: 0.0,
-                            null
-                        )
+            val outputDataDimensionType: OutputDataDimensionType = when(index) {
+                0 -> OutputDataDimensionType.SQUARE_LENGTH
+                else -> OutputDataDimensionType.ERROR_TYPE
+            }
+            resultValueField.add(
+                ResultValueField(
+                    outputDataDimensionConverter(
+                        screenType,
+                        outputDataDimensionType,
+                        calcInteractorImpl.getCommandResultValue() ?: 0.0,
+                        listOf()
                     )
                 )
-            }
+            )
         }
-        pharmacySurfaceResultFragmentViewModel.setResultScreenToLiveData(resultValueField)
+        viewModel.setResultScreenToLiveData(resultValueField)
     }
 }

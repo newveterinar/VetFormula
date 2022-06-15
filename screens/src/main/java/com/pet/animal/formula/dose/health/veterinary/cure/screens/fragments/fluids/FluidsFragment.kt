@@ -39,11 +39,17 @@ class FluidsFragment : BaseFragment<FragmentFluidsBinding>(FragmentFluidsBinding
             button?.setOnClickListener {
                 when (index) {
                     0 -> viewModel.router.exit()
-                    1 -> Toast.makeText(requireContext(), requireActivity().resources.getString(
-                            R.string.error_button_is_not_assigned), Toast.LENGTH_SHORT).show()
+                    1 -> Toast.makeText(
+                        requireContext(), requireActivity().resources.getString(
+                            R.string.error_button_is_not_assigned
+                        ), Toast.LENGTH_SHORT
+                    ).show()
                     else -> {
-                        Toast.makeText(requireContext(), requireActivity().resources.getString(
-                            R.string.error_button_is_not_assigned), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            requireContext(), requireActivity().resources.getString(
+                                R.string.error_button_is_not_assigned
+                            ), Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
             }

@@ -5,6 +5,40 @@
     <string name="error_button_is_not_assigned">Error: The button is not assigned</string>
     <string name="error_not_inserted_weight_animal">Please enter a number > 0</string>
 
+    <!-- Строчные ресурсы для окна с калькулятором -->
+    <string name="_0">0</string>
+    <string name="_1">1</string>
+    <string name="_2">2</string>
+    <string name="_3">3</string>
+    <string name="_4">4</string>
+    <string name="_5">5</string>
+    <string name="_6">6</string>
+    <string name="_7">7</string>
+    <string name="_8">8</string>
+    <string name="_9">9</string>
+    <string name="_divide">/</string>
+    <string name="_minus">-</string>
+    <string name="_zapitay">,</string>
+    <string name="_equal">=</string>
+    <string name="_multiply">*</string>
+    <string name="_plus">+</string>
+    <string name="_bracket_open">(</string>
+    <string name="_bracket_close">)</string>
+    <string name="_percent">%</string>
+    <string name="_plus_minus">+/-</string>
+    <string name="_stepen">x^n</string>
+    <string name="_sqrt">Kx</string>
+    <string name="_backspaceTwo"><![CDATA[<--]]></string>
+    <string name="_backspace">C</string>
+    <string name="InputHistory_text"></string>
+    <string name="RESULT_text">0</string>
+    <string name="_backspaceOne"><![CDATA[<-]]></string>
+    <string name="default_radius_text">177</string>
+    <string name="error_different_number_brackets">Error: Different number of open and closed brackets</string>
+    <string name="error_undersquare_low_zero">Error: The root expression is less than zero</string>
+    <string name="error_divide_on_zero">Error: Division by zero</string>
+    <string name="error_inside_brackets_empty">Error: There is nothing inside the brackets</string>
+
     <!-- Ресурсы макета -->
     <string name="about_surface_button_text_text">ABOUT\nVetFormula</string>
     <string name="about_text_text">INFORMATION</string>
@@ -15,7 +49,8 @@
     <string name="pharmacy_calculate_button_text">Calculate</string>
     <string name="pharmacy_result_previous_text_text">Result</string>
     <string name="pharmacy_about_button_hints">ABOUT\nVetFormula</string>
-    <string name="about_logo_text">Information</string>
+    <string name="about_logo_text">About</string>
+    <string name="info_logo_text">Information</string>
     <string name="pharmacy_logo_text">VetFormula</string>
     <string name="fluids_button_text_text">Fluids</string>
     <string name="fluids_button_surface_text_text">Basic</string>
@@ -23,9 +58,9 @@
     <string name="hematology_button_text_text">Hematology</string>
     <string name="hematology_previous_text_text">Hematology</string>
     <string name="hematology_button_surface_text_text">Transfusion</string>
-    <string name="conversions_previous_text_text">Conversions</string>
-    <string name="conversions_button_text_text">Conversions</string>
-    <string name="conversions_button_surface_text_text">Temperature</string>
+    <string name="gases_previous_text_text">Gases</string>
+    <string name="gases_button_text_text">Gases</string>
+    <string name="gases_inhalation_anesthesia_button_text_text">Inhalation\nanesthesia</string>
     <string name="settings_previous_text_text">Settings</string>
     <string name="settings_button_text_text">Settings</string>
     <string name="settings_button_surface_text_text">SomeSettings</string>
@@ -41,25 +76,26 @@
     <string name="pharmacy_dose_textinputlayout_textfield_hint">Amount</string>
     <string name="pharmacy_concentration_animal_title_text">Specify concentration</string>
     <string name="pharmacy_concentration_textinputlayout_textfield_hint">Concentration value</string>
-    <string name="pharmacy_fluids_textinputlayout_textfield_hint">Amount</string>
+    <string name="pharmacy_amount_textinputlayout_textfield_hint">Amount</string>
     <string name="pharmacy_fluids_animal_title_text">Amount</string>
     <string name="pharmacy_drop_textinputlayout_textfield_hint">No Giving Set</string>
     <string name="pharmacy_drop_animal_title_text">Giving Set</string>
     <string name="pharmacy_dose_button_text_text">Pharmacy Doses</string>
-    <string name="pharmacy_cri_button_text_text">Pharmacy CRI</string>
-    <string name="pharmacy_cri_previous_text_text">PharmacyCRI</string>
+    <string name="pharmacy_cri_button_text_text">Pharneg CRI</string>
+    <string name="pharmacy_cri_previous_text_text">Pharneg CRI</string>
     <string name="pharmacy_dose_previous_text_text">PharmacyDose</string>
     <string name="pharmacy_speed_animal_title_text">Rate</string>
-    <string name="pharmacy_speed_textinputlayout_textfield_hint">Rate</string>
-    <string name="tickCaption">tick/min</string>
+    <string name="pharmacy_rate_textinputlayout_textfield_hint">Rate</string>
+    <string name="tickCaptionHeartRate">HR</string>
+    <string name="tickCaptionBDD">BDD</string>
     <string name="captionStopTimer">Stop timer</string>
     <string name="captionStartTimer">Start timer</string>
     <string name="timer_button_text_text">Timer</string>
     <string name="doses_result_text_text">100</string>
     <string name="timerText_text">00:00</string>
-    <string name="startTimerButton_text">Run stop-watch</string>
+    <string name="startTimerButton_text">Run</string>
     <string name="inputManualCount_text">0</string>
-    <string name="textView3_text">Enter the number of measurements</string>
+    <string name="textView3_text">Heartbeats</string>
     <string name="tickInMinutes_text">0.00</string>
     <string name="buttonResetTickCounter_text">Reset tick counter</string>
     <string name="timer_previous_text_text">Timer</string>
@@ -68,81 +104,79 @@
     <string name="theme">Theme</string>
     <string name="pharmacy_help_info_text">Fill in all numeric fields before calculating!</string>
     <string name="pharmacy_result_title_text">Body surface area</string>
-
-    <!-- Типы ресурсов для ввода данных -->
-    <!--    Порядок размерностей в ресурсах для каждого числового поля не менять -->
-        <!-- Исходные данные типа addFirstSecond -->
-    <string-array name="addFirstSecond_animal_type_list">
-        <item>Dog</item>
-        <item>Cat</item>
-        <item>Rabbit</item>
-        <item>Polecat</item>
-        <item>Guinea Pig</item>
-        <item>Hamster</item>
-        <item>Horse (except CCNU)</item>
-        <item>Horse (only CCNU)</item>
-        <item>Rat</item>
-        <item>Mouse</item>
-    </string-array>
-    <string-array name="addFirstSecond_giving_set_drop_list">
-        <item>No Giving Set</item>
-        <item>20 drops/ml</item>
-        <item>60 drops/ml</item>
-    </string-array>
-
-        <!-- Исходные данные типа размерностей вводимых численных значений -->
-    <string-array name="input_data_dimension_weight_animal_list">
-        <item>kg</item>
-        <item>g</item>
-    </string-array>
-    <string-array name="input_data_dimension_mass_dose_per_kg_list">
-        <item>µg</item>
-        <item>mg</item>
-        <item>g</item>
-        <item>mEq</item>
-        <item>U</item>
-    </string-array>
-    <string-array name="input_data_dimension_mass_dose_per_kg_per_time_list">
-        <item>µg/kg/min</item>
-        <item>mg/kg/min</item>
-        <item>g/kg/min</item>
-        <item>µg/kg/h</item>
-        <item>mg/kg/h</item>
-        <item>g/kg/h</item>
-    </string-array>
-    <string-array name="input_data_dimension_volume_dose_per_kg_per_time_list">
-        <item>ml/kg/h</item>
-        <item>μl/kg/h</item>
-        <item>ml/kg/min</item>
-        <item>μl/kg/min</item>
-    </string-array>
-    <string-array name="input_data_dimension_concentration_list">
-        <item>µg/ml</item>
-        <item>mg/ml</item>
-        <item>g/ml</item>
-        <item>mEq/ml</item>
-        <item>U/ml</item>
-        <item>µg/g</item>
-        <item>mg/g</item>
-        <item>g/g</item>
-        <item>weight/volume</item>
-    </string-array>
-    <string-array name="input_data_dimension_volume_list">
-        <item>ml</item>
-        <item>μl</item>
-    </string-array>
-
-        <!-- Результирующие данные типа размерностей расчётных численных значений -->
-    <string name="output_data_dimension_length">m</string>
-    <string name="output_data_dimension_mass">kg</string>
-    <string name="output_data_dimension_time">s</string>
-    <string name="output_data_dimension_square_length">m2</string>
-    
-    <!-- Ресурсы для смены языка приложения -->
-    <string name="language_english" translatable="false">English</string>
-    <string name="language_russian" translatable="false">Русский</string>
-    <string-array name="language_list">
-        <item>@string/language_english</item>
-        <item>@string/language_russian</item>
-    </string-array>
+    <string name="pharmacy_result_volume_title_text">Amount</string>
+    <string name="captionBtnStopTimer">STOP</string>
+    <string name="captionBtnResetTimer">RESET</string>
+    <string name="about_develop">Developed by:\nAndrey Khakhalin
+    \nAndrey Skripin
+    \nOlga Egonskaya
+    \nRoman Zakharov
+    \nMaksim Fedorchenko    </string>
+    <string name="about_contact">Contact: newveterinar@mail.ru</string>
+    <string name="long_click_hint">Hint: %s</string>
+    <string name="pharmacy_surface_animal_type_hint">select animal type.</string>
+    <string name="pharmacy_surface_animal_weight_hint">enter animal weight.</string>
+    <string name="pharmacy_dose_animal_weight_hint">enter the animal weight.</string>
+    <string name="pharmacy_dose_dose_hint">enter the drug dose.</string>
+    <string name="pharmacy_dose_drug_concentration_hint">enter the drug concentration.</string>
+    <string name="pharmacy_cri_animal_weight_hint">enter the animal weight.</string>
+    <string name="pharmacy_cri_dose_hint">enter the drug dose.</string>
+    <string name="pharmacy_cri_drug_concentration_hint">enter the drug concentration.</string>
+    <string name="pharmacy_cri_rate_hint">enter the drug rate.</string>
+    <string name="pharmacy_cri_fluid_amount_hint">enter volume of fluid.</string>
+    <string name="pharmacy_result_drip_rate_title_text">Drip rate</string>
+    <string name="pharmacy_cri_giving_set_hint">select if you have a giving set.</string>
+    <string name="main_screen_settings_hint">move to settings screen.</string>
+    <string name="main_screen_about_hint">move to \"About app\" screen.</string>
+    <string name="pharmacy_result_drip_rate_time_title_text_text">One drop every</string>
+    <string name="pharmacy_result_rate_rate_title_text_text">Rate of:</string>
+    <string name="pharmacy_result_rate_mass_dose_per_kg_per_time_title_text_text">Gives:</string>
+    <string name="pharmacy_result_rate_time_title_text_text">For:</string>
+    <string name="pharmacy_result_amount_volume_text_text">Add:</string>
+    <string name="buttonPlusMinute_text">+1</string>
+    <string name="buttonMuteUnMute_mute_text">MUTE</string>
+    <string name="buttonMuteUnMute_unmute_text">UNMUTE</string>
+    <string name="textView2_text">Calculation BDD</string>
+    <string name="textViewHR_text">(HR)</string>
+    <string name="btn_delete_note_text">Delete</string>
+    <string name="btn_load_note_text">Load</string>
+    <string name="btn_save_note_text">Save</string>
+    <string name="info_text_app">\n\nABOUT THE APPLICATION:\n\n
+        The application has sections such as: "Drugs", "Gases", "Calculator", "Timer".\n\n
+        Sections "Drugs" and "Gases" - help to determine the calculation of doses of drugs:\n
+        1. The surface area of the animal\n
+        2. The dose of the drug \n
+        3. Infusion at a constant rate \n
+        4. Gas anesthesia\n\n
+        "Timer" - helps to determine the heart rate (HR) and the frequency of respiratory movements (BDD).\n\n
+        "Calculator" - helps to calculate the source data.\n\n
+        In the left part of the application, a "Slider" is implemented, which can divide the screen into two parts.To do this, pull the green circle on the left up or down.The bottom screen provides access to the following windows: \n
+        1. Access to the information resource "WSAVA".\n
+        2. Access to the information resource "VetMedical".\n
+        3. Notepad for entering and saving text information.\n
+    </string>
+    <string name="about_timer_title">Timer for determining the heart rate (HR) and respiratory rate (HRD).</string>
+    <string name="about_timer_tv_start">It allows you to simultaneously measure heart rate and BPD. The parameters are measured simultaneously. During the measurement, the user is required to:</string>
+    <string name="about_timer_tv_middle">1) turn it on, stop it, reset the values obtained, add another minute or several minutes during the measurement; \n2) use a stethoscope to count the number of heartbeats; 3) by hearing, determining the moment of the patients breathing, click on the picture of the foot at the time of the timer and it will count the number of patients breaths;\n3) at the end of the timer, enter the number of counted heartbeats, after which the heart rate result will be displayed.\n</string>
+    <string name="about_timer_tv_end">It is not necessary to wait for the timer to end. Measurements can be stopped at any time, thereby speeding up the operation.</string>
+    <string name="about_calc_title">Calculator for calculations</string>
+    <string name="about_calc_tv">It is used for performing intermediate calculations during the preparation of initial data. It allows you to perform all standard arithmetic operations, work with brackets, degrees, percentages, provide a history of the characters entered, separately enter integers and fractions of numbers, delete one, two and all operations at once</string>
+    <string name="gases_inhalation_anesthesia_previous_text">Inhalation\nanesthesia</string>
+    <string name="gases_anesthetics_title_text">Anesthetic</string>
+    <string name="gases_middle_flow_title_text">Average gas flow</string>
+    <string name="gases_middle_flow_textinputlayout_textfield_hint">Flow</string>
+    <string name="help_info_text">Fill in all numeric fields before calculating!</string>
+    <string name="calculate_button_text">Calculate</string>
+    <string name="gases_middle_anesthesia_concentration_title_text">Average concentration</string>
+    <string name="gases_middle_anesthesia_concentration_textinputlayout_textfield_hint">Сoncentration</string>
+    <string name="gases_duration_anesthesia_title_text">Duration of anesthesia</string>
+    <string name="gases_duration_anesthesia_textinputlayout_textfield_hint">Duration</string>
+    <string name="gases_inhalation_anasthesia_result_title_text">Anesthetic consumption</string>
+    <string name="gases_inhalation_anasthesia_middle_flow_hint">Enter a medium flow of anesthetic</string>
+    <string name="gases_inhalation_anasthesia_concentration_hint">Enter the average concentration of the anesthetic</string>
+    <string name="gases_inhalation_anasthesia_duration_anesthesia_hint">Enter the duration of anesthesia</string>
+    <string name="gases_inhalation_anasthesia_gases_anesthetics_hint">Choose an anesthetic</string>
+    <string name="select_note">Select note</string>
+    <string name="enter_note_name">Enter note name</string>
+    <string name="save">Save</string>
 </resources>

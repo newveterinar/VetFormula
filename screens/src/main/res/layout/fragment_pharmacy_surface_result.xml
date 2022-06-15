@@ -75,8 +75,8 @@
 
             <TextView
                 android:id="@+id/pharmacy_result_title"
-                style="@style/button_style"
-                android:layout_width="wrap_content"
+                style="@style/button_result_style"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/pharmacy_result_title_margin_start"
                 android:layout_marginTop="@dimen/pharmacy_result_title_margin_top"
@@ -86,14 +86,14 @@
 
             <TextView
                 android:id="@+id/pharmacy_result_text"
-                android:tag="SQUARE_LENGTH"
+                style="@style/number_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/number_button"
                 android:layout_marginStart="@dimen/pharmacy_result_text_margin_start"
-                android:layout_marginEnd="@dimen/pharmacy_weight_relative_layout_margin_end"
+                android:layout_marginTop="@dimen/pharmacy_result_text_margin_top"
+                android:tag="SQUARE_LENGTH"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/pharmacy_result_title"/>
+                app:layout_constraintTop_toBottomOf="@id/pharmacy_result_title" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

@@ -6,16 +6,16 @@
     android:background="?attr/colorPrimary">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/conversions_header"
+        android:id="@+id/gases_header"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/conversions_header_height"
+        android:layout_height="@dimen/gases_header_height"
         android:background="?attr/colorSecondary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/conversions_previous_button_container"
+            android:id="@+id/gases_previous_button_container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -23,12 +23,12 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/conversions_previous_button"
-                android:layout_width="@dimen/conversions_previous_button_width"
-                android:layout_height="@dimen/conversions_previous_button_height"
+                android:id="@+id/gases_previous_button"
+                android:layout_width="@dimen/gases_previous_button_width"
+                android:layout_height="@dimen/gases_previous_button_height"
                 android:layout_alignParentEnd="true"
-                android:layout_marginStart="@dimen/conversions_previous_button_margin_start"
-                android:layout_marginTop="@dimen/conversions_previous_button_margin_top"
+                android:layout_marginStart="@dimen/gases_previous_button_margin_start"
+                android:layout_marginTop="@dimen/gases_previous_button_margin_top"
                 android:rotation="@dimen/arrow_back_rotation_angle"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -36,12 +36,12 @@
                 app:srcCompat="@drawable/ic_arrow_right" />
 
             <TextView
-                android:id="@+id/conversions_previous_text"
+                android:id="@+id/gases_previous_text"
                 style="@style/text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingStart="@dimen/conversions_previous_text_padding_start"
-                android:text="@string/conversions_previous_text_text"
+                android:paddingStart="@dimen/gases_previous_text_padding_start"
+                android:text="@string/gases_button_text_text"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -49,9 +49,9 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <View
-            android:id="@+id/conversions_horizontal_border"
+            android:id="@+id/gases_horizontal_border"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/conversions_horizontal_border_height"
+            android:layout_height="@dimen/gases_horizontal_border_height"
             android:background="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -63,37 +63,37 @@
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/pharmacy_header_height"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/conversions_header">
+        app:layout_constraintTop_toBottomOf="@id/gases_header">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/conversions_surface_button_container"
+            android:id="@+id/gases_buttons_container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/conversions_surface_button_container_margin_start"
-            android:layout_marginTop="@dimen/conversions_surface_button_container_margin_top"
+            android:layout_marginStart="@dimen/gases_buttons_container_margin_start"
+            android:layout_marginTop="@dimen/gases_buttons_container_margin_top"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/conversions_horizontal_border">
+            app:layout_constraintTop_toBottomOf="@id/gases_horizontal_border">
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/conversions_surface_button"
-                android:layout_width="@dimen/conversions_surface_button_width"
-                android:layout_height="@dimen/conversions_surface_button_height"
+                android:id="@+id/gases_inhalation_anesthesia_button"
+                android:layout_width="@dimen/gases_inhalation_anesthesia_button_width"
+                android:layout_height="@dimen/gases_inhalation_anesthesia_button_height"
                 android:layout_alignParentEnd="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_temperature" />
+                app:srcCompat="@drawable/ic_baseline_gas" />
 
             <TextView
-                android:id="@+id/conversions_surface_button_text"
+                android:id="@+id/gases_inhalation_anesthesia_button_text"
                 style="@style/button_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="@string/conversions_button_surface_text_text"
+                android:text="@string/gases_inhalation_anesthesia_button_text_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/conversions_surface_button" />
+                app:layout_constraintTop_toBottomOf="@id/gases_inhalation_anesthesia_button" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

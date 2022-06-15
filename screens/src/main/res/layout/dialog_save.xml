@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="?attr/colorSecondary">
+
+    <TextView
+        android:id="@+id/tv_save_dialog_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="save"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        app:layout_constraintTop_toBottomOf="@id/tv_save_dialog_title"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="btn_save_vetmedical,btn_save_wasa,btn_save_cancle"
+        app:flow_firstHorizontalBias="0.5"
+        app:flow_horizontalGap="8dp"
+        app:flow_horizontalStyle="spread"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_save_vetmedical"
+        android:text="VetMedical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_save_wasa"
+        android:text="Wasa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_save_cancle"
+        android:text="Cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

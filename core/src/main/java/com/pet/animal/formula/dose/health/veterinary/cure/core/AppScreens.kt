@@ -7,16 +7,23 @@ interface AppScreens {
     fun pharmacyScreen(): FragmentScreen
     fun pharmacySurfaceScreen(): FragmentScreen
     fun pharmacySurfaceResultScreen(): FragmentScreen
+    fun pharmacyDosesScreen(): FragmentScreen
+    fun pharmacyDosesResultScreen(): FragmentScreen
+    fun pharmacyCRIScreen(): FragmentScreen
+    fun pharmacyCRIResultScreen(): FragmentScreen
+    fun gasesInhalationAnasthesiaScreen(): FragmentScreen
+    fun gasesInhalationAnasthesiaResultScreen(): FragmentScreen
     fun aboutScreen(): FragmentScreen
+    fun infoScreen(): FragmentScreen
     fun fluidsScreen(): FragmentScreen
     fun hematologyScreen(): FragmentScreen
-    fun conversionsScreen(): FragmentScreen
+    fun gasScreen(): FragmentScreen
     fun settingsScreen(): FragmentScreen
     fun calculatorScreen(): FragmentScreen
-    fun doseScreen(): FragmentScreen
-    fun criScreen(): FragmentScreen
-    fun pharmacyDosesResultScreen(): FragmentScreen
+    fun calculatorKeyboardScreen(): FragmentScreen
     fun timerScreen(): FragmentScreen
     fun webViewScreen(): FragmentScreen
     fun editTextScreen(): FragmentScreen
+    fun aboutCalc(): FragmentScreen
+    fun aboutTimer(): FragmentScreen
 }

@@ -1,8 +1,9 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.vetformula.view
 
-import android.content.SharedPreferences
 import android.annotation.SuppressLint
+import android.app.Fragment
 import android.content.Context
+import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.os.Bundle
 import android.os.PersistableBundle
@@ -20,6 +21,7 @@ import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.webv
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.navigator.BackButtonListener
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.*
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.language.LocaleHelper
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.screens.FabAndSliderControl
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.screens.UpAndBottomFramesSizesChanger
 import com.pet.animal.formula.dose.health.veterinary.cure.vetformula.R
 import com.pet.animal.formula.dose.health.veterinary.cure.vetformula.databinding.ActivityMainBinding
@@ -27,7 +29,8 @@ import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
 import org.koin.java.KoinJavaComponent
 
-class MainActivity: AppCompatActivity() {
+
+class MainActivity: AppCompatActivity(), FabAndSliderControl {
     /** Задание переменных */ //region
     // Навигация
     private val navigator =
@@ -39,36 +42,36 @@ class MainActivity: AppCompatActivity() {
         MAIN_ACTIVITY_NAME, named(MAIN_ACTIVITY_NAME)
     )
     private lateinit var viewModel: MainViewModel
+
     // Переменная для сохранения признака текущей темы приложения (тёмная или светлая)
     private var isTheme: Boolean = true
+
     // Binding
     private lateinit var binding: ActivityMainBinding
+
     // Класс для хранения размеров верхнего и нижнего окон
     private val upAndBottomFramesSizesChanger: UpAndBottomFramesSizesChanger =
         KoinJavaComponent.getKoin().get()
+
     // Слайдер
     lateinit var guideLine: Guideline
     lateinit var params: ConstraintLayout.LayoutParams
+
     // FAB
     private var clicked = false
-    // Ленивая инициализация анимаций для FAB
-    private val rotateOpen: Animation by lazy {
-        AnimationUtils.loadAnimation(this, R.anim.rotate_open_anim)
-    }
-    private val rotateClose: Animation by lazy {
-        AnimationUtils.loadAnimation(this, R.anim.rotate_close_anim)
-    }
-    private val fromBottom: Animation by lazy {
-        AnimationUtils.loadAnimation(this, R.anim.from_bottom_anim
-        )
-    }
-    private val toBottom: Animation by lazy {
-        AnimationUtils.loadAnimation(this, R.anim.to_bottom_anim)
-    }
+    lateinit var fabOpen: Animation
+    lateinit var fabClose: Animation
+    lateinit var rotateForward: Animation
+    lateinit var rotateBackward: Animation
     //endregion
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Инициализация анимаций для FAB
+        fabOpen = AnimationUtils.loadAnimation(this, R.anim.fab_open)
+        fabClose = AnimationUtils.loadAnimation(this, R.anim.fab_close)
+        rotateForward = AnimationUtils.loadAnimation(this, R.anim.rotate_forward)
+        rotateBackward = AnimationUtils.loadAnimation(this, R.anim.rotate_backward)
         // Подключение Binding
         binding = ActivityMainBinding.inflate(layoutInflater)
         // Создание Scope для MainActivity
@@ -79,14 +82,20 @@ class MainActivity: AppCompatActivity() {
         params = guideLine.layoutParams as ConstraintLayout.LayoutParams
         // Установка темы приложения
         setApplicationTheme()
-        // Установка начального или текущего экрана приложения
+        // Отслеживание первого или последующего запусков MainActivity
         if (savedInstanceState != null) {
+            // Установка текущего экрана приложения
             navigatorHolder.setNavigator(navigator)
         } else {
+            // Установка начального экрана приложения
             this.viewModel.router.navigateTo(this.viewModel.screens.mainScreen())
+            // Заполнение базы данных, если приложение запущено в первый раз
+            this.viewModel.writeDataToBDAtFirstRun()
         }
         // Установка событий при нажатии на кнопки FAB
         onClickFab()
+        // Загрузка в нижнее окно блокнота по умолчанию
+        loadEditText()
         // Отображение содержимого окна
         setContentView(binding.root)
     }
@@ -94,7 +103,8 @@ class MainActivity: AppCompatActivity() {
     override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
         super.onSaveInstanceState(outState, outPersistentState)
         val sharedPreferences: SharedPreferences =
-            getSharedPreferences(SHARED_PREFERENCES_KEY,
+            getSharedPreferences(
+                SHARED_PREFERENCES_KEY,
                 AppCompatActivity.MODE_PRIVATE
             )
         val sharedPreferencesEditor: SharedPreferences.Editor = sharedPreferences.edit()
@@ -105,76 +115,65 @@ class MainActivity: AppCompatActivity() {
     // Функция - слушатель нажатий по FAB
     @SuppressLint("ResourceType")
     private fun onClickFab() {
-        binding.fabMain.setOnClickListener {
-            onFabMainButtonClicked()
-        }
-
-        binding.fabWebViewVetmedical.setOnClickListener {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.bottom_activity_fragments_container,
-                    VetMedicalViewFragment(), TAG_VETMEDICAL_BOTTOM_WINDOW)
-                .commit()
-        }
-        binding.fabWebViewWsava.setOnClickListener {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.bottom_activity_fragments_container,
-                    WsavaViewFragment(), TAG_WSAVA_BOTTOM_WINDOW)
-                .commit()
-        }
-        binding.fabTextView.setOnClickListener {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.bottom_activity_fragments_container,
-                    EditTextFragment(), TAG_NOTE_BOTTOM_WINDOW)
-                .commit()
+        with(binding) {
+            fabMain.setOnClickListener {
+                setAnimation()
+            }
+            fabWebViewVetmedical.setOnClickListener {
+                supportFragmentManager.beginTransaction()
+                    .replace(
+                        R.id.bottom_activity_fragments_container,
+                        VetMedicalViewFragment(), TAG_VETMEDICAL_BOTTOM_WINDOW
+                    )
+                    .commit()
+            }
+            fabWebViewWsava.setOnClickListener {
+                supportFragmentManager.beginTransaction()
+                    .replace(
+                        R.id.bottom_activity_fragments_container,
+                        WsavaViewFragment(), TAG_WSAVA_BOTTOM_WINDOW
+                    )
+                    .commit()
+            }
+            fabTextView.setOnClickListener {
+                loadEditText()
+            }
         }
     }
 
-    // Функция основной FAB
-    private fun onFabMainButtonClicked() {
-        setVisibility(clicked)
-        setAnimation(clicked)
-        setClickable(clicked)
-        clicked = !clicked
+    private fun loadEditText() {
+        supportFragmentManager.beginTransaction()
+            .replace(
+                R.id.bottom_activity_fragments_container,
+                EditTextFragment(), TAG_NOTE_BOTTOM_WINDOW
+            )
+            .commit()
     }
 
-    // Настройка показ/не показ выскакивающих FAB
-    private fun setVisibility(clicked: Boolean) {
-        if (!clicked) {
-            binding.fabWebViewVetmedical.visibility = View.VISIBLE
-            binding.fabWebViewWsava.visibility = View.VISIBLE
-            binding.fabTextView.visibility = View.VISIBLE
+    // Вызов кнопок FAB и их анимации
+    private fun setAnimation() {
+        if (clicked) {
+            with(binding) {
+                fabMain.startAnimation(rotateForward)
+                fabTextView.startAnimation(fabClose)
+                fabWebViewWsava.startAnimation(fabClose)
+                fabWebViewVetmedical.startAnimation(fabClose)
+                fabTextView.isClickable = false
+                fabWebViewWsava.isClickable = false
+                fabWebViewVetmedical.isClickable = false
+                clicked = false
+            }
         } else {
-            binding.fabWebViewVetmedical.visibility = View.INVISIBLE
-            binding.fabWebViewWsava.visibility = View.INVISIBLE
-            binding.fabTextView.visibility = View.INVISIBLE
-        }
-    }
-
-    //Настройка анимации всех FAB
-    private fun setAnimation(clicked: Boolean) {
-        if (!clicked) {
-            binding.fabWebViewVetmedical.startAnimation(fromBottom)
-            binding.fabWebViewWsava.startAnimation(fromBottom)
-            binding.fabTextView.startAnimation(fromBottom)
-            binding.fabMain.startAnimation(rotateOpen)
-        } else {
-            binding.fabWebViewVetmedical.startAnimation(toBottom)
-            binding.fabWebViewWsava.startAnimation(toBottom)
-            binding.fabTextView.startAnimation(toBottom)
-            binding.fabMain.startAnimation(rotateClose)
-        }
-    }
-
-    // Функция, которая убирает "скрытые" клики по выскакивающим FAB
-    private fun setClickable(clicked: Boolean) {
-        if (!clicked) {
-            binding.fabWebViewVetmedical.isClickable = true
-            binding.fabWebViewWsava.isClickable = true
-            binding.fabTextView.isClickable = true
-        } else {
-            binding.fabWebViewVetmedical.isClickable = false
-            binding.fabWebViewWsava.isClickable = false
-            binding.fabTextView.isClickable = false
+            with(binding) {
+                fabMain.startAnimation(rotateBackward)
+                fabTextView.startAnimation(fabOpen)
+                fabWebViewWsava.startAnimation(fabOpen)
+                fabWebViewVetmedical.startAnimation(fabOpen)
+                fabTextView.isClickable = true
+                fabWebViewWsava.isClickable = true
+                fabWebViewVetmedical.isClickable = true
+                clicked = true
+            }
         }
     }
 
@@ -232,11 +231,47 @@ class MainActivity: AppCompatActivity() {
         val sharedPreferences: SharedPreferences =
             getSharedPreferences(SHARED_PREFERENCES_KEY, MODE_PRIVATE)
         isTheme = sharedPreferences.getBoolean(
-            SHARED_PREFERENCES_THEME_KEY, true)
+            SHARED_PREFERENCES_THEME_KEY, true
+        )
         if (!isTheme) {
             setTheme(R.style.Splash_LightTheme)
         } else {
             setTheme(R.style.Splash_DarkTheme)
         }
     }
+
+    //region Методы скрытия и отображения слайдера и FAB
+    override fun hideFab() {
+        with(binding) {
+            fabMain.startAnimation(fabClose)
+            fabMain.isClickable = false
+
+            if (clicked) {
+                fabTextView.startAnimation(fabClose)
+                fabWebViewWsava.startAnimation(fabClose)
+                fabWebViewVetmedical.startAnimation(fabClose)
+                fabTextView.isClickable = false
+                fabWebViewWsava.isClickable = false
+                fabWebViewVetmedical.isClickable = false
+                clicked = false
+            }
+        }
+    }
+    override fun showFab() {
+        with(binding) {
+            fabMain.startAnimation(fabOpen)
+            fabMain.isClickable = true
+            clicked = false
+        }
+    }
+    override fun hideSlider() {
+        changeUpAndBottomFramesSizes(0f)
+        binding.sliderLinearLayout.visibility = View.INVISIBLE
+        binding.windowsSlider.visibility = View.INVISIBLE
+    }
+    override fun showSlider() {
+        binding.sliderLinearLayout.visibility = View.VISIBLE
+        binding.windowsSlider.visibility = View.VISIBLE
+    }
+    //endregion
 }
