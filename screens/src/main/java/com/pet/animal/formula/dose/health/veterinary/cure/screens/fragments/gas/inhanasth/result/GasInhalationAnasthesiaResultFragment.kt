@@ -9,12 +9,10 @@ import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppState
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentGasesAnihalationAnasthesiaResultBinding
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.gas.inhanasth.GasInhalationAnasthesiaFragment
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.surface.result.PharmacySurfaceResultFragment
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.surface.result.PharmacySurfaceResultFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.FragmentScope
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.NUMBER_NAVIGATION_BUTTONS_ON_OUTPUT_DATA_SCREENS
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.convertListValuefFieldToListIntDimensions
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.functions.createStringResult
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.settings.SettingsImpl
 import org.koin.core.qualifier.named
@@ -25,7 +23,7 @@ class GasInhalationAnasthesiaResultFragment: BaseFragment<FragmentGasesAnihalati
     FragmentGasesAnihalationAnasthesiaResultBinding::inflate) {
     /** Задание переменных */ //region
     // Установка типа формулы для текущего окна
-    private val screenType: ScreenType = ScreenType.PHARMACY_SURFACE
+    private val screenType: ScreenType = ScreenType.GASES_INHALATION_ANESTHESIA
     // Навигация
     private val navigationButtons = arrayOfNulls<View>(
         size = NUMBER_NAVIGATION_BUTTONS_ON_OUTPUT_DATA_SCREENS
@@ -125,7 +123,7 @@ class GasInhalationAnasthesiaResultFragment: BaseFragment<FragmentGasesAnihalati
             listOf(),
             listOf(),
             listOf(),
-            listOf(),
+            settings.getInputedScreenData().valueFields.convertListValuefFieldToListIntDimensions(),
             isGoToResultScreen
         )
     }

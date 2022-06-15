@@ -1,14 +1,10 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.gas.inhanasth.result
 
 import androidx.lifecycle.LiveData
-import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppState
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.ResultValueField
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.ScreenData
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentGasesAnihalationAnasthesiaResultBinding
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.gas.inhanasth.GasInhalationAnasthesiaFragment
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.surface.result.PharmacySurfaceResultInteractorImpl
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
 import kotlinx.coroutines.launch
 

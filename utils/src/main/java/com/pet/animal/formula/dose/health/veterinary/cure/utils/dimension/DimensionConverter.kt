@@ -236,12 +236,30 @@ fun outputDataDimensionConverter(
             }
         }
         OutputDataDimensionType.RATE -> {
-            result = when (dimension[4]) {
-                0 -> currentResult * TEN_IN_PLUS_SIX_POWER / NUMBER_SECONDS_IN_HOUR
-                1 -> currentResult * TEN_IN_PLUS_NINE_POWER / NUMBER_SECONDS_IN_HOUR
-                2 -> currentResult * TEN_IN_PLUS_SIX_POWER / NUMBER_SECONDS_IN_MINUTE
-                3 -> currentResult * TEN_IN_PLUS_NINE_POWER / NUMBER_SECONDS_IN_MINUTE
-                else -> ERROR_VALUE
+            result = when(screenType) {
+                ScreenType.PHARMACY_CRI -> {
+                    when (dimension[4]) {
+                        0 -> currentResult * TEN_IN_PLUS_SIX_POWER / NUMBER_SECONDS_IN_HOUR
+                        1 -> currentResult * TEN_IN_PLUS_NINE_POWER / NUMBER_SECONDS_IN_HOUR
+                        2 -> currentResult * TEN_IN_PLUS_SIX_POWER / NUMBER_SECONDS_IN_MINUTE
+                        3 -> currentResult * TEN_IN_PLUS_NINE_POWER / NUMBER_SECONDS_IN_MINUTE
+                        else -> ERROR_VALUE
+                    }
+                }
+                ScreenType.GASES_INHALATION_ANESTHESIA -> {
+                    when (dimension[0]) {
+                        0 -> currentResult * TEN_IN_PLUS_SIX_POWER * TEN_IN_MINUS_THREE_POWER *
+                                NUMBER_SECONDS_IN_MINUTE
+                        1 -> currentResult * TEN_IN_PLUS_NINE_POWER * TEN_IN_MINUS_SIX_POWER *
+                                NUMBER_SECONDS_IN_MINUTE
+                        2 -> currentResult * TEN_IN_PLUS_SIX_POWER * TEN_IN_MINUS_THREE_POWER *
+                                NUMBER_SECONDS_IN_MINUTE
+                        3 -> currentResult * TEN_IN_PLUS_NINE_POWER * TEN_IN_MINUS_SIX_POWER *
+                                NUMBER_SECONDS_IN_MINUTE
+                        else -> ERROR_VALUE
+                    }
+                }
+                else -> currentResult
             }
         }
         OutputDataDimensionType.MASS_DOSE_PER_KG_PER_TIME -> {

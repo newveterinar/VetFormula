@@ -8,7 +8,6 @@ import android.text.style.SuperscriptSpan
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
-import android.widget.Toast
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.ResultValueField
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.ValueField
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.*
@@ -33,6 +32,15 @@ fun MutableList<Spinner>.convertListSpinnerToListInt(): List<Int> {
     val resultList: MutableList<Int> = mutableListOf()
     this.forEach {
         resultList.add(it.selectedItemPosition)
+    }
+    return resultList
+}
+
+// Получение списка List<Int> (с Dimensions) из списка MutableList<ValueField>
+fun MutableList<ValueField>.convertListValuefFieldToListIntDimensions(): List<Int> {
+    val resultList: MutableList<Int> = mutableListOf()
+    this.forEach {
+        resultList.add(it.dimension)
     }
     return resultList
 }
@@ -339,14 +347,25 @@ fun TextView.createStringResult(
             }
             OutputDataDimensionType.RATE.toString() -> {
                 if (screenTypeIndex == ScreenType.PHARMACY_CRI.ordinal) {
-                    val dimenString: String = resourcesProviderImpl.context.resources.
-                    getStringArray(R.array.
-                    input_data_dimension_volume_dose_per_kg_per_time_list)[valueFields[4].dimension]
+                    val dimenString: String =
+                        resourcesProviderImpl.context.resources.getStringArray(
+                            R.array.input_data_dimension_volume_dose_per_kg_per_time_list
+                        )[valueFields[4].dimension]
                     val startDimenString = dimenString.substring(0, dimenString.indexOf("/"))
-                    val endDimenString = dimenString.substring(dimenString.lastIndexOf("/"),
-                        dimenString.length)
+                    val endDimenString = dimenString.substring(
+                        dimenString.lastIndexOf("/"),
+                        dimenString.length
+                    )
                     result = SpannableString(
-                        "${this.text}\n$initialString $startDimenString$endDimenString")
+                        "${this.text}\n$initialString $startDimenString$endDimenString"
+                    )
+                } else if (screenTypeIndex == ScreenType.GASES_INHALATION_ANESTHESIA.ordinal) {
+                        val dimenString: String = resourcesProviderImpl.context.resources.
+                        getStringArray(R.array.
+                        input_data_dimension_volume_dose_per_time_list)[valueFields[0].dimension]
+                        val startDimenString = dimenString.substring(0, dimenString.indexOf("/"))
+                        result = SpannableString(
+                            "${this.text}\n$initialString $startDimenString")
                 } else {
                     result = SpannableString("${this.text}\n$initialString")
                 }

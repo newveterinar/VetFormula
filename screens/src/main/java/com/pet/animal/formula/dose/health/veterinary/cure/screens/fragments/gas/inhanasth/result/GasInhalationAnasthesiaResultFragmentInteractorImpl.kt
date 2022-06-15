@@ -4,7 +4,6 @@ import com.pet.animal.formula.dose.health.veterinary.cure.core.base.Interactor
 import com.pet.animal.formula.dose.health.veterinary.cure.core.calculator.CalcInteractorImpl
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.AppState
 import com.pet.animal.formula.dose.health.veterinary.cure.model.screeendata.ResultValueField
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.pharmacy.surface.result.PharmacySurfaceResultFragmentViewModel
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.OutputDataDimensionType
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.ScreenType
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.dimension.outputDataDimensionConverter
@@ -60,7 +59,7 @@ class GasInhalationAnasthesiaResultFragmentInteractorImpl(
                         screenType,
                         outputDataDimensionType,
                         calcInteractorImpl.getCommandResultValue() ?: 0.0,
-                        listOf()
+                        dimensions
                     )
                 )
             )
