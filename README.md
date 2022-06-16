@@ -29,6 +29,7 @@ _Архитектурные решения_
 - Kotlin (78,4%) + Java (21,6%)
 - Single Activity + Fragments+ AlertDialog
 - MVVM
+- Coroutine
 - BaseFragment + BaseViewModel
 - Groove + dependency.gradle
 - Two screens
