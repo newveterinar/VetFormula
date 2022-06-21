@@ -119,7 +119,7 @@
                 <View
                     android:id="@+id/theme_horizontal_border"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/theme_horizontal_border_height"
                     android:layout_marginTop="@dimen/settings_divider_margin_top"
                     android:background="@android:color/darker_gray"
                     app:layout_constraintStart_toStartOf="parent"
@@ -160,8 +160,9 @@
                     app:layout_constraintBottom_toBottomOf="@id/language_change_title"/>
 
                 <View
+                    android:id="@+id/language_horizontal_border"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/language_horizontal_border_height"
                     android:layout_marginTop="@dimen/settings_divider_margin_top"
                     android:layout_marginBottom="@dimen/settings_divider_margin_bottom"
                     android:background="@android:color/darker_gray"

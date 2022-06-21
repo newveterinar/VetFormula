@@ -4,7 +4,6 @@ import androidx.room.TypeConverter
 import androidx.room.TypeConverters
 import com.google.gson.Gson
 import com.pet.animal.formula.dose.health.veterinary.cure.model.formula.Formula
-import java.io.Serializable
 
 @TypeConverters
 class ClassTypeConverter {

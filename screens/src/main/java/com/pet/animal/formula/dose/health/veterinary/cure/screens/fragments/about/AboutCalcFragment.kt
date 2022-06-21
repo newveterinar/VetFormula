@@ -3,12 +3,9 @@ package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.abo
 import android.content.Context
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
 import android.widget.Toast
-import androidx.constraintlayout.widget.ConstraintLayout
 import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
-import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentAboutBinding
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentAboutCalcBinding
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.FragmentScope
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.NUMBER_NAVIGATION_BUTTONS_ON_OUTPUT_DATA_SCREENS
@@ -24,7 +21,7 @@ class AboutCalcFragment : BaseFragment<FragmentAboutCalcBinding>(FragmentAboutCa
         arrayOfNulls<View>(size = NUMBER_NAVIGATION_BUTTONS_ON_OUTPUT_DATA_SCREENS)
 
     // ViewModel
-    private lateinit var viewModel: AboutCaclFragmentViewModel
+    private lateinit var viewModel: AboutCalcFragmentViewModel
 
     // ShowAboutFragmentScope
     private lateinit var showAboutCalcFragmentScope: Scope
@@ -88,7 +85,7 @@ class AboutCalcFragment : BaseFragment<FragmentAboutCalcBinding>(FragmentAboutCa
 
     // Инициализация ViewModel
     private fun initViewModel() {
-        val _viewModel: AboutCaclFragmentViewModel by showAboutCalcFragmentScope.inject()
+        val _viewModel: AboutCalcFragmentViewModel by showAboutCalcFragmentScope.inject()
         viewModel = _viewModel
     }
 

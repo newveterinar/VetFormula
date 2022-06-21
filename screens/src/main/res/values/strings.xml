@@ -5,6 +5,32 @@
     <string name="error_button_is_not_assigned">Error: The button is not assigned</string>
     <string name="error_not_inserted_weight_animal">Please enter a number > 0</string>
 
+    <!-- Тэги для полей с отображением результирующих данных -->
+    <string name="teg_outputDataDimensionType_length" translatable="false">LENGTH</string>
+    <string name="teg_outputDataDimensionType_square_length" translatable="false">SQUARE_LENGTH</string>
+    <string name="teg_outputDataDimensionType_volume" translatable="false">VOLUME</string>
+    <string name="teg_outputDataDimensionType_mass" translatable="false">MASS</string>
+    <string name="teg_outputDataDimensionType_mass_dose_per_kg_per_time" translatable="false">MASS_DOSE_PER_KG_PER_TIME</string>
+    <string name="teg_outputDataDimensionType_time" translatable="false">TIME</string>
+    <string name="teg_outputDataDimensionType_drop_time_in_sec" translatable="false">DROP_TIME_IN_SEC</string>
+    <string name="teg_outputDataDimensionType_drop_time_in_ten_sec" translatable="false">DROP_TIME_IN_TEN_SEC</string>
+    <string name="teg_outputDataDimensionType_drop_time_in_min" translatable="false">DROP_TIME_IN_MIN</string>
+    <string name="teg_outputDataDimensionType_rate" translatable="false">RATE</string>
+    <string name="teg_outputDataDimensionType_drop" translatable="false">DROP</string>
+    <string name="teg_outputDataDimensionType_error_type" translatable="false">ERROR_TYPE</string>
+
+    <!-- Тэги для полей ввода исходных данных -->
+    <string name="teg_inputDataDimensionType_weight_animal" translatable="false">WEIGHT_ANIMAL</string>
+    <string name="teg_inputDataDimensionType_mass_dose_per_kg" translatable="false">MASS_DOSE_PER_KG</string>
+    <string name="teg_inputDataDimensionType_mass_dose_per_kg_per_time" translatable="false">MASS_DOSE_PER_KG_PER_TIME</string>
+    <string name="teg_inputDataDimensionType_volume_dose_per_kg_per_time" translatable="false">VOLUME_DOSE_PER_KG_PER_TIME</string>
+    <string name="teg_inputDataDimensionType_volume_dose_per_time" translatable="false">VOLUME_DOSE_PER_TIME</string>
+    <string name="teg_inputDataDimensionType_concentration" translatable="false">CONCENTRATION</string>
+    <string name="teg_inputDataDimensionType_concentration_volume_percent" translatable="false">CONCENTRATION_VOLUME_PERCENT</string>
+    <string name="teg_inputDataDimensionType_volume" translatable="false">VOLUME</string>
+    <string name="teg_inputDataDimensionType_time" translatable="false">TIME</string>
+    <string name="teg_inputDataDimensionType_error_type" translatable="false">ERROR_TYPE</string>
+
     <!-- Строчные ресурсы для окна с калькулятором -->
     <string name="_0">0</string>
     <string name="_1">1</string>
@@ -179,4 +205,8 @@
     <string name="select_note">Select note</string>
     <string name="enter_note_name">Enter note name</string>
     <string name="save">Save</string>
+    <string name="tv_save_dialog_title_text">Save</string>
+    <string name="btn_save_vetmedical_text" translatable="false">VetMedical</string>
+    <string name="btn_save_wasa_text" translatable="false">Wasa</string>
+    <string name="btn_save_cancel_text">Cancel</string>
 </resources>

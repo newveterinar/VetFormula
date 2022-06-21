@@ -164,13 +164,13 @@
 
                     <androidx.appcompat.widget.AppCompatSpinner
                         android:id="@+id/pharmacy_weight_dimension_list"
+                        android:tag="@string/teg_inputDataDimensionType_weight_animal"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_centerInParent="true"
                         android:entries="@array/input_data_dimension_weight_animal_list"
                         android:gravity="center"
                         android:singleLine="false"
-                        android:tag="WEIGHT_ANIMAL"
                         android:textAlignment="center"
                         android:theme="@style/SpinnerDimensions"
                         android:visibility="visible"
@@ -238,12 +238,12 @@
 
                     <androidx.appcompat.widget.AppCompatSpinner
                         android:id="@+id/pharmacy_dose_dimension_list"
+                        android:tag="@string/teg_inputDataDimensionType_mass_dose_per_kg"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:entries="@array/input_data_dimension_mass_dose_per_kg_list"
                         android:gravity="center"
                         android:singleLine="false"
-                        android:tag="MASS_DOSE_PER_KG"
                         android:textAlignment="center"
                         android:theme="@style/SpinnerDimensions"
                         android:visibility="visible"
@@ -315,13 +315,13 @@
 
                     <androidx.appcompat.widget.AppCompatSpinner
                         android:id="@+id/pharmacy_concentration_dimension_list"
+                        android:tag="@string/teg_inputDataDimensionType_concentration"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_centerInParent="true"
                         android:entries="@array/input_data_dimension_concentration_list"
                         android:gravity="center"
                         android:singleLine="false"
-                        android:tag="CONCENTRATION"
                         android:textAlignment="center"
                         android:theme="@style/SpinnerDimensions"
                         android:visibility="visible"

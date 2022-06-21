@@ -86,7 +86,7 @@
 
             <TextView
                 android:id="@+id/gases_inhalation_anasthesia_result_text"
-                android:tag="RATE"
+                android:tag="@string/teg_outputDataDimensionType_rate"
                 style="@style/number_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

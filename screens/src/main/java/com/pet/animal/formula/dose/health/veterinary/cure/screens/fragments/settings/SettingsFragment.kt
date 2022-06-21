@@ -15,8 +15,10 @@ import com.pet.animal.formula.dose.health.veterinary.cure.utils.SHARED_PREFERENC
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.onItemSelected
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.selectItemByValue
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.FragmentScope
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.NUMBER_NAVIGATION_BUTTONS_ON_OUTPUT_DATA_SCREENS
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.language.LocaleHelper
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.language.Locales
+import com.pet.animal.formula.dose.health.veterinary.cure.utils.screens.FabAndSliderControl
 import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
 import org.koin.java.KoinJavaComponent
@@ -25,7 +27,8 @@ import java.util.*
 class SettingsFragment: BaseFragment<FragmentSettingsBinding>(FragmentSettingsBinding::inflate) {
     /** Задание переменных */ //region
     // Навигация
-    private val navigationButtons = arrayOfNulls<View>(size = 1)
+    private val navigationButtons =
+        arrayOfNulls<View>(size = NUMBER_NAVIGATION_BUTTONS_ON_OUTPUT_DATA_SCREENS)
     // Список с выбором языка
     private lateinit var languageSpinner: Spinner
     // Кнопки для смены темы приложения
@@ -66,6 +69,10 @@ class SettingsFragment: BaseFragment<FragmentSettingsBinding>(FragmentSettingsBi
         // Инициализация ViewModel
         initViewModel()
         initLanguageSettingsFields()
+        // Скрытие слайдера и FAB при открытии страницы с настройками приложения
+        val ma = (activity as FabAndSliderControl)
+        ma.hideFab()
+        ma.hideSlider()
     }
 
     // Инициализация кнопок переключения темы приложения
@@ -145,5 +152,13 @@ class SettingsFragment: BaseFragment<FragmentSettingsBinding>(FragmentSettingsBi
     fun initViewModel() {
         val _viewModel: SettingsFragmentViewModel by showSettingsFragmentScope.inject()
         viewModel = _viewModel
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        // Восстановление слайдера и FAB при уходе со страницы с настройками приложения
+        val ma = (activity as FabAndSliderControl)
+        ma.showFab()
+        ma.showSlider()
     }
 }

@@ -167,7 +167,7 @@
 
                         <EditText
                             android:id="@+id/gases_middle_flow_textinputlayout_textfield"
-                            android:tag="VOLUME_DOSE_PER_TIME"
+                            android:tag="@string/teg_inputDataDimensionType_volume_dose_per_time"
                             style="@style/number_button"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -189,7 +189,7 @@
 
                     <androidx.appcompat.widget.AppCompatSpinner
                         android:id="@+id/gases_middle_flow_dimension_list"
-                        android:tag="VOLUME_DOSE_PER_TIME"
+                        android:tag="@string/teg_inputDataDimensionType_volume_dose_per_time"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_centerInParent="true"
@@ -241,7 +241,7 @@
 
                         <EditText
                             android:id="@+id/gases_middle_anesthesia_concentration_textinputlayout_textfield"
-                            android:tag="CONCENTRATION_VOLUME_PERCENT"
+                            android:tag="@string/teg_inputDataDimensionType_concentration_volume_percent"
                             style="@style/number_button"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -262,7 +262,7 @@
 
                     <androidx.appcompat.widget.AppCompatSpinner
                         android:id="@+id/gases_middle_anesthesia_concentration_dimension_list"
-                        android:tag="CONCENTRATION_VOLUME_PERCENT"
+                        android:tag="@string/teg_inputDataDimensionType_concentration_volume_percent"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_centerInParent="true"
@@ -314,7 +314,7 @@
 
                         <EditText
                             android:id="@+id/gases_duration_anesthesia_textinputlayout_textfield"
-                            android:tag="TIME"
+                            android:tag="@string/teg_inputDataDimensionType_time"
                             style="@style/number_button"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -335,7 +335,7 @@
 
                     <androidx.appcompat.widget.AppCompatSpinner
                         android:id="@+id/gases_duration_anesthesia_dimension_list"
-                        android:tag="TIME"
+                        android:tag="@string/teg_inputDataDimensionType_time"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_centerInParent="true"

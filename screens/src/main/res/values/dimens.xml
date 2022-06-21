@@ -467,4 +467,13 @@
     <dimen name="gases_inhalation_anasthesia_result_text_margin_start">40dp</dimen>
     <dimen name="gases_inhalation_anasthesia_result_text_margin_top">12dp</dimen>
     <dimen name="pharmacy_result_text_margin_top">12dp</dimen>
+    <dimen name="theme_horizontal_border_height">2dp</dimen>
+    <dimen name="language_horizontal_border_height">2dp</dimen>
+    <dimen name="timer_previous_text_vertical_bias">0.466</dimen>
+    <dimen name="touchPlace_horizontal_bias">1.0</dimen>
+    <dimen name="touchPlace_vertical_bias">1.0</dimen>
+    <dimen name="flow_widget_margin_start">16dp</dimen>
+    <dimen name="flow_widget_margin_end">16dp</dimen>
+    <dimen name="flow_widget_horizontal_gap">8dp</dimen>
+    <dimen name="flow_widget_horizontal_bias">0.5</dimen>
 </resources>

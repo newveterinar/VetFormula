@@ -179,4 +179,6 @@
     <string name="select_note">Выбор заметки</string>
     <string name="enter_note_name">Добавить название  заметки</string>
     <string name="save">Сохранить</string>
+    <string name="tv_save_dialog_title_text">Сохранить</string>
+    <string name="btn_save_cancel_text">Отменить</string>
 </resources>

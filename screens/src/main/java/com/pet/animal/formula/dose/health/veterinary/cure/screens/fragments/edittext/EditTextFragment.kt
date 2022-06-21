@@ -11,7 +11,6 @@ import com.pet.animal.formula.dose.health.veterinary.cure.core.base.BaseFragment
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.R
 import com.pet.animal.formula.dose.health.veterinary.cure.screens.databinding.FragmentEditTextBinding
 import com.pet.animal.formula.dose.health.veterinary.cure.utils.FragmentScope
-import com.pet.animal.formula.dose.health.veterinary.cure.utils.settings.SettingsImpl
 import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
 import org.koin.java.KoinJavaComponent
@@ -23,10 +22,9 @@ class EditTextFragment : BaseFragment<FragmentEditTextBinding>(FragmentEditTextB
 
     // Текстовый элемент
     lateinit var editText: TextView
-    private var StringBuilder = ""
 
     // SettingsImpl
-    private val settings: SettingsImpl = KoinJavaComponent.getKoin().get()
+//    private val settings: SettingsImpl = KoinJavaComponent.getKoin().get()
 
     // ShowPharmacySurfaceResultFragmentScope
     private lateinit var showEditTextFragmentScope: Scope
@@ -149,7 +147,7 @@ class EditTextFragment : BaseFragment<FragmentEditTextBinding>(FragmentEditTextB
         val btnSaveWasa = dialogView.findViewById<Button>(R.id.btn_save_wasa)
         val btnSaveVetmedical =
             dialogView.findViewById<Button>(R.id.btn_save_vetmedical)
-        val btnSaveCancle = dialogView.findViewById<Button>(R.id.btn_save_cancle)
+        val btnSaveCancle = dialogView.findViewById<Button>(R.id.btn_save_cancel)
         btnSaveVetmedical.setOnClickListener {
             viewModel.addUrlAsNote(viewModel.urlLiveData.value?.first)
             dialog.dismiss()
@@ -162,6 +160,4 @@ class EditTextFragment : BaseFragment<FragmentEditTextBinding>(FragmentEditTextB
             dialog.dismiss()
         }
     }
-
-
 }

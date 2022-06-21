@@ -1,6 +1,5 @@
 package com.pet.animal.formula.dose.health.veterinary.cure.screens.fragments.calculator.keyboard
 
-import android.widget.Toast
 import com.pet.animal.formula.dose.health.veterinary.cure.core.calculator.CalcLogic
 import com.pet.animal.formula.dose.health.veterinary.cure.model.calculator.CalcConstants
 import com.pet.animal.formula.dose.health.veterinary.cure.model.calculator.CalcKeyboardContract
@@ -14,8 +13,6 @@ class CalculatorKeyboardFragmentInteractorImpl (
     /** Задание исходных данных */ //region
     // Сам калькулятор (его логика)
     private val calcLogic = CalcLogic()
-    // Получение доступа к ресурсам
-    val resourcesProviderImpl: ResourcesProviderImpl = KoinJavaComponent.getKoin().get()
     //endregion
 
     //region Методы калькулятора
