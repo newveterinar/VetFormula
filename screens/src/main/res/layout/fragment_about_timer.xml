@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/pharmacy_surface_previous_text_margin_start"
                 android:paddingStart="@dimen/pharmacy_surface_previous_text_padding_start"
-                android:text="@string/about_logo_text"
+                android:text="@string/timer_previous_text_text"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
